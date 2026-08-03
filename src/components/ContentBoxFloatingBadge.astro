@@ -1,0 +1,45 @@
+---
+export interface Props {
+  title?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+}
+const { title, as: HeadingTag = "h1" } = Astro.props;
+const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "text-lg sm:text-xl md:text-2xl";
+
+// pt-36/md:pt-32 rather than the pt-28/md:pt-24 this file shipped with. The
+// badge is anchored at -top-6 (24px above the card), so its bottom edge sits at
+// (badge height − 24px) from the card's top. A full-sentence Thai H2 wraps the
+// badge to several lines, which put the last line of the badge on top of the
+// first line of body copy.
+//
+// This runs one step deeper than ContentBoxSevenThreeFloatingBadge (pt-32/
+// md:pt-28) on purpose — the two decorative ✦ spans and their gap take ~52px
+// out of the badge's inner width here, and nothing takes it out over there. On
+// a 360–375px phone that is the difference between a 3-line and a 4-line badge:
+// BETKUB77's H2 measured ~20px of clearance at pt-32, which one more wrapped
+// line would have eaten. Keep the two files one step apart, not identical.
+---
+
+<section class="my-10 flex w-full justify-center px-4 font-sans">
+  <div
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#7ee356]/25 bg-gradient-to-b from-[#0b160d]/95 to-[#071009]/95 p-8 pt-36 text-left text-base leading-relaxed text-[#dcecd6] shadow-[0_10px_30px_rgba(126,227,86,0.16)] md:pt-32">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#7ee356]/25 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f2c94c]/35 blur-[60px]"></div>
+
+    {
+      title && (
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#7ee356]/35 bg-[#0b160d] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(126,227,86,0.22)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#f2c94c]">
+            ✦
+          </span>
+          <HeadingTag class={`bg-gradient-to-r from-[#b6f38a] via-[#7ee356] to-[#2f8f3a] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent uppercase`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#f2c94c]">
+            ✦
+          </span>
+        </div>
+      )
+    }
+
+    <slot />
+  </div>
+</section>

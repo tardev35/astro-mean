@@ -1,0 +1,104 @@
+---
+import { Picture } from "astro:assets";
+import BankStrip from "./BankStrip.astro";
+const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png,webp,jpg}", { eager: true });
+const imagePaths = Object.keys(images);
+const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
+
+const shortcuts = [
+  { name: "หน้าหลัก", path: "/" },
+  { name: "โปรโมชั่น", path: "/promotion" },
+  { name: "ทดลองเล่น", path: "/ทดลองเล่น" },
+  { name: "ทางเข้า", path: "/ทางเข้า" },
+  { name: "ติดต่อเรา", path: "/contact-us" },
+];
+---
+
+<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#7ee356]/60 bg-[#050a06] pt-16 pb-8 font-sans text-[#dcecd6] shadow-[0_-15px_40px_rgba(126,227,86,0.25)]">
+  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#7ee356]/20 blur-[100px]"></div>
+  <div class="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-[220px] w-full max-w-2xl rounded-full bg-[#1f7a35]/25 blur-[100px]"></div>
+
+  <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
+    <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-12">
+      <div class="flex flex-col gap-5 md:col-span-5">
+        <a href="/" class="inline-block max-w-max rounded-xl border border-[#7ee356]/30 bg-[#0b160d] px-4 py-2 transition-transform duration-300 hover:scale-105">
+          {
+            mainLogo ? (
+              <Picture
+                src={mainLogo}
+                alt="โลโก้ BETKUB77 ตัวอักษรสีขาวคู่กับไพ่สีเขียว"
+                widths={[140, 280, 420]}
+                sizes="140px"
+                loading="lazy"
+                decoding="async"
+                class="h-[50px] w-auto object-contain"
+                formats={["avif", "webp"]}
+                fallbackFormat="webp"
+              />
+            ) : (
+              <span class="text-3xl font-black tracking-widest text-[#dcecd6]">
+                BETKUB<span class="text-[#7ee356]">77</span>
+              </span>
+            )
+          }
+        </a>
+        <p class="border-l-2 border-[#7ee356]/50 pl-4 text-sm leading-relaxed text-[#9db8a1]">
+          BETKUB77 สล็อตเว็บตรงอันดับต้น รวมเกมลิขสิทธิ์แท้จากค่ายดังไว้ครบในบัญชีเดียว ต่อตรง API แท้จากเซิร์ฟเวอร์หลักของค่ายเกม ระบบออโต้ไวได้มาตรฐาน ฝากไวถอนจริงตลอด 24 ชั่วโมง
+          ไม่มีประวัติโกง เบทหนักไม่มีบิดครับ
+        </p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <span class="rounded-full border border-[#7ee356]/30 bg-[#0b160d] px-4 py-1 text-xs font-medium text-[#b6f38a] backdrop-blur-sm">สมาชิกใหม่รับโบนัส 200%</span>
+          <span class="rounded-full border border-[#f2c94c]/40 bg-[#161104] px-4 py-1 text-xs font-medium text-[#f7e08a] backdrop-blur-sm">คืนยอดเสีย 3% ทุกวัน</span>
+        </div>
+      </div>
+
+      <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
+        <p class="text-lg font-black tracking-widest text-[#dcecd6] uppercase drop-shadow-sm">ทางลัด</p>
+        <div class="h-[1px] w-12 bg-[#7ee356]"></div>
+        <ul class="flex flex-col gap-3 text-sm font-medium text-[#9db8a1]">
+          {
+            shortcuts.map((item) => (
+              <li>
+                <a href={item.path} class="transition-colors hover:text-[#7ee356]">
+                  {item.name}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <div class="flex flex-col gap-5 md:col-span-4">
+        <p class="text-lg font-black tracking-widest text-[#dcecd6] uppercase drop-shadow-sm">บริการลูกค้า 24 ชม.</p>
+        <div class="h-[1px] w-12 bg-[#7ee356]"></div>
+
+        <a
+          href="/line"
+          class="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#00B900] to-[#009900] py-3.5 font-bold text-white shadow-[0_5px_15px_rgba(0,185,0,0.3)] transition-all hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,185,0,0.4)]">
+          ติดต่อแอดมิน LINE
+        </a>
+
+        <div class="mt-4 text-xs font-medium tracking-widest text-[#9db8a1] uppercase">Supported Payments</div>
+        <BankStrip size={30} />
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-between border-t border-[#1f7a35]/60 pt-8 text-xs font-medium tracking-wide text-[#9db8a1] md:flex-row">
+      <p>COPYRIGHT &copy; {new Date().getFullYear()} BETKUB77TH.COM. ALL RIGHTS RESERVED.</p>
+      <div class="mt-4 flex gap-4 md:mt-0">
+        <a href="/terms/" class="transition-colors hover:text-[#7ee356]">เงื่อนไขข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#7ee356]">นโยบายความเป็นส่วนตัว</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer a {
+    text-decoration: none;
+    font-family: var(--font-sans);
+  }
+  footer {
+    font-family: var(--font-sans);
+  }
+</style>

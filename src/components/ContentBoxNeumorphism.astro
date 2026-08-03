@@ -1,0 +1,25 @@
+---
+export interface Props {
+  title?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+}
+const { title, as: HeadingTag = "h1" } = Astro.props;
+const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
+---
+
+<section class="relative z-10 my-6 flex w-full justify-center px-4 font-sans">
+  <div
+    class="w-full max-w-[1400px] rounded-[25px] border border-[#5b0374]/70 bg-[#1a0b2e] p-8 text-left text-base leading-relaxed text-[#efe3f7] shadow-[10px_10px_20px_#060310,-10px_-10px_20px_#2c014b]">
+    {
+      title && (
+        <header class="mb-8 border-b border-[#fcda3d]/25 pb-4 text-center">
+          <HeadingTag
+            class={`bg-gradient-to-r from-[#ffe98a] via-[#fcda3d] to-[#a9760d] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
+            {title}
+          </HeadingTag>
+        </header>
+      )
+    }
+    <slot />
+  </div>
+</section>

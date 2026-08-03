@@ -1,0 +1,177 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import ContentBox from "../components/ContentBoxPremium.astro";
+import Navfoot from "../components/Navfoot.astro";
+import Announcement from "../components/Announcement5.astro";
+
+import { Picture } from "astro:assets";
+
+// Named for the promotion each banner ACTUALLY shows, not for its file number.
+// The previous brand's copy on this page described a completely different set
+// of offers (10% slot cashback, 3% casino, 0.7% referral, 111 รับ 300) while
+// rendering these same four images — the text and the artwork disagreed on
+// every card. Reading the banner is the only way to write this page.
+import proNewMember from "../assets/slide3.png";
+import proFirstBill from "../assets/slide2.png";
+import proCashback from "../assets/slide1.png";
+import proReferral from "../assets/slide4.png";
+import { pageGraph } from "../lib/schema";
+
+// One string, used twice: MainLayout's <meta name="description"> and the
+// WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
+// byte count reads ~3x too long).
+const pageDescription =
+  "รวมโปรโมชั่น KUMI99 สล็อตออนไลน์ตัวท็อป สมาชิกใหม่บิลแรกรับ 20% ฝากก่อนรับทันทีบิลแรกรับ 10% คืนยอดเสีย 5% ทุกสัปดาห์ แนะนำเพื่อน 1.25% พร้อมเงื่อนไขก่อนกดรับ";
+
+const graph = pageGraph(Astro, {
+  name: "โปรโมชั่น KUMI99 สมาชิกใหม่ 20% คืนยอดเสีย 5% และแนะนำเพื่อน 1.25%",
+  description: pageDescription,
+  breadcrumb: [
+    { name: "หน้าแรก", path: "/" },
+    { name: "โปรโมชั่น", path: "/promotion" },
+  ],
+  primaryImagePath: proNewMember.src,
+});
+
+// Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem) and
+// two-up from sm: upward inside the same padding plus a 2rem gap (8rem total).
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1456px) calc((100vw - 8rem) / 2), 600px";
+
+const imageClass =
+  "mx-auto h-auto w-full rounded-xl border border-[#fcda3d]/30 object-contain shadow-[0_10px_30px_rgba(252,218,61,0.16)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#fcda3d]/60 hover:shadow-[0_15px_40px_rgba(252,218,61,0.28)]";
+---
+
+<MainLayout title="โปรโมชั่น KUMI99 สมาชิกใหม่รับ 20% คืนยอดเสียทุกสัปดาห์ และแนะนำเพื่อน" description={pageDescription}>
+  <script type="application/ld+json" set:html={graph} />
+
+  <Announcement />
+
+  <ContentBox title="โปรโมชั่น KUMI99" as="h1">
+    <div>
+      <h2 class="mb-4 text-2xl leading-normal font-bold text-[#fcda3d]">โปรโมชั่น KUMI99 ต้องอ่านเงื่อนไขตรงไหนก่อนกดรับ</h2>
+
+      <p class="mb-5 text-left text-base leading-relaxed">
+        <strong class="text-[#ffe98a]">KUMI99</strong> เป็นสล็อตออนไลน์ตัวท็อปที่รวมเกมจากค่ายดังไว้ในบัญชีเดียว โปรโมชั่นที่หน้าเว็บเปิดให้กดรับจึงผูกอยู่กับยอดฝากจริงและเกมที่ร่วมรายการ
+        ไม่ได้ลอยอยู่เดี่ยว ๆ ในหน้าโปร ตัวเลขใหญ่บนแบนเนอร์บอกได้แค่ว่ามีอะไรให้ ส่วนบรรทัดเล็กใต้ตัวเลขคือคนที่ตัดสินว่าเราได้จริงเท่าไร
+        ก่อนกดรับจึงควรไล่ให้ครบทั้งห้าข้อ คือยอดที่ใช้คำนวณ เปอร์เซ็นต์ที่ได้รับจริง จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอน
+        เพราะโปรแต่ละรายการกำหนดเงื่อนไขไม่เหมือนกัน การเลือกจากเปอร์เซ็นต์ที่สูงที่สุดเพียงอย่างเดียวจึงไม่ใช่วิธีที่ปลอดภัยที่สุด
+      </p>
+
+      <p class="mb-8 text-left text-base leading-relaxed">
+        รายการที่เห็นบนหน้าโปรของ KUMI99 รอบนี้มีสี่ก้อนที่ใช้เงื่อนไขคนละชุดกัน คือโปรสมาชิกใหม่ที่ให้บิลแรก 20% และโปรฝากก่อนรับทันทีที่ให้บิลแรก 10%
+        ซึ่งทั้งสองรายการระบุบนแบนเนอร์ว่าเฉพาะสล็อตเท่านั้น คืนยอดเสีย 5% ที่คืนให้ทุกสัปดาห์ในรูปแบบแคชแบ็ก และแนะนำเพื่อน 1.25% ที่คิดจากยอดการเล่นของเพื่อนที่สมัครผ่านลิงก์ของเรา
+        ตัวเลขเหล่านี้ควรใช้เป็นข้อมูลตั้งต้นแล้วตรวจจากหน้าโปรจริงอีกครั้งก่อนกด เพราะช่วงเวลาของสิทธิ์ ค่ายเกมที่ยกเว้น และการรับซ้อนกับรายการอื่นเป็นรายละเอียดที่เปลี่ยนได้ตามรอบ
+        ถ้าแผนของเราคือหมุนตามงบแล้วปิดจบ การไม่รับสิทธิ์เลยก็เป็นทางเลือกที่สมเหตุสมผล เพราะโบนัสที่ติดเทิร์นไม่ได้แปลว่าเงินอยู่ในมือแล้ว
+      </p>
+
+      <h2 class="mt-10 mb-4 text-2xl leading-normal font-bold text-[#fcda3d]">รายการโปรโมชั่นทั้งหมดที่ KUMI99 เปิดให้รับ</h2>
+
+      <p class="mb-8 text-left text-base leading-relaxed">
+        แบนเนอร์ด้านล่างคือรายการจริงที่เปิดให้รับอยู่ในรอบนี้ อ่านเงื่อนไขใต้ภาพให้ตรงกับสิ่งที่ตัวเองเล่นอยู่ก่อนตัดสินใจ เพราะสองรายการแรกเป็นโบนัสจากยอดฝากที่ระบุว่าเฉพาะสล็อต
+        ส่วนคืนยอดเสียกับค่าคอมแนะนำเพื่อนเป็นคนละก้อนที่คิดจากยอดคนละแบบ
+      </p>
+
+      <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
+        <figure class="m-0">
+          <Picture
+            src={proNewMember}
+            alt="แบนเนอร์โปรสมาชิกใหม่ KUMI99 บิลแรก รับ 20% เฉพาะสล็อตเท่านั้น พร้อมแพนด้าใส่แว่นดำและเสื้อแจ็กเก็ตม่วงบนพื้นนีออน"
+            loading="lazy"
+            fetchpriority="low"
+            widths={[300, 450, 600]}
+            sizes={imageSizes}
+            class={imageClass}
+            decoding="async"
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
+            quality={80}
+          />
+          <figcaption class="mt-3 text-left text-base leading-relaxed">
+            <strong class="text-[#ffe98a]">โปรสมาชิกใหม่ บิลแรก รับ 20%</strong> รับได้ครั้งเดียวจากยอดฝากบิลแรกหลังเปิดบัญชี แบนเนอร์ระบุไว้ว่าเฉพาะสล็อตเท่านั้น เกมฝั่งอื่นจึงไม่นับเข้ารายการนี้
+          </figcaption>
+        </figure>
+
+        <figure class="m-0">
+          <Picture
+            src={proFirstBill}
+            alt="แบนเนอร์โปรโมชั่น KUMI99 ฝากก่อนรับทันที บิลแรก รับ 10% เฉพาะสล็อตเท่านั้น พร้อมแพนด้าใส่สูทถือทองคำแท่ง"
+            loading="lazy"
+            fetchpriority="low"
+            widths={[300, 450, 600]}
+            sizes={imageSizes}
+            class={imageClass}
+            decoding="async"
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
+            quality={80}
+          />
+          <figcaption class="mt-3 text-left text-base leading-relaxed">
+            <strong class="text-[#ffe98a]">ฝากก่อนรับทันที บิลแรก รับ 10%</strong> โบนัสเข้าให้ทันทีหลังฝากบิลแรกของรอบ เป็นคนละก้อนกับโปรสมาชิกใหม่ และระบุว่าเฉพาะสล็อตเท่านั้นเช่นกัน
+          </figcaption>
+        </figure>
+
+        <figure class="m-0">
+          <Picture
+            src={proCashback}
+            alt="แบนเนอร์โปรโมชั่น KUMI99 คืนยอดเสีย 5% ทุกสัปดาห์ พร้อมแพนด้าใส่แว่นดำถือป้าย CASHBACK บนพื้นม่วงนีออน"
+            loading="lazy"
+            fetchpriority="low"
+            widths={[300, 450, 600]}
+            sizes={imageSizes}
+            class={imageClass}
+            decoding="async"
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
+            quality={80}
+          />
+          <figcaption class="mt-3 text-left text-base leading-relaxed">
+            <strong class="text-[#ffe98a]">คืนยอดเสีย 5% ทุกสัปดาห์</strong> แคชแบ็กที่คิดจากยอดเสียสุทธิของรอบสัปดาห์ ไม่ใช่ยอดฝาก จึงเป็นรายการเดียวในหน้านี้ที่ไม่ต้องกดรับตอนเติมเงิน
+          </figcaption>
+        </figure>
+
+        <figure class="m-0">
+          <Picture
+            src={proReferral}
+            alt="แบนเนอร์โปรโมชั่น KUMI99 แนะนำเพื่อน 1.25% เพื่อนเล่นคุณได้ พร้อมแพนด้าใส่หมวกและเหรียญทองบนพื้นม่วงนีออน"
+            loading="lazy"
+            fetchpriority="low"
+            widths={[300, 450, 600]}
+            sizes={imageSizes}
+            class={imageClass}
+            decoding="async"
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
+            quality={80}
+          />
+          <figcaption class="mt-3 text-left text-base leading-relaxed">
+            <strong class="text-[#ffe98a]">แนะนำเพื่อน 1.25% เพื่อนเล่นคุณได้</strong> ค่าคอมคิดจากยอดการเล่นของเพื่อนที่สมัครผ่านลิงก์ของเรา ไม่ได้คิดจากยอดฝากหรือยอดที่เพื่อนเสีย
+          </figcaption>
+        </figure>
+      </div>
+
+      <h2 class="mt-12 mb-4 text-2xl leading-normal font-bold text-[#fcda3d]">รับโปรแล้วต้องตรวจเทิร์นและยอดถอนอย่างไร</h2>
+
+      <p class="mb-5 text-left text-base leading-relaxed">
+        หลังกดรับสิทธิ์ควรเปิดหน้าประวัติรายการดูว่ายอดโบนัสเข้าครบ เทิร์นเดินถูกเกม และยอดคงเหลือตรงกับที่ระบบแสดง เพราะโบนัสบิลแรกทั้งสองรายการระบุไว้ว่าเฉพาะสล็อต
+        การหมุนในหมวดอื่นระหว่างที่เทิร์นยังไม่ครบจึงอาจไม่ถูกนับ อีกจุดที่คนอ่านข้ามบ่อยคือฐานที่ใช้คำนวณของแต่ละรายการ คืนยอดเสีย 5% คิดจากยอดเสียของสัปดาห์
+        ส่วนค่าคอมแนะนำเพื่อน 1.25% คิดจากยอดการเล่นของเพื่อน ทั้งสองตัวเลขจึงเทียบกันตรง ๆ ไม่ได้ และควรอ่านเงื่อนไขของแต่ละรายการแยกกันก่อนวางแผนหมุน
+      </p>
+
+      <p class="mb-8 text-left text-base leading-relaxed">
+        ด้านการเงิน KUMI99 ใช้ระบบออโต้ที่ฝากถอนไวภายใน 3 วิ ผู้เล่นทำรายการเองได้ตลอดเวลาโดยไม่ต้องส่งสลิปให้แอดมินตรวจ ยอดเงินอัปเดตเข้ากระเป๋าทันทีตามสถานะระบบในช่วงนั้น
+        ทำให้กลับไปลุ้นรางวัลต่อได้เร็วโดยไม่เสียอารมณ์ ก่อนทำรายการควรตรวจชื่อบัญชี ยอดเงิน และประวัติรายการให้ครบ หากยอดยังไม่เปลี่ยนไม่ควรกดซ้ำทันที
+        เพราะนิ้วที่กดสองรอบไม่ได้ทำให้ธนาคารขยันขึ้น และควรกรอกข้อมูลเฉพาะบนโดเมนที่ตรวจแล้วและเชื่อมต่อแบบ HTTPS เท่านั้น ไม่ใช่ลิงก์ที่ส่งต่อกันมาในแชตพร้อมคำโฆษณา
+      </p>
+
+      <div class="mt-12 flex justify-center pb-4">
+        <a
+          href="/register"
+          class="flex items-center justify-center rounded-lg border border-[#fcda3d]/60 bg-gradient-to-r from-[#ffe98a] via-[#fcda3d] to-[#a9760d] px-10 py-3.5 text-lg font-black text-[#2a1400] shadow-[0_10px_30px_rgba(252,218,61,0.16)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,218,61,0.28)]">
+          สมัครสมาชิก KUMI99
+        </a>
+      </div>
+    </div>
+  </ContentBox>
+
+  <Navfoot />
+</MainLayout>

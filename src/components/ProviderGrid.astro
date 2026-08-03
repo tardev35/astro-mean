@@ -1,0 +1,46 @@
+---
+const providers = [
+  { name: "PG Soft", desc: "สล็อตฟีเจอร์แน่น กราฟิกจัดเต็มอลังการ โหลดไว เป็นค่ายที่สายปั่นเลือกบ่อยที่สุด", tag: "ค่ายหลัก", icon: "🎰" },
+  { name: "Pragmatic Play", desc: "เกมใหม่มาแรง ฟรีสปินตัวคูณสูง รองรับทั้งไม้เล็กและไม้ใหญ่", tag: "ยอดฮิต", icon: "🔥" },
+  { name: "JILI", desc: "สล็อตจังหวะไว รอบสั้น ฟีเจอร์แตกง่าย เหมาะกับคนชอบปั่นต่อเนื่อง", tag: "รอบไว", icon: "🎯" },
+  { name: "Evolution", desc: "เกมโต๊ะไลฟ์สดจากสตูดิโอจริง เดินรอบแบบเรียลไทม์ทุกช่วงเวลา", tag: "ไลฟ์สด", icon: "🎴" },
+  { name: "ค่ายเด็ดอีกเพียบ", desc: "คัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด รวมไว้ในบัญชีเดียว ไม่ต้องสมัครแยก", tag: "ครบทุกค่าย", icon: "🧩" },
+  { name: "แนวคลาสสิกสุดฮิต", desc: "ทั้งแนวแอคชันผจญภัยและสไตล์คลาสสิก สลับเปลี่ยนได้เรื่อย ๆ ตามอารมณ์", tag: "เลือกได้อิสระ", icon: "🕹️" },
+  { name: "เล่นลื่นทุกอุปกรณ์", desc: "ระบบไวเกินต้าน ไม่ค้างไม่หน่วง จะใช้มือถือ แท็บเล็ต หรือคอมก็ปั่นได้สุดฟีล", tag: "ไม่สะดุด", icon: "📱" },
+];
+---
+
+<section aria-label="ค่ายเกมสล็อตและระบบที่ KUMI99 รวมไว้ในบัญชีเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+  <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
+    <p class="bg-gradient-to-r from-[#ffe98a] via-[#fcda3d] to-[#a9760d] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายเกมสล็อตที่ <span class="text-[#c77dff]">KUMI99</span> รวมไว้ในบัญชีเดียว
+    </p>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#fcda3d] to-transparent"></div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
+    {
+      providers.map((provider) => (
+        <a
+          href="/register"
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#fcda3d]/25 bg-[#1a0b2e]/92 p-5 shadow-[0_10px_30px_rgba(252,218,61,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#fcda3d]/50 hover:bg-[#2c014b]/95 hover:shadow-[0_15px_40px_rgba(252,218,61,0.3)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#fcda3d]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffe98a] via-[#fcda3d] to-[#a9760d] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#2a1400] shadow-sm transition-transform duration-300 group-hover:scale-110">
+            {provider.tag}
+          </div>
+
+          <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
+            {provider.icon}
+          </div>
+          <p class="text-center text-sm font-black text-[#efe3f7] transition-colors group-hover:text-[#ffe98a]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#bda6cf]">{provider.desc}</p>
+
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#fcda3d]/25 bg-[#12071f] py-1.5 text-center text-[11px] font-bold text-[#fcda3d] shadow-inner transition-colors duration-300 group-hover:border-[#fcda3d]/50 group-hover:bg-gradient-to-r group-hover:from-[#ffe98a] group-hover:via-[#fcda3d] group-hover:to-[#a9760d] group-hover:text-[#2a1400]">
+            เข้าดูเกม
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</section>

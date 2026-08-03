@@ -1,0 +1,46 @@
+---
+export interface Props {
+  titleleft?: string;
+  titleright?: string;
+  label?: string;
+}
+const { titleleft, titleright, label } = Astro.props;
+
+// Both column titles are deliberately <p>, not headings: they label UI panels
+// (a login form, a reference table), not docx sections, so promoting them would
+// add heading levels the brief never asked for. The section carries its own
+// accessible name instead, which is what `label` is for.
+const sectionLabel = label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ";
+---
+
+<section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+    <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dcecd6]">
+      {
+        titleleft && (
+          <p class="flex items-center gap-3 border-b border-[#7ee356]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#7ee356] uppercase">
+            <span aria-hidden="true" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#7ee356]/40 bg-gradient-to-br from-[#b6f38a] via-[#7ee356] to-[#2f8f3a] text-sm text-[#06210c] shadow-[0_5px_15px_rgba(126,227,86,0.3)]">
+              🔐
+            </span>
+            {titleleft}
+          </p>
+        )
+      }
+      <slot name="left" />
+    </article>
+
+    <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dcecd6]">
+      {
+        titleright && (
+          <p class="flex items-center gap-3 border-b border-[#7ee356]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#7ee356] uppercase">
+            <span aria-hidden="true" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1f7a35]/50 bg-gradient-to-br from-[#9db8a1] via-[#1f7a35] to-[#2f8f3a] text-sm text-[#06210c] shadow-[0_5px_15px_rgba(31,122,53,0.4)]">
+              🎰
+            </span>
+            {titleright}
+          </p>
+        )
+      }
+      <slot name="right" />
+    </article>
+  </div>
+</section>

@@ -1,0 +1,216 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Announcement from "../components/Announcement5.astro";
+import ContentBox from "../components/ContentBox.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import LoginRtpSection from "../components/LoginRtpSection.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
+import GameRankingBoard from "../components/GameRankingBoard.astro";
+import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
+import LatestWinners from "../components/LatestWinnersPremium.astro";
+import SmoothCarousel from "../components/SmoothCarousel.astro";
+import Faq from "../components/Faq4.astro";
+import Navfoot from "../components/Navfoot.astro";
+
+import { Picture } from "astro:assets";
+import { pageGraph } from "../lib/schema";
+import imgNewMember from "../assets/slide3.png";
+import imgFirstBill from "../assets/slide2.png";
+
+// โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
+//   1 → ContentBoxPremium as="h1"
+//   2 → ContentBox (plain)
+//   3 → ContentBoxNeumorphism
+//   4 → ContentBoxSevenThreePremium + slide3 (โปรสมาชิกใหม่ บิลแรก รับ 20%)
+//   5 → ContentBoxSevenThreeNeumorphism + slide2 (ฝากก่อนรับทันที บิลแรก รับ 10%)
+//   6 → ContentBoxSpecial
+//   7 → ContentBoxPremium as="h2"
+// widget ที่ไม่ได้มาจาก docx ใช้หัวข้อเป็น <p> + aria-label บน <section> จึงแทรก
+// ระหว่างกล่องได้โดยลำดับ H2 ไม่เพี้ยน (LoginRtpSection ก็เป็น <p> เช่นกัน)
+
+const pageTitle = "KUMI99 | สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง ฝากถอนไวภายใน 3 วิ";
+
+// docx ให้ description มา 148 ตัวอักษร ซึ่งต่ำกว่าเกณฑ์ 150–160 ของ
+// tools/verify-build.mjs (เป็น error ไม่ใช่ warning) จึงแทรก "ทุกอุปกรณ์"
+// เข้าไปหนึ่งคำ — ไม่มีถ้อยคำใดของ docx หายไป ได้ 158 ตัวอักษร
+// (แจ้ง orchestrator แล้ว: ค่า default ใน MainLayout.astro ยังเป็นตัว 148 อยู่)
+const pageDescription =
+  "KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง คัดค่ายเด็ดเข้าไม่พัก โบนัสโคตรคุ้ม ระบบไวเกินต้านทุกอุปกรณ์ ปั่นได้สุดฟีล ฝากถอนไวภายใน 3 วิ ไม่มีจังหวะให้เสียอารมณ์";
+
+const announcementMessage =
+  "KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรงให้ค้นหาอยู่ตลอด • คัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด ความสนุกในแต่ละวันไม่เคยซ้ำเดิม • โบนัสโคตรคุ้ม ฟรีสปินตัวคูณและสัญลักษณ์พิเศษให้ลุ้นทุกการหมุน • ฝากถอนไวภายใน 3 วิ ผ่านระบบออโต้ ไม่ต้องแจ้งสลิป • ระบบไวเกินต้าน ปั่นได้สุดฟีลทุกอุปกรณ์";
+
+const faqs = [
+  {
+    q: "KUMI99 เป็นสล็อตออนไลน์ตัวท็อปเพราะอะไร",
+    a: "เพราะที่นี่ใส่ใจในทุกรายละเอียด ตั้งแต่การคัดเลือกสล็อตลิขสิทธิ์แท้ ระบบฝากถอนที่รวดเร็วทันใจ ไปจนถึงการบริการลูกค้าที่พร้อมดูแลตลอดเวลา ทุกองค์ประกอบถูกสร้างขึ้นมาเพื่อให้คุณสนุกกับการปั่นได้อย่างสบายใจที่สุด รวมกับเกมใหม่มาแรงที่คัดสรรมาเพื่อสายปั่นโดยเฉพาะ จึงเป็นจุดหมายปลายทางที่สายสปินไม่ควรพลาด",
+  },
+  {
+    q: "เข้ามาที่ KUMI99 แล้วจะมีเกมใหม่ให้เล่นบ่อยแค่ไหน",
+    a: "ที่นี่อัปเดตระบบสม่ำเสมอและคัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด เมื่อล็อกอินเข้ามาจึงมีเกมใหม่ให้ค้นหาอยู่ตลอดเวลา ทั้งแนวแอคชันผจญภัยและสไตล์คลาสสิกสุดฮิต ทีมงานคอยติดตามกระแสและนำเข้าตัวเลือกฮิตจากทั่วโลกมาเสิร์ฟถึงมือคุณ ทำให้ความสนุกในแต่ละวันก็ไม่เคยซ้ำเดิม สลับเปลี่ยนสไตล์ไปได้เรื่อย ๆ ตามอารมณ์",
+  },
+  {
+    q: "โบนัสและลูกเล่นในเกมของ KUMI99 มีอะไรบ้าง",
+    a: "ไม่ใช่แค่โบนัสโคตรคุ้มที่เตรียมไว้แจกแบบไม่อั้น แต่ยังมีลูกเล่นในเกมที่ชวนให้ลุ้นทุกการหมุน ไม่ว่าจะเป็นฟีเจอร์ตัวคูณ รอบฟรีสปินที่ออกบ่อย หรือสัญลักษณ์พิเศษที่ช่วยเพิ่มโอกาสรับรางวัลใหญ่ ทุกฟังก์ชันถูกออกแบบมาเพื่อเพิ่มสีสันและความเร้าใจ ควรอ่านเงื่อนไขของแต่ละโปรโมชั่นจากหน้าโปรโมชั่นจริงก่อนกดรับทุกครั้ง",
+  },
+  {
+    q: "ฝากถอนกับ KUMI99 ต้องแจ้งสลิปให้แอดมินตรวจไหม",
+    a: "ไม่ต้องแจ้งสลิปและไม่ต้องรอคิว เพราะระบบทำรายการเป็นออโต้ที่แม่นยำและปลอดภัย คุณจะได้สัมผัสประสบการณ์ฝากถอนไวภายใน 3 วิ ยอดเงินอัปเดตเข้ากระเป๋าทันที เมื่อได้โบนัสก้อนโตก็สามารถถอนออกไปใช้ได้จริงทันใจ จึงไม่มีจังหวะให้เสียอารมณ์ เล่นต่อแบบลื่น ๆ ได้อย่างไร้รอยต่อตลอดทั้งวัน",
+  },
+  {
+    q: "เล่น KUMI99 จากมือถือหรือคอมพิวเตอร์ ต่างกันไหม",
+    a: "ไม่ต่างกัน เพราะที่นี่ใช้เทคโนโลยีเซิร์ฟเวอร์ขั้นสูง ทำให้ระบบไวเกินต้านรองรับผู้ใช้งานจำนวนมากได้พร้อมกัน ปัญหาเกมค้างหรือโหลดช้าจึงไม่มารบกวน คุณเล่นต่อเนื่องปั่นได้สุดฟีลไม่ว่าจะเข้าใช้งานจากอุปกรณ์ไหน ทั้งสมาร์ทโฟน แท็บเล็ต หรือคอมพิวเตอร์ หน้าเว็บก็ปรับสัดส่วนให้พอดีกับหน้าจอโดยอัตโนมัติ",
+  },
+];
+
+const graph = pageGraph(Astro, {
+  name: pageTitle,
+  description: pageDescription,
+  faqs,
+});
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={graph} />
+
+  <Announcement message={announcementMessage} />
+
+  <ContentBoxPremium as="h1" title="KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง ฝากถอนไวภายใน 3 วิ">
+    <p class="text-left text-base leading-relaxed">
+      พบกับ <strong class="text-[#fcda3d]">KUMI99</strong> สล็อตออนไลน์ตัวท็อปที่พร้อมมอบประสบการณ์สุดพิเศษให้คุณทุกวัน เราจัดเต็มด้วยเกมใหม่มาแรงที่คัดสรรมาเพื่อสายปั่นโดยเฉพาะ
+      สัมผัสความรวดเร็วทันใจกับระบบฝากถอนไวภายใน 3 วิ ช่วยให้คุณเข้าเล่นเกมโปรดได้ทันทีไม่ต้องรอนาน
+    </p>
+    <p class="mt-3 text-left text-base leading-relaxed">
+      ที่นี่รวบรวมค่ายดังไว้มากมายพร้อมโบนัสสุดคุ้มและลูกเล่นแพรวพราว สร้างความตื่นเต้นในทุกรอบสปิน รองรับการใช้งานผ่านทุกอุปกรณ์ด้วยความเสถียรสูงสุด
+      ใครที่ตามหาความสนุกแบบไม่มีสะดุดนี่คือคำตอบที่ใช่สำหรับคุณ
+    </p>
+  </ContentBoxPremium>
+
+  <ContentBox as="h2" title="KUMI99 พื้นที่รวมสล็อตมาแรง ที่เข้าแล้วมีเกมใหม่ให้ค้นหาอยู่ตลอด">
+    <p class="text-left text-base leading-relaxed">
+      หากคุณชอบความท้าทาย KUMI99 คือพื้นที่รวมสล็อตมาแรงที่ตอบโจทย์ที่สุด เราอัปเดตระบบสม่ำเสมอเพื่อให้มั่นใจว่าคุณจะได้รับสิ่งที่ดีที่สุด เมื่อล็อกอินเข้ามาที่นี่จะมีเกมใหม่ให้ค้นหาอยู่ตลอดเวลา
+      ไม่ว่าจะเป็นแนวแอคชันผจญภัยหรือสไตล์คลาสสิกสุดฮิต
+    </p>
+    <p class="mt-3 text-left text-base leading-relaxed">
+      เราดึงตรงจากค่ายผู้พัฒนาชื่อดังเพื่อให้คุณได้สัมผัสก่อนใคร กราฟิกจัดเต็มอลังการพร้อมเสียงเอฟเฟกต์สมจริง ช่วยให้การเล่นของคุณมีสีสัน ไม่ต้องกลัวเบื่อเพราะเราเตรียมตัวเลือกมากมายไว้รอคุณเสมอ
+    </p>
+  </ContentBox>
+
+  <GameRankingBoard />
+
+  <ContentBoxNeumorphism as="h2" title="คัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด ความสนุกในแต่ละวันก็ไม่เคยซ้ำเดิม">
+    <p class="text-left text-base leading-relaxed">
+      เราตั้งใจสร้างมาตรฐานใหม่ด้วยการคัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด เพื่อให้ทุกคนได้เลือกเล่นอย่างจุใจ ทีมงานคอยติดตามกระแสและนำเข้าตัวเลือกฮิตจากทั่วโลกมาเสิร์ฟถึงมือคุณ
+      การันตีว่าความสนุกในแต่ละวันก็ไม่เคยซ้ำเดิม
+    </p>
+    <p class="mt-3 text-left text-base leading-relaxed">
+      คุณสามารถสลับเปลี่ยนสไตล์ไปได้เรื่อย ๆ ตามอารมณ์ ค้นหารูปแบบที่ตรงใจได้อย่างอิสระ ฟีเจอร์แตกง่ายจัดเต็มทุกเกมให้คุณลุ้นรางวัลใหญ่ได้ต่อเนื่อง เป็นความบันเทิงระดับพรีเมียมที่ทาง KUMI99
+      เตรียมไว้ต้อนรับผู้เล่นทุกคน
+    </p>
+  </ContentBoxNeumorphism>
+
+  <ProviderGrid />
+
+  <ContentBoxSevenThreePremium titleright="ไม่ใช่แค่โบนัสโคตรคุ้ม แต่ยังมีลูกเล่นในเกมที่ชวนให้ลุ้นทุกการหมุน">
+    <Picture
+      slot="left"
+      src={imgNewMember}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น KUMI99 โปรสมาชิกใหม่ บิลแรก รับ 20% เฉพาะสล็อตเท่านั้น"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fcda3d]/25 shadow-[0_10px_30px_rgba(252,218,61,0.18)]"
+    />
+    <div slot="right">
+      <p class="text-left text-base leading-relaxed">
+        ความพิเศษของการเข้ามาปั่นสล็อตที่นี่คือผลตอบแทนที่คุณจะได้รับ เพราะไม่ใช่แค่โบนัสโคตรคุ้มที่เราเตรียมไว้แจกแบบไม่อั้น แต่ยังมีลูกเล่นในเกมที่ชวนให้ลุ้นทุกการหมุน
+        ไม่ว่าจะเป็นฟีเจอร์ตัวคูณรอบฟรีสปินที่ออกบ่อย หรือสัญลักษณ์พิเศษที่ช่วยเพิ่มโอกาสรับรางวัลใหญ่
+      </p>
+      <p class="mt-3 text-left text-base leading-relaxed">
+        ทุกฟังก์ชันถูกออกแบบมาเพื่อเพิ่มสีสันและความเร้าใจ คุณจะได้ดื่มด่ำกับกราฟิกสุดล้ำและกลไกใหม่ ๆ ตลอดเวลา ทำให้การกดเข้าเล่นกับ KUMI99 กลายเป็นช่วงเวลาสุดพิเศษที่พลาดไม่ได้
+      </p>
+    </div>
+  </ContentBoxSevenThreePremium>
+
+  <SmoothCarousel />
+
+  <ContentBoxSevenThreeNeumorphism titleright="ฝากถอนไวภายใน 3 วิ ไม่มีจังหวะให้เสียอารมณ์เล่นต่อแบบลื่น ๆ">
+    <Picture
+      slot="left"
+      src={imgFirstBill}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น KUMI99 ฝากก่อนรับทันที บิลแรก รับ 10% เฉพาะสล็อตเท่านั้น"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fcda3d]/25 shadow-[0_10px_30px_rgba(252,218,61,0.18)]"
+    />
+    <div slot="right">
+      <p class="text-left text-base leading-relaxed">
+        ลืมการรอคอยที่แสนน่าเบื่อไปได้เลย เพราะเราให้ความสำคัญกับระบบทำรายการที่ทันสมัยที่สุด คุณจะได้สัมผัสประสบการณ์ฝากถอนไวภายใน 3 วิ ผ่านระบบออโต้ที่แม่นยำและปลอดภัย
+        ยอดเงินอัปเดตเข้ากระเป๋าทันทีไม่ต้องแจ้งสลิป
+      </p>
+      <p class="mt-3 text-left text-base leading-relaxed">
+        เมื่อคุณได้โบนัสก้อนโตก็สามารถถอนออกไปใช้ได้จริงทันใจ ทำให้ไม่มีจังหวะให้เสียอารมณ์เล่นต่อแบบลื่น ๆ ช่วยต่อยอดความสนุกของคุณได้อย่างไร้รอยต่อ เป็นบริการทางการเงินที่ KUMI99
+        พัฒนาขึ้นมาเพื่อตอบสนองไลฟ์สไตล์ของคนยุคใหม่
+      </p>
+    </div>
+  </ContentBoxSevenThreeNeumorphism>
+
+  <LatestWinners />
+
+  <ContentBoxSpecial as="h2" title="ระบบไวเกินต้าน เล่นต่อเนื่องปั่นได้สุดฟีล ไม่ว่าจะเข้าใช้งานจากอุปกรณ์ไหน">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ปัญหาเกมค้างหรือโหลดช้าจะไม่มารบกวนจิตใจคุณอีกต่อไป เพราะเราใช้เทคโนโลยีเซิร์ฟเวอร์ขั้นสูง ทำให้ระบบไวเกินต้านรองรับผู้ใช้งานจำนวนมากได้พร้อมกัน คุณสามารถเล่นต่อเนื่องปั่นได้สุดฟีลอย่างอิสระ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ไม่ว่าจะเข้าใช้งานจากอุปกรณ์ไหน ทั้งสมาร์ทโฟนแท็บเล็ตหรือคอมพิวเตอร์ หน้าเว็บก็ปรับสัดส่วนให้พอดีกับหน้าจอโดยอัตโนมัติ KUMI99 พร้อมมอบความสะดวกสบายขั้นสุด
+      ให้คุณพกพาความบันเทิงระดับโลกไปได้ทุกที่ทุกเวลาเพียงแค่มีอินเทอร์เน็ต
+    </p>
+  </ContentBoxSpecial>
+
+  <LoginRtpSection />
+
+  <ContentBoxPremium as="h2" title="เหตุผลที่หลายคนมองว่า KUMI99 คือสล็อตออนไลน์ตัวท็อปที่ครบทั้งเกมและประสบการณ์">
+    <p class="text-left text-base leading-relaxed">
+      หากสงสัยว่าทำไมที่นี่ถึงได้รับความนิยมอย่างล้นหลาม เหตุผลที่หลายคนมองว่า KUMI99 คือสล็อตออนไลน์ตัวท็อปที่ครบทั้งเกมและประสบการณ์ เป็นเพราะเราใส่ใจในทุกรายละเอียด
+      ตั้งแต่การคัดเลือกสล็อตลิขสิทธิ์แท้ระบบฝากถอนที่รวดเร็วทันใจ ไปจนถึงการบริการลูกค้าที่พร้อมดูแลตลอดเวลา
+    </p>
+    <p class="mt-3 text-left text-base leading-relaxed">
+      ทุกองค์ประกอบถูกสร้างขึ้นมาเพื่อให้คุณสนุกกับการปั่นได้อย่างสบายใจที่สุด การันตีคุณภาพด้วยเสียงตอบรับจากผู้ใช้งานจริง นี่คือจุดหมายปลายทางที่สายสปินไม่ควรพลาดเด็ดขาด
+    </p>
+  </ContentBoxPremium>
+
+  <ReviewCardSumo2 />
+
+  <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
+    <a
+      href="/login"
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe98a] via-[#fcda3d] to-[#a9760d] px-4 py-3 text-sm font-black whitespace-nowrap text-[#2a1400] shadow-[0_10px_30px_rgba(252,218,61,0.26)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,218,61,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      เข้าสู่ระบบ
+    </a>
+
+    <a
+      href="/register"
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#5b0374]/80 bg-[#1a0b2e]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#bda6cf] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fcda3d] hover:bg-[#2c014b]/85 hover:shadow-[0_15px_40px_rgba(91,3,116,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      สมัครสมาชิก
+    </a>
+  </div>
+
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ KUMI99" faqs={faqs} />
+
+  <Navfoot />
+</MainLayout>

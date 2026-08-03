@@ -1,0 +1,199 @@
+---
+import { isActivePath } from "../lib/nav";
+import { Picture } from "astro:assets";
+const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png,webp,jpg}", { eager: true });
+
+const imagePaths = Object.keys(images);
+const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
+
+const currentPath = Astro.url.pathname;
+
+const isActive = (path: string) => isActivePath(currentPath, path);
+
+// เมนูชุดเดียว ใช้ทั้งเดสก์ท็อปและลิ้นชักมือถือ — ไฟล์นี้เดิมประกาศ array ซ้ำสองชุด
+// ซึ่งแปลว่าการเพิ่มหน้าใหม่ต้องแก้สองที่ และมีคนแก้ที่เดียวได้เสมอ
+//
+// icon แยกเป็น <span aria-hidden="true"> ของตัวเอง ห้ามต่อเข้าไปในข้อความของ label
+// เพราะ emoji จะกลายเป็นส่วนหนึ่งของ accessible name (screen reader จะอ่านว่า
+// "house หน้าแรก") — tools/verify-build.mjs ตรวจข้อนี้แล้ว build จะแดงถ้าพลาด
+const links = [
+  { name: "หน้าแรก", path: "/", icon: "🏠" },
+  { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
+  { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
+  { name: "ติดต่อเรา", path: "/contact-us", icon: "📞" },
+  { name: "เกี่ยวกับเรา", path: "/about-us" },
+];
+---
+
+<nav class="sticky top-0 z-50 w-full border-b border-[#7ee356]/30 bg-[#050a06] font-sans shadow-[0_4px_20px_rgba(126,227,86,0.15)] backdrop-blur-md">
+  <div class="flex h-[75px] w-full items-center justify-between px-4 xl:px-8">
+    <div class="z-50 flex items-center">
+      <a href="/" class="group relative flex items-center">
+        <div class="absolute inset-0 scale-0 rounded-full bg-[#7ee356]/20 blur-xl transition-transform duration-500 group-hover:scale-150"></div>
+        {
+          mainLogo ? (
+            <Picture
+              src={mainLogo}
+              alt="โลโก้ BETKUB77 ตัวอักษรสีขาวคู่กับไพ่สีเขียว"
+              loading="eager"
+              fetchpriority="high"
+              widths={[120, 240, 360]}
+              sizes="120px"
+              class="relative h-[40px] w-auto drop-shadow-[0_0_12px_rgba(126,227,86,0.4)] transition-transform group-hover:scale-105 xl:h-[45px]"
+              formats={["avif", "webp"]}
+              fallbackFormat="webp"
+            />
+          ) : (
+            <span class="relative text-2xl font-black tracking-widest text-[#dcecd6]">
+              BETKUB<span class="text-[#7ee356]">77</span>
+            </span>
+          )
+        }
+      </a>
+    </div>
+
+    <div class="z-10 hidden items-center gap-2 lg:gap-3 xl:flex">
+      {
+        links.map((item) => (
+          <a
+            href={item.path}
+            class={`group relative skew-x-[-15deg] overflow-hidden border px-5 py-2 transition-all duration-300 ${isActive(item.path) ? "border-[#7ee356] bg-[#2f8f3a]/25 shadow-[0_0_15px_rgba(126,227,86,0.3)]" : "border-white/10 bg-white/5 hover:border-[#7ee356]/50"}`}>
+            <div
+              class={`absolute inset-0 translate-y-full bg-gradient-to-r from-[#1f7a35] to-[#7ee356] transition-transform duration-300 ${isActive(item.path) ? "translate-y-0 opacity-20" : "opacity-40 group-hover:translate-y-0"}`}
+            />
+            <span
+              class={`relative z-10 flex skew-x-[15deg] items-center gap-1.5 text-sm font-bold tracking-wide transition-colors ${isActive(item.path) ? "text-[#b6f38a] drop-shadow-[0_0_5px_rgba(126,227,86,0.5)]" : "text-[#9db8a1] group-hover:text-white"}`}>
+              <span aria-hidden="true">{item.icon}</span>
+              <span>{item.name}</span>
+            </span>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="z-50 flex items-center gap-2">
+      <button
+        id="hamburger-btn"
+        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center space-y-1.5 rounded-lg border border-[#7ee356]/30 bg-[#0b160d] p-2 shadow-[0_0_10px_rgba(126,227,86,0.2)] transition-all hover:bg-[#122a16] xl:hidden"
+        aria-label="เปิดหรือปิดเมนู">
+        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#b6f38a] transition-all duration-300"></span>
+        <span class="hamburger-line h-[2px] w-6 bg-[#b6f38a] transition-all duration-300"></span>
+        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#b6f38a] transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-overlay" class="pointer-events-none fixed inset-0 z-30 bg-black/80 opacity-0 backdrop-blur-sm transition-opacity duration-300 xl:hidden"></div>
+
+  <div
+    id="mobile-sidebar"
+    class="fixed top-0 right-0 z-40 h-screen w-[280px] translate-x-full transform overflow-y-auto border-l border-[#2f8f3a]/60 bg-[#050a06] shadow-[-10px_0_30px_rgba(0,0,0,0.8)] transition-transform duration-300 ease-out xl:hidden">
+    <div class="flex flex-col space-y-3 px-6 pt-24 pb-10">
+      {
+        links.map((item) => (
+          <a
+            href={item.path}
+            class={`sidebar-item flex items-center rounded-xl border px-4 py-3.5 transition-all ${isActive(item.path) ? "border-[#7ee356] bg-[#2f8f3a]/25 text-[#b6f38a] shadow-[inset_4px_0_0_#7ee356]" : "border-transparent bg-white/5 text-[#9db8a1] hover:bg-white/10 hover:text-white"}`}>
+            <span aria-hidden="true" class="mr-3 text-xl">
+              {item.icon}
+            </span>
+            <span class="text-sm font-bold">{item.name}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</nav>
+
+<style is:global>
+  a {
+    font-family: var(--font-sans) !important;
+  }
+
+  #hamburger-btn.active .hamburger-line:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: #7ee356;
+  }
+  #hamburger-btn.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #hamburger-btn.active .hamburger-line:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: #7ee356;
+  }
+
+  .sidebar-item {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .sidebar-item.item-show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .sidebar-item:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .sidebar-item:nth-child(2) {
+    transition-delay: 0.15s;
+  }
+  .sidebar-item:nth-child(3) {
+    transition-delay: 0.2s;
+  }
+  .sidebar-item:nth-child(4) {
+    transition-delay: 0.25s;
+  }
+  .sidebar-item:nth-child(5) {
+    transition-delay: 0.3s;
+  }
+  .sidebar-item:nth-child(6) {
+    transition-delay: 0.35s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sidebar-item {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  const hamburgerBtn = document.getElementById("hamburger-btn");
+  const overlay = document.getElementById("mobile-overlay");
+  const sidebar = document.getElementById("mobile-sidebar");
+  const sidebarItems = document.querySelectorAll(".sidebar-item");
+
+  const toggleMenu = () => {
+    hamburgerBtn?.classList.toggle("active");
+    sidebar?.classList.toggle("translate-x-full");
+    sidebar?.classList.toggle("translate-x-0");
+    overlay?.classList.toggle("opacity-0");
+    overlay?.classList.toggle("opacity-100");
+    overlay?.classList.toggle("pointer-events-none");
+    overlay?.classList.toggle("pointer-events-auto");
+
+    if (sidebar?.classList.contains("translate-x-0")) {
+      document.body.style.overflow = "hidden";
+      sidebarItems.forEach((item) => item.classList.add("item-show"));
+    } else {
+      document.body.style.overflow = "";
+      sidebarItems.forEach((item) => item.classList.remove("item-show"));
+    }
+  };
+
+  hamburgerBtn?.addEventListener("click", toggleMenu);
+  overlay?.addEventListener("click", toggleMenu);
+
+  sidebarItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      if (sidebar?.classList.contains("translate-x-0")) {
+        toggleMenu();
+      }
+    });
+  });
+</script>
