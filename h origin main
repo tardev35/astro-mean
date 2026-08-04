@@ -1,0 +1,55 @@
+[33m0229531[m Rebrand the site to ZEED321
+ astro.config.mjs                                   |   2 [32m+[m[31m-[m
+ public/apple-touch-icon.png                        | Bin [31m21228[m -> [32m23512[m bytes
+ public/favicon-96x96.png                           | Bin [31m6657[m -> [32m8138[m bytes
+ public/favicon.ico                                 | Bin [31m2074[m -> [32m2713[m bytes
+ public/favicon.svg                                 |   2 [32m+[m[31m-[m
+ public/logo.webp                                   | Bin [31m75188[m -> [32m111804[m bytes
+ public/site.webmanifest                            |   2 [32m+[m[31m-[m
+ public/web-app-manifest-192x192.png                | Bin [31m24011[m -> [32m26604[m bytes
+ public/web-app-manifest-512x512.png                | Bin [31m152454[m -> [32m141703[m bytes
+ src/assets/banner1.png                             | Bin [31m783202[m -> [32m843014[m bytes
+ src/assets/bg.json                                 |   3 [32m+[m[31m-[m
+ src/assets/bg.png                                  | Bin [31m92403[m -> [32m521331[m bytes
+ src/assets/content.docx                            | Bin [31m9809[m -> [32m8990[m bytes
+ src/assets/content.txt                             |  32 [32m++[m[31m--[m
+ src/assets/logo.webp                               | Bin [31m75188[m -> [32m111804[m bytes
+ src/assets/og.png                                  | Bin [31m249254[m -> [32m261225[m bytes
+ src/assets/palette.json                            | 118 [32m++++++[m[31m------[m
+ src/assets/slide1.png                              | Bin [31m84004[m -> [32m230442[m bytes
+ src/assets/slide2.png                              | Bin [31m88571[m -> [32m244106[m bytes
+ src/assets/slide3.png                              | Bin [31m91166[m -> [32m239777[m bytes
+ src/assets/slide4.png                              | Bin [31m85876[m -> [32m228864[m bytes
+ src/components/AnnouncementCyber.astro             |  14 [32m+[m[31m-[m
+ src/components/ContentBox.astro                    |  12 [32m+[m[31m-[m
+ src/components/ContentBoxCyberCut.astro            |  14 [32m+[m[31m-[m
+ src/components/ContentBoxFloatingBadge.astro       |  22 [32m++[m[31m-[m
+ src/components/ContentBoxPremium.astro             |  12 [32m+[m[31m-[m
+ src/components/ContentBoxSevenThreeCyberCut.astro  |  26 [32m+[m[31m--[m
+ .../ContentBoxSevenThreeFloatingBadge.astro        |  24 [32m+[m[31m--[m
+ src/components/ContentBoxSpecial.astro             |  29 [32m+[m[31m--[m
+ src/components/ContentBoxTwoCyberCut.astro         |  34 [32m++[m[31m--[m
+ src/components/Faq2.astro                          |  26 [32m++[m[31m-[m
+ src/components/FooterCyber.astro                   |  65 [32m++++[m[31m---[m
+ src/components/GameRankingBoard.astro              |  54 [32m+++[m[31m---[m
+ src/components/LatestWinnersCyber.astro            |  31 [32m++[m[31m--[m
+ src/components/LoginRtpSection.astro               |  90 [32m+++++[m[31m-----[m
+ src/components/NavbarStyle4.astro                  |  40 [32m+++[m[31m--[m
+ src/components/Navfoot.astro                       |   8 [32m+[m[31m-[m
+ src/components/ProviderGridPremium.astro           |  31 [32m++[m[31m--[m
+ src/components/ReviewCardSumo2.astro               |  72 [32m++++[m[31m----[m
+ src/components/SmoothCarousel.astro                |  12 [32m+[m[31m-[m
+ src/layouts/MainLayout.astro                       |  14 [32m+[m[31m-[m
+ src/lib/brandProfile.ts                            |   6 [32m+[m[31m-[m
+ src/pages/about-us.astro                           |  50 [32m++++[m[31m--[m
+ src/pages/contact-us.astro                         |  40 [32m++[m[31m---[m
+ src/pages/index.astro                              | 199 [32m+++++++++[m[31m------------[m
+ src/pages/login.astro                              |  66 [32m+++[m[31m----[m
+ src/pages/promotion.astro                          |  98 [32m+++++[m[31m-----[m
+ src/pages/register.astro                           |  66 [32m+++[m[31m----[m
+ ...\200\340\270\245\340\271\210\340\270\231.astro" |  54 [32m+++[m[31m---[m
+ ...\200\340\270\202\340\271\211\340\270\262.astro" |  60 [32m++++[m[31m---[m
+ src/styles/_sources.generated.css                  |  21 [32m++[m[31m-[m
+ workspec.md                                        | 190 [32m++++++++++++++++++++[m
+ wrangler.toml                                      |   2 [32m+[m[31m-[m
+ 53 files changed, 937 insertions(+), 704 deletions(-)
