@@ -1,72 +1,71 @@
 ---
-import ContentBoxTwo from "./ContentBoxTwoPremium.astro";
+import ContentBoxTwo from "./ContentBoxTwoCyberCut.astro";
 
 const menus = [
-  { icon: "🎰", name: "สล็อตมาแรงครบทุกแนว", detail: "รวมเกมใหม่มาแรงและสไตล์คลาสสิกสุดฮิตไว้ในบัญชีเดียว", tag: "เกมใหม่ทุกวัน" },
-  { icon: "🏆", name: "คัดค่ายเด็ดเข้าไม่พัก", detail: "ทีมงานตามกระแสและนำเข้าตัวเลือกฮิตจากทั่วโลกมาเสิร์ฟถึงมือ", tag: "อัปเดตไม่หยุด" },
-  { icon: "🎁", name: "โบนัสโคตรคุ้ม", detail: "แจกแบบไม่อั้น พร้อมฟีเจอร์ตัวคูณและรอบฟรีสปินที่ออกบ่อย", tag: "ลุ้นทุกการหมุน" },
-  { icon: "⚡", name: "ฝากถอนไวภายใน 3 วิ", detail: "ระบบออโต้แม่นยำและปลอดภัย ยอดเข้ากระเป๋าทันทีไม่ต้องแจ้งสลิป", tag: "ไม่ต้องรอคิว" },
-  { icon: "🚀", name: "ระบบไวเกินต้าน", detail: "เซิร์ฟเวอร์ขั้นสูงรองรับผู้ใช้งานพร้อมกันจำนวนมาก ไม่ค้างไม่หน่วง", tag: "ปั่นได้สุดฟีล" },
-  { icon: "📱", name: "เล่นได้ทุกอุปกรณ์", detail: "สมาร์ทโฟน แท็บเล็ต หรือคอมพิวเตอร์ หน้าเว็บปรับพอดีจออัตโนมัติ", tag: "ไม่ต้องดาวน์โหลด" },
-  { icon: "🎧", name: "บริการลูกค้าตลอดเวลา", detail: "ทีมงานพร้อมดูแลทุกขั้นตอน ตั้งแต่สมัครจนถึงถอนเงินรางวัล", tag: "ดูแล 24 ชั่วโมง" },
+  { icon: "🎰", name: "คลังเกมครบมือทุกสไตล์", detail: "แนวแอคชั่น แฟนตาซี และสไตล์คลาสสิก คัดมาให้เลือกเล่นจุใจในบัญชีเดียว", tag: "ไม่มีคำว่าเบื่อ" },
+  { icon: "🎯", name: "จังหวะดีทุกการเล่น", detail: "อัตราการจ่ายรางวัลยุติธรรมและลื่นไหล ตั้งแต่โหลดเข้าเกมจนถึงสปินสุดท้าย", tag: "ไม่มีอาการกระตุก" },
+  { icon: "🏆", name: "ค่ายแท้ลิขสิทธิ์ตรง", detail: "นำเข้าเกมสล็อตจากค่ายดังระดับโลกโดยตรง ภาพคมชัดและฟีเจอร์ทันสมัย", tag: "อัปเดตก่อนใคร" },
+  { icon: "🎁", name: "โบนัสแน่นทุกช่วงเวลา", detail: "โบนัสต้อนรับและแจ็คพอตในเกมที่ออกแบบมาให้แตกง่ายกว่าเดิม เพิ่มทุนได้จริง", tag: "คุ้มทุกยอดฝาก" },
+  { icon: "🔒", name: "ระบบปลอดภัยระดับสากล", detail: "เซิร์ฟเวอร์เสถียร ปกป้องข้อมูลส่วนตัวและการทำธุรกรรมของคุณอย่างแน่นหนา", tag: "เล่นได้เต็มฟีล" },
+  { icon: "⚡", name: "ฝาก-ถอนไวผ่านระบบออโต้", detail: "ทำรายการเองได้ตลอดเวลา ยอดอัปเดตแม่นยำ ไม่ต้องรอคิวและไม่ต้องแจ้งสลิป", tag: "ไม่มีสะดุด" },
+  { icon: "👑", name: "การดูแลระดับวีไอพี", detail: "ทีมงานใส่ใจในทุกรายละเอียด พร้อมตอบทุกคำถามตลอดการใช้งานของคุณ", tag: "ดูแล 24 ชั่วโมง" },
 ];
 
-const chips = ["สล็อตออนไลน์ตัวท็อป", "เกมใหม่มาแรง", "คัดค่ายเด็ด", "โบนัสโคตรคุ้ม", "ฝากถอนไว 3 วิ", "ระบบไวเกินต้าน", "เล่นได้ทุกอุปกรณ์"];
+const chips = ["เว็บสล็อตสายมันส์", "จังหวะดีทุกการเล่น", "เกมครบมือ", "โบนัสแน่น", "ค่ายแท้ครบทุกแนว", "ระบบเสถียรปลอดภัย", "ปั่นได้ทุกอุปกรณ์"];
 ---
 
-<ContentBoxTwo
-  titleleft="เข้าสู่ระบบ KUMI99"
-  titleright="ระบบและบริการของ KUMI99 ที่ใช้ได้ทั้งบนมือถือและคอมพิวเตอร์"
-  label="เข้าสู่ระบบ KUMI99 และระบบบริการที่ใช้ได้ทุกอุปกรณ์">
+<ContentBoxTwo titleleft="เข้าสู่ระบบ ZEED321" titleright="ระบบและบริการของ ZEED321 ที่ใช้ได้ทั้งบนมือถือและคอมพิวเตอร์" label="เข้าสู่ระบบ ZEED321 และระบบบริการที่ใช้ได้ทุกอุปกรณ์">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#fcda3d]/25 bg-[#1a0b2e]/92 p-6 shadow-[0_10px_30px_rgba(252,218,61,0.14)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#fcda3d]/20 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#ff2f28]/30 bg-[#3d0404]/92 p-6 shadow-[0_10px_30px_rgba(255,47,40,0.15)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#ff2f28]/20 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#fcda3d]/40 bg-gradient-to-br from-[#ffe98a] via-[#fcda3d] to-[#a9760d] text-xl shadow-inner">🎰</span>
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#f5c542]/40 bg-gradient-to-br from-[#ffe08a] via-[#f5c542] to-[#a97a10] text-xl shadow-inner">
+          🎰
+        </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#fcda3d]">ยินดีต้อนรับกลับ</p>
-          <span class="text-[11px] text-[#bda6cf]">บัญชีเดียวใช้เลือกเกมสล็อต รับโบนัส และทำรายการฝากถอนออโต้ของ KUMI99 ได้จากจุดเดียว</span>
+          <p class="text-base font-black text-[#f5c542]">ยินดีต้อนรับกลับ</p>
+          <span class="text-[11px] text-[#c2a0a0]">บัญชีเดียวใช้เลือกเกมสล็อต รับโบนัส และทำรายการฝาก-ถอนออโต้ของ ZEED321 ได้จากจุดเดียว</span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#c77dff]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#ff2f28]">👤</span>
           <input
             type="text"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#5b0374]/70 bg-[#12071f]/95 py-3 pr-4 pl-12 text-[#efe3f7] transition-all outline-none placeholder:text-[#bda6cf]/70 focus:border-[#fcda3d] focus:ring-1 focus:ring-[#fcda3d]/50"
+            class="w-full rounded-xl border border-[#8f0806]/80 bg-[#170506]/95 py-3 pr-4 pl-12 text-[#f3dede] transition-all outline-none placeholder:text-[#c2a0a0]/70 focus:border-[#f5c542] focus:ring-1 focus:ring-[#f5c542]/50"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#c77dff]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#ff2f28]">🔑</span>
           <input
             type="password"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#5b0374]/70 bg-[#12071f]/95 py-3 pr-4 pl-12 text-[#efe3f7] transition-all outline-none placeholder:text-[#bda6cf]/70 focus:border-[#fcda3d] focus:ring-1 focus:ring-[#fcda3d]/50"
+            class="w-full rounded-xl border border-[#8f0806]/80 bg-[#170506]/95 py-3 pr-4 pl-12 text-[#f3dede] transition-all outline-none placeholder:text-[#c2a0a0]/70 focus:border-[#f5c542] focus:ring-1 focus:ring-[#f5c542]/50"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#bda6cf]">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#5b0374]/70 bg-[#12071f] accent-[#fcda3d]" />
+          <label class="flex items-center gap-2 text-[#c2a0a0]">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#8f0806]/80 bg-[#170506] accent-[#f5c542]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#bda6cf] transition-colors hover:text-[#ffe98a]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#c2a0a0] transition-colors hover:text-[#ffe08a]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#fcda3d]/40 bg-gradient-to-r from-[#ffe98a] via-[#fcda3d] to-[#a9760d] p-3.5 font-black text-[#2a1400] shadow-[0_10px_30px_rgba(252,218,61,0.26)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(252,218,61,0.36)]">
+          class="mt-1 w-full rounded-xl border border-[#f5c542]/40 bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] p-3.5 font-black text-[#2a0605] shadow-[0_10px_30px_rgba(245,197,66,0.3)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(245,197,66,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#bda6cf]/70">
-          <span class="h-px flex-1 bg-[#5b0374]/60"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#c2a0a0]/70">
+          <span class="h-px flex-1 bg-[#8f0806]/70"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#5b0374]/60"></span>
+          <span class="h-px flex-1 bg-[#8f0806]/70"></span>
         </div>
 
         <a
@@ -77,21 +76,21 @@ const chips = ["สล็อตออนไลน์ตัวท็อป", "เ
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#fcda3d]/25 bg-[#12071f] px-2.5 py-1 text-[10px] font-bold text-[#fcda3d]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#5b0374]/60 bg-[#12071f]/80 px-2.5 py-1 text-[10px] font-bold text-[#bda6cf]"><span aria-hidden="true">🕐</span> ระบบออโต้ 24 ชั่วโมง</span>
+            <span class="rounded-full border border-[#f5c542]/30 bg-[#170506] px-2.5 py-1 text-[10px] font-bold text-[#f5c542]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#8f0806]/70 bg-[#170506]/80 px-2.5 py-1 text-[10px] font-bold text-[#c2a0a0]"><span aria-hidden="true">🕐</span> ระบบออโต้ 24 ชั่วโมง</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#c77dff] transition-colors hover:text-[#ffe98a]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#ff2f28] transition-colors hover:text-[#ffe08a]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#fcda3d]/25 bg-[#1a0b2e]/92 p-5 shadow-[0_10px_30px_rgba(252,218,61,0.14)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#ff2f28]/30 bg-[#3d0404]/92 p-5 shadow-[0_10px_30px_rgba(255,47,40,0.15)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#bda6cf]">ตารางอ้างอิงระบบและบริการที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#ffe98a] via-[#fcda3d] to-[#a9760d] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">ออโต้ 24 ชม. • ฝากถอนไวภายใน 3 วิ</div>
+          <span class="text-xs font-bold tracking-wide text-[#c2a0a0]">ตารางอ้างอิงระบบและบริการที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">ออโต้ 24 ชม. • ฝาก-ถอนไวไม่มีสะดุด</div>
         </div>
         <span class="flex items-center gap-1.5 self-start rounded-full border border-green-500/40 bg-green-900/40 px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.7)]"></span>
@@ -99,7 +98,7 @@ const chips = ["สล็อตออนไลน์ตัวท็อป", "เ
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#bda6cf]/70 uppercase">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#c2a0a0]/70 uppercase">
         <span>ระบบ / บริการในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -107,25 +106,28 @@ const chips = ["สล็อตออนไลน์ตัวท็อป", "เ
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#5b0374]/60 bg-[#12071f]/95 px-3.5 py-2.5 transition-colors hover:border-[#fcda3d]/50 hover:bg-[#2c014b]">
+            <div class="rounded-xl border border-[#8f0806]/70 bg-[#170506]/95 px-3.5 py-2.5 transition-colors hover:border-[#f5c542]/50 hover:bg-[#8f0806]/60">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#efe3f7]">
-                  <span aria-hidden="true" class="w-5 shrink-0 text-center">{m.icon}</span> <span class="truncate">{m.name}</span>
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f3dede]">
+                  <span aria-hidden="true" class="w-5 shrink-0 text-center">
+                    {m.icon}
+                  </span>{" "}
+                  <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#fcda3d]/30 bg-[#12071f] px-2.5 py-0.5 text-[10px] font-bold text-[#ffe98a]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#f5c542]/30 bg-[#170506] px-2.5 py-0.5 text-[10px] font-bold text-[#ffe08a]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#bda6cf]">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#c2a0a0]">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#fcda3d]/25 bg-[#12071f] px-3 py-1 text-[10px] font-bold text-[#fcda3d]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#f5c542]/30 bg-[#170506] px-3 py-1 text-[10px] font-bold text-[#f5c542]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#bda6cf]/70">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจยอดขั้นต่ำ จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอนจากหน้าโปรโมชั่นจริงของ KUMI99 ก่อนกดรับทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#c2a0a0]/70">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจยอดขั้นต่ำ จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอนจากหน้าโปรโมชั่นจริงของ ZEED321 ก่อนกดรับทุกครั้ง
       </div>
     </div>
   </div>

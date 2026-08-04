@@ -1,69 +1,68 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 import ContentBox from "../components/ContentBox.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
 import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
+import ProviderGrid from "../components/ProviderGridPremium.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinnersPremium.astro";
+import LatestWinners from "../components/LatestWinnersCyber.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq4.astro";
+import Faq from "../components/Faq2.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgNewMember from "../assets/slide3.png";
-import imgFirstBill from "../assets/slide2.png";
+import imgReferral from "../assets/slide3.png";
+import imgDepositBonus from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1"
-//   2 → ContentBox (plain)
-//   3 → ContentBoxNeumorphism
-//   4 → ContentBoxSevenThreePremium + slide3 (โปรสมาชิกใหม่ บิลแรก รับ 20%)
-//   5 → ContentBoxSevenThreeNeumorphism + slide2 (ฝากก่อนรับทันที บิลแรก รับ 10%)
-//   6 → ContentBoxSpecial
-//   7 → ContentBoxPremium as="h2"
+//   1 → ContentBoxCyberCut as="h1"
+//   2 → ContentBoxSevenThreeCyberCut + slide3 (แนะนำเพื่อน รับ BONUS 10%)
+//   3 → ContentBox (plain) as="h2"
+//   4 → ContentBoxFloatingBadge as="h2"
+//   5 → ContentBoxSevenThreeFloatingBadge + slide1 (ทุกยอดฝาก 10% สูงสุด 500)
+//   6 → ContentBoxSpecial as="h2"
+//   7 → ContentBoxCyberCut as="h2"
 // widget ที่ไม่ได้มาจาก docx ใช้หัวข้อเป็น <p> + aria-label บน <section> จึงแทรก
 // ระหว่างกล่องได้โดยลำดับ H2 ไม่เพี้ยน (LoginRtpSection ก็เป็น <p> เช่นกัน)
+// h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7, h3 = 0
 
-const pageTitle = "KUMI99 | สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง ฝากถอนไวภายใน 3 วิ";
+const pageTitle = "ZEED321 | เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น";
 
-// docx ให้ description มา 148 ตัวอักษร ซึ่งต่ำกว่าเกณฑ์ 150–160 ของ
-// tools/verify-build.mjs (เป็น error ไม่ใช่ warning) จึงแทรก "ทุกอุปกรณ์"
-// เข้าไปหนึ่งคำ — ไม่มีถ้อยคำใดของ docx หายไป ได้ 158 ตัวอักษร
-// (แจ้ง orchestrator แล้ว: ค่า default ใน MainLayout.astro ยังเป็นตัว 148 อยู่)
-const pageDescription =
-  "KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง คัดค่ายเด็ดเข้าไม่พัก โบนัสโคตรคุ้ม ระบบไวเกินต้านทุกอุปกรณ์ ปั่นได้สุดฟีล ฝากถอนไวภายใน 3 วิ ไม่มีจังหวะให้เสียอารมณ์";
+// docx ให้ description มา 143 ตัวอักษร ซึ่งต่ำกว่าเกณฑ์ 150–160 ของ
+// tools/verify-build.mjs (เป็น error ไม่ใช่ warning) จึงต่อท้ายด้วย
+// "ปั่นได้ทุกอุปกรณ์" — ไม่มีถ้อยคำใดของ docx หายไป ได้ 158 ตัวอักษร
+const pageDescription = "ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น เกมเด็ดเข้าไม่พัก ค่ายแท้ครบทุกแนว ระบบเสถียร เล่นต่อเนื่องได้แบบไม่มีสะดุด ปั่นได้ทุกอุปกรณ์";
 
 const announcementMessage =
-  "KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรงให้ค้นหาอยู่ตลอด • คัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด ความสนุกในแต่ละวันไม่เคยซ้ำเดิม • โบนัสโคตรคุ้ม ฟรีสปินตัวคูณและสัญลักษณ์พิเศษให้ลุ้นทุกการหมุน • ฝากถอนไวภายใน 3 วิ ผ่านระบบออโต้ ไม่ต้องแจ้งสลิป • ระบบไวเกินต้าน ปั่นได้สุดฟีลทุกอุปกรณ์";
+  "ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น • เกมครบมือไว้ให้เลือกแบบไม่มีคำว่าเบื่อ สลับสไตล์ได้ตลอดเวลา • เกมเด็ดเข้าไม่พัก ค่ายแท้ลิขสิทธิ์ครบทุกแนว อัปเดตความสนุกอยู่เสมอ • โบนัสแน่นทุกช่วงเวลา เติมสีสันให้ทุกการหมุนมีอะไรให้ลุ้นมากกว่าเดิม • ระบบเสถียรปลอดภัย ฝาก-ถอนออโต้ เล่นต่อเนื่องได้เต็มฟีล";
 
 const faqs = [
   {
-    q: "KUMI99 เป็นสล็อตออนไลน์ตัวท็อปเพราะอะไร",
-    a: "เพราะที่นี่ใส่ใจในทุกรายละเอียด ตั้งแต่การคัดเลือกสล็อตลิขสิทธิ์แท้ ระบบฝากถอนที่รวดเร็วทันใจ ไปจนถึงการบริการลูกค้าที่พร้อมดูแลตลอดเวลา ทุกองค์ประกอบถูกสร้างขึ้นมาเพื่อให้คุณสนุกกับการปั่นได้อย่างสบายใจที่สุด รวมกับเกมใหม่มาแรงที่คัดสรรมาเพื่อสายปั่นโดยเฉพาะ จึงเป็นจุดหมายปลายทางที่สายสปินไม่ควรพลาด",
+    q: "ZEED321 เป็นเว็บสล็อตแบบไหน เหมาะกับผู้เล่นกลุ่มใด",
+    a: "ที่นี่คืออาณาจักรสล็อตออนไลน์ที่ออกแบบมาเพื่อสายปั่นโดยเฉพาะ รวบรวมเกมยอดฮิตจากทุกค่ายดังไว้ในที่เดียว การเล่นลื่นไหลและจังหวะการออกรางวัลลงตัว ไม่ว่าคุณจะเป็นผู้เล่นหน้าใหม่ที่เพิ่งเริ่มหรือสายเก๋าที่ปั่นมานาน ก็พร้อมรับความสนุกและทำกำไรได้อย่างเต็มพิกัดตลอดทั้งวัน",
   },
   {
-    q: "เข้ามาที่ KUMI99 แล้วจะมีเกมใหม่ให้เล่นบ่อยแค่ไหน",
-    a: "ที่นี่อัปเดตระบบสม่ำเสมอและคัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด เมื่อล็อกอินเข้ามาจึงมีเกมใหม่ให้ค้นหาอยู่ตลอดเวลา ทั้งแนวแอคชันผจญภัยและสไตล์คลาสสิกสุดฮิต ทีมงานคอยติดตามกระแสและนำเข้าตัวเลือกฮิตจากทั่วโลกมาเสิร์ฟถึงมือคุณ ทำให้ความสนุกในแต่ละวันก็ไม่เคยซ้ำเดิม สลับเปลี่ยนสไตล์ไปได้เรื่อย ๆ ตามอารมณ์",
+    q: "คลังเกมของ ZEED321 มีแนวไหนให้เลือกเล่นบ้าง",
+    a: "คลังเกมสล็อตคัดสรรมาอย่างดีเพื่อตอบโจทย์ทุกสไตล์การเล่น มีทั้งเกมแนวแอคชั่น แฟนตาซี และสไตล์คลาสสิกให้เลือกเล่นแบบจุใจ ครบจบในเว็บเดียว การันตีความมันส์ที่ไม่มีสะดุด คุณสลับเปลี่ยนเกมได้ตลอดเวลาโดยไม่ต้องกลัวความจำเจ เบื่อเกมไหนก็ข้ามไปหาแนวใหม่ได้ทันที",
   },
   {
-    q: "โบนัสและลูกเล่นในเกมของ KUMI99 มีอะไรบ้าง",
-    a: "ไม่ใช่แค่โบนัสโคตรคุ้มที่เตรียมไว้แจกแบบไม่อั้น แต่ยังมีลูกเล่นในเกมที่ชวนให้ลุ้นทุกการหมุน ไม่ว่าจะเป็นฟีเจอร์ตัวคูณ รอบฟรีสปินที่ออกบ่อย หรือสัญลักษณ์พิเศษที่ช่วยเพิ่มโอกาสรับรางวัลใหญ่ ทุกฟังก์ชันถูกออกแบบมาเพื่อเพิ่มสีสันและความเร้าใจ ควรอ่านเงื่อนไขของแต่ละโปรโมชั่นจากหน้าโปรโมชั่นจริงก่อนกดรับทุกครั้ง",
+    q: "เกมใน ZEED321 เป็นลิขสิทธิ์แท้ไหม อัปเดตเกมใหม่บ่อยแค่ไหน",
+    a: "มั่นใจได้ในคุณภาพ เพราะเรานำเข้าเกมสล็อตลิขสิทธิ์แท้จากค่ายดังระดับโลกโดยตรง ภาพสวยคมชัด กราฟิกอลังการ และมีฟีเจอร์ทันสมัย พร้อมอัปเดตเกมใหม่ล่าสุดให้คุณได้สัมผัสก่อนใคร เกมเด็ดจึงเรียงคิวเข้ามาให้ทำกำไรกันอย่างต่อเนื่องไม่มีพัก",
   },
   {
-    q: "ฝากถอนกับ KUMI99 ต้องแจ้งสลิปให้แอดมินตรวจไหม",
-    a: "ไม่ต้องแจ้งสลิปและไม่ต้องรอคิว เพราะระบบทำรายการเป็นออโต้ที่แม่นยำและปลอดภัย คุณจะได้สัมผัสประสบการณ์ฝากถอนไวภายใน 3 วิ ยอดเงินอัปเดตเข้ากระเป๋าทันที เมื่อได้โบนัสก้อนโตก็สามารถถอนออกไปใช้ได้จริงทันใจ จึงไม่มีจังหวะให้เสียอารมณ์ เล่นต่อแบบลื่น ๆ ได้อย่างไร้รอยต่อตลอดทั้งวัน",
+    q: "โบนัสและโปรโมชั่นของ ZEED321 มีอะไรให้ลุ้นบ้าง",
+    a: "เราเตรียมโปรโมชั่นและโบนัสสุดพิเศษไว้ซัพพอร์ตผู้เล่นตลอดการใช้งาน ทั้งโบนัสต้อนรับและแจ็คพอตในเกมที่ออกแบบมาให้แตกง่ายกว่าเดิม ช่วยเพิ่มทุนและขยายโอกาสคว้าเงินรางวัลใหญ่ได้เร้าใจยิ่งขึ้น ควรอ่านเงื่อนไขของแต่ละรายการจากหน้าโปรโมชั่นจริงก่อนกดรับทุกครั้ง",
   },
   {
-    q: "เล่น KUMI99 จากมือถือหรือคอมพิวเตอร์ ต่างกันไหม",
-    a: "ไม่ต่างกัน เพราะที่นี่ใช้เทคโนโลยีเซิร์ฟเวอร์ขั้นสูง ทำให้ระบบไวเกินต้านรองรับผู้ใช้งานจำนวนมากได้พร้อมกัน ปัญหาเกมค้างหรือโหลดช้าจึงไม่มารบกวน คุณเล่นต่อเนื่องปั่นได้สุดฟีลไม่ว่าจะเข้าใช้งานจากอุปกรณ์ไหน ทั้งสมาร์ทโฟน แท็บเล็ต หรือคอมพิวเตอร์ หน้าเว็บก็ปรับสัดส่วนให้พอดีกับหน้าจอโดยอัตโนมัติ",
+    q: "ฝาก-ถอนกับ ZEED321 ปลอดภัยและใช้เวลานานไหม",
+    a: "เราให้บริการด้วยระบบเซิร์ฟเวอร์ที่มีความเสถียรและปลอดภัยสูงสุดระดับสากล ปกป้องข้อมูลส่วนตัวและการทำธุรกรรมของคุณอย่างแน่นหนา ฝาก-ถอนไวผ่านระบบออโต้ที่แม่นยำ ทำรายการเองได้ตลอดเวลาโดยไม่ต้องรอคิว ให้คุณโฟกัสกับการปั่นสล็อตได้เต็มที่โดยไม่ต้องกังวลเรื่องปัญหาจุกจิก",
   },
 ];
 
@@ -79,74 +78,58 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง ฝากถอนไวภายใน 3 วิ">
+  <ContentBoxCyberCut as="h1" title="ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น">
     <p class="text-left text-base leading-relaxed">
-      พบกับ <strong class="text-[#fcda3d]">KUMI99</strong> สล็อตออนไลน์ตัวท็อปที่พร้อมมอบประสบการณ์สุดพิเศษให้คุณทุกวัน เราจัดเต็มด้วยเกมใหม่มาแรงที่คัดสรรมาเพื่อสายปั่นโดยเฉพาะ
-      สัมผัสความรวดเร็วทันใจกับระบบฝากถอนไวภายใน 3 วิ ช่วยให้คุณเข้าเล่นเกมโปรดได้ทันทีไม่ต้องรอนาน
+      ยินดีต้อนรับสู่อาณาจักรสล็อตออนไลน์ที่ออกแบบมาเพื่อสายปั่นโดยเฉพาะ สัมผัสประสบการณ์การเล่นที่ลื่นไหล จังหวะการออกรางวัลที่ลงตัว และรวบรวมเกมยอดฮิตจากทุกค่ายดังไว้ในที่เดียว
+      ไม่ว่าคุณจะเป็นผู้เล่นหน้าใหม่หรือสายเก๋า ก็พร้อมรับความสนุกและทำกำไรได้อย่างเต็มพิกัดตลอดทั้งวัน
     </p>
-    <p class="mt-3 text-left text-base leading-relaxed">
-      ที่นี่รวบรวมค่ายดังไว้มากมายพร้อมโบนัสสุดคุ้มและลูกเล่นแพรวพราว สร้างความตื่นเต้นในทุกรอบสปิน รองรับการใช้งานผ่านทุกอุปกรณ์ด้วยความเสถียรสูงสุด
-      ใครที่ตามหาความสนุกแบบไม่มีสะดุดนี่คือคำตอบที่ใช่สำหรับคุณ
-    </p>
-  </ContentBoxPremium>
+  </ContentBoxCyberCut>
 
-  <ContentBox as="h2" title="KUMI99 พื้นที่รวมสล็อตมาแรง ที่เข้าแล้วมีเกมใหม่ให้ค้นหาอยู่ตลอด">
-    <p class="text-left text-base leading-relaxed">
-      หากคุณชอบความท้าทาย KUMI99 คือพื้นที่รวมสล็อตมาแรงที่ตอบโจทย์ที่สุด เราอัปเดตระบบสม่ำเสมอเพื่อให้มั่นใจว่าคุณจะได้รับสิ่งที่ดีที่สุด เมื่อล็อกอินเข้ามาที่นี่จะมีเกมใหม่ให้ค้นหาอยู่ตลอดเวลา
-      ไม่ว่าจะเป็นแนวแอคชันผจญภัยหรือสไตล์คลาสสิกสุดฮิต
+  <ContentBoxSevenThreeCyberCut titleright="ZEED321 เว็บสล็อตสายมันส์ ที่รวมเกมครบมือไว้ให้เลือกแบบไม่มีคำว่าเบื่อ">
+    <Picture
+      slot="left"
+      src={imgReferral}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น ZEED321 แนะนำเพื่อน ชวนเพื่อนเล่นกับเรารับทันที โบนัส 10% ไม่จำกัดเพื่อน พร้อมแถบเล่นได้ครบจบในเว็บเดียว สล็อต คาสิโนสด กีฬา โป๊กเกอร์ เกมตกปลา และหวย"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#ff2f28]/30 shadow-[0_10px_30px_rgba(255,47,40,0.18)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ตอบโจทย์ทุกสไตล์การเล่นด้วยคลังเกมสล็อตที่คัดสรรมาอย่างดี ไม่ว่าจะเป็นเกมแนวแอคชั่น แฟนตาซี หรือสไตล์คลาสสิก เรามีให้เลือกเล่นแบบจุใจ ครบจบในเว็บเดียว การันตีความมันส์ที่ไม่มีสะดุด
+      ให้คุณสลับเปลี่ยนเกมเล่นได้ตลอดเวลาโดยไม่ต้องกลัวความจำเจ
     </p>
-    <p class="mt-3 text-left text-base leading-relaxed">
-      เราดึงตรงจากค่ายผู้พัฒนาชื่อดังเพื่อให้คุณได้สัมผัสก่อนใคร กราฟิกจัดเต็มอลังการพร้อมเสียงเอฟเฟกต์สมจริง ช่วยให้การเล่นของคุณมีสีสัน ไม่ต้องกลัวเบื่อเพราะเราเตรียมตัวเลือกมากมายไว้รอคุณเสมอ
-    </p>
-  </ContentBox>
+  </ContentBoxSevenThreeCyberCut>
 
   <GameRankingBoard />
 
-  <ContentBoxNeumorphism as="h2" title="คัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด ความสนุกในแต่ละวันก็ไม่เคยซ้ำเดิม">
+  <ContentBox as="h2" title="จังหวะดีทุกการเล่น เริ่มตั้งแต่เข้าเกมจนถึงสปินสุดท้ายใน ZEED321">
     <p class="text-left text-base leading-relaxed">
-      เราตั้งใจสร้างมาตรฐานใหม่ด้วยการคัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด เพื่อให้ทุกคนได้เลือกเล่นอย่างจุใจ ทีมงานคอยติดตามกระแสและนำเข้าตัวเลือกฮิตจากทั่วโลกมาเสิร์ฟถึงมือคุณ
-      การันตีว่าความสนุกในแต่ละวันก็ไม่เคยซ้ำเดิม
+      ทุกการสปินของคุณมีความหมาย ด้วยระบบเกมที่ถูกตั้งค่ามาให้มีอัตราการจ่ายรางวัลที่ยุติธรรมและลื่นไหลต่อเนื่อง ตั้งแต่การโหลดเข้าเกมไปจนถึงช่วงเวลาสำคัญอย่างการเข้าฟรีสปิน
+      ให้คุณอินไปกับทุกจังหวะการทำกำไรแบบไม่มีอาการกระตุกให้เสียอารมณ์
     </p>
-    <p class="mt-3 text-left text-base leading-relaxed">
-      คุณสามารถสลับเปลี่ยนสไตล์ไปได้เรื่อย ๆ ตามอารมณ์ ค้นหารูปแบบที่ตรงใจได้อย่างอิสระ ฟีเจอร์แตกง่ายจัดเต็มทุกเกมให้คุณลุ้นรางวัลใหญ่ได้ต่อเนื่อง เป็นความบันเทิงระดับพรีเมียมที่ทาง KUMI99
-      เตรียมไว้ต้อนรับผู้เล่นทุกคน
-    </p>
-  </ContentBoxNeumorphism>
+  </ContentBox>
 
   <ProviderGrid />
 
-  <ContentBoxSevenThreePremium titleright="ไม่ใช่แค่โบนัสโคตรคุ้ม แต่ยังมีลูกเล่นในเกมที่ชวนให้ลุ้นทุกการหมุน">
-    <Picture
-      slot="left"
-      src={imgNewMember}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น KUMI99 โปรสมาชิกใหม่ บิลแรก รับ 20% เฉพาะสล็อตเท่านั้น"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#fcda3d]/25 shadow-[0_10px_30px_rgba(252,218,61,0.18)]"
-    />
-    <div slot="right">
-      <p class="text-left text-base leading-relaxed">
-        ความพิเศษของการเข้ามาปั่นสล็อตที่นี่คือผลตอบแทนที่คุณจะได้รับ เพราะไม่ใช่แค่โบนัสโคตรคุ้มที่เราเตรียมไว้แจกแบบไม่อั้น แต่ยังมีลูกเล่นในเกมที่ชวนให้ลุ้นทุกการหมุน
-        ไม่ว่าจะเป็นฟีเจอร์ตัวคูณรอบฟรีสปินที่ออกบ่อย หรือสัญลักษณ์พิเศษที่ช่วยเพิ่มโอกาสรับรางวัลใหญ่
-      </p>
-      <p class="mt-3 text-left text-base leading-relaxed">
-        ทุกฟังก์ชันถูกออกแบบมาเพื่อเพิ่มสีสันและความเร้าใจ คุณจะได้ดื่มด่ำกับกราฟิกสุดล้ำและกลไกใหม่ ๆ ตลอดเวลา ทำให้การกดเข้าเล่นกับ KUMI99 กลายเป็นช่วงเวลาสุดพิเศษที่พลาดไม่ได้
-      </p>
-    </div>
-  </ContentBoxSevenThreePremium>
+  <ContentBoxFloatingBadge as="h2" title="เกมเด็ดเข้าไม่พัก เพราะค่ายแท้ครบทุกแนว พร้อมอัปเดตความสนุกอยู่เสมอ">
+    <p class="text-left text-base leading-relaxed">
+      มั่นใจได้ในคุณภาพเพราะเรานำเข้าเกมสล็อตลิขสิทธิ์แท้จากค่ายดังระดับโลกโดยตรง ภาพสวยคมชัด กราฟิกอลังการ และมีฟีเจอร์ทันสมัย พร้อมอัปเดตเกมใหม่ล่าสุดให้คุณได้สัมผัสก่อนใคร
+      สนุกไปกับเกมเด็ดที่เรียงคิวมาให้ทำกำไรกันอย่างต่อเนื่องไม่มีพัก
+    </p>
+  </ContentBoxFloatingBadge>
 
   <SmoothCarousel />
 
-  <ContentBoxSevenThreeNeumorphism titleright="ฝากถอนไวภายใน 3 วิ ไม่มีจังหวะให้เสียอารมณ์เล่นต่อแบบลื่น ๆ">
+  <ContentBoxSevenThreeFloatingBadge title="โบนัสแน่นทุกช่วงเวลา เติมสีสันให้ทุกการหมุนมีอะไรให้ลุ้นมากกว่าเดิม">
     <Picture
       slot="left"
-      src={imgFirstBill}
+      src={imgDepositBonus}
       loading="lazy"
       fetchpriority="low"
       widths={[200, 400, 600]}
@@ -155,62 +138,48 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่น KUMI99 ฝากก่อนรับทันที บิลแรก รับ 10% เฉพาะสล็อตเท่านั้น"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#fcda3d]/25 shadow-[0_10px_30px_rgba(252,218,61,0.18)]"
+      alt="แบนเนอร์โปรโมชั่น ZEED321 ทุกยอดฝาก 10% รับโบนัสสูงสุด 500 บาท พร้อมโบนัสจัดหนักแจกไม่อั้น คืนยอดเสีย 10% ทุกวัน ระบบ VIP และฝาก-ถอนออโต้รวดเร็วใน 10 วินาที"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#ff2f28]/30 shadow-[0_10px_30px_rgba(255,47,40,0.18)]"
     />
-    <div slot="right">
-      <p class="text-left text-base leading-relaxed">
-        ลืมการรอคอยที่แสนน่าเบื่อไปได้เลย เพราะเราให้ความสำคัญกับระบบทำรายการที่ทันสมัยที่สุด คุณจะได้สัมผัสประสบการณ์ฝากถอนไวภายใน 3 วิ ผ่านระบบออโต้ที่แม่นยำและปลอดภัย
-        ยอดเงินอัปเดตเข้ากระเป๋าทันทีไม่ต้องแจ้งสลิป
-      </p>
-      <p class="mt-3 text-left text-base leading-relaxed">
-        เมื่อคุณได้โบนัสก้อนโตก็สามารถถอนออกไปใช้ได้จริงทันใจ ทำให้ไม่มีจังหวะให้เสียอารมณ์เล่นต่อแบบลื่น ๆ ช่วยต่อยอดความสนุกของคุณได้อย่างไร้รอยต่อ เป็นบริการทางการเงินที่ KUMI99
-        พัฒนาขึ้นมาเพื่อตอบสนองไลฟ์สไตล์ของคนยุคใหม่
-      </p>
-    </div>
-  </ContentBoxSevenThreeNeumorphism>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เพิ่มความคุ้มค่าให้ทุกยอดฝากด้วยโปรโมชั่นและโบนัสสุดพิเศษที่เตรียมไว้ซัพพอร์ตผู้เล่นตลอดการใช้งาน ไม่ว่าจะเป็นโบนัสต้อนรับหรือแจ็คพอตในเกมที่ออกแบบมาให้แตกง่ายกว่าเดิม
+      ช่วยเพิ่มทุนและขยายโอกาสให้คุณคว้าเงินรางวัลใหญ่ได้เร้าใจยิ่งขึ้น
+    </p>
+  </ContentBoxSevenThreeFloatingBadge>
 
   <LatestWinners />
 
-  <ContentBoxSpecial as="h2" title="ระบบไวเกินต้าน เล่นต่อเนื่องปั่นได้สุดฟีล ไม่ว่าจะเข้าใช้งานจากอุปกรณ์ไหน">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ปัญหาเกมค้างหรือโหลดช้าจะไม่มารบกวนจิตใจคุณอีกต่อไป เพราะเราใช้เทคโนโลยีเซิร์ฟเวอร์ขั้นสูง ทำให้ระบบไวเกินต้านรองรับผู้ใช้งานจำนวนมากได้พร้อมกัน คุณสามารถเล่นต่อเนื่องปั่นได้สุดฟีลอย่างอิสระ
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะเข้าใช้งานจากอุปกรณ์ไหน ทั้งสมาร์ทโฟนแท็บเล็ตหรือคอมพิวเตอร์ หน้าเว็บก็ปรับสัดส่วนให้พอดีกับหน้าจอโดยอัตโนมัติ KUMI99 พร้อมมอบความสะดวกสบายขั้นสุด
-      ให้คุณพกพาความบันเทิงระดับโลกไปได้ทุกที่ทุกเวลาเพียงแค่มีอินเทอร์เน็ต
-    </p>
+  <ContentBoxSpecial as="h2" title="ระบบปลอดภัยที่ทำให้เล่นต่อเนื่องได้เต็มฟีล ไม่ต้องกังวลเรื่องการใช้งาน">
+    <p slot="left" class="text-left text-base leading-relaxed">ให้บริการด้วยระบบเซิร์ฟเวอร์ที่มีความเสถียรและปลอดภัยสูงสุดระดับสากล ปกป้องข้อมูลส่วนตัวและการทำธุรกรรมของคุณอย่างแน่นหนา</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ฝาก-ถอนไวผ่านระบบออโต้ที่แม่นยำ ให้คุณโฟกัสกับการปั่นสล็อตได้อย่างเต็มที่โดยไม่ต้องกังวลเรื่องปัญหาจุกจิก</p>
   </ContentBoxSpecial>
 
   <LoginRtpSection />
 
-  <ContentBoxPremium as="h2" title="เหตุผลที่หลายคนมองว่า KUMI99 คือสล็อตออนไลน์ตัวท็อปที่ครบทั้งเกมและประสบการณ์">
+  <ContentBoxCyberCut as="h2" title="ทำไม ZEED321 ถึงกลายเป็นอีกเว็บที่สายสล็อตเลือกกลับมาใช้งานซ้ำ">
     <p class="text-left text-base leading-relaxed">
-      หากสงสัยว่าทำไมที่นี่ถึงได้รับความนิยมอย่างล้นหลาม เหตุผลที่หลายคนมองว่า KUMI99 คือสล็อตออนไลน์ตัวท็อปที่ครบทั้งเกมและประสบการณ์ เป็นเพราะเราใส่ใจในทุกรายละเอียด
-      ตั้งแต่การคัดเลือกสล็อตลิขสิทธิ์แท้ระบบฝากถอนที่รวดเร็วทันใจ ไปจนถึงการบริการลูกค้าที่พร้อมดูแลตลอดเวลา
+      ด้วยบริการที่ได้มาตรฐานและตอบโจทย์ความต้องการของผู้เล่นได้อย่างตรงจุด ทั้งระบบเกมที่เล่นง่าย จ่ายเงินจริง และการดูแลระดับวีไอพี ความใส่ใจในทุกรายละเอียดนี้ทำให้ผู้เล่นมากมายไว้วางใจ
+      และยกให้ที่นี่เป็นเว็บคู่ใจที่ต้องกลับมาใช้งานอย่างต่อเนื่อง
     </p>
-    <p class="mt-3 text-left text-base leading-relaxed">
-      ทุกองค์ประกอบถูกสร้างขึ้นมาเพื่อให้คุณสนุกกับการปั่นได้อย่างสบายใจที่สุด การันตีคุณภาพด้วยเสียงตอบรับจากผู้ใช้งานจริง นี่คือจุดหมายปลายทางที่สายสปินไม่ควรพลาดเด็ดขาด
-    </p>
-  </ContentBoxPremium>
+  </ContentBoxCyberCut>
 
   <ReviewCardSumo2 />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe98a] via-[#fcda3d] to-[#a9760d] px-4 py-3 text-sm font-black whitespace-nowrap text-[#2a1400] shadow-[0_10px_30px_rgba(252,218,61,0.26)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,218,61,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] px-4 py-3 text-sm font-black whitespace-nowrap text-[#2a0605] shadow-[0_10px_30px_rgba(245,197,66,0.3)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(245,197,66,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#5b0374]/80 bg-[#1a0b2e]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#bda6cf] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fcda3d] hover:bg-[#2c014b]/85 hover:shadow-[0_15px_40px_rgba(91,3,116,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#ff2f28]/80 bg-[#3d0404]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f3dede] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#f5c542] hover:bg-[#8f0806]/85 hover:shadow-[0_15px_40px_rgba(255,47,40,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ KUMI99" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ ZEED321" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

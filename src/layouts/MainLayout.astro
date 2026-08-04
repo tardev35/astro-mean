@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle7.astro";
-import Footer from "../components/FooterStyle3.astro";
+import Navbar from "../components/NavbarStyle4.astro";
+import Footer from "../components/FooterCyber.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "KUMI99 | สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง ฝากถอนไวภายใน 3 วิ",
-  description = "KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง คัดค่ายเด็ดเข้าไม่พัก โบนัสโคตรคุ้ม ระบบไวเกินต้าน ปั่นได้สุดฟีลทุกอุปกรณ์ ฝากถอนไวภายใน 3 วิ ไม่มีจังหวะให้เสียอารมณ์",
+  title = "ZEED321 | เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น",
+  description = "ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น เกมเด็ดเข้าไม่พัก ค่ายแท้ครบทุกแนว ระบบเสถียร เล่นต่อเนื่องได้แบบไม่มีสะดุด ปั่นได้ทุกอุปกรณ์",
   robots = "index, follow",
 } = Astro.props;
 
@@ -170,7 +170,7 @@ const profile = brandProfile(Astro.site);
 
           {block === "appmeta" && (
             <Fragment>
-              {profile.showAppTitle && <meta name="apple-mobile-web-app-title" content="kumi99" />}
+              {profile.showAppTitle && <meta name="apple-mobile-web-app-title" content="zeed321" />}
               <link rel="manifest" href="/site.webmanifest" />
             </Fragment>
           )}
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0b0616;
+        background-color: #070102;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง ฝากถอนไวภายใน 3 วิ พร้อมปุ่มสมัครสมาชิก บนพื้นม่วงนีออนมีแพนด้าใส่แว่นดำ เหรียญทอง ลูกเต๋า และวงล้อสล็อต 777"
+          alt="แบนเนอร์ ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น พร้อมปุ่มสมัครสมาชิก บนพื้นเมืองนีออนแดง มีโลโก้มงกุฎทอง เสือถือถุงเงิน เหรียญทอง และวงล้อสล็อต 777"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

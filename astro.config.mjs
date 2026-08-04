@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://kumi99-vip.com",
+  site: "http://zeed321-main.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

@@ -3599,3 +3599,193 @@ route ที่ build ออกมา: `/`, `/about-us`, `/contact-us`, `/privac
 - `login.astro` / `register.astro` ยังใช้ `define:vars` + meta-refresh + affiliate link เดิม
   (เป็น noindex stub ได้รับการยกเว้นตาม playbook)
 - prettier drift เดิมในรีโปไม่ได้ไล่จัดใหม่
+
+---
+
+## 2026-08-05 — รีแบรนด์ ZEED321 (จาก KUMI99)
+
+**เป้าหมาย:** รีแบรนด์ + รีธีมทั้งเว็บเป็น **ZEED321** โดเมนจริง `http://zeed321-main.com`
+รันแบบขนานตาม playbook (orchestrator ทำ P0/P1 เอง แล้วแตก 3 agent) **หยุดที่ build + verify
+ไม่ deploy ไม่ commit ไม่ push** ตามคำสั่ง
+
+**อาร์ตเวิร์ก/พาเลตต์:** แดงเลือดนก + ทองมงกุฎ + เงินโครม บนพื้นเกือบดำ
+(`palette.json` ให้ vivid ของ logo = `#c41312`/`#f61413`, dominant = `#020101`)
+สีที่ใช้จริง: แดง `#ff2f28` / `#e01410` / `#8f0806` / `#3d0404`,
+ทอง `#ffe08a` / `#f5c542` / `#a97a10`, เงิน `#d8dde3`,
+พื้นการ์ด `#170506` → `#0a0202`, พื้นหน้า `#070102`,
+เนื้อความ `#f3dede` (= `BRAND_TEXT`), ตัวรอง `#c2a0a0`
+สีเดิมของ KUMI99 ที่ต้องหายหมด: ทอง `#fcda3d`/`#ffe98a`/`#a9760d` + ม่วง
+`#5b0374`/`#1a0b2e`/`#2c014b`/`#12071f`/`#efe3f7`/`#bda6cf`/`#8b2fc9`/`#c77dff`
+
+### Variant rotation (before → after)
+
+| family | KUMI99 | **ZEED321** |
+|---|---|---|
+| Navbar | `NavbarStyle7` | **`NavbarStyle4`** |
+| Footer | `FooterStyle3` | **`FooterCyber`** |
+| Announcement | `Announcement5` | **`AnnouncementCyber`** |
+| LatestWinners | `LatestWinnersPremium` | **`LatestWinnersCyber`** |
+| Faq | `Faq4` | **`Faq2`** |
+| ProviderGrid | `ProviderGrid` | **`ProviderGridPremium`** |
+| ContentBoxTwo (ใน `LoginRtpSection`) | `ContentBoxTwoPremium` | **`ContentBoxTwoCyberCut`** |
+| ContentBox mix | Premium(h1) + plain + Neumorphism + Special + SevenThreePremium + SevenThreeNeumorphism | **CyberCut(h1) + plain + FloatingBadge + Special + SevenThreeCyberCut + SevenThreeFloatingBadge** |
+| `BRAND_FONT` | `kanit` | **`google-sans`** |
+
+ไม่มี family ไหนที่ต้องใช้ variant เดิมซ้ำ — หมุนครบทุกตัว
+`ContentBox` (plain) ยังอยู่ในชุด live เพราะ `terms`/`privacy` ผูกไว้ถาวร แต่บทบาทเปลี่ยน
+จาก "กล่องรอง" เป็นกล่องของหัวข้อเดียว และไม่ได้ถือ H1 อีกแล้ว
+
+### โครงงานแบบขนาน
+
+- **P0/P1 (orchestrator ทำเอง ก่อนแตก agent):** `astro.config.mjs` `site:`,
+  `wrangler.toml` `name`, `src/lib/brandProfile.ts`, `public/site.webmanifest`,
+  `src/layouts/MainLayout.astro`, `NavbarStyle4`, `FooterCyber`, `Navfoot`,
+  `AnnouncementCyber`, `ContentBox`, `ContentBoxPremium`
+  (ชุด shared = layout + navbar/footer ที่ active + component ที่ถูก import จาก
+  หน้า ≥ 2 หน้า ซึ่งรอบนี้คือ `ContentBox` 5 หน้า และ `ContentBoxPremium` 4 หน้า)
+  `BankStrip.astro` ตรวจแล้ว brand-neutral ทั้งไฟล์ ไม่ต้องแก้
+- **Agent A (หน้าแรก):** `index.astro` + `ContentBoxCyberCut`,
+  `ContentBoxFloatingBadge`, `ContentBoxSpecial`, `ContentBoxSevenThreeCyberCut`,
+  `ContentBoxSevenThreeFloatingBadge`, `ContentBoxTwoCyberCut`, `LoginRtpSection`,
+  `ProviderGridPremium`, `GameRankingBoard`, `ReviewCardSumo2`,
+  `LatestWinnersCyber`, `SmoothCarousel`, `Faq2`
+- **Agent B (หน้าย่อยชุด 1):** `promotion.astro`, `ทางเข้า.astro`, `about-us.astro`
+- **Agent C (หน้าย่อยชุด 2):** `ทดลองเล่น.astro`, `contact-us.astro`, `login.astro`,
+  `register.astro` + ตรวจ (ไม่แก้) `terms.astro`, `privacy.astro`, `404.astro`
+
+`BRANDSPEC-ZEED321.md` ที่ root คือ scratchpad ที่ orchestrator เขียนให้ทั้งสาม agent
+อ่านร่วมกัน (ชื่อ/พาเลตต์/variant/checklist หัวข้อ) — ลบทิ้งแล้วหลัง verify เสร็จ
+
+### แมปหัวข้อ docx → component (7 หัวข้อ: H1 ×1 + H2 ×6 เรียงตาม document order)
+
+| # | หัวข้อ | component | widget ต่อท้าย |
+|---|---|---|---|
+| 1 | H1 ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น | `ContentBoxCyberCut as="h1"` | — |
+| 2 | ที่รวมเกมครบมือไว้ให้เลือกแบบไม่มีคำว่าเบื่อ | `ContentBoxSevenThreeCyberCut` + **slide3** | `GameRankingBoard` |
+| 3 | จังหวะดีทุกการเล่น เริ่มตั้งแต่เข้าเกมจนถึงสปินสุดท้าย | `ContentBox` | `ProviderGridPremium` |
+| 4 | เกมเด็ดเข้าไม่พัก เพราะค่ายแท้ครบทุกแนว | `ContentBoxFloatingBadge` | `SmoothCarousel` |
+| 5 | โบนัสแน่นทุกช่วงเวลา | `ContentBoxSevenThreeFloatingBadge` + **slide1** | `LatestWinnersCyber` |
+| 6 | ระบบปลอดภัยที่ทำให้เล่นต่อเนื่องได้เต็มฟีล | `ContentBoxSpecial` | `LoginRtpSection` |
+| 7 | ทำไม ZEED321 ถึงกลายเป็นอีกเว็บที่สายสล็อตเลือกกลับมาใช้งานซ้ำ | `ContentBoxCyberCut as="h2"` | `ReviewCardSumo2` → ปุ่มคู่ → `Faq2` → `Navfoot` |
+
+**สไลด์:** SevenThree ใช้ 2 บล็อกตามเพดาน — `slide3` (แนะนำเพื่อน BONUS 10% + แถบ
+"เล่นได้ครบ จบในเว็บเดียว") กับหัวข้อ 2, `slide1` (ทุกยอดฝาก 10% รับสูงสุด 500 บาท)
+กับหัวข้อ 5 — `slide2` (เสีย 5 ฟรี 1) และ `slide4` (ฝากครั้งแรกของวัน) **ไม่ได้ใช้ในหน้าแรก**
+แต่ยัง render ที่ `SmoothCarousel` และ `/promotion`
+
+### บั๊ก / เรื่องที่เจอและแก้
+
+1. **`banner2/3/4.png` + `banner.png` ใน `src/assets` เป็นของแบรนด์เก่า** — ลงวันที่ 8/4
+   ส่วน drop ของ ZEED321 ทั้งหมดลงวันที่ 8/5 จึงสั่งห้ามใช้ตั้งแต่ brand spec
+   ผลคือ `dist/` ไม่มีการอ้างถึงเลย (ไฟล์ยังค้างบนดิสก์ ไม่ได้ลบ ตามกฎ inventory)
+   ไม่มี `banner1-mobile.*` = ถูกต้อง (uploader ลบให้ตอนอัพ banner1 ใหม่)
+2. **`ProviderGridPremium` ฮาร์ดโค้ด `<h2>PREMIUM PARTNERS</h2>` บน root ที่เป็น `<div>` เปล่า**
+   — chrome กินแท็กหัวข้อ ทำให้ h2 inventory ไม่ตรง docx เปลี่ยนเป็น `<p>` คงคลาสเดิม
+   แล้วเปลี่ยน root เป็น `<section aria-label="...">` เพื่อให้ section ยังมีชื่อสำหรับ AT
+3. **`Faq2` ส่งคำถามเป็น `<h3>` 5 อัน** — docx เป็น H1+H2 ล้วน ลดเป็น `<span>` คงคลาสเดิม
+   (เลือก `<span>` ไม่ใช่ `<p>` เพราะ content model ของ `<summary>` เป็น phrasing content)
+   ผลคือทั้งเว็บ `h3 × 0` ทุกหน้า
+4. **`FooterCyber` ฮาร์ดโค้ด `<h2>WINUP888</h2>` ใน logo fallback** — เปลี่ยนเป็น `<p>`
+   คงคลาส และไฟล์ทั้งไฟล์เป็นธีมครีม/ทองของ WINUP888 จึงรีธีมเป็นดำ/แดง/ทองใหม่ทั้งหมด
+   พร้อมเพิ่มลิงก์ `/ทางเข้า` `/ทดลองเล่น` `/about-us` `/contact-us` และปุ่ม `#top`
+5. **`NavbarStyle4` เป็นธีมเขียวของ BETKUB77** — รีธีมเป็นแดง/ทอง, เปลี่ยน alt โลโก้,
+   เติม icon ให้เมนู "เกี่ยวกับเรา" ที่เดิมไม่มี (ตัวเดียวในหกตัว) และ **เอา
+   `fetchpriority="high"` ออกจากโลโก้** เพราะไปแย่ง priority กับ hero ที่เป็น LCP จริง
+   (บั๊กเดียวกับที่เจอใน `NavbarStyle7` รอบ KUMI99)
+6. **`AnnouncementCyber` default message เป็นสโลแกนของ TUNGMA168** — เปลี่ยนเป็นของ
+   ZEED321 เพราะทุกหน้าย่อยเรียก `<Announcement />` เปล่าและกินค่า default ตัวนี้
+   จุด "Live" สีฟ้า `#22d3ee` ก็ไม่ใช่ semantic เปลี่ยนเป็นทอง
+7. **`login.astro` มี CSS var ชื่อหลอก `--accent-purple: #c77dff`** — เป็นกับดักที่ playbook
+   เตือนไว้ (grep คลาส Tailwind ไม่เจอ) เปลี่ยนเป็น `--accent-red: #ff2f28` และแก้คอมเมนต์
+   ที่บรรยายพาเลตต์ว่า "gold-on-deep-purple, no red" ซึ่งจะหลอกคนแก้คนต่อไป
+8. **`/promotion` ตัวเลขโปรเป็นของแบรนด์ก่อน และชื่อ alias ของ import สลับกับรูปจริง**
+   — เปิดรูปทั้ง 4 ใบดูแล้วตั้งชื่อ alias ใหม่ให้ตรงของจริงและเรียงใหม่
+   ฝาก 10% → ฝากครั้งแรกของวัน → คืนยอดเสีย → แนะนำเพื่อน พร้อมเขียนเงื่อนไขใหม่ทั้งหมด
+9. **description จาก docx = 143 ตัวอักษร ต่ำกว่าเกณฑ์ 150–160 ของ `verify-build.mjs`**
+   (เป็น error ไม่ใช่ warning) เติม "ปั่นได้ทุกอุปกรณ์" หนึ่งวลี → 158 ตัวอักษร
+   ไม่มีถ้อยคำของ docx หายไป ใส่ทั้งใน `index.astro` และ default ของ `MainLayout.astro`
+10. **`wrangler.toml` `name`** ตั้งเป็น `zeed321` ไม่ใช่ `zeed321-main` —
+    `verify-build.mjs` derive ชื่อที่คาดหวังจาก hostname ด้วย `split(/[-.]/)[0]`
+    ⚠️ ถ้าโดเมนนี้เคย **park** ด้วย `tools/domain-placeholder/` ชื่อต้องตรงกับตัวที่ park
+    ไว้ ยังไม่ได้ยืนยันกับ operator และรอบนี้ไม่ได้ deploy จึงยังไม่กระทบอะไร
+11. **`*FloatingBadge` ตรวจแล้วไม่ต้องแก้** — ทั้งสองไฟล์ถูกแก้ `whitespace-nowrap` →
+    `w-[92%] max-w-2xl text-center` ไว้ตั้งแต่แบรนด์ก่อน และ padding ปัจจุบัน
+    (`pt-36/md:pt-32` กับ `pt-32/md:pt-28`) เผื่อหัวข้อยาวตัด 3–4 บรรทัดได้สบาย
+    badge อยู่ `-top-6` สูงราว 72px ตอนสองบรรทัด = ขอบล่างที่ ~48px ยังห่างจาก 128px มาก
+
+### หน้าหวย / preset page
+
+- **`ตรวจหวย.astro` และ `แนวทาง.astro` อยู่ใน `src/pages-disabled/` อยู่แล้ว** — ถูกต้อง
+  สำหรับแบรนด์สล็อต ไม่ต้องย้าย และ grep หา `ตรวจหวย`/`แนวทาง` ทั้ง `src/components`,
+  `src/pages`, `src/layouts` ได้ **0 hit** จึงไม่มีลิงก์ค้างใน navbar/footer ที่ต้องถอด
+  route ที่ build ออกมายืนยันว่าไม่มี `/ตรวจหวย` และ `/แนวทาง`
+- **`about-us.astro` เปิดไว้ต่อ** — operator เปิดหน้านี้ตั้งแต่รอบ BETKUB77 และ KUMI99
+  ก็เขียนเนื้อหาให้แล้ว รอบนี้ไม่มีสัญญาณว่าให้ปิด (ไม่มี `TODO(rebrand)` เหลือในโปรเจกต์)
+  จึงถือเป็น "เปิดไว้โดยตั้งใจ" → เขียนบทความใหม่ทั้งหน้าเป็นของ ZEED321
+  หัวข้อ h2 ของหน้านี้ตั้งใจเขียนไม่ให้ซ้ำคำต่อคำกับ H2 ของ docx เพื่อไม่ให้ปนกับ
+  heading inventory ของหน้าแรกตอน verify
+
+### การ verify ที่ทำจริง
+
+`npm run build` (+ `postbuild` = `tools/verify-build.mjs`) → **11 หน้า, 0 error, 0 warning**
+build ครั้งเดียวตามกฎ build cadence (ไม่ได้ build ระหว่างแก้ และไม่ต้อง build ซ้ำ)
+
+grep บน `dist/` (ของที่ ship จริง อ่านไฟล์แบบ UTF-8 ตรงๆ ไม่ผ่าน `Get-Content` เพราะ
+Windows PowerShell 5.1 อ่านเป็น ANSI แล้วภาษาไทยจะเพี้ยนและนับตัวอักษรผิด ~3 เท่า):
+
+- ชื่อแบรนด์เก่าทั้ง 20 ตัว (kumi99 / betkub / miracle55 / zoro365 / cashot / winup888 /
+  proded / sudyod / ufag8 / tungma / hengjud / grow268 / sumoheng / ufayes / mahoran /
+  lapdee / pay69 / 999lord …) → **0 hit ทั้ง dist**
+- hex เก่า 20 ตัว (ทองเดิม + ม่วงเดิม + เขียว BETKUB + ชมพู TUNGMA + ครีม WINUP) → **0 hit**
+- คลาส `purple-/violet-/fuchsia-/emerald-/pink-` ใน `class="..."` → **0 hit**
+- `<!--` ใน `index.html` → **0**
+- `undefined` / `[object Object]` → 0 (`NaN` 1 ครั้ง เป็น literal ใน bundle ของ
+  `winnersFeed.ts` ที่ guard `dataset` ไว้ ไม่ใช่ prop พัง — ตัวเดียวกับรอบก่อน)
+- `og:image` → `http://zeed321-main.com/_astro/og.*.jpeg` (ไฟล์ hash ไม่ใช่ path ใน `public/`)
+- รูปที่ `index.html` อ้าง: `banner1`, `logo`, `bg`, `og`, `slide1-4`, `game1-6`, โลโก้ธนาคาร
+  — **ไม่มี `banner2/3/4` หรือ `banner.png` เลย**
+- canonical: 9 หน้าเป็น `http://zeed321-main.com` (อีก 1 คือ tinyurl ของ redirect `/line`)
+- `<h1>` = 1 อันต่อหน้าทุกหน้า (`/line` เป็นหน้า redirect ของ Astro จึงเป็น 0)
+- `<h3>` = **0 ทุกหน้า** ตรงกับ docx ที่เป็น H1+H2 ล้วน
+- meta description ทุกหน้าที่ index ได้ = **154–160 ตัวอักษร** (404 = 127 แต่เป็น noindex)
+  `/contact-us` อยู่ที่ 160 พอดี ผ่านแต่ไม่มี margin — บันทึกไว้เผื่อรอบหน้าอยากเผื่อไว้
+- `<address>` บน `/contact-us` = "ฝ่ายประสานงานสมาชิก ZEED321 / อำเภอพระนครศรีอยุธยา
+  จังหวัดพระนครศรีอยุธยา 13000" มาจาก `BRAND_ADDRESS` ที่ derive จาก `BRAND_NAME` ตามเดิม
+- FAQ: `<details>` 5 / `<summary>` 5 ตรงกับ `faqs` 5 ข้อ
+- `fetchpriority="high"` ใน `index.html` = **1 อัน** (hero เท่านั้น)
+- `_sources.generated.css` ถูก regenerate ให้เอง — variant ที่เพิ่งขึ้นเป็น live
+  (`ContentBoxCyberCut`, `*FloatingBadge`, `ContentBoxTwoCyberCut`, `Faq2`,
+  `LatestWinnersCyber`, `ProviderGridPremium`, `NavbarStyle4`, `FooterCyber`,
+  `AnnouncementCyber`) ไม่ติดใน `@source not` แล้ว stylesheet = 78 kB
+
+heading inventory จาก `verify-build`: `index.html` = h1 ×1 + h2 ×7 —
+6 ตัวแรกคือหัวข้อ docx ข้อ 2–7 เรียงตรงลำดับ document order เป๊ะ ตัวที่ 7 คือหัวข้อ FAQ
+ซึ่งเป็นหัวข้อที่หน้าเขียนเอง (ข้อยกเว้นที่อนุญาต) — diff กับ checklist แล้วครบทั้งสองทาง
+ไม่มีหัวข้อ docx หาย และไม่มีหัวข้อแปลกปลอมจาก chrome
+
+route ที่ build ออกมา: `/`, `/about-us`, `/contact-us`, `/privacy`, `/promotion`,
+`/terms`, `/ทดลองเล่น`, `/ทางเข้า`, `/404`, `/login`, `/register`, `/line`
+— **ไม่มี `/ตรวจหวย` และ `/แนวทาง`** ถูกต้องสำหรับแบรนด์สล็อต
+
+### นอกสโคป / ไม่ได้แตะ
+
+- **ไม่ deploy ไม่ `git commit` ไม่ `git push`** ตามคำสั่ง — หยุดที่ build + verify
+- `wrangler.toml` `account_id` — คงเดิม (เปลี่ยนต่อ *กลุ่ม* แบรนด์ ไม่ใช่ต่อแบรนด์
+  และต้องเปลี่ยนผ่านปุ่ม "สลับบัญชี" ของ uploader เท่านั้น)
+- `terms.astro` / `privacy.astro` / `404.astro` — ตรวจแล้วผ่าน ไม่ได้แก้แม้แต่บรรทัดเดียว
+  ไม่มีชื่อแบรนด์ฮาร์ดโค้ด ไม่มี hex/คลาสสีข้างใน และ terms/privacy ยังใช้
+  `ContentBox.astro` (ตัว plain ที่ถาวร) ไม่ใช่ variant ที่หมุนรอบนี้
+  `privacy.astro` ยังบรรยายตรงกับของจริง: static, ไม่มี analytics/pixel/cookie banner/form
+- `login.astro` / `register.astro` — ยังใช้ `define:vars` + meta-refresh + affiliate link เดิม
+  (เป็น noindex stub ที่ได้รับการยกเว้นตาม playbook) เปลี่ยนแค่แบรนด์กับสี
+- `src/pages-disabled/ตรวจหวย.astro` และ `แนวทาง.astro` — ยังเป็นธีม/ชื่อแบรนด์เก่า
+  เป็น inventory ของแบรนด์หวยถัดไป
+- component variant ที่หลุดจาก live รอบนี้ (`NavbarStyle7`, `FooterStyle3`,
+  `Announcement5`, `LatestWinnersPremium`, `Faq4`, `ProviderGrid`,
+  `ContentBoxTwoPremium`, `ContentBoxNeumorphism`, `ContentBoxSevenThreePremium`,
+  `ContentBoxSevenThreeNeumorphism`) — **ไม่ได้ลบและไม่ได้ retheme** ยังเป็นชื่อ/สีของ
+  KUMI99 อยู่ตามกฎ inventory
+- ไฟล์รูปตายใน `src/assets` (`banner.png` 2.2 MB, `banner2/3/4.png`) — ไม่ได้ลบ
+  แต่ไม่มีโค้ดไหน import แล้วจึงไม่ขึ้น `dist/`
+- `src/components/Faq3.astro` มีคอมเมนต์ที่ตอนนี้เก่าแล้ว (อ้างว่าระดับหัวข้อ "ตรงกับ
+  Faq2/FaqHuay" ซึ่งไม่จริงหลัง Faq2 เปลี่ยนเป็น `<span>`) — เป็นไฟล์ inventory ไม่ได้แตะ

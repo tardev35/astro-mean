@@ -25,19 +25,19 @@ import slide4 from "../assets/slide4.png";
 const images = [
   {
     src: slide1,
-    alt: "แบนเนอร์โปรโมชั่น KUMI99 คืนยอดเสีย 5% ทุกสัปดาห์ (CASHBACK)",
+    alt: "แบนเนอร์โปรโมชั่น ZEED321 ทุกยอดฝาก 10% รับโบนัสสูงสุด 500 บาท",
   },
   {
     src: slide2,
-    alt: "แบนเนอร์โปรโมชั่น KUMI99 ฝากก่อนรับทันที บิลแรก รับ 10% เฉพาะสล็อตเท่านั้น",
+    alt: "แบนเนอร์โปรโมชั่น ZEED321 เสีย 5 ฟรี 1 ใจดีคืนยอดเสียสูงสุด 300 บาท เทิร์น 10 เท่า ถอนสูงสุด 1,000 บาท เฉพาะเกมสล็อต",
   },
   {
     src: slide3,
-    alt: "แบนเนอร์โปรโมชั่น KUMI99 โปรสมาชิกใหม่ บิลแรก รับ 20% เฉพาะสล็อตเท่านั้น",
+    alt: "แบนเนอร์โปรโมชั่น ZEED321 แนะนำเพื่อน ชวนเพื่อนเล่นกับเรารับทันที โบนัส 10% ยิ่งชวนมากยิ่งได้มาก ไม่จำกัดเพื่อน",
   },
   {
     src: slide4,
-    alt: "แบนเนอร์โปรโมชั่น KUMI99 แนะนำเพื่อน 1.25% เพื่อนเล่นคุณได้",
+    alt: "แบนเนอร์โปรโมชั่น ZEED321 ฝากครั้งแรกของวัน ฝาก 50 รับ 60 สูงสุดฝาก 1,000 รับ 1,200 ทำยอด 2 เท่า ถอนได้สูงสุด 20 เท่า",
   },
 ];
 
@@ -61,7 +61,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#fcda3d]/60 peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffe98a]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#f5c542]/60 peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffe08a]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -78,7 +78,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#fcda3d]/25 object-cover shadow-[0_10px_30px_rgba(252,218,61,0.18)]"
+              class="block w-full rounded-xl border border-[#ff2f28]/30 object-cover shadow-[0_10px_30px_rgba(255,47,40,0.18)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
