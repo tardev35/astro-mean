@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "http://zeed321-main.com",
+  site: "http://nekoatk-new.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

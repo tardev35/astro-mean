@@ -1,68 +1,66 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/Announcement3.astro";
 import ContentBox from "../components/ContentBox.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ProviderGrid from "../components/ProviderGridPremium.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinnersCyber.astro";
+import LatestWinners from "../components/LatestWinners3.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq2.astro";
+import Faq from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgReferral from "../assets/slide3.png";
-import imgDepositBonus from "../assets/slide1.png";
+import imgCashback from "../assets/slide4.png";
+import imgWelcomeBonus from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxCyberCut as="h1"
-//   2 → ContentBoxSevenThreeCyberCut + slide3 (แนะนำเพื่อน รับ BONUS 10%)
-//   3 → ContentBox (plain) as="h2"
-//   4 → ContentBoxFloatingBadge as="h2"
-//   5 → ContentBoxSevenThreeFloatingBadge + slide1 (ทุกยอดฝาก 10% สูงสุด 500)
-//   6 → ContentBoxSpecial as="h2"
-//   7 → ContentBoxCyberCut as="h2"
+//   1 → ContentBoxPremium as="h1"
+//   2 → ContentBoxNeumorphism as="h2"
+//   3 → ContentBoxSevenThreeNeumorphism + slide4 (คืนยอดเสีย 5% ทุกวันอาทิตย์)
+//   4 → ContentBoxSevenThreePremium + slide1 (สมาชิกใหม่ รับโบนัส 100%)
+//   5 → ContentBox (plain) as="h2"
+//   6 → ContentBoxNeumorphism as="h2"
+//   7 → ContentBoxPremium as="h2"
+// SevenThree ส่งเฉพาะ titleright เท่านั้น ถ้าส่ง titleleft ด้วยจะได้ h2 เกินมาอีกตัว
 // widget ที่ไม่ได้มาจาก docx ใช้หัวข้อเป็น <p> + aria-label บน <section> จึงแทรก
 // ระหว่างกล่องได้โดยลำดับ H2 ไม่เพี้ยน (LoginRtpSection ก็เป็น <p> เช่นกัน)
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7, h3 = 0
 
-const pageTitle = "ZEED321 | เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น";
+const pageTitle = "NEKOATK สล็อตตรงโปรแรง API แท้ ไม่ผ่านเอเย่นต์ แตกง่าย จ่ายจริง";
 
-// docx ให้ description มา 143 ตัวอักษร ซึ่งต่ำกว่าเกณฑ์ 150–160 ของ
-// tools/verify-build.mjs (เป็น error ไม่ใช่ warning) จึงต่อท้ายด้วย
-// "ปั่นได้ทุกอุปกรณ์" — ไม่มีถ้อยคำใดของ docx หายไป ได้ 158 ตัวอักษร
-const pageDescription = "ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น เกมเด็ดเข้าไม่พัก ค่ายแท้ครบทุกแนว ระบบเสถียร เล่นต่อเนื่องได้แบบไม่มีสะดุด ปั่นได้ทุกอุปกรณ์";
+const pageDescription =
+  "NEKOATK สล็อตตรงไม่ผ่านเอเย่นต์ นำเข้าเกม API แท้ร้อยเปอร์เซ็นต์ การันตีสล็อตแตกง่ายกว่าที่เคยสัมผัส จัดเต็มโปรแรงแจกทุนฟรีทุกวัน บวกหลักล้านก็จ่ายจริง";
 
 const announcementMessage =
-  "ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น • เกมครบมือไว้ให้เลือกแบบไม่มีคำว่าเบื่อ สลับสไตล์ได้ตลอดเวลา • เกมเด็ดเข้าไม่พัก ค่ายแท้ลิขสิทธิ์ครบทุกแนว อัปเดตความสนุกอยู่เสมอ • โบนัสแน่นทุกช่วงเวลา เติมสีสันให้ทุกการหมุนมีอะไรให้ลุ้นมากกว่าเดิม • ระบบเสถียรปลอดภัย ฝาก-ถอนออโต้ เล่นต่อเนื่องได้เต็มฟีล";
+  "NEKOATK สล็อตตรงไม่ผ่านเอเย่นต์ ส่งตรงจากเซิร์ฟเวอร์หลัก ไม่ล็อคยูส ไม่ปรับเรทชนะ • นำเข้าเกมผ่าน API ลิขสิทธิ์แท้ร้อยเปอร์เซ็นต์ โหลดไว ไม่กินเน็ตมือถือ • คัดเฉพาะเกมฮิตติดชาร์ต RTP สูงปรี๊ด โบนัสไทม์แตกบ่อยจนน่าตกใจ • แจกเครดิตฟรีและโปรแรงทุกวัน เทิร์นโอเวอร์ต่ำ ไม่จุกจิก • ถอนไวผ่านระบบออโต้ จ่ายเต็มทุกบิล ไม่มีอั้นยอดถอนต่อวัน";
 
 const faqs = [
   {
-    q: "ZEED321 เป็นเว็บสล็อตแบบไหน เหมาะกับผู้เล่นกลุ่มใด",
-    a: "ที่นี่คืออาณาจักรสล็อตออนไลน์ที่ออกแบบมาเพื่อสายปั่นโดยเฉพาะ รวบรวมเกมยอดฮิตจากทุกค่ายดังไว้ในที่เดียว การเล่นลื่นไหลและจังหวะการออกรางวัลลงตัว ไม่ว่าคุณจะเป็นผู้เล่นหน้าใหม่ที่เพิ่งเริ่มหรือสายเก๋าที่ปั่นมานาน ก็พร้อมรับความสนุกและทำกำไรได้อย่างเต็มพิกัดตลอดทั้งวัน",
+    q: "NEKOATK เป็นสล็อตเว็บตรงไม่ผ่านเอเย่นต์จริงไหม",
+    a: "จริงทุกตัวอักษร เราเปิดให้บริการส่งตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านคนกลางใดๆ ทั้งสิ้น คุณจึงไม่ต้องเจอภาพจำเว็บเอเย่นต์ที่ชอบล็อคยูสหรือปรับเรทชนะอีกต่อไป ทุกการสปินมีความยุติธรรมสูงสุด แตกเท่าไหร่ NEKOATK ก็พร้อมจ่ายเต็มจำนวน ไม่มีหักเปอร์เซ็นต์",
   },
   {
-    q: "คลังเกมของ ZEED321 มีแนวไหนให้เลือกเล่นบ้าง",
-    a: "คลังเกมสล็อตคัดสรรมาอย่างดีเพื่อตอบโจทย์ทุกสไตล์การเล่น มีทั้งเกมแนวแอคชั่น แฟนตาซี และสไตล์คลาสสิกให้เลือกเล่นแบบจุใจ ครบจบในเว็บเดียว การันตีความมันส์ที่ไม่มีสะดุด คุณสลับเปลี่ยนเกมได้ตลอดเวลาโดยไม่ต้องกลัวความจำเจ เบื่อเกมไหนก็ข้ามไปหาแนวใหม่ได้ทันที",
+    q: "เกมใน NEKOATK นำเข้าผ่าน API ลิขสิทธิ์แท้หรือเปล่า",
+    a: "เราดึงสัญญาณภาพและระบบเกมผ่าน API ลิขสิทธิ์แท้จากค่ายผู้พัฒนาโดยตรง ตัวเกมจึงมีความเสถียรขั้นสุด โหลดไว ไม่กินเน็ตมือถือ และไม่มีการแทรกแซงจากหลังบ้านร้อยเปอร์เซ็นต์ ปัญหาเกมค้างตอนฟรีสปินเข้าหรือภาพกระตุกจนเสียอารมณ์จะหมดไป",
   },
   {
-    q: "เกมใน ZEED321 เป็นลิขสิทธิ์แท้ไหม อัปเดตเกมใหม่บ่อยแค่ไหน",
-    a: "มั่นใจได้ในคุณภาพ เพราะเรานำเข้าเกมสล็อตลิขสิทธิ์แท้จากค่ายดังระดับโลกโดยตรง ภาพสวยคมชัด กราฟิกอลังการ และมีฟีเจอร์ทันสมัย พร้อมอัปเดตเกมใหม่ล่าสุดให้คุณได้สัมผัสก่อนใคร เกมเด็ดจึงเรียงคิวเข้ามาให้ทำกำไรกันอย่างต่อเนื่องไม่มีพัก",
+    q: "สล็อตของ NEKOATK แตกง่ายจริงไหม เลือกเกมยังไงให้เข้ามือ",
+    a: "เราคัดมาเฉพาะเกมฮิตติดชาร์ตที่มีค่า RTP สูงปรี๊ด โบนัสไทม์จึงแตกบ่อยจนน่าตกใจ ไม่ต้องซื้อฟรีสปินแพงๆ ก็มีโอกาสจับเงินก้อนโตได้ง่ายๆ แค่เดินเบทให้ถูกจังหวะ ทั้งนี้ควรเปิดดูเดิมพันเริ่มต้นและฟีเจอร์โบนัสจากหน้าเกมจริงก่อนกดสปินทุกครั้ง",
   },
   {
-    q: "โบนัสและโปรโมชั่นของ ZEED321 มีอะไรให้ลุ้นบ้าง",
-    a: "เราเตรียมโปรโมชั่นและโบนัสสุดพิเศษไว้ซัพพอร์ตผู้เล่นตลอดการใช้งาน ทั้งโบนัสต้อนรับและแจ็คพอตในเกมที่ออกแบบมาให้แตกง่ายกว่าเดิม ช่วยเพิ่มทุนและขยายโอกาสคว้าเงินรางวัลใหญ่ได้เร้าใจยิ่งขึ้น ควรอ่านเงื่อนไขของแต่ละรายการจากหน้าโปรโมชั่นจริงก่อนกดรับทุกครั้ง",
+    q: "NEKOATK มีโปรโมชั่นแจกเครดิตฟรีอะไรให้สมาชิกบ้าง",
+    a: "ทุนน้อยไม่ใช่ปัญหา เพราะกิจกรรมแจกเครดิตฟรีและโปรโมชั่นสุดเดือดของเรามีให้อัปเดตกันทุกวัน รับง่าย เงื่อนไขเทิร์นโอเวอร์ต่ำ ไม่จุกจิก เอาไปต่อยอดทำกำไรได้จริงโดยไม่ต้องควักทุนตัวเองเยอะ ควรอ่านรายละเอียดของแต่ละรายการจากหน้าโปรโมชั่นจริงก่อนกดรับ",
   },
   {
-    q: "ฝาก-ถอนกับ ZEED321 ปลอดภัยและใช้เวลานานไหม",
-    a: "เราให้บริการด้วยระบบเซิร์ฟเวอร์ที่มีความเสถียรและปลอดภัยสูงสุดระดับสากล ปกป้องข้อมูลส่วนตัวและการทำธุรกรรมของคุณอย่างแน่นหนา ฝาก-ถอนไวผ่านระบบออโต้ที่แม่นยำ ทำรายการเองได้ตลอดเวลาโดยไม่ต้องรอคิว ให้คุณโฟกัสกับการปั่นสล็อตได้เต็มที่โดยไม่ต้องกังวลเรื่องปัญหาจุกจิก",
+    q: "ถอนเงินกับ NEKOATK ใช้เวลานานไหม มีอั้นยอดถอนหรือเปล่า",
+    a: "ระบบการเงินของเราโอนยอดเข้าบัญชีคุณทันทีผ่านระบบออโต้ที่รวดเร็วที่สุด ไม่ต้องทักหาแอดมิน ไม่ต้องรอคิวตรวจสลิปให้วุ่นวาย กดถอนปุ๊บเงินเด้งเข้าแอปธนาคารปั๊บ ต่อให้ปั่นจนแตกทะลุหลักหมื่นหรือหลักล้านก็จ่ายเต็มทุกบิล และไม่มีอั้นยอดถอนต่อวัน",
   },
 ];
 
@@ -78,58 +76,27 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="ZEED321 เว็บสล็อตสายมันส์ จังหวะดีทุกการเล่น เกมครบมือ โบนัสแน่น">
+  <ContentBoxPremium as="h1" title="NEKOATK สล็อตตรงไม่ผ่านเอเย่นต์ แตกง่าย จ่ายจริงทุกยอดบิล">
     <p class="text-left text-base leading-relaxed">
-      ยินดีต้อนรับสู่อาณาจักรสล็อตออนไลน์ที่ออกแบบมาเพื่อสายปั่นโดยเฉพาะ สัมผัสประสบการณ์การเล่นที่ลื่นไหล จังหวะการออกรางวัลที่ลงตัว และรวบรวมเกมยอดฮิตจากทุกค่ายดังไว้ในที่เดียว
-      ไม่ว่าคุณจะเป็นผู้เล่นหน้าใหม่หรือสายเก๋า ก็พร้อมรับความสนุกและทำกำไรได้อย่างเต็มพิกัดตลอดทั้งวัน
+      วงการสล็อตยุคนี้หาเว็บที่จริงใจยาก แต่ถ้าคุณเข้ามาที่นี่ ลืมภาพจำเว็บเอเย่นต์ที่ชอบล็อคยูสหรือปรับเรทชนะไปได้เลย เราคือแพลตฟอร์มตัวจริงที่สายปั่นทั่วประเทศให้การยอมรับ
+      เปิดให้บริการส่งตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านคนกลางใดๆ ทั้งสิ้น ทำให้ทุกการสปินของคุณมีความยุติธรรมสูงสุด แตกเท่าไหร่ก็พร้อมจ่ายเต็มจำนวน ไม่มีหักเปอร์เซ็นต์
+      นี่คือขุมทรัพย์ทำเงินที่นักเล่นยุคใหม่ต้องลอง
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxPremium>
 
-  <ContentBoxSevenThreeCyberCut titleright="ZEED321 เว็บสล็อตสายมันส์ ที่รวมเกมครบมือไว้ให้เลือกแบบไม่มีคำว่าเบื่อ">
-    <Picture
-      slot="left"
-      src={imgReferral}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น ZEED321 แนะนำเพื่อน ชวนเพื่อนเล่นกับเรารับทันที โบนัส 10% ไม่จำกัดเพื่อน พร้อมแถบเล่นได้ครบจบในเว็บเดียว สล็อต คาสิโนสด กีฬา โป๊กเกอร์ เกมตกปลา และหวย"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#ff2f28]/30 shadow-[0_10px_30px_rgba(255,47,40,0.18)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ตอบโจทย์ทุกสไตล์การเล่นด้วยคลังเกมสล็อตที่คัดสรรมาอย่างดี ไม่ว่าจะเป็นเกมแนวแอคชั่น แฟนตาซี หรือสไตล์คลาสสิก เรามีให้เลือกเล่นแบบจุใจ ครบจบในเว็บเดียว การันตีความมันส์ที่ไม่มีสะดุด
-      ให้คุณสลับเปลี่ยนเกมเล่นได้ตลอดเวลาโดยไม่ต้องกลัวความจำเจ
-    </p>
-  </ContentBoxSevenThreeCyberCut>
-
-  <GameRankingBoard />
-
-  <ContentBox as="h2" title="จังหวะดีทุกการเล่น เริ่มตั้งแต่เข้าเกมจนถึงสปินสุดท้ายใน ZEED321">
+  <ContentBoxNeumorphism as="h2" title="สัมผัสประสบการณ์ปั่นเกม API แท้ร้อยเปอร์เซ็นต์ ลื่นไหลไม่มีสะดุด">
     <p class="text-left text-base leading-relaxed">
-      ทุกการสปินของคุณมีความหมาย ด้วยระบบเกมที่ถูกตั้งค่ามาให้มีอัตราการจ่ายรางวัลที่ยุติธรรมและลื่นไหลต่อเนื่อง ตั้งแต่การโหลดเข้าเกมไปจนถึงช่วงเวลาสำคัญอย่างการเข้าฟรีสปิน
-      ให้คุณอินไปกับทุกจังหวะการทำกำไรแบบไม่มีอาการกระตุกให้เสียอารมณ์
+      ปัญหาเกมค้างตอนฟรีสปินเข้า หรือภาพกระตุกจนเสียอารมณ์จะหมดไป เพราะเราดึงสัญญาณภาพและระบบเกมผ่าน API ลิขสิทธิ์แท้จากค่ายผู้พัฒนาโดยตรง ส่งผลให้ตัวเกมมีความเสถียรขั้นสุด โหลดไว
+      ไม่กินเน็ตมือถือ ให้คุณลุ้นสแคทเตอร์ตกแบบเฟรมต่อเฟรมได้อย่างเร้าใจ ไร้การแทรกแซงจากหลังบ้านร้อยเปอร์เซ็นต์
     </p>
-  </ContentBox>
+  </ContentBoxNeumorphism>
 
   <ProviderGrid />
 
-  <ContentBoxFloatingBadge as="h2" title="เกมเด็ดเข้าไม่พัก เพราะค่ายแท้ครบทุกแนว พร้อมอัปเดตความสนุกอยู่เสมอ">
-    <p class="text-left text-base leading-relaxed">
-      มั่นใจได้ในคุณภาพเพราะเรานำเข้าเกมสล็อตลิขสิทธิ์แท้จากค่ายดังระดับโลกโดยตรง ภาพสวยคมชัด กราฟิกอลังการ และมีฟีเจอร์ทันสมัย พร้อมอัปเดตเกมใหม่ล่าสุดให้คุณได้สัมผัสก่อนใคร
-      สนุกไปกับเกมเด็ดที่เรียงคิวมาให้ทำกำไรกันอย่างต่อเนื่องไม่มีพัก
-    </p>
-  </ContentBoxFloatingBadge>
-
-  <SmoothCarousel />
-
-  <ContentBoxSevenThreeFloatingBadge title="โบนัสแน่นทุกช่วงเวลา เติมสีสันให้ทุกการหมุนมีอะไรให้ลุ้นมากกว่าเดิม">
+  <ContentBoxSevenThreeNeumorphism titleright="การันตีสล็อตแตกง่ายกว่าที่เคยสัมผัส โบนัสเข้าบ่อยรับกำไรเน้นๆ">
     <Picture
       slot="left"
-      src={imgDepositBonus}
+      src={imgCashback}
       loading="lazy"
       fetchpriority="low"
       widths={[200, 400, 600]}
@@ -138,48 +105,82 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่น ZEED321 ทุกยอดฝาก 10% รับโบนัสสูงสุด 500 บาท พร้อมโบนัสจัดหนักแจกไม่อั้น คืนยอดเสีย 10% ทุกวัน ระบบ VIP และฝาก-ถอนออโต้รวดเร็วใน 10 วินาที"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#ff2f28]/30 shadow-[0_10px_30px_rgba(255,47,40,0.18)]"
+      alt="แบนเนอร์โปรโมชั่น NEKOATK คืนยอดเสีย 5% ทุกวันอาทิตย์ พร้อมภาพแมวนักรบชุดเกราะสีดำถือเหรียญทอง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fb0660]/30 shadow-[0_10px_30px_rgba(251,6,96,0.18)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      เพิ่มความคุ้มค่าให้ทุกยอดฝากด้วยโปรโมชั่นและโบนัสสุดพิเศษที่เตรียมไว้ซัพพอร์ตผู้เล่นตลอดการใช้งาน ไม่ว่าจะเป็นโบนัสต้อนรับหรือแจ็คพอตในเกมที่ออกแบบมาให้แตกง่ายกว่าเดิม
-      ช่วยเพิ่มทุนและขยายโอกาสให้คุณคว้าเงินรางวัลใหญ่ได้เร้าใจยิ่งขึ้น
+      ใครที่เคยช้ำใจจากเว็บเกลือๆ ต้องมาแก้มือที่นี่ NEKOATK คัดมาเฉพาะเกมฮิตติดชาร์ตที่มีค่า RTP สูงปรี๊ด การันตีเลยว่าปั่นยังไงก็เข้ามือ โบนัสไทม์แตกบ่อยจนน่าตกใจ
+      ไม่ต้องซื้อฟรีสปินแพงๆ ก็มีโอกาสจับเงินก้อนโตได้ง่ายๆ แค่เดินเบทให้ถูกจังหวะ เตรียมรับกำไรก้อนใหญ่เข้ากระเป๋าได้เลย
     </p>
-  </ContentBoxSevenThreeFloatingBadge>
+  </ContentBoxSevenThreeNeumorphism>
+
+  <GameRankingBoard />
+
+  <ContentBoxSevenThreePremium titleright="จัดเต็มโปรแรงแจกทุนฟรีทุกวันให้สมาชิก NEKOATK ได้ลุยแบบจุใจ">
+    <Picture
+      slot="left"
+      src={imgWelcomeBonus}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น NEKOATK สมาชิกใหม่ รับโบนัส 100% พร้อมภาพแมวกวักนำโชคบนพื้นสีชมพูทอง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fb0660]/30 shadow-[0_10px_30px_rgba(251,6,96,0.18)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ทุนน้อยไม่ใช่ปัญหาอีกต่อไป เพราะเราเตรียมเสบียงไว้ซัพพอร์ตสายปั่นทุกระดับ กิจกรรมแจกเครดิตฟรีและโปรโมชั่นสุดเดือดมีให้อัปเดตกันทุกวัน รับง่าย เงื่อนไขเทิร์นโอเวอร์ต่ำ ไม่จุกจิก
+      เอาไปต่อยอดทำกำไรได้จริง ถือเป็นตัวช่วยสำคัญที่ทำให้คุณมีโอกาสบวกยับไปกับ NEKOATK โดยไม่ต้องควักทุนตัวเองเยอะ
+    </p>
+  </ContentBoxSevenThreePremium>
+
+  <SmoothCarousel />
+
+  <ContentBox as="h2" title="เล่นบวกหลักล้านก็จ่ายจริง ถอนเงินรวดเร็วทันใจผ่านระบบออโต้">
+    <p class="text-left text-base leading-relaxed">
+      ความน่าเชื่อถือวัดกันตอนถอนเงินนี่แหละ เมื่อคุณปั่นจนแตกหนักทะลุหลักหมื่นหรือหลักล้าน ระบบการเงินของเราก็พร้อมโอนยอดเข้าบัญชีคุณทันทีผ่านระบบออโต้ที่รวดเร็วที่สุด
+      ไม่ต้องทักหาแอดมิน ไม่ต้องรอคิวตรวจสลิปให้วุ่นวาย กดถอนปุ๊บ เงินเด้งเข้าแอปธนาคารปั๊บ จ่ายเต็มทุกบิล ไม่มีอั้นยอดถอนต่อวัน
+    </p>
+  </ContentBox>
 
   <LatestWinners />
 
-  <ContentBoxSpecial as="h2" title="ระบบปลอดภัยที่ทำให้เล่นต่อเนื่องได้เต็มฟีล ไม่ต้องกังวลเรื่องการใช้งาน">
-    <p slot="left" class="text-left text-base leading-relaxed">ให้บริการด้วยระบบเซิร์ฟเวอร์ที่มีความเสถียรและปลอดภัยสูงสุดระดับสากล ปกป้องข้อมูลส่วนตัวและการทำธุรกรรมของคุณอย่างแน่นหนา</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ฝาก-ถอนไวผ่านระบบออโต้ที่แม่นยำ ให้คุณโฟกัสกับการปั่นสล็อตได้อย่างเต็มที่โดยไม่ต้องกังวลเรื่องปัญหาจุกจิก</p>
-  </ContentBoxSpecial>
-
-  <LoginRtpSection />
-
-  <ContentBoxCyberCut as="h2" title="ทำไม ZEED321 ถึงกลายเป็นอีกเว็บที่สายสล็อตเลือกกลับมาใช้งานซ้ำ">
+  <ContentBoxNeumorphism as="h2" title="เหตุผลที่ NEKOATK กลายเป็นสล็อตตรงเบอร์หนึ่งในใจเซียนพนัน">
     <p class="text-left text-base leading-relaxed">
-      ด้วยบริการที่ได้มาตรฐานและตอบโจทย์ความต้องการของผู้เล่นได้อย่างตรงจุด ทั้งระบบเกมที่เล่นง่าย จ่ายเงินจริง และการดูแลระดับวีไอพี ความใส่ใจในทุกรายละเอียดนี้ทำให้ผู้เล่นมากมายไว้วางใจ
-      และยกให้ที่นี่เป็นเว็บคู่ใจที่ต้องกลับมาใช้งานอย่างต่อเนื่อง
+      สิ่งที่ทำให้ NEKOATK ยืนระยะและมีฐานลูกค้าเหนียวแน่น ไม่ใช่แค่การโฆษณา แต่เป็นเพราะปากต่อปากของนักเล่นตัวจริงที่เข้ามาบวกแล้วได้เงินกลับไปจริงๆ เราให้อิสระในการเดิมพันอย่างเต็มที่
+      ไม่มีกฎกติกาหมกเม็ด ไม่มีการแบนยูสเซอร์เมื่อเล่นได้กำไรเยอะๆ ความซื่อสัตย์ตรงไปตรงมานี้แหละที่มัดใจเซียนสล็อตทั่วประเทศ
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxNeumorphism>
 
   <ReviewCardSumo2 />
+
+  <ContentBoxPremium as="h2" title="ท้าพิสูจน์ความรวย สมัครปั่นสล็อตลิขสิทธิ์แท้กับ NEKOATK ทันที">
+    <p class="text-left text-base leading-relaxed">
+      โอกาสเปลี่ยนทุนหลักร้อยให้กลายเป็นกำไรหลักหมื่นอยู่ตรงหน้าแล้ว อย่ามัวแต่ลังเล หยิบมือถือขึ้นมาแล้วกดสมัครสมาชิกกับเราได้เลย ขั้นตอนง่ายๆ ใช้เวลาไม่ถึงนาที
+      ก็พร้อมเปิดประตูสู่คลังสมบัติเกมสล็อตลิขสิทธิ์แท้ของ NEKOATK เข้ามาพิสูจน์ด้วยตัวคุณเองว่าเว็บตรงที่จ่ายจริง แตกหนัก มันเป็นยังไง ลุยเลย!
+    </p>
+  </ContentBoxPremium>
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] px-4 py-3 text-sm font-black whitespace-nowrap text-[#2a0605] shadow-[0_10px_30px_rgba(245,197,66,0.3)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(245,197,66,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fd841b] via-[#fb0660] to-[#8b3fd9] px-4 py-3 text-sm font-black whitespace-nowrap text-[#2a0210] shadow-[0_10px_30px_rgba(251,6,96,0.3)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(251,6,96,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#ff2f28]/80 bg-[#3d0404]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f3dede] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#f5c542] hover:bg-[#8f0806]/85 hover:shadow-[0_15px_40px_rgba(255,47,40,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#fb0660]/80 bg-[#2c0733]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f6dfec] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fd841b] hover:bg-[#4a0e5c]/85 hover:shadow-[0_15px_40px_rgba(251,6,96,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ ZEED321" faqs={faqs} />
+  <LoginRtpSection />
+
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ NEKOATK" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

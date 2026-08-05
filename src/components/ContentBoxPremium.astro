@@ -9,16 +9,16 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#ff2f28]/35 bg-gradient-to-br from-[#3d0404]/92 to-[#0a0202]/90 p-8 text-left text-base leading-relaxed text-[#f3dede] shadow-[0_10px_30px_rgba(255,47,40,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#ff2f28]/70 hover:shadow-[0_15px_40px_rgba(255,47,40,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#f5c542]/22 blur-[55px] transition-all duration-500 group-hover:bg-[#ffe08a]/32"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#8f0806]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#ff2f28]/45"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#fb0660]/35 bg-gradient-to-br from-[#2c0733]/92 to-[#0d0210]/90 p-8 text-left text-base leading-relaxed text-[#f6dfec] shadow-[0_10px_30px_rgba(251,6,96,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#fb0660]/70 hover:shadow-[0_15px_40px_rgba(251,6,96,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#fd841b]/22 blur-[55px] transition-all duration-500 group-hover:bg-[#ffb457]/32"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#8b3fd9]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#fb0660]/45"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#ff2f28]/35 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe08a] via-[#f5c542] to-[#a97a10] shadow-[0_0_10px_rgba(245,197,66,0.5)]" />
+        <header class="mb-8 flex items-center gap-4 border-b border-[#fb0660]/35 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffb457] via-[#fd841b] to-[#fb0660] shadow-[0_0_10px_rgba(251,6,96,0.5)]" />
           <HeadingTag
-            class={`bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] bg-clip-text ${headingSize} leading-normal font-black tracking-widest text-transparent uppercase`}>
+            class={`bg-gradient-to-r from-[#ffb457] via-[#fd841b] to-[#fb0660] bg-clip-text ${headingSize} leading-normal font-black tracking-widest text-transparent uppercase`}>
             {title}
           </HeadingTag>
         </header>

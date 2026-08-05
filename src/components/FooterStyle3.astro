@@ -15,26 +15,25 @@ const quickLinks = [
   { name: "ทางเข้าล่าสุด", path: "/ทางเข้า" },
   { name: "สมัครสมาชิก", path: "/register" },
   { name: "ติดต่อแอดมิน", path: "/contact-us" },
-  { name: "เกี่ยวกับเรา", path: "/about-us" },
 ];
 ---
 
 <footer
-  class="relative mt-32 w-full border-t border-[#fcda3d]/30 bg-[#0b0616] pt-64 pb-6 font-sans text-[#efe3f7] shadow-[0_-10px_30px_rgba(252,218,61,0.15)] md:pt-40">
+  class="relative mt-32 w-full border-t border-[#fb0660]/30 bg-[#0d0210] pt-64 pb-6 font-sans text-[#f6dfec] shadow-[0_-10px_30px_rgba(251,6,96,0.16)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#fcda3d]/35 bg-gradient-to-r from-[#12071f] via-[#2c014b] to-[#1a0b2e] p-6 shadow-[0_15px_40px_rgba(139,47,201,0.35)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#fb0660]/35 bg-gradient-to-r from-[#160318] via-[#2c0733] to-[#1f0524] p-6 shadow-[0_15px_40px_rgba(139,63,217,0.35)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#ffe98a] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl"><span aria-hidden="true">🎰</span> พร้อมปั่นกับ KUMI99 แล้วหรือยัง?</p>
-      <p class="mt-2 text-sm font-medium text-[#bda6cf] md:text-base">
-        สมัคร KUMI99 แล้วเข้าเล่นได้ทันที รวมค่ายดังไว้ในบัญชีเดียว ฝากถอนไวภายใน 3 วิ ผ่านระบบออโต้ ไม่ต้องแจ้งสลิป เข้าเล่นได้ทั้งมือถือ แท็บเล็ต และคอมพิวเตอร์
+      <p class="text-xl font-black tracking-wide text-[#ffb457] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl"><span aria-hidden="true">🐾</span> พร้อมปั่นกับ NEKOATK แล้วหรือยัง?</p>
+      <p class="mt-2 text-sm font-medium text-[#c8a3bd] md:text-base">
+        สมัคร NEKOATK แล้วเข้าเล่นได้ทันที สล็อตตรงไม่ผ่านเอเย่นต์ นำเข้าเกม API ลิขสิทธิ์แท้ร้อยเปอร์เซ็นต์ ฝากถอนออโต้ ไม่ต้องทักแอดมิน แตกเท่าไหร่จ่ายเต็มจำนวน ไม่มีอั้นยอดถอนต่อวัน
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#ffe98a] bg-gradient-to-b from-[#ffe98a] to-[#a9760d] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#2a1400] shadow-[0_0_15px_rgba(252,218,61,0.4)] transition-all hover:scale-105 md:text-base">
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#ffb457] bg-gradient-to-b from-[#ffb457] to-[#fb0660] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#2a0210] shadow-[0_0_15px_rgba(251,6,96,0.4)] transition-all hover:scale-105 md:text-base">
       <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🚀</span></span>
-      <div class="absolute inset-0 translate-y-full bg-[#fcda3d] transition-transform duration-300 group-hover:translate-y-0"></div>
+      <div class="absolute inset-0 translate-y-full bg-[#fd841b] transition-transform duration-300 group-hover:translate-y-0"></div>
     </a>
   </div>
 
@@ -46,24 +45,24 @@ const quickLinks = [
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ KUMI99 ตัวอักษรทองบนโล่ม่วง มีแพนด้าใส่แว่นดำอยู่ด้านหลัง"
+                alt="โลโก้ NEKOATK ตัวอักษร NEKO สีส้มชมพู มีหัวแมวการ์ตูนคาดหน้ากาก และป้าย ATK ทรงแคปซูลสีชมพู"
                 widths={[100, 200, 300]}
                 sizes="100px"
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(252,218,61,0.6)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(251,6,96,0.6)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#ffe98a] to-[#a9760d] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(252,218,61,0.5)]">KUMI99</p>
+              <p class="bg-gradient-to-b from-[#ffb457] to-[#fb0660] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(251,6,96,0.5)]">NEKOATK</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#bda6cf]">
-          KUMI99 วางแกนหลักไว้ที่สล็อตออนไลน์ คัดค่ายเด็ดเข้าไม่พักและอัปเดตเกมใหม่มาแรงอยู่ตลอด แบ่งหมวดตามค่ายผู้พัฒนาและรูปแบบการเล่น ทั้งแนวแอคชันผจญภัยและสไตล์คลาสสิก
-          พร้อมระบบฝากถอนออโต้ที่ทำรายการเสร็จภายใน 3 วิ
+        <p class="text-sm leading-relaxed text-[#c8a3bd]">
+          NEKOATK วางแกนหลักไว้ที่สล็อตตรงส่งสัญญาณจากเซิร์ฟเวอร์หลัก ไม่ผ่านคนกลาง คัดเฉพาะเกมฮิตติดชาร์ตค่า RTP สูงจากค่ายผู้พัฒนาโดยตรง โหลดไว ไม่กินเน็ตมือถือ
+          พร้อมระบบฝากถอนออโต้ที่โอนเข้าบัญชีทันทีโดยไม่ต้องรอคิวตรวจสลิป
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -76,16 +75,16 @@ const quickLinks = [
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#efe3f7] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f6dfec] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#a9760d] to-[#ffe98a] shadow-[0_0_8px_rgba(252,218,61,0.6)]"></span>
+          <span class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#fb0660] to-[#ffb457] shadow-[0_0_8px_rgba(251,6,96,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#bda6cf] transition-colors hover:text-[#ffe98a]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#fcda3d] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#c8a3bd] transition-colors hover:text-[#ffb457]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#fb0660] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -94,38 +93,38 @@ const quickLinks = [
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#efe3f7] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f6dfec] uppercase">
           ระบบการเงิน
-          <span class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#a9760d] to-[#ffe98a] shadow-[0_0_8px_rgba(252,218,61,0.6)]"></span>
+          <span class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#fb0660] to-[#ffb457] shadow-[0_0_8px_rgba(251,6,96,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#bda6cf]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#c8a3bd]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#1a0b2e] transition-colors hover:border-[#fcda3d]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#efe3f7]"><span aria-hidden="true" class="text-lg text-[#fcda3d]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#1f0524] transition-colors hover:border-[#fb0660]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#f6dfec]"><span aria-hidden="true" class="text-lg text-[#fd841b]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#fcda3d]/25" />
+    <hr class="mb-6 border-[#fb0660]/25" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#9b86ad] md:block">
-      สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง คัดค่ายเด็ดเข้าไม่พัก อัปเดตไม่หยุด โบนัสโคตรคุ้ม ฟรีสปิน ตัวคูณ สัญลักษณ์พิเศษ ฝากถอนไวภายใน 3 วิ ระบบออโต้ไม่ต้องแจ้งสลิป ระบบไวเกินต้าน
-      รองรับสมาร์ทโฟน แท็บเล็ต คอมพิวเตอร์ ทางเข้าเว็บล่าสุด ทดลองเล่นฟรี สมัครสมาชิกใหม่ KUMI99
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#a37f9a] md:block">
+      สล็อตตรงไม่ผ่านเอเย่นต์ นำเข้าเกม API ลิขสิทธิ์แท้ร้อยเปอร์เซ็นต์ คัดเกมฮิตติดชาร์ต RTP สูง โบนัสไทม์แตกบ่อย ฟรีสปิน ตัวคูณ สัญลักษณ์พิเศษ แจกเครดิตฟรีทุกวัน เทิร์นโอเวอร์ต่ำ
+      ฝากถอนออโต้ไม่ต้องแจ้งสลิป จ่ายเต็มทุกบิลไม่มีอั้นยอดถอน รองรับสมาร์ทโฟน แท็บเล็ต คอมพิวเตอร์ ทางเข้าเว็บล่าสุด ทดลองเล่นฟรี สมัครสมาชิกใหม่ NEKOATK
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#9b86ad] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#ffe98a] uppercase">KUMI99</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#a37f9a] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#ffb457] uppercase">NEKOATK</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#efe3f7]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#efe3f7]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#f6dfec]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#f6dfec]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#efe3f7] transition-all hover:border-[#ffe98a] hover:bg-[#2c014b] hover:shadow-[0_0_15px_rgba(252,218,61,0.5)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#f6dfec] transition-all hover:border-[#ffb457] hover:bg-[#2c0733] hover:shadow-[0_0_15px_rgba(251,6,96,0.5)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

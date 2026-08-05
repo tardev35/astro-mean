@@ -3789,3 +3789,338 @@ route ที่ build ออกมา: `/`, `/about-us`, `/contact-us`, `/privac
   แต่ไม่มีโค้ดไหน import แล้วจึงไม่ขึ้น `dist/`
 - `src/components/Faq3.astro` มีคอมเมนต์ที่ตอนนี้เก่าแล้ว (อ้างว่าระดับหัวข้อ "ตรงกับ
   Faq2/FaqHuay" ซึ่งไม่จริงหลัง Faq2 เปลี่ยนเป็น `<span>`) — เป็นไฟล์ inventory ไม่ได้แตะ
+
+
+## 2026-08-05 — รีแบรนด์ ZEED321 → NEKOATK (สล็อตตรง, ชมพูมาเจนต้า + ส้มนีออน + ม่วงไฟฟ้า)
+
+### เป้าหมาย
+
+รีแบรนด์ + retheme ทั้งเว็บจาก ZEED321 เป็น **NEKOATK** พร้อมโดเมนจริง
+`http://nekoatk-new.com/` คำสั่งที่มากับรอบนี้คือ *"ทำแบบขนานตาม playbook —
+หยุดที่ build + verify เท่านั้น ห้าม deploy และห้าม git push"* จึงรันเป็น
+parallel subagent workflow ตาม `.claude/skills/rebrand-site/SKILL.md`
+และ **จบที่ build + verify ไม่ commit ไม่ push ไม่ deploy**
+
+### โหมดที่รัน — ขนาน 3 agent (P0 → P1 → P2 → P3)
+
+- **P0 (orchestrator)** — อ่าน `content.txt` + `palette.json` + รูปทั้งชุด,
+  เลือก variant ทุกตระกูล, แล้วเขียน "brand spec" ไฟล์เดียวไว้ที่
+  `%TEMP%\nekoatk-brand-spec.md` (ชื่อแบรนด์ · palette เป๊ะเป็น hex ·
+  ตารางแทนที่ hex เก่า→ใหม่ 3 ชุด · variant ที่เลือก · checklist หัวข้อ docx
+  พร้อมย่อหน้าเต็ม) — subagent ทุกตัวอ่านไฟล์นี้ **ห้ามแตะ docx เองและห้ามเลือก
+  variant เอง** กันไม่ให้สอง agent เลือกไม่ตรงกัน
+- **P1 (orchestrator, sequential ก่อน fan-out)** — retheme "chrome ที่ใช้ร่วม"
+  ให้เสร็จก่อน: `MainLayout.astro` + `NavbarStyle6` + `FooterStyle3` +
+  `Navfoot` + `BankStrip` + `ContentBox` + `ContentBoxPremium` +
+  `Announcement3` (สองตัวหลังเข้าเกณฑ์ "ถูก import จาก ≥2 หน้าใน src/pages")
+  นี่คือโซนที่ชนกันได้ ทำให้เสร็จก่อน fan-out จึงจะแบ่งงานแบบไม่ทับไฟล์ได้จริง
+- **P2 (fan-out 3 agent, ไฟล์ไม่ทับกันเลย)**
+  - **Agent A — Landing** — `src/pages/index.astro` + component ที่มีแต่
+    index render (ไล่แบบ recursive) ลบด้วยชุด P1 → 12 ไฟล์
+  - **Agent B — หน้าย่อยเนื้อหา** — `promotion` · `ทางเข้า` · `ทดลองเล่น` ·
+    `contact-us`
+  - **Agent C — หน้า standalone + หน้าถาวร** — `login` · `register` · `404` ·
+    `terms` · `privacy`
+  - แบ่ง B/C แบบนี้เพราะหน้าย่อยรอบนี้ **ไม่มี component ส่วนตัวเลย** (ทุกตัวที่
+    มันเรียกอยู่ในชุด P1 หมดแล้ว) งานจึงเป็น "เขียนหน้า" ล้วน — B ได้ 4 หน้า
+    เนื้อหาหนัก C ได้ 2 หน้า standalone ที่ต้องไล่ hex ใน `<style>` เอง + 3 หน้า
+    ที่ส่วนใหญ่เป็นการ *ตรวจ* ไม่ใช่แก้
+  - brief ของทุก agent ระบุชัด: รายชื่อไฟล์ที่ตัวเองเป็นเจ้าของ · รายชื่อ
+    "ห้ามแตะ" · variant ที่ไม่ได้ใช้คือ inventory ห้ามลบ · **ห้ามรัน
+    `npm run build`** (build เดียวอยู่ที่ orchestrator ตาม build cadence)
+- **P3 (orchestrator)** — build เดียว + verify + workspec + แก้ของที่เหลือใน
+  ชุด chrome ด้วยตัวเอง (ไม่ส่ง subagent กลับเข้าโซนที่ใช้ร่วม)
+
+### โดเมนจริง — แก้ครบทั้ง 3 ที่
+
+operator ให้ URL จริงมาในคำสั่ง จึงเข้าเงื่อนไข "ใส่โดเมนได้"
+
+| ไฟล์ | เดิม | ใหม่ |
+|---|---|---|
+| `astro.config.mjs` `site:` | `http://zeed321-main.com` | `http://nekoatk-new.com` |
+| `wrangler.toml` `name` | `zeed321` | `nekoatk` |
+| `public/site.webmanifest` | ZEED321 / `#ff2f28` / `#070102` | NEKOATK / `#fb0660` / `#0d0210` |
+
+`index.astro` ไม่มี schema literal ที่ hardcode โดเมน (ใช้ `pageGraph()` ซึ่ง
+derive จาก `site:` ให้เอง) จึงไม่มีที่ที่ 4 ให้แก้ · `robots.txt` มาจาก
+`src/pages/robots.txt.ts` ตามโดเมนเองอยู่แล้ว
+
+`name = "nekoatk"` ตรงกับที่ `verify-build.mjs` คำนวณ
+(`SITE.hostname.split(/[-.]/)[0]` ของ `nekoatk-new.com`) จึงผ่านเกท
+`account_id` **คงค่าเดิมตามกฎ** (เปลี่ยนต่อ *กลุ่ม* แบรนด์ ไม่ใช่ต่อแบรนด์)
+
+### palette ที่ใช้ (อ่านจาก logo.webp + banner1.png + palette.json)
+
+`palette.json` ชี้ชัดว่า logo เป็นส้ม `#fd841b` (share .139) คู่กับชมพูมาเจนต้า
+`#fb0660` (share .064) ส่วน banner1 dominant เป็นดำอมม่วง `#04000c`/`#13010c`
+เปิดรูปดูแล้วยืนยัน: ตัวอักษร NEKO ส้ม-ชมพู ตัดเส้นม่วง หัวแมวคาดหน้ากาก
+พื้นหลังนีออนม่วง-ชมพู → เป็นแบรนด์ **สองสีคู่ (ส้ม+ชมพู) บนพื้นดำอมม่วง**
+ไม่ใช่ทอง-หรูและไม่ใช่กรมท่า
+
+| บทบาท | hex |
+|---|---|
+| accent หลัก (มาเจนต้า) | `#fb0660` |
+| accent รอง (ส้มนีออน) | `#fd841b` |
+| ส้มอ่อน / ม่วงอ่อน | `#ffb457` / `#c77dff` |
+| ม่วงไฟฟ้า | `#8b3fd9` |
+| พื้นลึกสุด / พื้นการ์ด | `#0d0210` / `#1f0524` / `#2c0733` |
+| เส้นขอบม่วง | `#4a0e5c` |
+| ตัวอักษรเนื้อความ (`BRAND_TEXT`) | `#f6dfec` |
+| ตัวอักษรจาง / จางมาก | `#c8a3bd` / `#a37f9a` |
+
+gradient หัวข้อมาตรฐาน: `from-[#ffb457] via-[#fd841b] to-[#fb0660]`
+คงสีเชิงความหมายไว้: LINE เขียว `#00B900` · สีจริงของโลโก้ธนาคาร · จุด live เขียว
+
+**มี palette เก่าถึง 3 ชุดในอินเวนทอรีที่ต้องแมป** ไม่ใช่ชุดเดียว — ZEED321
+(แดง-ทอง) ในชุด chrome, KUMI99 (ม่วง-ทอง) ในตระกูล Premium/Neumorphism/
+FooterStyle3/Faq4, PRODED888 (กรมท่า-ทอง) ใน NavbarStyle6/Announcement3
+จึงต้องเขียนตารางแทนที่แยก 3 ชุดใส่ brand spec ไว้ตั้งแต่ P0
+
+### การหมุน variant (before → after) — สำหรับรอบถัดไปห้ามใช้ตัวขวาซ้ำ
+
+| ตระกูล | ZEED321 (ออก) | NEKOATK (รอบนี้) |
+|---|---|---|
+| Navbar | `NavbarStyle4` | **`NavbarStyle6`** (แถบไอคอนแนวตั้งซ้าย + drawer มือถือ) |
+| Footer | `FooterCyber` | **`FooterStyle3`** (การ์ด CTA ลอยคร่อมขอบบน) |
+| Announcement | `AnnouncementCyber` | **`Announcement3`** (ticker วงกลมโป่งซ้าย) |
+| LatestWinners | `LatestWinnersCyber` | **`LatestWinners3`** |
+| Faq | `Faq2` | **`Faq4`** (คำถามเป็น `<span>` → h3 = 0) |
+| ProviderGrid | `ProviderGridPremium` | **`ProviderGrid`** (ตัว plain) |
+| ContentBoxTwo ใน `LoginRtpSection` | `ContentBoxTwoCyberCut` | **`ContentBoxTwoPremium`** |
+| ContentBox mix | CyberCut + FloatingBadge + Special | **Premium ×2 + Neumorphism ×2 + plain ×1 + SevenThreePremium ×1 + SevenThreeNeumorphism ×1** |
+| `BRAND_FONT` | `google-sans` | **`kanit`** |
+
+ไม่มีตระกูลไหนที่ต้องใช้ variant เดิมซ้ำ — เปลี่ยนครบทุกตัว
+
+`Faq4` เลือกเพราะ render คำถามเป็น `<span>` ไม่ใช่ `<h3>` ซึ่งตรงกับ docx รอบนี้
+ที่เป็น **H1+H2 ล้วน ไม่มีหัวข้อย่อย** (ถ้าใช้ `Faq3`/`FaqHuay` จะได้ h3 ×5 ทันที)
+
+### แผนที่เนื้อหา docx → slot (7 หัวข้อ เรียงตาม document order เป๊ะ)
+
+| # | หัวข้อ docx | component |
+|---|---|---|
+| 1 | H1 สล็อตตรงไม่ผ่านเอเย่นต์ แตกง่าย จ่ายจริงทุกยอดบิล | `ContentBoxPremium as="h1"` |
+| 2 | H2 API แท้ร้อยเปอร์เซ็นต์ ลื่นไหลไม่มีสะดุด | `ContentBoxNeumorphism as="h2"` |
+| 3 | H2 การันตีสล็อตแตกง่าย โบนัสเข้าบ่อย | `ContentBoxSevenThreeNeumorphism` + **slide4** |
+| 4 | H2 จัดเต็มโปรแรงแจกทุนฟรีทุกวัน | `ContentBoxSevenThreePremium` + **slide1** |
+| 5 | H2 บวกหลักล้านก็จ่ายจริง ถอนไวผ่านออโต้ | `ContentBox as="h2"` (plain) |
+| 6 | H2 เหตุผลที่เป็นสล็อตตรงเบอร์หนึ่ง | `ContentBoxNeumorphism as="h2"` |
+| 7 | H2 ท้าพิสูจน์ความรวย สมัครทันที | `ContentBoxPremium as="h2"` |
+
+widget ที่ไม่ได้มาจาก docx แทรกไว้ "ต่อท้ายหัวข้อที่มันสังกัด" ไม่ใช่ตามลำดับ
+ไฟล์เดิม: `ProviderGrid` ต่อจาก #2 (ค่ายลิขสิทธิ์) · `GameRankingBoard` ต่อจาก
+#3 (RTP สูง) · `SmoothCarousel` ต่อจาก #4 (โปรโมชั่น) · `LatestWinners3`
+ต่อจาก #5 (ถอนจริง) · `ReviewCardSumo2` ต่อจาก #6 (ปากต่อปาก) · ปุ่ม
+login/register + `LoginRtpSection` + `Faq4` + `Navfoot` ปิดท้าย
+
+**SevenThree ใช้ 2 บล็อกพอดีตามเพดาน** และส่งแต่ `titleright` ไม่ส่ง `titleleft`
+(ถ้าส่งจะได้ `<h2>` เกินมาอีกตัวต่อบล็อก)
+
+**slide ที่ใช้ / ไม่ใช้**: ใช้ `slide1` (สมาชิกใหม่รับ 100%) กับ `slide4`
+(คืนยอดเสีย 5% ทุกวันอาทิตย์) เป็นภาพ SevenThree · **`slide2` (คืนค่าคอม 0.5%)
+และ `slide3` (แนะนำเพื่อน 0.8%) ไม่ได้ใช้เป็นภาพ section** เพราะไม่มีหัวข้อ docx
+ที่ตรง — ยังขึ้นใน `SmoothCarousel` และหน้า `/promotion` ตามปกติ
+
+**ไม่ใช้ `banner2/3/4` เลย**: ตรวจ mtime แล้วทั้งสามลงวันที่ 2026-08-04 คือของ
+ดรอปแบรนด์ก่อน ส่วน `banner1`/`logo`/`slide1-4`/`og` เป็น 2026-08-05 ของรอบนี้
+ตามกฎ "ใช้เฉพาะ banner2+ ที่มาพร้อมดรอปปัจจุบัน" จึงข้ามทั้งชุด
+(ไม่มี `banner1-mobile.*` รอบนี้ ซึ่งถูกต้อง — uploader ลบให้ตอนอัป banner1 ใหม่)
+
+### ไฟล์ที่แก้
+
+**config / แบรนด์ระดับรีโป (orchestrator)**
+- `src/lib/brandProfile.ts` — `BRAND_NAME` → NEKOATK · `BRAND_FONT` → kanit ·
+  `BRAND_TEXT` → `#f6dfec` (สามบรรทัด ไม่แตะ `ADDRESS_OWNER`/`ADDRESS_LINES`
+  ที่เว้นว่างไว้ ที่อยู่จึง derive จาก `BRAND_NAME` เองตามกฎ)
+- `astro.config.mjs` · `wrangler.toml` · `public/site.webmanifest`
+
+**chrome ที่ใช้ร่วม (P1, orchestrator)**
+- `src/layouts/MainLayout.astro` — ชี้ Navbar/Footer ไป `NavbarStyle6`/
+  `FooterStyle3` · title/description default · `apple-mobile-web-app-title`
+  → `nekoatk` · `background-color` → `#0d0210` · alt ของ hero เขียนใหม่ตามภาพจริง
+- `src/components/NavbarStyle6.astro` — retheme + ชื่อแบรนด์ + **ยุบเมนูที่เดิม
+  เขียนซ้ำ 3 ชุด (rail เดสก์ท็อป / drawer มือถือ) ให้เหลือ `links` const เดียว**
+  ทุกไอเทมมีไอคอนใน `<span aria-hidden="true">` แยกจาก label · ใช้
+  `isActivePath` จาก `src/lib/nav` ตามเดิม · เพิ่ม `prefers-reduced-motion`
+  ให้อนิเมชัน sidebar
+- `src/components/FooterStyle3.astro` — retheme + ชื่อแบรนด์ + **ตัดลิงก์
+  `/about-us` ออกจาก quickLinks** (หน้าถูก park รอบนี้ ถ้าไม่ตัด = ลิงก์ตาย = build แดง)
+- `src/components/Navfoot.astro` · `ContentBox.astro` · `ContentBoxPremium.astro` ·
+  `Announcement3.astro` (default message เป็นของ NEKOATK และ **ไม่ขึ้นต้นด้วย
+  emoji** เพราะ marquee render ข้อความซ้ำสองรอบ) · `BankStrip.astro` ตรวจแล้ว
+  ไม่มีสีแบรนด์ ไม่ต้องแก้
+
+**หน้าแรก + component เฉพาะหน้าแรก (Agent A — 12 ไฟล์)**
+`index.astro` · `ContentBoxNeumorphism` · `ContentBoxSevenThreePremium` ·
+`ContentBoxSevenThreeNeumorphism` · `ContentBoxTwoPremium` · `LoginRtpSection`
+(ชี้ import ไป `ContentBoxTwoPremium`) · `ProviderGrid` · `GameRankingBoard` ·
+`ReviewCardSumo2` · `LatestWinners3` · `SmoothCarousel` · `Faq4`
+
+**หน้าย่อยเนื้อหา (Agent B)**
+`promotion.astro` · `ทางเข้า.astro` · `ทดลองเล่น.astro` · `contact-us.astro`
+— ทั้งสี่หน้าย้าย import จาก `AnnouncementCyber` → `Announcement3`
+
+**หน้า standalone + หน้าถาวร (Agent C)**
+`login.astro` · `register.astro` แก้จริง (retheme ใน `<style>` + เปลี่ยนชื่อ
+ตัวแปร CSS ที่ชื่อโกหกหลังเปลี่ยนค่า) · `404.astro` / `terms.astro` /
+`privacy.astro` **ตรวจแล้วไม่ต้องแก้เลย** — brand-neutral จริงตามที่ออกแบบไว้
+
+**หน้าที่ park**
+`src/pages/about-us.astro` → `src/pages-disabled/about-us.astro` (git mv)
+
+### เรื่องที่เจอ / ตัดสินใจ
+
+**1. `fetchpriority="high"` งอกเป็น 3 อันในหน้าแรก (บั๊กจริง แก้แล้ว)**
+`NavbarStyle6` ที่หมุนเข้ามาใส่ `loading="eager" fetchpriority="high"` ไว้ที่
+โลโก้ **ทั้งสองตัว** (เดสก์ท็อป + มือถือ) ผลคือโลโก้สองอันแย่ง priority สูงสุด
+กับ hero banner ซึ่งเป็น LCP element ตรงๆ — grep `dist/index.html` เจอ 3 อัน
+ทั้งที่รอบก่อนมี 1 แก้โดย **ถอด `fetchpriority="high"` ออกจากโลโก้ทั้งคู่ คง
+`loading="eager"` ไว้** (โลโก้อยู่เหนือ fold จริง ไม่ควร lazy แต่ไม่ควรแย่ง
+priority กับ LCP) build ซ้ำแล้วเหลือ 1 อันคือ banner1 ตัวเดียว
+เป็นไฟล์ในชุด P1 จึงแก้เองที่ P3 ตามกฎ ไม่ส่ง subagent กลับเข้าโซนที่ใช้ร่วม
+
+**2. `about-us.astro` — ตัดสินใจ *ตรงข้าม* กับรอบ ZEED321 โดยตั้งใจ**
+รอบ ZEED321 บันทึกไว้ว่า "ไม่มีสัญญาณให้ปิด → ถือเป็นเปิดไว้โดยตั้งใจ" แล้ว
+เขียนบทความใหม่ให้ ซึ่งกลับด้านกับกฎใน playbook ที่ระบุว่า *หน้า preset ที่มี
+เนื้อหาจริงอยู่แล้วและ operator ไม่ได้ toggle ขอมาในรอบนี้ = หน้าของแบรนด์ก่อน
+ต้อง park* รอบนี้ตรวจแล้ว **ไม่มี `TODO(rebrand)` placeholder** แปลว่าไม่ได้ถูก
+scaffold ใหม่จาก ส่วนที่ 5 ของ uploader → เข้าเงื่อนไข "หน้าของแบรนด์ก่อน"
+จึง **ย้ายไป `src/pages-disabled/` (git mv ไม่ลบ) และตัดลิงก์ใน footer ออก**
+ถ้า operator ต้องการหน้านี้จริง กด toggle ใน ส่วนที่ 5 ครั้งเดียวมันจะย้ายกลับมา
+(`createPage()` มองใน `pages-disabled/` ก่อน scaffold) **แต่ต้องเติมลิงก์
+`{ name: "เกี่ยวกับเรา", path: "/about-us" }` กลับเข้า `NavbarStyle6`/
+`FooterStyle3` ด้วย** เพราะ uploader เติมได้เฉพาะ navbar ที่เป็นรูปแบบ
+`[ {…path…} ].map(` — `FooterStyle3` ใช้ `quickLinks` const แยก มันจะไม่เห็น
+เหตุผลที่เลือกทำตาม playbook: ถ้าไม่ park หน้านี้จะ ship ต่อเนื่องทุกแบรนด์
+โดยไม่มีใครเคยตัดสินใจสักรอบ (ผ่านมาแล้ว 3 แบรนด์: BETKUB77 → KUMI99 → ZEED321)
+
+**3. `LatestWinners3` มี palette ของแบรนด์ที่ *สี่* ค้างอยู่**
+ไม่ใช่ ZEED321 และไม่ใช่ KUMI99 แต่เป็นชมพู `#ff3d9a` / `#16050f` / ฟ้า
+`#22d3ee` ของ TUNGMA168 พร้อมชื่อแบรนด์นั้นใน 2 string ที่มองเห็นได้ — เตือน
+ว่า inventory ไม่ได้ค้างอยู่แค่ palette เดียว ตอน retheme ต้อง grep hex จริง
+ในไฟล์ ไม่ใช่แค่ไล่ตามตารางของแบรนด์ก่อนหน้าตัวเดียว
+
+**4. `promotion.astro` เคยระบุเงื่อนไขที่ไม่มีอยู่บนภาพ**
+หน้าเดิมเขียน "เทิร์น 10 เท่า / ถอนสูงสุด 1,000" ซึ่งเป็นตัวเลขของ ZEED321
+เปิดดู `slide1-4` ของรอบนี้แล้ว **ไม่มีแบนเนอร์ไหนพิมพ์ตัวเลขเทิร์นหรือเพดานถอน
+เลย** มีแต่ headline ของโปร จึงเขียนบทความใหม่รอบ "โปรแต่ละตัวคำนวณจากอะไร"
+(ยอดฝากแรก / ยอดเทิร์น / ยอดเพื่อน / ยอดเสียสุทธิรายสัปดาห์) แทนการยกตัวเลข
+ของแบรนด์ก่อนมาใช้ต่อ หรือแต่งตัวเลขใหม่ขึ้นมาเอง
+
+**5. ตัวแปร CSS ใน `login`/`register` ที่ชื่อโกหกหลังเปลี่ยนค่า**
+`--brand-gold` / `--brand-gold-deep` / `--accent-red` พอใส่ค่าใหม่แล้วชื่อไม่ตรง
+กับสีทันที เปลี่ยนชื่อเป็น `--brand-orange` / `--brand-magenta` /
+`--accent-violet` พร้อม call site ทั้งหมด · ตัว `--accent-*` ให้ค่าเป็นม่วง
+`#8b3fd9` (จาก palette section 2) ไม่ใช่มาเจนต้าตามตารางตรงๆ เพราะจะทำให้สอง
+ตัวแปรถือค่าเดียวกันคนละชื่อ แล้ววงแหวน loader สองวงจะกลืนกันหายไป
+
+**6. หน้าหวยและหน้า preset — ตรวจ ไม่ใช่เดา**
+`ตรวจหวย.astro` / `แนวทาง.astro` อยู่ใน `src/pages-disabled/` อยู่ก่อนแล้ว และ
+grep `ตรวจหวย|แนวทาง` ทั้ง `src/**/*.astro` เจอเฉพาะในสองไฟล์นั้นเอง —
+`NavbarStyle6`/`FooterStyle3` ที่หมุนเข้ามาไม่มีลิงก์ไปหน้าทั้งสอง NEKOATK เป็น
+แบรนด์สล็อตจึงถูกต้องแล้ว ไม่ต้องทำอะไรเพิ่ม · ไม่มี `บทความ.astro` ในรีโป
+
+### การ verify ที่ทำจริง
+
+- **`npm run build` รอบเดียวตาม build cadence** (แล้ว build ซ้ำอีกรอบเดียว
+  หลังแก้บั๊ก `fetchpriority` ตามที่ playbook อนุญาต) → **11 หน้าใน dist/,
+  `tools/verify-build.mjs` 0 error 0 warning ทั้งสองรอบ**
+- **route ที่ build ออกมา**: `/` `/contact-us` `/privacy` `/promotion` `/terms`
+  `/ทดลองเล่น` `/ทางเข้า` `/404` `/login` `/register` `/line` `/robots.txt`
+  — **ไม่มี `/ตรวจหวย` `/แนวทาง`** (ถูกต้องสำหรับแบรนด์สล็อต) และ
+  **ไม่มี `/about-us`** (park แล้ว)
+- **heading inventory diff กับ checklist ของ docx — ตรงทั้งสองทาง**
+  `dist/index.html` = **h1 ×1 · h2 ×7 · h3 ×0** โดย h2 หกตัวแรกคือหัวข้อ docx
+  ข้อ 2–7 **เรียงตรงลำดับ document order และข้อความตรงเป๊ะทุกตัว** ตัวที่ 7
+  คือหัวข้อ FAQ ที่หน้านี้เขียนเอง — **ไม่มีหัวข้อ docx หาย และไม่มีหัวข้อแปลก
+  ปลอมจาก chrome หลุดเข้ามา** (widget ทุกตัวใช้ `<p>` + `aria-label` บน
+  `<section>` ตามเดิม)
+- **หน้าย่อย**: contact-us h1×1 **h2×0** (หน้าปุ่ม ไม่ใช่บทความ ถูกต้อง) ·
+  promotion h1×1 h2×3 · ทางเข้า h1×1 h2×2 · ทดลองเล่น h1×1 h2×3 ·
+  terms h1×1 h2×6 · privacy h1×1 h2×6 · **h3 = 0 ทุกหน้า** ตรงกับ docx ที่เป็น
+  H1+H2 ล้วน
+- **ชื่อแบรนด์เก่า 23 ตัวใน `dist/` ทั้งโฟลเดอร์** (zeed321 · kumi99 ·
+  proded888 · sumoheng · betkub · miracle55 · ตังค์มา168 · tungma · hengjud ·
+  grow268 · ufag8 · sudyod · cashot · winup888 · zoro365 · 999lord · mahoran ·
+  lapdee · pay69 · ufayes …) → **0 hit** (ไล่ทั้ง .html .css .js .xml .txt)
+- **hex ของแบรนด์เก่า 31 ค่า** (ชุด ZEED321 + KUMI99 + PRODED888 + TUNGMA168)
+  ใน `dist/` ทั้งโฟลเดอร์ → **0 hit** — รอบนี้สะอาดกว่ารอบก่อนๆ เพราะ
+  `_sources.generated.css` ตัด inventory 64 ไฟล์ออกจาก Tailwind แล้ว
+  (18 live / 64 excluded) hex เก่าจึงไม่ถูก gen เป็น dead CSS ติดมาด้วยซ้ำ
+- คลาส Tailwind สีเก่า (`red-/amber-/emerald-/indigo-/sky-/rose-` + เลข) ใน
+  attribute `class="..."` ทุกหน้า → **0 hit**
+- **`_sources.generated.css` สลับข้างถูกต้อง**: 18 ตัวที่ live คือชุดที่หมุน
+  เข้ามารอบนี้เป๊ะ และตัวที่หมุนออก (`NavbarStyle4` `FooterCyber`
+  `AnnouncementCyber` `LatestWinnersCyber` `Faq2` `ProviderGridPremium`
+  `ContentBoxCyberCut` `ContentBoxFloatingBadge` `ContentBoxSpecial`
+  `ContentBoxTwoCyberCut`) ติด `@source not` ครบทุกตัว · stylesheet 82.9 kB
+- ตรวจว่า arbitrary value ที่ประกอบจาก template literal ใน `promotion.astro`
+  ยัง gen จริง: `from-\[\#ffb457\]` `via-\[\#fd841b\]` `to-\[\#fb0660\]`
+  `to-\[\#8b3fd9\]` ฯลฯ **มีครบใน stylesheet** (ตอนเช็กต้องหาแบบ escape
+  ของ Tailwind ไม่ใช่ตัวดิบ ไม่งั้นจะสรุปผิดว่าหาย)
+- **`fetchpriority="high"` ใน `index.html` = 1 อัน** คือ `banner1` เท่านั้น
+  (หลังแก้บั๊กข้อ 1)
+- รูปที่ `index.html` อ้าง: `banner1` `logo` `bg` `og` `slide1-4` `game1-6` +
+  โลโก้ธนาคาร — **ไม่มี `banner2/3/4` หรือ `banner.png` ที่ไหนใน `dist/` เลย**
+- `og:image` = `http://nekoatk-new.com/_astro/og.CIGMOBzn_17yNqL.jpeg`
+  (ไฟล์ hash ของ `og.png` รอบนี้ ไม่ใช่ path ดิบใน `public/`)
+- canonical: **8 หน้าบน `nekoatk-new.com`** (อีก 1 คือ tinyurl ของ redirect `/line`)
+  · `robots.txt` gen จากโดเมนใหม่ พร้อม `Sitemap: http://nekoatk-new.com/sitemap-index.xml`
+- **meta description นับเป็น *ตัวอักษร* ไม่ใช่ไบต์**: index 151 · contact-us 158
+  · promotion 159 · ทดลองเล่น 156 · privacy 156 · terms 154 · ทางเข้า 151 ·
+  login 155 · register 152 — **ทุกหน้า indexable อยู่ในช่วง 150–160**
+  (404 = 127 แต่เป็น noindex ซึ่ง verify-build ไม่ตรวจความยาว และเป็นแบบนี้มาก่อนแล้ว)
+- `<!--` ใน `index.html` = **0** · `undefined` = 0 · `[object Object]` = 0
+- FAQ: `<details>` 5 / `<summary>` 5 ตรงกับ `faqs` 5 ข้อ (Faq4 ใช้
+  `<details name="faq-terminal">` เปิดได้ทีละอัน ไม่มี script)
+- `<address>` บน `/contact-us` = "ศูนย์บริการสมาชิก NEKOATK / อำเภอเมืองยโสธร
+  จังหวัดยโสธร 35000" — derive จาก `BRAND_NAME` ตามกลไกเดิม ไม่ได้เขียนมือ
+  ไม่อยู่ใน JSON-LD และไม่อยู่หน้าอื่น
+- **ไม่มี FloatingBadge ตัวไหน live รอบนี้** จึงไม่ต้องตรวจ clearance ของ badge
+  ที่ความกว้างมือถือ (ตระกูลนั้นหมุนออกไปเป็น inventory หมดแล้ว)
+- `git status`: **ไม่มีไฟล์ไหนถูกลบเลย** มีแต่ M กับ R เดียว
+  (`about-us.astro` → `pages-disabled/`) · component บนดิสก์ครบ 82 ไฟล์เท่าเดิม
+- **ไม่ได้เปิด dev server** — ตรวจกับ `dist/` โดยตรงซึ่งคือของที่ ship จริง
+  (build เป็น static ล้วน ผลเหมือนกันและไม่ทิ้ง process ค้าง)
+  หมายเหตุ: ตอน grep `dist/` ต้องอ่านไฟล์เป็น UTF-8 ผ่าน .NET
+  (`[System.IO.File]::ReadAllText`) — `Get-Content` ของ Windows PowerShell 5.1
+  อ่านเป็น ANSI แล้วภาษาไทยจะเพี้ยนจนเทียบสตริงไม่ได้
+
+### นอกสโคป / ไม่ได้แตะ
+
+- **ไม่ deploy ไม่ `git commit` ไม่ `git push`** ตามคำสั่งที่มากับรอบนี้ —
+  หยุดที่ build + verify
+- `wrangler.toml` `account_id` — คงค่าเดิมตามกฎ (เปลี่ยนต่อ *กลุ่ม* แบรนด์
+  และต้องเปลี่ยนผ่านปุ่ม "สลับบัญชี" ของ uploader เท่านั้น ไม่แก้มือ)
+- โครง `<head>` ของ `MainLayout` ไม่จัดเรียงใหม่ ไม่เพิ่ม
+  `google-site-verification` · `?v=` ของไอคอนคงไว้
+- `404.astro` / `terms.astro` / `privacy.astro` — **ตรวจแล้วไม่ต้องแก้**
+  ไม่มีชื่อแบรนด์ hardcode (ใช้ `${BRAND_NAME}`) ไม่มี hex ไม่มีคลาสสีในย่อหน้า
+  และ terms/privacy ยังใช้ `ContentBox.astro` ตัวถาวร ไม่ใช่ variant ที่หมุนรอบนี้
+  · `privacy.astro` ยังบรรยายตรงกับของจริง (static, ไม่มี analytics/pixel/
+  cookie banner/form ที่ post กลับ)
+- `login.astro` / `register.astro` — `define:vars` + meta-refresh + affiliate
+  link เดิมไม่ถูกแตะ (เป็น noindex stub ที่ได้รับการยกเว้นตาม playbook)
+  · ยัง derive ฟอนต์จาก `brandProfile` ไม่ hardcode
+- `src/pages-disabled/ตรวจหวย.astro` · `แนวทาง.astro` · `about-us.astro` —
+  ยังเป็นธีม/ชื่อแบรนด์เดิม เป็น inventory ไม่ได้แตะ
+- variant ที่หลุดจาก live รอบนี้ (`NavbarStyle4` `FooterCyber`
+  `AnnouncementCyber` `LatestWinnersCyber` `Faq2` `ProviderGridPremium`
+  `ContentBoxCyberCut` `ContentBoxFloatingBadge` `ContentBoxSpecial`
+  `ContentBoxSevenThreeCyberCut` `ContentBoxSevenThreeFloatingBadge`
+  `ContentBoxTwoCyberCut`) — **ไม่ลบ ไม่ retheme** ยังเป็นชื่อ/สี ZEED321
+  ตามกฎ inventory
+- ไฟล์รูปตายใน `src/assets` (`banner.png` 2.2 MB · `banner2/3/4.png`) —
+  ไม่ได้ลบ แต่ไม่มีโค้ดไหน import แล้วจึงไม่ขึ้น `dist/`
+- `slide2.png` / `slide3.png` ไม่ได้ใช้เป็นภาพ SevenThree (ยังอยู่ใน
+  `SmoothCarousel` + `/promotion`) เพราะเพดาน SevenThree 2 บล็อกต่อรอบ
+
+### ⚠️ ก่อน deploy ต้องยืนยันเรื่องเดียว
+
+`wrangler.toml` `name = "nekoatk"` มาจากการอนุมานจากโดเมน (และตรงกับที่
+`verify-build.mjs` คาด) **แต่ยังไม่ได้ยืนยันว่า `nekoatk-new.com` เคยถูก park
+ด้วย `tools/domain-placeholder/` ไว้หรือยัง** — ถ้าเคย park ชื่อ Worker ต้องตรง
+กับตัวที่ park ไว้เป๊ะ ไม่งั้นจะได้ Worker ตัวที่สองขณะที่โดเมนยังเสิร์ฟหน้า
+"Coming soon" อยู่ โดยไม่มี error ที่ไหนเลย เช็กด้วย
+`npx wrangler deployments list --name nekoatk` ก่อน deploy ครั้งแรก
+(ไม่มีร่องรอยชื่อ `nekoatk` ในรีโปเลย และไม่ชนกับแบรนด์เก่าตัวไหน)
