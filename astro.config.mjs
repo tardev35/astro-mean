@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "http://nekoatk-new.com",
+  site: "http://9ufa-new.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

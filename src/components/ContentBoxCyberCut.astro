@@ -9,17 +9,17 @@ const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:t
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#ff2f28]/30 bg-[#170506]/92 p-8 text-left text-base leading-relaxed text-[#f3dede] shadow-[0_10px_30px_rgba(255,47,40,0.16)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#0a5df1]/25 bg-white/85 p-8 text-left text-base leading-relaxed text-[#0b3a63] shadow-[0_10px_30px_rgba(10,93,241,0.15)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#ff2f28] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#f5c542] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#ff2f28] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#f5c542] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#0a5df1] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#01cbf6] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#0a5df1] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#01cbf6] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#ff2f28] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] bg-clip-text ${headingSize} leading-normal font-black text-transparent uppercase`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#0a5df1] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#0743a8] via-[#0a5df1] to-[#01cbf6] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

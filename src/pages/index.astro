@@ -1,66 +1,71 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement3.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import ContentBox from "../components/ContentBox.astro";
 import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
+import ProviderGrid from "../components/ProviderGridPremium.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinners3.astro";
+import LatestWinners from "../components/LatestWinners4.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq4.astro";
+import Faq from "../components/Faq.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgCashback from "../assets/slide4.png";
-import imgWelcomeBonus from "../assets/slide1.png";
+import imgLuckySpin from "../assets/slide2.png";
+import imgWeekendBonus from "../assets/slide3.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1"
-//   2 → ContentBoxNeumorphism as="h2"
-//   3 → ContentBoxSevenThreeNeumorphism + slide4 (คืนยอดเสีย 5% ทุกวันอาทิตย์)
-//   4 → ContentBoxSevenThreePremium + slide1 (สมาชิกใหม่ รับโบนัส 100%)
-//   5 → ContentBox (plain) as="h2"
-//   6 → ContentBoxNeumorphism as="h2"
-//   7 → ContentBoxPremium as="h2"
-// SevenThree ส่งเฉพาะ titleright เท่านั้น ถ้าส่ง titleleft ด้วยจะได้ h2 เกินมาอีกตัว
+//   1 → ContentBoxFloatingBadge as="h1"
+//   2 → ContentBoxSevenThreeCyberCut + slide2 (ลัคกี้สปิน วงล้อมหาโชค ลุ้น iPhone)
+//   3 → ContentBox as="h2"
+//   4 → ContentBoxSevenThree + slide3 (ศุกร์ฝาก 100 รับ 99 / เสาร์ฝาก 100 รับ 199)
+//   5 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวของ docx แบ่งเป็นสองครึ่งแบบคำต่อคำ
+//        ไม่ตัดคำใดออกและไม่สลับลำดับ)
+//   6 → ContentBoxPremium as="h2"
+//   7 → ContentBoxCyberCut as="h2"
+// SevenThree ใช้ 2 บล็อกเท่านั้น (โควตาเต็ม) และส่งเฉพาะ titleright
+// ถ้าส่ง titleleft ด้วยจะได้ h2 เกินมาอีกตัว
+// slide1/slide4 ไม่ได้ใช้ในกล่องเนื้อหา ขึ้นเฉพาะใน SmoothCarousel
 // widget ที่ไม่ได้มาจาก docx ใช้หัวข้อเป็น <p> + aria-label บน <section> จึงแทรก
 // ระหว่างกล่องได้โดยลำดับ H2 ไม่เพี้ยน (LoginRtpSection ก็เป็น <p> เช่นกัน)
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7, h3 = 0
 
-const pageTitle = "NEKOATK สล็อตตรงโปรแรง API แท้ ไม่ผ่านเอเย่นต์ แตกง่าย จ่ายจริง";
+const pageTitle = "9UFA เว็บสล็อตยอดนิยม แจกโหด สมัครใหม่รับเครดิตฟรี 199 ไม่ต้องแชร์";
 
 const pageDescription =
-  "NEKOATK สล็อตตรงไม่ผ่านเอเย่นต์ นำเข้าเกม API แท้ร้อยเปอร์เซ็นต์ การันตีสล็อตแตกง่ายกว่าที่เคยสัมผัส จัดเต็มโปรแรงแจกทุนฟรีทุกวัน บวกหลักล้านก็จ่ายจริง";
+  "9UFA รวมค่ายเว็บสล็อตยอดนิยม แจกโหดสะเทือนวงการ! แค่สมัครสมาชิกใหม่ก็รับทุนเล่นฟรี 199 ทันที ไม่ต้องแชร์ ไม่ต้องทำเทิร์นสูง ระบบออโต้ลื่นไหลไม่มีสะดุด ถอนไว";
 
 const announcementMessage =
-  "NEKOATK สล็อตตรงไม่ผ่านเอเย่นต์ ส่งตรงจากเซิร์ฟเวอร์หลัก ไม่ล็อคยูส ไม่ปรับเรทชนะ • นำเข้าเกมผ่าน API ลิขสิทธิ์แท้ร้อยเปอร์เซ็นต์ โหลดไว ไม่กินเน็ตมือถือ • คัดเฉพาะเกมฮิตติดชาร์ต RTP สูงปรี๊ด โบนัสไทม์แตกบ่อยจนน่าตกใจ • แจกเครดิตฟรีและโปรแรงทุกวัน เทิร์นโอเวอร์ต่ำ ไม่จุกจิก • ถอนไวผ่านระบบออโต้ จ่ายเต็มทุกบิล ไม่มีอั้นยอดถอนต่อวัน";
+  "9UFA เว็บสล็อตยอดนิยม รวมค่ายเกมชั้นนำระดับโลกไว้ในกระเป๋าเดียว ดึงสัญญาณตรงผ่าน API ลิขสิทธิ์แท้ ไม่ผ่านคนกลาง • สมัครสมาชิกใหม่รับทุนเล่นฟรี 199 บาททันที ไม่ต้องแชร์ ไม่ต้องส่งหลักฐาน • กติกาทำเทิร์นต่ำมาก กดถอนเข้าบัญชีได้เลย ไม่มีกั๊ก ไม่มีอั้นยอดถอน • ระบบออโต้เต็มรูปแบบ สมัครเองหน้าเว็บไม่ถึง 1 นาที • เซิร์ฟเวอร์รองรับคนออนไลน์หลักแสนคน ลื่นไหลไม่มีสะดุด";
 
 const faqs = [
   {
-    q: "NEKOATK เป็นสล็อตเว็บตรงไม่ผ่านเอเย่นต์จริงไหม",
-    a: "จริงทุกตัวอักษร เราเปิดให้บริการส่งตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านคนกลางใดๆ ทั้งสิ้น คุณจึงไม่ต้องเจอภาพจำเว็บเอเย่นต์ที่ชอบล็อคยูสหรือปรับเรทชนะอีกต่อไป ทุกการสปินมีความยุติธรรมสูงสุด แตกเท่าไหร่ NEKOATK ก็พร้อมจ่ายเต็มจำนวน ไม่มีหักเปอร์เซ็นต์",
+    q: "สมัครสมาชิกใหม่กับ 9UFA แล้วรับทุนเล่นฟรี 199 บาทยังไง",
+    a: "เราเตรียมเครดิตฟรีมูลค่า 199 บาทไว้ต้อนรับสมาชิกใหม่ทุกคนทันทีที่สมัครเสร็จ เงินก้อนนี้ไม่ใช่แค่ตัวเลขหลอกๆ แต่เป็นทุนที่คุณนำไปหมุนสล็อตค่ายไหน เกมอะไรก็ได้บนเว็บของเรา ถือเป็นตัวช่วยชั้นดีที่ทำให้มีโอกาสปั้นยอดจากหลักร้อยให้กลายเป็นหลักหมื่นโดยไม่ต้องควักทุนตัวเอง",
   },
   {
-    q: "เกมใน NEKOATK นำเข้าผ่าน API ลิขสิทธิ์แท้หรือเปล่า",
-    a: "เราดึงสัญญาณภาพและระบบเกมผ่าน API ลิขสิทธิ์แท้จากค่ายผู้พัฒนาโดยตรง ตัวเกมจึงมีความเสถียรขั้นสุด โหลดไว ไม่กินเน็ตมือถือ และไม่มีการแทรกแซงจากหลังบ้านร้อยเปอร์เซ็นต์ ปัญหาเกมค้างตอนฟรีสปินเข้าหรือภาพกระตุกจนเสียอารมณ์จะหมดไป",
+    q: "รับโบนัสของ 9UFA ต้องแคปรูปแชร์ลงกลุ่มหรือส่งต่อให้เพื่อนไหม",
+    a: "ไม่ต้องเลยแม้แต่ขั้นตอนเดียว เราตัดเงื่อนไขจุกจิกอย่างการแคปรูปลงกลุ่มเฟซบุ๊กหรือส่งต่อให้เพื่อนในไลน์ทิ้งไปทั้งหมด แค่คุณสมัครและยืนยันตัวตนผ่านระบบสำเร็จ โบนัสก็พร้อมปรับเข้ากระเป๋าเครดิตให้ทันที ไม่ต้องทักแชทยืนยัน ไม่ต้องส่งหลักฐานการทำกิจกรรมให้เสียความเป็นส่วนตัว",
   },
   {
-    q: "สล็อตของ NEKOATK แตกง่ายจริงไหม เลือกเกมยังไงให้เข้ามือ",
-    a: "เราคัดมาเฉพาะเกมฮิตติดชาร์ตที่มีค่า RTP สูงปรี๊ด โบนัสไทม์จึงแตกบ่อยจนน่าตกใจ ไม่ต้องซื้อฟรีสปินแพงๆ ก็มีโอกาสจับเงินก้อนโตได้ง่ายๆ แค่เดินเบทให้ถูกจังหวะ ทั้งนี้ควรเปิดดูเดิมพันเริ่มต้นและฟีเจอร์โบนัสจากหน้าเกมจริงก่อนกดสปินทุกครั้ง",
+    q: "เงื่อนไขการถอนเงินของ 9UFA ต้องทำเทิร์นสูงเหมือนที่อื่นหรือเปล่า",
+    a: "เราตั้งกติกาการทำเทิร์นไว้ต่ำมาก ไม่ได้ผูกยอดเทิร์นโอเวอร์หฤโหด 20-30 เท่าแบบที่หลายคนเคยเจอ แค่เล่นให้ได้ยอดตามที่กำหนดนิดหน่อยก็กดทำรายการถอนเงินสดเข้าบัญชีได้เลยทันที ไม่มีกั๊ก ไม่มีอั้นยอดถอน เล่นได้เท่าไหร่เราจ่ายเต็มทุกบิล",
   },
   {
-    q: "NEKOATK มีโปรโมชั่นแจกเครดิตฟรีอะไรให้สมาชิกบ้าง",
-    a: "ทุนน้อยไม่ใช่ปัญหา เพราะกิจกรรมแจกเครดิตฟรีและโปรโมชั่นสุดเดือดของเรามีให้อัปเดตกันทุกวัน รับง่าย เงื่อนไขเทิร์นโอเวอร์ต่ำ ไม่จุกจิก เอาไปต่อยอดทำกำไรได้จริงโดยไม่ต้องควักทุนตัวเองเยอะ ควรอ่านรายละเอียดของแต่ละรายการจากหน้าโปรโมชั่นจริงก่อนกดรับ",
+    q: "ขั้นตอนเปิดยูสเซอร์กับ 9UFA ต้องทักแชทส่งข้อมูลให้แอดมินไหม",
+    a: "ไม่ต้องทักแชทให้เสียเวลา ระบบของเราถูกออกแบบมาให้เป็นออโต้เต็มรูปแบบ คุณกดทำรายการหน้าเว็บได้ด้วยตัวเอง กรอกข้อมูลแค่ไม่กี่ช่อง ผูกเบอร์มือถือและบัญชีธนาคารให้เรียบร้อย ใช้เวลาไม่ถึง 1 นาทีก็รับยูสเซอร์พร้อมรหัสผ่านเข้าไปลุยได้ทันที ข้อมูลทุกอย่างถูกเก็บเป็นความลับ ปลอดภัยร้อยเปอร์เซ็นต์",
   },
   {
-    q: "ถอนเงินกับ NEKOATK ใช้เวลานานไหม มีอั้นยอดถอนหรือเปล่า",
-    a: "ระบบการเงินของเราโอนยอดเข้าบัญชีคุณทันทีผ่านระบบออโต้ที่รวดเร็วที่สุด ไม่ต้องทักหาแอดมิน ไม่ต้องรอคิวตรวจสลิปให้วุ่นวาย กดถอนปุ๊บเงินเด้งเข้าแอปธนาคารปั๊บ ต่อให้ปั่นจนแตกทะลุหลักหมื่นหรือหลักล้านก็จ่ายเต็มทุกบิล และไม่มีอั้นยอดถอนต่อวัน",
+    q: "เล่นผ่านมือถือสเปคต่ำหรือเน็ตมือถือธรรมดา จะเล่น 9UFA ได้ลื่นไหม",
+    a: "เราทุ่มทุนอัปเกรดระบบหลังบ้านด้วยเซิร์ฟเวอร์เทคโนโลยีล่าสุดที่รองรับคนออนไลน์พร้อมกันหลักแสนคนได้สบายๆ ภาพกราฟิกในเกมจึงคมชัดลื่นไหล กดเบทได้แบบเรียลไทม์ไม่มีดีเลย์ ไม่ว่าจะเล่นผ่านมือถือรุ่นไหน สเปคต่ำแค่ไหน หรือใช้เน็ตมือถือธรรมดา ก็ทำกำไรได้ต่อเนื่องแบบไม่มีสะดุด",
   },
 ];
 
@@ -76,111 +81,114 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="NEKOATK สล็อตตรงไม่ผ่านเอเย่นต์ แตกง่าย จ่ายจริงทุกยอดบิล">
+  <ContentBoxFloatingBadge as="h1" title="9UFA อาณาจักรเว็บสล็อตยอดนิยม แจกโหดรับทุนเล่นฟรี 199 ทันทีไม่ต้องแชร์">
     <p class="text-left text-base leading-relaxed">
-      วงการสล็อตยุคนี้หาเว็บที่จริงใจยาก แต่ถ้าคุณเข้ามาที่นี่ ลืมภาพจำเว็บเอเย่นต์ที่ชอบล็อคยูสหรือปรับเรทชนะไปได้เลย เราคือแพลตฟอร์มตัวจริงที่สายปั่นทั่วประเทศให้การยอมรับ
-      เปิดให้บริการส่งตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านคนกลางใดๆ ทั้งสิ้น ทำให้ทุกการสปินของคุณมีความยุติธรรมสูงสุด แตกเท่าไหร่ก็พร้อมจ่ายเต็มจำนวน ไม่มีหักเปอร์เซ็นต์
-      นี่คือขุมทรัพย์ทำเงินที่นักเล่นยุคใหม่ต้องลอง
+      วงการสล็อตทุกวันนี้หาเว็บที่แจกจริงจ่ายจริงยากมาก ส่วนใหญ่มีแต่โปรหลอกตา แต่ที่ 9UFA เราฉีกทุกกฎการเดิมพันด้วยการจัดหนักจัดเต็มให้กับสมาชิกใหม่ทุกคน
+      ใครที่กำลังมองหาพื้นที่ทำเงินที่แฟร์กับผู้เล่น ไม่หมกเม็ดเงื่อนไข และพร้อมซัพพอร์ตทุนให้คุณไปปั้นกำไรแบบชิลๆ บอกเลยว่าคุณมาถูกที่แล้ว เตรียมตัวสัมผัสประสบการณ์ปั่นสล็อตที่แตกง่ายที่สุด
+      พร้อมรับสิทธิพิเศษที่หาจากเว็บทั่วไปไม่ได้อย่างแน่นอน
     </p>
-  </ContentBoxPremium>
+  </ContentBoxFloatingBadge>
 
-  <ContentBoxNeumorphism as="h2" title="สัมผัสประสบการณ์ปั่นเกม API แท้ร้อยเปอร์เซ็นต์ ลื่นไหลไม่มีสะดุด">
-    <p class="text-left text-base leading-relaxed">
-      ปัญหาเกมค้างตอนฟรีสปินเข้า หรือภาพกระตุกจนเสียอารมณ์จะหมดไป เพราะเราดึงสัญญาณภาพและระบบเกมผ่าน API ลิขสิทธิ์แท้จากค่ายผู้พัฒนาโดยตรง ส่งผลให้ตัวเกมมีความเสถียรขั้นสุด โหลดไว
-      ไม่กินเน็ตมือถือ ให้คุณลุ้นสแคทเตอร์ตกแบบเฟรมต่อเฟรมได้อย่างเร้าใจ ไร้การแทรกแซงจากหลังบ้านร้อยเปอร์เซ็นต์
+  <ContentBoxSevenThreeCyberCut titleright="9UFA แหล่งรวมค่ายเกมชั้นนำที่ขึ้นชื่อว่าเป็น เว็บสล็อตยอดนิยม ที่สุดในตอนนี้">
+    <Picture
+      slot="left"
+      src={imgLuckySpin}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น 9UFA ลัคกี้สปิน กิจกรรมวงล้อมหาโชค ลุ้น iPhone รุ่นล่าสุดรอคุณเป็นเจ้าของ พร้อมภาพเด็กผู้หญิงชุดฟ้าถือกล่อง iPhone หน้าวงล้อ"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#0a5df1]/25 shadow-[0_10px_30px_rgba(10,93,241,0.15)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เราไม่ได้มีดีแค่เรื่องโปรโมชั่น แต่เรื่องตัวเกมเราก็จัดเต็มไม่แพ้ใคร ที่นี่เรารวบรวมค่ายสล็อตระดับโลกมาไว้ในกระเป๋าเดียว ทุกเกมเป็นการดึงสัญญาณตรงผ่าน API ลิขสิทธิ์แท้ ไม่ผ่านคนกลาง
+      ทำให้เปอร์เซ็นต์การชนะหรือค่า RTP สูงปรี๊ดตามมาตรฐานสากล ไม่ว่าคุณจะชอบปั่นสล็อตสายผลไม้คลาสสิก หรือสายซื้อฟรีสปินวัดดวง ก็มีให้เลือกเล่นครบจบ โบนัสแตกง่าย สแกตเตอร์เข้าบ่อยจนคุณต้องร้องว้าว
     </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxSevenThreeCyberCut>
 
   <ProviderGrid />
 
-  <ContentBoxSevenThreeNeumorphism titleright="การันตีสล็อตแตกง่ายกว่าที่เคยสัมผัส โบนัสเข้าบ่อยรับกำไรเน้นๆ">
-    <Picture
-      slot="left"
-      src={imgCashback}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น NEKOATK คืนยอดเสีย 5% ทุกวันอาทิตย์ พร้อมภาพแมวนักรบชุดเกราะสีดำถือเหรียญทอง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#fb0660]/30 shadow-[0_10px_30px_rgba(251,6,96,0.18)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ใครที่เคยช้ำใจจากเว็บเกลือๆ ต้องมาแก้มือที่นี่ NEKOATK คัดมาเฉพาะเกมฮิตติดชาร์ตที่มีค่า RTP สูงปรี๊ด การันตีเลยว่าปั่นยังไงก็เข้ามือ โบนัสไทม์แตกบ่อยจนน่าตกใจ
-      ไม่ต้องซื้อฟรีสปินแพงๆ ก็มีโอกาสจับเงินก้อนโตได้ง่ายๆ แค่เดินเบทให้ถูกจังหวะ เตรียมรับกำไรก้อนใหญ่เข้ากระเป๋าได้เลย
-    </p>
-  </ContentBoxSevenThreeNeumorphism>
-
-  <GameRankingBoard />
-
-  <ContentBoxSevenThreePremium titleright="จัดเต็มโปรแรงแจกทุนฟรีทุกวันให้สมาชิก NEKOATK ได้ลุยแบบจุใจ">
-    <Picture
-      slot="left"
-      src={imgWelcomeBonus}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น NEKOATK สมาชิกใหม่ รับโบนัส 100% พร้อมภาพแมวกวักนำโชคบนพื้นสีชมพูทอง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#fb0660]/30 shadow-[0_10px_30px_rgba(251,6,96,0.18)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ทุนน้อยไม่ใช่ปัญหาอีกต่อไป เพราะเราเตรียมเสบียงไว้ซัพพอร์ตสายปั่นทุกระดับ กิจกรรมแจกเครดิตฟรีและโปรโมชั่นสุดเดือดมีให้อัปเดตกันทุกวัน รับง่าย เงื่อนไขเทิร์นโอเวอร์ต่ำ ไม่จุกจิก
-      เอาไปต่อยอดทำกำไรได้จริง ถือเป็นตัวช่วยสำคัญที่ทำให้คุณมีโอกาสบวกยับไปกับ NEKOATK โดยไม่ต้องควักทุนตัวเองเยอะ
-    </p>
-  </ContentBoxSevenThreePremium>
-
-  <SmoothCarousel />
-
-  <ContentBox as="h2" title="เล่นบวกหลักล้านก็จ่ายจริง ถอนเงินรวดเร็วทันใจผ่านระบบออโต้">
+  <ContentBox as="h2" title="ขั้นตอนการสมัครสมาชิกใหม่เพื่อเปิดยูสเซอร์ทำกำไรกับ 9UFA">
     <p class="text-left text-base leading-relaxed">
-      ความน่าเชื่อถือวัดกันตอนถอนเงินนี่แหละ เมื่อคุณปั่นจนแตกหนักทะลุหลักหมื่นหรือหลักล้าน ระบบการเงินของเราก็พร้อมโอนยอดเข้าบัญชีคุณทันทีผ่านระบบออโต้ที่รวดเร็วที่สุด
-      ไม่ต้องทักหาแอดมิน ไม่ต้องรอคิวตรวจสลิปให้วุ่นวาย กดถอนปุ๊บ เงินเด้งเข้าแอปธนาคารปั๊บ จ่ายเต็มทุกบิล ไม่มีอั้นยอดถอนต่อวัน
+      ลืมการสมัครที่ต้องทักแชทส่งข้อมูลให้แอดมินจนเสียเวลาไปได้เลย ระบบของเราถูกออกแบบมาให้เป็นออโต้เต็มรูปแบบ คุณสามารถกดทำรายการหน้าเว็บได้ด้วยตัวเอง กรอกข้อมูลแค่ไม่กี่ช่อง
+      ผูกเบอร์มือถือและบัญชีธนาคารให้เรียบร้อย ใช้เวลาไม่ถึง 1 นาทีก็รับยูสเซอร์พร้อมรหัสผ่านเข้าไปลุยได้ทันที ข้อมูลทุกอย่างถูกเก็บเป็นความลับขั้นสุดยอด ปลอดภัยร้อยเปอร์เซ็นต์
     </p>
   </ContentBox>
 
-  <LatestWinners />
-
-  <ContentBoxNeumorphism as="h2" title="เหตุผลที่ NEKOATK กลายเป็นสล็อตตรงเบอร์หนึ่งในใจเซียนพนัน">
-    <p class="text-left text-base leading-relaxed">
-      สิ่งที่ทำให้ NEKOATK ยืนระยะและมีฐานลูกค้าเหนียวแน่น ไม่ใช่แค่การโฆษณา แต่เป็นเพราะปากต่อปากของนักเล่นตัวจริงที่เข้ามาบวกแล้วได้เงินกลับไปจริงๆ เราให้อิสระในการเดิมพันอย่างเต็มที่
-      ไม่มีกฎกติกาหมกเม็ด ไม่มีการแบนยูสเซอร์เมื่อเล่นได้กำไรเยอะๆ ความซื่อสัตย์ตรงไปตรงมานี้แหละที่มัดใจเซียนสล็อตทั่วประเทศ
+  <ContentBoxSevenThree titleright="แจกโหดสะเทือนวงการ รับทุนเล่นฟรี 199 บาทไปปั่นทำกำไรได้ทันที">
+    <Picture
+      slot="left"
+      src={imgWeekendBonus}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น 9UFA วันศุกร์ฝาก 100 รับ 99 และวันเสาร์ฝาก 100 รับ 199 พร้อมภาพเด็กผู้หญิงชุดฟ้าสวมมงกุฎหิมะถือไม้กายสิทธิ์ข้างกล่องของขวัญ"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#0a5df1]/25 shadow-[0_10px_30px_rgba(10,93,241,0.15)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      สำหรับสายปั่นทุนน้อยหรือคนที่อยากลองระบบก่อนควักกระเป๋าตัวเอง โปรนี้คือคำตอบ เราเตรียมเครดิตฟรีมูลค่า 199 บาทไว้ต้อนรับสมาชิกใหม่ทุกคนทันทีที่สมัครเสร็จ เงินก้อนนี้ไม่ใช่แค่ตัวเลขหลอกๆ
+      แต่เป็นทุนที่คุณสามารถนำไปหมุนสล็อตค่ายไหน เกมอะไรก็ได้บนเว็บของเรา ถือเป็นตัวช่วยชั้นดีที่จะทำให้คุณมีโอกาสปั้นยอดจากหลักร้อยให้กลายเป็นหลักหมื่นได้โดยไม่ต้องควักทุนตัวเองแม้แต่บาทเดียว
     </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxSevenThree>
 
-  <ReviewCardSumo2 />
+  <SmoothCarousel />
 
-  <ContentBoxPremium as="h2" title="ท้าพิสูจน์ความรวย สมัครปั่นสล็อตลิขสิทธิ์แท้กับ NEKOATK ทันที">
+  <ContentBoxSpecial as="h2" title="กติกาแฟร์ขีดสุดเพราะ 9UFA มอบโบนัสให้โดยไม่ต้องกดแชร์ลงกลุ่ม">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ปัญหาโลกแตกของคนรับโปรเครดิตฟรีคือ ต้องแคปรูปลงกลุ่มเฟซบุ๊ก หรือส่งต่อให้เพื่อนในไลน์จนน่ารำคาญและเสียความเป็นส่วนตัว
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เราเข้าใจจุดนี้ดี จึงตัดเงื่อนไขจุกจิกทิ้งไปทั้งหมด แค่คุณสมัครและยืนยันตัวตนผ่านระบบสำเร็จ โบนัสก็พร้อมปรับเข้ากระเป๋าเครดิตให้คุณทันที ไม่ต้องทักแชทยืนยัน ไม่ต้องส่งหลักฐานการทำกิจกรรม
+      เอาเวลาที่ต้องมานั่งแชร์ไปโฟกัสกับการปั่นสล็อตหาเงินดีกว่า
+    </p>
+  </ContentBoxSpecial>
+
+  <GameRankingBoard />
+
+  <ContentBoxPremium as="h2" title="ทลายกำแพงการถอนเงินด้วยเงื่อนไขสุดพิเศษที่ไม่ต้องทำเทิร์นสูง">
     <p class="text-left text-base leading-relaxed">
-      โอกาสเปลี่ยนทุนหลักร้อยให้กลายเป็นกำไรหลักหมื่นอยู่ตรงหน้าแล้ว อย่ามัวแต่ลังเล หยิบมือถือขึ้นมาแล้วกดสมัครสมาชิกกับเราได้เลย ขั้นตอนง่ายๆ ใช้เวลาไม่ถึงนาที
-      ก็พร้อมเปิดประตูสู่คลังสมบัติเกมสล็อตลิขสิทธิ์แท้ของ NEKOATK เข้ามาพิสูจน์ด้วยตัวคุณเองว่าเว็บตรงที่จ่ายจริง แตกหนัก มันเป็นยังไง ลุยเลย!
+      อีกหนึ่งความเจ็บปวดของนักพนันคือเวลาได้โบนัสฟรีมาแล้วปั่นจนแตกหนัก แต่กลับถอนไม่ได้เพราะติดยอดเทิร์นโอเวอร์หฤโหด 20-30 เท่า แต่ที่ 9UFA เราให้คุณถอนเงินออกไปใช้ได้ง่ายกว่านั้นเยอะ
+      เราตั้งกติกาการทำเทิร์นไว้ต่ำมาก แค่เล่นให้ได้ยอดตามที่กำหนดนิดหน่อยก็กดทำรายการถอนเงินสดเข้าบัญชีได้เลยทันที ไม่มีกั๊ก ไม่มีอั้นยอดถอน เล่นได้เท่าไหร่เราจ่ายเต็มทุกบิล
     </p>
   </ContentBoxPremium>
+
+  <LatestWinners />
+
+  <ContentBoxCyberCut as="h2" title="9UFA พัฒนาระบบเซิร์ฟเวอร์ให้ลื่นไหลไม่มีสะดุด รองรับทุกการเดิมพัน">
+    <p class="text-left text-base leading-relaxed">
+      จังหวะโบนัสไทม์กำลังมา ฟรีสปินกำลังไหล ถ้าเว็บกระตุกหรือค้างคงหัวเสียไม่น้อย เราจึงทุ่มทุนอัปเกรดระบบหลังบ้านด้วยเซิร์ฟเวอร์เทคโนโลยีล่าสุดที่รองรับคนออนไลน์พร้อมกันหลักแสนคนได้สบายๆ
+      ภาพกราฟิกในเกมคมชัดลื่นไหล กดเบทได้แบบเรียลไทม์ไม่มีดีเลย์ ไม่ว่าคุณจะเล่นผ่านมือถือรุ่นไหน สเปคต่ำแค่ไหน หรือใช้เน็ตมือถือธรรมดา ก็สามารถทำกำไรได้ต่อเนื่องแบบไม่มีสะดุด
+    </p>
+  </ContentBoxCyberCut>
+
+  <ReviewCardSumo2 />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fd841b] via-[#fb0660] to-[#8b3fd9] px-4 py-3 text-sm font-black whitespace-nowrap text-[#2a0210] shadow-[0_10px_30px_rgba(251,6,96,0.3)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(251,6,96,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#0a5df1] via-[#0782f2] to-[#01cbf6] px-4 py-3 text-sm font-black whitespace-nowrap text-white shadow-[0_10px_30px_rgba(10,93,241,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(1,203,246,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#fb0660]/80 bg-[#2c0733]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f6dfec] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fd841b] hover:bg-[#4a0e5c]/85 hover:shadow-[0_15px_40px_rgba(251,6,96,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#0a5df1]/60 bg-white/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#0743a8] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#c9930a] hover:bg-[#ffe98a] hover:text-[#062a52] hover:shadow-[0_15px_40px_rgba(241,212,44,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
   <LoginRtpSection />
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ NEKOATK" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ 9UFA" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

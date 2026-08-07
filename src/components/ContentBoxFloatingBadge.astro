@@ -13,32 +13,36 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // first line of body copy.
 //
 // This runs one step deeper than ContentBoxSevenThreeFloatingBadge (pt-32/
-// md:pt-28) on purpose — the two decorative ✦ spans and their gap take ~52px
+// md:pt-28) on purpose — the two decorative ❄ spans and their gap take ~52px
 // out of the badge's inner width here, and nothing takes it out over there. On
 // a 360–375px phone that is the difference between a 3-line and a 4-line badge:
 // a previous brand's H2 measured ~20px of clearance at pt-32, which one more
 // wrapped line would have eaten. Keep the two files one step apart, not
 // identical. The badge itself is w-[92%] max-w-2xl text-center — never
 // whitespace-nowrap, which is what used to push it past the viewport.
+//
+// Light theme (9UFA): the card is a white surface with dark ink, so the badge
+// is the one blue-chrome element here — gold gradient text on the blue pill,
+// never dark ink on blue.
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#ff2f28]/30 bg-gradient-to-b from-[#170506]/95 to-[#0a0202]/95 p-8 pt-36 text-left text-base leading-relaxed text-[#f3dede] shadow-[0_10px_30px_rgba(255,47,40,0.16)] md:pt-32">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#ff2f28]/25 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f5c542]/35 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#0a5df1]/30 bg-white/88 p-8 pt-36 text-left text-base leading-relaxed text-[#0b3a63] shadow-[0_10px_30px_rgba(10,93,241,0.15)] backdrop-blur-md md:pt-32">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#01cbf6]/35 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f1d42c]/35 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ff2f28]/40 bg-[#170506] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(255,47,40,0.28)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#f5c542]">
-            ✦
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#01cbf6]/50 bg-gradient-to-r from-[#0a5df1] via-[#0782f2] to-[#01cbf6] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(10,93,241,0.35)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#ffe98a]">
+            ❄
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent uppercase`}>
+          <HeadingTag class={`bg-gradient-to-r from-[#ffe98a] via-[#f1d42c] to-[#ffe98a] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>
             {title}
           </HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#f5c542]">
-            ✦
+          <span aria-hidden="true" class="shrink-0 text-[#ffe98a]">
+            ❄
           </span>
         </div>
       )

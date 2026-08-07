@@ -17,22 +17,21 @@ const providers = [
 ];
 ---
 
-<section aria-label="ค่ายเกมลิขสิทธิ์แท้ที่รวมไว้ใน ZEED321" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
-  <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(245,197,66,0.8)]">🎰</span>
-    <p class="bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase drop-shadow-sm">
-      ค่ายเกมลิขสิทธิ์แท้ที่รวมไว้ใน ZEED321
-    </p>
-    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ff2f28] to-transparent"></div>
+<section aria-label="ค่ายเกมลิขสิทธิ์แท้ที่รวมไว้ใน 9UFA" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
+  <div
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#0a5df1]/25 bg-white/85 px-6 py-6 text-center shadow-[0_10px_30px_rgba(10,93,241,0.15)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(1,203,246,0.7)]">🎰</span>
+    <p class="bg-gradient-to-r from-[#0743a8] via-[#0a5df1] to-[#01cbf6] bg-clip-text text-3xl font-black tracking-wide text-transparent drop-shadow-sm">ค่ายเกมลิขสิทธิ์แท้ที่รวมไว้ใน 9UFA</p>
+    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#0a5df1] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
     {
       providers.map((p) => (
-        <div class="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-[#3d0404] shadow-[0_5px_15px_rgba(0,0,0,0.4)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(255,47,40,0.3)]">
-          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#8f0806]/70 transition-all duration-500 group-hover:border-[#f5c542]/60 group-hover:shadow-[inset_0_0_20px_rgba(245,197,66,0.18)]" />
+        <div class="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl bg-white shadow-[0_10px_30px_rgba(10,93,241,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(10,93,241,0.3)]">
+          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#acddfb] transition-all duration-500 group-hover:border-[#0a5df1]/60 group-hover:shadow-[inset_0_0_20px_rgba(1,203,246,0.25)]" />
 
-          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#8f0806]/70 bg-[#170506]/80 px-3 py-1.5 text-[10px] font-medium text-[#c2a0a0] backdrop-blur-md transition-colors group-hover:text-[#ffe08a]">
+          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#acddfb] bg-white/85 px-3 py-1.5 text-[10px] font-medium text-[#3f6d99] backdrop-blur-md transition-colors group-hover:text-[#0743a8]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
@@ -40,7 +39,7 @@ const providers = [
           </div>
 
           {p.isHot && (
-            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#ff2f28]/60 bg-gradient-to-r from-[#e01410] to-[#ff2f28] px-3 py-1.5 text-[10px] font-black tracking-wide text-white shadow-md">
+            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#c9930a]/50 bg-gradient-to-r from-[#f1d42c] to-[#ffe98a] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#062a52] shadow-md">
               <span aria-hidden="true" class="animate-pulse">
                 🔥
               </span>{" "}
@@ -58,12 +57,12 @@ const providers = [
             widths={[200, 400]}
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 200px"
             decoding="async"
-            class="block aspect-square w-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
+            class="block aspect-square w-full object-cover opacity-95 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
           />
 
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#ff2f28]/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#01cbf6]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         </div>
       ))

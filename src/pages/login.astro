@@ -25,10 +25,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ NEKOATK | กำลังเชื่อมต่อไปหน้าล็อกอินอัตโนมัติ</title>
+    <title>เข้าสู่ระบบ 9UFA | กำลังเชื่อมต่อไปหน้าล็อกอินอัตโนมัติ</title>
     <meta
       name="description"
-      content="หน้าเชื่อมต่อเข้าสู่ระบบ NEKOATK เว็บสล็อตตรงไม่ผ่านเอเย่นต์ ระบบกำลังพาคุณไปยังหน้าล็อกอินโดยอัตโนมัติ ใช้เบอร์โทรศัพท์และรหัสผ่านเพื่อเข้าเล่นและถอนออโต้"
+      content="หน้าเชื่อมต่อเข้าสู่ระบบ 9UFA เว็บสล็อตยอดนิยม ระบบกำลังพาคุณไปยังหน้าล็อกอินโดยอัตโนมัติ ใช้เบอร์โทรศัพท์และรหัสผ่านเพื่อเข้าเล่นและถอนออโต้ได้ทันทีทุกวัน"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -67,22 +67,25 @@ const fontHref = usesGoogleFonts
     </style>
 
     <style>
-      /* NEKOATK is a neon magenta-and-orange brand — near-black plum surfaces,
-         hot magenta and neon orange as the display accents, and electric violet
-         as its only support hue. No gold, no crimson, no green. Every variable
-         below is NAMED FOR THE COLOUR IT HOLDS, which previous brands stopped
-         doing: this block once declared `--brand-gold` on brands with no gold in
-         them and `--brand-green` on a gold one, so the next editor reused it by
+      /* 9UFA is an icy sky brand — a LIGHT page (near-white blue tint), white
+         panels, vivid blue and cyan as the display accents, and gold as its
+         only warm support hue. No magenta, no orange, no violet, and no dark
+         surface: the palette is inverted from the brand before it, so text is
+         dark ink on light, not pale on near-black. Every variable below is
+         NAMED FOR THE COLOUR IT HOLDS, which previous brands stopped doing:
+         this block once declared `--brand-gold` on brands with no gold in them
+         and `--brand-green` on a gold one, so the next editor reused it by
          name and shipped the wrong hue. Rename with the value. */
       :root {
-        --page-bg: #0d0210;
-        --panel-bg: rgba(44, 7, 51, 0.94);
-        --brand-orange: #fd841b;
-        --brand-magenta: #fb0660;
-        --brand-orange-light: #ffb457;
-        --accent-violet: #8b3fd9;
-        --text-body: #f6dfec;
-        --text-muted: #c8a3bd;
+        --page-bg: #eaf4fe;
+        --panel-bg: rgba(255, 255, 255, 0.92);
+        --brand-blue: #0a5df1;
+        --brand-blue-mid: #0782f2;
+        --brand-blue-deep: #0743a8;
+        --brand-cyan: #01cbf6;
+        --brand-gold: #f1d42c;
+        --text-body: #0b3a63;
+        --text-muted: #3f6d99;
       }
 
       body {
@@ -91,8 +94,8 @@ const fontHref = usesGoogleFonts
         color: var(--text-body);
 
         background:
-          radial-gradient(circle at 50% 10%, rgba(253, 132, 27, 0.16) 0%, transparent 55%),
-          radial-gradient(circle at 50% 92%, rgba(251, 6, 96, 0.3) 0%, transparent 55%), var(--page-bg);
+          radial-gradient(circle at 50% 10%, rgba(1, 203, 246, 0.22) 0%, transparent 55%),
+          radial-gradient(circle at 50% 92%, rgba(10, 93, 241, 0.25) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -106,11 +109,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(253, 132, 27, 0.4);
+        border: 1px solid rgba(10, 93, 241, 0.3);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(74, 14, 92, 0.45),
-          0 0 2rem rgba(251, 6, 96, 0.25);
+          0 1rem 3rem rgba(10, 93, 241, 0.18),
+          0 0 2rem rgba(1, 203, 246, 0.22);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -119,13 +122,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--brand-orange-light) 0%, var(--brand-orange) 45%, var(--brand-magenta) 100%);
+        background: linear-gradient(180deg, var(--brand-blue-mid) 0%, var(--brand-blue) 45%, var(--brand-blue-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(251, 6, 96, 0.35));
+        filter: drop-shadow(0 1px 2px rgba(10, 93, 241, 0.3));
       }
 
       .sophisticated-loader {
@@ -141,30 +144,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--brand-orange-light) 0%, var(--brand-orange) 45%, var(--brand-magenta) 100%);
+        background: radial-gradient(circle, var(--brand-gold) 0%, var(--brand-cyan) 45%, var(--brand-blue) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(253, 132, 27, 0.35);
+        box-shadow: 0 0 2rem rgba(10, 93, 241, 0.35);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(253, 132, 27, 0.2);
+        border: 3px solid rgba(10, 93, 241, 0.2);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--brand-magenta);
+        border-top-color: var(--brand-blue);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--accent-violet);
+        border-bottom-color: var(--brand-cyan);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -181,11 +184,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(253, 132, 27, 0.35);
+          box-shadow: 0 0 2rem rgba(10, 93, 241, 0.35);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(251, 6, 96, 0.5);
+          box-shadow: 0 0 3rem rgba(1, 203, 246, 0.5);
         }
       }
 
@@ -196,7 +199,7 @@ const fontHref = usesGoogleFonts
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-body);
-        text-shadow: 0 1px 1px rgba(251, 6, 96, 0.25);
+        text-shadow: 0 1px 1px rgba(10, 93, 241, 0.25);
         margin: 0;
       }
       .status-text .p {
@@ -209,7 +212,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">NEKOATK</div>
+      <div class="brand-identity">9UFA</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -219,7 +222,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ NEKOATK ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ 9UFA ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

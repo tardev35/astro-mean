@@ -4124,3 +4124,221 @@ grep `ตรวจหวย|แนวทาง` ทั้ง `src/**/*.astro` �
 "Coming soon" อยู่ โดยไม่มี error ที่ไหนเลย เช็กด้วย
 `npx wrangler deployments list --name nekoatk` ก่อน deploy ครั้งแรก
 (ไม่มีร่องรอยชื่อ `nekoatk` ในรีโปเลย และไม่ชนกับแบรนด์เก่าตัวไหน)
+
+## 2026-08-07 — รีแบรนด์ NEKOATK → 9UFA (สล็อต, ฟ้า-น้ำเงิน + ทอง บนพื้น "สว่าง")
+
+### เป้าหมาย
+
+รีแบรนด์ + retheme ทั้งเว็บจาก NEKOATK เป็น **9UFA** โดเมนจริง
+`http://9ufa-new.com/` คำสั่งรอบนี้คือ *"ทำแบบขนานตาม playbook — หยุดที่
+build + verify เท่านั้น ห้าม deploy และห้าม git push"* จึงรันเป็น parallel
+subagent workflow ตาม `.claude/skills/rebrand-site/SKILL.md` และ
+**จบที่ build + verify — ไม่ commit ไม่ push ไม่ deploy**
+
+### จุดต่างที่สำคัญที่สุดของรอบนี้ — ธีม "กลับด้าน" เป็นพื้นสว่าง
+
+operator ตั้ง `src/assets/bg.json` มาเองเป็น
+`{"mode":"gradient","css":"linear-gradient(180deg, #c7eeff, #1e3a8a)"}`
+(**ห้ามแก้ไฟล์นี้**) รอบนี้จึงเป็น **light theme** กลับด้านจาก NEKOATK ที่เป็น
+การ์ดดำตัวหนังสือสว่าง → รอบนี้การ์ดขาว `bg-white/85` ตัวหนังสือ ink เข้ม
+`#0b3a63` แปลว่างานไม่ใช่แค่ "แทนที่ hex" แต่ต้องไล่ดูทุกจุดว่าตัวอักษรยัง
+อ่านออก ซึ่งเป็นที่มาของบั๊ก 2 ตัวในหัวข้อ "บั๊กที่เจอ" ด้านล่าง
+
+หมายเหตุสำคัญ: gradient นี้อยู่บน `<div class="fixed inset-0">` = ยึดกับ
+**viewport ไม่ใช่ document** ทุกตำแหน่ง scroll จะเห็นไล่จากฟ้าอ่อนบนสุด →
+กรมท่าล่างสุดเสมอ **ข้อความใดที่ไม่มีพื้นการ์ดรองจะไหลผ่านทั้งช่วงสีขณะ
+scroll** จึงต้องอ่านออกทั้งบนฟ้าอ่อนและกรมท่าเข้ม — ทำไม่ได้ด้วยสีเดียว
+ต้องมีพื้นรอง
+
+### โหมดที่รัน — ขนาน 3 agent (P0 → P1 → P2 → P3)
+
+- **P0 (orchestrator)** — อ่าน `content.txt` + `palette.json` + รูปทั้งชุด
+  เลือก variant ทุกตระกูล แล้วเขียน brand spec ไฟล์เดียวที่
+  `.rebrand-9ufa-spec.md` (palette เป็น hex เป๊ะ · ตารางแทนที่ hex เก่า→ใหม่ ·
+  variant ที่เลือก · checklist หัวข้อ docx · โครงหน้า index) — subagent ทุกตัว
+  อ่านไฟล์นี้ **ห้าม re-extract docx และห้ามเลือก variant เอง**
+- **P1 (orchestrator, ก่อน fan-out)** — retheme chrome ที่ใช้ร่วมให้เสร็จก่อน:
+  `MainLayout` + `NavbarStyle1` + `FooterStyle2` + `Navfoot` + `ContentBox` +
+  `ContentBoxPremium` + `AnnouncementPremium` (สามตัวหลังเข้าเกณฑ์ "ถูก import
+  จาก ≥2 หน้าใน `src/pages`" — นับใหม่ทุกรอบ ไม่ใช้ลิสต์เดิม)
+- **P2 (fan-out 3 agent, ไฟล์ไม่ทับกันเลย)**
+  - **Agent A — Landing** — `index.astro` + component ที่มีแต่ index render
+    (ไล่ recursive) = 13 ไฟล์ รวม `ContentBoxTwoPremium` ที่ถึงได้ผ่าน
+    `LoginRtpSection` เท่านั้น
+  - **Agent B — หน้าย่อยเนื้อหา** — `promotion` · `ทางเข้า` · `ทดลองเล่น`
+  - **Agent C — หน้าปุ่ม/standalone/ถาวร** — `contact-us` · `about-us` ·
+    `login` · `register` + ตรวจอย่างเดียว `terms` · `privacy` · `404`
+  - หน้าย่อยรอบนี้ **ไม่มี component ส่วนตัวเลย** (ทุกตัวอยู่ในชุด P1) งานฝั่ง
+    B/C จึงเป็น "เขียนหน้า" ล้วน
+- **P3 (orchestrator)** — build เดียว + verify + workspec + แก้ของที่เหลือเอง
+  (ไม่ส่ง subagent กลับเข้าโซนที่ใช้ร่วม)
+
+### โดเมนจริง — แก้ครบทั้ง 3 ที่
+
+| ไฟล์ | เดิม | ใหม่ |
+|---|---|---|
+| `astro.config.mjs` `site:` | `http://nekoatk-new.com` | `http://9ufa-new.com` |
+| `wrangler.toml` `name` | `nekoatk` | `9ufa` |
+| `public/site.webmanifest` | NEKOATK / `#fb0660` / `#0d0210` | 9UFA / `#0a5df1` / `#eaf4fe` |
+
+`index.astro` ไม่มี schema literal ที่ hardcode โดเมน (ใช้ `pageGraph()` ที่
+derive จาก `site:`) จึงไม่มีที่ที่ 4 · `robots.txt` มาจาก `robots.txt.ts` ตาม
+โดเมนเอง · `name = "9ufa"` ตรงกับที่ `verify-build.mjs` คำนวณจาก
+`SITE.hostname.split(/[-.]/)[0]` ของ `9ufa-new.com` จึงผ่านเกท ·
+`account_id` **คงค่าเดิมตามกฎ**
+
+### palette (จาก `logo.webp` → vivid + เปิดรูปดูจริง)
+
+`logo.webp` vivid ชี้ชัดเป็นน้ำเงิน `#0a5df1` (share .07) คู่กับฟ้าไซแอน
+`#01cbf6` และทอง `#f1d42c` ส่วน `banner1`/`slide*` dominant เป็นฟ้าอ่อน-ขาว
+ทั้งชุด → แบรนด์ **ฟ้า-น้ำเงิน + ทอง บนพื้นสว่าง** ตัวการ์ตูนเด็กผู้หญิงชุดฟ้า
+มงกุฎหิมะ
+
+| token | hex | ใช้ตรงไหน |
+|---|---|---|
+| `blue` | `#0a5df1` | แกนแบรนด์ ปุ่มหลัก ขอบเน้น |
+| `blue-mid` / `cyan` | `#0782f2` / `#01cbf6` | กลาง–ปลาย gradient, glow |
+| `gold` / `gold-soft` | `#f1d42c` / `#ffe98a` | badge, ตัวเลขเน้น, ตัวหนังสือบน chrome น้ำเงิน |
+| `ink` / `ink-muted` / `ink-strong` | `#0b3a63` / `#3f6d99` / `#0743a8` | ย่อหน้า / caption / หัวข้อทึบ |
+| `surface` | `#ffffff/85` + `backdrop-blur` | พื้นการ์ดหลัก |
+
+**`gold-deep #c9930a` ถูกถอดออกจากบทบาท "ตัวหนังสือบนพื้นสว่าง"** — ดูบั๊ก #3
+
+### variant rotation (before → after)
+
+| family | NEKOATK (ออก) | 9UFA (เข้า) |
+|---|---|---|
+| Navbar | `NavbarStyle6` | **`NavbarStyle1`** |
+| Footer | `FooterStyle3` | **`FooterStyle2`** |
+| Announcement | `Announcement3` | **`AnnouncementPremium`** |
+| LatestWinners | `LatestWinners3` | **`LatestWinners4`** |
+| Faq | `Faq4` | **`Faq`** (ตัวฐาน) |
+| ProviderGrid | `ProviderGrid` | **`ProviderGridPremium`** |
+| ContentBox mix | Premium + Neumorphism + SevenThreeNeumorphism + SevenThreePremium + plain | **FloatingBadge + CyberCut + SevenThreeCyberCut + SevenThree(plain) + Special + Premium + plain** |
+| `BRAND_FONT` | `kanit` | **`google-sans`** |
+
+ไม่มีตระกูลไหนที่ต้องใช้ variant ซ้ำกับรอบก่อน — หมุนครบทุกตระกูล
+
+### โครงหน้า index (docx 7 หัวข้อ ครบตามลำดับ)
+
+| # | component | หัวข้อ docx |
+|---|---|---|
+| 1 | `ContentBoxFloatingBadge as="h1"` | H1 อาณาจักรเว็บสล็อต… |
+| 2 | `ContentBoxSevenThreeCyberCut` + **slide2** | H2 แหล่งรวมค่ายเกมชั้นนำ… |
+| 3 | `ContentBox as="h2"` | H2 ขั้นตอนการสมัครสมาชิกใหม่… |
+| 4 | `ContentBoxSevenThree` (plain) + **slide3** | H2 แจกโหด… 199 บาท |
+| 5 | `ContentBoxSpecial as="h2"` | H2 กติกาแฟร์… ไม่ต้องกดแชร์ |
+| 6 | `ContentBoxPremium as="h2"` | H2 ทลายกำแพงการถอนเงิน… |
+| 7 | `ContentBoxCyberCut as="h2"` | H2 พัฒนาระบบเซิร์ฟเวอร์… |
+
+widget แทรกระหว่างหัวข้อตามที่ควรอยู่ (`ProviderGridPremium` หลัง #2 ·
+`SmoothCarousel` หลัง #4 · `GameRankingBoard` หลัง #5 · `LatestWinners4`
+หลัง #6 · `ReviewCardSumo2`/ปุ่มคู่/`LoginRtpSection`/`Faq`/`Navfoot` ท้ายสุด)
+
+**SevenThree ใช้ 2 บล็อกเต็มโควตา** — `slide1`/`slide4` ไม่ได้ใช้เป็นบล็อก
+(ยังขึ้นใน `SmoothCarousel`) · **`banner2/3/4` ไม่ได้ใช้เลย** เพราะลงวันที่
+2026-08-04 = ของ NEKOATK ไม่ใช่ชุดรอบนี้ · `banner1-mobile.png` เป็นของรอบนี้
+(07 ส.ค.) จึง render เป็น `<source media="(max-width:767px)">` ตามปกติ
+
+หัวข้อ docx #5 เป็นย่อหน้าเดียวแต่ `ContentBoxSpecial` เป็นบล็อกสองครึ่ง —
+Agent A ตัดที่ขอบประโยคแบบคำต่อคำ ("…เสียความเป็นส่วนตัว" | "เราเข้าใจจุดนี้ดี…")
+ไม่มีคำหาย ไม่สลับลำดับ ไม่รวบย่อหน้า
+
+### บั๊กที่เจอตอน verify (ทั้งหมดแก้แล้ว)
+
+1. **`BankStrip` eager glob + `limit={12}` = ส่ง PNG ธนาคาร 10 ไฟล์ที่ไม่มีใคร
+   render (~513 kB/deploy)** — `verify-build.mjs` ฟ้อง 10 ERROR รวด
+   (`cimb citi icbc isbt lnh mizuho osk peer2pay scbt tcr`) ตรงกับ PRIORITY
+   ลำดับ 12–21 เป๊ะ ต้นเหตุคือกับดักที่ `CLAUDE.md` เขียนไว้: **eager glob =
+   import ทุกไฟล์ที่แมตช์ ส่วน import = emit** แม้จะถูก `.slice(0, limit)`
+   ทิ้งไปตอน render **แก้โดยเอา `limit={12}` ออกจาก `FooterStyle2`** — ไบต์
+   เท่าเดิมแต่ใช้ครบทั้ง 22 และตรงกับ label ของบล็อกที่เขียนว่า
+   "รองรับทุกธนาคาร & True Wallet" อยู่แล้ว
+2. **meta description หน้าแรก 145 ตัวอักษร ต่ำกว่าเกท 150–160** — ค่า `Des`
+   ที่ docx ให้มาสั้นกว่าเกณฑ์เอง ต่อท้ายเป็น 156 ตัวอักษรโดยคงความหมายเดิม
+3. **`gold-deep #c9930a` บนพื้นขาว = 2.74:1 ตก WCAG AA (ต้อง 4.5:1)** — Agent B
+   วัดเจอตอนจะใช้กับ figcaption แล้วเลี่ยงไปเอง orchestrator กวาดต่อทั้งเว็บ
+   พบอีก 3 จุดที่ใช้เป็น "ตัวหนังสือ": label ที่อยู่ใน `contact-us`,
+   ยอดถอนใน `LatestWinners4` (บนพิลล์ `#eaf4fe` แย่กว่าเดิมที่ 2.42:1),
+   และชื่อแบรนด์ใน `ReviewCardSumo2` → เปลี่ยนเป็น `ink-strong #0743a8`
+   ทั้งหมด **ทองยังใช้เป็นพื้น/ขอบ/ไอคอนได้ปกติ** (เช่นพิลล์พื้นทองตัวหนังสือ
+   `#062a52` ในหน้า `ทดลองเล่น`) และทองบน chrome น้ำเงินก็ยังใช้อยู่ —
+   อัปเดตหมายเหตุกำกับ token นี้ไว้ใน spec แล้ว
+   *เหลือไว้ตั้งใจ*: `>_` 2 จุดใน `ContentBoxSevenThreeCyberCut` เป็น glyph
+   ตกแต่งที่มี `aria-hidden="true"` ไม่ได้สื่อข้อมูล จึงไม่เข้าเกณฑ์ text contrast
+4. **หัวข้อ widget 3 ตัวเป็น gradient-clipped text ลอยบนพื้นเว็บ ไม่มีการ์ดรอง**
+   (`ReviewCardSumo2`, `GameRankingBoard`, `ProviderGridPremium`) — เพราะ
+   gradient ยึด viewport (ดูหัวข้อธีมด้านบน) หัวข้อพวกนี้จะไหลผ่านโซนกรมท่า
+   `#1e3a8a` ตอน scroll ซึ่งปลาย `#0743a8` ของ gradient ตัวอักษรเหลือ **1.15:1
+   = แทบมองไม่เห็น** แก้โดยใส่พื้น `bg-white/85 backdrop-blur-md` + ขอบ + เงา
+   ให้บล็อกหัวข้อทั้งสาม (ของ `GameRankingBoard` ครอบย่อหน้าเกริ่น
+   `text-[#3f6d99]` ที่ลอยอยู่เหมือนกันไปด้วย) — `LatestWinners4` ไม่ต้องแก้
+   เพราะหัวข้ออยู่ในการ์ด `bg-white/85` ของตัวเองอยู่แล้ว
+5. **`about-us.astro` มีเนื้อหาของ ZEED321 ค้างอยู่** — ข้ามรอบ NEKOATK ไปทั้งรอบ
+   จึงเป็นการ **เขียนใหม่ทั้งหน้า** ไม่ใช่การเติม placeholder · ตัดสินใจ
+   **คงหน้านี้ไว้** และรีแบรนด์เต็ม (มีลิงก์ใน `NavbarStyle1` อยู่แล้ว) ·
+   สลับ `AnnouncementCyber` → `AnnouncementPremium` ให้ตรงกับทั้งเว็บ
+
+`login`/`register` เป็นหน้า standalone ที่ทุกสีอยู่ใน `:root` var ของ
+`<style>` ตัวเอง (ชื่อ var ตั้งตามสีแบรนด์เก่า) — grep ด้วยคลาส Tailwind
+ไม่เจอ ต้องไล่ hex/`rgba()` ดิบทีละตัว ตามที่ playbook เตือนไว้
+
+### หน้าหวย — ปิด (9UFA เป็นแบรนด์สล็อต)
+
+`ตรวจหวย.astro` / `แนวทาง.astro` อยู่ใน `src/pages-disabled/` มาตั้งแต่ต้นรอบ
+จึงไม่ต้องย้าย · ตรวจแล้วว่า `NavbarStyle1` + `FooterStyle2` ที่หมุนเข้ามา
+**ไม่มีลิงก์ไปสองหน้านี้** และ route list จาก build ก็ไม่มีทั้งคู่ ·
+component `*Huay` ทั้งหมดปล่อยไว้เป็น inventory ตามกฎ
+
+### verify ที่รันจริง (Phase 5)
+
+- `npm run build` → **`✓ no errors (0 scheduled warning(s))`** (รวม
+  `postbuild` = `tools/verify-build.mjs`) — build แรกฟ้อง 11 ERROR ตามข้อ 1–2
+  ข้างบน, build ที่สองสะอาด, build ที่สามยืนยันหลังแก้ contrast
+- **route list ตรงกับชนิดแบรนด์** — ไม่มี `/ตรวจหวย` `/แนวทาง`; มีครบ
+  `index promotion ทางเข้า ทดลองเล่น contact-us about-us terms privacy 404
+  login register line`
+- **heading inventory เทียบ checklist docx ทีละบรรทัด** — `dist/index.html`
+  ได้ `h1×1, h2×7 (6 docx + FAQ), h3×0` ข้อความและลำดับตรงกับ docx เป๊ะทั้ง 7
+  และ **ไม่มีหัวข้อส่วนเกิน** (widget ทุกตัวใช้ `<p>` + `aria-label`)
+- ทุกหน้ามี `<h1>` เดียว (`/line` = 0 ตามคาด เป็นหน้า redirect)
+- ชื่อแบรนด์เก่า (`nekoatk|zeed321|kumi99`) ทั่ว `dist/` = **0**
+- คลาสสีเก่า (`pink|fuchsia|purple|violet|rose|orange|amber-[0-9]{3}`) ใน
+  `class="..."` ทั่ว `dist/` = **0** · hex เก่าทั้ง 12 ค่าใน src = **0**
+- `<!-- -->` ทุกไฟล์ใน `dist/` = **0**
+- `og:image` = `http://9ufa-new.com/_astro/og.B8kTrgps_i9RhX.jpeg` (มาจาก
+  `src/assets/og.png` ของรอบนี้ ไม่ใช่ path ใน `public/`)
+- ไม่มี ref ไปชื่อไฟล์ asset เก่า (`banner[234]` / `banner.png` / `slideN.png`
+  ดิบ) ใน HTML ที่ build ออกมา
+- `<address>` ใน `dist/contact-us/` = "ฝ่ายบริการลูกค้า 9UFA / อำเภอเมือง
+  นราธิวาส จังหวัดนราธิวาส 96000" — มาจาก `BRAND_ADDRESS` ที่ derive จาก
+  `BRAND_NAME` เอง และไม่มีที่อยู่ใน JSON-LD/meta
+- `grep -c '<h2' dist/contact-us/index.html` = **0** (เป็นหน้าปุ่มตามกฎ)
+- meta description ทุกหน้าอยู่ในช่วง **151–156 ตัวอักษร** (นับ character
+  ไม่ใช่ byte) · `404` = 127 เป็นหน้า noindex ที่เกทไม่บังคับ
+- `undefined|NaN|[object Object]` — เจอเฉพาะใน JS ที่ bundle แล้วของ
+  `winnersFeed`/`liveCounter` ที่อ่าน `data-*` แล้ว fallback เป็น `NaN`
+  ตั้งใจ ไม่ใช่ prop plumbing พัง
+- `<details>` ใน `dist/index.html` = 5 ข้อ ครบตาม `faqs` ที่ส่งเข้าไป
+- `ContentBoxFloatingBadge` ตรวจซ้ำ: badge เป็น `w-[92%] max-w-2xl text-center`
+  (ไม่มี `whitespace-nowrap`) การ์ด `pt-36`/`md:pt-32` เผื่อ badge 2 บรรทัด
+  พร้อม `isolate` + `-z-10` บนเลเยอร์ตกแต่ง
+
+### ไม่ได้แตะ (out of scope)
+
+- **component variant ที่ไม่ได้ใช้ทั้งหมด** — `Navbar*` ตัวอื่น, `Footer*`
+  ตัวอื่น, `Announcement*` ตัวอื่น, `LatestWinners*` ตัวอื่น, `Faq2/3/4`,
+  `ProviderGrid`, `ContentBox*Neumorphism/Huay/…`, `*Huay` ทั้งชุด — เป็น
+  inventory ของแบรนด์ถัดไป **ยังมีชื่อ/สีแบรนด์เก่าข้างในตามปกติ ไม่ใช่บั๊ก**
+- **ไฟล์ asset ที่ตายแล้วบนดิสก์** — `banner.png` (2.2 MB, 04 ส.ค.),
+  `banner2/3/4.png` (04 ส.ค. = NEKOATK), `bg.png` (05 ส.ค.) ไม่ได้ลบ
+  ทั้งหมดไม่มีโค้ดไหน import แล้วจึงไม่ขึ้น `dist/` (`bg.png` ถูก prune
+  เพราะ `bg.json` เป็น `mode: gradient`) — ปล่อยให้ uploader จัดการรอบหน้า
+- `src/styles/_sources.generated.css` เปลี่ยนตาม `prebuild` เอง (ตระกูล
+  variant ที่ active เปลี่ยน) — ไม่ได้แก้มือ ตามกฎ
+- `terms` / `privacy` / `404` — ตรวจแล้วผ่าน ไม่ได้แก้: ชื่อแบรนด์มาจาก
+  `BRAND_NAME`, render ผ่าน `ContentBox.astro` ตามเดิม, ย่อหน้าไม่มีคลาสสี,
+  และคำอธิบายใน `privacy` ยังตรงกับของจริง (grep แล้วไม่มี analytics/pixel/
+  cookie banner/ฟอร์มที่ post ที่ไหน)
+- `account_id` ใน `wrangler.toml`, `bg.json`, โครง `<head>` ของ `MainLayout`
+- **ไม่ได้ deploy ไม่ได้ commit ไม่ได้ push** ตามคำสั่ง — หยุดที่ build + verify

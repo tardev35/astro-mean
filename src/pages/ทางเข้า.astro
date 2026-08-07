@@ -2,86 +2,88 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement3.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import { pageGraph } from "../lib/schema";
 
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 151.
-const pageDescription = "ทางเข้า NEKOATK สล็อตตรงไม่ผ่านเอเย่นต์ พร้อมวิธีตรวจ 4 จุดคือชื่อเว็บไซต์ HTTPS โลโก้ และปลายทางของปุ่มเข้าสู่ระบบ ก่อนกรอกเบอร์โทรและรหัสผ่านทุกครั้ง";
+// count reads about three times too long. This one measures 154.
+const pageDescription =
+  "ทางเข้า 9UFA เว็บสล็อตยอดนิยม พร้อมวิธีตรวจ 4 จุดคือชื่อเว็บไซต์ การเชื่อมต่อ HTTPS โลโก้ และปลายทางของปุ่มเข้าสู่ระบบ ก่อนกรอกเบอร์โทรและรหัสผ่านทุกครั้ง";
+
+const announcement =
+  "ทางเข้า 9UFA เว็บสล็อตยอดนิยม เข้าใช้งานผ่านลิงก์ที่ตรวจชื่อเว็บไซต์แล้วและเชื่อมต่อแบบ HTTPS เท่านั้น • สมัครสมาชิกใหม่รับทุนเล่นฟรี 199 บาททันที ไม่ต้องแชร์ ไม่ต้องส่งหลักฐาน • ระบบออโต้ฝากถอนได้เองตลอดเวลา ไม่ต้องทักแอดมิน • ห้ามส่งรหัสผ่านหรือ OTP ให้ใครผ่านแชต";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า NEKOATK ต้องตรวจ 4 จุดก่อนล็อกอิน",
+  name: "ทางเข้า 9UFA ต้องตรวจ 4 จุดก่อนล็อกอิน",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "ทางเข้า", path: "/ทางเข้า" },
   ],
 });
+
+const headingClass = "bg-gradient-to-r from-[#0743a8] via-[#0a5df1] to-[#01cbf6] bg-clip-text text-2xl leading-normal font-bold text-transparent";
 ---
 
-<MainLayout title="ทางเข้า NEKOATK ตรวจชื่อเว็บไซต์และ HTTPS ก่อนล็อกอิน" description={pageDescription}>
+<MainLayout title="ทางเข้า 9UFA ตรวจชื่อเว็บไซต์และ HTTPS ก่อนล็อกอิน" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
-  <Announcement />
+  <Announcement message={announcement} />
 
-  <ContentBox title="ทางเข้า NEKOATK ต้องตรวจ 4 จุดก่อนล็อกอิน" as="h1">
+  <ContentBox title="ทางเข้า 9UFA ต้องตรวจ 4 จุดก่อนล็อกอิน" as="h1">
     <div>
-      <h2 class="mb-6 bg-gradient-to-r from-[#ffb457] via-[#fd841b] to-[#fb0660] bg-clip-text text-2xl leading-normal font-bold text-transparent">
-        ตรวจชื่อเว็บไซต์ HTTPS โลโก้ และปลายทางปุ่มเข้าสู่ระบบ
-      </h2>
+      <h2 class={`mb-6 ${headingClass}`}>ตรวจชื่อเว็บไซต์ HTTPS โลโก้ และปลายทางปุ่มเข้าสู่ระบบ</h2>
 
-      <p class="mb-6 text-left text-base leading-relaxed">
-        ชื่อ NEKOATK ถูกพูดถึงในกลุ่มคนเล่นสล็อตมากขึ้นเรื่อย ๆ เพราะเป็นเว็บตรงที่ส่งตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ผลค้นหาจึงมีทั้งเว็บหลัก บัญชีโซเชียล และหน้ารวมลิงก์ปะปนกัน
+      <p class="mb-6 text-left text-base leading-relaxed text-[#0b3a63]">
+        ชื่อ 9UFA ถูกพูดถึงในกลุ่มคนเล่นสล็อตมากขึ้นเรื่อย ๆ เพราะเป็นเว็บสล็อตยอดนิยมที่ดึงสัญญาณเกมตรงผ่าน API ลิขสิทธิ์แท้ ไม่ผ่านคนกลาง ผลค้นหาจึงมีทั้งเว็บหลัก บัญชีโซเชียล และหน้ารวมลิงก์ปะปนกัน
         ก่อนล็อกอินจึงควรตรวจให้ครบ 4 จุด คือชื่อเว็บไซต์ทุกตัวอักษร การเชื่อมต่อว่าเป็น HTTPS โลโก้ที่แสดงบนหน้า และปลายทางของปุ่มเข้าสู่ระบบว่าพาไปที่ใด โดยเฉพาะลิงก์ที่เด้งเปลี่ยนหน้าหลายรอบก่อนพามาถึงหน้ากรอกข้อมูล
         ชื่อคล้ายกันและโลโก้คล้ายกันไม่ได้ยืนยันว่าเป็นเว็บเดียวกัน จากนั้นดูว่าเมนูเข้าสู่ระบบ สมัครสมาชิก สล็อตทุกค่าย โปรโมชั่น ฝากถอนออโต้ และช่องทางติดต่ออยู่ครบตามปกติหรือเปล่า
         เพราะหน้าเลียนแบบมักลอกภาพได้เหมือนแต่ตกหล่นบางเมนู หรือรีบพาไปหน้ากรอกข้อมูลตั้งแต่คลิกแรก หากเว็บเปลี่ยนชื่อกะทันหัน ขอรหัส OTP ผ่านแชต หรือบังคับให้ติดตั้งไฟล์ที่ไม่รู้จัก
         ควรหยุดก่อนทำรายการ ใช้เวลาเช็กเพิ่ม 10 วินาที ยังดีกว่าใช้ครึ่งวันตามหาว่าบัญชีหายไปพร้อมลิงก์ไหน
       </p>
 
-      <h2 class="mb-6 bg-gradient-to-r from-[#ffb457] via-[#fd841b] to-[#fb0660] bg-clip-text text-2xl leading-normal font-bold text-transparent">
-        เข้าระบบแล้วใช้อะไรได้บ้าง และควรหยุดทำรายการตอนไหน
-      </h2>
+      <h2 class={`mb-6 ${headingClass}`}>เข้าระบบแล้วใช้อะไรได้บ้าง และควรหยุดทำรายการตอนไหน</h2>
 
-      <p class="mb-8 text-left text-base leading-relaxed">
-        เมื่อเข้าระบบแล้ว บัญชีเดียวเปิดใช้ได้ครบทั้งคลังเกมที่นำเข้าผ่าน API ลิขสิทธิ์แท้ร้อยเปอร์เซ็นต์จากค่ายผู้พัฒนาโดยตรง จึงไม่ต้องเปิดบัญชีใหม่เมื่ออยากสลับสไตล์การเล่นไปตามอารมณ์
-        เกมที่คัดมาลงเว็บเน้นตัวที่ค่า RTP สูงและโบนัสไทม์แตกบ่อย มีทั้งแนวแอคชั่น แฟนตาซี และสไตล์คลาสสิกให้เลือกแบบไม่มีคำว่าเบื่อ เพราะดึงสัญญาณภาพและระบบเกมมาตรง ๆ ตัวเกมจึงเสถียรขั้นสุด โหลดไว
-        ไม่กินเน็ตมือถือ ลุ้นสแคทเตอร์ตกได้แบบเฟรมต่อเฟรมโดยไม่ค้างกลางฟรีสปิน เวลาเลือกเกมควรดูจากเดิมพันเริ่มต้นต่อรอบ ฟีเจอร์โบนัส ความผันผวน และรูปแบบการจ่ายมากกว่าดูหน้าปกเกม
-        ส่วนระบบเว็บรองรับผู้ใช้งานพร้อมกันจำนวนมาก จะเข้าจากสมาร์ทโฟน แท็บเล็ต หรือคอมพิวเตอร์ หน้าเว็บก็ปรับสัดส่วนให้พอดีกับหน้าจอเอง ด้านการเงิน ระบบออโต้ของ NEKOATK ทำรายการฝากถอนได้ด้วยตัวเองตลอดเวลา
-        ยอดเงินอัปเดตเข้ากระเป๋าโดยไม่ต้องแจ้งสลิปหรือรอแอดมินรับเรื่องทีละรายการ ปั่นแตกหนักแค่ไหนก็จ่ายเต็มทุกบิล ไม่มีอั้นยอดถอนต่อวัน ก่อนกดยืนยันควรตรวจชื่อบัญชี ยอดเงิน และประวัติรายการให้ตรงกัน
-        หากยอดยังไม่เปลี่ยนไม่ควรกดซ้ำทันที เพราะระบบอาจกำลังประมวลผลอยู่ และหลังทำรายการควรเก็บเลขรายการหรือภาพหน้าจอไว้ตรวจสอบภายหลัง เบอร์โทรศัพท์เป็นข้อมูลสำคัญของบัญชี
-        จึงควรกรอกเฉพาะบนโดเมนที่ตรวจแล้ว และไม่ส่งรหัสผ่านหรือ OTP ให้บุคคลอื่นผ่านแชต หากลืมรหัสควรใช้เมนูกู้คืนจากระบบโดยตรง เจ้าหน้าที่จริงไม่จำเป็นต้องยืมรหัสเราไปลองล็อกอินแทน
-        และถ้าไม่แน่ใจว่าลิงก์
-        <strong class="text-[#ffb457]">ทางเข้า NEKOATK</strong> หรือลิงก์สมัครสมาชิกใดคือของจริง เราเตรียมลิงก์ที่ถูกต้องไว้ให้แล้วที่ปุ่มด้านล่างนี้
+      <p class="mb-8 text-left text-base leading-relaxed text-[#0b3a63]">
+        เมื่อเข้าระบบแล้ว บัญชีเดียวเปิดใช้ได้ครบทั้งคลังเกมที่รวมค่ายสล็อตระดับโลกไว้ในกระเป๋าเดียว จึงไม่ต้องเปิดบัญชีใหม่เมื่ออยากสลับสไตล์การเล่นไปตามอารมณ์
+        ทุกเกมดึงสัญญาณตรงผ่าน API ลิขสิทธิ์แท้ ค่า RTP จึงเป็นไปตามมาตรฐานสากล มีทั้งสายผลไม้คลาสสิกและสายซื้อฟรีสปินวัดดวงให้เลือกครบ โบนัสแตกง่าย สแกตเตอร์เข้าบ่อย
+        ระบบหลังบ้านอัปเกรดด้วยเซิร์ฟเวอร์รุ่นล่าสุดที่รองรับคนออนไลน์พร้อมกันหลักแสนคน กราฟิกจึงคมชัดลื่นไหล กดเดิมพันได้แบบเรียลไทม์โดยไม่มีดีเลย์ ต่อให้เล่นผ่านมือถือสเปคต่ำหรือใช้เน็ตมือถือธรรมดา
+        เวลาเลือกเกมควรดูจากเดิมพันเริ่มต้นต่อรอบ ฟีเจอร์โบนัส ความผันผวน และรูปแบบการจ่ายมากกว่าดูหน้าปกเกม ด้านการเงิน ระบบออโต้ของ 9UFA ทำรายการฝากถอนได้ด้วยตัวเองตลอดเวลา
+        ยอดเงินอัปเดตเข้ากระเป๋าโดยไม่ต้องแจ้งสลิปหรือรอแอดมินรับเรื่องทีละรายการ ปั่นแตกหนักแค่ไหนก็จ่ายเต็มทุกบิล ไม่มีอั้นยอดถอนต่อวัน และเงื่อนไขการทำเทิร์นตั้งไว้ต่ำจนถอนออกมาใช้ได้จริง
+        ก่อนกดยืนยันควรตรวจชื่อบัญชี ยอดเงิน และประวัติรายการให้ตรงกัน หากยอดยังไม่เปลี่ยนไม่ควรกดซ้ำทันที เพราะระบบอาจกำลังประมวลผลอยู่ และหลังทำรายการควรเก็บเลขรายการหรือภาพหน้าจอไว้ตรวจสอบภายหลัง
+        เบอร์โทรศัพท์เป็นข้อมูลสำคัญของบัญชี จึงควรกรอกเฉพาะบนโดเมนที่ตรวจแล้ว และไม่ส่งรหัสผ่านหรือ OTP ให้บุคคลอื่นผ่านแชต หากลืมรหัสควรใช้เมนูกู้คืนจากระบบโดยตรง
+        เจ้าหน้าที่จริงไม่จำเป็นต้องยืมรหัสเราไปลองล็อกอินแทน และถ้าไม่แน่ใจว่าลิงก์
+        <strong class="text-[#0743a8]">ทางเข้า 9UFA</strong> หรือลิงก์สมัครสมาชิกใดคือของจริง เราเตรียมลิงก์ที่ถูกต้องไว้ให้แล้วที่ปุ่มด้านล่างนี้
       </p>
 
       <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
         <div class="flex flex-col items-center justify-center gap-4">
           <a
             href="/login"
-            aria-label="เข้าสู่ระบบ NEKOATK"
-            class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#fb0660]/60 bg-[#1f0524] px-6 py-4 shadow-[0_10px_30px_rgba(251,6,96,0.2)] transition-all duration-300 hover:scale-105 hover:border-[#fb0660] hover:bg-[#2c0733] hover:shadow-[0_15px_40px_rgba(251,6,96,0.35)]">
-            <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#fb0660]/20 to-transparent"></div>
+            aria-label="เข้าสู่ระบบ 9UFA"
+            class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#0a5df1]/50 bg-[#eaf4fe] px-6 py-4 shadow-[0_10px_30px_rgba(10,93,241,0.18)] transition-all duration-300 hover:scale-105 hover:border-[#0a5df1] hover:bg-[#dceafe] hover:shadow-[0_15px_40px_rgba(1,203,246,0.35)]">
+            <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/80 to-transparent"></div>
 
-            <svg class="relative z-10 h-9 w-9 text-[#f6dfec]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="relative z-10 h-9 w-9 text-[#0a5df1]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
             </svg>
 
-            <span class="relative z-10 text-3xl font-bold tracking-wide text-[#ffb457]">เข้าสู่ระบบ</span>
+            <span class="relative z-10 text-3xl font-bold tracking-wide text-[#0743a8]">เข้าสู่ระบบ</span>
           </a>
         </div>
 
         <div class="flex flex-col items-center justify-center gap-4">
           <a
             href="/register"
-            aria-label="สมัครสมาชิก NEKOATK"
-            class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#fd841b]/60 bg-gradient-to-r from-[#ffb457] via-[#fd841b] to-[#fb0660] px-6 py-4 shadow-[0_10px_30px_rgba(253,132,27,0.2)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(253,132,27,0.35)]">
-            <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/55 to-transparent"></div>
+            aria-label="สมัครสมาชิก 9UFA"
+            class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#0a5df1]/60 bg-gradient-to-r from-[#0a5df1] via-[#0782f2] to-[#01cbf6] px-6 py-4 shadow-[0_10px_30px_rgba(10,93,241,0.3)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(1,203,246,0.45)]">
+            <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/35 to-transparent"></div>
 
-            <svg class="relative z-10 h-9 w-9 text-[#2a0210]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="relative z-10 h-9 w-9 text-[#f0f9ff]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
             </svg>
 
-            <span class="relative z-10 text-3xl font-bold tracking-wide text-[#2a0210]">สมัครสมาชิก</span>
+            <span class="relative z-10 text-3xl font-bold tracking-wide text-[#f0f9ff]">สมัครสมาชิก</span>
           </a>
         </div>
       </div>

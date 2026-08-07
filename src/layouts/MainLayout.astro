@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle6.astro";
-import Footer from "../components/FooterStyle3.astro";
+import Navbar from "../components/NavbarStyle1.astro";
+import Footer from "../components/FooterStyle2.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "NEKOATK สล็อตตรงโปรแรง API แท้ ไม่ผ่านเอเย่นต์ แตกง่าย จ่ายจริง",
-  description = "NEKOATK สล็อตตรงไม่ผ่านเอเย่นต์ นำเข้าเกม API แท้ร้อยเปอร์เซ็นต์ การันตีสล็อตแตกง่ายกว่าที่เคยสัมผัส จัดเต็มโปรแรงแจกทุนฟรีทุกวัน บวกหลักล้านก็จ่ายจริง",
+  title = "9UFA เว็บสล็อตยอดนิยม แจกโหด สมัครใหม่รับเครดิตฟรี 199 ไม่ต้องแชร์",
+  description = "9UFA รวมค่ายเว็บสล็อตยอดนิยม แจกโหดสะเทือนวงการ! แค่สมัครสมาชิกใหม่ก็รับทุนเล่นฟรี 199 ทันที ไม่ต้องแชร์ ไม่ต้องทำเทิร์นสูง ระบบลื่นไหลไม่มีสะดุด",
   robots = "index, follow",
 } = Astro.props;
 
@@ -170,7 +170,7 @@ const profile = brandProfile(Astro.site);
 
           {block === "appmeta" && (
             <Fragment>
-              {profile.showAppTitle && <meta name="apple-mobile-web-app-title" content="nekoatk" />}
+              {profile.showAppTitle && <meta name="apple-mobile-web-app-title" content="9ufa" />}
               <link rel="manifest" href="/site.webmanifest" />
             </Fragment>
           )}
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0d0210;
+        background-color: #eaf4fe;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ NEKOATK สล็อตตรงโปรแรง API แท้ปลอดภัย 100% ไม่ผ่านเอเย่นต์ แตกง่ายโอกาสชนะสูง จ่ายจริงถอนไวไม่มีอั้น พร้อมปุ่มสมัครสมาชิก บนพื้นนีออนม่วงชมพู มีแมวนำโชค เหรียญทอง และตู้สล็อต 777"
+          alt="แบนเนอร์ 9UFA เว็บสล็อตยอดนิยม แจกโหด สมัครใหม่รับเครดิตฟรี 199 ไม่ต้องแชร์ พร้อมปุ่มสมัครสมาชิก บนพื้นฟ้าน้ำแข็ง มีเด็กหญิงชุดฟ้าสวมมงกุฎเกล็ดหิมะ ตู้สล็อต 777 หีบสมบัติ และเหรียญทอง"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

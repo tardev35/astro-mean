@@ -25,19 +25,19 @@ import slide4 from "../assets/slide4.png";
 const images = [
   {
     src: slide1,
-    alt: "แบนเนอร์โปรโมชั่น NEKOATK สมาชิกใหม่ รับโบนัส 100% พร้อมภาพแมวกวักนำโชคบนพื้นชมพูทอง",
+    alt: "แบนเนอร์โปรโมชั่น 9UFA แนะนำเพื่อน รับโบนัสสูงสุด 5000 บาท พร้อมตารางยอดฝากสะสม 30 วันเทียบโบนัสผู้ฝากและผู้แนะนำ และภาพเด็กผู้หญิงชุดฟ้าสองคนข้างกล่องของขวัญ",
   },
   {
     src: slide2,
-    alt: "แบนเนอร์โปรโมชั่น NEKOATK คืนค่าคอม 0.5% พร้อมภาพสาวมังกรและแป้นสล็อตบนพื้นชมพูทอง",
+    alt: "แบนเนอร์โปรโมชั่น 9UFA ลัคกี้สปิน กิจกรรมวงล้อมหาโชค ลุ้น iPhone รุ่นล่าสุดรอคุณเป็นเจ้าของ พร้อมภาพเด็กผู้หญิงชุดฟ้าถือกล่อง iPhone หน้าวงล้อและเหรียญทองปลิว",
   },
   {
     src: slide3,
-    alt: "แบนเนอร์โปรโมชั่น NEKOATK แนะนำเพื่อน 0.8% พร้อมภาพแมวขาวกอดหัวใจสีทอง",
+    alt: "แบนเนอร์โปรโมชั่น 9UFA วันศุกร์ฝาก 100 รับ 99 และวันเสาร์ฝาก 100 รับ 199 พร้อมภาพเด็กผู้หญิงชุดฟ้าสวมมงกุฎหิมะถือไม้กายสิทธิ์ข้างกล่องของขวัญสีแดง",
   },
   {
     src: slide4,
-    alt: "แบนเนอร์โปรโมชั่น NEKOATK คืนยอดเสีย 5% ทุกวันอาทิตย์ พร้อมภาพแมวนักรบชุดเกราะดำถือเหรียญทอง",
+    alt: "แบนเนอร์โปรโมชั่น 9UFA เดิมพันอย่างเต็มที่ เชิญเพื่อนมาเล่น รับโบนัสส่วนลดเงินคืน 1.6% พร้อมภาพเด็กผู้หญิงชุดฟ้าสองคนข้างไอคอนชวนเพื่อนสีฟ้า",
   },
 ];
 
@@ -61,7 +61,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#fd841b]/60 peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffb457]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#0a5df1]/60 peer-focus-visible:bg-white peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#0743a8]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -78,7 +78,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#fb0660]/30 object-cover shadow-[0_10px_30px_rgba(251,6,96,0.18)]"
+              class="block w-full rounded-xl border border-[#0a5df1]/25 object-cover shadow-[0_10px_30px_rgba(10,93,241,0.15)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
