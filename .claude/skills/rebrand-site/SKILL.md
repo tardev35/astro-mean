@@ -106,7 +106,7 @@ subagent that builds mid-flight both wastes the most expensive step and
 can't see the other agents' not-yet-merged edits anyway.
 
 **Step P3 — you merge + verify.** After every fan-out agent reports back, run
-Phase 5 (the one build), Phase 6 (workspec), and any Phase 7 follow-ups
+Phase 5 (the one build), Phase 6 (the closing report), and any Phase 7 follow-ups
 yourself. If verification shows a shared-chrome component needs a further
 change, make it **yourself** in this step — never send a subagent back
 into the shared set after fan-out.
@@ -520,13 +520,28 @@ the same one:
   surface most brands use, that is invisible rather than merely wrong, and
   `terms`/`privacy`/`404` name no colours at all by design, so all three go
   blank at once. `verify-build.mjs` fails the build if it goes missing.
-- **Contact address** — **there is nothing to do here.** `BRAND_ADDRESS` in
-  `src/lib/brandProfile.ts` derives itself from `BRAND_NAME`: the brand name
-  hashes into `src/lib/thaiProvinces.ts` (the real 77 provinces, each with its
-  capital district and postal code) and into a short list of desk names, giving
-  a two-line block that `/contact-us` renders and no other page does. Setting
-  `BRAND_NAME` at the top of this phase has already set the address. Do not
-  hand-write one, and do not "fix" the derivation to keep a previous value.
+- **Contact address and email** — **there is nothing to derive here.**
+  `BRAND_ADDRESS` in `src/lib/brandProfile.ts` derives itself from
+  `BRAND_NAME`: the brand name hashes into `src/lib/thaiProvinces.ts` (the real
+  77 provinces, each with its capital district and postal code) and into a short
+  list of desk names, giving a two-line block. `BRAND_ADDRESS.email` comes from
+  the same hash — a mailbox name (`support`/`contact`/`info`/`service`/`help`)
+  at the host taken from `site:` in `astro.config.mjs`, so it follows the domain
+  on its own and cannot point at a previous brand's. Setting `BRAND_NAME` at the
+  top of this phase has already set all of it. Do not hand-write either, and do
+  not "fix" the derivation to keep a previous value.
+
+  **The mailbox is not routed anywhere, and that is the owner's decision**
+  (2026-08-05): the line is there to be read, not written to, the same way the
+  address is there to be read and not visited. LINE remains the channel that
+  actually reaches a human, and it is on the page twice plus in the footer.
+  So do not raise it every rebrand, do not set up mail routing unasked, and do
+  not drop the line because it "doesn't work" — it is doing what it was asked
+  to do.
+
+  **Two places render it, and only two:** `/contact-us` (under the image, above
+  the buttons) and the **active footer**, which puts it on every page. Both read
+  the same export — never retype the lines into either one.
 
   That derivation **is** the safety property: an address pinned to anything
   other than `BRAND_NAME` would survive a rebrand that changed the name, and
@@ -554,12 +569,27 @@ the same one:
   unrelated brand domains is a machine-readable join key — the same thing the
   `sameAs` ban exists to prevent. `verify-build.mjs` fails the build on any
   address vocabulary (`PostalAddress`, `addressLocality`, `postalCode`, …)
-  inside a JSON-LD block, and again on an `<address>` element on any page
-  other than `/contact-us`.
+  inside a JSON-LD block. The email is under the same rule — no `email:` in
+  `pageGraph`, no `ContactPoint.email`.
+
+  Because the footer carries it, an `<address>` on every page is now expected
+  and is no longer an error. What replaced that check is stricter about the
+  thing that actually goes wrong: **every rendered `<address>` must contain the
+  current `BRAND_NAME`, and any email inside it must be at the host in `site:`**.
+  A block left over from the previous brand fails the build on both counts.
+
+**Read the previous brand's picks from git, in one command.** They are in the
+code that shipped, which is the authoritative record — not in any log someone
+had to remember to write:
+
+```sh
+git show HEAD:src/layouts/MainLayout.astro | grep -E 'components/(Navbar|Footer)'
+git show HEAD:src/pages/index.astro | grep -E 'from "\.\./components/'
+```
 
 If a family genuinely has no better-fitting alternative for this brand's
-mood and you must reuse the previous variant, say so explicitly in the
-`workspec.md` entry with the reason — don't silently leave the old pick
+mood and you must reuse the previous variant, **say so with the reason in the
+summary you give the operator at the end** — don't silently leave the old pick
 in place. The default expectation on every rebrand is: different navbar,
 different footer, different announcement, different winners feed, and a
 visibly different ContentBox shape-mix than the brand before.
@@ -678,8 +708,7 @@ deleting it turns each `<p>` into its own flex item beside the icon) and
 `ContentBoxTwoCyberCut` ×1 (its intro-slot wrapper carries a real `mb-8`
 and sits next to the grid, so it can't be hoisted onto the card).
 
-All 25 `ContentBox*` files were swept on 2026-07-26; see that
-`workspec.md` entry.
+All 25 `ContentBox*` files were swept on 2026-07-26.
 
 **House style for body copy inside any content box — headings may be
 centered, paragraphs are always flush left at `text-base`.** Set on
@@ -734,8 +763,8 @@ column). Read the slides with `Read`, choose the 2 whose drawn content
 maps cleanly onto a docx section (e.g. a certification/SSL image → the
 "licensed/standards" section, a speed-test image → the "performance
 test" section), and don't feel obliged to place all four — leaving 2
-slides unused is expected and fine. Note which slides you used vs left
-out in the workspec.
+slides unused is expected and fine. Say which slides you used and which you
+left out in the closing summary.
 
 **Every docx heading must survive, in document order, before you touch
 theming.** Before writing a single line of `index.astro`, list out
@@ -948,35 +977,105 @@ Phase 5 build covers all pages at once.) For each page:
    `Huay` theme (red/gold) + `AnnouncementHuay` on purpose — do **not**
    force them onto the casino brand's hue or `AnnouncementCyber`. Still
    verify they carry **zero** old-brand-name references; only the theme
-   is exempt, not the brand name. Note this decision in the workspec.
+   is exempt, not the brand name. Note this decision in the closing summary.
 
-### `/contact-us` carries no article body — image, address, buttons, nothing else
+### Two pages carry no article body — `/contact-us` and `/ทางเข้า`
 
-`contact-us.astro` is the one sub-page that is **not** an article. Its whole
-body is four things, in this order:
+Both are **button pages, not articles**: a visitor opens them to press
+something, and every paragraph above the buttons pushes them further down.
+Their whole body is, in order:
+
+**`contact-us.astro`**
 
 1. the `ContentBox` `title` (the page's single `<h1>`)
 2. the LINE image (`src/assets/contact-line.webp`)
-3. the `BRAND_ADDRESS` block
+3. the `BRAND_ADDRESS` block — lines, then `BRAND_ADDRESS.email` as a
+   `mailto:` link underneath
 4. the `สมัครสมาชิก` / `เข้าสู่ระบบ` / `ติดต่อผ่าน Line Official` button row
 
-**Do not add section headings or explanatory paragraphs here.** Not "ควรเตรียม
-ข้อมูลอะไรก่อนแจ้ง", not "ทักทีมงานทางไหน", not a PIN/OTP safety notice —
-however well-written. Someone opens this page to press a button, and every
-paragraph pushes those buttons further down.
+**`ทางเข้า.astro`**
 
-Where the copy keeps coming from: the docx **SUB-PAGES** section gives this page
-a `Title` and a `Meta` and **never a body**, so any prose you find here was
-invented by an earlier rebrand and then rewritten by every rebrand since,
-each one assuming the last one had a reason. It didn't. If the page you
-inherit has `<h2>`s and paragraphs, **delete them** — that is a fix, not a
-scope overrun.
+1. the `ContentBox` `title` (the page's single `<h1>`)
+2. the two-column `เข้าสู่ระบบ` / `สมัครสมาชิก` button grid
 
-Consequence for the Phase 5 inventory: `/contact-us` contributes **`h1×1`,
-`h2×0`, `h3×0`**. An `<h2>` on that page means this rule was missed.
+**Write no section headings and no explanatory paragraphs on either.** Not
+"ควรเตรียมข้อมูลอะไรก่อนแจ้ง", not "ตรวจ 4 จุดก่อนล็อกอิน", not a PIN/OTP
+safety notice — however well-written and however much the previous copy looks
+like it belongs.
+
+Where the copy keeps coming from: the docx **SUB-PAGES** section gives these
+pages a `Title` and a `Meta` and **never a body**, so any prose you find is
+something an earlier rebrand invented and every rebrand since has faithfully
+rewritten, each assuming the last one had a reason. It didn't. If the page you
+inherit has `<h2>`s and paragraphs, **delete them** — that is a fix, not a scope
+overrun.
+
+**Everything else on these pages stays**: the `Announcement`, the buttons and
+their icons, `Navfoot`, the `pageGraph` call, the `MainLayout` title and
+description. Only the headings and the prose come out. Retheme the buttons to
+the new palette as normal.
+
+Give the `<h1>` a title that names what the page **is** — "ทางเข้า
+`<BRAND>` เว็บหลัก", "ติดต่อทีมงาน `<BRAND>`". A title that previews an article
+("…ต้องตรวจ 4 จุดก่อนล็อกอิน") reads as a broken promise once the article is
+gone, and it is the line most likely to tempt the next rebrand into writing the
+body back.
+
+Consequence for the Phase 5 inventory: each contributes **`h1×1`, `h2×0`,
+`h3×0`**. An `<h2>` on either means this rule was missed.
 
 The other sub-pages are the opposite — they *are* articles and their headings
 come from their own body, per Phase 5.
+
+### The active footer carries the same contact block
+
+`Footer*` rotates every rebrand, and the block lives in the file, not in
+`MainLayout` — so **whichever footer you switch to, port it across**. Resolve
+the live one from `MainLayout.astro`'s `import Footer`. Every variant puts an
+`<a href="/line">` in a customer-service column; drop this immediately after
+that anchor, and add the import to the frontmatter:
+
+```astro
+import { BRAND_ADDRESS } from "../lib/brandProfile";
+```
+
+```astro
+{
+  BRAND_ADDRESS.lines.length > 0 && (
+    <address aria-label={BRAND_ADDRESS.label} class="mt-2 rounded-xl border border-white/15 bg-black/20 p-4 text-xs leading-relaxed not-italic opacity-90">
+      <p class="mb-2 flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase opacity-80">
+        <span aria-hidden="true" class="text-sm">📍</span>
+        {BRAND_ADDRESS.label}
+      </p>
+      {BRAND_ADDRESS.lines.map((line) => (
+        <span class="block">{line}</span>
+      ))}
+      {BRAND_ADDRESS.email && (
+        <a href={`mailto:${BRAND_ADDRESS.email}`} class="mt-3 inline-flex items-center gap-2 font-bold underline decoration-current/40 underline-offset-4 opacity-90 transition-opacity hover:opacity-100">
+          <span aria-hidden="true" class="text-sm">✉️</span>
+          {BRAND_ADDRESS.email}
+        </a>
+      )}
+    </address>
+  )
+}
+```
+
+**Paste it verbatim — do not theme it, and do not put a hex value in it.** It
+carries no brand colour on purpose: `border-white/15`, `bg-black/20` and
+`opacity` over the footer's inherited text colour land correctly on every
+variant in the library, which are all dark. Retyping it in this brand's palette
+buys nothing and is the exact move that leaves the previous brand's hex behind
+next time.
+
+Rules that bite here: the label is a `<p>` or `<span>`, **never a heading**
+(chrome may not take a heading tag, and the footer is on every page, so one
+`<h2>` there is an `<h2>` sitewide); keep `not-italic`, since browsers italicise
+`<address>` by default; and the 📍/✉️ glyphs go in their own
+`<span aria-hidden="true">`, never inside the text.
+
+Leaving it out is not a build failure — the check only fires on an address that
+names the *wrong* brand — so it is on you to confirm the footer renders it.
 
 **Lottery pages — normally the operator's switch, not yours.** `ตรวจหวย.astro`
 and `แนวทาง.astro` are routed only when they sit in `src/pages/`; Astro ignores
@@ -1034,7 +1133,7 @@ turning them off is an action, not an absence of one:**
 - Leave the `*Huay` components themselves alone — they are inventory for the
   next lottery brand, same as every other unused variant.
 
-Record the on/off decision in the workspec either way.
+Record the on/off decision in the closing summary either way.
 
 **`terms.astro` and `privacy.astro` are NOT in that decision.** They ship on
 every brand, are never parked, and are never rewritten. They are brand-neutral
@@ -1535,14 +1634,16 @@ pointing at a `public/` path during a rebrand, repoint it to the
    - grep for `undefined`, `NaN`, `[object Object]` as a cheap check
      for broken prop plumbing
    - **contact address**: `grep -o '<address[^>]*>.*</address>'
-     dist/contact-us/index.html` must name **this** brand and a province,
-     and the previous brand's name must return no hits anywhere in
-     `dist/`. The build already enforces that the block appears on no
-     other page and in no JSON-LD; what it cannot check is that the name
-     inside it is the current one
-   - **`grep -c '<h2' dist/contact-us/index.html` must be `0`** — that page
-     is a button page, not an article (Phase 4.5). Any hit means prose was
-     written back into it; delete the prose, don't demote the tag
+     dist/contact-us/index.html` must name **this** brand, a province, and
+     an email at this brand's own host. The build now fails on a block that
+     names the wrong brand or an email at the wrong host, so what is left
+     for you to look at is that the footer renders it **at all** —
+     `grep -c '<address' dist/index.html` should be `1`. A `0` means the
+     footer swap in Phase 4.5 dropped it, which no gate catches
+   - **`grep -c '<h2' dist/contact-us/index.html dist/ทางเข้า/index.html`
+     must be `0` for both** — they are button pages, not articles
+     (Phase 4.5). Any hit means prose was written back in; delete the prose,
+     don't demote the tag
    - `grep -c '<!--' dist/index.html` should be 0 — Astro ships HTML
      comments to output, so any `<!-- H2: … -->` section labels left in
      a page leak the docx outline (and often the old brand name) into
@@ -1595,29 +1696,35 @@ pointing at a `public/` path during a rebrand, repoint it to the
    unavailable, leave the dev server running and move on — a leftover
    dev server is harmless. Never widen the kill to make it succeed.
 
-## Phase 6 — Update the workspec
+## Phase 6 — Report, and do NOT write `workspec.md`
 
-Keep a `workspec.md` at the repo root as a running log of rebrand work:
-goal, docx section inventory, file-by-file change list (grouped:
-stale-asset fixes named by the user / layout chrome / component
-retheme / content rewrite), the glob/asset bug found and how it was
-fixed, verification steps actually run, and an explicit "out of scope"
-section listing anything left untouched (other pages still on the old
-brand, dead leftover asset files not deleted). Append a new dated
-section for follow-up asks (e.g. a later single-component redesign)
-rather than rewriting history.
+**Do not append to `workspec.md`.** It is not maintained any more (owner's
+call, 2026-08-05). The file stays at the repo root as history; leave it alone.
+Writing a full entry — goal, section inventory, file-by-file change list,
+verification steps, out-of-scope — cost a couple of minutes of every run to
+produce a record nobody read back, in a 500 KB file the build has to scan.
 
-**Record each family's variant pick as a before→after line so the
-rotation rule (Phase 2) stays auditable.** For this rebrand, write out
-which sibling each family moved *from* and *to* — e.g. `Navbar:
-NavbarStyle11 → NavbarStyle6`, `Footer: FooterPremiumSumo → FooterCyber`,
-`Announcement: Announcement6 → Announcement3`, `LatestWinners:
-LatestWinners2 → LatestWinnersPremium`, `ContentBox mix:
-FloatingBadge+CyberCut-heavy → Premium+plain-heavy`. The next rebrand
-reads this section to know what NOT to reuse; if any family stayed on
-the same variant, the line must say so with the reason. Grep the
-previous dated entry's picks before choosing this brand's, so you don't
-accidentally land on the same sibling two brands running.
+Everything it held now lives somewhere that gets read:
+
+| เคยอยู่ใน workspec | อยู่ที่ไหนแทน |
+|---|---|
+| ไฟล์ที่แก้ | `git status` / `git diff` — ตรงกว่าและไม่มีทางลืม |
+| variant ที่รอบก่อนใช้ | โค้ดที่ shipped อยู่ อ่านด้วย `git show HEAD:...` (Phase 2) |
+| บั๊กที่เจอ + วิธีแก้ | commit message |
+| การ verify ที่รันจริง | ผล `npm run build` ที่ต่อท้ายด้วย `verify-build` |
+| สิ่งที่จงใจไม่แตะ | **สรุปที่คุณเขียนให้ operator ตอนจบ** |
+
+**Write that closing summary instead.** It is the one thing here an operator
+actually reads, it costs nothing extra (you are ending the run anyway), and it
+is where every "note this in the workspec" instruction elsewhere in this file
+now points. Cover:
+
+- ชื่อแบรนด์ · โดเมนที่ตั้งใน `site:` · ฟอนต์
+- variant ที่เลือกแต่ละตระกูล เป็น before→after (`Navbar: NavbarStyle11 →
+  NavbarStyle6`) และถ้าตระกูลไหนใช้ตัวเดิม **ต้องบอกเหตุผล**
+- `h1`/`h2`/`h3` ที่ได้ เทียบกับ checklist จาก docx
+- ของที่จงใจไม่แตะ และหน้าที่ยังเป็นของแบรนด์เก่า (ถ้ามี)
+- อะไรที่ operator ต้องไปทำต่อเอง (เช่น description ที่ยังสั้นกว่า 150)
 
 ## Phase 7 — Follow-up single-component redesign requests
 
@@ -1651,7 +1758,5 @@ re-run the full rebrand:
    version still feels like the same site, not a different brand.
 5. Rebuild (`npm run build`) and re-verify per Phase 5 before reporting
    done — a redesign that breaks the build isn't done.
-6. Append a dated `## Redesign: <ComponentName>` section to
-   `workspec.md` (per Phase 6) describing what changed and why — even
-   for a second/third pass on the same component, keep appending, keep
-   old entries.
+6. Report what changed and why — which component, what it looked like before,
+   what drove the new shape. In the reply, not in a file (Phase 6).
