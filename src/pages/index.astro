@@ -1,71 +1,74 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement2.astro";
 import ContentBox from "../components/ContentBox.astro";
 import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
 import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ProviderGrid from "../components/ProviderGridPremium.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinners4.astro";
+import LatestWinners from "../components/LatestWinners2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq.astro";
+import Faq from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgLuckySpin from "../assets/slide2.png";
-import imgWeekendBonus from "../assets/slide3.png";
+import imgCashback from "../assets/slide2.png";
+import imgLuckyWheel from "../assets/slide4.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxFloatingBadge as="h1"
-//   2 → ContentBoxSevenThreeCyberCut + slide2 (ลัคกี้สปิน วงล้อมหาโชค ลุ้น iPhone)
-//   3 → ContentBox as="h2"
-//   4 → ContentBoxSevenThree + slide3 (ศุกร์ฝาก 100 รับ 99 / เสาร์ฝาก 100 รับ 199)
-//   5 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวของ docx แบ่งเป็นสองครึ่งแบบคำต่อคำ
-//        ไม่ตัดคำใดออกและไม่สลับลำดับ)
-//   6 → ContentBoxPremium as="h2"
-//   7 → ContentBoxCyberCut as="h2"
-// SevenThree ใช้ 2 บล็อกเท่านั้น (โควตาเต็ม) และส่งเฉพาะ titleright
-// ถ้าส่ง titleleft ด้วยจะได้ h2 เกินมาอีกตัว
-// slide1/slide4 ไม่ได้ใช้ในกล่องเนื้อหา ขึ้นเฉพาะใน SmoothCarousel
+//   1 → ContentBoxNeumorphism as="h1"
+//   2 → ContentBoxPremium as="h2"
+//   3 → ContentBoxSevenThreeFloatingBadge + slide2 (CASHBACK คืนยอดเสียทุกวันจันทร์)
+//   4 → ContentBoxSevenThreeNeumorphism + slide4 (กิจกรรมวงล้อนำโชค แต้มสะสมเพชร)
+//   5 → ContentBox as="h2"
+//   6 → ContentBoxFloatingBadge as="h2"
+//   7 → ContentBoxPremium as="h2"
+// SevenThree ใช้ 2 บล็อกเท่านั้น (โควตาเต็ม) และแต่ละตัวส่งหัวข้อเดียว
+// (title ของ FloatingBadge / titleright ของ Neumorphism) ถ้าส่งทั้งซ้ายและขวา
+// จะได้ h2 เกินมาอีกตัว
+// slide1 (ตารางจ่ายหวย) และ slide3 (แนะนำเพื่อน) ไม่ได้ใช้ในกล่องเนื้อหา
+// ขึ้นเฉพาะใน SmoothCarousel
 // widget ที่ไม่ได้มาจาก docx ใช้หัวข้อเป็น <p> + aria-label บน <section> จึงแทรก
 // ระหว่างกล่องได้โดยลำดับ H2 ไม่เพี้ยน (LoginRtpSection ก็เป็น <p> เช่นกัน)
-// h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7, h3 = 0
+// h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7
+// h3 = 5 คือคำถาม FAQ ใต้ h2 ของตัวเอง (Faq3 ตั้งใจให้ซ้อนแบบนี้)
 
-const pageTitle = "9UFA เว็บสล็อตยอดนิยม แจกโหด สมัครใหม่รับเครดิตฟรี 199 ไม่ต้องแชร์";
+const pageTitle = "PODK888 | เว็บตรงเกมครบทุกสาย คาสิโนสดพร้อมลั่น ระบบใหม่โอนไว";
 
+// Meta description ยาว 156 ตัวอักษร — verify-build บังคับช่วง 150–160
+// ประโยคหลักคือบรรทัด Des ของ docx คำต่อคำ ต่อท้ายด้วยหัวข้อสูตรเล่นจาก docx ข้อ 7
 const pageDescription =
-  "9UFA รวมค่ายเว็บสล็อตยอดนิยม แจกโหดสะเทือนวงการ! แค่สมัครสมาชิกใหม่ก็รับทุนเล่นฟรี 199 ทันที ไม่ต้องแชร์ ไม่ต้องทำเทิร์นสูง ระบบออโต้ลื่นไหลไม่มีสะดุด ถอนไว";
+  "PODK888 เว็บตรงเกมครบทุกสาย คาสิโนสดพร้อมลั่น รวมค่ายแท้แตกโหดเต็มหน้ากระดาน ระบบใหม่โอนไว ปลอดภัยทุกยอด ไม่มีประวัติโกง พร้อมแจกสูตรเล่นและเทคนิคใหม่ทุกวัน";
 
 const announcementMessage =
-  "9UFA เว็บสล็อตยอดนิยม รวมค่ายเกมชั้นนำระดับโลกไว้ในกระเป๋าเดียว ดึงสัญญาณตรงผ่าน API ลิขสิทธิ์แท้ ไม่ผ่านคนกลาง • สมัครสมาชิกใหม่รับทุนเล่นฟรี 199 บาททันที ไม่ต้องแชร์ ไม่ต้องส่งหลักฐาน • กติกาทำเทิร์นต่ำมาก กดถอนเข้าบัญชีได้เลย ไม่มีกั๊ก ไม่มีอั้นยอดถอน • ระบบออโต้เต็มรูปแบบ สมัครเองหน้าเว็บไม่ถึง 1 นาที • เซิร์ฟเวอร์รองรับคนออนไลน์หลักแสนคน ลื่นไหลไม่มีสะดุด";
+  "PODK888 เว็บตรงเกมครบทุกสาย รวมสล็อต บาคาร่า และคาสิโนสดไว้ในแพลตฟอร์มเดียว ไม่ต้องจำหลายรหัส ไม่ต้องสลับเว็บให้ปวดหัว • คัดมาเฉพาะค่ายแท้ ภาพคมชัดไม่มีสะดุด ดีลเลอร์แจ่ม จัดหมวดหมู่เกมเด่นไว้ให้เลือกง่าย • แตกโหดเต็มหน้ากระดาน เข้าฟีเจอร์รัวๆ จนคนรีวิวกันปากต่อปาก • ระบบออโต้แบบใหม่ กดปุ๊บเงินเด้งปั๊บ ปลอดภัยทุกยอด ข้อมูลไม่รั่วไหล • ไม่มีประวัติโกงหรือบิดยอดแม้แต่บาทเดียว แอดมินสแตนด์บายดูแลตั้งแต่สมัครจนถึงถอน";
 
 const faqs = [
   {
-    q: "สมัครสมาชิกใหม่กับ 9UFA แล้วรับทุนเล่นฟรี 199 บาทยังไง",
-    a: "เราเตรียมเครดิตฟรีมูลค่า 199 บาทไว้ต้อนรับสมาชิกใหม่ทุกคนทันทีที่สมัครเสร็จ เงินก้อนนี้ไม่ใช่แค่ตัวเลขหลอกๆ แต่เป็นทุนที่คุณนำไปหมุนสล็อตค่ายไหน เกมอะไรก็ได้บนเว็บของเรา ถือเป็นตัวช่วยชั้นดีที่ทำให้มีโอกาสปั้นยอดจากหลักร้อยให้กลายเป็นหลักหมื่นโดยไม่ต้องควักทุนตัวเอง",
+    q: "PODK888 รวมเกมอะไรไว้บ้าง ต้องสลับเว็บเล่นหลายที่ไหม",
+    a: "ที่นี่รวบรวมเกมเอาไว้ครบทุกสายในแพลตฟอร์มเดียว ไม่ว่าจะเป็นสล็อต บาคาร่า หรือคาสิโนสดก็มีให้ลุยกันแบบจุใจ ไม่ต้องจำหลายรหัสและไม่ต้องเสียเวลาสลับเว็บให้ปวดหัว อยากปั่นสล็อตเพลินๆ หรือเปลี่ยนฟีลไปลุ้นไพ่ก็ทำได้เลย ลื่นไหลสุดๆ ถูกใจสายขี้เบื่อที่ชอบลองอะไรใหม่ๆ ตลอดเวลา",
   },
   {
-    q: "รับโบนัสของ 9UFA ต้องแคปรูปแชร์ลงกลุ่มหรือส่งต่อให้เพื่อนไหม",
-    a: "ไม่ต้องเลยแม้แต่ขั้นตอนเดียว เราตัดเงื่อนไขจุกจิกอย่างการแคปรูปลงกลุ่มเฟซบุ๊กหรือส่งต่อให้เพื่อนในไลน์ทิ้งไปทั้งหมด แค่คุณสมัครและยืนยันตัวตนผ่านระบบสำเร็จ โบนัสก็พร้อมปรับเข้ากระเป๋าเครดิตให้ทันที ไม่ต้องทักแชทยืนยัน ไม่ต้องส่งหลักฐานการทำกิจกรรมให้เสียความเป็นส่วนตัว",
+    q: "ห้องคาสิโนสดของ PODK888 เป็นค่ายแท้หรือเปล่า หาเกมยากไหม",
+    a: "สายไลฟ์สดต้องโดน เพราะเราขนค่ายคาสิโนดังๆ ระดับโลกมาไว้เพียบ คัดมาแล้วเน้นๆ ว่าเป็นค่ายแท้ชัวร์ ภาพสวย ดีลเลอร์แจ่ม แถมยังจัดหมวดหมู่เกมเด่นๆ ไว้ให้เลือกเล่นง่ายมาก ไม่ต้องไปงมหาเองให้เสียเวลา เข้าปุ๊บก็พร้อมลั่นวางเดิมพันได้ทันที",
   },
   {
-    q: "เงื่อนไขการถอนเงินของ 9UFA ต้องทำเทิร์นสูงเหมือนที่อื่นหรือเปล่า",
-    a: "เราตั้งกติกาการทำเทิร์นไว้ต่ำมาก ไม่ได้ผูกยอดเทิร์นโอเวอร์หฤโหด 20-30 เท่าแบบที่หลายคนเคยเจอ แค่เล่นให้ได้ยอดตามที่กำหนดนิดหน่อยก็กดทำรายการถอนเงินสดเข้าบัญชีได้เลยทันที ไม่มีกั๊ก ไม่มีอั้นยอดถอน เล่นได้เท่าไหร่เราจ่ายเต็มทุกบิล",
+    q: "ทำไมช่วงนี้หลายคนถึงพูดถึงอัตราการจ่ายของ PODK888",
+    a: "สาเหตุก็เพราะอัตราการจ่ายที่บอกเลยว่าไม่ธรรมดา หลายคนมารีวิวแบบปากต่อปากว่าเกมที่นี่แจกหนัก แตกโหดกันแบบเต็มหน้ากระดาน เข้าฟีเจอร์กันรัวๆ ใครอยากรู้ว่ามันจะเดือดแค่ไหน ต้องลองเข้ามาสัมผัสด้วยตัวเองดูสักครั้ง",
   },
   {
-    q: "ขั้นตอนเปิดยูสเซอร์กับ 9UFA ต้องทักแชทส่งข้อมูลให้แอดมินไหม",
-    a: "ไม่ต้องทักแชทให้เสียเวลา ระบบของเราถูกออกแบบมาให้เป็นออโต้เต็มรูปแบบ คุณกดทำรายการหน้าเว็บได้ด้วยตัวเอง กรอกข้อมูลแค่ไม่กี่ช่อง ผูกเบอร์มือถือและบัญชีธนาคารให้เรียบร้อย ใช้เวลาไม่ถึง 1 นาทีก็รับยูสเซอร์พร้อมรหัสผ่านเข้าไปลุยได้ทันที ข้อมูลทุกอย่างถูกเก็บเป็นความลับ ปลอดภัยร้อยเปอร์เซ็นต์",
+    q: "ฝากถอนกับ PODK888 ใช้เวลานานไหม ยอดใหญ่ปลอดภัยหรือเปล่า",
+    a: "ปัญหาเรื่องเงินเข้าช้าจะหมดไป เพราะเราพัฒนาระบบออโต้แบบใหม่ที่ทำรายการได้ไวมาก กดปุ๊บเงินเด้งปั๊บ ไม่ว่าจะยอดหลักร้อยหรือหลักล้านก็รับประกันความปลอดภัย ข้อมูลไม่มีรั่วไหล ให้คุณสนุกกับการเล่นได้ยาวๆ แบบไม่ต้องมานั่งระแวงเรื่องระบบหลังบ้าน",
   },
   {
-    q: "เล่นผ่านมือถือสเปคต่ำหรือเน็ตมือถือธรรมดา จะเล่น 9UFA ได้ลื่นไหม",
-    a: "เราทุ่มทุนอัปเกรดระบบหลังบ้านด้วยเซิร์ฟเวอร์เทคโนโลยีล่าสุดที่รองรับคนออนไลน์พร้อมกันหลักแสนคนได้สบายๆ ภาพกราฟิกในเกมจึงคมชัดลื่นไหล กดเบทได้แบบเรียลไทม์ไม่มีดีเลย์ ไม่ว่าจะเล่นผ่านมือถือรุ่นไหน สเปคต่ำแค่ไหน หรือใช้เน็ตมือถือธรรมดา ก็ทำกำไรได้ต่อเนื่องแบบไม่มีสะดุด",
+    q: "มือใหม่ที่ยังเล่นไม่เป็น เริ่มต้นกับ PODK888 ยังไงดี",
+    a: "มือใหม่ไม่ต้องกลัวว่าจะเล่นไม่เป็น เพราะที่นี่ไม่ได้มีแค่เกมให้เล่น แต่ยังมีสูตรเด็ดๆ และเทคนิคการเอาชนะมาอัปเดตให้สมาชิกได้อ่านกันเรื่อยๆ เอาไปปรับใช้เป็นแนวทางในการวางแผนของตัวเองได้เลย แถมมีทีมงานแอดมินสแตนด์บายดูแลตลอด ติดขัดตรงไหนทักถามได้เสมอ",
   },
 ];
 
@@ -81,114 +84,110 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxFloatingBadge as="h1" title="9UFA อาณาจักรเว็บสล็อตยอดนิยม แจกโหดรับทุนเล่นฟรี 199 ทันทีไม่ต้องแชร์">
+  <ContentBoxNeumorphism as="h1" title="PODK888 เว็บตรงเกมครบทุกสาย คาสิโนสดพร้อมลั่น ระบบใหม่โอนไว">
     <p class="text-left text-base leading-relaxed">
-      วงการสล็อตทุกวันนี้หาเว็บที่แจกจริงจ่ายจริงยากมาก ส่วนใหญ่มีแต่โปรหลอกตา แต่ที่ 9UFA เราฉีกทุกกฎการเดิมพันด้วยการจัดหนักจัดเต็มให้กับสมาชิกใหม่ทุกคน
-      ใครที่กำลังมองหาพื้นที่ทำเงินที่แฟร์กับผู้เล่น ไม่หมกเม็ดเงื่อนไข และพร้อมซัพพอร์ตทุนให้คุณไปปั้นกำไรแบบชิลๆ บอกเลยว่าคุณมาถูกที่แล้ว เตรียมตัวสัมผัสประสบการณ์ปั่นสล็อตที่แตกง่ายที่สุด
-      พร้อมรับสิทธิพิเศษที่หาจากเว็บทั่วไปไม่ได้อย่างแน่นอน
+      ใครที่กำลังมองหาที่เล่นแบบจบๆ ไม่ต้องโยกเงินไปมา บอกเลยว่า PODK888 ตอบโจทย์สุดๆ เพราะที่นี่รวบรวมเกมเอาไว้ครบทุกสาย ไม่ว่าจะเป็นสล็อต บาคาร่า หรือคาสิโนสดก็มีให้ลุยกันแบบจุใจ
+      ภาพคมชัดไม่มีสะดุด แถมระบบใหม่ล่าสุดยังอัปเกรดเรื่องการฝากถอนให้โอนไวปรู๊ดปร๊าด ทันใจคนชอบความต่อเนื่องแน่นอน
     </p>
-  </ContentBoxFloatingBadge>
+  </ContentBoxNeumorphism>
 
-  <ContentBoxSevenThreeCyberCut titleright="9UFA แหล่งรวมค่ายเกมชั้นนำที่ขึ้นชื่อว่าเป็น เว็บสล็อตยอดนิยม ที่สุดในตอนนี้">
-    <Picture
-      slot="left"
-      src={imgLuckySpin}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น 9UFA ลัคกี้สปิน กิจกรรมวงล้อมหาโชค ลุ้น iPhone รุ่นล่าสุดรอคุณเป็นเจ้าของ พร้อมภาพเด็กผู้หญิงชุดฟ้าถือกล่อง iPhone หน้าวงล้อ"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#0a5df1]/25 shadow-[0_10px_30px_rgba(10,93,241,0.15)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เราไม่ได้มีดีแค่เรื่องโปรโมชั่น แต่เรื่องตัวเกมเราก็จัดเต็มไม่แพ้ใคร ที่นี่เรารวบรวมค่ายสล็อตระดับโลกมาไว้ในกระเป๋าเดียว ทุกเกมเป็นการดึงสัญญาณตรงผ่าน API ลิขสิทธิ์แท้ ไม่ผ่านคนกลาง
-      ทำให้เปอร์เซ็นต์การชนะหรือค่า RTP สูงปรี๊ดตามมาตรฐานสากล ไม่ว่าคุณจะชอบปั่นสล็อตสายผลไม้คลาสสิก หรือสายซื้อฟรีสปินวัดดวง ก็มีให้เลือกเล่นครบจบ โบนัสแตกง่าย สแกตเตอร์เข้าบ่อยจนคุณต้องร้องว้าว
-    </p>
-  </ContentBoxSevenThreeCyberCut>
-
-  <ProviderGrid />
-
-  <ContentBox as="h2" title="ขั้นตอนการสมัครสมาชิกใหม่เพื่อเปิดยูสเซอร์ทำกำไรกับ 9UFA">
+  <ContentBoxPremium as="h2" title="เว็บตรงเกมครบทุกสาย PODK888 รวมทุกความสนุกไว้ในแพลตฟอร์มเดียว">
     <p class="text-left text-base leading-relaxed">
-      ลืมการสมัครที่ต้องทักแชทส่งข้อมูลให้แอดมินจนเสียเวลาไปได้เลย ระบบของเราถูกออกแบบมาให้เป็นออโต้เต็มรูปแบบ คุณสามารถกดทำรายการหน้าเว็บได้ด้วยตัวเอง กรอกข้อมูลแค่ไม่กี่ช่อง
-      ผูกเบอร์มือถือและบัญชีธนาคารให้เรียบร้อย ใช้เวลาไม่ถึง 1 นาทีก็รับยูสเซอร์พร้อมรหัสผ่านเข้าไปลุยได้ทันที ข้อมูลทุกอย่างถูกเก็บเป็นความลับขั้นสุดยอด ปลอดภัยร้อยเปอร์เซ็นต์
-    </p>
-  </ContentBox>
-
-  <ContentBoxSevenThree titleright="แจกโหดสะเทือนวงการ รับทุนเล่นฟรี 199 บาทไปปั่นทำกำไรได้ทันที">
-    <Picture
-      slot="left"
-      src={imgWeekendBonus}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น 9UFA วันศุกร์ฝาก 100 รับ 99 และวันเสาร์ฝาก 100 รับ 199 พร้อมภาพเด็กผู้หญิงชุดฟ้าสวมมงกุฎหิมะถือไม้กายสิทธิ์ข้างกล่องของขวัญ"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#0a5df1]/25 shadow-[0_10px_30px_rgba(10,93,241,0.15)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      สำหรับสายปั่นทุนน้อยหรือคนที่อยากลองระบบก่อนควักกระเป๋าตัวเอง โปรนี้คือคำตอบ เราเตรียมเครดิตฟรีมูลค่า 199 บาทไว้ต้อนรับสมาชิกใหม่ทุกคนทันทีที่สมัครเสร็จ เงินก้อนนี้ไม่ใช่แค่ตัวเลขหลอกๆ
-      แต่เป็นทุนที่คุณสามารถนำไปหมุนสล็อตค่ายไหน เกมอะไรก็ได้บนเว็บของเรา ถือเป็นตัวช่วยชั้นดีที่จะทำให้คุณมีโอกาสปั้นยอดจากหลักร้อยให้กลายเป็นหลักหมื่นได้โดยไม่ต้องควักทุนตัวเองแม้แต่บาทเดียว
-    </p>
-  </ContentBoxSevenThree>
-
-  <SmoothCarousel />
-
-  <ContentBoxSpecial as="h2" title="กติกาแฟร์ขีดสุดเพราะ 9UFA มอบโบนัสให้โดยไม่ต้องกดแชร์ลงกลุ่ม">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ปัญหาโลกแตกของคนรับโปรเครดิตฟรีคือ ต้องแคปรูปลงกลุ่มเฟซบุ๊ก หรือส่งต่อให้เพื่อนในไลน์จนน่ารำคาญและเสียความเป็นส่วนตัว
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เราเข้าใจจุดนี้ดี จึงตัดเงื่อนไขจุกจิกทิ้งไปทั้งหมด แค่คุณสมัครและยืนยันตัวตนผ่านระบบสำเร็จ โบนัสก็พร้อมปรับเข้ากระเป๋าเครดิตให้คุณทันที ไม่ต้องทักแชทยืนยัน ไม่ต้องส่งหลักฐานการทำกิจกรรม
-      เอาเวลาที่ต้องมานั่งแชร์ไปโฟกัสกับการปั่นสล็อตหาเงินดีกว่า
-    </p>
-  </ContentBoxSpecial>
-
-  <GameRankingBoard />
-
-  <ContentBoxPremium as="h2" title="ทลายกำแพงการถอนเงินด้วยเงื่อนไขสุดพิเศษที่ไม่ต้องทำเทิร์นสูง">
-    <p class="text-left text-base leading-relaxed">
-      อีกหนึ่งความเจ็บปวดของนักพนันคือเวลาได้โบนัสฟรีมาแล้วปั่นจนแตกหนัก แต่กลับถอนไม่ได้เพราะติดยอดเทิร์นโอเวอร์หฤโหด 20-30 เท่า แต่ที่ 9UFA เราให้คุณถอนเงินออกไปใช้ได้ง่ายกว่านั้นเยอะ
-      เราตั้งกติกาการทำเทิร์นไว้ต่ำมาก แค่เล่นให้ได้ยอดตามที่กำหนดนิดหน่อยก็กดทำรายการถอนเงินสดเข้าบัญชีได้เลยทันที ไม่มีกั๊ก ไม่มีอั้นยอดถอน เล่นได้เท่าไหร่เราจ่ายเต็มทุกบิล
+      ขี้เกียจจำหลายรหัสใช่ไหม? มาเล่นที่ PODK888 ที่เดียวจบ เพราะเขาจับเอาความสนุกทุกรูปแบบมายัดไว้ในแพลตฟอร์มเดียว ไม่ต้องเสียเวลาสลับเว็บให้ปวดหัว อยากปั่นสล็อตเพลินๆ
+      หรือเปลี่ยนฟีลไปลุ้นไพ่ก็ทำได้เลย ลื่นไหลสุดๆ รับรองว่าถูกใจสายขี้เบื่อที่ชอบลองอะไรใหม่ๆ ตลอดเวลา
     </p>
   </ContentBoxPremium>
 
+  <ProviderGrid />
+
+  <ContentBoxSevenThreeFloatingBadge title="คาสิโนสดพร้อมลั่น พร้อมรวมค่ายแท้ที่คัดเกมเด่นมาให้เลือกแบบไม่ต้องเสียเวลาหา">
+    <Picture
+      slot="left"
+      src={imgCashback}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น PODK888 CASHBACK คืนยอดเสียทุกวันจันทร์ คาสิโน 5 เปอร์เซ็นต์ ยิงปลา 5 เปอร์เซ็นต์ สล็อต 5 เปอร์เซ็นต์ และกีฬา 3 เปอร์เซ็นต์ พร้อมไอคอนไพ่ ปลา ตู้สล็อต และลูกฟุตบอลบนพื้นคลื่นสีม่วงชมพู"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f670b7]/30 shadow-[0_10px_30px_rgba(246,112,183,0.2)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      สายไลฟ์สดต้องโดน เพราะ PODK888 ขนค่ายคาสิโนดังๆ ระดับโลกมาไว้เพียบ คัดมาแล้วเน้นๆ ว่าเป็นค่ายแท้ชัวร์ ภาพสวย ดีลเลอร์แจ่ม แถมยังจัดหมวดหมู่เกมเด่นๆ ไว้ให้เลือกเล่นง่ายมาก
+      ไม่ต้องไปงมหาเองให้เสียเวลา เข้าปุ๊บก็พร้อมลั่นวางเดิมพันได้ทันที
+    </p>
+  </ContentBoxSevenThreeFloatingBadge>
+
+  <ContentBoxSevenThreeNeumorphism titleright="แตกโหดเต็มหน้ากระดาน จุดที่ทำให้หลายคนจับตา PODK888 มากขึ้นทุกวัน">
+    <Picture
+      slot="left"
+      src={imgLuckyWheel}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์กิจกรรม PODK888 วงล้อนำโชค แต้มสะสมเพชรจากยอดฝากและยอดเสียคอวัน ทุกยอดฝาก 500 บาทรับ 1 เพชร ยอดฝาก 100 บาทรับ 2 เพชร ยอดฝาก 150 บาทรับ 3 เพชร และยอดฝาก 200 บาทรับ 4 เพชร พร้อมภาพวงล้อรางวัลกับทองแท่งและกองเหรียญ"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f670b7]/30 shadow-[0_10px_30px_rgba(246,112,183,0.2)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      นาทีนี้ใครๆ ก็พูดถึง PODK888 กันทั้งนั้น สาเหตุก็เพราะอัตราการจ่ายที่บอกเลยว่าไม่ธรรมดา หลายคนมารีวิวแบบปากต่อปากว่าเกมที่นี่แจกหนัก แตกโหดกันแบบเต็มหน้ากระดาน เข้าฟีเจอร์กันรัวๆ
+      ใครอยากรู้ว่ามันจะเดือดแค่ไหน ต้องลองเข้ามาสัมผัสด้วยตัวเองดูสักครั้ง
+    </p>
+  </ContentBoxSevenThreeNeumorphism>
+
+  <SmoothCarousel />
+
+  <ContentBox as="h2" title="ระบบใหม่โอนไว ปลอดภัยทุกยอด ใช้งานต่อเนื่องได้แบบไม่ต้องกังวล">
+    <p class="text-left text-base leading-relaxed">
+      ปัญหาเรื่องเงินเข้าช้าจะหมดไป เพราะ PODK888 พัฒนาระบบออโต้แบบใหม่ที่ทำรายการได้ไวมาก กดปุ๊บเงินเด้งปั๊บ ไม่ว่าจะยอดหลักร้อยหรือหลักล้านก็รับประกันความปลอดภัย ข้อมูลไม่มีรั่วไหล
+      ให้คุณสนุกกับการเล่นได้ยาวๆ แบบไม่ต้องมานั่งระแวงเรื่องระบบหลังบ้าน
+    </p>
+  </ContentBox>
+
+  <GameRankingBoard />
+
+  <ContentBoxFloatingBadge as="h2" title="ไม่มีประวัติโกง พร้อมดูแลทุกการใช้งาน ให้ความมั่นใจตั้งแต่สมัครจนถึงถอน">
+    <p class="text-left text-base leading-relaxed">
+      เรื่องความน่าเชื่อถือต้องให้เขาเลย PODK888 เปิดให้บริการมาด้วยความโปร่งใส ไม่มีประวัติการโกงหรือบิดยอดแม้แต่บาทเดียว แถมยังมีทีมงานแอดมินคอยสแตนด์บายดูแลตลอด ติดขัดตรงไหนทักถามได้เสมอ
+      สร้างความอุ่นใจตั้งแต่ก้าวแรกที่สมัครสมาชิกไปจนถึงตอนกดถอนเงินเข้าบัญชี
+    </p>
+  </ContentBoxFloatingBadge>
+
   <LatestWinners />
 
-  <ContentBoxCyberCut as="h2" title="9UFA พัฒนาระบบเซิร์ฟเวอร์ให้ลื่นไหลไม่มีสะดุด รองรับทุกการเดิมพัน">
+  <ContentBoxPremium as="h2" title="PODK888 พร้อมแจกสูตรเล่นและเทคนิคดี ๆ ที่ช่วยให้การวางแผนสนุกยิ่งกว่าเดิม">
     <p class="text-left text-base leading-relaxed">
-      จังหวะโบนัสไทม์กำลังมา ฟรีสปินกำลังไหล ถ้าเว็บกระตุกหรือค้างคงหัวเสียไม่น้อย เราจึงทุ่มทุนอัปเกรดระบบหลังบ้านด้วยเซิร์ฟเวอร์เทคโนโลยีล่าสุดที่รองรับคนออนไลน์พร้อมกันหลักแสนคนได้สบายๆ
-      ภาพกราฟิกในเกมคมชัดลื่นไหล กดเบทได้แบบเรียลไทม์ไม่มีดีเลย์ ไม่ว่าคุณจะเล่นผ่านมือถือรุ่นไหน สเปคต่ำแค่ไหน หรือใช้เน็ตมือถือธรรมดา ก็สามารถทำกำไรได้ต่อเนื่องแบบไม่มีสะดุด
+      มือใหม่ไม่ต้องกลัวว่าจะเล่นไม่เป็น เพราะที่ PODK888 ไม่ได้มีแค่เกมให้เล่น แต่ยังมีสูตรเด็ดๆ และเทคนิคการเอาชนะมาอัปเดตให้สมาชิกได้อ่านกันเรื่อยๆ เอาไปปรับใช้เป็นแนวทางในการวางแผนของตัวเองได้เลย
+      รับรองว่าช่วยเพิ่มโอกาสบวกและทำให้การเดิมพันสนุกมีรสชาติขึ้นอีกเยอะ
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxPremium>
 
   <ReviewCardSumo2 />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#0a5df1] via-[#0782f2] to-[#01cbf6] px-4 py-3 text-sm font-black whitespace-nowrap text-white shadow-[0_10px_30px_rgba(10,93,241,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(1,203,246,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#f670b7] px-4 py-3 text-sm font-black whitespace-nowrap text-[#12060f] shadow-[0_10px_30px_rgba(246,112,183,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(2,219,253,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#0a5df1]/60 bg-white/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#0743a8] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#c9930a] hover:bg-[#ffe98a] hover:text-[#062a52] hover:shadow-[0_15px_40px_rgba(241,212,44,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#f670b7]/60 bg-[#12060f]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f670b7] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#02dbfd] hover:bg-[#02dbfd] hover:text-[#12060f] hover:shadow-[0_15px_40px_rgba(2,219,253,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
   <LoginRtpSection />
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ 9UFA" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ PODK888" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

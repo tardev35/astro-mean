@@ -9,7 +9,7 @@ import slide4 from "../assets/slide4.png";
 // This used to be Swiper: 158,890 bytes of JavaScript (86,801 of it modules the
 // config never touched) to slide four pictures sideways forever. It is a CSS
 // animation now — the same technique the announcement ticker already uses — and
-// the component ships no JavaScript at all.
+// the component ships no JavaScript at all. Do not reintroduce Swiper.
 //
 // Three things improved along with the byte count:
 //   * it can be paused. Swiper ran with `delay: 0` and
@@ -25,19 +25,19 @@ import slide4 from "../assets/slide4.png";
 const images = [
   {
     src: slide1,
-    alt: "แบนเนอร์โปรโมชั่น 9UFA แนะนำเพื่อน รับโบนัสสูงสุด 5000 บาท พร้อมตารางยอดฝากสะสม 30 วันเทียบโบนัสผู้ฝากและผู้แนะนำ และภาพเด็กผู้หญิงชุดฟ้าสองคนข้างกล่องของขวัญ",
+    alt: "แบนเนอร์ PODK888 อัตราการจ่ายหวยสูงสุดในไทย ตาราง 3 ตัวบน 900 บาท 3 ตัวโต๊ด 120 บาท 3 ตัวหน้าและ 3 ตัวท้าย 450 บาท 2 ตัวบนและ 2 ตัวล่าง 100 บาท วิ่งบน 3 บาท วิ่งล่าง 4 บาท บนพื้นคลื่นสีม่วงชมพูพร้อมลูกบอลเลข",
   },
   {
     src: slide2,
-    alt: "แบนเนอร์โปรโมชั่น 9UFA ลัคกี้สปิน กิจกรรมวงล้อมหาโชค ลุ้น iPhone รุ่นล่าสุดรอคุณเป็นเจ้าของ พร้อมภาพเด็กผู้หญิงชุดฟ้าถือกล่อง iPhone หน้าวงล้อและเหรียญทองปลิว",
+    alt: "แบนเนอร์โปรโมชั่น PODK888 CASHBACK คืนยอดเสียทุกวันจันทร์ คาสิโน 5 เปอร์เซ็นต์ ยิงปลา 5 เปอร์เซ็นต์ สล็อต 5 เปอร์เซ็นต์ และกีฬา 3 เปอร์เซ็นต์ พร้อมไอคอนไพ่ ปลา ตู้สล็อต และลูกฟุตบอลบนพื้นคลื่นสีม่วงชมพู",
   },
   {
     src: slide3,
-    alt: "แบนเนอร์โปรโมชั่น 9UFA วันศุกร์ฝาก 100 รับ 99 และวันเสาร์ฝาก 100 รับ 199 พร้อมภาพเด็กผู้หญิงชุดฟ้าสวมมงกุฎหิมะถือไม้กายสิทธิ์ข้างกล่องของขวัญสีแดง",
+    alt: "แบนเนอร์โปรโมชั่น PODK888 สร้างรายได้จากการแนะนำเพื่อน ระบบแนะนำเพื่อนยิ่งชวนมากค่าตอบแทนยิ่งมากกว่าเดิม พร้อมภาพหน้าจอมือถือแสดงลิงก์ชวนเพื่อนและคิวอาร์โค้ดกับเหรียญทองปลิว",
   },
   {
     src: slide4,
-    alt: "แบนเนอร์โปรโมชั่น 9UFA เดิมพันอย่างเต็มที่ เชิญเพื่อนมาเล่น รับโบนัสส่วนลดเงินคืน 1.6% พร้อมภาพเด็กผู้หญิงชุดฟ้าสองคนข้างไอคอนชวนเพื่อนสีฟ้า",
+    alt: "แบนเนอร์กิจกรรม PODK888 วงล้อนำโชค แต้มสะสมเพชรจากยอดฝากและยอดเสียคอวัน ทุกยอดฝาก 500 บาทรับ 1 เพชร ยอดฝาก 100 บาทรับ 2 เพชร ยอดฝาก 150 บาทรับ 3 เพชร และยอดฝาก 200 บาทรับ 4 เพชร พร้อมภาพวงล้อรางวัลกับทองแท่งและกองเหรียญ",
   },
 ];
 
@@ -61,7 +61,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#0a5df1]/60 peer-focus-visible:bg-white peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#0743a8]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#02dbfd]/60 peer-focus-visible:bg-[#12060f] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#02dbfd]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -78,7 +78,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#0a5df1]/25 object-cover shadow-[0_10px_30px_rgba(10,93,241,0.15)]"
+              class="block w-full rounded-xl border border-[#f670b7]/25 object-cover shadow-[0_10px_30px_rgba(246,112,183,0.18)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

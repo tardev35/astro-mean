@@ -5,16 +5,21 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
+
+// PODK888 dark drop: the neumorphic pair is a plum highlight against a near-black
+// shadow, so the card still reads as raised on the #220f29 page background.
+// text-center lives on the <header> only — putting it on the card would inherit
+// straight into the slot and centre the body paragraph too.
 ---
 
 <section class="relative z-10 my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="w-full max-w-[1400px] rounded-[25px] border border-[#4a0e5c]/70 bg-[#1f0524] p-8 text-left text-base leading-relaxed text-[#f6dfec] shadow-[10px_10px_20px_#08010c,-10px_-10px_20px_#2c0733]">
+    class="w-full max-w-[1400px] rounded-[25px] border border-[#f670b7]/30 bg-[#1a0a1f] p-8 text-left text-base leading-relaxed text-[#f3d7e7] shadow-[10px_10px_20px_#0b0410,-10px_-10px_20px_#2a0f2e]">
     {
       title && (
-        <header class="mb-8 border-b border-[#fb0660]/25 pb-4 text-center">
+        <header class="mb-8 border-b border-[#f670b7]/25 pb-4 text-center">
           <HeadingTag
-            class={`bg-gradient-to-r from-[#ffb457] via-[#fd841b] to-[#fb0660] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
+            class={`bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#e01e83] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
             {title}
           </HeadingTag>
         </header>

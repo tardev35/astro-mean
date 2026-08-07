@@ -6,25 +6,29 @@ export interface Props {
 }
 const { title, titleleft, titleright } = Astro.props;
 const rightHeading = titleright ?? title;
+
+// Both columns are already flattened — the text classes live on the <article>
+// and the slot is a direct child, so a consumer must pass exactly ONE element
+// per slot.
 ---
 
 <section class="relative z-10 mx-auto mb-8 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#4a0e5c]/70 bg-[#1f0524] p-8 shadow-[10px_10px_20px_#08010c,-10px_-10px_20px_#2c0733] transition-all duration-300 hover:shadow-[15px_15px_30px_#050108,-15px_-15px_30px_#3a0a45]">
+    class="w-full rounded-[25px] border border-[#f670b7]/30 bg-[#1a0a1f] p-8 shadow-[10px_10px_20px_#0b0410,-10px_-10px_20px_#2a0f2e] transition-all duration-300 hover:shadow-[15px_15px_30px_#07020a,-15px_-15px_30px_#3c0c21]">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6dfec]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3d7e7]">
         {
           titleleft && (
-            <h2 class="bg-gradient-to-r from-[#ffb457] via-[#fd841b] to-[#fb0660] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</h2>
+            <h2 class="bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#e01e83] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</h2>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6dfec] md:border-l md:border-[#4a0e5c] md:pl-8">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3d7e7] md:border-l md:border-[#f670b7]/30 md:pl-8">
         {
           rightHeading && (
-            <h2 class="bg-gradient-to-r from-[#ffb457] via-[#fd841b] to-[#fb0660] bg-clip-text text-2xl leading-normal font-black text-transparent">{rightHeading}</h2>
+            <h2 class="bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#e01e83] bg-clip-text text-2xl leading-normal font-black text-transparent">{rightHeading}</h2>
           )
         }
         <slot name="right" />

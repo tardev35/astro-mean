@@ -32,30 +32,40 @@ const initialRows = Array.from({ length: 4 }, (_, i) => ({
 }));
 
 // The two status looks are passed to the feed module as data-* strings so the
-// module never has to learn this brand's palette.
-const PENDING_CLASS = "text-[#9db8a1] bg-[#122a16] animate-pulse";
-const DONE_CLASS = "text-[#06210c] bg-gradient-to-r from-[#b6f38a] via-[#7ee356] to-[#2f8f3a] font-black shadow-md";
+// module never has to learn this brand's palette. The "done" pill is dark ink on
+// the neon pink/cyan gradient — #12060f on #f670b7 is 7.4:1, white on it is 2.6.
+const PENDING_CLASS = "text-[#d9a8c6] bg-[#2a0f2e] animate-pulse";
+const DONE_CLASS = "text-[#12060f] bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#02dbfd] font-black shadow-md";
 ---
 
 <div class="mx-auto w-full max-w-[1300px] p-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก BETKUB77"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#7ee356]/25 bg-[#071009]/92 px-4 py-8 shadow-[0_10px_30px_rgba(126,227,86,0.18)] backdrop-blur-md md:p-10">
-    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#7ee356]/25 blur-[50px]"></div>
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก PODK888"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#f670b7]/25 bg-[#12060f]/92 px-4 py-8 shadow-[0_10px_30px_rgba(246,112,183,0.18)] backdrop-blur-md md:p-10">
+    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#e01e83]/30 blur-[50px]"></div>
 
     <div class="relative z-10 mb-8 flex items-center justify-center gap-3">
       <span aria-hidden="true" class="text-2xl">🏆</span>
-      <p class="bg-gradient-to-r from-[#b6f38a] via-[#7ee356] to-[#2f8f3a] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">
-        รายการถอนเงินล่าสุดของสมาชิก BETKUB77
+      <p class="bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#e01e83] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">
+        รายการถอนเงินล่าสุดของสมาชิก PODK888
       </p>
       <span aria-hidden="true" class="text-2xl">🏆</span>
     </div>
 
-    <div data-winners-feed data-interval="5000" data-max-rows="4" class="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div
+      data-winners-feed
+      data-interval="5000"
+      data-max-rows="4"
+      data-amount-min="15000"
+      data-amount-max="95000"
+      data-pending-chance="0.4"
+      data-user-style="letters"
+      data-user-digits="4"
+      class="relative z-10 grid grid-cols-1 gap-4 md:grid-cols-2">
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-card transition-all duration-500 ease-out">
-            <div class="flex flex-col rounded-[20px] border border-[#7ee356]/25 bg-[#0b160d]/95 p-5 shadow-sm transition-all hover:border-[#7ee356]/50 hover:bg-[#122a16]/90">
+            <div class="flex flex-col rounded-[20px] border border-[#f670b7]/25 bg-[#1a0a1f]/95 p-5 shadow-sm transition-all hover:border-[#02dbfd]/50 hover:bg-[#2a0f2e]/90">
               <div class="mb-4 flex items-start justify-between">
                 <div data-winner-bank class={`flex h-10 w-10 items-center justify-center rounded-full border border-white/10 shadow-inner ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="24" height="24" loading="lazy" decoding="async" class="h-6 w-6 object-contain" />
@@ -71,11 +81,11 @@ const DONE_CLASS = "text-[#06210c] bg-gradient-to-r from-[#b6f38a] via-[#7ee356]
                 </div>
               </div>
               <div>
-                <div class="text-sm text-[#9db8a1]">
-                  ยูสเซอร์: <span data-winner-user class="font-bold text-[#dcecd6]">{row.user}</span>
+                <div class="text-sm text-[#d9a8c6]">
+                  ยูสเซอร์: <span data-winner-user class="font-bold text-[#f3d7e7]">{row.user}</span>
                 </div>
-                <div class="mt-1 text-2xl font-black text-[#7ee356]">
-                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#9db8a1]">THB</span>
+                <div class="mt-1 text-2xl font-black text-[#02dbfd]">
+                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#d9a8c6]">THB</span>
                 </div>
               </div>
             </div>
@@ -84,7 +94,7 @@ const DONE_CLASS = "text-[#06210c] bg-gradient-to-r from-[#b6f38a] via-[#7ee356]
       }
     </div>
 
-    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#9db8a1]">
+    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#d9a8c6]">
       ก่อนฝากหรือถอนควรตรวจยอด ช่องทาง และชื่อบัญชีรับเงินให้ตรงกับข้อมูลสมาชิก หากรายการยังประมวลผลอยู่ไม่ควรกดซ้ำทันที
     </p>
 

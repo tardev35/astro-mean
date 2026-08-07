@@ -4342,3 +4342,224 @@ component `*Huay` ทั้งหมดปล่อยไว้เป็น inve
   cookie banner/ฟอร์มที่ post ที่ไหน)
 - `account_id` ใน `wrangler.toml`, `bg.json`, โครง `<head>` ของ `MainLayout`
 - **ไม่ได้ deploy ไม่ได้ commit ไม่ได้ push** ตามคำสั่ง — หยุดที่ build + verify
+
+---
+
+## 2026-08-08 — รีแบรนด์ 9UFA → PODK888 (สล็อต/คาสิโนสด, ชมพูนีออน + ไซแอน บนพื้นดำ-พลัม)
+
+### เป้าหมาย
+
+รีแบรนด์ + retheme ทั้งเว็บจาก `9UFA` เป็น `PODK888` พร้อมโดเมนจริง
+`http://podk888-live.com/` — รันแบบขนานตาม playbook, **หยุดที่ build + verify
+เท่านั้น ไม่ deploy ไม่ commit ไม่ push**
+
+### จุดต่างที่สำคัญที่สุดของรอบนี้ — ธีม "กลับด้าน" อีกครั้ง (สว่าง → มืด)
+
+9UFA เป็นธีม **สว่าง** (`bg-white/85`, body `#eaf4fe`, ตัวอักษรกรมท่า `#0b3a63`,
+ฟ้า+ทอง) ส่วน PODK888 เป็นธีม **มืด** — `src/assets/bg.json` ของชุดนี้คือ
+`{"mode":"color","color":"#220f29"}` (พลัมเข้ม)
+
+รอบนี้จึง **ไม่ใช่การสลับ hue เฉยๆ** แต่เป็นการกลับด้านทั้งระบบ: พื้นการ์ด
+`bg-white/85` → `bg-[#1a0a1f]/85`, ตัวอักษรกรมท่า → ชมพูอ่อน `#f3d7e7`,
+หัวข้อฟ้า-ทอง → ชมพูร้อน+ไซแอน เขียนเรื่องนี้เป็นหัวข้อแยก (§2) ไว้ใน
+brand spec เพราะถ้า agent ไล่แทนที่แค่ค่าสี จะได้การ์ดขาวตัวหนังสือเข้ม
+ลอยอยู่บนพื้นเกือบดำ — build ผ่าน แต่หน้าเว็บพัง
+
+### โหมดที่รัน — ขนาน 3 agent (P0 → P1 → P2 → P3)
+
+- **P0 (orchestrator)** — อ่าน `content.txt` + `palette.json` + เปิดรูปจริง,
+  เลือก variant ทุกตระกูล, เขียน `.rebrand-spec-podk888.md` เป็น scratchpad
+  ให้ทุก agent อ่านไฟล์เดียว (ห้าม re-extract docx / ห้ามเลือก variant เอง)
+- **P1 (orchestrator ทำเองก่อนแตก agent)** — โดเมน 3 ไฟล์ + `brandProfile.ts` +
+  shared chrome ที่หน้า ≥2 หน้าใช้ร่วมกัน: `MainLayout`, `NavbarCyber`,
+  `FooterPremium`, `Navfoot`, `Announcement2`, `ContentBox`, `ContentBoxPremium`
+- **P2 (ขนาน 3 agent, ไม่มีไฟล์ทับกันเลย)**
+  - **A** — `index.astro` + 12 component ที่มีแต่ index ใช้
+  - **B** — `promotion`, `ทางเข้า`, `contact-us`, `404`
+  - **C** — `ทดลองเล่น`, `about-us`, `login`, `register`
+- **P3 (orchestrator)** — build เดียว + verify + workspec
+
+### โดเมนจริง — แก้ครบทั้ง 3 ที่
+
+| ไฟล์ | เดิม | ใหม่ |
+|---|---|---|
+| `astro.config.mjs` `site:` | `http://9ufa-new.com` | `http://podk888-live.com` |
+| `wrangler.toml` `name` | `9ufa` | `podk888` |
+| `public/site.webmanifest` | 9UFA / `#0a5df1` / `#eaf4fe` | PODK888 / `#f670b7` / `#220f29` |
+
+`name = "podk888"` ตรงกับที่ `verify-build.mjs` คำนวณจาก
+`SITE.hostname.split(/[-.]/)[0]` ของ `podk888-live.com` จึงผ่านเกท ·
+`index.astro` ใช้ `pageGraph()` ไม่มี schema literal ที่ hardcode โดเมน จึงไม่มี
+ที่ที่ 4 · `robots.txt` มาจาก `robots.txt.ts` ตามโดเมนเอง ·
+**`account_id` คงค่าเดิมตามกฎ**
+
+⚠️ **ก่อน deploy ต้องยืนยันเรื่องเดียว:** ถ้าโดเมนนี้เคย park ด้วย
+`tools/domain-placeholder/` มาก่อน ต้องใช้ชื่อ worker ที่ park ไว้เป๊ะๆ แทน
+`podk888` (ตรวจด้วย `npx wrangler deployments list --name <name>`) — ไม่งั้นจะได้
+worker ตัวที่สองขณะที่โดเมนยังเสิร์ฟหน้า "Coming soon" โดยไม่มี error ที่ไหนเลย
+
+### palette (จาก `palette.json` vivid + เปิดรูปจริง)
+
+`logo.webp` vivid ชี้เป็นชมพู `#f670b7`/`#f46db6` (ผมของมาสคอต) คู่กับไซแอน
+`#02dbfd` (ตา/แจ็กเก็ต) และพีช `#fed0b9` ส่วน `banner1`/`slide1` vivid เป็นไวน์
+เข้ม `#3c0c21`/`#6a1446` = พื้นหลัง → แบรนด์ **ชมพูนีออน + ไซแอน บนดำ-พลัม**
+มาสคอตสาวผมชมพูสวมหูฟังเกมมิ่งบนโล่ดำ
+
+| token | hex | ใช้ตรงไหน |
+|---|---|---|
+| `pink` | `#f670b7` | แกนแบรนด์ หัวข้อ ขอบ glow nav ที่ active |
+| `magenta` | `#e01e83` | ปลาย gradient, พื้น badge |
+| `cyan` | `#02dbfd` | accent รอง, จุด live, ปุ่มรอง |
+| `peach` | `#fed0b9` | ไฮไลต์อุ่น ใช้น้อย |
+| `wine` / `wine-deep` | `#6a1446` / `#3c0c21` | พื้นการ์ดชั้นลึก |
+| `plum` | `#220f29` | **พื้นหน้าเว็บ** — ผูกกับ `bg.json` |
+| `ink` | `#12060f` | แถบ nav/footer, ตัวหนังสือบนพื้นชมพู |
+| `text` / `text-muted` | `#f3d7e7` / `#d9a8c6` | เนื้อความ / caption |
+
+**`#e01e83` ถูกกันออกจากบทบาท "พื้นที่มีตัวหนังสือเข้มทับ"** — คู่กับ `#12060f`
+ได้แค่ 4.36:1 ต่ำกว่าเกณฑ์ ใช้เป็น glow/ขอบ/bg-clip text เท่านั้น ส่วน
+`#12060f` บน `#f670b7` = 7.4:1 ผ่านสบาย · LINE เขียว `#00B900` และเขียว
+live/success คงเดิมตามกฎ
+
+### variant rotation (before → after) — รอบถัดไปห้ามใช้ตัวขวาซ้ำ
+
+| family | 9UFA (ออก) | **PODK888 (เข้า)** |
+|---|---|---|
+| Navbar | `NavbarStyle1` | **`NavbarCyber`** (แถบ clip-path ตัดมุมไซเบอร์) |
+| Footer | `FooterStyle2` | **`FooterPremium`** |
+| Announcement | `AnnouncementPremium` | **`Announcement2`** |
+| LatestWinners | `LatestWinners4` | **`LatestWinners2`** |
+| Faq | `Faq` | **`Faq3`** |
+| ProviderGrid | `ProviderGridPremium` | **`ProviderGrid`** (ตัว plain) |
+| ContentBoxTwo (ใน `LoginRtpSection`) | `ContentBoxTwoPremium` | **`ContentBoxTwoCyberCut`** |
+| ContentBox mix | FloatingBadge(h1)+CyberCut+SevenThreeCyberCut+SevenThree(plain)+Special+Premium+plain | **Neumorphism(h1)+Premium ×2+plain+FloatingBadge+SevenThreeFloatingBadge+SevenThreeNeumorphism** |
+| `BRAND_FONT` | `google-sans` | **`kanit`** |
+
+หมุนครบทุกตระกูล ไม่มีตัวไหนใช้ซ้ำ · mix รอบนี้ทิ้ง `CyberCut` กับ `Special`
+ออกจากกล่องเนื้อหาทั้งคู่ และเปลี่ยนตัวถือ H1 จาก FloatingBadge → Neumorphism
+
+**`Faq3` ทำให้ index มี h3 ×5** ซึ่ง**ตั้งใจ** — คอมเมนต์หัวไฟล์ `Faq3.astro`
+อธิบายไว้ว่า FAQ คือ nesting จริง (h2 ของ section + h3 ของแต่ละคำถาม) ถ้าดัน
+คำถามขึ้นเป็น h2 จะมี 5 หัวข้อโผล่ใน diff ที่ docx ไม่เคยมี · 9UFA ใช้ `Faq`
+ซึ่ง h3 = 0 ตัวเลขจึงต่างจากรอบก่อนโดยไม่ใช่บั๊ก
+
+### โครงหน้า index (docx 7 หัวข้อ ครบตามลำดับ)
+
+| # | component | หัวข้อ docx |
+|---|---|---|
+| 1 | `ContentBoxNeumorphism as="h1"` | H1 เว็บตรงเกมครบทุกสาย คาสิโนสดพร้อมลั่น… |
+| 2 | `ContentBoxPremium as="h2"` | H2 รวมทุกความสนุกไว้ในแพลตฟอร์มเดียว |
+| 3 | `ContentBoxSevenThreeFloatingBadge` + **slide2** | H2 คาสิโนสดพร้อมลั่น รวมค่ายแท้… |
+| 4 | `ContentBoxSevenThreeNeumorphism` + **slide4** | H2 แตกโหดเต็มหน้ากระดาน… |
+| 5 | `ContentBox as="h2"` | H2 ระบบใหม่โอนไว ปลอดภัยทุกยอด… |
+| 6 | `ContentBoxFloatingBadge as="h2"` | H2 ไม่มีประวัติโกง… |
+| 7 | `ContentBoxPremium as="h2"` | H2 แจกสูตรเล่นและเทคนิคดีๆ… |
+
+widget แทรกตามตำแหน่งที่ควรอยู่ (`ProviderGrid` หลัง #2 · `SmoothCarousel`
+หลัง #4 · `GameRankingBoard` หลัง #5 · `LatestWinners2` หลัง #6 ·
+`ReviewCardSumo2`/ปุ่มคู่/`LoginRtpSection`/`Faq3`/`Navfoot` ท้ายสุด)
+
+**รูป:** `banner1` = hero (+ `banner1-mobile` เป็น `<source>` มือถือ, ชุดนี้มี) ·
+SevenThree เต็มโควตา 2 บล็อก = **slide2** (CASHBACK คืนยอดเสียทุกวันจันทร์) กับ
+**slide4** (วงล้อนำโชค แต้มสะสมเพชร) · **slide1/slide3 ไม่ได้ใช้เป็นบล็อก**
+ขึ้นเฉพาะใน `SmoothCarousel` · **`banner2/3/4.png` ไม่ได้ใช้เลยทั้งเว็บ**
+เพราะลงวันที่ 2026-08-04 = ชุดของแบรนด์ก่อน ไม่ใช่ของรอบนี้ (ชุดรอบนี้ 08-08 02:11)
+
+### เรื่องที่เจอ / ตัดสินใจ
+
+1. **`NavbarCyber` มี `<h1>` ใน logo fallback เขียนว่า `PABLO666`** — แบรนด์เก่า
+   หลายรอบก่อน และเป็น `<h1>` ตัวที่สองของทุกหน้า (เกท `verify-build` ฟ้องแน่ถ้า
+   logo หาย) แก้เป็น `<span>` + ชื่อ PODK888 · ตัวนี้ยังประกาศ array เมนู
+   **สองชุด** (desktop + mobile) และ **ไม่มีไอคอนเลย** ตามที่ playbook เตือนไว้
+   → ยุบเหลือ `links` const เดียว ใส่ไอคอนเป็น `<span aria-hidden="true">`
+   แยกจาก label (ไม่ต่อกับข้อความ) และเติมลิงก์ `/about-us` ที่ขาดไป ·
+   เพิ่ม `aria-controls`/`aria-expanded` ให้ปุ่มแฮมเบอร์เกอร์ · ใส่
+   `widths`/`sizes` ให้ `<Picture>` โลโก้ที่เดิมไม่มี = ส่งไฟล์ต้นฉบับ
+2. **`FooterPremium` ยังเป็นของ MIRACLE55 ทั้งดุ้น** — ชื่อใน alt, wordmark
+   fallback, ย่อหน้าแนะนำเว็บ, บรรทัด copyright → เขียนใหม่หมดเป็น PODK888
+   และเติมลิงก์ `/about-us` ใน QUICK LINKS
+3. **spec ของ orchestrator เขียนความยาว `Des` จาก docx ผิด** (บอก 152 ตัวอักษร
+   จริงคือ 137 ซึ่งตกเกท 150–160) — Agent A จับได้เองตอนจะใช้ verbatim แล้ว
+   ต่อท้ายจาก docx หัวข้อ #7 ให้เป็น 156 · หลัง build ตรวจใหม่ทั้ง 8 หน้าที่
+   index ได้ 150–160 ครบทุกหน้า
+4. **slide1 เป็นแบนเนอร์อัตราจ่าย "หวย" ในชุดของรอบนี้** ขณะที่ PODK888 เป็น
+   แบรนด์สล็อต/คาสิโน และหน้าหวยถูกปิด — **ตัดสินใจเก็บ slide1 ไว้** เพราะเป็น
+   อาร์ตเวิร์กที่ operator อัปมาในชุดนี้เอง และแบรนด์วางตัวว่า "เว็บตรงเกมครบ
+   ทุกสาย" ซึ่งรวมหวยเป็นหมวดหนึ่งได้ · แยกให้ชัดว่าเป็นคนละเรื่องกับ
+   **หน้าเครื่องมือหวย** (`/ตรวจหวย`, `/แนวทาง`) ที่ยังปิดอยู่เพราะ prompt
+   ไม่มีคำว่า `เว็บหวย`
+5. **`about-us.astro` มีบทความของ 9UFA ค้างอยู่เต็มหน้า** (ไม่ใช่ placeholder
+   `TODO(rebrand)`) — operator เปิดหน้านี้ไว้และมีลิงก์ใน navbar/footer จึง
+   **เขียนใหม่ทั้งหน้า** ไม่ใช่ replace ชื่อ
+6. **`login`/`register` ตั้งชื่อ CSS var ตามสีของแบรนด์เก่า** (`--brand-blue`,
+   `--brand-gold`) — คอมเมนต์ในไฟล์เองสั่งว่าชื่อ var ต้องตรงกับสีที่ถืออยู่
+   จึง **เปลี่ยนชื่อ ไม่ใช่ชี้ค่าใหม่ทับ**: `--brand-pink`/`--brand-magenta`/
+   `--brand-peach`/`--brand-cyan` · grep ด้วยคลาส Tailwind ไม่เจอสองหน้านี้เลย
+   ต้องไล่ hex/`rgba()` ดิบทีละตัวตามที่ playbook เตือน
+7. **`404.astro` ไม่ได้แตะโดยตั้งใจ** — เป็นหน้ากลางที่ไม่มีชื่อแบรนด์และไม่มี
+   สีของแบรนด์อยู่เลย ทุกอย่างมาจาก `MainLayout` (คอมเมนต์หัวไฟล์เขียนไว้เอง)
+8. **`*FloatingBadge` ทั้งสองตัวไม่มี `whitespace-nowrap` แล้ว** (แก้ไว้รอบก่อน)
+   มี `w-[92%] max-w-2xl text-center` ครบ · ระยะบนการ์ด `pt-36`/`md:pt-32`
+   (ตัวเดี่ยว) และ `pt-32`/`md:pt-28` (SevenThree) → เหลือช่องว่างใต้ badge
+   36–56px แม้หัวข้อ docx จริงจะตัดลง 3–4 บรรทัดที่ 360px
+
+### หน้าหวย — ปิด (PODK888 เป็นแบรนด์สล็อต/คาสิโน)
+
+`ตรวจหวย.astro` / `แนวทาง.astro` อยู่ใน `src/pages-disabled/` มาตั้งแต่ต้นรอบ
+จึงไม่ต้องย้าย · grep `src/components/` + `src/layouts/` แล้ว**ไม่มีลิงก์ไปสอง
+route นี้เลยแม้แต่ที่เดียว** และ `NavbarCyber`/`FooterPremium` ที่หมุนเข้ามาก็
+ไม่มี · route list จาก build ยืนยันว่าไม่มีทั้งคู่ · component `*Huay` ทั้งหมด
+ปล่อยไว้เป็น inventory ตามกฎ
+
+### verify ที่รันจริง (Phase 5)
+
+- **`npm run build` → `✓ no errors (0 scheduled warning(s))` ตั้งแต่ build แรก**
+  (รวม `postbuild` = `tools/verify-build.mjs`) — 11 หน้า, 12 ไฟล์ใน `dist/`
+  ไม่ต้อง build ซ้ำเพราะไม่มีบั๊กโผล่ตอน verify
+- **heading inventory ตรงกับ docx checklist เป๊ะ** — index ได้ h1 ×1 + h2 ×7
+  (6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง) ข้อความตรงทุกตัวอักษร
+  เรียงตาม document order ครบ ไม่มีหัวข้อแปลกปลอมจาก chrome โผล่มา
+- **route list ตรงกับชนิดแบรนด์** — ไม่มี `/ตรวจหวย` `/แนวทาง`; มีครบ
+  `index promotion ทางเข้า ทดลองเล่น contact-us about-us terms privacy 404
+  login register line`
+- ชื่อแบรนด์เก่าทั้ง 7 ตัว (`9UFA` `NEKOATK` `ZEED321` `MIRACLE55` `PABLO666`
+  `BETKUB77` `KUMI99`) ใน `dist/` ทั้งโฟลเดอร์ = **0**
+- คลาส hue เก่า (`blue-*` `sky-*` `amber-*` `yellow-*` `indigo-*`) ใน `class="…"`
+  ของทุกหน้า = **0**
+- `grep -c '<!--' dist/index.html` = **0**
+- `<h2>` ใน `dist/contact-us/index.html` = **0** (เป็นหน้าปุ่ม ไม่ใช่บทความ)
+- `<h3>` ใน `dist/index.html` = **5** = คำถาม FAQ ของ `Faq3` ตามที่ตั้งใจ
+- meta description **นับเป็นตัวอักษรจริงด้วย node** (ไม่ใช่ `wc -m` ซึ่งใน locale
+  นี้นับเป็น byte = ไทย 3 เท่า) ทั้ง 8 หน้าที่ index ได้ **152–157** อยู่ในช่วง
+  150–160 ครบ
+- `og:image` = `/_astro/og.DNFzS5GS_288NLp.jpeg` (มาจาก `og.png` 1200×630 ของ
+  ชุดนี้) ไม่ใช่ path ใน `public/`
+- `<address>` ใน `contact-us` = `ศูนย์บริการสมาชิก PODK888 / อำเภอเมืองสงขลา
+  จังหวัดสงขลา 90000` — derive จาก `BRAND_NAME` ตามกฎ ไม่ได้เขียนมือ
+- `<html style>` มี `color: #f3d7e7` (`BRAND_TEXT`) และ `--font-sans` เป็น Kanit
+- `html,body{overflow-x:hidden;max-width:100%}` ยังอยู่ (อยู่ในไฟล์ CSS ที่
+  `index.html` ลิงก์ ไม่ได้ inline — ไม่ใช่ regression)
+- `undefined`/`NaN`/`[object Object]` — เจอ 1 ที่ใน `dist/index.html` ตรวจแล้ว
+  เป็น **false positive**: JS ที่ minify มาจาก `winnersFeed`/`liveCounter`
+  (`s===void 0?NaN:Number(s)` แล้วกรองด้วย `Number.isFinite` ทันที)
+- `banner2/3/4` และ `/slide*.webp` แบบ path ดิบใน `dist/` = **0**
+- `src/styles/_sources.generated.css` ถูก regenerate ตามปกติ (65 `@source not`)
+  — diff นี้ถูกต้องและคาดไว้แล้วเพราะหมุน navbar/footer/announcement
+
+### ไม่ได้แตะ (out of scope)
+
+- **inventory component ที่ถูกหมุนออก** — `NavbarStyle1`, `FooterStyle2`,
+  `AnnouncementPremium`, `LatestWinners4`, `ProviderGridPremium` ยังมีชื่อ 9UFA
+  อยู่ข้างใน = expected drift ตามกฎ ไม่ลบ ไม่แก้ (เป็นของสำรองแบรนด์หน้า)
+- `*Huay` ทั้งตระกูล + `ContentBoxSpecial`/`ContentBoxCyberCut`/`Faq`/`Faq2`/
+  `Faq4` และ variant อื่นที่ไม่ได้ wire รอบนี้
+- **`src/assets/banner.png` (2.2 MB), `banner2/3/4.png` ของแบรนด์ก่อน** — ไม่มี
+  โค้ดไหน import แล้ว จึงไม่ขึ้น `dist/` ปล่อยไว้ตามกฎ "ไฟล์ตายใน `src/assets`
+  ค้างไว้โดยตั้งใจ"
+- `src/assets/contact-line.webp` (ลง 25 ก.ค.) — เป็น asset กลางที่ uploader
+  ไม่เขียนทับต่อแบรนด์ ไม่มีชื่อแบรนด์อยู่บนรูป จึงคงไว้
+- `account_id` ใน `wrangler.toml`, `bg.json`, โครง `<head>` ของ `MainLayout`,
+  `_headers`, `terms`/`privacy` (brand-neutral อยู่แล้ว ตามชื่อจาก `BRAND_NAME`)
+- `.rebrand-9ufa-spec.md` — scratchpad ของรอบก่อนที่ถูก commit ค้างไว้ ไม่ได้ลบ
+  เพราะ git track อยู่และอยู่นอกสโคปที่สั่ง (แจ้งไว้ให้ตัดสินใจ)
+- **ไม่ได้ deploy ไม่ได้ commit ไม่ได้ push** ตามคำสั่ง — หยุดที่ build + verify

@@ -13,36 +13,40 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // first line of body copy.
 //
 // This runs one step deeper than ContentBoxSevenThreeFloatingBadge (pt-32/
-// md:pt-28) on purpose — the two decorative ❄ spans and their gap take ~52px
+// md:pt-28) on purpose — the two decorative ✦ spans and their gap take ~52px
 // out of the badge's inner width here, and nothing takes it out over there. On
-// a 360–375px phone that is the difference between a 3-line and a 4-line badge:
-// a previous brand's H2 measured ~20px of clearance at pt-32, which one more
-// wrapped line would have eaten. Keep the two files one step apart, not
+// a 360–375px phone that is the difference between a 3-line and a 4-line badge.
+// Arithmetic for PODK888's docx H2 (70 Thai characters), badge = py-2.5 +
+// border-2 = 24px of chrome: mobile text-lg/leading-normal = 27px per line, so
+// 4 wrapped lines = 132px, bottom edge at 108px against pt-36 (144px) → 36px of
+// daylight; at md, text-2xl = 36px per line, 2 lines = 96px, bottom edge 72px
+// against md:pt-32 (128px) → 56px. Keep the two files one step apart, not
 // identical. The badge itself is w-[92%] max-w-2xl text-center — never
 // whitespace-nowrap, which is what used to push it past the viewport.
 //
-// Light theme (9UFA): the card is a white surface with dark ink, so the badge
-// is the one blue-chrome element here — gold gradient text on the blue pill,
-// never dark ink on blue.
+// Dark theme (PODK888): the card is a translucent plum surface, so the badge is
+// the near-black ink pill and its text is the neon gradient. Never dark ink on
+// the pink — #12060f on #f670b7 is the only readable pairing that way round and
+// the gradient runs through #e01e83, which is too dark for it.
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#0a5df1]/30 bg-white/88 p-8 pt-36 text-left text-base leading-relaxed text-[#0b3a63] shadow-[0_10px_30px_rgba(10,93,241,0.15)] backdrop-blur-md md:pt-32">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#01cbf6]/35 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f1d42c]/35 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f670b7]/30 bg-[#1a0a1f]/88 p-8 pt-36 text-left text-base leading-relaxed text-[#f3d7e7] shadow-[0_10px_30px_rgba(246,112,183,0.18)] backdrop-blur-md md:pt-32">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#02dbfd]/30 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#e01e83]/35 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#01cbf6]/50 bg-gradient-to-r from-[#0a5df1] via-[#0782f2] to-[#01cbf6] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(10,93,241,0.35)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#ffe98a]">
-            ❄
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#02dbfd]/50 bg-[#12060f] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(224,30,131,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#02dbfd]">
+            ✦
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffe98a] via-[#f1d42c] to-[#ffe98a] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>
+          <HeadingTag class={`bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#fed0b9] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>
             {title}
           </HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#ffe98a]">
-            ❄
+          <span aria-hidden="true" class="shrink-0 text-[#02dbfd]">
+            ✦
           </span>
         </div>
       )
