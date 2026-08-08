@@ -25,10 +25,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ PODK888 | กำลังเชื่อมต่อไปหน้าล็อกอินอัตโนมัติ</title>
+    <title>เข้าสู่ระบบ FLASH789 | กำลังเชื่อมต่อไปหน้าล็อกอินอัตโนมัติ</title>
     <meta
       name="description"
-      content="หน้าเชื่อมต่อเข้าสู่ระบบ PODK888 เว็บตรงเกมครบทุกสาย ระบบกำลังพาคุณไปยังหน้าล็อกอินโดยอัตโนมัติ ใช้เบอร์โทรศัพท์และรหัสผ่านเข้าเล่นสล็อตและคาสิโนสดได้ทันที"
+      content="หน้าเชื่อมต่อเข้าสู่ระบบ FLASH789 สล็อตเว็บตรงมาแรง ระบบกำลังพาคุณไปยังหน้าล็อกอินโดยอัตโนมัติ ใช้เบอร์โทรศัพท์และรหัสผ่านเข้าปั่นสล็อตค่ายดังได้ทันทีทุกอุปกรณ์"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -67,25 +67,24 @@ const fontHref = usesGoogleFonts
     </style>
 
     <style>
-      /* PODK888 is a neon-cyberpunk brand — a DARK page (deep plum), dark
-         translucent panels, hot pink and magenta as the display accents, cyan
-         as the secondary highlight and peach as the only warm support hue. No
-         blue, no gold, no light surface: the palette is inverted from the brand
-         before it, so text is pale pink on near-black, not dark ink on light.
-         Every variable below is NAMED FOR THE COLOUR IT HOLDS, which previous
-         brands stopped doing: this block once declared `--brand-gold` on brands
-         with no gold in them and `--brand-blue` on a pink one, so the next
-         editor reused it by name and shipped the wrong hue. Rename with the
-         value. */
+      /* FLASH789 is an electric-lightning brand — a DARK page (near-black with a
+         red bloom), dark translucent panels, bright red as the display accent,
+         crimson as its deep partner, and amber gold as the only second hue (the
+         lightning bolt in the logo). No pink, no cyan, no light surface: text is
+         warm ivory on near-black, not dark ink on light. Every variable below is
+         NAMED FOR THE COLOUR IT HOLDS, which previous brands stopped doing: this
+         block once declared `--brand-gold` on brands with no gold in them and
+         `--brand-blue` on a pink one, so the next editor reused it by name and
+         shipped the wrong hue. Rename with the value. */
       :root {
-        --page-bg: #220f29;
-        --panel-bg: rgba(26, 10, 31, 0.92);
-        --brand-pink: #f670b7;
-        --brand-magenta: #e01e83;
-        --brand-peach: #fed0b9;
-        --brand-cyan: #02dbfd;
-        --text-body: #f3d7e7;
-        --text-muted: #d9a8c6;
+        --page-bg: #0b0203;
+        --panel-bg: rgba(23, 5, 6, 0.92);
+        --brand-red: #ff2b2b;
+        --brand-crimson: #c1121f;
+        --brand-gold-light: #ffe27a;
+        --brand-gold: #ffc531;
+        --text-body: #f7ddd8;
+        --text-muted: #e0b9b3;
       }
 
       body {
@@ -94,8 +93,8 @@ const fontHref = usesGoogleFonts
         color: var(--text-body);
 
         background:
-          radial-gradient(circle at 50% 10%, rgba(2, 219, 253, 0.22) 0%, transparent 55%),
-          radial-gradient(circle at 50% 92%, rgba(246, 112, 183, 0.25) 0%, transparent 55%), var(--page-bg);
+          radial-gradient(circle at 50% 10%, rgba(255, 197, 49, 0.2) 0%, transparent 55%),
+          radial-gradient(circle at 50% 92%, rgba(255, 43, 43, 0.28) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -109,11 +108,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(246, 112, 183, 0.3);
+        border: 1px solid rgba(255, 43, 43, 0.3);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(246, 112, 183, 0.18),
-          0 0 2rem rgba(2, 219, 253, 0.22);
+          0 1rem 3rem rgba(255, 43, 43, 0.18),
+          0 0 2rem rgba(255, 197, 49, 0.22);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -122,13 +121,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--brand-peach) 0%, var(--brand-pink) 45%, var(--brand-magenta) 100%);
+        background: linear-gradient(180deg, var(--brand-gold-light) 0%, var(--brand-red) 45%, var(--brand-crimson) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(246, 112, 183, 0.3));
+        filter: drop-shadow(0 1px 2px rgba(255, 43, 43, 0.3));
       }
 
       .sophisticated-loader {
@@ -144,30 +143,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--brand-cyan) 0%, var(--brand-pink) 45%, var(--brand-magenta) 100%);
+        background: radial-gradient(circle, var(--brand-gold) 0%, var(--brand-red) 45%, var(--brand-crimson) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(246, 112, 183, 0.35);
+        box-shadow: 0 0 2rem rgba(255, 43, 43, 0.35);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(246, 112, 183, 0.2);
+        border: 3px solid rgba(255, 43, 43, 0.2);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--brand-pink);
+        border-top-color: var(--brand-red);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--brand-cyan);
+        border-bottom-color: var(--brand-gold);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -184,11 +183,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(246, 112, 183, 0.35);
+          box-shadow: 0 0 2rem rgba(255, 43, 43, 0.35);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(2, 219, 253, 0.5);
+          box-shadow: 0 0 3rem rgba(255, 197, 49, 0.5);
         }
       }
 
@@ -199,7 +198,7 @@ const fontHref = usesGoogleFonts
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-body);
-        text-shadow: 0 1px 1px rgba(246, 112, 183, 0.25);
+        text-shadow: 0 1px 1px rgba(255, 43, 43, 0.25);
         margin: 0;
       }
       .status-text .p {
@@ -212,7 +211,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">PODK888</div>
+      <div class="brand-identity">FLASH789</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -222,7 +221,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ PODK888 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ FLASH789 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

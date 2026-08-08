@@ -2,28 +2,32 @@
 // ห้ามขึ้นต้น message ด้วย emoji — marquee นี้ render ข้อความซ้ำสองรอบ (ไม่มี seam)
 // screen reader จึงอ่าน emoji ตัวนั้นซ้ำด้วย และ emoji ที่อยู่ใน prop ทำ aria-hidden
 // ไม่ได้ ส่วนกระดิ่ง 🔔 ด้านซ้ายเป็น element ของตัวเองจึงมี aria-hidden ได้
+//
+// ค่า default ต้องเป็นคำโฆษณาของแบรนด์ปัจจุบันเสมอ — หน้าย่อยทุกหน้าเรียก
+// <Announcement /> เปล่าๆ จึงตกมาใช้ค่านี้ ถ้าลืมอัปเดต ทั้งเว็บยกเว้นหน้าแรก
+// จะวิ่งข้อความของแบรนด์ก่อนหน้า
 const {
-  message = "KUMI99 สล็อตออนไลน์ตัวท็อป เกมใหม่มาแรง คัดค่ายเด็ดเข้าไม่พักอัปเดตไม่หยุด • โบนัสโคตรคุ้ม ฟรีสปินออกบ่อย ตัวคูณและสัญลักษณ์พิเศษจัดเต็มทุกเกม • ฝากถอนไวภายใน 3 วิ ผ่านระบบออโต้ ไม่ต้องแจ้งสลิป • ระบบไวเกินต้าน เล่นต่อเนื่องปั่นได้สุดฟีลทุกอุปกรณ์",
+  message = "FLASH789 สล็อตเว็บตรงมาแรง คัดมาเน้นๆ แต่เกมคุณภาพ แตกง่าย ลุ้นสนุกได้ทุกตา • ยกขบวนเกมจากค่ายดังระดับโลกมาครบทุกแนว สายภาพสวยฟีลผจญภัย สายมินิมอล สายซื้อฟรีสปิน เลือกได้หมด • ระบบไวทุกคลิก เล่นลื่นทุกสปิน รองรับทั้งมือถือทุกรุ่นและคอมพิวเตอร์ • อัปเดตเกมใหม่เข้าตลอด อะไรกำลังฮิตได้เล่นก่อนใคร • โบนัสคุ้ม โปรเด็ดตลอดวัน เพิ่มทุนให้ลุยต่อได้ยาวๆ ทุกยอดฝาก",
 } = Astro.props;
 ---
 
 <div class="mx-auto w-full max-w-7xl px-4 py-3 font-sans">
-  <div class="relative overflow-hidden rounded-md border border-[#8b2fc9]/50 bg-[#12071f] shadow-[0_0_15px_rgba(139,47,201,0.25)]">
-    <div class="absolute top-0 -left-4 h-full w-8 -skew-x-12 bg-gradient-to-b from-[#8b2fc9] to-[#5b0374]"></div>
-    <div class="absolute top-0 -right-4 h-full w-8 -skew-x-12 bg-[#fcda3d]/20"></div>
+  <div class="relative overflow-hidden rounded-md border border-[#ff2b2b]/50 bg-[#170506] shadow-[0_0_15px_rgba(255,43,43,0.25)]">
+    <div class="absolute top-0 -left-4 h-full w-8 -skew-x-12 bg-gradient-to-b from-[#ff2b2b] to-[#8f0806]"></div>
+    <div class="absolute top-0 -right-4 h-full w-8 -skew-x-12 bg-[#ffc531]/20"></div>
 
     <div class="flex items-center">
-      <div class="relative z-10 flex w-12 shrink-0 items-center justify-center bg-gradient-to-b from-[#8b2fc9] to-[#5b0374] py-2.5">
-        <span aria-hidden="true" class="animate-pulse text-lg drop-shadow-[0_0_5px_rgba(255,233,138,0.85)]">🔔</span>
+      <div class="relative z-10 flex w-12 shrink-0 items-center justify-center bg-gradient-to-b from-[#ff2b2b] to-[#8f0806] py-2.5">
+        <span aria-hidden="true" class="animate-pulse text-lg drop-shadow-[0_0_5px_rgba(255,226,122,0.85)]">🔔</span>
       </div>
 
       <div class="marquee-container relative flex-1 overflow-hidden py-2.5 pr-6">
-        <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#12071f] to-transparent"></div>
-        <div class="pointer-events-none absolute top-0 right-0 z-10 h-full w-12 bg-gradient-to-l from-[#12071f] to-transparent"></div>
+        <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#170506] to-transparent"></div>
+        <div class="pointer-events-none absolute top-0 right-0 z-10 h-full w-12 bg-gradient-to-l from-[#170506] to-transparent"></div>
 
-        <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-wide whitespace-nowrap text-[#fcda3d]">
-          <span class="mr-8 inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-[#ffe98a] shadow-[0_0_5px_rgba(255,233,138,0.85)]"></span>{message}</span>
-          <span class="mr-8 inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-[#ffe98a] shadow-[0_0_5px_rgba(255,233,138,0.85)]"></span>{message}</span>
+        <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-wide whitespace-nowrap text-[#ffc531]">
+          <span class="mr-8 inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-[#ffe27a] shadow-[0_0_5px_rgba(255,226,122,0.85)]"></span>{message}</span>
+          <span class="mr-8 inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-[#ffe27a] shadow-[0_0_5px_rgba(255,226,122,0.85)]"></span>{message}</span>
         </div>
       </div>
     </div>

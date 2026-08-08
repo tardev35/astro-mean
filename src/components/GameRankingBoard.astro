@@ -8,30 +8,31 @@ import img5 from "../assets/providers/game5.avif";
 import img6 from "../assets/providers/game6.avif";
 
 // Each game keeps the cover art it was paired with, so the alt text still
-// describes the picture. The order is slot-first because this brand's brief is
-// a slot + live-casino site; the two live tables sit at the bottom of the board.
+// describes the picture — do not rename a row without changing its image.
+// The order is slot-first because this brand's brief is a slot site; the two
+// live tables sit at the bottom of the board.
 const games = [
-  { rank: 1, name: "Mahjong Ways 2", type: "PG Soft • สล็อต", menus: ["แตกโหด", "เข้าฟีเจอร์รัวๆ"], players: 5124, img: img1 },
+  { rank: 1, name: "Mahjong Ways 2", type: "PG Soft • สล็อต", menus: ["แตกง่าย", "ลุ้นสนุกได้ทุกตา"], players: 5124, img: img1 },
   { rank: 2, name: "Gates of Olympus", type: "Pragmatic Play • สล็อต", menus: ["ยอดนิยม", "ตัวคูณจัดหนัก"], players: 3842, img: img2 },
   { rank: 3, name: "Fortune Gems", type: "JILI • สล็อต", menus: ["รอบไว", "ทุนน้อยก็ลุยได้"], players: 3517, img: img4 },
-  { rank: 4, name: "Super Ace", type: "JILI • สล็อต", menus: ["เกมใหม่", "เข้ามือบ่อย"], players: 2905, img: img5 },
-  { rank: 5, name: "บาคาร่า ห้อง Live สด", type: "Evolution • คาสิโนสด", menus: ["ไลฟ์สด", "ดีลเลอร์แจ่ม"], players: 2431, img: img6 },
-  { rank: 6, name: "รูเล็ต โต๊ะไลฟ์", type: "Evolution • คาสิโนสด", menus: ["ไลฟ์สด", "เล่นล่าสุด"], players: 2108, img: img3 },
+  { rank: 4, name: "Super Ace", type: "JILI • สล็อต", menus: ["เกมใหม่", "อัปเดตล่าสุด"], players: 2905, img: img5 },
+  { rank: 5, name: "บาคาร่า ห้อง Live สด", type: "Evolution • เกมโต๊ะไลฟ์", menus: ["ไลฟ์สด", "รายการโปรด"], players: 2431, img: img6 },
+  { rank: 6, name: "รูเล็ต โต๊ะไลฟ์", type: "Evolution • เกมโต๊ะไลฟ์", menus: ["ไลฟ์สด", "เล่นล่าสุด"], players: 2108, img: img3 },
 ];
 
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="เกมมาแรงที่สมาชิก PODK888 กำลังเล่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="เกมมาแรงที่สมาชิก FLASH789 กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#f670b7]/25 bg-[#1a0a1f]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(246,112,183,0.18)] backdrop-blur-md">
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#ff2b2b]/25 bg-[#170506]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(255,43,43,0.18)] backdrop-blur-md">
     <span aria-hidden="true" class="text-2xl">🏆</span>
-    <p class="bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#e01e83] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมมาแรงที่สมาชิก PODK888 กำลังเล่นอยู่ตอนนี้</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#d9a8c6]">
-      ทุกเกมในกระดานนี้มาจากค่ายแท้ที่คัดเกมเด่นมาให้เลือกโดยตรง ไม่ผ่านคนกลาง ภาพคมชัดไม่มีสะดุด กดเดิมพันได้แบบเรียลไทม์ทั้งสายสล็อตและสายคาสิโนสด
+    <p class="bg-gradient-to-r from-[#ffc531] via-[#ff2b2b] to-[#c1121f] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมมาแรงที่สมาชิก FLASH789 กำลังปั่นอยู่ตอนนี้</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#e0b9b3]">
+      ทุกเกมในกระดานนี้มาจากค่ายดังระดับโลกที่ดึงสัญญาณตรงจากผู้พัฒนา ไม่ผ่านคนกลาง กดปุ๊บมาปั๊บ ไวทุกคลิกไม่มีสะดุด และมีเกมใหม่เติมเข้ามาตลอดเวลา
       รายชื่อเกมมาแรงเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูเดิมพันเริ่มต้นและฟีเจอร์โบนัสจากหน้าเกมจริงอีกครั้งก่อนกดเล่น
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f670b7] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ff2b2b] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -42,10 +43,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#02dbfd]/45 bg-gradient-to-r from-[#3c0c21]/95 via-[#2a0f2e]/92 to-[#1a0a1f]/88 shadow-[0_15px_40px_rgba(2,219,253,0.28)]"
-                : "border-[#f670b7]/25 bg-[#1a0a1f]/88 shadow-[0_10px_30px_rgba(246,112,183,0.16)] hover:border-[#f670b7]/55 hover:shadow-[0_15px_40px_rgba(2,219,253,0.28)]"
+                ? "border-[#ffc531]/45 bg-gradient-to-r from-[#3c0c05]/95 via-[#2a0806]/92 to-[#170506]/88 shadow-[0_15px_40px_rgba(255,197,49,0.28)]"
+                : "border-[#ff2b2b]/25 bg-[#170506]/88 shadow-[0_10px_30px_rgba(255,43,43,0.16)] hover:border-[#ff2b2b]/55 hover:shadow-[0_15px_40px_rgba(255,197,49,0.28)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#02dbfd]/25 blur-[40px] transition-all duration-500 group-hover:bg-[#02dbfd]/40" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#ffc531]/25 blur-[40px] transition-all duration-500 group-hover:bg-[#ffc531]/40" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {/* Ranks 1–3 show a medal INSTEAD of the number, so hiding the
@@ -57,14 +58,14 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#f670b7] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#ff2b2b] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
-            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#02dbfd]/50" : "border-[#f670b7]/30"}`}>
+            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#ffc531]/50" : "border-[#ff2b2b]/30"}`}>
               <Picture
                 src={g.img}
-                alt={`ภาพหน้าปกเกม ${g.name} ในกระดานเกมมาแรงของ PODK888`}
+                alt={`ภาพหน้าปกเกม ${g.name} ในกระดานเกมมาแรงของ FLASH789`}
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
                 loading="lazy"
@@ -78,20 +79,20 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#f3d7e7] sm:text-lg">{g.name}</p>
-                {top && <span class="hidden shrink-0 rounded-full border border-[#02dbfd]/45 bg-[#02dbfd] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#12060f] sm:inline">มาแรงสูงสุด</span>}
+                <p class="truncate text-base font-black text-[#f7ddd8] sm:text-lg">{g.name}</p>
+                {top && <span class="hidden shrink-0 rounded-full border border-[#ffc531]/45 bg-[#ffc531] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#170506] sm:inline">มาแรงสูงสุด</span>}
               </div>
-              <p class="truncate text-[11px] text-[#d9a8c6] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#e0b9b3] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#f670b7]/30 bg-[#12060f] px-2.5 py-0.5 text-[10px] font-bold text-[#f670b7]">{m}</span>
+                  <span class="rounded-full border border-[#ff2b2b]/30 bg-[#0b0203] px-2.5 py-0.5 text-[10px] font-bold text-[#ff2b2b]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#d9a8c6]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#e0b9b3]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -102,8 +103,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#02dbfd] to-[#f670b7] text-[#12060f] shadow-[0_10px_30px_rgba(2,219,253,0.35)]"
-                    : "border border-[#f670b7]/60 bg-[#12060f] text-[#f670b7] hover:border-[#02dbfd] hover:bg-[#2a0f2e] hover:text-[#02dbfd]"
+                    ? "bg-gradient-to-r from-[#ffc531] to-[#ff2b2b] text-[#170506] shadow-[0_10px_30px_rgba(255,197,49,0.35)]"
+                    : "border border-[#ff2b2b]/60 bg-[#0b0203] text-[#ff2b2b] hover:border-[#ffc531] hover:bg-[#2a0806] hover:text-[#ffc531]"
                 }`}>
                 เข้าดูเกม
               </a>

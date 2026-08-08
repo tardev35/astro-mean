@@ -1,4 +1,4 @@
 {
-  "mode": "color",
-  "color": "#220f29"
+  "mode": "gradient",
+  "css": "linear-gradient(180deg, #290f0f, #8a1e1e)"
 }

@@ -1,20 +1,26 @@
 ---
 import { Picture } from "astro:assets";
 import BankStrip from "./BankStrip.astro";
+import { BRAND_ADDRESS } from "../lib/brandProfile";
 const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png,webp,jpg}", { eager: true });
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // โลโก้ตรง fallback เคยเป็น <h2> — chrome ห้ามกินแท็กหัวข้อ เพราะรายการ h2 ของ
 // ทุกหน้าถูก diff กับหัวข้อใน docx ตอน verify เปลี่ยนเป็น <p> โดยคงคลาสเดิมไว้
+//
+// บล็อก <address> ด้านล่างจงใจไม่ใส่สีของแบรนด์ (ใช้ border-white/15, bg-black/20
+// และ opacity ทับสีตัวอักษรที่ inherit มา) — footer ทุก variant ในคลังเป็นพื้นเข้ม
+// ทั้งหมด บล็อกนี้จึงลงตัวทุกตัวโดยไม่ต้องแก้ และไม่ทิ้ง hex ของแบรนด์นี้ไว้ให้
+// รอบหน้า ป้ายชื่อเป็น <p> ไม่ใช่หัวข้อ เพราะ footer ขึ้นทุกหน้า
 ---
 
 <footer
-  class="relative mt-10 w-full overflow-hidden border-t border-[#ff2f28]/35 bg-[#0a0202] pt-16 pb-8 font-sans text-[#f3dede]"
+  class="relative mt-10 w-full overflow-hidden border-t border-[#ff2b2b]/35 bg-[#0b0203] pt-16 pb-8 font-sans text-[#f7ddd8]"
   style="clip-path: polygon(0 30px, 50vw 0, 100% 30px, 100% 100%, 0 100%);">
   <div aria-hidden="true"
     class="pointer-events-none absolute inset-0 opacity-[0.14]"
-    style="background-image: linear-gradient(#8f0806 1px, transparent 1px), linear-gradient(90deg, #a97a10 1px, transparent 1px); background-size: 30px 30px;">
+    style="background-image: linear-gradient(#8f0806 1px, transparent 1px), linear-gradient(90deg, #d99400 1px, transparent 1px); background-size: 30px 30px;">
   </div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
@@ -25,43 +31,43 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ ZEED321 ตัวอักษรแดงโครเมียมใต้มงกุฎทอง"
+                alt="โลโก้ FLASH789 ตัวอักษรแดงเงาโลหะ คาดด้วยสายฟ้าสีทอง"
                 loading="lazy"
                 decoding="async"
                 widths={[130, 260, 390]}
                 sizes="130px"
-                class="h-[60px] w-auto drop-shadow-[0_4px_12px_rgba(255,47,40,0.4)]"
+                class="h-[60px] w-auto drop-shadow-[0_4px_12px_rgba(255,43,43,0.4)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="text-3xl font-black tracking-widest text-[#f5c542]">ZEED321</p>
+              <p class="text-3xl font-black tracking-widest text-[#ffc531]">FLASH789</p>
             )
           }
         </a>
-        <p class="border-l-2 border-[#ff2f28] pl-4 text-sm leading-relaxed text-[#c2a0a0]">
-          ZEED321 เว็บสล็อตสายมันส์ที่รวมเกมครบมือจากค่ายแท้ไว้ในบัญชีเดียว จังหวะดีทุกการเล่นตั้งแต่เข้าเกมจนถึงสปินสุดท้าย โบนัสแน่นทุกช่วงเวลา ระบบเสถียร ฝาก-ถอนออโต้ เล่นต่อเนื่องได้แบบไม่มีสะดุดทุกอุปกรณ์
+        <p class="border-l-2 border-[#ff2b2b] pl-4 text-sm leading-relaxed text-[#e0b9b3]">
+          FLASH789 สล็อตเว็บตรงมาแรง คัดมาเน้นๆ แต่เกมคุณภาพจากค่ายดังครบทุกแนว ระบบหลังบ้านอัปเกรดใหม่ กดปุ๊บมาปั๊บ ไวทุกคลิกไม่มีสะดุด โบนัสและโปรโมชันจัดเต็ม คุ้มค่าทุกยอดฝาก เล่นลื่นทุกสปินทั้งมือถือและคอมพิวเตอร์
         </p>
         <div class="mt-4 flex gap-3">
-          <span class="border border-[#ff2f28]/45 bg-[#170506] px-3 py-1 font-mono text-xs text-[#ffe08a]">SLOT_ALL_CAMP</span>
-          <span class="border border-[#a97a10]/50 bg-[#170506] px-3 py-1 font-mono text-xs text-[#c2a0a0]">AUTO_24H</span>
+          <span class="border border-[#ff2b2b]/45 bg-[#170506] px-3 py-1 font-mono text-xs text-[#ffe27a]">SLOT_ALL_CAMP</span>
+          <span class="border border-[#d99400]/50 bg-[#170506] px-3 py-1 font-mono text-xs text-[#e0b9b3]">AUTO_24H</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#f5c542] uppercase">/// DIRECTORY</p>
-        <ul class="flex flex-col gap-3 font-mono text-sm text-[#c2a0a0]">
-          <li><a href="/" class="transition-colors hover:text-[#ff2f28]">> หน้าแรก</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#ff2f28]">> โปรโมชั่น</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ff2f28]">> ทางเข้า</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ff2f28]">> ทดลองเล่น</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#ff2f28]">> เกี่ยวกับเรา</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#ff2f28]">> ติดต่อเรา</a></li>
+        <p class="text-lg font-black tracking-widest text-[#ffc531] uppercase">/// DIRECTORY</p>
+        <ul class="flex flex-col gap-3 font-mono text-sm text-[#e0b9b3]">
+          <li><a href="/" class="transition-colors hover:text-[#ff2b2b]">> หน้าแรก</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#ff2b2b]">> โปรโมชั่น</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ff2b2b]">> ทางเข้า</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ff2b2b]">> ทดลองเล่น</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#ff2b2b]">> เกี่ยวกับเรา</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#ff2b2b]">> ติดต่อเรา</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#f5c542] uppercase">/// SUPPORT_LINK</p>
+        <p class="text-lg font-black tracking-widest text-[#ffc531] uppercase">/// SUPPORT_LINK</p>
 
         <a
           href="/line"
@@ -70,24 +76,44 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
           LINE CONNECT
         </a>
 
+        {
+          BRAND_ADDRESS.lines.length > 0 && (
+            <address aria-label={BRAND_ADDRESS.label} class="mt-2 rounded-xl border border-white/15 bg-black/20 p-4 text-xs leading-relaxed not-italic opacity-90">
+              <p class="mb-2 flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase opacity-80">
+                <span aria-hidden="true" class="text-sm">📍</span>
+                {BRAND_ADDRESS.label}
+              </p>
+              {BRAND_ADDRESS.lines.map((line) => (
+                <span class="block">{line}</span>
+              ))}
+              {BRAND_ADDRESS.email && (
+                <a href={`mailto:${BRAND_ADDRESS.email}`} class="mt-3 inline-flex items-center gap-2 font-bold underline decoration-current/40 underline-offset-4 opacity-90 transition-opacity hover:opacity-100">
+                  <span aria-hidden="true" class="text-sm">✉️</span>
+                  {BRAND_ADDRESS.email}
+                </a>
+              )}
+            </address>
+          )
+        }
+
         <a
           href="/register"
-          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#ffe08a] via-[#f5c542] to-[#a97a10] py-3 font-black text-[#2a0605] transition-all hover:brightness-110"
+          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#d99400] py-3 font-black text-[#2a0605] transition-all hover:brightness-110"
           style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
           สมัครสมาชิก
         </a>
 
-        <div class="mt-2 font-mono text-xs text-[#c2a0a0]">ACCEPTED_PAYMENTS</div>
+        <div class="mt-2 font-mono text-xs text-[#e0b9b3]">ACCEPTED_PAYMENTS</div>
         <BankStrip size={28} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#ff2f28]/25 pt-6 font-mono text-xs text-[#c2a0a0] md:flex-row">
-      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} ZEED321</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#ff2b2b]/25 pt-6 font-mono text-xs text-[#e0b9b3] md:flex-row">
+      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} FLASH789</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="hover:text-[#ff2f28]">TERMS_OF_SERVICE</a>
-        <a href="/privacy/" class="hover:text-[#ff2f28]">PRIVACY_POLICY</a>
-        <a href="#top" class="hover:text-[#ff2f28]">BACK_TO_TOP</a>
+        <a href="/terms/" class="hover:text-[#ff2b2b]">TERMS_OF_SERVICE</a>
+        <a href="/privacy/" class="hover:text-[#ff2b2b]">PRIVACY_POLICY</a>
+        <a href="#top" class="hover:text-[#ff2b2b]">BACK_TO_TOP</a>
       </div>
     </div>
   </div>

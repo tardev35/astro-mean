@@ -20,35 +20,35 @@ const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
-  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
-  { name: "ติดต่อเรา", path: "/contact-us", icon: "📞" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🏢" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "⚡" },
+  { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "ℹ️" },
 ];
 
 // โลโก้ในแถบเมนูเคยใส่ fetchpriority="high" ซึ่งไปแย่ง priority กับ hero banner
 // ที่เป็น LCP จริง — เอาออก เหลือแค่ loading="eager" เพราะมันอยู่เหนือ fold
 ---
 
-<nav class="sticky top-0 z-50 w-full border-b border-[#ff2f28]/35 bg-[#070102] font-sans shadow-[0_4px_20px_rgba(255,47,40,0.18)] backdrop-blur-md">
+<nav class="sticky top-0 z-50 w-full border-b border-[#ff2b2b]/35 bg-[#0b0203] font-sans shadow-[0_4px_20px_rgba(255,43,43,0.18)] backdrop-blur-md">
   <div class="flex h-[75px] w-full items-center justify-between px-4 xl:px-8">
     <div class="z-50 flex items-center">
       <a href="/" class="group relative flex items-center">
-        <div class="absolute inset-0 scale-0 rounded-full bg-[#ff2f28]/25 blur-xl transition-transform duration-500 group-hover:scale-150"></div>
+        <div class="absolute inset-0 scale-0 rounded-full bg-[#ff2b2b]/25 blur-xl transition-transform duration-500 group-hover:scale-150"></div>
         {
           mainLogo ? (
             <Picture
               src={mainLogo}
-              alt="โลโก้ ZEED321 ตัวอักษรแดงโครเมียมใต้มงกุฎทอง"
+              alt="โลโก้ FLASH789 ตัวอักษรแดงเงาโลหะ คาดด้วยสายฟ้าสีทอง"
               loading="eager"
               widths={[120, 240, 360]}
               sizes="120px"
-              class="relative h-[40px] w-auto drop-shadow-[0_0_12px_rgba(255,47,40,0.45)] transition-transform group-hover:scale-105 xl:h-[45px]"
+              class="relative h-[40px] w-auto drop-shadow-[0_0_12px_rgba(255,43,43,0.45)] transition-transform group-hover:scale-105 xl:h-[45px]"
               formats={["avif", "webp"]}
               fallbackFormat="webp"
             />
           ) : (
-            <span class="relative text-2xl font-black tracking-widest text-[#d8dde3]">
-              ZEED<span class="text-[#ff2f28]">321</span>
+            <span class="relative text-2xl font-black tracking-widest text-[#f7ddd8]">
+              FLASH<span class="text-[#ff2b2b]">789</span>
             </span>
           )
         }
@@ -60,12 +60,12 @@ const links = [
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative skew-x-[-15deg] overflow-hidden border px-5 py-2 transition-all duration-300 ${isActive(item.path) ? "border-[#ff2f28] bg-[#8f0806]/35 shadow-[0_0_15px_rgba(255,47,40,0.35)]" : "border-white/10 bg-white/5 hover:border-[#ff2f28]/60"}`}>
+            class={`group relative skew-x-[-15deg] overflow-hidden border px-5 py-2 transition-all duration-300 ${isActive(item.path) ? "border-[#ff2b2b] bg-[#8f0806]/35 shadow-[0_0_15px_rgba(255,43,43,0.35)]" : "border-white/10 bg-white/5 hover:border-[#ff2b2b]/60"}`}>
             <div
-              class={`absolute inset-0 translate-y-full bg-gradient-to-r from-[#8f0806] to-[#ff2f28] transition-transform duration-300 ${isActive(item.path) ? "translate-y-0 opacity-25" : "opacity-40 group-hover:translate-y-0"}`}
+              class={`absolute inset-0 translate-y-full bg-gradient-to-r from-[#8f0806] to-[#ff2b2b] transition-transform duration-300 ${isActive(item.path) ? "translate-y-0 opacity-25" : "opacity-40 group-hover:translate-y-0"}`}
             />
             <span
-              class={`relative z-10 flex skew-x-[15deg] items-center gap-1.5 text-sm font-bold tracking-wide transition-colors ${isActive(item.path) ? "text-[#ffe08a] drop-shadow-[0_0_5px_rgba(245,197,66,0.55)]" : "text-[#c2a0a0] group-hover:text-white"}`}>
+              class={`relative z-10 flex skew-x-[15deg] items-center gap-1.5 text-sm font-bold tracking-wide transition-colors ${isActive(item.path) ? "text-[#ffe27a] drop-shadow-[0_0_5px_rgba(255,197,49,0.55)]" : "text-[#e0b9b3] group-hover:text-white"}`}>
               <span aria-hidden="true">{item.icon}</span>
               <span>{item.name}</span>
             </span>
@@ -77,11 +77,11 @@ const links = [
     <div class="z-50 flex items-center gap-2">
       <button
         id="hamburger-btn"
-        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center space-y-1.5 rounded-lg border border-[#ff2f28]/35 bg-[#170506] p-2 shadow-[0_0_10px_rgba(255,47,40,0.25)] transition-all hover:bg-[#3d0404] xl:hidden"
+        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center space-y-1.5 rounded-lg border border-[#ff2b2b]/35 bg-[#170506] p-2 shadow-[0_0_10px_rgba(255,43,43,0.25)] transition-all hover:bg-[#3d0404] xl:hidden"
         aria-label="เปิดหรือปิดเมนู">
-        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#f5c542] transition-all duration-300"></span>
-        <span class="hamburger-line h-[2px] w-6 bg-[#f5c542] transition-all duration-300"></span>
-        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#f5c542] transition-all duration-300"></span>
+        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#ffc531] transition-all duration-300"></span>
+        <span class="hamburger-line h-[2px] w-6 bg-[#ffc531] transition-all duration-300"></span>
+        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#ffc531] transition-all duration-300"></span>
       </button>
     </div>
   </div>
@@ -90,13 +90,13 @@ const links = [
 
   <div
     id="mobile-sidebar"
-    class="fixed top-0 right-0 z-40 h-screen w-[280px] translate-x-full transform overflow-y-auto border-l border-[#8f0806]/70 bg-[#070102] shadow-[-10px_0_30px_rgba(0,0,0,0.8)] transition-transform duration-300 ease-out xl:hidden">
+    class="fixed top-0 right-0 z-40 h-screen w-[280px] translate-x-full transform overflow-y-auto border-l border-[#8f0806]/70 bg-[#0b0203] shadow-[-10px_0_30px_rgba(0,0,0,0.8)] transition-transform duration-300 ease-out xl:hidden">
     <div class="flex flex-col space-y-3 px-6 pt-24 pb-10">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`sidebar-item flex items-center rounded-xl border px-4 py-3.5 transition-all ${isActive(item.path) ? "border-[#ff2f28] bg-[#8f0806]/35 text-[#ffe08a] shadow-[inset_4px_0_0_#ff2f28]" : "border-transparent bg-white/5 text-[#c2a0a0] hover:bg-white/10 hover:text-white"}`}>
+            class={`sidebar-item flex items-center rounded-xl border px-4 py-3.5 transition-all ${isActive(item.path) ? "border-[#ff2b2b] bg-[#8f0806]/35 text-[#ffe27a] shadow-[inset_4px_0_0_#ff2b2b]" : "border-transparent bg-white/5 text-[#e0b9b3] hover:bg-white/10 hover:text-white"}`}>
             <span aria-hidden="true" class="mr-3 text-xl">
               {item.icon}
             </span>
@@ -115,7 +115,7 @@ const links = [
 
   #hamburger-btn.active .hamburger-line:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
-    background-color: #ff2f28;
+    background-color: #ff2b2b;
   }
   #hamburger-btn.active .hamburger-line:nth-child(2) {
     opacity: 0;
@@ -123,7 +123,7 @@ const links = [
   }
   #hamburger-btn.active .hamburger-line:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
-    background-color: #ff2f28;
+    background-color: #ff2b2b;
   }
 
   .sidebar-item {

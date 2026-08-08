@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarCyber.astro";
-import Footer from "../components/FooterPremium.astro";
+import Navbar from "../components/NavbarStyle4.astro";
+import Footer from "../components/FooterCyber.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "PODK888 | เว็บตรงเกมครบทุกสาย คาสิโนสดพร้อมลั่น ระบบใหม่โอนไว",
-  description = "PODK888 เว็บตรงเกมครบทุกสาย คาสิโนสดพร้อมลั่น รวมค่ายแท้แตกโหดเต็มหน้ากระดาน ระบบใหม่โอนไว ปลอดภัยทุกยอด ไม่มีประวัติโกง พร้อมแจกสูตรเล่น",
+  title = "FLASH789 | สล็อตเว็บตรงมาแรง เกมดีทุกตา ระบบไวทุกคลิก โบนัสคุ้ม",
+  description = "FLASH789 สล็อตเว็บตรงมาแรง เกมดีทุกตา ระบบไวทุกคลิก ฟีลการเล่นลื่นทุกสปินไม่มีสะดุด ค่ายดังมาเต็ม โบนัสคุ้มโปรเด็ดตลอดวัน พร้อมมันส์ได้ทุกเวลา",
   robots = "index, follow",
 } = Astro.props;
 
@@ -170,7 +170,7 @@ const profile = brandProfile(Astro.site);
 
           {block === "appmeta" && (
             <Fragment>
-              {profile.showAppTitle && <meta name="apple-mobile-web-app-title" content="podk888" />}
+              {profile.showAppTitle && <meta name="apple-mobile-web-app-title" content="flash789" />}
               <link rel="manifest" href="/site.webmanifest" />
             </Fragment>
           )}
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #220f29;
+        background-color: #0b0203;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ PODK888 เว็บตรงเกมครบทุกสาย คาสิโนสดพร้อมลั่น ระบบใหม่โอนไว พร้อมปุ่มสมัครสมาชิก บนพื้นดำลายนีออนชมพู มีมาสคอตสาวผมชมพูสวมหูฟัง ตู้สล็อต 777 วงล้อรูเล็ต และไพ่โพดำ"
+          alt="แบนเนอร์ FLASH789 สล็อตเว็บตรงมาแรง เกมดีทุกตา ระบบไวทุกคลิก โบนัสคุ้ม พร้อมปุ่มสมัครสมาชิก โลโก้ตัวอักษรแดงคาดสายฟ้าสีทอง บนพื้นดำประกายไฟแดง มีมาสคอตสาวชุดหนังแดงถือสายฟ้า มือถือขึ้นแจ็กพอต BIG WIN 789,000 และวงล้อสล็อต 777"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}
