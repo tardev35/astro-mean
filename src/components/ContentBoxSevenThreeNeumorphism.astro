@@ -10,25 +10,30 @@ const rightHeading = titleright ?? title;
 // Both columns are already flattened — the text classes live on the <article>
 // and the slot is a direct child, so a consumer must pass exactly ONE element
 // per slot.
+//
+// Neumorphism means the two shadows have to be a lighter and a darker shade of
+// the card's OWN colour, not a brand accent: #02061a (the page background) for
+// the cast shadow and #10204d (navy lifted a step) for the highlight. Swapping
+// those for #3b8df1 turns the card into a glow instead of a raised surface.
 ---
 
 <section class="relative z-10 mx-auto mb-8 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#f670b7]/30 bg-[#1a0a1f] p-8 shadow-[10px_10px_20px_#0b0410,-10px_-10px_20px_#2a0f2e] transition-all duration-300 hover:shadow-[15px_15px_30px_#07020a,-15px_-15px_30px_#3c0c21]">
+    class="w-full rounded-[25px] border border-[#3b8df1]/30 bg-[#0a1330] p-8 shadow-[10px_10px_20px_#02061a,-10px_-10px_20px_#10204d] transition-all duration-300 hover:shadow-[15px_15px_30px_#01030f,-15px_-15px_30px_#16295c]">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3d7e7]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dbe7fb]">
         {
           titleleft && (
-            <h2 class="bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#e01e83] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</h2>
+            <h2 class="bg-gradient-to-r from-[#7cc0ff] via-[#3b8df1] to-[#f5c542] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</h2>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3d7e7] md:border-l md:border-[#f670b7]/30 md:pl-8">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dbe7fb] md:border-l md:border-[#3b8df1]/30 md:pl-8">
         {
           rightHeading && (
-            <h2 class="bg-gradient-to-r from-[#02dbfd] via-[#f670b7] to-[#e01e83] bg-clip-text text-2xl leading-normal font-black text-transparent">{rightHeading}</h2>
+            <h2 class="bg-gradient-to-r from-[#7cc0ff] via-[#3b8df1] to-[#f5c542] bg-clip-text text-2xl leading-normal font-black text-transparent">{rightHeading}</h2>
           )
         }
         <slot name="right" />

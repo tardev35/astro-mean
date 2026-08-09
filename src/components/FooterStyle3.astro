@@ -9,32 +9,34 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // ลิงก์ด่วนชุดเดียว ใช้ .map ด้านล่าง — เดิมเขียน <a> ซ้ำหกก้อน ทำให้เพิ่ม/ลบหน้า
 // ต้องไล่แก้ทีละอัน (และเป็นที่ที่ลิงก์หน้าหวยของแบรนด์ก่อนเคยค้างอยู่)
+// แบรนด์นี้เป็นสล็อต/คาสิโน หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
   { name: "ทดลองเล่นเกมฟรี", path: "/ทดลองเล่น" },
   { name: "โปรโมชั่นสมาชิกใหม่", path: "/promotion" },
   { name: "ทางเข้าล่าสุด", path: "/ทางเข้า" },
   { name: "สมัครสมาชิก", path: "/register" },
+  { name: "เกี่ยวกับเรา", path: "/about-us" },
   { name: "ติดต่อแอดมิน", path: "/contact-us" },
 ];
 ---
 
 <footer
-  class="relative mt-32 w-full border-t border-[#fb0660]/30 bg-[#0d0210] pt-64 pb-6 font-sans text-[#f6dfec] shadow-[0_-10px_30px_rgba(251,6,96,0.16)] md:pt-40">
+  class="relative mt-32 w-full border-t border-[#3b8df1]/30 bg-[#02061a] pt-64 pb-6 font-sans text-[#dbe7fb] shadow-[0_-10px_30px_rgba(59,141,241,0.16)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#fb0660]/35 bg-gradient-to-r from-[#160318] via-[#2c0733] to-[#1f0524] p-6 shadow-[0_15px_40px_rgba(139,63,217,0.35)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#3b8df1]/35 bg-gradient-to-r from-[#051a5b] via-[#0a2563] to-[#0a1330] p-6 shadow-[0_15px_40px_rgba(59,141,241,0.35)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#ffb457] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl"><span aria-hidden="true">🐾</span> พร้อมปั่นกับ NEKOATK แล้วหรือยัง?</p>
-      <p class="mt-2 text-sm font-medium text-[#c8a3bd] md:text-base">
-        สมัคร NEKOATK แล้วเข้าเล่นได้ทันที สล็อตตรงไม่ผ่านเอเย่นต์ นำเข้าเกม API ลิขสิทธิ์แท้ร้อยเปอร์เซ็นต์ ฝากถอนออโต้ ไม่ต้องทักแอดมิน แตกเท่าไหร่จ่ายเต็มจำนวน ไม่มีอั้นยอดถอนต่อวัน
+      <p class="text-xl font-black tracking-wide text-[#f5c542] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl"><span aria-hidden="true">⚡</span> พร้อมปั่นกับ BUFFXBET แล้วหรือยัง?</p>
+      <p class="mt-2 text-sm font-medium text-[#a8bcd8] md:text-base">
+        สมัคร BUFFXBET แล้วเข้าเล่นได้ทันที สล็อตเว็บตรงสายคุ้ม รวมเกมฮิตจากค่ายดังไว้ที่เดียว โบนัสเน้นทุกจังหวะ ระบบออโต้ลื่นไม่มีค้าง ฝากถอนคล่องจริง ชนะปุ๊บสั่งถอนปั๊บ
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#ffb457] bg-gradient-to-b from-[#ffb457] to-[#fb0660] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#2a0210] shadow-[0_0_15px_rgba(251,6,96,0.4)] transition-all hover:scale-105 md:text-base">
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#f5c542] bg-gradient-to-b from-[#fbe57d] to-[#f5c542] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#02061a] shadow-[0_0_15px_rgba(245,197,66,0.4)] transition-all hover:scale-105 md:text-base">
       <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🚀</span></span>
-      <div class="absolute inset-0 translate-y-full bg-[#fd841b] transition-transform duration-300 group-hover:translate-y-0"></div>
+      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#7cc0ff] transition-transform duration-300 group-hover:translate-y-0"></div>
     </a>
   </div>
 
@@ -46,24 +48,24 @@ const quickLinks = [
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ NEKOATK ตัวอักษร NEKO สีส้มชมพู มีหัวแมวการ์ตูนคาดหน้ากาก และป้าย ATK ทรงแคปซูลสีชมพู"
-                widths={[100, 200, 300]}
-                sizes="100px"
+                alt="โลโก้ BUFFXBET ตัวอักษร BUFF สีเงินโครเมียม คั่นด้วยสายฟ้า X สีน้ำเงิน และ BET สีทอง"
+                widths={[101, 202, 303]}
+                sizes="101px"
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(251,6,96,0.6)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(59,141,241,0.6)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#ffb457] to-[#fb0660] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(251,6,96,0.5)]">NEKOATK</p>
+              <p class="bg-gradient-to-b from-[#fbe57d] to-[#3b8df1] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(59,141,241,0.5)]">BUFFXBET</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#c8a3bd]">
-          NEKOATK วางแกนหลักไว้ที่สล็อตตรงส่งสัญญาณจากเซิร์ฟเวอร์หลัก ไม่ผ่านคนกลาง คัดเฉพาะเกมฮิตติดชาร์ตค่า RTP สูงจากค่ายผู้พัฒนาโดยตรง โหลดไว ไม่กินเน็ตมือถือ
-          พร้อมระบบฝากถอนออโต้ที่โอนเข้าบัญชีทันทีโดยไม่ต้องรอคิวตรวจสลิป
+        <p class="text-sm leading-relaxed text-[#a8bcd8]">
+          BUFFXBET สล็อตเว็บตรงสายคุ้ม ออกแบบมาให้เป็นจุดศูนย์รวมความสนุกที่ตอบโจทย์คนอยากเล่นยาวๆ เหมาค่ายเกมระดับท็อปฮิตมารวมไว้ที่เดียวจบ ภาพคมชัดระดับไฮเอนด์
+          พร้อมระบบออโต้ที่ลื่นไหลไม่มีอาการค้างหรือหน่วง ทำรายการฝากถอนได้เองไม่ต้องรอยอดนาน
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -96,16 +98,16 @@ const quickLinks = [
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f6dfec] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#dbe7fb] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#fb0660] to-[#ffb457] shadow-[0_0_8px_rgba(251,6,96,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#3b8df1] to-[#f5c542] shadow-[0_0_8px_rgba(59,141,241,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#c8a3bd] transition-colors hover:text-[#ffb457]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#fb0660] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#a8bcd8] transition-colors hover:text-[#f5c542]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#3b8df1] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -114,38 +116,38 @@ const quickLinks = [
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f6dfec] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#dbe7fb] uppercase">
           ระบบการเงิน
-          <span class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#fb0660] to-[#ffb457] shadow-[0_0_8px_rgba(251,6,96,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#3b8df1] to-[#f5c542] shadow-[0_0_8px_rgba(59,141,241,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#c8a3bd]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#a8bcd8]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#1f0524] transition-colors hover:border-[#fb0660]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#f6dfec]"><span aria-hidden="true" class="text-lg text-[#fd841b]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#0a1330] transition-colors hover:border-[#3b8df1]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#dbe7fb]"><span aria-hidden="true" class="text-lg text-[#f5c542]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#fb0660]/25" />
+    <hr class="mb-6 border-[#3b8df1]/25" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#a37f9a] md:block">
-      สล็อตตรงไม่ผ่านเอเย่นต์ นำเข้าเกม API ลิขสิทธิ์แท้ร้อยเปอร์เซ็นต์ คัดเกมฮิตติดชาร์ต RTP สูง โบนัสไทม์แตกบ่อย ฟรีสปิน ตัวคูณ สัญลักษณ์พิเศษ แจกเครดิตฟรีทุกวัน เทิร์นโอเวอร์ต่ำ
-      ฝากถอนออโต้ไม่ต้องแจ้งสลิป จ่ายเต็มทุกบิลไม่มีอั้นยอดถอน รองรับสมาร์ทโฟน แท็บเล็ต คอมพิวเตอร์ ทางเข้าเว็บล่าสุด ทดลองเล่นฟรี สมัครสมาชิกใหม่ NEKOATK
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#8ba3c4] md:block">
+      สล็อตเว็บตรงสายคุ้ม รวมเกมฮิตจากค่ายดังระดับท็อป ทั้งแนวแอคชั่น แฟนตาซี และสไตล์คลาสสิก ภาพคมชัดระดับไฮเอนด์ โบนัสเน้นทุกจังหวะ ทั้งโบนัสตัวคูณ ฟรีสปิน และรางวัลยิบย่อย
+      ระบบออโต้ลื่นตอบสนองไวทุกขั้นตอน ฝากถอนคล่องจริงไม่ต้องรอยอดนาน รองรับสมาร์ทโฟน แท็บเล็ต คอมพิวเตอร์ ทางเข้าเว็บล่าสุด ทดลองเล่นฟรี สมัครสมาชิกใหม่ BUFFXBET
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#a37f9a] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#ffb457] uppercase">NEKOATK</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#8ba3c4] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#f5c542] uppercase">BUFFXBET</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#f6dfec]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#f6dfec]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#dbe7fb]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#dbe7fb]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#f6dfec] transition-all hover:border-[#ffb457] hover:bg-[#2c0733] hover:shadow-[0_0_15px_rgba(251,6,96,0.5)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#dbe7fb] transition-all hover:border-[#f5c542] hover:bg-[#0a2563] hover:shadow-[0_0_15px_rgba(59,141,241,0.5)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

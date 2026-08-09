@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle4.astro";
-import Footer from "../components/FooterCyber.astro";
+import Navbar from "../components/NavbarStyle9.astro";
+import Footer from "../components/FooterStyle3.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "FLASH789 | สล็อตเว็บตรงมาแรง เกมดีทุกตา ระบบไวทุกคลิก โบนัสคุ้ม",
-  description = "FLASH789 สล็อตเว็บตรงมาแรง เกมดีทุกตา ระบบไวทุกคลิก ฟีลการเล่นลื่นทุกสปินไม่มีสะดุด ค่ายดังมาเต็ม โบนัสคุ้มโปรเด็ดตลอดวัน พร้อมมันส์ได้ทุกเวลา",
+  title = "BUFFXBET | สล็อตเว็บตรงสายคุ้ม โบนัสเน้น กำไรอิ่มคุ้ม ถอนคล่องจริง",
+  description = "BUFFXBET สล็อตเว็บตรงสายคุ้ม รวมเกมฮิตจากค่ายดัง โบนัสเน้นทุกจังหวะ เล่นสนุกลุ้นกำไรอิ่มคุ้มได้ไม่อั้น ระบบออโต้ลื่น ฝากถอนคล่องจริงใช้งานสะดวก",
   robots = "index, follow",
 } = Astro.props;
 
@@ -170,7 +170,7 @@ const profile = brandProfile(Astro.site);
 
           {block === "appmeta" && (
             <Fragment>
-              {profile.showAppTitle && <meta name="apple-mobile-web-app-title" content="flash789" />}
+              {profile.showAppTitle && <meta name="apple-mobile-web-app-title" content={BRAND_NAME.toLowerCase()} />}
               <link rel="manifest" href="/site.webmanifest" />
             </Fragment>
           )}
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0b0203;
+        background-color: #02061a;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ FLASH789 สล็อตเว็บตรงมาแรง เกมดีทุกตา ระบบไวทุกคลิก โบนัสคุ้ม พร้อมปุ่มสมัครสมาชิก โลโก้ตัวอักษรแดงคาดสายฟ้าสีทอง บนพื้นดำประกายไฟแดง มีมาสคอตสาวชุดหนังแดงถือสายฟ้า มือถือขึ้นแจ็กพอต BIG WIN 789,000 และวงล้อสล็อต 777"
+          alt="แบนเนอร์ BUFFXBET สล็อตเว็บตรงสายคุ้ม โบนัสเน้น กำไรอิ่มคุ้ม ถอนคล่องจริง พร้อมปุ่มสมัครสมาชิก โลโก้ BUFF สีเงินโครเมียมคั่นด้วยสายฟ้า X สีน้ำเงินและ BET สีทอง บนพื้นดำประกายสายฟ้าน้ำเงิน มีวงล้อสล็อต 777 ชิป VIP ลูกเต๋า วงล้อรูเล็ต และมาสคอตสาวชุดหนังน้ำเงิน"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

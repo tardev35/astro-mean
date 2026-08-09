@@ -15,11 +15,11 @@ const sectionLabel = label ?? titleleft ?? titleright ?? "ข้อมูลป�
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
-    <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dcecd6]">
+    <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dbe7fb]">
       {
         titleleft && (
-          <p class="flex items-center gap-3 border-b border-[#7ee356]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#7ee356] uppercase">
-            <span aria-hidden="true" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#7ee356]/40 bg-gradient-to-br from-[#b6f38a] via-[#7ee356] to-[#2f8f3a] text-sm text-[#06210c] shadow-[0_5px_15px_rgba(126,227,86,0.3)]">
+          <p class="flex items-center gap-3 border-b border-[#3b8df1]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#3b8df1] uppercase">
+            <span aria-hidden="true" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#3b8df1]/40 bg-gradient-to-br from-[#7cc0ff] via-[#3b8df1] to-[#0a2563] text-sm text-[#02061a] shadow-[0_5px_15px_rgba(59,141,241,0.3)]">
               🔐
             </span>
             {titleleft}
@@ -29,11 +29,11 @@ const sectionLabel = label ?? titleleft ?? titleright ?? "ข้อมูลป�
       <slot name="left" />
     </article>
 
-    <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dcecd6]">
+    <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dbe7fb]">
       {
         titleright && (
-          <p class="flex items-center gap-3 border-b border-[#7ee356]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#7ee356] uppercase">
-            <span aria-hidden="true" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#1f7a35]/50 bg-gradient-to-br from-[#9db8a1] via-[#1f7a35] to-[#2f8f3a] text-sm text-[#06210c] shadow-[0_5px_15px_rgba(31,122,53,0.4)]">
+          <p class="flex items-center gap-3 border-b border-[#3b8df1]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#3b8df1] uppercase">
+            <span aria-hidden="true" class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#f5c542]/50 bg-gradient-to-br from-[#fbe57d] via-[#f5c542] to-[#0a2563] text-sm text-[#02061a] shadow-[0_5px_15px_rgba(245,197,66,0.4)]">
               🎰
             </span>
             {titleright}

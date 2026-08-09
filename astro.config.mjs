@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "http://flash789-new.com",
+  site: "http://buffxbet.co",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

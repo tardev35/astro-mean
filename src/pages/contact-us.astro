@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 
 import { Picture } from "astro:assets";
 import imgLine from "../assets/contact-line.webp";
@@ -21,20 +21,20 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // variants of the same sentence, and the JSON-LD copy was the one nobody
 // reread. 150–160 CHARACTERS (Thai is 3 bytes/char, so a byte count reads ~3x
 // too long and will send you rewriting a description that was fine). This one
-// measures 153.
+// measures 156.
 const pageDescription =
-  "ช่องทางติดต่อทีมงาน FLASH789 สล็อตเว็บตรงมาแรง ผ่าน LINE Official สำหรับสอบถามเรื่องสมัครสมาชิก เข้าสู่ระบบ โปรโมชัน และสถานะการฝากถอนที่ไวทุกคลิกตลอดวัน";
+  "ช่องทางติดต่อทีมงาน BUFFXBET สล็อตเว็บตรงสายคุ้ม ผ่าน LINE Official สอบถามเรื่องสมัครสมาชิก เข้าสู่ระบบ โปรโมชั่น และสถานะการฝากถอนที่คล่องตัวได้ตลอดทั้งวัน";
 
 const graph = pageGraph(Astro, {
   type: "ContactPage",
-  name: "ติดต่อทีมงาน FLASH789 ผ่าน LINE Official",
+  name: "ติดต่อทีมงาน BUFFXBET ผ่าน LINE Official",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "ติดต่อเรา", path: "/contact-us" },
   ],
   org: {
-    alternateName: "FLASH789 สล็อตเว็บตรงมาแรง รวมเกมคุณภาพจากค่ายดังระดับโลกครบทุกแนว ระบบไวทุกคลิก เล่นลื่นทุกสปิน โบนัสคุ้มโปรเด็ดตลอดวัน",
+    alternateName: "BUFFXBET สล็อตเว็บตรงสายคุ้ม รวมเกมฮิตจากค่ายดังไว้ที่เดียว โบนัสเน้นทุกจังหวะ ระบบออโต้ลื่น ฝากถอนคล่องจริง กำไรอิ่มคุ้ม",
     contactPoints: [
       {
         contactType: "customer service",
@@ -56,21 +56,21 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ติดต่อเรา FLASH789 แจ้งปัญหาสมัครสมาชิก ฝากถอนไวทุกคลิก ผ่าน LINE" description={pageDescription}>
+<MainLayout title="ติดต่อเรา BUFFXBET แจ้งปัญหาสมัครสมาชิก ฝากถอนคล่องจริง ผ่าน LINE" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ติดต่อทีมงาน FLASH789" as="h1">
+  <ContentBox title="ติดต่อทีมงาน BUFFXBET" as="h1">
     <div>
       <Picture
         src={imgLine}
-        alt="พนักงานหญิงยิ้มในชุดเลื่อมสีชมพู ยืนอยู่เหนือปุ่ม LINE Support สีเขียว ช่องทางแชตกับทีมงาน FLASH789"
+        alt="พนักงานหญิงยิ้มในชุดเลื่อมสีชมพู ยืนอยู่เหนือปุ่ม LINE Support สีเขียว ช่องทางแชตกับทีมงาน BUFFXBET"
         loading="lazy"
         fetchpriority="low"
         widths={[200, 400, 600]}
         sizes="(max-width: 495px) calc(100vw - 6rem), 400px"
-        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(255,43,43,0.30)]"
+        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(59,141,241,0.30)]"
         decoding="async"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
@@ -80,15 +80,15 @@ const graph = pageGraph(Astro, {
         BRAND_ADDRESS.lines.length > 0 && (
           <address
             aria-label={BRAND_ADDRESS.label}
-            class="mt-8 mb-8 border-l-4 border-[#ffc531] pl-6 text-left text-base leading-relaxed text-[#f7ddd8] not-italic">
-            <p class="mb-1 font-bold text-[#ff2b2b]">{BRAND_ADDRESS.label}</p>
+            class="mt-8 mb-8 border-l-4 border-[#f5c542] pl-6 text-left text-base leading-relaxed text-[#dbe7fb] not-italic">
+            <p class="mb-1 font-bold text-[#7cc0ff]">{BRAND_ADDRESS.label}</p>
             {BRAND_ADDRESS.lines.map((line) => (
               <span class="block">{line}</span>
             ))}
             {BRAND_ADDRESS.email && (
               <span class="mt-3 block">
                 <span aria-hidden="true" class="mr-2">✉️</span>
-                <a href={`mailto:${BRAND_ADDRESS.email}`} class="font-bold text-[#ffc531] underline decoration-current/40 underline-offset-4">
+                <a href={`mailto:${BRAND_ADDRESS.email}`} class="font-bold text-[#f5c542] underline decoration-current/40 underline-offset-4">
                   {BRAND_ADDRESS.email}
                 </a>
               </span>
@@ -100,15 +100,15 @@ const graph = pageGraph(Astro, {
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก FLASH789"
-          class="flex items-center justify-center rounded-lg border border-[#ffc531]/60 bg-gradient-to-r from-[#ffc531] to-[#d99400] px-8 py-3 font-bold text-[#170506] shadow-[0_10px_30px_rgba(255,197,49,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,43,43,0.45)]">
+          aria-label="สมัครสมาชิก BUFFXBET"
+          class="flex items-center justify-center rounded-lg border border-[#f5c542]/60 bg-gradient-to-r from-[#fbe57d] to-[#f5c542] px-8 py-3 font-bold text-[#02061a] shadow-[0_10px_30px_rgba(245,197,66,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(59,141,241,0.45)]">
           สมัครสมาชิก
         </a>
 
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ FLASH789"
-          class="flex items-center justify-center rounded-lg border border-[#ff2b2b]/60 bg-gradient-to-r from-[#ff2b2b] to-[#8f0806] px-8 py-3 font-extrabold text-[#f7ddd8] shadow-[0_4px_14px_rgba(255,43,43,0.35)] transition-transform hover:scale-105 hover:shadow-[0_10px_30px_rgba(255,43,43,0.5)]">
+          aria-label="เข้าสู่ระบบ BUFFXBET"
+          class="flex items-center justify-center rounded-lg border border-[#3b8df1]/60 bg-gradient-to-r from-[#3b8df1] to-[#0a2563] px-8 py-3 font-extrabold text-[#dbe7fb] shadow-[0_4px_14px_rgba(59,141,241,0.35)] transition-transform hover:scale-105 hover:shadow-[0_10px_30px_rgba(59,141,241,0.5)]">
           เข้าสู่ระบบ
         </a>
 

@@ -2,167 +2,132 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 
 import { Picture } from "astro:assets";
 
+// This page is an IMAGE page, not an article: the ContentBox title (the single
+// <h1>), ONE short intro paragraph, the promo image grid, one CTA. Nothing
+// else. The slides already print their own offer in large type, so prose below
+// them re-types what the visitor can already read, in smaller letters. The docx
+// gives this page a Title and a Meta and never a body.
+//
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// A previous brand's copy on this page described a completely different set of
-// offers while rendering these same images — the text and the artwork disagreed
-// on every card. Reading the banner is the only way to write this page. The
-// FLASH789 drop (2026-08-08) reads:
-//   slide1 = ลุ้นรางวัล กงล้อมหาโชค รับสิทธิ์หมุนฟรี แค่ฝากเริ่มต้น 100.-
-//   slide2 = เว็บตรง มั่นคง ปลอดภัย ไว้ใจได้เลย ฝาก–ถอน ไม่มีขั้นต่ำ
-//   slide3 = คืนยอดเสีย รับเยอะ สูงสุด 5% เล่นเสียไม่ต้องกลัว ได้คืนยอดเสียแน่นอน
-// Only the headline offer is printed on each banner — no turnover figure and no
-// withdrawal cap appears on any of the three, so this page must not state one.
-// Those three are the whole current drop; every other promo/banner file in
-// src/assets is a previous brand's leftover and must not be pulled in here.
-import proLuckyWheel from "../assets/slide1.png";
-import proCashback from "../assets/slide3.png";
-import proNoMinimum from "../assets/slide2.png";
+// The BUFFXBET drop (2026-08-10) reads:
+//   slide1 = สมาชิกใหม่ ฝาก 100 รับ 150
+//   slide2 = สมาชิกใหม่ ฝาก 500 รับ 700 (ถอนสูงสุด 1500 บาท)
+//   slide3 = สมาชิกใหม่ ฝาก 1,000 รับ 1,300 (ถอนสูงสุด 2,500 บาท)
+//   slide4 = ฝากครั้งแรก รับโบนัส 10%
+// Only what is printed on each banner may be stated here. Every other
+// promo/banner file in src/assets (banner2/3/4) is a previous brand's leftover
+// and must not be pulled in.
+import proDeposit100 from "../assets/slide1.png";
+import proDeposit500 from "../assets/slide2.png";
+import proDeposit1000 from "../assets/slide3.png";
+import proFirstDeposit from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 158.
+// byte count reads ~3x too long). This one measures 156.
 const pageDescription =
-  "รวมโปรโมชั่น FLASH789 สล็อตเว็บตรงมาแรง ทั้งกงล้อมหาโชครับสิทธิ์หมุนฟรีแค่ฝากเริ่มต้น 100 บาท คืนยอดเสียสูงสุด 5% และฝาก–ถอนไม่มีขั้นต่ำ อ่านเงื่อนไขก่อนกดรับ";
+  "รวมโปรโมชั่น BUFFXBET สล็อตเว็บตรงสายคุ้ม ทั้งสมาชิกใหม่ฝาก 100 รับ 150 ฝาก 500 รับ 700 ฝาก 1,000 รับ 1,300 และฝากครั้งแรกรับโบนัส 10% อ่านเงื่อนไขก่อนกดรับ";
 
 const graph = pageGraph(Astro, {
-  name: "โปรโมชั่น FLASH789 กงล้อมหาโชค คืนยอดเสียสูงสุด 5% และฝาก–ถอนไม่มีขั้นต่ำ",
+  name: "โปรโมชั่น BUFFXBET สล็อตเว็บตรงสายคุ้ม โบนัสเน้นทุกจังหวะ",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proLuckyWheel.src,
+  primaryImagePath: proDeposit100.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem),
-// two-up from sm: inside that padding plus one 2rem gap, three-up from lg:
-// inside that padding plus two 2rem gaps.
-const imageSizes =
-  "(max-width: 639px) calc(100vw - 6rem), (max-width: 1023px) calc((100vw - 8rem) / 2), (max-width: 1456px) calc((100vw - 10rem) / 3), 440px";
+// two-up from sm: inside that padding plus one 2rem gap, capped by the card's
+// own max-width once the viewport passes it.
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1456px) calc((100vw - 8rem) / 2), 646px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#ff2b2b]/35 object-contain shadow-[0_10px_30px_rgba(255,43,43,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ff2b2b]/70 hover:shadow-[0_15px_40px_rgba(255,197,49,0.32)]";
-
-const headingClass = "bg-gradient-to-r from-[#ff2b2b] via-[#c1121f] to-[#ffc531] bg-clip-text text-2xl leading-normal font-bold text-transparent";
+  "mx-auto h-auto w-full rounded-xl border border-[#3b8df1]/35 object-contain shadow-[0_10px_30px_rgba(59,141,241,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#3b8df1]/70 hover:shadow-[0_15px_40px_rgba(245,197,66,0.32)]";
 ---
 
-<MainLayout title="โปรโมชั่น FLASH789 กงล้อมหาโชค คืนยอดเสีย 5% ฝาก–ถอนไม่มีขั้นต่ำ" description={pageDescription}>
+<MainLayout title="โปรโมชั่น BUFFXBET ฝาก 100 รับ 150 และฝากครั้งแรกรับโบนัส 10%" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น FLASH789" as="h1">
+  <ContentBox title="โปรโมชั่น BUFFXBET" as="h1">
     <div>
-      <h2 class={`mb-4 ${headingClass}`}>โปรโมชั่น FLASH789 ต้องอ่านเงื่อนไขตรงไหนก่อนกดรับ</h2>
-
-      <p class="mb-5 text-left text-base leading-relaxed text-[#f7ddd8]">
-        <strong class="text-[#ff2b2b]">FLASH789</strong> คือสล็อตเว็บตรงมาแรงที่คัดมาเน้น ๆ แต่เกมคุณภาพจากค่ายดังครบทุกแนว โบนัสและโปรโมชันจึงถูกออกแบบมาให้เกาะไปกับยอดจริงในบัญชีของเราและหมวดเกมที่ร่วมรายการ
-        ไม่ได้ลอยอยู่เดี่ยว ๆ บนหน้าโปร ตัวเลขใหญ่บนแบนเนอร์บอกได้แค่ว่ามีอะไรให้ ส่วนบรรทัดเล็กใต้ตัวเลขคือคนที่ตัดสินว่าเราได้จริงเท่าไร
-        ก่อนกดรับจึงควรไล่ให้ครบทั้งห้าข้อ คือยอดที่ใช้คำนวณ จำนวนที่ได้รับจริง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และรอบเวลาที่สิทธิ์นั้นเปิดให้รับ เพราะโปรแต่ละรายการกำหนดเงื่อนไขไม่เหมือนกัน
-        การเลือกจากตัวเลขที่สูงที่สุดเพียงอย่างเดียวจึงไม่ใช่วิธีที่ปลอดภัยที่สุด
+      <p class="mb-8 text-left text-base leading-relaxed text-[#dbe7fb]">
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#7cc0ff]">BUFFXBET</strong> เปิดให้รับอยู่ในรอบนี้ ตัวเลขบนภาพคือยอดฝากและยอดที่ได้รับจริงของแต่ละรายการ
+        แต่ละก้อนคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง จึงเลือกให้ตรงกับงบที่ตั้งใจใช้ในวันนั้นมากกว่าเลือกจากตัวเลขที่สูงที่สุด
+        เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และเพดานถอนของแต่ละโปรไม่เหมือนกัน ควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
-      <p class="mb-8 text-left text-base leading-relaxed text-[#f7ddd8]">
-        รายการที่เปิดให้รับรอบนี้มีสามก้อนที่คิดจากฐานคนละชุดกัน คือกงล้อมหาโชคที่ให้สิทธิ์หมุนฟรีเมื่อฝากเริ่มต้น 100 บาท คืนยอดเสียที่รับได้สูงสุด 5% และเงื่อนไขฝาก–ถอนไม่มีขั้นต่ำของระบบเว็บตรง
-        สามก้อนนี้ไม่ได้แข่งกันเอง แต่ตอบพฤติกรรมการเล่นคนละแบบ คนที่ฝากทีละก้อนเล็กแล้วหมุนยาวได้ประโยชน์จากขั้นต่ำที่ไม่มีเพดานบังคับ ส่วนคนที่ลงหนักในวันเดียวจะเห็นผลของคืนยอดเสียชัดกว่า
-        ตัวเลขเหล่านี้ควรใช้เป็นข้อมูลตั้งต้นแล้วตรวจจากหน้าโปรจริงอีกครั้งก่อนกด เพราะช่วงเวลาของสิทธิ์ ค่ายเกมที่ยกเว้น และการรับซ้อนกับรายการอื่นเป็นรายละเอียดที่เปลี่ยนได้ตามรอบ
-        ถ้าแผนของเราคือหมุนตามงบแล้วปิดจบ การไม่รับสิทธิ์เลยก็เป็นทางเลือกที่สมเหตุสมผล เพราะโบนัสที่ยังติดเทิร์นไม่ได้แปลว่าเงินอยู่ในมือแล้ว
-      </p>
+      <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
+        <Picture
+          src={proDeposit100}
+          alt="แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 100 รับ 150 ตัวเลขสีขาวเรืองแสงบนพื้นอวกาศสีน้ำเงิน มีวงล้อรูเล็ตเรืองแสงและกองเหรียญทองอยู่ทางขวา"
+          loading="lazy"
+          fetchpriority="low"
+          widths={[300, 450, 600]}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
 
-      <h2 class={`mt-10 mb-4 ${headingClass}`}>รายการโปรโมชั่นทั้งหมดที่ FLASH789 เปิดให้รับ</h2>
+        <Picture
+          src={proDeposit500}
+          alt="แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 500 รับ 700 ถอนสูงสุด 1500 บาท บนพื้นอวกาศสีน้ำเงินม่วง มีวงล้อรูเล็ตสีน้ำเงินและลูกเต๋าสีขาวลอยอยู่รอบตัวเลข"
+          loading="lazy"
+          fetchpriority="low"
+          widths={[300, 450, 600]}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
 
-      <p class="mb-8 text-left text-base leading-relaxed text-[#f7ddd8]">
-        แบนเนอร์ด้านล่างคือรายการจริงที่เปิดให้รับอยู่ในรอบนี้ อ่านคำอธิบายใต้ภาพให้ตรงกับสิ่งที่ตัวเองเล่นอยู่ก่อนตัดสินใจ เพราะสองรายการแรกเป็นสิทธิ์ที่ต้องกดรับและผูกกับยอดของเราเอง
-        ส่วนเงื่อนไขฝาก–ถอนไม่มีขั้นต่ำไม่ใช่โบนัสที่ต้องกดรับ แต่เป็นเงื่อนไขของระบบที่มีผลกับทุกครั้งที่ทำรายการ รอบการรับสิทธิ์จึงไม่ตรงกันสักรายการ
-      </p>
+        <Picture
+          src={proDeposit1000}
+          alt="แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 1,000 รับ 1,300 ถอนสูงสุด 2,500 บาท บนพื้นสีน้ำเงินเข้ม มีเส้นแสงโค้งพาดกลางภาพ ไพ่ ลูกเต๋า และสัญลักษณ์โพดำสวมมงกุฎทองอยู่ทางขวา"
+          loading="lazy"
+          fetchpriority="low"
+          widths={[300, 450, 600]}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
 
-      <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <figure class="m-0">
-          <Picture
-            src={proLuckyWheel}
-            alt="แบนเนอร์โปรโมชั่น FLASH789 ลุ้นรางวัล กงล้อมหาโชค รับสิทธิ์หมุนฟรี แค่ฝากเริ่มต้น 100.- บนพื้นแดงดำ ด้านซ้ายเป็นวงล้อรางวัลสีทองที่ช่องเขียนกล่องสุ่ม 1000 เครดิต และทองคำ 1 บาท ด้านขวาเป็นผู้หญิงชุดแดงถือปึกธนบัตร มีสร้อยทองวางอยู่ด้านหน้า"
-            loading="lazy"
-            fetchpriority="low"
-            widths={[300, 450, 600]}
-            sizes={imageSizes}
-            class={imageClass}
-            decoding="async"
-            formats={["avif", "webp"]}
-            fallbackFormat="webp"
-            quality={80}
-          />
-          <figcaption class="mt-3 text-left text-base leading-relaxed text-[#f7ddd8]">
-            <strong class="text-[#ff2b2b]">กงล้อมหาโชค รับสิทธิ์หมุนฟรี</strong> เป็นรายการเดียวในชุดนี้ที่เปิดประตูด้วยยอดฝาก แบนเนอร์ระบุไว้ว่าฝากเริ่มต้นเพียง 100 บาทก็ได้สิทธิ์หมุน
-            รางวัลที่พิมพ์อยู่บนวงล้อมีทั้งเครดิตและของรางวัล จึงเป็นก้อนที่เดินได้เรื่อย ๆ ตามจังหวะที่เราฝาก ไม่ใช่โบนัสก้อนเดียวจบ ส่วนจำนวนสิทธิ์ต่อรอบและช่วงเวลาที่เปิดให้หมุนควรเปิดดูจากหน้ากิจกรรมจริงอีกครั้ง
-          </figcaption>
-        </figure>
-
-        <figure class="m-0">
-          <Picture
-            src={proCashback}
-            alt="แบนเนอร์โปรโมชั่น FLASH789 คืนยอดเสีย รับเยอะ สูงสุด 5% พร้อมข้อความเล่นเสียไม่ต้องกลัว ได้คืนยอดเสียแน่นอน ตัวเลข 5% ขนาดใหญ่สีทองบนพื้นแดงเข้ม และรูปเทพเจ้าไฉ่ซิงเอี๊ยถือคทาหยกทองอยู่ทางขวา"
-            loading="lazy"
-            fetchpriority="low"
-            widths={[300, 450, 600]}
-            sizes={imageSizes}
-            class={imageClass}
-            decoding="async"
-            formats={["avif", "webp"]}
-            fallbackFormat="webp"
-            quality={80}
-          />
-          <figcaption class="mt-3 text-left text-base leading-relaxed text-[#f7ddd8]">
-            <strong class="text-[#ff2b2b]">คืนยอดเสีย รับเยอะ สูงสุด 5%</strong> เป็นรายการเดียวในชุดนี้ที่ยิ่งเสียยิ่งได้คืน คิดจากยอดเสียสะสม ไม่ใช่ยอดฝาก คำว่าสูงสุดบนแบนเนอร์คือเพดานของอัตรา
-            ไม่ใช่ตัวเลขที่ทุกคนได้เท่ากันทุกรอบ คนที่เล่นกระจายหลายค่ายจึงควรดูว่าหมวดเกมที่ตัวเองลงหนักอยู่ร่วมรายการหรือไม่ และตรวจรอบตัดยอดที่ระบบใช้คำนวณก่อนกดรับทุกครั้ง
-          </figcaption>
-        </figure>
-
-        <figure class="m-0">
-          <Picture
-            src={proNoMinimum}
-            alt="แบนเนอร์ FLASH789 เว็บตรง มั่นคง ปลอดภัย พร้อมข้อความไว้ใจได้เลย ฝาก–ถอน ไม่มีขั้นต่ำ บนพื้นแดงดำ มีผู้หญิงชุดแดงยืนขนาบสองข้างโลโก้ และแถวโลโก้ค่ายเกมเรียงอยู่ด้านล่าง"
-            loading="lazy"
-            fetchpriority="low"
-            widths={[300, 450, 600]}
-            sizes={imageSizes}
-            class={imageClass}
-            decoding="async"
-            formats={["avif", "webp"]}
-            fallbackFormat="webp"
-            quality={80}
-          />
-          <figcaption class="mt-3 text-left text-base leading-relaxed text-[#f7ddd8]">
-            <strong class="text-[#ff2b2b]">เว็บตรง ฝาก–ถอน ไม่มีขั้นต่ำ</strong> ต่างจากอีกสองรายการตรงที่ไม่ใช่สิทธิ์ให้กดรับ แต่เป็นเงื่อนไขของระบบที่มีผลทุกครั้งที่ทำรายการ
-            จึงเป็นก้อนที่ช่วยคนเล่นงบเล็กมากที่สุด เพราะไม่ต้องรวมยอดให้ถึงขั้นต่ำก่อนถึงจะถอนได้ แถวโลโก้ค่ายเกมด้านล่างแบนเนอร์คือค่ายที่เปิดให้เล่นอยู่ ควรเทียบกับหมวดที่โปรแต่ละตัวระบุไว้ก่อนวางแผนเล่น
-          </figcaption>
-        </figure>
+        <Picture
+          src={proFirstDeposit}
+          alt="แบนเนอร์โปรโมชั่น BUFFXBET ฝากครั้งแรก รับโบนัส 10% บนพื้นสีน้ำเงินม่วง มีกล่องของขวัญสีน้ำเงินผูกโบว์และลูกโป่งใสลอยอยู่ทางซ้าย"
+          loading="lazy"
+          fetchpriority="low"
+          widths={[300, 450, 600]}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
       </div>
-
-      <h2 class={`mt-12 mb-4 ${headingClass}`}>รับโปรแล้วต้องตรวจเทิร์นและยอดถอนอย่างไร</h2>
-
-      <p class="mb-5 text-left text-base leading-relaxed text-[#f7ddd8]">
-        หลังกดรับสิทธิ์ควรเปิดหน้าประวัติรายการดูว่ายอดโบนัสเข้าครบ เทิร์นเดินถูกหมวดเกม และยอดคงเหลือตรงกับที่ระบบแสดง เพราะบางรายการนับเฉพาะหมวดที่ร่วมโปร การเล่นในหมวดอื่นระหว่างที่เทิร์นยังไม่ครบจึงอาจไม่ถูกนับ
-        อีกจุดที่คนอ่านข้ามบ่อยคือฐานที่ใช้คำนวณของแต่ละรายการ สิทธิ์หมุนกงล้อคิดจากยอดฝาก คืนยอดเสียคิดจากยอดเสียสะสมของรอบนั้น ส่วนเงื่อนไขไม่มีขั้นต่ำเป็นเรื่องของการทำรายการ ไม่ใช่ยอดที่จ่ายคืน
-        ทั้งสามตัวเลขจึงเทียบกันตรง ๆ ไม่ได้ และควรอ่านเงื่อนไขของแต่ละรายการแยกกันก่อนวางแผนเล่น
-      </p>
-
-      <p class="mb-8 text-left text-base leading-relaxed text-[#f7ddd8]">
-        ด้านการเงิน FLASH789 อัปเกรดระบบหลังบ้านมาใหม่ให้ทำรายการเองได้ตลอดเวลา กดปุ๊บมาปั๊บ ไวทุกคลิกไม่มีสะดุด ไม่ต้องทักหาแอดมินและไม่ต้องรอคิวตรวจสลิป
-        ระบบถูกออกแบบมาให้รองรับคนเล่นพร้อมกันเยอะ ๆ ฟีลตอนกดจึงลื่นไหลแม้ในช่วงที่คนเข้าหนา และรองรับทั้งมือถือทุกรุ่นและคอมพิวเตอร์
-        ก่อนทำรายการควรตรวจชื่อบัญชี ยอดเงิน และประวัติรายการให้ครบ หากยอดยังไม่เปลี่ยนไม่ควรกดซ้ำทันที เพราะนิ้วที่กดสองรอบไม่ได้ทำให้ธนาคารขยันขึ้น และควรกรอกข้อมูลเฉพาะบนโดเมนที่ตรวจแล้วและเชื่อมต่อแบบ HTTPS เท่านั้น
-        ไม่ใช่ลิงก์ที่ส่งต่อกันมาในแชตพร้อมคำโฆษณา
-      </p>
 
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ff2b2b]/60 bg-gradient-to-r from-[#ff2b2b] to-[#ffc531] px-10 py-3.5 text-lg font-black text-[#170506] shadow-[0_10px_30px_rgba(255,43,43,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,197,49,0.45)]">
-          สมัครสมาชิก FLASH789
+          class="flex items-center justify-center rounded-lg border border-[#3b8df1]/60 bg-gradient-to-r from-[#3b8df1] to-[#f5c542] px-10 py-3.5 text-lg font-black text-[#02061a] shadow-[0_10px_30px_rgba(59,141,241,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(245,197,66,0.45)]">
+          สมัครสมาชิก BUFFXBET
         </a>
       </div>
     </div>

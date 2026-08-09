@@ -1,30 +1,67 @@
 ---
+export interface Props {
+  title?: string;
+  titleleft?: string;
+  titleright?: string;
+}
 const { title, titleleft, titleright } = Astro.props;
+
+// pt-32/md:pt-28, up from the flat pt-16 (64px) this file shipped with. Same
+// geometry as the other two *FloatingBadge files: the badge is anchored at
+// -top-6, so its bottom edge sits at (badge height − 24px) from the card's top,
+// and pt-16 was sized for a short one-line title.
+//
+// Arithmetic for BUFFXBET's docx H2 #5, 57 Thai characters
+// ("ระบบออโต้ลื่น ตอบสนองไวทุกขั้นตอน ใช้งานสะดวกตั้งแต่เริ่ม"), badge chrome =
+// py-2.5 (20px) + border-2 (4px) = 24px:
+//   360px phone — card 328px, badge w-[92%] = 302px, minus px-4 (32px) and the
+//   two ✦ spans + gap-2 (~42px) leaves ~228px. text-base with tracking-tighter
+//   costs ~7.5px per Thai character → ~30 per line, so the title wraps to 2
+//   lines. Budget a pessimistic 4: leading-normal at 16px = 24px per line, so
+//   4 lines = 96px + 24px = 120px, bottom edge at 96px against pt-32 (128px) →
+//   32px of daylight. (pt-16 gave −32px, i.e. the badge sat on the copy.)
+//   md — badge capped at max-w-2xl (672px), minus px-8 (64px) and the ✦ pair
+//   leaves ~566px. md:text-2xl = 36px per line and ~52 characters fit, so 2
+//   lines = 72px + 24px = 96px, bottom edge 72px against md:pt-28 (112px) →
+//   40px.
+//
+// The ✦ pair used to live inside the <h2> text ("✦ {title} ✦"), which put two
+// decorative glyphs into the heading's accessible name. They are their own
+// aria-hidden siblings now, exactly as in ContentBoxFloatingBadge.
+//
+// titleleft/titleright render <h3>. BUFFXBET's docx is flat (H1 + H2, zero
+// H3), so index.astro passes `title` only and splits the paragraph across the
+// two slots. The <h3>s stay for a future brief that genuinely has sub-headings.
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
-  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#10b981]/40 bg-gradient-to-b from-[#062b15] to-[#021207] p-8 pt-16 shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
+  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#3b8df1]/40 bg-gradient-to-b from-[#0a2563] to-[#02061a] p-8 pt-32 shadow-[0_10px_40px_rgba(2,6,26,0.5)] md:pt-28">
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#10b981]/50 bg-[#021207] px-4 py-2.5 text-center shadow-[0_5px_15px_rgba(16,185,129,0.2)] sm:px-8">
-          <h2 class="bg-gradient-to-r from-yellow-200 via-yellow-400 to-yellow-600 bg-clip-text text-base leading-normal font-black tracking-tighter text-transparent uppercase sm:text-xl md:text-2xl">
-            ✦ {title} ✦
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#3b8df1]/50 bg-[#02061a] px-4 py-2.5 text-center shadow-[0_5px_15px_rgba(59,141,241,0.25)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#02ccfa]">
+            ✦
+          </span>
+          <h2 class="bg-gradient-to-r from-[#fbe57d] via-[#f5c542] to-[#7cc0ff] bg-clip-text text-base leading-normal font-black tracking-tighter text-transparent uppercase sm:text-xl md:text-2xl">
+            {title}
           </h2>
+          <span aria-hidden="true" class="shrink-0 text-[#02ccfa]">
+            ✦
+          </span>
         </div>
       )
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-green-50/80">
-        {titleleft && <h3 class="text-2xl leading-normal font-bold text-yellow-400 drop-shadow-[0_0_5px_rgba(234,179,8,0.3)]">{titleleft}</h3>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dbe7fb]/90">
+        {titleleft && <h3 class="text-2xl leading-normal font-bold text-[#f5c542] drop-shadow-[0_0_5px_rgba(245,197,66,0.3)]">{titleleft}</h3>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-green-50/80 md:border-l md:border-[#10b981]/30 md:pl-10">
-        {titleright && <h3 class="text-2xl leading-normal font-bold text-yellow-400 drop-shadow-[0_0_5px_rgba(234,179,8,0.3)]">{titleright}</h3>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dbe7fb]/90 md:border-l md:border-[#3b8df1]/30 md:pl-10">
+        {titleright && <h3 class="text-2xl leading-normal font-bold text-[#f5c542] drop-shadow-[0_0_5px_rgba(245,197,66,0.3)]">{titleright}</h3>}
         <slot name="right" />
       </article>
     </div>
   </div>
 </section>
-
