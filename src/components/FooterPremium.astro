@@ -7,8 +7,8 @@ const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 ---
 
-<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#e4a434]/40 bg-[#150d04] pt-16 pb-8 font-sans text-white shadow-[0_-15px_40px_rgba(250,196,44,0.26)]">
-  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#cc8425]/25 blur-[100px]"></div>
+<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#e3b64a]/40 bg-[#150c07] pt-16 pb-8 font-sans text-white shadow-[0_-15px_40px_rgba(227,182,74,0.26)]">
+  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#a3161c]/25 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-12">
@@ -18,47 +18,47 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ JUDTEM168 ตัวอักษร JT สีทองไล่เฉดส้ม มีวงแหวนทองโคจรพาดรอบตัวอักษร"
+                alt="โลโก้ IOK66 เหรียญกลมขอบทองลายไทย มีมงกุฎและนกฟีนิกซ์ทองกางปีก ตัวอักษร iOK66 บนแถบดำกลางเหรียญ"
                 widths={[130, 260, 390]}
                 sizes="130px"
-                class="h-[65px] w-auto drop-shadow-[0_5px_15px_rgba(250,196,44,0.4)]"
+                class="h-[65px] w-auto drop-shadow-[0_5px_15px_rgba(227,182,74,0.4)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="bg-gradient-to-r from-[#feeb33] to-[#e4a434] bg-clip-text text-4xl font-black tracking-widest text-transparent">
-                JUDTEM<span class="bg-gradient-to-r from-[#e4a434] to-[#cc8425] bg-clip-text text-transparent">168</span>
+              <span class="bg-gradient-to-r from-[#ffe9a3] to-[#e3b64a] bg-clip-text text-4xl font-black tracking-widest text-transparent">
+                IOK<span class="bg-gradient-to-r from-[#e3b64a] to-[#b8862c] bg-clip-text text-transparent">66</span>
               </span>
             )
           }
         </a>
-        <p class="border-l-2 border-[#e4a434]/50 pl-4 text-sm leading-relaxed text-[#f3e3c4]/70">
-          JUDTEM168 ทางเข้าเว็บสล็อตอันดับ 1 ที่รวมเกมลิขสิทธิ์แท้จากค่ายดังไว้ครบในที่เดียว เซิร์ฟเวอร์หลักและลิงก์สำรองพร้อมใช้งานตลอด 24 ชั่วโมง
-          ฝากถอนออโต้ไม่มีขั้นต่ำ ประมวลผลไม่เกิน 3 วินาที ถอนได้ไม่อั้น ไม่จำกัดจำนวนครั้งต่อวัน และการันตีไม่ล็อคยูสเซอร์
+        <p class="border-l-2 border-[#e3b64a]/50 pl-4 text-sm leading-relaxed text-[#f2e2c4]/70">
+          IOK66 เว็บสล็อตต่างประเทศที่เปิดยูสสมัครสมาชิกด้วยขั้นตอนสั้นกระชับ เกมทุกค่ายเป็นลิขสิทธิ์แท้ 100% ส่งตรงจากค่ายแม่ผ่านระบบ API แท้ที่ดึงจากเซิร์ฟเวอร์หลัก
+          ค่า RTP สูงกว่าเว็บทั่วไป สุ่มผลด้วย RNG ที่ตรวจสอบได้ ไม่ล็อคผลรางวัล ถอนได้เต็มจำนวนไม่หักเปอร์เซ็นต์ ด้วยระบบฝากถอนออโต้ที่จบในไม่กี่วินาที
         </p>
         <div class="mt-4 flex gap-3">
-          <span class="rounded-full border border-[#e4a434]/40 bg-[#7a4a0d]/30 px-4 py-1 text-xs font-medium text-[#fac42c] backdrop-blur-sm">ONE WALLET</span>
-          <span class="rounded-full border border-[#feeb33]/30 bg-[#feeb33]/10 px-4 py-1 text-xs font-medium text-[#feeb33] backdrop-blur-sm">AUTO 24 HRS</span>
+          <span class="rounded-full border border-[#e3b64a]/40 bg-[#5c3a10]/35 px-4 py-1 text-xs font-medium text-[#f0cd6a] backdrop-blur-sm">LICENSED 100%</span>
+          <span class="rounded-full border border-[#ffe9a3]/30 bg-[#ffe9a3]/10 px-4 py-1 text-xs font-medium text-[#ffe9a3] backdrop-blur-sm">AUTO 24 HRS</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
         <p class="text-lg font-black tracking-widest text-white uppercase drop-shadow-sm">QUICK LINKS</p>
-        <div class="h-[1px] w-12 bg-[#e4a434]"></div>
-        <ul class="flex flex-col gap-3 text-sm font-medium text-[#f3e3c4]/65">
-          <li><a href="/" class="transition-colors hover:text-[#feeb33]">หน้าหลัก (Home)</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#feeb33]">โปรโมชั่น (Promotions)</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#feeb33]">ทางเข้า (Access)</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#feeb33]">ทดลองเล่น (Demo)</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#feeb33]">เกี่ยวกับเรา (About Us)</a></li>
-          <li><a href="/register" class="transition-colors hover:text-[#feeb33]">สมัครสมาชิก (Join Us)</a></li>
-          <li><a href="/login" class="transition-colors hover:text-[#feeb33]">เข้าสู่ระบบ (Login)</a></li>
+        <div class="h-[1px] w-12 bg-[#e3b64a]"></div>
+        <ul class="flex flex-col gap-3 text-sm font-medium text-[#f2e2c4]/65">
+          <li><a href="/" class="transition-colors hover:text-[#ffe9a3]">หน้าหลัก (Home)</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#ffe9a3]">โปรโมชั่น (Promotions)</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ffe9a3]">ทางเข้า (Access)</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ffe9a3]">ทดลองเล่น (Demo)</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#ffe9a3]">เกี่ยวกับเรา (About Us)</a></li>
+          <li><a href="/register" class="transition-colors hover:text-[#ffe9a3]">สมัครสมาชิก (Join Us)</a></li>
+          <li><a href="/login" class="transition-colors hover:text-[#ffe9a3]">เข้าสู่ระบบ (Login)</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
         <p class="text-lg font-black tracking-widest text-white uppercase drop-shadow-sm">CUSTOMER SUPPORT</p>
-        <div class="h-[1px] w-12 bg-[#e4a434]"></div>
+        <div class="h-[1px] w-12 bg-[#e3b64a]"></div>
 
         <a
           href="/line"
@@ -90,16 +90,16 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
           )
         }
 
-        <div class="mt-4 text-xs font-medium tracking-widest text-[#e4a434]/70 uppercase">Supported Payments</div>
+        <div class="mt-4 text-xs font-medium tracking-widest text-[#e3b64a]/70 uppercase">Supported Payments</div>
         <BankStrip size={30} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#e4a434]/30 pt-8 text-xs font-medium tracking-wide text-[#f3e3c4]/50 md:flex-row">
-      <p>COPYRIGHT &copy; {new Date().getFullYear()} JUDTEM168. ALL RIGHTS RESERVED.</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#e3b64a]/30 pt-8 text-xs font-medium tracking-wide text-[#f2e2c4]/50 md:flex-row">
+      <p>COPYRIGHT &copy; {new Date().getFullYear()} IOK66. ALL RIGHTS RESERVED.</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="transition-colors hover:text-[#feeb33]">TERMS &amp; CONDITIONS</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#feeb33]">PRIVACY POLICY</a>
+        <a href="/terms/" class="transition-colors hover:text-[#ffe9a3]">TERMS &amp; CONDITIONS</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#ffe9a3]">PRIVACY POLICY</a>
       </div>
     </div>
   </div>

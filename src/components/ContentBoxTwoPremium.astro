@@ -1,29 +1,49 @@
 ---
 export interface Props {
+  title?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   titleleft?: string;
   titleright?: string;
   label?: string;
 }
-const { titleleft, titleright, label } = Astro.props;
+const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// Both column titles are deliberately <p>, not headings: they label UI panels
-// (a login form, a reference table), not docx sections, so promoting them would
-// add heading levels the brief never asked for. The section carries its own
-// accessible name instead, which is what `label` is for.
-const sectionLabel = label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ";
+// IOK66: this variant arrived on 9UFA's light blue (#0a5df1 / #01cbf6 /
+// #acddfb / #dceafe / #f1d42c over white, text #0b3a63 / #0743a8). Remapped
+// onto this brand's royal gold on near-black — #ffe9a3 / #f0cd6a / #e3b64a /
+// #b8862c / #5c3a10 over #1c110a / #150c07 with a #5c0a0c / #a3161c crimson
+// glow, body text #f2e2c4.
+//
+// `title` is the ONE heading this component may emit, and it exists so the
+// block can carry a docx section. Both column titles stay <p>: they label UI
+// panels, not docx sections, so promoting them would add heading levels the
+// brief never asked for — same split ContentBoxTwo.astro uses.
+//
+// With a title the heading already names the section, so no aria-label is
+// added on top; without one the section falls back to `label`.
+const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#0a5df1]/25 bg-white/85 p-8 text-[#0b3a63] shadow-[0_10px_30px_rgba(10,93,241,0.15)] backdrop-blur-xl transition-all duration-500 hover:border-[#0a5df1]/50 hover:shadow-[0_15px_40px_rgba(1,203,246,0.28)] md:p-10">
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#dceafe]/70 to-transparent opacity-80"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#e3b64a]/25 bg-[#1c110a]/90 p-8 text-[#f2e2c4] shadow-[0_10px_30px_rgba(227,182,74,0.15)] backdrop-blur-xl transition-all duration-500 hover:border-[#e3b64a]/50 hover:shadow-[0_15px_40px_rgba(163,22,28,0.28)] md:p-10">
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#5c0a0c]/35 to-transparent opacity-80"></div>
+
+    {
+      title && (
+        <header class="mb-8 flex items-center gap-4 border-b border-[#e3b64a]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a3] via-[#e3b64a] to-[#5c0a0c] shadow-[0_0_10px_rgba(227,182,74,0.5)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#ffe9a3] via-[#e3b64a] to-[#b8862c] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        </header>
+      )
+    }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#0b3a63]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2e2c4]">
         {
           titleleft && (
-            <p class="flex items-center gap-3 border-b border-[#0a5df1]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#0743a8]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f1d42c] via-[#01cbf6] to-[#0a5df1] shadow-[0_0_10px_rgba(10,93,241,0.45)]" />
+            <p class="flex items-center gap-3 border-b border-[#e3b64a]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#e3b64a]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a3] via-[#e3b64a] to-[#b8862c] shadow-[0_0_10px_rgba(227,182,74,0.45)]" />
               {titleleft}
             </p>
           )
@@ -31,11 +51,11 @@ const sectionLabel = label ?? titleleft ?? titleright ?? "ข้อมูลป�
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#0b3a63] md:border-l md:border-[#acddfb] md:pl-10">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2e2c4] md:border-l md:border-[#5c3a10] md:pl-10">
         {
           titleright && (
-            <p class="flex items-center gap-3 border-b border-[#0a5df1]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#0743a8]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f1d42c] via-[#01cbf6] to-[#0a5df1] shadow-[0_0_10px_rgba(10,93,241,0.45)]" />
+            <p class="flex items-center gap-3 border-b border-[#e3b64a]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#e3b64a]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a3] via-[#a3161c] to-[#5c0a0c] shadow-[0_0_10px_rgba(163,22,28,0.45)]" />
               {titleright}
             </p>
           )

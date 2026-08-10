@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "http://longsap168-main.com",
+  site: "http://iok66-new.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

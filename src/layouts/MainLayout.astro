@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle9.astro";
-import Footer from "../components/FooterCyber.astro";
+import Navbar from "../components/NavbarPremium.astro";
+import Footer from "../components/FooterPremium.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "LONGSAP168 | เว็บสล็อตครบมือ เกมดังค่ายจัดเต็ม โต๊ะสดจัดหนัก",
-  description = "LONGSAP168 เว็บสล็อตครบมืออันดับ 1 รวมเกมดังค่ายจัดเต็ม โต๊ะสดจัดหนักภาพคมชัดระดับ HD ฝากไวถอนคล่องด้วยระบบออโต้ เล่นลื่นทุกอุปกรณ์ ปลอดภัยแบบไม่ลดสเปค",
+  title = "IOK66 สมัครสมาชิกเว็บสล็อตต่างประเทศ แจกหนัก ลิขสิทธิ์แท้ 100%",
+  description = "IOK66 เปิดยูสสมัครสมาชิกเว็บสล็อตต่างประเทศ ลิขสิทธิ์แท้ 100% ส่งตรงจากค่ายแม่ การันตีแจกหนัก แตกง่าย ไม่ล็อคผล ถอนเงินชัวร์ไม่อั้น ระบบออโต้ไวที่สุด",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0a0402;
+        background-color: #0d0705;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ LONGSAP168 เว็บสล็อตครบมือ เกมดังค่ายจัดเต็ม โต๊ะสดจัดหนัก ตัวอักษร LONGSAP สีทองและ 168 สีเงินบนพื้นดำ มีมังกรทองพ่นไฟ สล็อต 777 ไพ่โพดำ วงล้อรูเล็ต กองเหรียญทองและชิปคาสิโน พร้อมปุ่มสมัครสมาชิกสีแดงทอง"
+          alt="แบนเนอร์ IOK66 สมัครสมาชิก เว็บสล็อตต่างประเทศ แจกหนัก ลิขสิทธิ์แท้ 100% ตัวอักษร IOK66 สีทองนูนบนพื้นดำ พร้อมเหรียญตราฟีนิกซ์ทอง มังกรทอง กองเหรียญและชิปคาสิโน ไพ่โพดำ วงล้อรูเล็ต ตู้สล็อต 777 JACKPOT หญิงสาวชุดทองถือไพ่ และปุ่มสมัครสมาชิก"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

@@ -5,9 +5,10 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2" } = Astro.props;
 
-// JUDTEM168: arrived from FLASH789 on red (#ff2b2b / #c1121f / #8f0806) over
-// #170506 / #f7ddd8. Remapped onto this brand's gold — #feeb33 / #fac42c /
-// #e4a434 / #cc8425 / #7a4a0d on #150d04 / #1e1206, body text #f3e3c4.
+// IOK66: remapped off JUDTEM168's light gold (#feeb33 / #fac42c / #e4a434 /
+// #cc8425 / #7a4a0d over #150d04 / #1e1206 / #3d2205, body #f3e3c4) onto this
+// brand's royal gold + crimson — #ffe9a3 / #f0cd6a / #e3b64a / #b8862c /
+// #5c3a10 over #150c07 / #1c110a, body text #f2e2c4.
 //
 // Each half is a flex row of [icon, slot] — a consumer passes exactly ONE
 // element per slot, so nothing here re-wraps it.
@@ -15,38 +16,38 @@ const { title, as: HeadingTag = "h2" } = Astro.props;
 
 <section class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#e4a434]/25 bg-[#150d04]/90 p-6 text-[#f3e3c4] shadow-[0_10px_30px_rgba(250,196,44,0.16)] backdrop-blur-xl transition-all duration-500 hover:border-[#feeb33]/50 md:p-10">
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#e3b64a]/25 bg-[#150c07]/90 p-6 text-[#f2e2c4] shadow-[0_10px_30px_rgba(227,182,74,0.16)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe9a3]/50 md:p-10">
     <div
       aria-hidden="true"
-      class="pointer-events-none absolute top-0 left-1/2 -z-10 h-[2px] w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#fac42c] to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100">
+      class="pointer-events-none absolute top-0 left-1/2 -z-10 h-[2px] w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#e3b64a] to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100">
     </div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#e4a434]/25 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#feeb33] to-[#7a4a0d] shadow-[0_0_10px_rgba(250,196,44,0.45)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#feeb33] via-[#fac42c] to-[#cc8425] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#e3b64a]/25 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a3] to-[#5c3a10] shadow-[0_0_10px_rgba(227,182,74,0.45)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#ffe9a3] via-[#e3b64a] to-[#b8862c] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
       <article
-        class="relative flex gap-4 rounded-2xl border border-[#e4a434]/20 bg-[#1e1206] p-6 text-left text-base leading-relaxed text-[#f3e3c4] transition-all duration-300 hover:-translate-y-2 hover:border-[#feeb33]/50 hover:bg-[#3d2205] hover:shadow-[0_15px_40px_rgba(250,196,44,0.22)]">
+        class="relative flex gap-4 rounded-2xl border border-[#e3b64a]/20 bg-[#1c110a] p-6 text-left text-base leading-relaxed text-[#f2e2c4] transition-all duration-300 hover:-translate-y-2 hover:border-[#ffe9a3]/50 hover:bg-[#5c3a10] hover:shadow-[0_15px_40px_rgba(227,182,74,0.22)]">
         <div
           aria-hidden="true"
-          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#cc8425]/40 bg-gradient-to-br from-[#feeb33] via-[#fac42c] to-[#cc8425] text-2xl shadow-[0_5px_15px_rgba(250,196,44,0.35)]">
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#b8862c]/40 bg-gradient-to-br from-[#ffe9a3] via-[#f0cd6a] to-[#b8862c] text-2xl shadow-[0_5px_15px_rgba(227,182,74,0.35)]">
           🛡️
         </div>
         <slot name="left" />
       </article>
 
       <article
-        class="relative flex gap-4 rounded-2xl border border-[#e4a434]/20 bg-[#1e1206] p-6 text-left text-base leading-relaxed text-[#f3e3c4] transition-all duration-300 hover:-translate-y-2 hover:border-[#feeb33]/50 hover:bg-[#3d2205] hover:shadow-[0_15px_40px_rgba(250,196,44,0.22)]">
+        class="relative flex gap-4 rounded-2xl border border-[#e3b64a]/20 bg-[#1c110a] p-6 text-left text-base leading-relaxed text-[#f2e2c4] transition-all duration-300 hover:-translate-y-2 hover:border-[#ffe9a3]/50 hover:bg-[#5c3a10] hover:shadow-[0_15px_40px_rgba(227,182,74,0.22)]">
         <div
           aria-hidden="true"
-          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#7a4a0d]/60 bg-gradient-to-br from-[#e4a434] via-[#cc8425] to-[#3d2205] text-2xl shadow-[0_5px_15px_rgba(204,132,37,0.35)]">
-          💰
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#5c0a0c]/60 bg-gradient-to-br from-[#e3b64a] via-[#a3161c] to-[#5c0a0c] text-2xl shadow-[0_5px_15px_rgba(163,22,28,0.35)]">
+          🎲
         </div>
         <slot name="right" />
       </article>

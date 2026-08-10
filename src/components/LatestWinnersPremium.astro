@@ -27,48 +27,51 @@ const bankPool = [
 // data-seed — otherwise the figures would visibly reset to zero the moment JS
 // ran, then climb again.
 //
-// Values come from the domain hash, never Math.random(): frontmatter runs at
-// build time, and the gate fails the build on a random call there.
+// Values come from the domain hash (brandPick), never Math.random():
+// frontmatter runs at build time, and the gate fails the build on a random call
+// there. data-pending-chance is 0.2, so the server-rendered rows mirror it with
+// a 1-in-5 draw rather than brandFlag's 50/50.
 //
-// JUDTEM168: rethemed off KUMI99's purple/amber (#12071f / #2c014b / #1a0b2e /
-// #fcda3d / #efe3f7 / #bda6cf) onto gold — #feeb33 / #fac42c / #e4a434 /
-// #cc8425 / #7a4a0d over #150d04 / #1e1206 / #0a0602, body #f3e3c4, muted
-// #d8c49a.
+// IOK66: rethemed off JUDTEM168's light gold (#feeb33 / #fac42c / #e4a434 /
+// #cc8425 / #7a4a0d over #150d04 / #1e1206 / #0a0602 / #3d2205, body #f3e3c4,
+// muted #d8c49a) onto this brand's royal gold + crimson — #ffe9a3 / #f0cd6a /
+// #e3b64a / #b8862c / #5c3a10 over #150c07 / #1c110a / #0d0705, body #f2e2c4,
+// muted #ddc8a4.
 const BIG_WIN = 40000;
 const pick = (salt: string, n: number) => brandPick(Astro.site, salt, n);
 const digits = (salt: string, n: number) => Array.from({ length: n }, (_, d) => pick(`${salt}-${d}`, 10)).join("");
 
 const initialRows = Array.from({ length: 5 }, (_, i) => {
-  const amount = 100 + pick(`jt-amount-${i}`, 48901);
+  const amount = 100 + pick(`iok-amount-${i}`, 48901);
   return {
-    bank: bankPool[pick(`jt-bank-${i}`, bankPool.length)],
-    user: `0${pick(`jt-p-${i}`, 2) === 0 ? "8" : "9"}***${digits(`jt-u${i}`, 4)}`,
+    bank: bankPool[pick(`iok-bank-${i}`, bankPool.length)],
+    user: `0${pick(`iok-p-${i}`, 2) === 0 ? "8" : "9"}***${digits(`iok-u${i}`, 4)}`,
     amount,
     big: amount > BIG_WIN,
-    pending: pick(`jt-s-${i}`, 5) === 0,
+    pending: pick(`iok-s-${i}`, 5) === 0,
   };
 });
 
 const seedTotal = initialRows.reduce((sum, row) => sum + row.amount, 0);
 
-const ROW_NORMAL = "border-[#e4a434]/20";
-const ROW_BIG = "border-[#feeb33]/55 shadow-[0_0_15px_rgba(250,196,44,0.25)]";
-const STATUS_PENDING = "text-[#fac42c] font-bold";
+const ROW_NORMAL = "border-[#e3b64a]/20";
+const ROW_BIG = "border-[#ffe9a3]/55 shadow-[0_0_15px_rgba(227,182,74,0.25)]";
+const STATUS_PENDING = "text-[#e3b64a] font-bold";
 const STATUS_DONE = "text-green-400 font-bold";
 ---
 
 <div class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก JUDTEM168"
-    class="relative overflow-hidden rounded-3xl border border-[#e4a434]/35 bg-[#150d04]/88 shadow-[0_10px_40px_rgba(10,6,2,0.85)] backdrop-blur-xl">
-    <div class="relative z-10 flex flex-col gap-4 border-b border-[#e4a434]/30 px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-8">
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก IOK66"
+    class="relative overflow-hidden rounded-3xl border border-[#e3b64a]/35 bg-[#150c07]/88 shadow-[0_10px_40px_rgba(13,7,5,0.85)] backdrop-blur-xl">
+    <div class="relative z-10 flex flex-col gap-4 border-b border-[#e3b64a]/30 px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-8">
       <div class="flex items-center gap-3">
-        <span aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full border border-[#e4a434]/35 bg-[#3d2205] text-2xl text-[#feeb33]">🏆</span>
+        <span aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full border border-[#e3b64a]/35 bg-[#5c3a10] text-2xl text-[#ffe9a3]">🏆</span>
         <div class="flex flex-col">
-          <p class="text-2xl font-black tracking-widest text-[#f3e3c4] drop-shadow-sm">
-            รายการถอนเงินล่าสุด JUDTEM<span class="text-[#feeb33]">168</span>
+          <p class="text-2xl font-black tracking-widest text-[#f2e2c4] drop-shadow-sm">
+            รายการถอนเงินล่าสุด IOK<span class="text-[#ffe9a3]">66</span>
           </p>
-          <span class="text-[11px] font-medium tracking-wide text-[#d8c49a]">อัปเดตอัตโนมัติจากระบบฝากถอนออโต้ที่ประมวลผลไม่เกิน 3 วินาที ไม่ต้องส่งสลิปรอคิวแอดมิน</span>
+          <span class="text-[11px] font-medium tracking-wide text-[#ddc8a4]">อัปเดตอัตโนมัติจากระบบฝากถอนออโต้เต็มรูปแบบ ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินตอบแชท ยอดเข้าบัญชีภายในไม่กี่วินาที</span>
         </div>
       </div>
       <div class="flex items-center gap-2 self-start rounded-full border border-green-500/40 bg-green-900/20 px-3 py-1.5 sm:self-auto">
@@ -77,28 +80,28 @@ const STATUS_DONE = "text-green-400 font-bold";
       </div>
     </div>
 
-    <div class="relative z-10 grid grid-cols-2 gap-px overflow-hidden border-b border-[#e4a434]/20 bg-[#3d2205]/40 sm:grid-cols-3">
-      <div class="flex flex-col items-center gap-1 bg-[#150d04] px-4 py-4">
-        <span class="text-[11px] font-medium tracking-wide text-[#d8c49a]">ยอดถอนรวมวันนี้</span>
+    <div class="relative z-10 grid grid-cols-2 gap-px overflow-hidden border-b border-[#e3b64a]/20 bg-[#5c3a10]/40 sm:grid-cols-3">
+      <div class="flex flex-col items-center gap-1 bg-[#150c07] px-4 py-4">
+        <span class="text-[11px] font-medium tracking-wide text-[#ddc8a4]">ยอดถอนรวมวันนี้</span>
         <span
           data-winners-total
           data-prefix="฿"
           data-seed={seedTotal}
-          class="bg-gradient-to-r from-[#feeb33] to-[#cc8425] bg-clip-text font-mono text-lg font-black text-transparent sm:text-xl">
+          class="bg-gradient-to-r from-[#ffe9a3] to-[#b8862c] bg-clip-text font-mono text-lg font-black text-transparent sm:text-xl">
           ฿{seedTotal.toLocaleString("en-US")}
         </span>
       </div>
-      <div class="flex flex-col items-center gap-1 bg-[#150d04] px-4 py-4">
-        <span class="text-[11px] font-medium tracking-wide text-[#d8c49a]">รายการสำเร็จวันนี้</span>
-        <span data-winners-count data-seed={initialRows.length} class="font-mono text-lg font-black text-[#f3e3c4] sm:text-xl">{initialRows.length}</span>
+      <div class="flex flex-col items-center gap-1 bg-[#150c07] px-4 py-4">
+        <span class="text-[11px] font-medium tracking-wide text-[#ddc8a4]">รายการสำเร็จวันนี้</span>
+        <span data-winners-count data-seed={initialRows.length} class="font-mono text-lg font-black text-[#f2e2c4] sm:text-xl">{initialRows.length}</span>
       </div>
-      <div class="col-span-2 flex flex-col items-center gap-1 bg-[#150d04] px-4 py-4 sm:col-span-1">
-        <span class="text-[11px] font-medium tracking-wide text-[#d8c49a]">ถอนได้ต่อรายการ</span>
-        <span class="font-mono text-lg font-black text-[#f3e3c4] sm:text-xl">฿100–49,000</span>
+      <div class="col-span-2 flex flex-col items-center gap-1 bg-[#150c07] px-4 py-4 sm:col-span-1">
+        <span class="text-[11px] font-medium tracking-wide text-[#ddc8a4]">หักค่าธรรมเนียมการถอน</span>
+        <span class="font-mono text-lg font-black text-[#f2e2c4] sm:text-xl">0% จ่ายเต็มทุกยอด</span>
       </div>
     </div>
 
-    <div class="relative z-10 hidden grid-cols-[2fr_1.3fr_1fr_0.8fr] gap-4 px-8 pt-4 text-[11px] font-bold tracking-widest text-[#d8c49a] uppercase sm:grid">
+    <div class="relative z-10 hidden grid-cols-[2fr_1.3fr_1fr_0.8fr] gap-4 px-8 pt-4 text-[11px] font-bold tracking-widest text-[#ddc8a4] uppercase sm:grid">
       <span>ผู้ใช้งาน</span>
       <span>สถานะ</span>
       <span class="text-right">จำนวนเงิน</span>
@@ -122,12 +125,12 @@ const STATUS_DONE = "text-green-400 font-bold";
               data-winner-big
               data-normal-class={ROW_NORMAL}
               data-big-class={ROW_BIG}
-              class={`grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border bg-[#1e1206]/88 p-3.5 shadow-sm transition-colors duration-300 hover:border-[#feeb33]/60 hover:bg-[#3d2205] sm:grid-cols-[2fr_1.3fr_1fr_0.8fr] ${row.big ? ROW_BIG : ROW_NORMAL}`}>
+              class={`grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border bg-[#1c110a]/88 p-3.5 shadow-sm transition-colors duration-300 hover:border-[#ffe9a3]/60 hover:bg-[#5c3a10] sm:grid-cols-[2fr_1.3fr_1fr_0.8fr] ${row.big ? ROW_BIG : ROW_NORMAL}`}>
               <div class="col-span-2 flex items-center gap-3 sm:col-span-1">
                 <div data-winner-bank class={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 shadow-inner ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="20" height="20" loading="lazy" decoding="async" class="h-5 w-5 object-contain grayscale" />
                 </div>
-                <span data-winner-user class="font-mono text-sm font-bold text-[#f3e3c4]">{row.user}</span>
+                <span data-winner-user class="font-mono text-sm font-bold text-[#f2e2c4]">{row.user}</span>
               </div>
               <div class="flex items-center gap-1.5 text-[11px] tracking-wide sm:text-xs">
                 <span data-winner-big data-normal-text="✓" data-big-text="👑" aria-hidden="true" class="shrink-0">
@@ -136,17 +139,17 @@ const STATUS_DONE = "text-green-400 font-bold";
                 <span
                   data-winner-status
                   data-pending-text="กำลังโอนเข้าบัญชี"
-                  data-done-text="ถอนสำเร็จ"
+                  data-done-text="ถอนสำเร็จ จ่ายเต็มจำนวน"
                   data-pending-class={STATUS_PENDING}
                   data-done-class={STATUS_DONE}
                   class={row.pending ? STATUS_PENDING : STATUS_DONE}>
-                  {row.pending ? "กำลังโอนเข้าบัญชี" : "ถอนสำเร็จ"}
+                  {row.pending ? "กำลังโอนเข้าบัญชี" : "ถอนสำเร็จ จ่ายเต็มจำนวน"}
                 </span>
               </div>
-              <div class="bg-gradient-to-r from-[#feeb33] to-[#cc8425] bg-clip-text text-right font-mono text-base font-black text-transparent sm:text-lg">
+              <div class="bg-gradient-to-r from-[#ffe9a3] to-[#b8862c] bg-clip-text text-right font-mono text-base font-black text-transparent sm:text-lg">
                 ฿<span data-winner-amount>{row.amount.toLocaleString("en-US")}</span>
               </div>
-              <div class="text-right text-[11px] font-medium text-[#d8c49a] sm:text-xs">เมื่อสักครู่</div>
+              <div class="text-right text-[11px] font-medium text-[#ddc8a4] sm:text-xs">เมื่อสักครู่</div>
             </div>
           </div>
         ))
