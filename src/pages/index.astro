@@ -1,45 +1,47 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import ContentBox from "../components/ContentBox.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBox3ThreeFloatingBadge from "../components/ContentBox3ThreeFloatingBadge.astro";
-import ContentBoxTwoFloatingBadge from "../components/ContentBoxTwoFloatingBadge.astro";
-import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxTwo from "../components/ContentBoxTwo.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBox3Three from "../components/ContentBox3Three.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
+import ProviderGrid from "../components/ProviderGridPremium.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinners3.astro";
+import LatestWinners from "../components/LatestWinnersPremium.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq2.astro";
+import Faq from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgBonus from "../assets/slide4.png";
-import imgCashout from "../assets/slide3.png";
+import imgLicence from "../assets/slide3.png";
+import imgGames from "../assets/slide2.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxFloatingBadge as="h1"
-//   2 → ContentBox as="h2"
-//   3 → ContentBox3ThreeFloatingBadge (ส่ง title อย่างเดียว แล้วแบ่งย่อหน้าเดียว
-//       ลง left/center/right ที่รอยต่อประโยค)
-//   4 → ContentBoxSevenThree + slide4 (ฝากครั้งแรก รับโบนัส 10%)
-//   5 → ContentBoxTwoFloatingBadge (ส่ง title อย่างเดียว แบ่งลง left/right)
-//   6 → ContentBoxSevenThreeNeumorphism + slide3 (ฝาก 1,000 รับ 1,300)
+//   1 → ContentBoxPremium as="h1"
+//   2 → ContentBoxTwo (ส่ง title อย่างเดียว แล้วแบ่งย่อหน้าเดียวลง left/right
+//       ที่รอยต่อประโยค — titleleft/titleright เป็น <p> ของ chrome ห้ามใช้)
+//   3 → ContentBoxSevenThreePremium + slide3 (เว็บตรง ลิขสิทธิ์แท้ มีใบรับรอง)
+//   4 → ContentBox3Three (ส่ง title อย่างเดียว แบ่งย่อหน้าลง left/center/right)
+//   5 → ContentBoxSpecial (แบ่งย่อหน้าลง left/right)
+//   6 → ContentBoxSevenThreeCyberCut + slide2 (รองรับเกมมากมาย แตกง่าย)
 //   7 → ContentBox as="h2"
 //
 // SevenThree ใช้ 2 บล็อกเท่านั้น (โควตาเต็ม) และแต่ละตัวส่งหัวข้อเดียว
-// (titleright ของ ContentBoxSevenThree / title ของ Neumorphism ซึ่ง map ไป
-// คอลัมน์ขวา) ถ้าส่งทั้งซ้ายและขวาจะได้ h2 เกินจำนวนหัวข้อ docx
+// (title ของ Premium ซึ่ง map ไปคอลัมน์ขวา / titleright ของ CyberCut)
+// ถ้าส่งทั้งซ้ายและขวาจะได้ h2 เกินจำนวนหัวข้อ docx
 //
-// docx ของแบรนด์นี้แบนราบ (H1 + H2 ล้วน ไม่มี H3) จึงห้ามส่ง titleleft/
-// titlecenter/titleright เข้า *FloatingBadge สองตัวนั้น — prop ชุดนั้น render
-// เป็น <h3> h3 ที่หน้านี้ต้องเป็น 0
+// docx ของแบรนด์นี้แบนราบ (H1 + H2 ล้วน ไม่มี H3) — ContentBox3Three เดิม
+// render titleleft/titlecenter/titleright เป็น <h3>/<h2> คอลัมน์ละตัว จึงถูก
+// ลดเป็น <p> แล้วเพิ่ม prop `title` ตัวเดียวไว้รับหัวข้อ docx แทน
+// เช่นเดียวกับ ContentBoxTwo ที่เพิ่ม `title` เป็นหัวข้อเดียวของบล็อก
 //
-// slide1/slide2 อยู่ใน SmoothCarousel อย่างเดียว, slide3/slide4 อยู่ใน
+// slide1/slide4 อยู่ใน SmoothCarousel อย่างเดียว, slide3/slide2 อยู่ใน
 // SevenThree อย่างละบล็อก — รูปหนึ่งใบมีบ้านเดียว ไม่ซ้ำกันในหน้าเดียว
 // banner2/3/4 เป็นอาร์ตของแบรนด์ก่อนหน้า จึงไม่ถูก import ที่ไหนในหน้านี้
 //
@@ -49,40 +51,39 @@ import imgCashout from "../assets/slide3.png";
 // ที่มันสังกัดได้โดยลำดับ H2 ไม่เพี้ยน
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7
-// คำถามใน Faq2 เป็น <span> ตามระดับเดิมที่ variant นั้น ship มา ไม่ใช่ <h3>
+// คำถามใน Faq4 เป็น <span> ตามระดับเดิมที่ variant นั้น ship มา ไม่ใช่ <h3>
 
-const pageTitle = "BUFFXBET | สล็อตเว็บตรงสายคุ้ม โบนัสเน้น กำไรอิ่มคุ้ม ถอนคล่องจริง";
+const pageTitle = "JUDTEM168 ทางเข้าเว็บสล็อตอันดับ 1 ระบบฝากถอนออโต้ ปลอดภัย";
 
-// Meta description ยาว 159 ตัวอักษร — verify-build บังคับช่วง 150–160 ตัวอักษร
-// บรรทัด Des ของ docx ยาว 143 จึงต่อท้ายด้วยวลีสรุปจาก docx ข้อ 7 ให้เข้าช่วง
+// Meta description ยาว 154 ตัวอักษร — verify-build บังคับช่วง 150–160 ตัวอักษร
 const pageDescription =
-  "BUFFXBET สล็อตเว็บตรงสายคุ้ม รวมเกมฮิตจากค่ายดัง โบนัสเน้นทุกจังหวะ เล่นสนุกลุ้นกำไรอิ่มคุ้มได้ไม่อั้น ระบบออโต้ลื่น ฝากถอนคล่องจริงใช้งานสะดวก ครบจบในที่เดียว";
+  "JUDTEM168 อัปเดตทางเข้าเว็บสล็อตอันดับ 1 แตกง่าย จ่ายจริง สนุกไร้ขีดจำกัดกับระบบฝากถอนออโต้ ไม่มีขั้นต่ำ ปลอดภัย มั่นคง 100% ถอนได้ไม่อั้น ไม่ล็อคยูสเซอร์";
 
-// AnnouncementCyber มี default message ของตัวเอง แต่ default ของ Announcement
+// AnnouncementPremium มี default message ของตัวเอง แต่ default ของ Announcement
 // ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน จึงส่ง message ตรงๆ เสมอ
 const announcementMessage =
-  "BUFFXBET สล็อตเว็บตรงสายคุ้ม โบนัสเน้น กำไรอิ่มคุ้ม ถอนคล่องจริง • เหมาค่ายเกมระดับท็อปฮิตมารวมไว้ที่เดียวจบ ทั้งแนวแอคชั่น แฟนตาซี และสไตล์คลาสสิก ภาพคมชัดระดับไฮเอนด์ • โบนัสตัวคูณ ฟรีสปิน และรางวัลยิบย่อยโผล่มาเพิ่มสีสันตลอดเกม ลุ้นกำไรพุ่งกระฉูดได้ไม่อั้น • ระบบออโต้เสถียร ลื่นไหลไม่มีค้างหรือหน่วง มือใหม่เข้าใจระบบได้ในไม่กี่วินาที • ฝากถอนคล่องตัวจริง ชนะปุ๊บสั่งถอนปั๊บ เงินเด้งเข้าบัญชีทันใจ เล่นต่อได้ไม่ขาดตอน";
+  "JUDTEM168 ทางเข้าเว็บสล็อตอันดับ 1 แตกง่าย ฝากถอนออโต้ ปลอดภัย 100% • เซิร์ฟเวอร์หลักและลิงก์สำรองพร้อมใช้งานตลอด 24 ชั่วโมง เข้าเล่นลื่นไหลทั้ง iOS Android และคอมพิวเตอร์ ภาพและเสียงคมชัดระดับ Full HD • เกมสล็อตลิขสิทธิ์แท้นำเข้าตรงจากค่ายดัง อัตราการชนะสูงกว่าเว็บทั่วไป จ่ายเต็มจำนวนไม่หักค่าธรรมเนียม • ฝากถอนออโต้ด้วยระบบ AI ประมวลผลไม่เกิน 3 วินาที ทุนน้อยแค่ 1 บาทก็ปั่นได้ • ถอนได้ไม่อั้น ไม่จำกัดจำนวนครั้งต่อวัน การันตีเว็บตรง API แท้ 100% ไม่ล็อคยูสเซอร์";
 
 const faqs = [
   {
-    q: "BUFFXBET สล็อตเว็บตรงสายคุ้ม เล่นแล้วคุ้มค่าจริงไหม",
-    a: "ใครกำลังมองหาเว็บที่เล่นแล้วรู้สึกคุ้มค่าทุกบาททุกสตางค์ ต้องมารวมกันตรงนี้ BUFFXBET เป็นสล็อตเว็บตรงที่ไม่ได้มีดีแค่ชื่อ แต่จัดเต็มเรื่องความคุ้มแบบเน้นๆ โบนัสแตกง่าย กำไรอิ่มๆ แถมถอนเงินได้คล่องปรื๊ด ไม่มีสะดุดให้หงุดหงิดใจ",
+    q: "ทางเข้าเล่นสล็อตออนไลน์ของ JUDTEM168 เสถียรแค่ไหน",
+    a: "ปัญหาเว็บปลิว ลิงก์เสีย หรือเข้าเล่นไม่ได้ในช่วงเวลาโบนัสไทม์จะหมดไป เพราะทีมงานพัฒนาระบบเซิร์ฟเวอร์หลักและลิงก์สำรองให้พร้อมใช้งานตลอด 24 ชั่วโมง ไม่ว่าจะใช้มือถือระบบ iOS, Android หรือคอมพิวเตอร์ ก็กดเข้าเกมได้ลื่นไหล ไม่มีสะดุด ภาพและเสียงคมชัดระดับ Full HD",
   },
   {
-    q: "รวมเกมฮิตจากค่ายดังไว้เยอะแค่ไหน เล่นนานๆ แล้วเบื่อหรือเปล่า",
-    a: "สายขี้เบื่อถูกใจสิ่งนี้แน่นอน ไม่ต้องคอยสลับเว็บไปมาให้วุ่นวาย เพราะเขาเหมาค่ายเกมระดับท็อปฮิตมารวมไว้ที่เดียวจบ ไม่ว่าจะเป็นแนวแอคชั่น แฟนตาซี หรือสไตล์คลาสสิก ก็มีให้เลือกเพียบ ภาพคมชัดระดับไฮเอนด์ จะสลับเปลี่ยนกี่เกมก็ยังสนุกเหมือนเดิม",
+    q: "เล่นได้ยอดใหญ่ JUDTEM168 จ่ายเงินจริงทุกยอดหรือไม่",
+    a: "สิ่งที่ทำให้นักเดิมพันมืออาชีพไว้วางใจคือความโปร่งใสในเรื่องของการจ่ายเงิน เรานำเข้าเกมสล็อตลิขสิทธิ์แท้จากค่ายดังโดยตรง อัตราการชนะ (RTP) สูงกว่าเว็บทั่วไป เล่นได้หลักหมื่นหรือทะลุหลักล้านก็พร้อมโอนจ่ายเต็มจำนวน ไม่มีการหักเปอร์เซ็นต์หรือค่าธรรมเนียมใดๆ",
   },
   {
-    q: "โบนัสของ BUFFXBET แจกแบบไหนบ้าง มีอะไรนอกจากแจ็คพอตใหญ่",
-    a: "จังหวะการแจกของที่นี่ทำมาได้ตื่นเต้นมาก ไม่ใช่แค่รอแจ็คพอตใหญ่อย่างเดียว แต่มีรางวัลยิบย่อย โบนัสตัวคูณ และฟรีสปินโผล่มาช่วยเพิ่มสีสันตลอดเกม ทำให้กราฟกำไรพุ่งกระฉูดได้แบบไม่อั้น ลุ้นตัวโก่งกันทุกวินาทีจริงๆ",
+    q: "ระบบฝากถอนออโต้มีขั้นต่ำไหม ใช้เวลาทำรายการนานเท่าไร",
+    a: "ลืมการส่งสลิปและรอคิวแอดมินไปได้เลย ระบบการเงินใช้เทคโนโลยี AI จัดการทั้งหมด คุณกดทำรายการฝากหรือถอนได้ด้วยตัวเอง ใช้เวลาประมวลผลไม่เกิน 3 วินาที และให้อิสระทางการเงินขั้นสุด ทุนน้อยแค่ 1 บาทก็ฝากเข้ามาปั่นสล็อตได้สบายๆ ไม่มีขั้นต่ำ",
   },
   {
-    q: "ระบบออโต้ใช้งานยากไหม มือใหม่เริ่มเล่นเองได้เลยหรือเปล่า",
-    a: "ระบบออโต้ของที่นี่ทำมาเสถียรมาก ลื่นไหลไม่มีอาการค้างหรือหน่วง ไม่ว่าจะกดรับโปรโมชั่น ย้ายค่ายเกม หรือตั้งค่าเมนูต่างๆ ก็ตอบสนองรวดเร็วทันใจ ใช้งานง่ายสุดๆ มือใหม่ก็เข้าใจระบบได้ในไม่กี่วินาทีตั้งแต่ก้าวแรกที่กดสมัคร",
+    q: "JUDTEM168 มั่นคงพอให้ถอนเงินได้ไม่อั้นจริงหรือเปล่า",
+    a: "ความกังวลเรื่องเว็บปิดหนีหรือถอนเงินไม่ออกจะไม่เกิดขึ้นที่นี่ เพราะเรามีฐานการเงินที่แข็งแกร่งและเงินทุนหมุนเวียนมหาศาล รองรับธุรกรรมของสมาชิกนับแสนคนต่อวัน กดถอนได้ไม่อั้น ไม่จำกัดจำนวนครั้งต่อวัน ระบบรักษาความปลอดภัยเทียบเท่าแอปพลิเคชันธนาคารชั้นนำ",
   },
   {
-    q: "ฝากถอนกับ BUFFXBET ต้องรอนานไหม ถอนแล้วเงินเข้าเร็วแค่ไหน",
-    a: "เรื่องเงินๆ ทองๆ เป็นอะไรที่ซีเรียสสุด แต่กับที่นี่บอกลาความกังวลไปได้เลย เพราะระบบฝากถอนคล่องตัวจริงตามคำเคลม ทำรายการผ่านระบบออโต้แบบไม่ต้องรอยอดนานให้เสียอารมณ์ ชนะปุ๊บ สั่งถอนปั๊บ เงินเด้งเข้าบัญชีทันใจ โฟกัสกับการเล่นต่อได้ไม่ขาดตอน",
+    q: "เข้าสู่ระบบอย่างไร และการันตีไม่ล็อคยูสเซอร์จริงไหม",
+    a: "เพียงคลิกที่ปุ่มเข้าสู่ระบบหน้าเว็บไซต์ กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าสู่หน้าล็อบบี้เกมได้ทันที ใครยังไม่มีบัญชีกดสมัครสมาชิกฟรีผ่านระบบออโต้ได้เลย และเราให้บริการแบบเว็บตรง API แท้ 100% ระบบสุ่มรางวัลยุติธรรม หมดปัญหาการล็อคยูสเซอร์",
   },
 ];
 
@@ -98,75 +99,28 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxFloatingBadge as="h1" title="BUFFXBET สล็อตเว็บตรงสายคุ้ม โบนัสเน้น กำไรอิ่มคุ้ม ถอนคล่องจริง">
+  <ContentBoxPremium as="h1" title="JUDTEM168 ทางเข้าเว็บสล็อตอันดับ 1 แตกง่าย ฝากถอนออโต้ ปลอดภัย 100%">
     <p class="text-left text-base leading-relaxed">
-      ใครกำลังมองหาเว็บที่เล่นแล้วรู้สึกคุ้มค่า ทุกบาททุกสตางค์ บอกเลยว่าต้องมารวมกันตรงนี้! วันนี้ขอแวะมารีวิวและป้ายยาเว็บที่กำลังมาแรงอย่าง BUFFXBET
-      สล็อตเว็บตรงที่ไม่ได้มีดีแค่ชื่อ แต่จัดเต็มเรื่องความคุ้มแบบเน้นๆ โบนัสแตกง่าย กำไรอิ่มๆ แถมที่สำคัญคือถอนเงินได้คล่องปรื๊ด ไม่มีสะดุดให้หงุดหงิดใจ
-      ใครสายปั่นที่ชอบความพรีเมียมและมั่นคง ขอท้าให้ลองสัมผัสด้วยตัวเองเลย
+      หากคุณกำลังมองหาแหล่งทำเงินที่เชื่อถือได้และตอบโจทย์ทุกความต้องการของสายปั่นสล็อต ไม่ต้องไปหาที่ไหนไกล เพราะที่นี่คือศูนย์รวมเกมสล็อตแตกหนักที่ออกแบบมาเพื่อนักพนันตัวจริงโดยเฉพาะ
+      เราแก้ปัญหาเว็บอืด ถอนช้า หรือเล่นแล้วโดนล็อคยูสทิ้งไปจนหมด สัมผัสความลื่นไหลของระบบที่ทันสมัยที่สุด พร้อมทำกำไรได้ทันทีตั้งแต่สปินแรก
     </p>
-  </ContentBoxFloatingBadge>
+  </ContentBoxPremium>
 
-  <ContentBox as="h2" title="BUFFXBET สล็อตเว็บตรงสายคุ้ม จุดรวมความสนุกที่เล่นได้แบบอิ่มคุ้ม">
-    <p class="text-left text-base leading-relaxed">
-      เอาจริงๆ นะ หลายคนคงเคยเจอเว็บที่เล่นแป๊บๆ ก็เบื่อ หรือรู้สึกว่าได้ไม่คุ้มเสีย แต่ที่นี่เปลี่ยนภาพจำนั้นไปเลย เพราะเขาออกแบบมาให้เป็นจุดศูนย์รวมความสนุกที่ตอบโจทย์คนอยากเล่นยาวๆ
-      อินเทอร์เฟซดูแพงสบายตา ฟีเจอร์ต่างๆ ถูกจัดวางมาอย่างใส่ใจ ทำให้ทุกการสปินของคุณรู้สึกถึงความเป็นวีไอพี และอิ่มเอมกับความคุ้มค่าที่หาจากที่อื่นยาก
-    </p>
-  </ContentBox>
-
-  <ContentBox3ThreeFloatingBadge title="รวมเกมฮิตจากค่ายดัง เลือกเล่นสนุกได้หลากหลายไม่มีเบื่อ">
+  <ContentBoxTwo title="JUDTEM168 อัปเดตช่องทางเข้าเล่นสล็อตออนไลน์ที่เสถียรที่สุด">
     <p slot="left" class="text-left text-base leading-relaxed">
-      สายขี้เบื่อถูกใจสิ่งนี้แน่นอน! ไม่ต้องคอยสลับเว็บไปมาให้วุ่นวาย เพราะเขาเหมาค่ายเกมระดับท็อปฮิตมารวมไว้ที่เดียวจบ
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะเป็นแนวแอคชั่น แฟนตาซี หรือสไตล์คลาสสิก ก็มีให้เลือกเพียบ แต่ละเกมบอกเลยว่าคัดมาแล้วเน้นๆ ภาพคมชัดระดับไฮเอนด์
+      ปัญหาเว็บปลิว ลิงก์เสีย หรือเข้าเล่นไม่ได้ในช่วงเวลาโบนัสไทม์จะหมดไป ทีมงานของเราได้พัฒนาระบบเซิร์ฟเวอร์หลักและลิงก์สำรองให้พร้อมใช้งานตลอด 24 ชั่วโมง
     </p>
     <p slot="right" class="text-left text-base leading-relaxed">
-      เล่นเพลินจนลืมเวลา จะสลับเปลี่ยนกี่เกมก็ยังสนุกและลุ้นมันส์เหมือนเดิม
+      ไม่ว่าคุณจะใช้มือถือระบบ iOS, Android หรือคอมพิวเตอร์ ก็สามารถกดเข้าเกมได้ลื่นไหล ไม่มีสะดุด ภาพและเสียงคมชัดระดับ Full HD ให้คุณไม่พลาดทุกจังหวะการทำแจ็คพอตแตก
     </p>
-  </ContentBox3ThreeFloatingBadge>
-
-  <ProviderGrid />
-
-  <GameRankingBoard />
-
-  <ContentBoxSevenThree titleright="โบนัสเน้นทุกจังหวะ เพิ่มสีสันให้ลุ้นกำไรได้ไม่อั้นที่ BUFFXBET">
-    <Picture
-      slot="left"
-      src={imgBonus}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น BUFFXBET ฝากครั้งแรก รับโบนัส 10% พร้อมภาพกล่องของขวัญสีน้ำเงินผูกโบว์ ลูกโป่งใส และกรอบรูปที่มีสัญลักษณ์ของขวัญบนพื้นสีน้ำเงินม่วงประกายแสง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#3b8df1]/30 shadow-[0_10px_30px_rgba(59,141,241,0.22)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ทีเด็ดที่พลาดไม่ได้เลยคือเรื่องโบนัส นี่แหละ! ขอรีวิวตรงนี้เลยว่าจังหวะการแจกของเขาทำมาได้ตื่นเต้นมาก ไม่ใช่แค่รอแจ็คพอตใหญ่อย่างเดียว แต่มีรางวัลยิบย่อย โบนัสตัวคูณ
-      และฟรีสปินโผล่มาช่วยเพิ่มสีสันตลอดเกม ทำให้กราฟกำไรของเราพุ่งกระฉูดได้แบบไม่อั้น ลุ้นตัวโก่งกันทุกวินาทีจริงๆ
-    </p>
-  </ContentBoxSevenThree>
+  </ContentBoxTwo>
 
   <SmoothCarousel />
 
-  <ContentBoxTwoFloatingBadge title="ระบบออโต้ลื่น ตอบสนองไวทุกขั้นตอน ใช้งานสะดวกตั้งแต่เริ่ม">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      มารีวิวเว็บทั้งทีจะไม่พูดถึงระบบหลังบ้านก็คงไม่ได้ สิ่งที่ทำให้ประทับใจตั้งแต่ก้าวแรกที่กดสมัครคือ "ความไว" ระบบออโต้ของที่นี่ทำมาเสถียรมาก ลื่นไหลไม่มีอาการค้างหรือหน่วง
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะกดรับโปรโมชั่น ย้ายค่ายเกม หรือตั้งค่าเมนูต่างๆ ก็ตอบสนองรวดเร็วทันใจ ใช้งานง่ายสุดๆ มือใหม่ก็เข้าใจระบบได้ในไม่กี่วินาที
-    </p>
-  </ContentBoxTwoFloatingBadge>
-
-  <LoginRtpSection />
-
-  <ContentBoxSevenThreeNeumorphism title="ฝากถอนคล่องจริง BUFFXBET ทำรายการง่าย พร้อมเล่นต่อได้ทันใจ">
+  <ContentBoxSevenThreePremium title="สัมผัสประสบการณ์เดิมพันกับเว็บสล็อตอันดับ 1 ที่จ่ายเงินจริงทุกยอด">
     <Picture
       slot="left"
-      src={imgCashout}
+      src={imgLicence}
       loading="lazy"
       fetchpriority="low"
       widths={[200, 400, 600]}
@@ -175,41 +129,89 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 1,000 รับ 1,300 ถอนสูงสุด 2,500 บาท พร้อมภาพโพดำสวมมงกุฎทอง ไพ่ และลูกเต๋าบนพื้นสีน้ำเงินที่มีเส้นแสงโค้ง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#f5c542]/30 shadow-[0_10px_30px_rgba(245,197,66,0.22)]"
+      alt="แบนเนอร์ JUDTEM168 เว็บตรง ลิขสิทธิ์แท้ มีใบรับรอง ครองใจนักเดิมพัน พร้อมภาพอัศวินชุดเกราะชูถ้วยรางวัลทองคำ มาสคอตสุนัขสีทองสวมป้าย JT และแถบการันตีเว็บลิขสิทธิ์แท้ ปลอดภัย 100%"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e4a434]/35 shadow-[0_10px_30px_rgba(250,196,44,0.22)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      เรื่องเงินๆ ทองๆ เป็นอะไรที่ซีเรียสสุด แต่กับที่นี่บอกลาความกังวลไปได้เลย เพราะระบบฝากถอนเขาคล่องตัวจริงตามคำเคลม ทำรายการผ่านระบบออโต้แบบไม่ต้องรอยอดนานให้เสียอารมณ์
-      ชนะปุ๊บ สั่งถอนปั๊บ เงินเด้งเข้าบัญชีทันใจแบบเอ็กซ์คลูซีฟสุดๆ ทำให้เรามีสมาธิโฟกัสกับการเล่นต่อได้แบบไม่ขาดตอน
+      สิ่งที่ทำให้นักเดิมพันมืออาชีพไว้วางใจเลือกเล่นกับ JUDTEM168 คือความโปร่งใสในเรื่องของการจ่ายเงิน เรานำเข้าเกมสล็อตลิขสิทธิ์แท้จากค่ายดังโดยตรง อัตราการชนะ (RTP) สูงกว่าเว็บทั่วไป
+      เล่นได้หลักหมื่นหรือทะลุหลักล้าน เราก็พร้อมโอนจ่ายเต็มจำนวน ไม่มีการหักเปอร์เซ็นต์หรือหักค่าธรรมเนียมใดๆ ทั้งสิ้น ยอดเข้ากระเป๋าเน้นๆ ทุกบิล
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+  </ContentBoxSevenThreePremium>
+
+  <ProviderGrid />
+
+  <ContentBox3Three title="ทำกำไรต่อเนื่องบน JUDTEM168 ผ่านระบบฝากถอนออโต้ไม่มีขั้นต่ำ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ลืมการทำรายการผ่านแอดมินที่ต้องส่งสลิปและรอคิวนานๆ ไปได้เลย ระบบการเงินของเราใช้เทคโนโลยี AI เข้ามาจัดการทั้งหมด
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">
+      คุณสามารถกดทำรายการฝากหรือถอนได้ด้วยตัวเอง ใช้เวลาประมวลผลไม่เกิน 3 วินาที ที่สำคัญคือให้อิสระทางการเงินขั้นสุด
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ทุนน้อยแค่ 1 บาทก็ฝากเข้ามาปั่นสล็อตได้สบายๆ เปิดโอกาสให้ทุกคนเข้าถึงความรวยได้เท่าเทียมกัน
+    </p>
+  </ContentBox3Three>
+
+  <ContentBoxSpecial title="มาตรฐานความมั่นคงทางการเงินระดับสากล ปลอดภัย ถอนได้ไม่อั้น">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ความกังวลเรื่องเว็บปิดหนีหรือถอนเงินไม่ออกจะไม่เกิดขึ้นที่นี่ เพราะ JUDTEM168 มีฐานการเงินที่แข็งแกร่งและมีเงินทุนหมุนเวียนมหาศาล รองรับการทำธุรกรรมของสมาชิกนับแสนคนต่อวัน
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      คุณสามารถกดถอนเงินได้ไม่อั้น ไม่จำกัดจำนวนครั้งต่อวัน เล่นได้เท่าไหร่ถอนออกไปใช้ได้เลยทันที ระบบรักษาความปลอดภัยเทียบเท่าแอปพลิเคชันธนาคารชั้นนำ ข้อมูลส่วนตัวไม่มีรั่วไหลแน่นอน
+    </p>
+  </ContentBoxSpecial>
 
   <LatestWinners />
 
-  <ContentBox as="h2" title="เปิดประสบการณ์สล็อต BUFFXBET ครบทั้งเกม โบนัส และความคุ้มในที่เดียว">
+  <ContentBoxSevenThreeCyberCut titleright="เล่นเกมสนุกอิสระไร้ขีดจำกัด การันตีไม่ล็อคยูสเซอร์ต้องที่ JUDTEM168">
+    <Picture
+      slot="left"
+      src={imgGames}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์ JUDTEM168 รองรับเกมมากมาย แตกง่าย พร้อมภาพนักรบโรมันสวมชุดเกราะทองยืนคู่กับเสือ และแถบการันตีมีใบรับรองจากหน่วยงานสากล บริการตลอด 24 ชั่วโมง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e4a434]/35 shadow-[0_10px_30px_rgba(204,132,37,0.22)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      หลายคนเคยเจอปัญหาเล่นแรกๆ แตกดี พอได้กำไรเยอะกลับสปินไม่เข้าอีกเลย นั่นคืออาการของเว็บที่ปรับเรทอัตราแพ้ชนะ แต่สำหรับที่นี่เราให้บริการแบบเว็บตรง API แท้ 100%
+      ระบบสุ่มรางวัลทำงานอย่างยุติธรรมตามมาตรฐานสากล หมดปัญหาการล็อคยูสเซอร์ หรือปรับลดเปอร์เซ็นต์การแตกของโบนัส ทุกการหมุนของคุณมีโอกาสลุ้นรางวัลใหญ่ก้อนโตอย่างแท้จริง
+    </p>
+  </ContentBoxSevenThreeCyberCut>
+
+  <GameRankingBoard />
+
+  <ContentBox as="h2" title="วิธีเข้าสู่ระบบเพื่อเริ่มต้นกอบโกยเงินรางวัลเข้ากระเป๋าทุกวัน">
     <p class="text-left text-base leading-relaxed">
-      สรุปเลยละกัน สำหรับใครที่ยังลังเล ขอบอกเลยว่า BUFFXBET คือตัวจบของการเล่นสล็อตเว็บตรงในตอนนี้แล้ว ทั้งความหลากหลายของเกม โบนัสที่จัดหนักจัดเต็ม ระบบที่ลื่นไหลเฉียบคม
-      และความปลอดภัยที่เชื่อถือได้ ทุกอย่างถูกรวบรวมมาให้คุณแล้วในที่เดียว แนะนำว่าต้องมาลองเปิดประสบการณ์ดูสักครั้ง แล้วจะรู้ว่าความคุ้มแบบเหนือระดับมันเป็นยังไง!
+      พร้อมที่จะเปลี่ยนเงินทุนหลักสิบให้กลายเป็นกำไรหลักหมื่นแล้วหรือยัง? ขั้นตอนการเข้าเล่นกับ JUDTEM168 นั้นง่ายมาก เพียงแค่คลิกที่ปุ่มเข้าสู่ระบบหน้าเว็บไซต์
+      กรอกเบอร์โทรศัพท์และรหัสผ่านที่คุณตั้งไว้ ก็สามารถเข้าสู่หน้าล็อบบี้เกมได้ทันที สำหรับใครที่ยังไม่มีบัญชี สามารถกดสมัครสมาชิกฟรีผ่านระบบออโต้ รับยูสเซอร์แล้วเข้าไปลุยกับสล็อตค่ายโปรดของคุณได้เลย
     </p>
   </ContentBox>
+
+  <LoginRtpSection />
 
   <ReviewCardSumo2 />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#7cc0ff] via-[#3b8df1] to-[#0a2563] px-4 py-3 text-sm font-black whitespace-nowrap text-[#02061a] shadow-[0_10px_30px_rgba(59,141,241,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(245,197,66,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#feeb33] via-[#fac42c] to-[#cc8425] px-4 py-3 text-sm font-black whitespace-nowrap text-[#1a1003] shadow-[0_10px_30px_rgba(250,196,44,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(254,235,51,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#3b8df1]/60 bg-[#0a1330]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#3b8df1] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#f5c542] hover:bg-[#f5c542] hover:text-[#02061a] hover:shadow-[0_15px_40px_rgba(245,197,66,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e4a434]/60 bg-[#1e1206]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#fac42c] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#feeb33] hover:bg-[#feeb33] hover:text-[#1a1003] hover:shadow-[0_15px_40px_rgba(254,235,51,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ BUFFXBET" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ JUDTEM168" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

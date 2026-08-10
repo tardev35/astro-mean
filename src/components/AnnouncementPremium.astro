@@ -2,25 +2,29 @@
 // ห้ามขึ้นต้น message ด้วย emoji — marquee นี้ render ข้อความซ้ำสองรอบ (ไม่มีรอยต่อ)
 // emoji ที่ฝังในข้อความจะถูกอ่านออกเสียงซ้ำและ mark aria-hidden ไม่ได้
 // badge ด้านซ้ายมีไอคอนของมันเองอยู่แล้ว
+//
+// default ต้องเป็นคำโฆษณาของแบรนด์ปัจจุบันเสมอ — หน้าย่อยเรียก <Announcement />
+// เปล่าๆ ไม่ส่ง prop จึงตกมาใช้บรรทัดนี้ ถ้าปล่อยเป็นของแบรนด์ก่อนหน้าจะหลุด
+// ขึ้นทุกหน้าย่อยโดยที่หน้าแรกดูปกติดี
 const {
-  message = "9UFA เว็บสล็อตยอดนิยม รวมค่ายเกมลิขสิทธิ์แท้ต่อตรง API ไม่ผ่านคนกลาง • สมัครสมาชิกใหม่รับทุนเล่นฟรี 199 บาททันที ไม่ต้องแชร์ ไม่ต้องส่งหลักฐาน • เทิร์นโอเวอร์ต่ำ ถอนได้ง่าย ไม่มีอั้นยอดถอนต่อวัน • ระบบออโต้สมัครเองได้ในไม่ถึง 1 นาที • เซิร์ฟเวอร์ลื่นไหลไม่มีสะดุด รองรับทุกรุ่นทุกเครือข่าย",
+  message = "JUDTEM168 ทางเข้าเว็บสล็อตอันดับ 1 แตกง่าย จ่ายจริง ปลอดภัย 100% • เซิร์ฟเวอร์หลักและลิงก์สำรองพร้อมใช้งานตลอด 24 ชั่วโมง เข้าเล่นลื่นไหลทั้ง iOS Android และคอมพิวเตอร์ • เกมสล็อตลิขสิทธิ์แท้จากค่ายดังโดยตรง อัตราการชนะสูงกว่าเว็บทั่วไป จ่ายเต็มจำนวนไม่หักค่าธรรมเนียม • ฝากถอนออโต้ไม่มีขั้นต่ำ ทุนเริ่มต้น 1 บาท ประมวลผลไม่เกิน 3 วินาที • ถอนได้ไม่อั้น ไม่จำกัดจำนวนครั้งต่อวัน การันตีเว็บตรง API แท้ ไม่ล็อคยูสเซอร์",
 } = Astro.props;
 ---
 
 <div class="mx-auto w-full max-w-7xl px-4 py-4 font-sans">
   <div
-    class="relative flex overflow-hidden rounded-full border border-[#0a5df1]/30 bg-white/90 shadow-[0_8px_20px_rgba(10,93,241,0.18)] backdrop-blur-lg transition-shadow duration-300 hover:shadow-[0_8px_25px_rgba(1,203,246,0.32)]">
+    class="relative flex overflow-hidden rounded-full border border-[#e4a434]/40 bg-[#1e1206]/90 shadow-[0_8px_20px_rgba(250,196,44,0.22)] backdrop-blur-lg transition-shadow duration-300 hover:shadow-[0_8px_25px_rgba(254,235,51,0.35)]">
     <div
-      class="relative z-10 flex shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#0a5df1] via-[#0782f2] to-[#01cbf6] px-8 py-2.5 font-black text-[#f0f9ff] shadow-[4px_0_15px_rgba(10,93,241,0.3)]">
-      <span aria-hidden="true" class="mr-2 text-lg">❄️</span> ประกาศ
+      class="relative z-10 flex shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#cc8425] via-[#e4a434] to-[#feeb33] px-8 py-2.5 font-black text-[#1a1003] shadow-[4px_0_15px_rgba(250,196,44,0.35)]">
+      <span aria-hidden="true" class="mr-2 text-lg">👑</span> ประกาศ
     </div>
 
     <div class="marquee-container relative flex-1 overflow-hidden py-2.5 pr-6">
-      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-12 bg-gradient-to-r from-white to-transparent"></div>
+      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-12 bg-gradient-to-r from-[#1e1206] to-transparent"></div>
 
-      <div class="marquee-content inline-block pl-4 text-sm font-medium tracking-wide whitespace-nowrap text-[#0b3a63]">
-        <span class="mr-10 inline-flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#f1d42c] shadow-[0_0_8px_rgba(241,212,44,0.8)]"></span>{message}</span>
-        <span class="mr-10 inline-flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#f1d42c] shadow-[0_0_8px_rgba(241,212,44,0.8)]"></span>{message}</span>
+      <div class="marquee-content inline-block pl-4 text-sm font-medium tracking-wide whitespace-nowrap text-[#f3e3c4]">
+        <span class="mr-10 inline-flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#feeb33] shadow-[0_0_8px_rgba(254,235,51,0.8)]"></span>{message}</span>
+        <span class="mr-10 inline-flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#feeb33] shadow-[0_0_8px_rgba(254,235,51,0.8)]"></span>{message}</span>
       </div>
     </div>
   </div>

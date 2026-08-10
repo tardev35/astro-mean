@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 
 import { Picture } from "astro:assets";
 
@@ -13,34 +13,34 @@ import { Picture } from "astro:assets";
 // gives this page a Title and a Meta and never a body.
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The BUFFXBET drop (2026-08-10) reads:
-//   slide1 = สมาชิกใหม่ ฝาก 100 รับ 150
-//   slide2 = สมาชิกใหม่ ฝาก 500 รับ 700 (ถอนสูงสุด 1500 บาท)
-//   slide3 = สมาชิกใหม่ ฝาก 1,000 รับ 1,300 (ถอนสูงสุด 2,500 บาท)
-//   slide4 = ฝากครั้งแรก รับโบนัส 10%
+// The JUDTEM168 drop (2026-08-10) reads:
+//   slide1 = ชวนเพื่อน รับรายได้ ไม่จำกัด
+//   slide2 = รองรับเกมมากมาย แตกง่าย! ที่ Judtem168
+//   slide3 = เว็บตรง ลิขสิทธิ์แท้ มีใบรับรอง ครองใจนักเดิมพัน
+//   slide4 = คืนยอดเสีย สูงสุด 7%
 // Only what is printed on each banner may be stated here. Every other
-// promo/banner file in src/assets (banner2/3/4) is a previous brand's leftover
-// and must not be pulled in.
-import proDeposit100 from "../assets/slide1.png";
-import proDeposit500 from "../assets/slide2.png";
-import proDeposit1000 from "../assets/slide3.png";
-import proFirstDeposit from "../assets/slide4.png";
+// promo/banner file in src/assets (banner2/3/4, banner.png) is a previous
+// brand's leftover and must not be pulled in.
+import proRefer from "../assets/slide1.png";
+import proGames from "../assets/slide2.png";
+import proLicensed from "../assets/slide3.png";
+import proCashback from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 156.
+// byte count reads ~3x too long). This one measures 158.
 const pageDescription =
-  "รวมโปรโมชั่น BUFFXBET สล็อตเว็บตรงสายคุ้ม ทั้งสมาชิกใหม่ฝาก 100 รับ 150 ฝาก 500 รับ 700 ฝาก 1,000 รับ 1,300 และฝากครั้งแรกรับโบนัส 10% อ่านเงื่อนไขก่อนกดรับ";
+  "รวมโปรโมชั่น JUDTEM168 สล็อตเว็บตรงลิขสิทธิ์แท้ ทั้งชวนเพื่อนรับรายได้ไม่จำกัด คืนยอดเสียสูงสุด 7% และเกมแตกง่ายจากค่ายดัง อ่านเงื่อนไขของแต่ละรายการก่อนกดรับ";
 
 const graph = pageGraph(Astro, {
-  name: "โปรโมชั่น BUFFXBET สล็อตเว็บตรงสายคุ้ม โบนัสเน้นทุกจังหวะ",
+  name: "โปรโมชั่น JUDTEM168 ชวนเพื่อนรับรายได้ไม่จำกัด และคืนยอดเสียสูงสุด 7%",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proDeposit100.src,
+  primaryImagePath: proRefer.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem),
@@ -49,26 +49,26 @@ const graph = pageGraph(Astro, {
 const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1456px) calc((100vw - 8rem) / 2), 646px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#3b8df1]/35 object-contain shadow-[0_10px_30px_rgba(59,141,241,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#3b8df1]/70 hover:shadow-[0_15px_40px_rgba(245,197,66,0.32)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#e4a434]/35 object-contain shadow-[0_10px_30px_rgba(250,196,44,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#fac42c]/70 hover:shadow-[0_15px_40px_rgba(254,235,51,0.32)]";
 ---
 
-<MainLayout title="โปรโมชั่น BUFFXBET ฝาก 100 รับ 150 และฝากครั้งแรกรับโบนัส 10%" description={pageDescription}>
+<MainLayout title="โปรโมชั่น JUDTEM168 ชวนเพื่อนรับรายได้ไม่จำกัด คืนยอดเสียสูงสุด 7%" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น BUFFXBET" as="h1">
+  <ContentBox title="โปรโมชั่น JUDTEM168" as="h1">
     <div>
-      <p class="mb-8 text-left text-base leading-relaxed text-[#dbe7fb]">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#7cc0ff]">BUFFXBET</strong> เปิดให้รับอยู่ในรอบนี้ ตัวเลขบนภาพคือยอดฝากและยอดที่ได้รับจริงของแต่ละรายการ
-        แต่ละก้อนคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง จึงเลือกให้ตรงกับงบที่ตั้งใจใช้ในวันนั้นมากกว่าเลือกจากตัวเลขที่สูงที่สุด
-        เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และเพดานถอนของแต่ละโปรไม่เหมือนกัน ควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
+      <p class="mb-8 text-left text-base leading-relaxed text-[#f3e3c4]">
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#fac42c]">JUDTEM168</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งชวนเพื่อนรับรายได้ไม่จำกัด คืนยอดเสียสูงสุด 7%
+        และเกมลิขสิทธิ์แท้จากค่ายดังที่รองรับไว้ครบทุกแนว แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง จึงควรเลือกให้ตรงกับสไตล์การเล่นและงบที่ตั้งใจใช้ในวันนั้น
+        มากกว่าเลือกจากตัวเลขที่ดูสูงที่สุด เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และเพดานของแต่ละโปรไม่เหมือนกัน ควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={proDeposit100}
-          alt="แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 100 รับ 150 ตัวเลขสีขาวเรืองแสงบนพื้นอวกาศสีน้ำเงิน มีวงล้อรูเล็ตเรืองแสงและกองเหรียญทองอยู่ทางขวา"
+          src={proRefer}
+          alt="แบนเนอร์โปรโมชั่น JUDTEM168 ชวนเพื่อน รับรายได้ ไม่จำกัด ตัวอักษรทองบนพื้นแดง มีผู้หญิงชุดแดงถือทองคำแท่งและมาสคอตกระต่ายถือโทรศัพท์ พร้อมแถบรับรองเว็บลิขสิทธิ์แท้และโลโก้ JT168 ด้านล่าง"
           loading="lazy"
           fetchpriority="low"
           widths={[300, 450, 600]}
@@ -81,8 +81,8 @@ const imageClass =
         />
 
         <Picture
-          src={proDeposit500}
-          alt="แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 500 รับ 700 ถอนสูงสุด 1500 บาท บนพื้นอวกาศสีน้ำเงินม่วง มีวงล้อรูเล็ตสีน้ำเงินและลูกเต๋าสีขาวลอยอยู่รอบตัวเลข"
+          src={proGames}
+          alt="แบนเนอร์โปรโมชั่น JUDTEM168 รองรับเกมมากมาย แตกง่าย ที่ Judtem168 มีนักรบโรมันสวมเกราะทองยืนคู่กับเสือ พร้อมแถบรับรองเว็บลิขสิทธิ์แท้และโลโก้ JT168 ด้านล่าง"
           loading="lazy"
           fetchpriority="low"
           widths={[300, 450, 600]}
@@ -95,8 +95,8 @@ const imageClass =
         />
 
         <Picture
-          src={proDeposit1000}
-          alt="แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 1,000 รับ 1,300 ถอนสูงสุด 2,500 บาท บนพื้นสีน้ำเงินเข้ม มีเส้นแสงโค้งพาดกลางภาพ ไพ่ ลูกเต๋า และสัญลักษณ์โพดำสวมมงกุฎทองอยู่ทางขวา"
+          src={proLicensed}
+          alt="แบนเนอร์โปรโมชั่น JUDTEM168 เว็บตรง ลิขสิทธิ์แท้ มีใบรับรอง ครองใจนักเดิมพัน มีอัศวินชูถ้วยรางวัลทองคำและมาสคอตสุนัขสีทอง JT พร้อมแถบรับรองเว็บลิขสิทธิ์แท้และโลโก้ JT168 ด้านล่าง"
           loading="lazy"
           fetchpriority="low"
           widths={[300, 450, 600]}
@@ -109,8 +109,8 @@ const imageClass =
         />
 
         <Picture
-          src={proFirstDeposit}
-          alt="แบนเนอร์โปรโมชั่น BUFFXBET ฝากครั้งแรก รับโบนัส 10% บนพื้นสีน้ำเงินม่วง มีกล่องของขวัญสีน้ำเงินผูกโบว์และลูกโป่งใสลอยอยู่ทางซ้าย"
+          src={proCashback}
+          alt="แบนเนอร์โปรโมชั่น JUDTEM168 คืนยอดเสีย สูงสุด 7% มีเลพริคอนชุดเขียวนั่งข้างหม้อเหรียญทองที่ล้นออกมา พร้อมแถบรับรองเว็บลิขสิทธิ์แท้และโลโก้ JT168 ด้านล่าง"
           loading="lazy"
           fetchpriority="low"
           widths={[300, 450, 600]}
@@ -126,8 +126,8 @@ const imageClass =
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#3b8df1]/60 bg-gradient-to-r from-[#3b8df1] to-[#f5c542] px-10 py-3.5 text-lg font-black text-[#02061a] shadow-[0_10px_30px_rgba(59,141,241,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(245,197,66,0.45)]">
-          สมัครสมาชิก BUFFXBET
+          class="flex items-center justify-center rounded-lg border border-[#feeb33]/60 bg-gradient-to-r from-[#feeb33] via-[#fac42c] to-[#cc8425] px-10 py-3.5 text-lg font-black text-[#1a1003] shadow-[0_10px_30px_rgba(250,196,44,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(254,235,51,0.45)]">
+          สมัครสมาชิก JUDTEM168
         </a>
       </div>
     </div>

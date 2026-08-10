@@ -2,7 +2,7 @@
 import { Picture } from "astro:assets";
 
 import slide1 from "../assets/slide1.png";
-import slide2 from "../assets/slide2.png";
+import slide4 from "../assets/slide4.png";
 
 // This used to be Swiper: 158,890 bytes of JavaScript (86,801 of it modules the
 // config never touched) to slide pictures sideways forever. It is a CSS
@@ -21,21 +21,21 @@ import slide2 from "../assets/slide2.png";
 // there were more pictures; these are promo banners whose whole content IS the
 // text printed on them, so that text is the alt.
 //
-// BUFFXBET puts TWO slides here. slide3 and slide4 are not imported in this
-// file on purpose — each one has a single home on the page, inside a
-// ContentBoxSevenThree* block (slide4 → the bonus section, slide3 → the
-// deposit/withdraw section), and showing the same artwork twice on one page is
-// what this split avoids. The --shift values in the stylesheet below are sized
-// to the count: change the number of images and both of them have to be
-// recomputed.
+// JUDTEM168 puts TWO slides here: slide1 and slide4. slide2 and slide3 are not
+// imported in this file on purpose — each one has a single home on the page,
+// inside a ContentBoxSevenThree* block (slide3 → the "จ่ายเงินจริงทุกยอด"
+// section, slide2 → the "ไม่ล็อคยูสเซอร์" section), and showing the same
+// artwork twice on one page is what this split avoids. The --shift values in
+// the stylesheet below are sized to the count: change the number of images and
+// both of them have to be recomputed.
 const images = [
   {
     src: slide1,
-    alt: "แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 100 รับ 150 พร้อมภาพหญิงสาวผมสั้นในชุดสีน้ำเงินเข้ม กองเหรียญทอง และวงแหวนเรืองแสงสีฟ้าบนพื้นอวกาศสีน้ำเงินดำ",
+    alt: "แบนเนอร์โปรโมชั่น JUDTEM168 ชวนเพื่อน รับรายได้ ไม่จำกัด พร้อมภาพหญิงสาวชุดแดงถือทองแท่ง มาสคอตกระต่ายสีขาว กองเหรียญทอง และแถบการันตีเว็บลิขสิทธิ์แท้ ปลอดภัย 100% บริการตลอด 24 ชั่วโมง",
   },
   {
-    src: slide2,
-    alt: "แบนเนอร์โปรโมชั่น BUFFXBET สมาชิกใหม่ ฝาก 500 รับ 700 ถอนสูงสุด 1500 บาท พร้อมภาพวงล้อรูเล็ตสีน้ำเงินและลูกเต๋าสีขาวลอยอยู่บนพื้นอวกาศสีน้ำเงินม่วง",
+    src: slide4,
+    alt: "แบนเนอร์โปรโมชั่น JUDTEM168 คืนยอดเสีย สูงสุด 7% พร้อมภาพเลปรีคอนหมวกเขียวนั่งข้างหม้อทองคำที่ล้นไปด้วยเหรียญ และแถบการันตีมีใบรับรองจากหน่วยงานสากล อุ่นใจทุกการเดิมพัน",
   },
 ];
 
@@ -59,7 +59,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#f5c542]/60 peer-focus-visible:bg-[#0a1330] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#f5c542]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#fac42c]/60 peer-focus-visible:bg-[#1e1206] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#feeb33]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -76,7 +76,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#3b8df1]/25 object-cover shadow-[0_10px_30px_rgba(59,141,241,0.18)]"
+              class="block w-full rounded-xl border border-[#e4a434]/30 object-cover shadow-[0_10px_30px_rgba(250,196,44,0.18)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
