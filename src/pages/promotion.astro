@@ -14,15 +14,18 @@ import { Picture } from "astro:assets";
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
 // The LONGSAP168 drop (2026-08-11) reads:
-//   slide1 = แนะนำเพื่อน รับไปเลย สูงสุด 0.7% — ยิ่งชวนมาก ยิ่งได้มาก
-//   slide2 = คาสิโนชั้นนำ ครบจบทุกค่าย ในเว็บเดียว
+//   slide1 = คาสิโนชั้นนำ ครบจบทุกค่าย ในเว็บเดียว
+//   slide2 = แนะนำเพื่อน รับไปเลย สูงสุด 0.7% — ยิ่งชวนมาก ยิ่งได้มาก
 //   slide3 = คืนยอดเสีย รับไปเลยสูงสุด 5% ของทุกสัปดาห์ — สูงสุด 500,000 บาท
 //   slide4 = ฝาก-ถอน ระบบออโต้ ภายใน 2 วินาที — ทำรายการเอง ไม่ต้องพึ่งแอดมิน
+// slide1 and slide2 are the other way round from the previous drop, so these
+// imports follow the ARTWORK, not the file number — that is the whole reason
+// the variables are named after the promotion instead of after the file.
 // Only what is printed on each banner may be stated here. Every other
 // promo/banner file in src/assets (banner2/3/4, banner.png) is a previous
 // brand's leftover and must not be pulled in.
-import proRefer from "../assets/slide1.png";
-import proCasino from "../assets/slide2.png";
+import proCasino from "../assets/slide1.png";
+import proRefer from "../assets/slide2.png";
 import proCashback from "../assets/slide3.png";
 import proAuto from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";

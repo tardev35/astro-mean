@@ -19,14 +19,14 @@ import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgLiveTables from "../assets/slide2.png";
+import imgLiveTables from "../assets/slide1.png";
 import imgAutoBanking from "../assets/slide4.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
 //   1 → ContentBoxNeumorphism as="h1"
 //   2 → ContentBoxTwoCyberCut (ส่ง title อย่างเดียว แล้วแบ่งย่อหน้าเดียวลง
 //       left/right ที่รอยต่อประโยค — titleleft/titleright เป็น <p> ของ chrome)
-//   3 → ContentBoxSevenThree + slide2 (โต๊ะสด ภาพระดับ HD หลายห้องให้เลือก)
+//   3 → ContentBoxSevenThree + slide1 (โต๊ะสด ภาพระดับ HD หลายห้องให้เลือก)
 //   4 → ContentBoxSevenThreeNeumorphism + slide4 (ฝากไวถอนคล่อง ระบบออโต้)
 //   5 → ContentBox3ThreeCyberCut (ส่ง title อย่างเดียว แบ่งย่อหน้าลง
 //       left/center/right)
@@ -43,8 +43,13 @@ import imgAutoBanking from "../assets/slide4.png";
 // เป็น widget รอบนี้มันแบกหัวข้อ docx จริงจึงเป็นหัวข้อได้ — วิธีเดียวกับที่
 // ContentBoxTwo/ContentBox3Three ทำไว้แล้ว
 //
-// slide1/slide3 อยู่ใน SmoothCarousel อย่างเดียว, slide2/slide4 อยู่ใน SevenThree
+// slide2/slide3 อยู่ใน SmoothCarousel อย่างเดียว, slide1/slide4 อยู่ใน SevenThree
 // อย่างละบล็อก — รูปหนึ่งใบมีบ้านเดียว ไม่ซ้ำกันในหน้าเดียว
+//
+// การอัพโหลดรอบ 2026-08-11 สลับตัวไฟล์ slide1 กับ slide2 จากรอบก่อน: อาร์ต
+// "คาสิโนชั้นนำ ครบจบทุกค่าย" ย้ายมาอยู่ที่ slide1.png และ "แนะนำเพื่อน 0.7%"
+// ย้ายไป slide2.png — import ตรงนี้จึงชี้ตามอาร์ต ไม่ใช่ตามเลขไฟล์เดิม
+// (alt ของแต่ละใบบรรยายตัวหนังสือบนรูปจริง จึงไม่ต้องแก้ตาม)
 // banner2/3/4 กับ banner.png เป็นอาร์ตของแบรนด์ก่อนหน้า จึงไม่ถูก import ที่ไหน
 //
 // widget ที่ไม่ได้มาจาก docx (SmoothCarousel, ProviderGrid, GameRankingBoard,
