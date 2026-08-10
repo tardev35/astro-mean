@@ -1,85 +1,82 @@
 ---
 import ContentBoxTwo from "./ContentBoxTwo.astro";
 
-// Widget, not article — every title in here is a <p>/<span>, and the section's
-// accessible name comes from the `label` prop passed to ContentBoxTwo. No
-// `title` is passed, so this block emits no heading at all.
+// Widget ไม่ใช่ article — ทุกหัวข้อในนี้เป็น <p>/<span> และชื่อสำหรับ assistive
+// tech มาจาก prop `label` ที่ส่งให้ ContentBoxTwo ไม่มีการส่ง `title` บล็อกนี้จึง
+// ไม่ปล่อยหัวข้อออกมาเลย
 //
-// JUDTEM168: rethemed off the previous brand's blue (#3b8df1 / #0a1330 /
-// #050b1e / #dbe7fb / #a8bcd8) onto gold — #feeb33 / #fac42c / #e4a434 /
-// #cc8425 / #7a4a0d over #150d04 / #1e1206 / #0a0602, body #f3e3c4, muted
-// #d8c49a, ink-on-gold #1a1003.
+// LONGSAP168: ย้ายจากทองอ่อนของแบรนด์ก่อน (#feeb33 / #fac42c / #e4a434 /
+// #cc8425 / #7a4a0d บน #150d04 / #1e1206 / #0a0602) มาที่ทองเข้ม + ไฟมังกร —
+// #ffd76a / #f2b024 / #a86a0c คู่กับ #ff4d2e / #d81f26 / #7d0508 บนผิว #170806 /
+// #24100c / #0a0402 เนื้อความ #f6e4c8 ข้อความรอง #e3c9ab หมึกบนพื้นทอง #170806
 //
-// Copy follows the docx brief: ทางเข้าที่เสถียรที่สุด, จ่ายจริงทุกยอด,
-// ฝากถอนออโต้ไม่มีขั้นต่ำ, ถอนได้ไม่อั้น, ไม่ล็อคยูสเซอร์, วิธีเข้าสู่ระบบ.
+// เนื้อหาตาม brief: เกมดังค่ายจัดเต็ม, โต๊ะสดภาพระดับ HD, ฝากถอนออโต้ไม่ต้องแคป
+// สลิป, เล่นลื่นทุกอุปกรณ์, ความปลอดภัยระดับมาตรฐานสากล
 const menus = [
-  { icon: "🔗", name: "เซิร์ฟเวอร์หลักและลิงก์สำรอง", detail: "พร้อมใช้งานตลอด 24 ชั่วโมง หมดปัญหาเว็บปลิว ลิงก์เสีย หรือเข้าไม่ได้ช่วงโบนัสไทม์", tag: "เข้าได้ตลอด" },
-  { icon: "📱", name: "รองรับ iOS Android และคอมพิวเตอร์", detail: "กดเข้าเกมได้ลื่นไหลไม่มีสะดุด ภาพและเสียงคมชัดระดับ Full HD ทุกอุปกรณ์", tag: "ลื่นทุกเครื่อง" },
-  { icon: "🎰", name: "เกมลิขสิทธิ์แท้จากค่ายดังโดยตรง", detail: "อัตราการชนะ (RTP) สูงกว่าเว็บทั่วไป ระบบสุ่มรางวัลยุติธรรมตามมาตรฐานสากล", tag: "เว็บตรง API แท้" },
-  { icon: "⚡", name: "ฝากถอนออโต้ด้วยตัวเอง", detail: "ใช้เทคโนโลยี AI จัดการทั้งหมด ประมวลผลไม่เกิน 3 วินาที ไม่ต้องส่งสลิปรอคิว", tag: "ไม่เกิน 3 วิ" },
-  { icon: "🪙", name: "ไม่มีขั้นต่ำ ทุนน้อยแค่ 1 บาท", detail: "ฝากเข้ามาปั่นสล็อตได้สบายๆ เปิดโอกาสให้ทุกคนเข้าถึงความรวยได้เท่าเทียมกัน", tag: "เริ่ม 1 บาท" },
-  { icon: "🏦", name: "ถอนได้ไม่อั้น ไม่จำกัดจำนวนครั้ง", detail: "เล่นได้เท่าไหร่ถอนออกไปใช้ได้ทันที จ่ายเต็มจำนวน ไม่หักเปอร์เซ็นต์หรือค่าธรรมเนียม", tag: "จ่ายเต็มยอด" },
-  { icon: "🔒", name: "ความปลอดภัยเทียบเท่าแอปธนาคาร", detail: "ฐานการเงินแข็งแกร่ง รองรับสมาชิกนับแสนคนต่อวัน ข้อมูลส่วนตัวไม่มีรั่วไหล", tag: "มั่นคง 100%" },
+  { icon: "🎰", name: "รวมค่ายดังระดับโลกไว้เพียบ", detail: "เปิดหน้าเว็บเข้ามาปุ๊บคือเจอเกมฮิตที่คุ้นเคยรออยู่ ภาพสวย สปินลื่น แตกบ่อย", tag: "เกมดังจัดเต็ม" },
+  { icon: "🆕", name: "อัปเดตเกมใหม่ไวมาก", detail: "ใครชอบลองของใหม่หรือมีเกมลูกรักในดวงใจอยู่แล้ว มารวมกันตรงนี้ได้เลย", tag: "ของใหม่มาไว" },
+  { icon: "🃏", name: "โต๊ะสดภาพคมชัดระดับ HD", detail: "สตรีมเรียลไทม์ไม่มีกระตุกให้เสียอารมณ์ บรรยากาศเหมือนบินไปนั่งที่คาสิโนจริง", tag: "สตรีมสด" },
+  { icon: "🎯", name: "มีห้องให้เลือกเข้าเพียบ", detail: "ชอบดีลเลอร์คนไหน ชอบจังหวะการเดินเกมโต๊ะไหน ก็เลือกเข้าได้ตามสไตล์เลย", tag: "หลายโต๊ะ" },
+  { icon: "⚡", name: "ฝากถอนออโต้ ไม่ต้องแคปสลิป", detail: "ไม่ต้องส่งหาแอดมินให้เมื่อยมือ เล่นได้ปุ๊บ กดถอนปั๊บ เงินเด้งเข้าบัญชีแทบจะทันที", tag: "ไวไม่ต้องรอ" },
+  { icon: "📱", name: "สลับมือถือไปคอมก็ยังลื่น", detail: "ปรับขนาด UI ตามหน้าจอเป๊ะๆ สลับอุปกรณ์เล่นตอนไหนฟีลก็ไม่ขาดตอน", tag: "ทุกอุปกรณ์" },
+  { icon: "🔒", name: "ความปลอดภัยแบบไม่ลดสเปค", detail: "ระบบรักษาความปลอดภัยระดับมาตรฐานสากล ข้อมูลส่วนตัวและบัญชีเก็บรักษาไว้อย่างดี", tag: "สบายใจ 100%" },
 ];
 
-const chips = ["ทางเข้าเสถียรที่สุด", "จ่ายจริงทุกยอด", "ฝากถอนออโต้ไม่มีขั้นต่ำ", "ถอนได้ไม่อั้น", "ไม่ล็อคยูสเซอร์", "เว็บตรง API แท้", "บริการ 24 ชั่วโมง"];
+const chips = ["เกมดังค่ายจัดเต็ม", "โต๊ะสดจัดหนัก", "ฝากไวถอนคล่อง", "ระบบออโต้", "เล่นลื่นทุกอุปกรณ์", "ปลอดภัยไม่ลดสเปค", "จบในเว็บเดียว"];
 ---
 
-<ContentBoxTwo
-  titleleft="เข้าสู่ระบบ JUDTEM168"
-  titleright="ระบบและบริการของ JUDTEM168 ที่ใช้ได้ทั้งบนมือถือและคอมพิวเตอร์"
-  label="เข้าสู่ระบบ JUDTEM168 และระบบบริการที่ใช้ได้ทุกอุปกรณ์">
+<ContentBoxTwo titleleft="เข้าสู่ระบบ LONGSAP168" titleright="ระบบและบริการของ LONGSAP168 ที่ครบจบในเว็บเดียว" label="เข้าสู่ระบบ LONGSAP168 และระบบบริการที่ใช้ได้ทุกอุปกรณ์">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#e4a434]/25 bg-[#1e1206] p-6 shadow-[0_10px_30px_rgba(250,196,44,0.18)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#fac42c]/25 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#f2b024]/25 bg-[#24100c] p-6 shadow-[0_10px_30px_rgba(242,176,36,0.18)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#7d0508]/50 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e4a434]/45 bg-gradient-to-br from-[#feeb33] via-[#fac42c] to-[#7a4a0d] text-xl shadow-inner">
-          🎰
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#f2b024]/45 bg-gradient-to-br from-[#ffd76a] via-[#f2b024] to-[#a86a0c] text-xl shadow-inner">
+          🐉
         </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#fac42c]">ยินดีต้อนรับกลับ</p>
-          <span class="text-[11px] text-[#d8c49a]">กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าสู่หน้าล็อบบี้เกมสล็อตค่ายโปรดของ JUDTEM168 ได้ทันทีจากจุดเดียว</span>
+          <p class="text-base font-black text-[#f2b024]">ยินดีต้อนรับกลับ</p>
+          <span class="text-[11px] text-[#e3c9ab]">กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าล็อบบี้สล็อตค่ายดังและโต๊ะสดของ LONGSAP168 ได้จากจุดเดียว ไม่ต้องโยกเงินไปมา</span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#fac42c]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#f2b024]">👤</span>
           <input
             type="text"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#7a4a0d] bg-[#0a0602] py-3 pr-4 pl-12 text-[#f3e3c4] transition-all outline-none placeholder:text-[#d8c49a]/70 focus:border-[#feeb33] focus:ring-1 focus:ring-[#fac42c]/45"
+            class="w-full rounded-xl border border-[#a86a0c] bg-[#0a0402] py-3 pr-4 pl-12 text-[#f6e4c8] transition-all outline-none placeholder:text-[#e3c9ab]/70 focus:border-[#ffd76a] focus:ring-1 focus:ring-[#f2b024]/45"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#fac42c]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#f2b024]">🔑</span>
           <input
             type="password"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#7a4a0d] bg-[#0a0602] py-3 pr-4 pl-12 text-[#f3e3c4] transition-all outline-none placeholder:text-[#d8c49a]/70 focus:border-[#feeb33] focus:ring-1 focus:ring-[#fac42c]/45"
+            class="w-full rounded-xl border border-[#a86a0c] bg-[#0a0402] py-3 pr-4 pl-12 text-[#f6e4c8] transition-all outline-none placeholder:text-[#e3c9ab]/70 focus:border-[#ffd76a] focus:ring-1 focus:ring-[#f2b024]/45"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#d8c49a]">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#7a4a0d] bg-[#0a0602] accent-[#fac42c]" />
+          <label class="flex items-center gap-2 text-[#e3c9ab]">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#a86a0c] bg-[#0a0402] accent-[#f2b024]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#d8c49a] transition-colors hover:text-[#feeb33]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#e3c9ab] transition-colors hover:text-[#ffd76a]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#e4a434]/45 bg-gradient-to-r from-[#feeb33] via-[#fac42c] to-[#cc8425] p-3.5 font-black text-[#1a1003] shadow-[0_10px_30px_rgba(250,196,44,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(254,235,51,0.45)]">
+          class="mt-1 w-full rounded-xl border border-[#f2b024]/45 bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#a86a0c] p-3.5 font-black text-[#170806] shadow-[0_10px_30px_rgba(242,176,36,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(255,215,106,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#d8c49a]">
-          <span class="h-px flex-1 bg-[#7a4a0d]"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#e3c9ab]">
+          <span class="h-px flex-1 bg-[#a86a0c]"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#7a4a0d]"></span>
+          <span class="h-px flex-1 bg-[#a86a0c]"></span>
         </div>
 
         <a
@@ -90,21 +87,21 @@ const chips = ["ทางเข้าเสถียรที่สุด", "จ
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#e4a434]/30 bg-[#0a0602] px-2.5 py-1 text-[10px] font-bold text-[#fac42c]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#7a4a0d] bg-[#0a0602] px-2.5 py-1 text-[10px] font-bold text-[#d8c49a]"><span aria-hidden="true">🕐</span> ระบบออโต้ 24 ชั่วโมง</span>
+            <span class="rounded-full border border-[#f2b024]/30 bg-[#0a0402] px-2.5 py-1 text-[10px] font-bold text-[#f2b024]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#a86a0c] bg-[#0a0402] px-2.5 py-1 text-[10px] font-bold text-[#e3c9ab]"><span aria-hidden="true">🕐</span> ระบบออโต้ 24 ชั่วโมง</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#feeb33] transition-colors hover:text-[#e4a434]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#ffd76a] transition-colors hover:text-[#f2b024]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#e4a434]/25 bg-[#1e1206] p-5 shadow-[0_10px_30px_rgba(250,196,44,0.18)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#f2b024]/25 bg-[#24100c] p-5 shadow-[0_10px_30px_rgba(242,176,36,0.18)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#d8c49a]">ตารางอ้างอิงระบบและบริการที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#feeb33] via-[#fac42c] to-[#cc8425] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">ออโต้ไม่เกิน 3 วิ • ถอนไม่อั้น 24 ชม.</div>
+          <span class="text-xs font-bold tracking-wide text-[#e3c9ab]">ตารางอ้างอิงระบบและบริการที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#d81f26] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">เกมดัง โต๊ะสด ฝากถอนออโต้ ครบจบที่เดียว</div>
         </div>
         <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#0b2612] px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]"></span>
@@ -112,7 +109,7 @@ const chips = ["ทางเข้าเสถียรที่สุด", "จ
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#d8c49a]">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#e3c9ab]">
         <span>ระบบ / บริการในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -120,28 +117,28 @@ const chips = ["ทางเข้าเสถียรที่สุด", "จ
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#7a4a0d] bg-[#0a0602] px-3.5 py-2.5 transition-colors hover:border-[#e4a434]/55 hover:bg-[#3d2205]/60">
+            <div class="rounded-xl border border-[#a86a0c] bg-[#0a0402] px-3.5 py-2.5 transition-colors hover:border-[#f2b024]/55 hover:bg-[#7d0508]/45">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f3e3c4]">
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f6e4c8]">
                   <span aria-hidden="true" class="w-5 shrink-0 text-center">
                     {m.icon}
                   </span>{" "}
                   <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#cc8425]/40 bg-[#fac42c] px-2.5 py-0.5 text-[10px] font-bold text-[#1a1003]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#a86a0c]/60 bg-[#f2b024] px-2.5 py-0.5 text-[10px] font-bold text-[#170806]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#d8c49a]">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#e3c9ab]">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#e4a434]/30 bg-[#0a0602] px-3 py-1 text-[10px] font-bold text-[#fac42c]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#f2b024]/30 bg-[#0a0402] px-3 py-1 text-[10px] font-bold text-[#f2b024]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#d8c49a]">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจยอดขั้นต่ำ จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอนจากหน้าโปรโมชั่นจริงของ JUDTEM168 ก่อนกดรับทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#e3c9ab]">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจยอดขั้นต่ำ จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอนจากหน้าโปรโมชั่นจริงของ LONGSAP168 ก่อนกดรับทุกครั้ง
       </div>
     </div>
   </div>

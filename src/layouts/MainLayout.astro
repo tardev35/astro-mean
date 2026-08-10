@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarPremium.astro";
-import Footer from "../components/FooterPremium.astro";
+import Navbar from "../components/NavbarStyle9.astro";
+import Footer from "../components/FooterCyber.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "JUDTEM168 ทางเข้าเว็บสล็อตอันดับ 1 ระบบฝากถอนออโต้ ปลอดภัย",
-  description = "JUDTEM168 อัปเดตทางเข้าเว็บสล็อตอันดับ 1 แตกง่าย จ่ายจริง สนุกไร้ขีดจำกัดกับระบบฝากถอนออโต้ ไม่มีขั้นต่ำ ปลอดภัย มั่นคง 100% ถอนได้ไม่อั้น ไม่ล็อคยูสเซอร์",
+  title = "LONGSAP168 | เว็บสล็อตครบมือ เกมดังค่ายจัดเต็ม โต๊ะสดจัดหนัก",
+  description = "LONGSAP168 เว็บสล็อตครบมืออันดับ 1 รวมเกมดังค่ายจัดเต็ม โต๊ะสดจัดหนักภาพคมชัดระดับ HD ฝากไวถอนคล่องด้วยระบบออโต้ เล่นลื่นทุกอุปกรณ์ ปลอดภัยแบบไม่ลดสเปค",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0a0602;
+        background-color: #0a0402;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ JUDTEM168 ทางเข้าเว็บสล็อตอันดับ 1 ระบบฝากถอนออโต้ ปลอดภัย พร้อมปุ่มสมัครสมาชิก ตัวอักษร JUDTEM168 สีทองและเงินบนพื้นดำประกายสายฟ้าทอง มีมือถือเปิดล็อบบี้เกมสล็อต ชิปคาสิโน ลูกเต๋า วงล้อรูเล็ต สล็อต 777 และมาสคอตสาวชุดทอง"
+          alt="แบนเนอร์ LONGSAP168 เว็บสล็อตครบมือ เกมดังค่ายจัดเต็ม โต๊ะสดจัดหนัก ตัวอักษร LONGSAP สีทองและ 168 สีเงินบนพื้นดำ มีมังกรทองพ่นไฟ สล็อต 777 ไพ่โพดำ วงล้อรูเล็ต กองเหรียญทองและชิปคาสิโน พร้อมปุ่มสมัครสมาชิกสีแดงทอง"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

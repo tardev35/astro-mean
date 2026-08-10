@@ -7,39 +7,39 @@ import img4 from "../assets/providers/game4.avif";
 import img5 from "../assets/providers/game5.avif";
 import img6 from "../assets/providers/game6.avif";
 
-// Each game keeps the cover art it was paired with, so the alt text still
-// describes the picture — do not rename a row without changing its image.
-// The order is slot-first because this brand's brief is a slot site; the two
-// live tables sit at the bottom of the board.
+// แต่ละเกมผูกกับภาพหน้าปกที่มันมาคู่กัน ข้อความ alt จึงยังบรรยายรูปได้ตรง —
+// ห้ามเปลี่ยนชื่อแถวโดยไม่เปลี่ยนรูปตาม
 //
-// JUDTEM168: rethemed off the previous brand's blue (#3b8df1 / #0a2563 /
-// #0a1330 / #050b1e / #dbe7fb / #a8bcd8 / #f5c542) onto gold — #feeb33 /
-// #fac42c / #e4a434 / #cc8425 / #7a4a0d over #150d04 / #1e1206 / #0a0602.
+// LONGSAP168: ย้ายจากทองอ่อนของแบรนด์ก่อน (#feeb33 / #fac42c / #e4a434 /
+// #cc8425 / #7a4a0d บน #150d04 / #1e1206 / #0a0602) มาที่ทองมังกร #ffd76a /
+// #f2b024 / #a86a0c คู่กับไฟ #ff4d2e / #d81f26 / #7d0508 บนผิว #170806 /
+// #24100c / #0a0402 เนื้อความ #f6e4c8 ข้อความรอง #e3c9ab
 //
-// Widget, not article: the board title is a <p> and the <section> carries the
-// accessible name. Row names are <p> too — none of them is a docx heading.
+// Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
+// assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
+// เรียงสล็อตขึ้นก่อนเพราะ brief ของแบรนด์นี้เป็นเว็บสล็อต แล้วปิดท้ายด้วยโต๊ะสด
 const games = [
-  { rank: 1, name: "Mahjong Ways 2", type: "PG Soft • สล็อต", menus: ["แตกง่าย", "ตัวคูณจัดหนัก"], players: 5124, img: img1 },
-  { rank: 2, name: "Gates of Olympus", type: "Pragmatic Play • สล็อต", menus: ["ยอดนิยม", "RTP สูง"], players: 3842, img: img2 },
-  { rank: 3, name: "Fortune Gems", type: "JILI • สล็อต", menus: ["รอบไว", "ทุน 1 บาทก็ลุยได้"], players: 3517, img: img4 },
-  { rank: 4, name: "Super Ace", type: "JILI • สล็อต", menus: ["เกมใหม่", "อัปเดตล่าสุด"], players: 2905, img: img5 },
-  { rank: 5, name: "บาคาร่า ห้อง Live สด", type: "Evolution • เกมโต๊ะไลฟ์", menus: ["ไลฟ์สด", "รายการโปรด"], players: 2431, img: img6 },
-  { rank: 6, name: "รูเล็ต โต๊ะไลฟ์", type: "Evolution • เกมโต๊ะไลฟ์", menus: ["ไลฟ์สด", "เล่นล่าสุด"], players: 2108, img: img3 },
+  { rank: 1, name: "Mahjong Ways 2", type: "PG Soft • สล็อต", menus: ["แตกบ่อย", "ตัวคูณจัดหนัก"], players: 5124, img: img1 },
+  { rank: 2, name: "Gates of Olympus", type: "Pragmatic Play • สล็อต", menus: ["เกมฮิตที่คุ้นเคย", "ภาพสวย"], players: 3842, img: img2 },
+  { rank: 3, name: "Fortune Gems", type: "JILI • สล็อต", menus: ["รอบไว", "สปินลื่น"], players: 3517, img: img4 },
+  { rank: 4, name: "Super Ace", type: "JILI • สล็อต", menus: ["เกมใหม่", "อัปเดตไวมาก"], players: 2905, img: img5 },
+  { rank: 5, name: "บาคาร่า ห้อง Live สด", type: "Evolution • โต๊ะสด", menus: ["ภาพระดับ HD", "หลายห้องให้เลือก"], players: 2431, img: img6 },
+  { rank: 6, name: "รูเล็ต โต๊ะไลฟ์", type: "Evolution • โต๊ะสด", menus: ["สตรีมเรียลไทม์", "เล่นล่าสุด"], players: 2108, img: img3 },
 ];
 
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="เกมมาแรงที่สมาชิก JUDTEM168 กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="เกมมาแรงที่สมาชิก LONGSAP168 กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#e4a434]/30 bg-[#150d04]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(250,196,44,0.18)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl">🏆</span>
-    <p class="bg-gradient-to-r from-[#feeb33] via-[#fac42c] to-[#cc8425] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมมาแรงที่สมาชิก JUDTEM168 กำลังปั่นอยู่ตอนนี้</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#d8c49a]">
-      ทุกเกมในกระดานนี้เป็นเกมลิขสิทธิ์แท้ที่นำเข้าตรงจากค่ายดัง อัตราการชนะสูงกว่าเว็บทั่วไป ระบบสุ่มรางวัลทำงานยุติธรรมตามมาตรฐานสากล ไม่มีการปรับลดเปอร์เซ็นต์การแตกของโบนัส
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#f2b024]/30 bg-[#170806]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(242,176,36,0.18)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl">🐉</span>
+    <p class="bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#d81f26] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมมาแรงที่สมาชิก LONGSAP168 กำลังปั่นอยู่ตอนนี้</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#e3c9ab]">
+      กระดานนี้รวมทั้งสล็อตจากค่ายดังระดับโลกที่อัปเดตเกมใหม่ไวมาก และโต๊ะสดที่สตรีมเรียลไทม์ภาพคมชัดระดับ HD ให้เลือกเข้าได้ตามจังหวะที่ชอบ ไม่ต้องโยกเงินหรือเปลี่ยนเว็บให้วุ่นวาย
       รายชื่อเกมมาแรงเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูเดิมพันเริ่มต้นและฟีเจอร์โบนัสจากหน้าเกมจริงอีกครั้งก่อนกดเล่น
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#fac42c] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f2b024] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -50,29 +50,28 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#feeb33]/50 bg-gradient-to-r from-[#3d2205]/95 via-[#1e1206]/92 to-[#0a0602]/88 shadow-[0_15px_40px_rgba(250,196,44,0.28)]"
-                : "border-[#e4a434]/25 bg-[#150d04]/88 shadow-[0_10px_30px_rgba(250,196,44,0.16)] hover:border-[#e4a434]/55 hover:shadow-[0_15px_40px_rgba(254,235,51,0.28)]"
+                ? "border-[#ffd76a]/50 bg-gradient-to-r from-[#7d0508]/90 via-[#24100c]/92 to-[#0a0402]/88 shadow-[0_15px_40px_rgba(242,176,36,0.28)]"
+                : "border-[#f2b024]/25 bg-[#170806]/88 shadow-[0_10px_30px_rgba(242,176,36,0.16)] hover:border-[#f2b024]/55 hover:shadow-[0_15px_40px_rgba(216,31,38,0.28)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#fac42c]/25 blur-[40px] transition-all duration-500 group-hover:bg-[#feeb33]/40" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#d81f26]/30 blur-[40px] transition-all duration-500 group-hover:bg-[#ff4d2e]/40" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
-              {/* Ranks 1–3 show a medal INSTEAD of the number, so hiding the
-                  emoji on its own would leave those three rows with no rank at
-                  all. The visually-hidden text puts it back. */}
+              {/* อันดับ 1–3 แสดงเหรียญ "แทน" ตัวเลข ถ้าซ่อนอิโมจิเฉยๆ สามแถวนั้นจะไม่
+                  เหลืออันดับให้อ่านเลย ข้อความ sr-only จึงใส่กลับเข้าไป */}
               {medal(g.rank) ? (
                 <span class="text-2xl sm:text-3xl">
                   <span aria-hidden="true">{medal(g.rank)}</span>
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#fac42c] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#f2b024] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
-            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#feeb33]/55" : "border-[#e4a434]/30"}`}>
+            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#ffd76a]/55" : "border-[#f2b024]/30"}`}>
               <Picture
                 src={g.img}
-                alt={`ภาพหน้าปกเกม ${g.name} ในกระดานเกมมาแรงของ JUDTEM168`}
+                alt={`ภาพหน้าปกเกม ${g.name} ในกระดานเกมมาแรงของ LONGSAP168`}
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
                 loading="lazy"
@@ -86,20 +85,20 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#f3e3c4] sm:text-lg">{g.name}</p>
-                {top && <span class="hidden shrink-0 rounded-full border border-[#cc8425]/50 bg-[#fac42c] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#1a1003] sm:inline">มาแรงสูงสุด</span>}
+                <p class="truncate text-base font-black text-[#f6e4c8] sm:text-lg">{g.name}</p>
+                {top && <span class="hidden shrink-0 rounded-full border border-[#a86a0c]/60 bg-[#f2b024] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#170806] sm:inline">มาแรงสูงสุด</span>}
               </div>
-              <p class="truncate text-[11px] text-[#d8c49a] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#e3c9ab] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#e4a434]/30 bg-[#0a0602] px-2.5 py-0.5 text-[10px] font-bold text-[#fac42c]">{m}</span>
+                  <span class="rounded-full border border-[#f2b024]/30 bg-[#0a0402] px-2.5 py-0.5 text-[10px] font-bold text-[#f2b024]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#d8c49a]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#e3c9ab]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -110,8 +109,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#feeb33] to-[#fac42c] text-[#1a1003] shadow-[0_10px_30px_rgba(250,196,44,0.35)]"
-                    : "border border-[#e4a434]/60 bg-[#0a0602] text-[#fac42c] hover:border-[#feeb33] hover:bg-[#3d2205] hover:text-[#feeb33]"
+                    ? "bg-gradient-to-r from-[#ffd76a] to-[#f2b024] text-[#170806] shadow-[0_10px_30px_rgba(242,176,36,0.35)]"
+                    : "border border-[#f2b024]/60 bg-[#0a0402] text-[#f2b024] hover:border-[#ffd76a] hover:bg-[#7d0508] hover:text-[#ffd76a]"
                 }`}>
                 เข้าดูเกม
               </a>
@@ -124,11 +123,11 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
 </section>
 
 <script>
-  // Guards for visibility, background tabs and reduced-motion live in
-  // src/lib/liveCounter.ts — a file no rebrand rewrites. Do not reinstate a
-  // bare setTimeout loop here; the counters sit inside a `hidden sm:flex`
-  // container, so an unguarded one wakes the main thread on every phone to
-  // update text nobody can see.
+  // ตัวกันเรื่อง visibility, แท็บพื้นหลัง และ reduced-motion อยู่ใน
+  // src/lib/liveCounter.ts ซึ่งเป็นไฟล์ที่การรีแบรนด์ไม่เขียนทับ ห้ามเอา
+  // setTimeout เปล่าๆ กลับมาไว้ตรงนี้ — ตัวนับอยู่ในกล่อง `hidden sm:flex`
+  // ถ้าไม่มีตัวกัน มันจะปลุก main thread บนมือถือทุกเครื่องเพื่ออัปเดตข้อความ
+  // ที่ไม่มีใครมองเห็น
   import { startLiveCounters } from "../lib/liveCounter";
 
   startLiveCounters();

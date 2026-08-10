@@ -8,35 +8,35 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// JUDTEM168: rethemed off the previous brand's blue (#3b8df1 / #0a2563 /
-// #dbe7fb) onto the gold-on-black palette — #fac42c / #e4a434 / #cc8425 on
-// #150d04 / #1e1206, body text #f3e3c4, muted #d8c49a.
+// LONGSAP168: ย้ายจากคู่สีทองอ่อนของแบรนด์ก่อน (#feeb33 / #fac42c / #e4a434 /
+// #cc8425 บน #150d04 / #1e1206) มาที่ทองเข้ม + ไฟมังกร — #ffd76a / #f2b024 /
+// #a86a0c คู่กับ #ff4d2e / #d81f26 / #7d0508 บนผิว #170806 / #24100c / #0a0402
+// เนื้อความ #f6e4c8 ข้อความรอง #e3c9ab หมึกบนพื้นทอง #170806
 //
-// `title` is the ONLY heading this component may emit, and it is there so the
-// component can carry a docx section. Both COLUMN titles stay <p>: they label
-// UI panels (a login form, a reference table), not docx sections, so promoting
-// them would add heading levels the brief never asked for.
+// `title` เป็นหัวข้อเดียวที่ component นี้ปล่อยออกมาได้ และมีไว้ให้บล็อกนี้แบก
+// section ของ docx ได้ ส่วนหัวคอลัมน์ทั้งสองยังเป็น <p>: มันตั้งชื่อแผง UI (ฟอร์ม
+// เข้าสู่ระบบ, ตารางอ้างอิง) ไม่ใช่ section ของ docx การเลื่อนขึ้นเป็นหัวข้อจะเพิ่ม
+// ระดับหัวข้อที่ brief ไม่เคยขอ
 //
-// When `title` is passed the heading already names the section, so no
-// aria-label is added on top of it; without a title the section falls back to
-// `label` for its accessible name.
+// เมื่อส่ง title มา หัวข้อตั้งชื่อ section ให้แล้ว จึงไม่เพิ่ม aria-label ทับ ถ้าไม่มี
+// title ให้ section ใช้ `label` เป็นชื่อสำหรับ assistive tech แทน
 const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ");
 
-// Card chrome only when this block carries a docx section (`title`). Used as a
-// bare two-column wrapper — LoginRtpSection passes its own panels into the
-// slots — the columns stay flat, or the page gets a card inside a card.
-const columnBase = "flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e3c4]";
+// ใส่ chrome ของการ์ดเฉพาะตอนบล็อกนี้แบก section ของ docx (`title`) เท่านั้น เวลา
+// ถูกใช้เป็นโครงสองคอลัมน์เปล่าๆ — LoginRtpSection ส่งแผงของตัวเองเข้า slot —
+// คอลัมน์จะแบนราบไว้ ไม่งั้นหน้าเว็บจะได้การ์ดซ้อนการ์ด
+const columnBase = "flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6e4c8]";
 const columnCard =
-  "rounded-3xl border border-[#e4a434]/25 bg-[#150d04]/88 p-6 shadow-[0_10px_30px_rgba(250,196,44,0.15)] backdrop-blur-xl transition-all duration-500 hover:border-[#e4a434]/50 hover:shadow-[0_15px_40px_rgba(254,235,51,0.26)] md:p-8";
+  "rounded-3xl border border-[#f2b024]/25 bg-[#170806]/88 p-6 shadow-[0_10px_30px_rgba(242,176,36,0.15)] backdrop-blur-xl transition-all duration-500 hover:border-[#f2b024]/50 hover:shadow-[0_15px_40px_rgba(216,31,38,0.26)] md:p-8";
 const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   {
     title && (
-      <header class="mb-6 flex items-center gap-4 border-b border-[#e4a434]/30 pb-4">
-        <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#feeb33] via-[#e4a434] to-[#7a4a0d] shadow-[0_0_10px_rgba(250,196,44,0.5)]" />
-        <HeadingTag class="bg-gradient-to-r from-[#feeb33] via-[#fac42c] to-[#cc8425] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+      <header class="mb-6 flex items-center gap-4 border-b border-[#f2b024]/30 pb-4">
+        <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffd76a] via-[#f2b024] to-[#7d0508] shadow-[0_0_10px_rgba(242,176,36,0.5)]" />
+        <HeadingTag class="bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#d81f26] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
       </header>
     )
   }
@@ -45,10 +45,10 @@ const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
     <article class={columnClass}>
       {
         titleleft && (
-          <p class="flex items-center gap-3 border-b border-[#e4a434]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#fac42c] uppercase">
+          <p class="flex items-center gap-3 border-b border-[#f2b024]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#f2b024] uppercase">
             <span
               aria-hidden="true"
-              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#e4a434]/45 bg-gradient-to-br from-[#feeb33] via-[#fac42c] to-[#7a4a0d] text-sm text-[#1a1003] shadow-[0_5px_15px_rgba(250,196,44,0.3)]">
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#f2b024]/45 bg-gradient-to-br from-[#ffd76a] via-[#f2b024] to-[#a86a0c] text-sm text-[#170806] shadow-[0_5px_15px_rgba(242,176,36,0.3)]">
               🔐
             </span>
             {titleleft}
@@ -61,11 +61,11 @@ const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
     <article class={columnClass}>
       {
         titleright && (
-          <p class="flex items-center gap-3 border-b border-[#e4a434]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#fac42c] uppercase">
+          <p class="flex items-center gap-3 border-b border-[#f2b024]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#f2b024] uppercase">
             <span
               aria-hidden="true"
-              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#cc8425]/50 bg-gradient-to-br from-[#feeb33] via-[#e4a434] to-[#cc8425] text-sm text-[#1a1003] shadow-[0_5px_15px_rgba(250,196,44,0.4)]">
-              🎰
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d81f26]/50 bg-gradient-to-br from-[#ffd76a] via-[#ff4d2e] to-[#d81f26] text-sm text-[#170806] shadow-[0_5px_15px_rgba(216,31,38,0.4)]">
+              🐉
             </span>
             {titleright}
           </p>

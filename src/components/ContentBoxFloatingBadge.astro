@@ -6,53 +6,47 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "text-lg sm:text-xl md:text-2xl";
 
-// pt-36/md:pt-32 rather than the pt-28/md:pt-24 this file shipped with. The
-// badge is anchored at -top-6 (24px above the card), so its bottom edge sits at
-// (badge height − 24px) from the card's top. A full-sentence Thai H1/H2 wraps
-// the badge to several lines, which put the last line of the badge on top of
-// the first line of body copy.
+// pt-36/md:pt-32 ไม่ใช่ pt-28/md:pt-24 ที่ไฟล์นี้เคย ship มา ป้ายชื่อถูกตรึงไว้ที่
+// -top-6 (24px เหนือขอบบนการ์ด) ขอบล่างของป้ายจึงอยู่ที่ (ความสูงป้าย − 24px)
+// นับจากขอบบนการ์ด หัวข้อ H1/H2 ภาษาไทยแบบเต็มประโยคทำให้ป้ายตัดบรรทัดหลายบรรทัด
+// แล้วบรรทัดสุดท้ายไปทับบรรทัดแรกของเนื้อความ
 //
-// This runs one step deeper than ContentBoxSevenThreeFloatingBadge (pt-32/
-// md:pt-28) on purpose — the two decorative ✦ spans and their gap take ~52px
-// out of the badge's inner width here, and nothing takes it out over there. On
-// a 360–375px phone that is the difference between a 3-line and a 4-line badge.
+// ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge (pt-32/md:pt-28) หนึ่งขั้นโดย
+// ตั้งใจ — ✦ สองตัวกับ gap-2 กินความกว้างด้านในของป้ายไป ~52px ตรงนี้ ส่วนฝั่งโน้น
+// ไม่มีอะไรกิน บนจอ 360–375px นั่นคือส่วนต่างระหว่างป้าย 3 บรรทัดกับ 4 บรรทัด
 //
-// Arithmetic re-run for BUFFXBET's docx H1, 64 Thai characters
-// ("BUFFXBET สล็อตเว็บตรงสายคุ้ม โบนัสเน้น กำไรอิ่มคุ้ม ถอนคล่องจริง"), badge
-// chrome = py-2.5 (20px) + border-2 (4px) = 24px:
-//   360px phone — card 328px, badge w-[92%] = 302px, minus px-4 (32px) and the
-//   two ✦ spans + gap-2 (~42px) leaves ~228px of text. text-xl/leading-normal =
-//   30px per line, so 3 wrapped lines = 90px + 24px = 114px, bottom edge at
-//   90px against pt-36 (144px) → 54px of daylight. A 4th line still clears.
-//   md — badge capped at max-w-2xl (672px), minus px-8 (64px) and the ✦ pair
-//   leaves ~566px. text-3xl/leading-normal = 45px per line, 2 lines = 90px +
-//   24px = 114px, bottom edge 90px against md:pt-32 (128px) → 38px.
-// Keep this file one step deeper than ContentBoxSevenThreeFloatingBadge, not
-// identical. The badge itself is w-[92%] max-w-2xl text-center — never
-// whitespace-nowrap, which is what used to push it past the viewport.
+// คำนวณใหม่กับหัวข้อ H2 ข้อ 7 ของ docx LONGSAP168 ยาว 72 ตัวอักษร
+// ("LONGSAP168 ครบตั้งแต่เกมดัง โต๊ะสด ไปจนถึงระบบหลังบ้านที่พร้อมลุยทุกเวลา")
+// chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
+//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ ✦ สองตัว
+//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg/leading-normal = 27px
+//   ต่อบรรทัด, 4 บรรทัด = 108px + 24px = 132px ขอบล่างอยู่ที่ 108px เทียบกับ
+//   pt-36 (144px) → เหลือช่องว่าง 36px
+//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ ✦ เหลือ ~566px,
+//   text-2xl/leading-normal = 36px ต่อบรรทัด, 2 บรรทัด = 72px + 24px = 96px
+//   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-32 (128px) → เหลือ 56px
+// ให้ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge หนึ่งขั้นเสมอ อย่าทำให้เท่ากัน
+// ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
+// ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// Dark theme (BUFFXBET): the card is a translucent navy panel, so the badge is
-// the near-black ink pill and its text is the electric-blue → gold gradient.
-// Never dark ink on the blue — #02061a on #3b8df1 is the only readable pairing
-// that way round and the gradient runs through #0a2563, which is too dark for it.
+// ธีม LONGSAP168: การ์ดเป็นแผงดำอมแดง #170806 ป้ายจึงเป็นเม็ดหมึกดำสนิท #0a0402
+// และตัวอักษรเป็น gradient ทอง → ส้มไฟ ซึ่งเป็นคู่เดียวที่อ่านออกบนพื้นนั้น
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#3b8df1]/30 bg-[#0a1330]/88 p-8 pt-36 text-left text-base leading-relaxed text-[#dbe7fb] shadow-[0_10px_30px_rgba(59,141,241,0.18)] backdrop-blur-md md:pt-32">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#7cc0ff]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#0a2563]/45 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f2b024]/30 bg-[#170806]/88 p-8 pt-36 text-left text-base leading-relaxed text-[#f6e4c8] shadow-[0_10px_30px_rgba(242,176,36,0.18)] backdrop-blur-md md:pt-32">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#ff4d2e]/30 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#7d0508]/50 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#7cc0ff]/50 bg-[#02061a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(59,141,241,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#02ccfa]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffd76a]/50 bg-[#0a0402] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(216,31,38,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#ff4d2e]">
             ✦
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#7cc0ff] via-[#3b8df1] to-[#f5c542] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>
-            {title}
-          </HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#02ccfa]">
+          <HeadingTag class={`bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#ff4d2e] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#ff4d2e]">
             ✦
           </span>
         </div>

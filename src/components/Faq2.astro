@@ -11,46 +11,49 @@ export interface Props {
 
 const { title, faqs = [] } = Astro.props;
 
-// The question renders as a <span>, not an <h3>. The docx these pages are
-// filled from is flat H1 + H2, and the rendered heading inventory is diffed
-// against it on every rebrand — five FAQ questions arriving as <h3> is exactly
-// what makes that diff disagree. A <span> is also the only safe choice inside
-// <summary>, whose content model is phrasing content: a <p> there is invalid.
-// The section's own accessible name comes from the prop-driven <h2> title,
-// which does trace back to the brief.
+// คำถาม render เป็น <span> ไม่ใช่ <h3> — docx ที่หน้าพวกนี้ถูกเติมมาแบนราบ (H1 +
+// H2 ล้วน) และ inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์ คำถาม
+// FAQ ห้าข้อที่โผล่มาเป็น <h3> คือสิ่งที่ทำให้การเทียบนั้นไม่ตรง อีกอย่าง <span>
+// เป็นตัวเลือกเดียวที่ปลอดภัยใน <summary> ซึ่ง content model เป็น phrasing
+// content — <p> ตรงนั้นไม่ถูกต้องตามสเปก ชื่อ section มาจาก <h2> ที่ขับด้วย prop
+// `title` ซึ่งย้อนกลับไปหา brief ได้จริง
+//
+// LONGSAP168: ย้ายจากน้ำเงินของแบรนด์ก่อน (#3b8df1 / #7cc0ff / #0a1330 /
+// #0a2563 / #02061a / #dbe7fb / #f5c542 / #fbe57d) มาที่ทองมังกร #ffd76a /
+// #f2b024 / #a86a0c คู่กับไฟ #ff4d2e / #d81f26 / #7d0508 บนผิว #170806 / #0a0402
 ---
 
 <section class="mx-auto max-w-[950px] space-y-6 px-4 py-6 font-sans">
   {
     title && (
       <header class="mb-8 text-center">
-        <h2 class="bg-gradient-to-r from-[#7cc0ff] via-[#3b8df1] to-[#f5c542] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <h2 class="bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#d81f26] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </h2>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#3b8df1] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f2b024] to-transparent" />
       </header>
     )
   }
 
   {
     faqs.map((faq) => (
-      <div class="group relative bg-[#0a2563] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#f5c542] via-[#3b8df1] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
+      <div class="group relative bg-[#7d0508] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#f2b024] via-[#d81f26] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
 
-        <details class="faq-item relative bg-[#0a1330] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
+        <details class="faq-item relative bg-[#170806] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
           <summary class="flex w-full cursor-pointer items-center gap-4 text-left">
             <span
               aria-hidden="true"
-              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#fbe57d] to-[#f5c542] font-black text-[#02061a] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#ffd76a] to-[#f2b024] font-black text-[#0a0402] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
               ?
             </span>
-            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#dbe7fb]">{faq.q}</span>
-            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#f5c542] transition-transform duration-300">
+            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#f6e4c8]">{faq.q}</span>
+            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#f2b024] transition-transform duration-300">
               ▼
             </span>
           </summary>
 
-          <p class="faq-answer mt-4 border-l-2 border-[#3b8df1]/70 pl-4 text-left text-base leading-relaxed text-[#dbe7fb]/85">{faq.a}</p>
+          <p class="faq-answer mt-4 border-l-2 border-[#d81f26]/70 pl-4 text-left text-base leading-relaxed text-[#f6e4c8]/85">{faq.a}</p>
         </details>
       </div>
     ))
@@ -58,15 +61,13 @@ const { title, faqs = [] } = Astro.props;
 </section>
 
 <style>
-  /* <details> instead of a button + max-height script. The open/close state,
-     the keyboard handling and the expanded/collapsed announcement all come
-     from the element, so there is no JS to get wrong and nothing for a rebrand
-     to break by restyling.
-     What it fixed: the badge and the arrow were not aria-hidden, so the
-     accessible name of every question was "? <คำถาม> ▼". The panel was closed
-     with max-h-0, which leaves it in the accessibility tree and reachable by
-     keyboard while invisible. And aria-expanded was set without an
-     aria-controls to point at. */
+  /* ใช้ <details> แทนปุ่ม + สคริปต์ max-height สถานะเปิด/ปิด การรับคีย์บอร์ด และ
+     การประกาศ expanded/collapsed มาจากตัว element เอง จึงไม่มี JS ให้เขียนพลาด
+     และไม่มีอะไรให้การรีแบรนด์ทำพังด้วยการแก้สไตล์
+     สิ่งที่มันแก้: ป้ายกับลูกศรไม่ได้ aria-hidden ชื่อที่อ่านออกของทุกคำถามจึงเป็น
+     "? <คำถาม> ▼" ส่วนแผงคำตอบถูกปิดด้วย max-h-0 ซึ่งยังอยู่ใน accessibility tree
+     และคีย์บอร์ดเข้าถึงได้ทั้งที่มองไม่เห็น และ aria-expanded ถูกตั้งไว้โดยไม่มี
+     aria-controls ให้ชี้ */
   .faq-item > summary {
     list-style: none;
   }
