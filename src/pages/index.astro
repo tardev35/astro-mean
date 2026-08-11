@@ -1,52 +1,44 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
-import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
-import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
+import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
+import ContentBox3Three from "../components/ContentBox3Three.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxTwo from "../components/ContentBoxTwo.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
 import ContentBox from "../components/ContentBox.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ProviderGrid from "../components/ProviderGridPremium.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinnersPremium.astro";
+import LatestWinners from "../components/LatestWinnersCyber.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq4.astro";
+import Faq from "../components/Faq2.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgWelcomeBonus from "../assets/slide1.png";
-import imgPayoutTrust from "../assets/slide4.png";
+import imgDailyBonus from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1"
-//   2 → ContentBoxSevenThreePremium + slide1 (เปิดยูสใหม่ รับความคุ้มค่าจัดเต็ม)
-//   3 → ContentBoxTwoPremium (ส่ง title อย่างเดียว แล้วแบ่งย่อหน้าเดียวลง
-//       left/right ที่รอยต่อประโยค — titleleft/titleright เป็น <p> ของ chrome)
-//   4 → ContentBox3ThreePremium (ส่ง title อย่างเดียว แบ่งย่อหน้าลง
-//       left/center/right)
-//   5 → ContentBoxSpecial (สองครึ่ง แบ่งย่อหน้าเดียวลง left/right)
-//   6 → ContentBoxSevenThreeFloatingBadge + slide4 (ถอนเงินชัวร์ไม่อั้น)
+//   1 → ContentBoxCyberCut as="h1"
+//   2 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อ
+//       ประโยค)
+//   3 → ContentBox3Three as="h2" (แบ่งย่อหน้าลง left/center/right)
+//   4 → ContentBoxNeumorphism as="h2"
+//   5 → ContentBoxTwo as="h2" (แบ่งย่อหน้าลง left/right)
+//   6 → ContentBoxSevenThreeCyberCut + slide1 (ฟีเจอร์โบนัสแจกให้ตามทุกวัน)
 //   7 → ContentBox as="h2"
 //
-// SevenThree ใช้ 2 บล็อกเท่านั้น (โควตาเต็ม) และแต่ละตัวส่ง `title` เดียว
-// ถ้าส่ง titleleft/titleright ด้วยจะได้หัวข้อเกินจำนวนหัวข้อ docx
+// SevenThree รอบนี้ใช้บล็อกเดียว ไม่ใช่สองบล็อก: slide4.png เป็นอาร์ตของแบรนด์ก่อน
+// หน้า (mtime 2026-08-11 เก่ากว่าดรอปนี้ทั้งชุด) จึงถูกถอด import ออกทั้งหมด เหลือ
+// สไลด์ปัจจุบันสามใบ — slide2/slide3 เป็นของ SmoothCarousel และ slide1 เป็นของ
+// บล็อก SevenThree ถ้าเปิดบล็อกที่สองจะต้องไปดึงสไลด์ของ carousel ออกมาแล้วเหลือ
+// เฟรมเดียว playbook อนุญาตให้ใช้บล็อกเดียวอยู่แล้ว
 //
-// docx ของแบรนด์นี้แบนราบ (H1 + H2 ล้วน ไม่มี H3) — variant Premium ที่สลับเข้ามา
-// รอบนี้เคย render หัวคอลัมน์เป็น <h3> (ContentBox3ThreePremium) จึงถูกลดเป็น <p>
-// แล้วเพิ่ม prop `title` ตัวเดียวไว้รับหัวข้อ docx แทน ส่วน ContentBoxTwoPremium
-// เดิมมีแต่ titleleft/titleright ที่ render เป็น <p> ของ chrome รอบนี้มันแบกหัวข้อ
-// docx จริงจึงได้ prop `title` + `as` เพิ่ม — วิธีเดียวกับที่ ContentBox/ContentBoxTwo
-// ทำไว้แล้ว
-//
-// slide2/slide3 อยู่ใน SmoothCarousel อย่างเดียว, slide1/slide4 อยู่ใน SevenThree
-// อย่างละบล็อก — รูปหนึ่งใบมีบ้านเดียว ไม่ซ้ำกันในหน้าเดียว
-// banner2/3/4 กับ banner.png เป็นอาร์ตของแบรนด์ก่อนหน้า (mtime 2026-08-04) จึงไม่
-// ถูก import ที่ไหน ส่วน banner1/banner1-mobile เป็น hero ที่ MainLayout จัดการเอง
+// banner1/banner1-mobile เป็น hero ที่ MainLayout จัดการเอง ส่วน banner2/3/4 กับ
+// banner.png เป็นอาร์ตของแบรนด์เก่า (mtime 2026-08-04) จึงไม่ถูก import ที่ไหน
 //
 // widget ที่ไม่ได้มาจาก docx (SmoothCarousel, ProviderGrid, GameRankingBoard,
 // LatestWinners, LoginRtpSection, ReviewCardSumo2, แถวปุ่ม login/register) ใช้
@@ -54,40 +46,45 @@ import imgPayoutTrust from "../assets/slide4.png";
 // สังกัดได้โดยลำดับ h2 ไม่เพี้ยน
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7
-// คำถามใน Faq4 เป็น <span> ตามระดับที่ variant นั้น ship มา ไม่ใช่ <h3>
+// คำถามใน Faq2 เป็น <span> ตามระดับที่ variant นั้น ship มา ไม่ใช่ <h3>
+//
+// variant รอบนี้เปลี่ยนทั้งตระกูล: CyberCut + Neumorphism + plain แทนชุด Premium +
+// FloatingBadge ของ IOK66 ส่วน ContentBoxTwoNeumorphism กับ
+// ContentBoxSevenThreeCyberCut เดิมมีแต่ titleleft/titleright ที่ render เป็น <h3>/
+// <h2> ของ chrome รอบนี้ทั้งคู่ถูกลดเป็น <p> แล้วเพิ่ม prop `title` + `as` ตัวเดียว
+// ไว้รับหัวข้อ docx — วิธีเดียวกับที่ ContentBox/ContentBoxTwo ทำไว้อยู่แล้ว
 
-// Title มาจาก docx ตรงตัว ส่วน Des ของ docx นับได้ 149 ตัวอักษร ต่ำกว่าขั้นต่ำ
-// 150 ที่ verify-build บังคับอยู่หนึ่งตัว จึงขยายคำท้ายสุดจาก "ระบบออโต้ไวที่สุด"
-// เป็น "ระบบฝากถอนออโต้ไวที่สุด" (ถ้อยคำจากหัวข้อที่ 7 ของ docx เอง) ได้ 155 ตัว
-// อักษร ไม่ได้เติมข้อความที่ brief ไม่ได้พูดถึง
-const pageTitle = "IOK66 สมัครสมาชิกเว็บสล็อตต่างประเทศ แจกหนัก ลิขสิทธิ์แท้ 100%";
-const pageDescription = "IOK66 เปิดยูสสมัครสมาชิกเว็บสล็อตต่างประเทศ ลิขสิทธิ์แท้ 100% ส่งตรงจากค่ายแม่ การันตีแจกหนัก แตกง่าย ไม่ล็อคผล ถอนเงินชัวร์ไม่อั้น ระบบฝากถอนออโต้ไวที่สุด";
+// Title/Des มาจาก docx ตรงตัว (Des นับได้ 153 ตัวอักษร อยู่ในช่วง 150–160 ที่
+// verify-build บังคับ) ไม่ต้องขยายหรือย่อ
+const pageTitle = "FUSIONNEW | สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป";
+const pageDescription =
+  "FUSIONNEW สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป จับเกมฮิตชนเกมใหม่ไว้ในเว็บเดียว อัปเดตความสนุกต่อเนื่อง พร้อมฟีเจอร์และโบนัสที่มีอะไรให้ตามทุกวัน";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default แม้รอบนี้ default จะถูกอัปเดตแล้วก็ตาม
 const announcementMessage =
-  "IOK66 สมัครสมาชิกเว็บสล็อตต่างประเทศ ลิขสิทธิ์แท้ 100% แตกง่าย แจกหนัก • เปิดยูสใหม่ขั้นตอนสั้นกระชับ ไม่ต้องกรอกข้อมูลส่วนตัวให้วุ่นวาย รับสิทธิพิเศษและโปรโมชั่นต้อนรับไปต่อยอดเป็นทุนเดิมพันได้ทันที • ทุกเกมส่งตรงจากค่ายแม่ผ่านระบบ API แท้ที่ดึงจากเซิร์ฟเวอร์หลัก ภาพไม่กระตุก ไม่ค้างช่วงโบนัสไทม์ • ค่า RTP สูงกว่าเว็บทั่วไป ไม่ปรับลดอัตราการชนะ สแกตเตอร์และฟรีสปินมาบ่อย • สุ่มผลด้วยกลไก RNG ที่ตรวจสอบได้และรับรองจากสถาบันอิสระ โปร่งใส 100% ไม่มีแอดมินแทรกแซงผลรางวัล • ถอนได้เต็มจำนวนไม่หักเปอร์เซ็นต์ ไม่ต้องทำเทิร์นโอเวอร์ซ้ำซ้อน • ฝากถอนออโต้เต็มรูปแบบ ไม่ต้องส่งสลิป ไม่ต้องรอแอดมิน จบในไม่กี่วินาที รองรับทุกธนาคารชั้นนำ";
+  "FUSIONNEW สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป • รวมเกมดีจากทุกค่ายชั้นนำเข้ามาไว้ด้วยกัน กราฟิกสุดอลังการ เอฟเฟกต์เสียงตระการตา ธีมเกมแปลกใหม่แบบไม่มีจำกัด • จับเกมฮิตติดระดับตำนานมาโคจรพบกับเกมมาใหม่ล่าสุด สลับอารมณ์เล่นได้ตลอดทั้งวันในหน้าเดียว ไม่ต้องคอยเปลี่ยนเว็บไปมา • ฝากถอนอัตโนมัติทำรายการได้รวดเร็ว จังหวะสปินต่อเนื่องไม่มีดรอปแม้ช่วงที่มีผู้เล่นเข้าใช้งานเยอะ • ค่ายเกมดังออกเกมอะไรมาใหม่ ได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ ไม่ต้องรอคิว ไม่ต้องรอระบบอนุมัตินาน • โบนัสและลูกเล่นเสริมพิเศษแจกให้ตลอดเวลา เพิ่มโอกาสชนะในแต่ละรอบให้สูงขึ้นทุกการหมุน";
 
 const faqs = [
   {
-    q: "สมัครสมาชิก IOK66 ยุ่งยากไหม เปิดยูสใหม่ได้อะไรบ้าง",
-    a: "ขั้นตอนการลงทะเบียนถูกออกแบบมาให้สั้น กระชับ ไม่ต้องกรอกข้อมูลส่วนตัวให้วุ่นวาย เมื่อเปิดยูสเซอร์สำเร็จ คุณจะได้รับสิทธิพิเศษและโปรโมชั่นต้อนรับที่สามารถนำไปต่อยอดเป็นทุนในการเดิมพันได้ทันที ทุกข้อเสนอถูกคิดมาเพื่อเพิ่มโอกาสให้ผู้เล่นหน้าใหม่ทำกำไรได้ตั้งแต่ครั้งแรกที่ล็อคอินเข้าสู่ระบบ",
+    q: "FUSIONNEW ต่างจากเว็บสล็อตทั่วไปตรงไหน",
+    a: "ยุคนี้การเล่นเกมสล็อตไม่ได้มีแค่การกดหมุนไปวันๆ แต่คือการรวมตัวกันของเกมระดับท็อปและการใช้งานที่ลื่นไหลระดับสิบเต็มสิบ ไม่ว่าจะเป็นสายปั่นเบทเบาๆ หรือสายล่ารางวัลใหญ่ ที่นี่รวมเอาความตื่นเต้นครบทุกมิติมาผสมผสานไว้ได้อย่างลงตัว ลืมภาพเว็บสล็อตช้าๆ โหลดค้าง หรือหมุนแล้วกระตุกไปได้เลย เพราะระบบถูกเซ็ตมาเพื่อตอบโจทย์คนรุ่นใหม่โดยเฉพาะ",
   },
   {
-    q: "เกมใน IOK66 เป็นลิขสิทธิ์แท้จริงไหม ภาพจะกระตุกช่วงโบนัสไทม์หรือเปล่า",
-    a: "ทุกเกมถูกนำเข้ามาอย่างถูกต้องตามกฎหมายของวงการคาสิโนสากล เราคัดสรรเฉพาะค่ายเกมชั้นนำที่ได้รับการยอมรับระดับโลกมาให้บริการ ทั้งคุณภาพกราฟิก ฟีเจอร์ตัวคูณ และระบบเสียงจัดเต็มทุกอรรถรส เพราะเล่นผ่านเซิร์ฟเวอร์หลักด้วยระบบ API แท้ จึงหมดปัญหาภาพกระตุกหรือเกมค้าง และทุกรอบการเดิมพันแฟร์ได้มาตรฐานสูงสุด",
+    q: "คำว่าเกมดีฟิวชั่นครบทุกสไตล์ของ FUSIONNEW หมายถึงอะไร",
+    a: "คำว่าฟิวชั่นไม่ได้มีแค่ในเรื่องอาหาร เพราะ FUSIONNEW นำคอนเซปต์นี้มาปรับใช้กับการคัดสรรเกมสล็อตได้อย่างน่าสนใจ การรวมเกมดีจากทุกค่ายชั้นนำเข้ามาไว้ด้วยกัน ทำให้ผู้เล่นเข้าถึงกราฟิกสุดอลังการ เอฟเฟกต์เสียงตระการตา และธีมเกมที่แปลกใหม่ได้แบบไม่มีจำกัด ไม่ว่าจะเป็นแนวผจญภัย แฟนตาซี หรือแนวคลาสสิก ทุกเกมถูกออกแบบมาให้เล่นง่ายและตื่นเต้นได้ทุกวินาทีที่กดสปิน",
   },
   {
-    q: "ทำไมอัตราการจ่ายรางวัลของ IOK66 ถึงสูงกว่าเว็บอื่น",
-    a: "เคล็ดลับที่ทำให้นักปั่นหลายคนเลือกตั้งรกรากอยู่ที่นี่ คือค่า RTP (Return to Player) ที่สูงกว่าเว็บทั่วไป เราไม่มีการปรับลดอัตราการชนะของผู้เล่น ทำให้จังหวะการออกสแกตเตอร์หรือฟรีสปินมาบ่อยและเข้าถึงง่าย ไม่ว่าคุณจะเดินเบทขั้นต่ำหรือปรับเบทหนัก โอกาสคว้าเงินรางวัลหลักหมื่นถึงหลักแสนก็เป็นไปได้จริงทุกช่วงเวลา",
+    q: "เล่นเกมเดิมซ้ำๆ แล้วเบื่อ ที่นี่มีเกมให้สลับเล่นมากแค่ไหน",
+    a: "ที่ FUSIONNEW เข้าใจพฤติกรรมคนเล่นสายสปินเป็นอย่างดี จึงจัดหมวดหมู่เกมโดยเอาตัวฮิตติดระดับตำนานมาโคจรพบกับเกมมาใหม่ล่าสุด ให้คุณได้สลับอารมณ์เล่นได้ตลอดทั้งวัน ความหลากสไตล์ตรงนี้แหละที่ทำให้หลายคนลองเข้ามาเล่นแล้วติดใจจนต้องบอกต่อเพื่อน เพราะไม่ต้องคอยเปลี่ยนเว็บไปมา อยากเปลี่ยนฟีลเมื่อไหร่ก็แค่กดเลือกเกมใหม่ในหน้าเดียว",
   },
   {
-    q: "มีการล็อคยูสเซอร์หรือปรับเรทชนะหลังบ้านหรือไม่",
-    a: "ไม่มีครับ ระบบของเราทำงานด้วยกลไกสุ่มผลแบบ RNG (Random Number Generator) ที่ตรวจสอบได้และได้รับการรับรองจากสถาบันอิสระ ทุกยอดการได้เสียเกิดขึ้นจากอัลกอริทึมที่โปร่งใส 100% ไม่มีแอดมินหลังบ้านคอยกดปุ่มแทรกแซงผลรางวัล คุณจึงกอบโกยกำไรได้อย่างสบายใจไร้ข้อกังขา",
+    q: "ช่วงที่คนเล่นเยอะ ระบบจะหน่วงหรือหลุดกลางคันไหม",
+    a: "เรื่องความเร็วและความเสถียรคือหัวใจหลักของ FUSIONNEW ไม่ว่าจะเป็นระบบฝากถอนอัตโนมัติที่ทำรายการได้อย่างรวดเร็ว หรือระบบการเล่นเกมที่ไม่ว่าจะอยู่ช่วงเวลาที่มีผู้เล่นเข้าใช้งานเยอะแค่ไหน จังหวะสปินก็ยังคงต่อเนื่องไม่มีดรอป ไม่มีคำว่าหลุดกลางคันให้เสียอารมณ์ ความต่อเนื่องตรงนี้เองที่ช่วยให้คุณลุ้นรอบโบนัสและคอมโบได้อย่างเต็มที่ ไร้สิ่งรบกวนใจ",
   },
   {
-    q: "ถอนเงินก้อนใหญ่ได้ไหม ต้องทำเทิร์นโอเวอร์หรือรอแอดมินนานหรือเปล่า",
-    a: "เล่นได้เท่าไหร่เราพร้อมโอนให้เต็มจำนวนไม่มีหักเปอร์เซ็นต์ ไม่ว่าจะเป็นยอดแตกหลักร้อยหรือแจ็คพอตแตกล้าน ฐานการเงินที่มั่นคงระดับแนวหน้าของเอเชียรองรับการถอนก้อนใหญ่ได้อย่างไร้ขีดจำกัด ไม่ต้องทำเทิร์นโอเวอร์ซ้ำซ้อน และระบบธุรกรรมเป็นอัตโนมัติเต็มรูปแบบ ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินตอบแชท เงินเข้าบัญชีภายในไม่กี่วินาที",
+    q: "มีโบนัสหรือกิจกรรมให้ร่วมสนุกบ่อยแค่ไหน",
+    a: "นอกจากตัวเกมจะสนุกแล้ว เรื่องของกิจกรรมและโปรโมชันก็จัดเต็มไม่แพ้กัน ที่ FUSIONNEW มีการแจกโบนัสและลูกเล่นเสริมพิเศษให้กับผู้เล่นอยู่ตลอดเวลา เพิ่มโอกาสการชนะในแต่ละรอบให้สูงขึ้น ทำให้ทุกการหมุนมีความหมายและน่าตื่นเต้นยิ่งกว่าเดิม ไม่ว่าจะเข้ามาเล่นเวลาไหน ก็มีจังหวะให้ได้ลุ้นรางวัลใหญ่กลับไปเสมอ",
   },
 ];
 
@@ -103,70 +100,61 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="IOK66 สมัครสมาชิกเว็บสล็อตต่างประเทศ ลิขสิทธิ์แท้ 100% แตกง่าย แจกหนัก">
+  <ContentBoxCyberCut as="h1" title="FUSIONNEW สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป">
     <p class="text-left text-base leading-relaxed">
-      หากคุณกำลังมองหาแหล่งทำเงินที่ไว้ใจได้ การเลือกเล่นกับเว็บตรงจากต่างประเทศคือคำตอบที่ดีที่สุด เพราะมาตรฐานการให้บริการจะสูงกว่าเว็บทั่วไปอย่างชัดเจน ที่ IOK66 เรานำเสนอประสบการณ์ปั่นสล็อตระดับโลกที่ให้คุณลุ้นกำไรได้ง่ายกว่าเดิม
-      ด้วยระบบ API แท้ที่ดึงตรงจากเซิร์ฟเวอร์หลัก ทำให้ทุกการหมุนมีโอกาสแตกหนักและรับเงินรางวัลก้อนโตแบบไม่ต้องพึ่งดวงเพียงอย่างเดียว
+      ถ้าคุณกำลังตามหาประสบการณ์เล่นสล็อตยุคใหม่ที่ไม่เหมือนเดิม ต้องลองมาสัมผัสที่ FUSIONNEW ยุคนี้การเล่นเกมสล็อตไม่ได้มีแค่การกดหมุนไปวันๆ
+      แต่คือการรวมตัวกันของเกมระดับท็อปและการใช้งานที่ลื่นไหลระดับสิบเต็มสิบ ไม่ว่าจะเป็นสายปั่นเบทเบาๆ หรือสายล่ารางวัลใหญ่ ที่นี่รวมเอาความตื่นเต้นครบทุกมิติมาผสมผสานไว้ได้อย่างลงตัว
+      ลืมภาพเว็บสล็อตช้าๆ โหลดค้าง หรือหมุนแล้วกระตุกไปได้เลย เพราะระบบถูกเซ็ตมาเพื่อตอบโจทย์คนรุ่นใหม่โดยเฉพาะ
     </p>
-  </ContentBoxPremium>
+  </ContentBoxCyberCut>
 
   <SmoothCarousel />
 
-  <ContentBoxSevenThreePremium title="IOK66 เปิดยูสใหม่รับความคุ้มค่าแบบจัดเต็มทันที">
-    <Picture
-      slot="left"
-      src={imgWelcomeBonus}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น IOK66 ข้อความ ทุกยอดฝาก 500 บาท หมุนวงล้อฟรี และ ฝากครบ 200 บาท ลุ้นกล่องสุ่มฟรี พร้อมโลโก้ iok66 Gaming ภาพพนักงานหญิงชุดสูทดำ วงล้อเสี่ยงโชค กล่องของขวัญ ฉากผ้าม่านแดงและสิงโตหินจีน"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e3b64a]/35 shadow-[0_10px_30px_rgba(227,182,74,0.22)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เริ่มต้นเส้นทางเศรษฐีได้ง่ายๆ เพียงแค่สมัครเข้ามาเป็นครอบครัวเดียวกัน ขั้นตอนการลงทะเบียนถูกออกแบบมาให้สั้น กระชับ ไม่ต้องกรอกข้อมูลส่วนตัวให้วุ่นวาย เมื่อเปิดยูสเซอร์สำเร็จ คุณจะได้รับสิทธิพิเศษและโปรโมชั่นต้อนรับที่สามารถนำไปต่อยอดเป็นทุนในการเดิมพันได้ทันที
-      ทุกข้อเสนอถูกคิดมาเพื่อเพิ่มโอกาสให้ผู้เล่นหน้าใหม่สามารถทำกำไรได้ตั้งแต่ครั้งแรกที่ล็อคอินเข้าสู่ระบบ
-    </p>
-  </ContentBoxSevenThreePremium>
-
-  <ContentBoxTwoPremium as="h2" title="ส่งตรงจากค่ายแม่ การันตีคุณภาพเกมลิขสิทธิ์แท้ทุกค่าย">
+  <ContentBoxTwoNeumorphism as="h2" title="FUSIONNEW สล็อตเจนใหม่ เปิดโหมดความมันส์ด้วยเกมดีฟิวชั่นครบทุกสไตล์">
     <p slot="left" class="text-left text-base leading-relaxed">
-      หมดปัญหาภาพกระตุกหรือเกมค้างช่วงโบนัสไทม์ เพราะทุกเกมถูกนำเข้ามาอย่างถูกต้องตามกฎหมายของวงการคาสิโนสากล เราคัดสรรเฉพาะค่ายเกมชั้นนำที่ได้รับการยอมรับระดับโลกมาให้บริการ
+      คำว่าฟิวชั่นไม่ได้มีแค่ในเรื่องอาหาร เพราะ FUSIONNEW นำคอนเซปต์นี้มาปรับใช้กับการคัดสรรเกมสล็อตได้อย่างน่าสนใจ การรวมเกมดีจากทุกค่ายชั้นนำเข้ามาไว้ด้วยกัน
+      ทำให้ผู้เล่นสามารถเข้าถึงกราฟิกสุดอลังการ เอฟเฟกต์เสียงตระการตา และธีมเกมที่แปลกใหม่ได้แบบไม่มีจำกัด
     </p>
     <p slot="right" class="text-left text-base leading-relaxed">
-      คุณภาพกราฟิก ฟีเจอร์ตัวคูณ และระบบเสียงจัดเต็มทุกอรรถรส ที่สำคัญคือการเล่นผ่านเซิร์ฟเวอร์หลักจะช่วยให้คุณมั่นใจได้ว่าทุกรอบการเดิมพันนั้นแฟร์และได้มาตรฐานสูงสุด
+      ไม่ว่าจะเป็นแนวผจญภัย แฟนตาซี หรือแนวคลาสสิก ทุกเกมถูกออกแบบมาให้เล่นง่าย แตกจริง และสร้างความตื่นเต้นได้ทุกวินาทีที่กดสปิน
     </p>
-  </ContentBoxTwoPremium>
+  </ContentBoxTwoNeumorphism>
+
+  <ContentBox3Three as="h2" title="จับเกมฮิตชนเกมใหม่ใน FUSIONNEW คัดตัวน่าเล่นมาให้สลับฟีลได้ไม่มีเบื่อ">
+    <p slot="left" class="text-left text-base leading-relaxed">เคยไหมที่เล่นเกมเดิมๆ แล้วเริ่มรู้สึกเฉา? ที่ FUSIONNEW เข้าใจพฤติกรรมคนเล่นสายสปินเป็นอย่างดี</p>
+    <p slot="center" class="text-left text-base leading-relaxed">จึงจัดหมวดหมู่เกมโดยเอาตัวฮิตติดระดับตำนานมาโคจรพบกับเกมมาใหม่ล่าสุด ให้คุณได้สลับอารมณ์เล่นได้ตลอดทั้งวัน</p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ความหลากสไตล์ตรงนี้แหละที่ทำให้หลายคนลองเข้ามาเล่นแล้วติดใจจนต้องบอกต่อเพื่อน เพราะไม่ต้องคอยเปลี่ยนเว็บไปมา อยากเปลี่ยนฟีลเมื่อไหร่ก็แค่กดเลือกเกมใหม่ในหน้าเดียว
+    </p>
+  </ContentBox3Three>
 
   <ProviderGrid />
 
-  <ContentBox3ThreePremium as="h2" title="ทำไมการเดิมพันกับ IOK66 ถึงมีอัตราการจ่ายรางวัลสูงกว่าที่อื่น">
-    <p slot="left" class="text-left text-base leading-relaxed">เคล็ดลับที่ทำให้นักปั่นหลายคนเลือกตั้งรกรากอยู่ที่นี่ คือค่า RTP (Return to Player) ที่สูงกว่าเว็บทั่วไป</p>
-    <p slot="center" class="text-left text-base leading-relaxed">เราไม่มีการปรับลดอัตราการชนะของผู้เล่น ทำให้จังหวะการออกสแกตเตอร์หรือฟรีสปินมาบ่อยและเข้าถึงง่าย</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ไม่ว่าคุณจะเดินเบทขั้นต่ำหรือปรับเบทหนัก โอกาสที่จะคว้าเงินรางวัลหลักหมื่นถึงหลักแสนก็มีความเป็นไปได้จริงในทุกช่วงเวลา</p>
-  </ContentBox3ThreePremium>
+  <ContentBoxNeumorphism as="h2" title="ระบบไวไม่มีดรอป จุดเปลี่ยนเล็ก ๆ ที่ทำให้ทุกสปินต่อกันได้แบบไม่ขัดจังหวะ">
+    <p class="text-left text-base leading-relaxed">
+      เรื่องความเร็วและความเสถียรคือหัวใจหลักของ FUSIONNEW ไม่ว่าจะเป็นระบบฝากถอนอัตโนมัติที่ทำรายการได้อย่างรวดเร็ว
+      หรือระบบการเล่นเกมที่ไม่ว่าจะอยู่ช่วงเวลาที่มีผู้เล่นเข้าใช้งานเยอะแค่ไหน จังหวะสปินก็ยังคงต่อเนื่องไม่มีดรอป ไม่มีคำว่าหลุดกลางคันให้เสียอารมณ์
+      ความต่อเนื่องตรงนี้เองที่ช่วยให้คุณลุ้นรอบโบนัสและคอมโบได้อย่างเต็มที่ ไร้สิ่งรบกวนใจ
+    </p>
+  </ContentBoxNeumorphism>
 
   <GameRankingBoard />
 
-  <ContentBoxSpecial as="h2" title="สล็อตเว็บตรง ระบบเดิมพันโปร่งใส ไม่มีการล็อคผลรางวัล">
+  <ContentBoxTwo as="h2" title="อัปเดตความสนุกต่อเนื่อง เกมใหม่มาเมื่อไรพร้อมเปิดให้ตามทันทุกกระแสที่ FUSIONNEW">
     <p slot="left" class="text-left text-base leading-relaxed">
-      ความกังวลเรื่องการถูกปรับเรทชนะหรือล็อคยูสเซอร์จะหมดไปเมื่อคุณเลือกเล่นกับ IOK66 ระบบของเราทำงานด้วยกลไกสุ่มผลแบบ RNG (Random Number Generator) ที่ตรวจสอบได้และได้รับการรับรองจากสถาบันอิสระ
+      สายตามกระแสไม่มีตกเทรนด์แน่นอน เพราะ FUSIONNEW ขยันอัปเดตไลน์อัปเกมใหม่ๆ เข้าสู่ระบบอยู่เสมอ ค่ายเกมดังออกเกมอะไรมาใหม่ คุณจะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ
     </p>
     <p slot="right" class="text-left text-base leading-relaxed">
-      ทุกยอดการได้เสียเกิดขึ้นจากอัลกอริทึมที่โปร่งใส 100% ไม่มีแอดมินหลังบ้านคอยกดปุ่มแทรกแซงผลรางวัล คุณจึงกอบโกยกำไรได้อย่างสบายใจไร้ข้อกังขา
+      ไม่ต้องรอคิว ไม่ต้องรอระบบอนุมัตินาน อยากรู้ว่ากระแสเกมไหนกำลังมาแรง หรือฟีเจอร์ไหนกำลังแจกหนัก มาที่นี่ที่เดียวจบ ได้ตามเทรนด์ก่อนใครแน่นอน
     </p>
-  </ContentBoxSpecial>
+  </ContentBoxTwo>
 
   <LoginRtpSection />
 
-  <ContentBoxSevenThreeFloatingBadge title="IOK66 รองรับการถอนเงินชัวร์ไม่อั้น จ่ายเต็มทุกยอดบิล">
+  <ContentBoxSevenThreeCyberCut as="h2" title="ฟีเจอร์โบนัสมีแจกให้ตามทุกวัน เติมลูกเล่นให้แต่ละเกมมีจังหวะน่าลุ้นมากกว่าเดิม">
     <Picture
       slot="left"
-      src={imgPayoutTrust}
+      src={imgDailyBonus}
       loading="lazy"
       fetchpriority="low"
       widths={[200, 400, 600]}
@@ -175,21 +163,21 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์ IOK66 ข้อความ มั่นคง ปลอดภัย จ่ายเต็มทุกยอด พร้อมโลโก้ iok66 Gaming ภาพพนักงานหญิงชุดสูทดำถือแท็บเล็ต ฉากผ้าม่านแดง โคมไฟระย้าและสิงโตหินจีน"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e3b64a]/35 shadow-[0_10px_30px_rgba(163,22,28,0.22)]"
+      alt="แบนเนอร์โปรโมชั่น FUSIONNEW ข้อความ กิจกรรม วงล้อนำโชค แจกเครดิตฟรี ตลอด 24 ชม. ร่วมสนุกได้ทุกวัน รับเลย ภาพหญิงสาวชุดราตรีแดงถือแก้วแชมเปญ วงล้อเสี่ยงโชค ทองคำแท่งและสร้อยทอง พร้อมโลโก้ FUSIONNEW บนพื้นเปลวไฟแดง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e01a1a]/35 shadow-[0_10px_30px_rgba(224,26,26,0.22)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      เล่นได้เท่าไหร่ เราพร้อมโอนให้เต็มจำนวนไม่มีหักเปอร์เซ็นต์ ไม่ว่าจะเป็นยอดแตกหลักร้อยหรือแจ็คพอตแตกล้าน ฐานการเงินของเรามีความมั่นคงระดับแนวหน้าของเอเชีย ทำให้สามารถรองรับการทำรายการถอนเงินก้อนใหญ่ได้อย่างไร้ขีดจำกัด
-      ไม่ต้องทำเทิร์นโอเวอร์ซ้ำซ้อนให้เสียเวลา แค่กดทำรายการ เงินก็พร้อมเด้งเข้าบัญชีของคุณแบบเต็มเม็ดเต็มหน่วย
+      นอกจากตัวเกมจะสนุกแล้ว เรื่องของกิจกรรมและโปรโมชันก็จัดเต็มไม่แพ้กัน ที่ FUSIONNEW มีการแจกโบนัสและลูกเล่นเสริมพิเศษให้กับผู้เล่นอยู่ตลอดเวลา เพิ่มโอกาสการชนะในแต่ละรอบให้สูงขึ้น
+      ทำให้ทุกการหมุนมีความหมายและน่าตื่นเต้นยิ่งกว่าเดิม ไม่ว่าจะเข้ามาเล่นเวลาไหน ก็มีจังหวะให้ได้ลุ้นรางวัลใหญ่กลับไปเสมอ เป็นจุดเด่นที่ทำให้เหล่านักสปินพูดเป็นเสียงเดียวกันว่าคุ้มค่าสุดๆ
     </p>
-  </ContentBoxSevenThreeFloatingBadge>
+  </ContentBoxSevenThreeCyberCut>
 
   <LatestWinners />
 
-  <ContentBox as="h2" title="สัมผัสความรวดเร็วด้วยระบบฝากถอนออโต้ที่ไวที่สุดในตอนนี้">
+  <ContentBox as="h2" title="ฟิวชั่นทั้งเกม ระบบ และความสดใหม่ FUSIONNEW จบครบในเว็บเดียวแบบเจนใหม่ของจริง">
     <p class="text-left text-base leading-relaxed">
-      เวลาเป็นสิ่งมีค่าสำหรับนักลงทุน เราจึงพัฒนาระบบธุรกรรมการเงินให้เป็นรูปแบบอัตโนมัติเต็มรูปแบบ ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินตอบแชท คุณสามารถทำรายการฝากและถอนเงินผ่านหน้าเว็บได้ด้วยตัวเอง
-      ระบบจะประมวลผลและอัปเดตยอดเงินในกระเป๋าของคุณภายในไม่กี่วินาที รองรับทุกธนาคารชั้นนำ ให้คุณสนุกกับการปั่นสล็อตได้อย่างต่อเนื่องไม่มีสะดุด
+      ถ้าจะสรุปสั้นๆ ให้เพื่อนฟังว่าทำไมต้องมาเล่นที่ FUSIONNEW ก็คงเป็นเพราะความลงตัวในทุกๆ ด้าน ทั้งการรวมเกมคุณภาพ ระบบการทำงานที่สมบูรณ์แบบ และบริการที่เข้าใจผู้เล่นยุคใหม่อย่างแท้จริง
+      ไม่ต้องเสียเวลาลองผิดลองถูกกับเว็บอื่นอีกต่อไป แค่ก้าวเข้ามาสัมผัสด้วยตัวเอง แล้วคุณจะรู้ว่าคำว่าสล็อตเจนใหม่ของจริงมันเป็นอย่างไร ลองแล้วจะอยากชวนเพื่อนมาสนุกด้วยกันแน่นอน
     </p>
   </ContentBox>
 
@@ -198,18 +186,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a3] via-[#e3b64a] to-[#b8862c] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0d0705] shadow-[0_10px_30px_rgba(227,182,74,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,163,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ff5f52] via-[#e01a1a] to-[#8c0102] px-4 py-3 text-sm font-black whitespace-nowrap text-[#f7f5f4] shadow-[0_10px_30px_rgba(224,26,26,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,95,82,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#a3161c]/60 bg-[#1c110a]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e3b64a] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ffe9a3] hover:bg-[#ffe9a3] hover:text-[#0d0705] hover:shadow-[0_15px_40px_rgba(163,22,28,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#d9dde3]/50 bg-[#1f0c0d]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#d9dde3] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ff5f52] hover:bg-[#e01a1a] hover:text-[#f7f5f4] hover:shadow-[0_15px_40px_rgba(224,26,26,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ IOK66" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ FUSIONNEW" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

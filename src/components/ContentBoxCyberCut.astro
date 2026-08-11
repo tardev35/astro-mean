@@ -6,24 +6,25 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
 
-// LONGSAP168: การ์ดใบนี้เคยเป็นแผงสว่าง (white/85) มาจากแบรนด์เก่ากว่า และรอบก่อน
-// ถูกทำเป็นแดง #ff2b2b — ตอนนี้เป็นผิวมืด #170806 ตัวหนังสือ #f6e4c8 บนคู่สี
-// ทอง #f2b024 / ไฟ #d81f26 เก็บไว้แค่มุมตัดสไตล์ cyber-cut ของ variant นี้
+// FUSIONNEW: การ์ดใบนี้ผ่านมือหลายแบรนด์ — เคยเป็นแผงสว่าง (white/85), เคยเป็น
+// แดง #ff2b2b, รอบก่อนเป็นทอง #f2b024 บนผิว #170806 ของ LONGSAP168 — รอบนี้เป็น
+// ผิวเกือบดำ #150809 ตัวหนังสือ #e7e3e1 บนคู่สีแดงสัญญาณ #e01a1a / โครม #d9dde3
+// เก็บไว้แค่มุมตัดสไตล์ cyber-cut ของ variant นี้
 ---
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#f2b024]/30 bg-[#170806]/92 p-8 text-left text-base leading-relaxed text-[#f6e4c8] shadow-[0_10px_30px_rgba(242,176,36,0.18)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#e01a1a]/30 bg-[#150809]/92 p-8 text-left text-base leading-relaxed text-[#e7e3e1] shadow-[0_10px_30px_rgba(224,26,26,0.18)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#d81f26] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#f2b024] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#d81f26] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#f2b024] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#e01a1a] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#d9dde3] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#e01a1a] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#d9dde3] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#d81f26] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#d81f26] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#e01a1a] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#d9dde3] via-[#ff5f52] to-[#e01a1a] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

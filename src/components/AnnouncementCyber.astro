@@ -1,25 +1,28 @@
 ---
+// ค่า default ของทุก variant ในตระกูล Announcement เคยเป็นสโลแกนของแบรนด์เก่า
+// คนละเจ้ากัน หน้าย่อยที่เรียก <Announcement /> เปล่าๆ จะได้ค่านี้ไป จึงต้องเป็น
+// ข้อความของแบรนด์ปัจจุบันเสมอ ส่วน index.astro ยังส่ง message มาเองตรงๆ
 const {
-  message = "BUFFXBET สล็อตเว็บตรงสายคุ้ม โบนัสเน้นทุกจังหวะ กำไรอิ่มคุ้ม ถอนคล่องจริง • รวมเกมฮิตจากค่ายดังระดับท็อปไว้ที่เดียว ทั้งแนวแอคชั่น แฟนตาซี และสไตล์คลาสสิก ภาพคมชัดระดับไฮเอนด์ • โบนัสตัวคูณ ฟรีสปิน และรางวัลยิบย่อยโผล่มาเพิ่มสีสันตลอดเกม ลุ้นกำไรได้ไม่อั้น • ระบบออโต้ลื่น ตอบสนองไวทุกขั้นตอน มือใหม่เข้าใจระบบได้ในไม่กี่วินาที • ฝากถอนคล่องจริง ชนะปุ๊บสั่งถอนปั๊บ เงินเด้งเข้าบัญชีทันใจ",
+  message = "FUSIONNEW สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป • รวมเกมดีจากทุกค่ายชั้นนำไว้ด้วยกัน กราฟิกอลังการ เอฟเฟกต์เสียงตระการตา ธีมเกมแปลกใหม่แบบไม่มีจำกัด • จับเกมฮิตติดระดับตำนานมาโคจรพบเกมมาใหม่ล่าสุด สลับอารมณ์เล่นได้ตลอดทั้งวันจบในหน้าเดียว • ฝากถอนอัตโนมัติทำรายการไว จังหวะสปินต่อเนื่องไม่มีดรอป ไม่หลุดกลางคันให้เสียอารมณ์ • ค่ายดังออกเกมใหม่เมื่อไหร่ ได้ทดลองเล่นเป็นกลุ่มแรกเสมอ ไม่ต้องรอคิว • โบนัสและลูกเล่นเสริมพิเศษแจกให้ตามทุกวัน เพิ่มโอกาสชนะในทุกรอบการหมุน",
 } = Astro.props;
 ---
 
 <div class="mx-auto w-full max-w-7xl px-4 py-3 font-sans">
   <div
-    class="relative flex overflow-hidden border border-[#3b8df1]/55 bg-[#0a1330]/92 shadow-[0_0_15px_rgba(59,141,241,0.32)] backdrop-blur-md"
+    class="relative flex overflow-hidden border border-[#e01a1a]/55 bg-[#150809]/92 shadow-[0_0_15px_rgba(224,26,26,0.32)] backdrop-blur-md"
     style="clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);">
     <div
-      class="relative z-10 flex shrink-0 items-center justify-center bg-gradient-to-r from-[#0a2563] to-[#3b8df1] px-6 py-2.5 font-black text-[#fbe57d]"
+      class="relative z-10 flex shrink-0 items-center justify-center bg-gradient-to-r from-[#8c0102] to-[#e01a1a] px-6 py-2.5 font-black text-[#f7f5f4]"
       style="clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);">
       ประกาศ
     </div>
 
     <div class="marquee-container relative flex-1 overflow-hidden py-2.5 pr-6">
-      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#0a1330] to-transparent"></div>
+      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#150809] to-transparent"></div>
 
-      <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-widest whitespace-nowrap text-[#dbe7fb]">
-        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#f5c542] shadow-[0_0_8px_rgba(245,197,66,1)]"></span>{message}</span>
-        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#f5c542] shadow-[0_0_8px_rgba(245,197,66,1)]"></span>{message}</span>
+      <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-widest whitespace-nowrap text-[#e7e3e1]">
+        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#d9dde3] shadow-[0_0_8px_rgba(217,221,227,1)]"></span>{message}</span>
+        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#d9dde3] shadow-[0_0_8px_rgba(217,221,227,1)]"></span>{message}</span>
       </div>
     </div>
   </div>

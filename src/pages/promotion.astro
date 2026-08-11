@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxPremium.astro";
+import ContentBox from "../components/ContentBoxCyberCut.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 
 import { Picture } from "astro:assets";
 
@@ -13,31 +13,32 @@ import { Picture } from "astro:assets";
 // gives this page a Title and a Meta and never a body.
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The IOK66 drop (2026-08-11) reads:
-//   slide1 = ทุกยอดฝาก 500 บาท หมุนวงล้อฟรี / ฝากครบ 200 บาท ลุ้นกล่องสุ่มฟรี
-//   slide2 = เช็คอินครบ 5 วัน แจกเครดิตฟรี 500 บาท
-//   slide3 = บริษัท iok66 Gaming จำกัด ยินดีให้บริการค่ะ
-//   slide4 = มั่นคง ปลอดภัย จ่ายเต็มทุกยอด
+// The FUSIONNEW drop (2026-08-12) reads:
+//   slide1 = กิจกรรม วงล้อนำโชค แจกเครดิตฟรี ตลอด 24 ชม. ร่วมสนุกได้ทุกวัน
+//   slide2 = ลุ้นรางวัล มูลค่ามากกว่า 100,000 ประกาศผลรางวัลทุกสิ้นเดือน
+//   slide3 = คืนยอดเสีย สูงสุด 10% ทุกวัน รับได้ทุกวัน
 // The mapping between file number and promotion changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after the promotion instead of after the file.
+//
+// slide4.png is NOT imported here any more: it is the previous brand's artwork
+// (mtime 2026-08-11, one day before this drop) and the grid ships three images.
 // Only what is printed on each banner may be stated here. Every other
-// promo/banner file in src/assets (banner.png, banner2/3/4) is a previous
-// brand's leftover and must not be pulled in.
+// promo/banner file in src/assets (banner.png, banner2/3/4, slide4) is a
+// previous brand's leftover and must not be pulled in.
 import proWheel from "../assets/slide1.png";
-import proCheckin from "../assets/slide2.png";
-import proWelcome from "../assets/slide3.png";
-import proTrust from "../assets/slide4.png";
+import proPrize from "../assets/slide2.png";
+import proCashback from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 159.
+// byte count reads ~3x too long). This one measures 154.
 const pageDescription =
-  "รวมโปรโมชั่น IOK66 ทั้งฝากครบ 500 หมุนวงล้อฟรี ฝากครบ 200 ลุ้นกล่องสุ่ม เช็คอินครบ 5 วันรับเครดิตฟรี 500 บาท ดูเงื่อนไขของแต่ละรายการจากแบนเนอร์ก่อนกดรับสิทธิ์";
+  "รวมโปรโมชั่น FUSIONNEW ทั้งกิจกรรมวงล้อนำโชคแจกเครดิตฟรีตลอด 24 ชม. ลุ้นรางวัลมูลค่ามากกว่า 100,000 และคืนยอดเสียสูงสุด 10% ทุกวัน ดูเงื่อนไขก่อนรับสิทธิ์";
 
 const graph = pageGraph(Astro, {
-  name: "โปรโมชั่น IOK66 หมุนวงล้อฟรี ลุ้นกล่องสุ่ม และเช็คอินรับเครดิตฟรี",
+  name: "โปรโมชั่น FUSIONNEW วงล้อนำโชค ลุ้นรางวัลใหญ่ และคืนยอดเสียทุกวัน",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -47,31 +48,31 @@ const graph = pageGraph(Astro, {
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem),
-// two-up from sm: inside that padding plus one 2rem gap, capped by the card's
-// own max-width once the viewport passes it.
-const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1456px) calc((100vw - 8rem) / 2), 646px";
+// two-up from sm: inside that padding plus one 2rem gap, capped at 592px once
+// the viewport passes 1312px and ContentBoxCyberCut's max-w-7xl takes over.
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1312px) calc((100vw - 8rem) / 2), 592px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#e3b64a]/35 object-contain shadow-[0_10px_30px_rgba(227,182,74,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe9a3]/70 hover:shadow-[0_15px_40px_rgba(255,233,163,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#e01a1a]/35 object-contain shadow-[0_10px_30px_rgba(224,26,26,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ff5f52]/70 hover:shadow-[0_15px_40px_rgba(255,95,82,0.45)]";
 ---
 
-<MainLayout title="โปรโมชั่น IOK66 หมุนวงล้อฟรี ลุ้นกล่องสุ่ม เช็คอินรับเครดิตฟรี" description={pageDescription}>
+<MainLayout title="โปรโมชั่น FUSIONNEW วงล้อนำโชค ลุ้นรางวัลใหญ่ คืนยอดเสียทุกวัน" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น IOK66" as="h1">
+  <ContentBox title="โปรโมชั่น FUSIONNEW" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#e3b64a]">IOK66</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งหมุนวงล้อฟรีจากยอดฝาก กล่องสุ่มลุ้นรางวัล
-        และเช็คอินสะสมวันรับเครดิตฟรี แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และเพดานของแต่ละโปรก็ไม่เหมือนกัน
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ff5f52]">FUSIONNEW</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งกิจกรรมวงล้อนำโชค การลุ้นรางวัลประจำเดือน
+        และการคืนยอดเสียรายวัน แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และเพดานของแต่ละโปรก็ไม่เหมือนกัน
         จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
           src={proWheel}
-          alt="แบนเนอร์โปรโมชั่น IOK66 ทุกยอดฝาก 500 บาท หมุนวงล้อฟรี และฝากครบ 200 บาท ลุ้นกล่องสุ่มฟรี มีโลโก้ iok66 Gaming พนักงานหญิงชุดดำ ฉากผ้าม่านแดง วงล้อเสี่ยงโชค และกล่องของขวัญ"
+          alt="แบนเนอร์โปรโมชั่น FUSIONNEW กิจกรรม วงล้อนำโชค แจกเครดิตฟรี ตลอด 24 ชม. ร่วมสนุกได้ทุกวัน รับเลย มีหญิงสาวชุดราตรีแดงถือแก้วแชมเปญ วงล้อเสี่ยงโชค ทองคำแท่งและสร้อยทอง บนพื้นเปลวไฟแดง"
           loading="lazy"
           fetchpriority="low"
           widths={[300, 450, 600]}
@@ -84,8 +85,8 @@ const imageClass =
         />
 
         <Picture
-          src={proCheckin}
-          alt="แบนเนอร์โปรโมชั่น IOK66 เช็คอินครบ 5 วัน แจกเครดิตฟรี 500 บาท ตัวอักษรทองบนฉากผ้าม่านแดง มีพนักงานหญิงชุดดำ สิงโตหิน และกองเหรียญทอง"
+          src={proPrize}
+          alt="แบนเนอร์โปรโมชั่น FUSIONNEW ลุ้นรางวัล มูลค่ามากกว่า 100,000 ประกาศผลรางวัลทุกสิ้นเดือน มีหญิงสาวใส่แว่นกันแดดถือกล่องของขวัญ สร้อยทองบนหมอนแดง และทองคำแท่ง"
           loading="lazy"
           fetchpriority="low"
           widths={[300, 450, 600]}
@@ -98,22 +99,8 @@ const imageClass =
         />
 
         <Picture
-          src={proWelcome}
-          alt="แบนเนอร์ต้อนรับของ IOK66 ข้อความ บริษัท iok66 Gaming จำกัด ยินดีให้บริการค่ะ มีพนักงานหญิงยกมือไหว้ ฉากผ้าม่านแดง และสิงโตหิน"
-          loading="lazy"
-          fetchpriority="low"
-          widths={[300, 450, 600]}
-          sizes={imageSizes}
-          class={imageClass}
-          decoding="async"
-          formats={["avif", "webp"]}
-          fallbackFormat="webp"
-          quality={80}
-        />
-
-        <Picture
-          src={proTrust}
-          alt="แบนเนอร์ IOK66 ข้อความ มั่นคง ปลอดภัย จ่ายเต็มทุกยอด มีพนักงานหญิงถือแท็บเล็ต ฉากผ้าม่านแดง โคมไฟระย้า และสิงโตหิน"
+          src={proCashback}
+          alt="แบนเนอร์โปรโมชั่น FUSIONNEW คืนยอดเสีย สูงสุด 10% ทุกวัน รับได้ทุกวัน รีบเลย มีหญิงสาวชุดแดง ไพ่โพแดงโพดำ ชิปคาสิโน บนพื้นเปลวไฟแดง"
           loading="lazy"
           fetchpriority="low"
           widths={[300, 450, 600]}
@@ -129,8 +116,8 @@ const imageClass =
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffe9a3]/60 bg-gradient-to-r from-[#ffe9a3] via-[#e3b64a] to-[#b8862c] px-10 py-3.5 text-lg font-black text-[#0d0705] shadow-[0_10px_30px_rgba(227,182,74,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,163,0.45)]">
-          สมัครสมาชิก IOK66
+          class="flex items-center justify-center rounded-lg border border-[#ff5f52]/60 bg-gradient-to-r from-[#ff5f52] via-[#e01a1a] to-[#8c0102] px-10 py-3.5 text-lg font-black text-[#f7f5f4] shadow-[0_10px_30px_rgba(224,26,26,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,95,82,0.45)]">
+          สมัครสมาชิก FUSIONNEW
         </a>
       </div>
     </div>

@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "http://iok66-new.com",
+  site: "http://fusionnew-main.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

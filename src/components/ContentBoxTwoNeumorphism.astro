@@ -1,21 +1,52 @@
 ---
-const { titleleft, titleright } = Astro.props;
+export interface Props {
+  title?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  titleleft?: string;
+  titleright?: string;
+  label?: string;
+}
+const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
+
+// FUSIONNEW: variant นี้ค้างพาเลตของแบรนด์เก่าไว้ (ผิว #0d1811 เขียวเข้ม เงา
+// #060c08 / #14241a เส้นคั่น lime-400 ตัวหนังสือ gray-400 / white) รอบนี้ย้ายมาที่
+// แดงสัญญาณ #e01a1a / #ff5f52 / #8c0102 คู่กับโครมเงิน #d9dde3 บนผิวเกือบดำ
+// #150809 เนื้อความ #e7e3e1
+//
+// คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
+// #050203 (เข้มกว่าพื้นหน้า) ไฮไลต์ใช้ #200c0e (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าเอา
+// #e01a1a มาใส่ การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน
+//
+// เดิม titleleft/titleright render เป็น <h3> ทำให้ section เดียวของ docx ปล่อย
+// หัวข้อออกมาสองอัน ตอนนี้ทั้งคู่เป็น <p> เพราะมันตั้งชื่อคอลัมน์ UI ไม่ใช่ section
+// ของ docx ส่วน prop `title` ที่เพิ่มเข้ามาคือหัวข้อเดียวที่ component นี้ปล่อยได้
+// (แบบเดียวกับ ContentBox.astro / ContentBoxTwo.astro)
+//
+// text-center อยู่บน <header> เท่านั้น ถ้าย้ายไปวางบนการ์ดมันจะ inherit ลงไปใน
+// slot แล้วย่อหน้าเนื้อความจะถูกจัดกึ่งกลางตามไปด้วย
+const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
-<section class="mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
-  <div
-    class="w-full rounded-[25px] bg-[#0d1811] p-8 shadow-[10px_10px_20px_#060c08,-10px_-10px_20px_#14241a] transition-all duration-300 hover:shadow-[15px_15px_30px_#040805,-15px_-15px_30px_#1a2f22]">
+<section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
+  <div class="w-full rounded-[25px] border border-[#e01a1a]/25 bg-[#150809] p-8 shadow-[10px_10px_20px_#050203,-10px_-10px_20px_#200c0e] transition-all duration-300 hover:shadow-[15px_15px_30px_#040102,-15px_-15px_30px_#2a1013]">
+    {
+      title && (
+        <header class="mb-8 border-b border-[#e01a1a]/25 pb-4 text-center">
+          <HeadingTag class="bg-gradient-to-r from-[#d9dde3] via-[#ff5f52] to-[#e01a1a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        </header>
+      )
+    }
+
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-gray-400">
-        {titleleft && <h3 class="text-2xl leading-normal font-black tracking-wide text-white">{titleleft}</h3>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e7e3e1]">
+        {titleleft && <p class="text-2xl leading-normal font-black tracking-wide text-[#d9dde3]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-gray-400 md:border-l md:border-lime-400/10 md:pl-8">
-        {titleright && <h3 class="text-2xl leading-normal font-black tracking-wide text-white">{titleright}</h3>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e7e3e1] md:border-l md:border-[#d9dde3]/15 md:pl-8">
+        {titleright && <p class="text-2xl leading-normal font-black tracking-wide text-[#d9dde3]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>
   </div>
 </section>
-

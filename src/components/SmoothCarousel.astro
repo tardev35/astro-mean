@@ -1,8 +1,8 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideCheckin from "../assets/slide2.png";
-import slideWelcome from "../assets/slide3.png";
+import slidePrizeDraw from "../assets/slide2.png";
+import slideCashback from "../assets/slide3.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -18,20 +18,22 @@ import slideWelcome from "../assets/slide3.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// IOK66 วางสองสไลด์ไว้ตรงนี้: slide2 (เช็คอินครบ 5 วัน) กับ slide3 (ยินดีให้บริการ)
-// ส่วน slide1 และ slide4 ไม่ถูก import ในไฟล์นี้โดยตั้งใจ — แต่ละใบมีบ้านเดียว
-// บนหน้าเว็บ อยู่ในบล็อก ContentBoxSevenThree* (slide1 → หัวข้อเปิดยูสใหม่,
-// slide4 → หัวข้อถอนเงินชัวร์ไม่อั้น) การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียวคือ
-// สิ่งที่การแบ่งแบบนี้เลี่ยงอยู่ ตัวแปรตั้งชื่อตามอาร์ตบนรูป ไม่ใช่เลขไฟล์ ค่า
-// --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูป ถ้าเปลี่ยนจำนวนต้องคิดใหม่ทั้งคู่
+// FUSIONNEW วางสองสไลด์ไว้ตรงนี้: slide2 (ลุ้นรางวัลมูลค่ามากกว่า 100,000) กับ
+// slide3 (คืนยอดเสียสูงสุด 10% ทุกวัน) ส่วน slide1 ไม่ถูก import ในไฟล์นี้โดย
+// ตั้งใจ — แต่ละใบมีบ้านเดียวบนหน้าเว็บ slide1 อยู่ในบล็อก
+// ContentBoxSevenThreeCyberCut (หัวข้อฟีเจอร์โบนัสแจกทุกวัน) การโชว์อาร์ตใบเดียวกัน
+// สองที่ในหน้าเดียวคือสิ่งที่การแบ่งแบบนี้เลี่ยงอยู่ slide4.png เป็นอาร์ตของแบรนด์
+// ก่อนหน้า (mtime 2026-08-11 เก่ากว่าดรอปนี้) จึงไม่ถูก import ที่ไหนแล้ว
+// ตัวแปรตั้งชื่อตามอาร์ตบนรูป ไม่ใช่เลขไฟล์ ค่า --shift ใน stylesheet ข้างล่าง
+// คำนวณจากจำนวนรูป ถ้าเปลี่ยนจำนวนต้องคิดใหม่ทั้งคู่
 const images = [
   {
-    src: slideCheckin,
-    alt: "แบนเนอร์โปรโมชั่น IOK66 เช็คอินครบ 5 วัน แจกเครดิตฟรี 500 บาท พร้อมโลโก้ iok66 Gaming ภาพพนักงานหญิงชุดสูทดำยืนแบมือ ฉากผ้าม่านแดง สิงโตหินจีนและกองเหรียญทอง",
+    src: slidePrizeDraw,
+    alt: "แบนเนอร์โปรโมชั่น FUSIONNEW ข้อความ ลุ้นรางวัล มูลค่ามากกว่า 100,000 ประกาศผลรางวัลทุกสิ้นเดือน พร้อมโลโก้ FUSIONNEW ภาพหญิงสาวใส่แว่นดำชุดแดงถือกล่องของขวัญ สร้อยทองบนหุ่นโชว์และทองคำแท่ง บนพื้นเปลวไฟแดง",
   },
   {
-    src: slideWelcome,
-    alt: "แบนเนอร์ IOK66 ข้อความ บริษัท iok66 Gaming จำกัด ยินดีให้บริการค่ะ พร้อมโลโก้มังกรทอง ภาพพนักงานหญิงชุดสูทดำยกมือไหว้ ฉากผ้าม่านแดงและสิงโตหินจีน",
+    src: slideCashback,
+    alt: "แบนเนอร์โปรโมชั่น FUSIONNEW ข้อความ คืนยอดเสีย สูงสุด 10% ทุกวัน รับได้ทุกวัน รีบเลย พร้อมโลโก้ FUSIONNEW ภาพหญิงสาวชุดราตรีแดง ไพ่และชิปคาสิโน บนพื้นเปลวไฟแดง",
   },
 ];
 
@@ -53,7 +55,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e3b64a]/60 peer-focus-visible:bg-[#1c110a] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffe9a3]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e01a1a]/60 peer-focus-visible:bg-[#1f0c0d] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ff5f52]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -69,7 +71,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#e3b64a]/30 object-cover shadow-[0_10px_30px_rgba(227,182,74,0.18)]"
+              class="block w-full rounded-xl border border-[#e01a1a]/30 object-cover shadow-[0_10px_30px_rgba(224,26,26,0.18)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

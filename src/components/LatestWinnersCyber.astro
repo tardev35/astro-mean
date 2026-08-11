@@ -6,6 +6,11 @@ import ktbLogo from "../assets/banks/ktb.png";
 import ttbLogo from "../assets/banks/ttb.png";
 import { brandFlag, brandPick } from "../lib/brandProfile";
 
+// FUSIONNEW: ย้ายจากทองมังกร + ไฟของ LONGSAP168 (#f2b024 / #ffd76a / #a86a0c คู่
+// กับ #d81f26 / #7d0508 บนผิว #170806 เนื้อความ #f6e4c8 ข้อความรอง #e3c9ab) มาที่
+// แดงสัญญาณ + โครมเงิน — #e01a1a / #ff5f52 / #8c0102 คู่กับ #d9dde3 / #97a0a8 /
+// #4a5157 บนผิว #150809 เนื้อความ #e7e3e1 ข้อความรอง #c3bcb9
+//
 // สีในลิสต์นี้เป็นสีโลโก้ธนาคารจริง ไม่ใช่สีแบรนด์ — ห้ามรีธีมตาม palette
 const bankPool = [
   { name: "KBank", color: "bg-[#1155cc]", icon: kbankLogo.src },
@@ -36,15 +41,15 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
 
 <div class="mx-auto w-full max-w-[1300px] p-4">
   <section
-    aria-label="รายการฝาก-ถอนล่าสุดผ่านระบบออโต้ของ LONGSAP168"
-    class="relative border-r-4 border-l-4 border-[#f2b024] bg-[#170806]/85 px-4 py-8 shadow-[0_0_30px_rgba(242,176,36,0.22)] md:p-10"
+    aria-label="รายการฝาก-ถอนล่าสุดผ่านระบบออโต้ของ FUSIONNEW"
+    class="relative border-r-4 border-l-4 border-[#e01a1a] bg-[#150809]/85 px-4 py-8 shadow-[0_0_30px_rgba(224,26,26,0.22)] md:p-10"
     style="clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);">
-    <div class="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#f2b024] to-transparent"></div>
-    <div class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#d81f26] to-transparent"></div>
+    <div class="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#e01a1a] to-transparent"></div>
+    <div class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#d9dde3] to-transparent"></div>
 
-    <div class="relative z-10 mb-8 flex items-center justify-between border-b border-[#f2b024]/30 pb-4">
-      <p class="text-xl font-black tracking-[0.2em] text-[#f2b024] drop-shadow-[0_0_8px_rgba(242,176,36,0.8)]">/// LONGSAP168_AUTO_TRANSACTIONS</p>
-      <span class="animate-pulse border border-[#d81f26]/60 px-2 py-1 text-xs font-bold tracking-widest text-[#e3c9ab]">ONLINE</span>
+    <div class="relative z-10 mb-8 flex items-center justify-between border-b border-[#e01a1a]/30 pb-4">
+      <p class="text-xl font-black tracking-[0.2em] text-[#ff5f52] drop-shadow-[0_0_8px_rgba(224,26,26,0.8)]">/// FUSIONNEW_AUTO_TRANSACTIONS</p>
+      <span class="animate-pulse border border-[#d9dde3]/60 px-2 py-1 text-xs font-bold tracking-widest text-[#c3bcb9]">ONLINE</span>
     </div>
 
     <div
@@ -60,14 +65,14 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-row origin-left transform transition-all duration-500 ease-out">
-            <div class="flex items-center justify-between border-l-2 border-[#d81f26] bg-gradient-to-r from-[#7d0508]/40 to-transparent p-3 backdrop-blur-sm transition-colors hover:bg-[#7d0508]/55">
+            <div class="flex items-center justify-between border-l-2 border-[#e01a1a] bg-gradient-to-r from-[#8c0102]/40 to-transparent p-3 backdrop-blur-sm transition-colors hover:bg-[#8c0102]/55">
               <div class="flex items-center gap-4">
                 <div data-winner-bank class={`flex h-8 w-8 items-center justify-center border border-white/10 bg-black/50 mix-blend-screen ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="20" height="20" loading="lazy" decoding="async" class="h-5 w-5 object-contain grayscale" />
                 </div>
-                <div class="font-mono text-sm text-[#f6e4c8]">
+                <div class="font-mono text-sm text-[#e7e3e1]">
                   USR_ID:{" "}
-                  <span data-winner-user class="font-bold text-[#ffd76a]">
+                  <span data-winner-user class="font-bold text-[#d9dde3]">
                     {row.user}
                   </span>
                 </div>
@@ -82,8 +87,8 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
                   class={`winner-status font-mono text-[10px] tracking-widest ${row.pending ? "is-pending" : "is-verified"}`}>
                   {row.pending ? "[กำลังทำรายการ]" : "[เงินเข้าแล้ว]"}
                 </div>
-                <div class="font-mono text-xl font-black text-[#f2b024] drop-shadow-[0_0_8px_rgba(242,176,36,0.5)]">
-                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#a86a0c]">THB</span>
+                <div class="font-mono text-xl font-black text-[#ff5f52] drop-shadow-[0_0_8px_rgba(224,26,26,0.5)]">
+                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#97a0a8]">THB</span>
                 </div>
               </div>
             </div>
@@ -113,8 +118,8 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
   /* สองสถานะเป็นคลาส ไม่ใช่สตริงใน JS เพื่อให้สคริปต์ไม่ต้องรู้จัก palette ของ
      แบรนด์นี้เลย */
   .winner-status.is-pending {
-    color: #e3c9ab;
-    border-color: #7d0508;
+    color: #c3bcb9;
+    border-color: #8c0102;
   }
   .winner-status.is-verified {
     color: oklch(79.2% 0.209 151.711);
