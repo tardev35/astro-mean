@@ -11,42 +11,44 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // นับจากขอบบนการ์ด หัวข้อ H1/H2 ภาษาไทยแบบเต็มประโยคทำให้ป้ายตัดบรรทัดหลายบรรทัด
 // แล้วบรรทัดสุดท้ายไปทับบรรทัดแรกของเนื้อความ
 //
-// ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge (pt-32/md:pt-28) หนึ่งขั้นโดย
-// ตั้งใจ — ✦ สองตัวกับ gap-2 กินความกว้างด้านในของป้ายไป ~52px ตรงนี้ ส่วนฝั่งโน้น
-// ไม่มีอะไรกิน บนจอ 360–375px นั่นคือส่วนต่างระหว่างป้าย 3 บรรทัดกับ 4 บรรทัด
+// ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge กับ ContentBoxTwoFloatingBadge
+// (ทั้งคู่ pt-32/md:pt-28) หนึ่งขั้นโดยตั้งใจ — หัวข้อในไฟล์นี้ใช้ text-lg/text-xl
+// ซึ่งสูงกว่าอีกสองไฟล์หนึ่งสเต็ป บนจอ 360–375px นั่นคือส่วนต่างระหว่างป้าย
+// 3 บรรทัดกับ 4 บรรทัด
 //
-// คำนวณใหม่กับหัวข้อ H2 ข้อ 7 ของ docx LONGSAP168 ยาว 72 ตัวอักษร
-// ("LONGSAP168 ครบตั้งแต่เกมดัง โต๊ะสด ไปจนถึงระบบหลังบ้านที่พร้อมลุยทุกเวลา")
+// คำนวณกับหัวข้อ H2 ข้อ 7 ของ docx 249UP ยาว 67 ตัวอักษร
+// ("249UP ระบบโอนไวเข้าบัญชีเลย จบขั้นตอนการเงินคล่องแบบไม่ปล่อยให้รอนาน")
 // chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ ✦ สองตัว
-//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg/leading-normal = 27px
-//   ต่อบรรทัด, 4 บรรทัด = 108px + 24px = 132px ขอบล่างอยู่ที่ 108px เทียบกับ
-//   pt-36 (144px) → เหลือช่องว่าง 36px
+//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 8.5px ต่อตัวอักษร
+//   → ~27 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด:
+//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
+//   108px เทียบกับ pt-36 (144px) → เหลือช่องว่าง 36px
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ ✦ เหลือ ~566px,
 //   text-2xl/leading-normal = 36px ต่อบรรทัด, 2 บรรทัด = 72px + 24px = 96px
 //   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-32 (128px) → เหลือ 56px
-// ให้ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge หนึ่งขั้นเสมอ อย่าทำให้เท่ากัน
+// ให้ไฟล์นี้ลึกกว่าอีกสอง *FloatingBadge หนึ่งขั้นเสมอ อย่าทำให้เท่ากัน
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// ธีม LONGSAP168: การ์ดเป็นแผงดำอมแดง #170806 ป้ายจึงเป็นเม็ดหมึกดำสนิท #0a0402
-// และตัวอักษรเป็น gradient ทอง → ส้มไฟ ซึ่งเป็นคู่เดียวที่อ่านออกบนพื้นนั้น
+// ธีม 249UP: การ์ดเป็นแผงดำอมทอง #150e05 ป้ายจึงเป็นเม็ดหมึกดำสนิท #0b0703
+// และตัวอักษรเป็น gradient ทองสว่าง → ทองเข้ม ซึ่งอ่านออกชัดบนพื้นนั้น
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f2b024]/30 bg-[#170806]/88 p-8 pt-36 text-left text-base leading-relaxed text-[#f6e4c8] shadow-[0_10px_30px_rgba(242,176,36,0.18)] backdrop-blur-md md:pt-32">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#ff4d2e]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#7d0508]/50 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f5b626]/30 bg-[#150e05]/88 p-8 pt-36 text-left text-base leading-relaxed text-[#f0e4cd] shadow-[0_10px_30px_rgba(245,182,38,0.18)] backdrop-blur-md md:pt-32">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#f5b626]/30 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#8a5c08]/50 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffd76a]/50 bg-[#0a0402] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(216,31,38,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#ff4d2e]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffe9a8]/50 bg-[#0b0703] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(245,182,38,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#ffd86b]">
             ✦
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#ff4d2e] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#ff4d2e]">
+          <HeadingTag class={`bg-gradient-to-r from-[#ffe9a8] via-[#f5b626] to-[#c98a12] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#ffd86b]">
             ✦
           </span>
         </div>

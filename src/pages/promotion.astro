@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxCyberCut.astro";
+import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 
 import { Picture } from "astro:assets";
 
@@ -13,69 +13,74 @@ import { Picture } from "astro:assets";
 // gives this page a Title and a Meta and never a body.
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The FUSIONNEW drop (2026-08-12) reads:
-//   slide1 = กิจกรรม วงล้อนำโชค แจกเครดิตฟรี ตลอด 24 ชม. ร่วมสนุกได้ทุกวัน
-//   slide2 = ลุ้นรางวัล มูลค่ามากกว่า 100,000 ประกาศผลรางวัลทุกสิ้นเดือน
-//   slide3 = คืนยอดเสีย สูงสุด 10% ทุกวัน รับได้ทุกวัน
+// The 249UP drop (all four files mtime 2026-08-12 02:16) reads:
+//   slide1 = เกมส์คลาสสิคในตำนาน เป่า ยิง ฉุบ เล่นง่ายได้จริง!
+//   slide2 = ฝากแรกของวัน รับโบนัส 3% สูงสุด 300 บาท
+//   slide3 = เล่นเสีย ไม่ต้องเสียใจ คืนยอดเสีย ทุกสัปดาห์ สูงสุด 5,000,000 บาท
+//   slide4 = แนะนำเพื่อน รับทันที 18% สัปดาห์ ไม่ต้องทำเทิร์นโอเวอร์ ถอนได้ทันที
 // The mapping between file number and promotion changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after the promotion instead of after the file.
 //
-// slide4.png is NOT imported here any more: it is the previous brand's artwork
-// (mtime 2026-08-11, one day before this drop) and the grid ships three images.
-// Only what is printed on each banner may be stated here. Every other
-// promo/banner file in src/assets (banner.png, banner2/3/4, slide4) is a
-// previous brand's leftover and must not be pulled in.
-import proWheel from "../assets/slide1.png";
-import proPrize from "../assets/slide2.png";
+// All four slides belong to this drop, so the grid ships four images. Every
+// other promo/banner file in src/assets (banner.png, banner2/3/4) is a previous
+// brand's leftover and must not be pulled in. Only what is printed on each
+// banner may be stated here.
+import proRps from "../assets/slide1.png";
+import proFirstDeposit from "../assets/slide2.png";
 import proCashback from "../assets/slide3.png";
+import proReferral from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 154.
+// byte count reads ~3x too long). This one measures 156.
 const pageDescription =
-  "รวมโปรโมชั่น FUSIONNEW ทั้งกิจกรรมวงล้อนำโชคแจกเครดิตฟรีตลอด 24 ชม. ลุ้นรางวัลมูลค่ามากกว่า 100,000 และคืนยอดเสียสูงสุด 10% ทุกวัน ดูเงื่อนไขก่อนรับสิทธิ์";
+  "รวมโปรโมชั่น 249UP ทั้งโบนัสฝากแรกของวัน คืนยอดเสียรายสัปดาห์ แนะนำเพื่อนรับทันที และกิจกรรมเป่ายิงฉุบเล่นง่าย ดูเงื่อนไขของแต่ละรายการให้ครบก่อนกดรับสิทธิ์";
 
 const graph = pageGraph(Astro, {
-  name: "โปรโมชั่น FUSIONNEW วงล้อนำโชค ลุ้นรางวัลใหญ่ และคืนยอดเสียทุกวัน",
+  name: "โปรโมชั่น 249UP โบนัสฝากแรกของวัน คืนยอดเสีย และแนะนำเพื่อน",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proWheel.src,
+  primaryImagePath: proFirstDeposit.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem),
-// two-up from sm: inside that padding plus one 2rem gap, capped at 592px once
-// the viewport passes 1312px and ContentBoxCyberCut's max-w-7xl takes over.
-const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1312px) calc((100vw - 8rem) / 2), 592px";
+// two-up from sm: inside that padding plus one 2rem gap, then md: where
+// ContentBoxPremium goes to p-10 (7rem), and capped at 644px once the viewport
+// passes 1432px and its max-w-[1400px] takes over.
+const imageSizes =
+  "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1432px) calc((100vw - 9rem) / 2), 644px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#e01a1a]/35 object-contain shadow-[0_10px_30px_rgba(224,26,26,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ff5f52]/70 hover:shadow-[0_15px_40px_rgba(255,95,82,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#f5b626]/35 object-contain shadow-[0_10px_30px_rgba(245,182,38,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe9a8]/70 hover:shadow-[0_15px_40px_rgba(255,216,107,0.45)]";
+
+const imageWidths = [320, 480, 644];
 ---
 
-<MainLayout title="โปรโมชั่น FUSIONNEW วงล้อนำโชค ลุ้นรางวัลใหญ่ คืนยอดเสียทุกวัน" description={pageDescription}>
+<MainLayout title="โปรโมชั่น 249UP โบนัสฝากแรกของวัน คืนยอดเสีย และแนะนำเพื่อนรับทันที" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น FUSIONNEW" as="h1">
+  <ContentBox title="โปรโมชั่น 249UP" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ff5f52]">FUSIONNEW</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งกิจกรรมวงล้อนำโชค การลุ้นรางวัลประจำเดือน
-        และการคืนยอดเสียรายวัน แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และเพดานของแต่ละโปรก็ไม่เหมือนกัน
-        จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ffd86b]">249UP</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งกิจกรรมเป่ายิงฉุบ โบนัสฝากแรกของวัน
+        การคืนยอดเสียรายสัปดาห์ และสิทธิ์แนะนำเพื่อน แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ
+        และเพดานของแต่ละโปรก็ไม่เหมือนกัน จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={proWheel}
-          alt="แบนเนอร์โปรโมชั่น FUSIONNEW กิจกรรม วงล้อนำโชค แจกเครดิตฟรี ตลอด 24 ชม. ร่วมสนุกได้ทุกวัน รับเลย มีหญิงสาวชุดราตรีแดงถือแก้วแชมเปญ วงล้อเสี่ยงโชค ทองคำแท่งและสร้อยทอง บนพื้นเปลวไฟแดง"
+          src={proRps}
+          alt="แบนเนอร์โปรโมชั่น 249UP เกมส์คลาสสิคในตำนาน เป่า ยิง ฉุบ เล่นง่ายได้จริง! มีหญิงสาวชุดดำ สัญลักษณ์ค้อน กรรไกร กระดาษสีทอง พร้อมโลโก้ 249UP และ LINE ID : @249UP"
           loading="lazy"
           fetchpriority="low"
-          widths={[300, 450, 600]}
+          widths={imageWidths}
           sizes={imageSizes}
           class={imageClass}
           decoding="async"
@@ -85,11 +90,11 @@ const imageClass =
         />
 
         <Picture
-          src={proPrize}
-          alt="แบนเนอร์โปรโมชั่น FUSIONNEW ลุ้นรางวัล มูลค่ามากกว่า 100,000 ประกาศผลรางวัลทุกสิ้นเดือน มีหญิงสาวใส่แว่นกันแดดถือกล่องของขวัญ สร้อยทองบนหมอนแดง และทองคำแท่ง"
+          src={proFirstDeposit}
+          alt="แบนเนอร์โปรโมชั่น 249UP ฝากแรกของวัน รับโบนัส 3% สูงสุด 300 บาท มีหญิงสาวผมบลอนด์ชุดสูทดำและไพ่ป๊อก พร้อมโลโก้ 249UP และ LINE ID : @249UP"
           loading="lazy"
           fetchpriority="low"
-          widths={[300, 450, 600]}
+          widths={imageWidths}
           sizes={imageSizes}
           class={imageClass}
           decoding="async"
@@ -100,10 +105,24 @@ const imageClass =
 
         <Picture
           src={proCashback}
-          alt="แบนเนอร์โปรโมชั่น FUSIONNEW คืนยอดเสีย สูงสุด 10% ทุกวัน รับได้ทุกวัน รีบเลย มีหญิงสาวชุดแดง ไพ่โพแดงโพดำ ชิปคาสิโน บนพื้นเปลวไฟแดง"
+          alt="แบนเนอร์โปรโมชั่น 249UP เล่นเสีย ไม่ต้องเสียใจ คืนยอดเสีย ทุกสัปดาห์ สูงสุด 5,000,000 บาท มีหญิงสาวชุดทองยืนคู่แท่งทอง พร้อมโลโก้ 249UP และ LINE ID : @249UP"
           loading="lazy"
           fetchpriority="low"
-          widths={[300, 450, 600]}
+          widths={imageWidths}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
+
+        <Picture
+          src={proReferral}
+          alt="แบนเนอร์โปรโมชั่น 249UP แนะนำเพื่อน รับทันที 18% สัปดาห์ ไม่ต้องทำเทิร์นโอเวอร์ ถอนได้ทันที มีหญิงสาวชุดสูทขาวและชิปคาสิโนลอยรอบตัว พร้อมโลโก้ 249UP และ LINE ID : @249UP"
+          loading="lazy"
+          fetchpriority="low"
+          widths={imageWidths}
           sizes={imageSizes}
           class={imageClass}
           decoding="async"
@@ -116,8 +135,8 @@ const imageClass =
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ff5f52]/60 bg-gradient-to-r from-[#ff5f52] via-[#e01a1a] to-[#8c0102] px-10 py-3.5 text-lg font-black text-[#f7f5f4] shadow-[0_10px_30px_rgba(224,26,26,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,95,82,0.45)]">
-          สมัครสมาชิก FUSIONNEW
+          class="flex items-center justify-center rounded-lg border border-[#ffe9a8]/60 bg-gradient-to-r from-[#ffd86b] via-[#f5b626] to-[#8a5c08] px-10 py-3.5 text-lg font-black text-[#150e05] shadow-[0_10px_30px_rgba(245,182,38,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,216,107,0.45)]">
+          สมัครสมาชิก 249UP
         </a>
       </div>
     </div>

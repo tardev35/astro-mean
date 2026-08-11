@@ -1,90 +1,87 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
-import ContentBox3Three from "../components/ContentBox3Three.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxTwo from "../components/ContentBoxTwo.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBox from "../components/ContentBox.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxTwoFloatingBadge from "../components/ContentBoxTwoFloatingBadge.astro";
+import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinnersCyber.astro";
+import LatestWinners from "../components/LatestWinnersPremium.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq2.astro";
+import Faq from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgDailyBonus from "../assets/slide1.png";
+import imgClassicGames from "../assets/slide1.png";
+import imgWeeklyCashback from "../assets/slide3.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxCyberCut as="h1"
-//   2 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อ
-//       ประโยค)
-//   3 → ContentBox3Three as="h2" (แบ่งย่อหน้าลง left/center/right)
-//   4 → ContentBoxNeumorphism as="h2"
-//   5 → ContentBoxTwo as="h2" (แบ่งย่อหน้าลง left/right)
-//   6 → ContentBoxSevenThreeCyberCut + slide1 (ฟีเจอร์โบนัสแจกให้ตามทุกวัน)
-//   7 → ContentBox as="h2"
+//   1 → ContentBoxPremium as="h1"
+//   2 → ContentBoxSevenThreePremium as="h2" + slide1 (เกมคลาสสิกในตำนาน)
+//   3 → ContentBoxTwoFloatingBadge as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่
+//       รอยต่อประโยค)
+//   4 → ContentBox3ThreePremium as="h2" (แบ่งย่อหน้าลง left/center/right)
+//   5 → ContentBoxSpecial as="h2" (แบ่งย่อหน้าลง left/right)
+//   6 → ContentBoxSevenThree as="h2" + slide3 (คืนยอดเสียทุกสัปดาห์)
+//   7 → ContentBoxFloatingBadge as="h2"
 //
-// SevenThree รอบนี้ใช้บล็อกเดียว ไม่ใช่สองบล็อก: slide4.png เป็นอาร์ตของแบรนด์ก่อน
-// หน้า (mtime 2026-08-11 เก่ากว่าดรอปนี้ทั้งชุด) จึงถูกถอด import ออกทั้งหมด เหลือ
-// สไลด์ปัจจุบันสามใบ — slide2/slide3 เป็นของ SmoothCarousel และ slide1 เป็นของ
-// บล็อก SevenThree ถ้าเปิดบล็อกที่สองจะต้องไปดึงสไลด์ของ carousel ออกมาแล้วเหลือ
-// เฟรมเดียว playbook อนุญาตให้ใช้บล็อกเดียวอยู่แล้ว
+// variant รอบนี้เปลี่ยนทั้งตระกูลจากแบรนด์ก่อนหน้า: Premium + FloatingBadge +
+// Special + plain แทนชุด CyberCut + Neumorphism + plain
 //
-// banner1/banner1-mobile เป็น hero ที่ MainLayout จัดการเอง ส่วน banner2/3/4 กับ
-// banner.png เป็นอาร์ตของแบรนด์เก่า (mtime 2026-08-04) จึงไม่ถูก import ที่ไหน
+// SevenThree ใช้สองบล็อกพอดี ซึ่งเป็นเพดานของ playbook — slide1 คู่กับหัวข้อ
+// "เกมแน่นค่ายครบเครื่อง" (รูปพิมพ์ว่าเกมคลาสสิกเล่นง่ายได้จริง) และ slide3 คู่กับ
+// หัวข้อโบนัส (รูปพิมพ์ว่าคืนยอดเสียทุกสัปดาห์) ส่วน slide2/slide4 เป็นของ
+// SmoothCarousel จึงไม่ถูก import ที่นี่ ไม่ให้รูปใบเดียวกันโผล่สองที่ในหน้าเดียว
+//
+// banner1/banner1-mobile เป็น hero ที่ MainLayout จัดการเอง ส่วน banner.png กับ
+// banner2/3/4 เป็นอาร์ตของแบรนด์เก่า (mtime 2026-08-04) จึงไม่ถูก import ที่ไหน
 //
 // widget ที่ไม่ได้มาจาก docx (SmoothCarousel, ProviderGrid, GameRankingBoard,
-// LatestWinners, LoginRtpSection, ReviewCardSumo2, แถวปุ่ม login/register) ใช้
-// หัวข้อเป็น <p>/<span> + aria-label บน <section> จึงวางต่อท้ายหัวข้อ docx ที่มัน
+// LoginRtpSection, LatestWinners, ReviewCardSumo2, แถวปุ่ม login/register) ใช้
+// ป้ายเป็น <p>/<span> + aria-label บน <section> จึงวางต่อท้ายหัวข้อ docx ที่มัน
 // สังกัดได้โดยลำดับ h2 ไม่เพี้ยน
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7
-// คำถามใน Faq2 เป็น <span> ตามระดับที่ variant นั้น ship มา ไม่ใช่ <h3>
-//
-// variant รอบนี้เปลี่ยนทั้งตระกูล: CyberCut + Neumorphism + plain แทนชุด Premium +
-// FloatingBadge ของ IOK66 ส่วน ContentBoxTwoNeumorphism กับ
-// ContentBoxSevenThreeCyberCut เดิมมีแต่ titleleft/titleright ที่ render เป็น <h3>/
-// <h2> ของ chrome รอบนี้ทั้งคู่ถูกลดเป็น <p> แล้วเพิ่ม prop `title` + `as` ตัวเดียว
-// ไว้รับหัวข้อ docx — วิธีเดียวกับที่ ContentBox/ContentBoxTwo ทำไว้อยู่แล้ว
+// คำถามใน Faq3 เป็น <h3> ใต้ h2 ของ section ตามที่ variant นั้น ship มา
 
-// Title/Des มาจาก docx ตรงตัว (Des นับได้ 153 ตัวอักษร อยู่ในช่วง 150–160 ที่
-// verify-build บังคับ) ไม่ต้องขยายหรือย่อ
-const pageTitle = "FUSIONNEW | สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป";
+// Title/Des มาจาก docx ตรงตัว แล้วต่อให้อยู่ในช่วง 150–160 ตัวอักษรที่
+// verify-build บังคับ
+const pageTitle = "249UP | เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง โบนัสมาไม่มีแผ่ว";
 const pageDescription =
-  "FUSIONNEW สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป จับเกมฮิตชนเกมใหม่ไว้ในเว็บเดียว อัปเดตความสนุกต่อเนื่อง พร้อมฟีเจอร์และโบนัสที่มีอะไรให้ตามทุกวัน";
+  "249UP เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง โบนัสมาไม่มีแผ่ว เข้าเมนูไว สลับค่ายคล่อง ฟีเจอร์มีของ ล็อบบี้ไม่จำเจ พร้อมระบบโอนไวเข้าบัญชีเลย ไม่ต้องรอ";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
-// จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default แม้รอบนี้ default จะถูกอัปเดตแล้วก็ตาม
+// จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default
 const announcementMessage =
-  "FUSIONNEW สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป • รวมเกมดีจากทุกค่ายชั้นนำเข้ามาไว้ด้วยกัน กราฟิกสุดอลังการ เอฟเฟกต์เสียงตระการตา ธีมเกมแปลกใหม่แบบไม่มีจำกัด • จับเกมฮิตติดระดับตำนานมาโคจรพบกับเกมมาใหม่ล่าสุด สลับอารมณ์เล่นได้ตลอดทั้งวันในหน้าเดียว ไม่ต้องคอยเปลี่ยนเว็บไปมา • ฝากถอนอัตโนมัติทำรายการได้รวดเร็ว จังหวะสปินต่อเนื่องไม่มีดรอปแม้ช่วงที่มีผู้เล่นเข้าใช้งานเยอะ • ค่ายเกมดังออกเกมอะไรมาใหม่ ได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ ไม่ต้องรอคิว ไม่ต้องรอระบบอนุมัตินาน • โบนัสและลูกเล่นเสริมพิเศษแจกให้ตลอดเวลา เพิ่มโอกาสชนะในแต่ละรอบให้สูงขึ้นทุกการหมุน";
+  "249UP เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง โบนัสมาไม่มีแผ่ว • รวมค่ายเกมชั้นนำไว้ครบครัน คัดเฉพาะเกมที่ขึ้นชื่อเรื่องภาพสวย แตกง่าย และมีเอกลักษณ์เฉพาะตัว • เข้าเมนูไว สลับค่ายคล่อง เมนูจัดหมวดหมู่เป็นระเบียบ เปลี่ยนแนวการเล่นได้ทันทีโดยไม่ต้องผ่านหลายขั้นตอน • ฟีเจอร์มีของทั้งระบบคูณเงินรางวัล ซื้อฟรีสปิน และตัวคูณแบบสุ่มที่โผล่มาถูกจังหวะ • ล็อบบี้อัปเดตเกมใหม่อยู่เสมอ มีทั้งเกมฮิตระดับตำนานและเกมนอกกระแสที่แจ็คพอตดีรอให้ค้นพบ • โปรโมชันและโบนัสเติมให้สม่ำเสมอตั้งแต่ก้าวแรกที่สมัครจนถึงการเล่นรายวัน • ฝากถอนออโต้ด้วยตัวเอง เงินเข้าบัญชีตรงเป๊ะในเวลาอันสั้น ไม่ต้องรอทีมงานอนุมัติ";
 
 const faqs = [
   {
-    q: "FUSIONNEW ต่างจากเว็บสล็อตทั่วไปตรงไหน",
-    a: "ยุคนี้การเล่นเกมสล็อตไม่ได้มีแค่การกดหมุนไปวันๆ แต่คือการรวมตัวกันของเกมระดับท็อปและการใช้งานที่ลื่นไหลระดับสิบเต็มสิบ ไม่ว่าจะเป็นสายปั่นเบทเบาๆ หรือสายล่ารางวัลใหญ่ ที่นี่รวมเอาความตื่นเต้นครบทุกมิติมาผสมผสานไว้ได้อย่างลงตัว ลืมภาพเว็บสล็อตช้าๆ โหลดค้าง หรือหมุนแล้วกระตุกไปได้เลย เพราะระบบถูกเซ็ตมาเพื่อตอบโจทย์คนรุ่นใหม่โดยเฉพาะ",
+    q: "249UP มีค่ายเกมให้เลือกเล่นครบแค่ไหน",
+    a: "พอกดเข้ามาหน้าเว็บ 249UP คุณจะเห็นเลยว่ารวมเอาค่ายเกมชั้นนำมารวมไว้แบบครบครัน คัดมาเฉพาะเกมที่ขึ้นชื่อเรื่องภาพสวย แตกง่าย และมีเอกลักษณ์เฉพาะตัว ทำให้การเปิดหน้าเกมแต่ละครั้งเต็มไปด้วยตัวเลือกน่าเล่นทั้งนั้น ไม่ต้องมานั่งสุ่มเสี่ยงกับเกมไร้คุณภาพ เพราะทุกค่ายตระเตรียมมาให้ผู้เล่นได้สัมผัสความมันส์กันอย่างเต็มที่",
   },
   {
-    q: "คำว่าเกมดีฟิวชั่นครบทุกสไตล์ของ FUSIONNEW หมายถึงอะไร",
-    a: "คำว่าฟิวชั่นไม่ได้มีแค่ในเรื่องอาหาร เพราะ FUSIONNEW นำคอนเซปต์นี้มาปรับใช้กับการคัดสรรเกมสล็อตได้อย่างน่าสนใจ การรวมเกมดีจากทุกค่ายชั้นนำเข้ามาไว้ด้วยกัน ทำให้ผู้เล่นเข้าถึงกราฟิกสุดอลังการ เอฟเฟกต์เสียงตระการตา และธีมเกมที่แปลกใหม่ได้แบบไม่มีจำกัด ไม่ว่าจะเป็นแนวผจญภัย แฟนตาซี หรือแนวคลาสสิก ทุกเกมถูกออกแบบมาให้เล่นง่ายและตื่นเต้นได้ทุกวินาทีที่กดสปิน",
+    q: "อยากสลับค่ายเปลี่ยนแนวเกมบ่อยๆ ต้องเสียเวลาหาเกมนานไหม",
+    a: "การจัดวางระบบของ 249UP ออกแบบมาเพื่อให้ใช้งานง่ายและรวดเร็วสุดๆ คุณสามารถสลับค่ายเกมเปลี่ยนบรรยากาศได้ทันทีที่ต้องการ เมนูจัดหมวดหมู่อย่างเป็นระเบียบ อยากเปลี่ยนแนวจากสล็อตสายลุยไปเล่นแนวสบายตา ก็ทำได้ทันทีโดยไม่ต้องผ่านหลายขั้นตอน ประหยัดเวลาค้นหา ให้คุณเอาเวลาไปโฟกัสกับการปั่นทำกำไรได้แบบต่อเนื่อง",
   },
   {
-    q: "เล่นเกมเดิมซ้ำๆ แล้วเบื่อ ที่นี่มีเกมให้สลับเล่นมากแค่ไหน",
-    a: "ที่ FUSIONNEW เข้าใจพฤติกรรมคนเล่นสายสปินเป็นอย่างดี จึงจัดหมวดหมู่เกมโดยเอาตัวฮิตติดระดับตำนานมาโคจรพบกับเกมมาใหม่ล่าสุด ให้คุณได้สลับอารมณ์เล่นได้ตลอดทั้งวัน ความหลากสไตล์ตรงนี้แหละที่ทำให้หลายคนลองเข้ามาเล่นแล้วติดใจจนต้องบอกต่อเพื่อน เพราะไม่ต้องคอยเปลี่ยนเว็บไปมา อยากเปลี่ยนฟีลเมื่อไหร่ก็แค่กดเลือกเกมใหม่ในหน้าเดียว",
+    q: "ฟีเจอร์ในเกมของ 249UP มีอะไรบ้างที่ช่วยเพิ่มจังหวะลุ้น",
+    a: "การเล่นสล็อตที่ 249UP จะไม่น่าเบื่ออีกต่อไป เพราะตัวเกมมีฟีเจอร์เด็ดๆ คอยช่วยเพิ่มความตื่นเต้นตลอดเวลา ไม่ว่าจะเป็นระบบคูณเงินรางวัล ฟีเจอร์ซื้อฟรีสปิน หรือตัวคูณแบบสุ่มที่โผล่มาถูกจังหวะ เพิ่มมิติการลุ้นมากกว่าแค่การนั่งมองวงล้อหมุนเฉยๆ ยิ่งปั่นยิ่งลุ้นสนุกจนหยุดไม่ได้แน่นอน",
   },
   {
-    q: "ช่วงที่คนเล่นเยอะ ระบบจะหน่วงหรือหลุดกลางคันไหม",
-    a: "เรื่องความเร็วและความเสถียรคือหัวใจหลักของ FUSIONNEW ไม่ว่าจะเป็นระบบฝากถอนอัตโนมัติที่ทำรายการได้อย่างรวดเร็ว หรือระบบการเล่นเกมที่ไม่ว่าจะอยู่ช่วงเวลาที่มีผู้เล่นเข้าใช้งานเยอะแค่ไหน จังหวะสปินก็ยังคงต่อเนื่องไม่มีดรอป ไม่มีคำว่าหลุดกลางคันให้เสียอารมณ์ ความต่อเนื่องตรงนี้เองที่ช่วยให้คุณลุ้นรอบโบนัสและคอมโบได้อย่างเต็มที่ ไร้สิ่งรบกวนใจ",
+    q: "เข้ามาเล่นบ่อยๆ จะเจอแต่เกมเดิมจนเบื่อหรือเปล่า",
+    a: "ล็อบบี้เกมของ 249UP มีการอัปเดตบรรยากาศและรายการเกมใหม่อยู่เสมอ นอกจากจะมีเกมฮิตระดับตำนานที่ทุกคนต้องเล่นติดไว้แล้ว ยังมีเกมใหม่ๆ นอกกระแสที่แจ็คพอตดีรอให้คุณเข้าไปค้นพบอยู่อีกเพียบ ไม่ว่าจะเข้ามาเล่นช่วงไหนก็มีอะไรใหม่ๆ ให้ลองสัมผัส ไม่เจอปัญหาความจำเจจนไม่อยากเล่นแน่นอน",
   },
   {
-    q: "มีโบนัสหรือกิจกรรมให้ร่วมสนุกบ่อยแค่ไหน",
-    a: "นอกจากตัวเกมจะสนุกแล้ว เรื่องของกิจกรรมและโปรโมชันก็จัดเต็มไม่แพ้กัน ที่ FUSIONNEW มีการแจกโบนัสและลูกเล่นเสริมพิเศษให้กับผู้เล่นอยู่ตลอดเวลา เพิ่มโอกาสการชนะในแต่ละรอบให้สูงขึ้น ทำให้ทุกการหมุนมีความหมายและน่าตื่นเต้นยิ่งกว่าเดิม ไม่ว่าจะเข้ามาเล่นเวลาไหน ก็มีจังหวะให้ได้ลุ้นรางวัลใหญ่กลับไปเสมอ",
+    q: "ฝากถอนกับ 249UP ต้องรอทีมงานอนุมัตินานไหม",
+    a: "เล่นได้เท่าไหร่ก็ถอนออกมาใช้ได้ทันทีด้วยระบบการเงินของ 249UP ที่เน้นความรวดเร็วและแม่นยำ ทุกรายการฝากถอนทำได้ด้วยตัวเองแบบออโต้ เงินเข้าบัญชีตรงเป๊ะในเวลาอันสั้น ไม่ต้องนั่งรอทีมงานอนุมัตินานให้เสียอารมณ์ ให้คุณมั่นใจได้เต็มร้อยในเรื่องความปลอดภัย เล่นได้เท่าไหร่จ่ายเต็มจำนวนแบบไร้กังวล",
   },
 ];
 
@@ -100,61 +97,20 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="FUSIONNEW สล็อตเจนใหม่ เกมดีฟิวชั่นครบ ระบบไวไม่มีดรอป">
+  <ContentBoxPremium as="h1" title="249UP เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง โบนัสมาไม่มีแผ่ว">
     <p class="text-left text-base leading-relaxed">
-      ถ้าคุณกำลังตามหาประสบการณ์เล่นสล็อตยุคใหม่ที่ไม่เหมือนเดิม ต้องลองมาสัมผัสที่ FUSIONNEW ยุคนี้การเล่นเกมสล็อตไม่ได้มีแค่การกดหมุนไปวันๆ
-      แต่คือการรวมตัวกันของเกมระดับท็อปและการใช้งานที่ลื่นไหลระดับสิบเต็มสิบ ไม่ว่าจะเป็นสายปั่นเบทเบาๆ หรือสายล่ารางวัลใหญ่ ที่นี่รวมเอาความตื่นเต้นครบทุกมิติมาผสมผสานไว้ได้อย่างลงตัว
-      ลืมภาพเว็บสล็อตช้าๆ โหลดค้าง หรือหมุนแล้วกระตุกไปได้เลย เพราะระบบถูกเซ็ตมาเพื่อตอบโจทย์คนรุ่นใหม่โดยเฉพาะ
+      อยากเล่นสล็อตแบบไม่ต้องเสียอารมณ์กับเว็บเดิมๆ ต้องจัดที่ 249UP เว็บสล็อตที่กำลังถูกพูดถึงมากที่สุดในตอนนี้ ด้วยความตึงของระบบและค่ายเกมที่ขนมาให้เลือกเล่นแบบอัดแน่น
+      ไม่ว่าจะเป็นสายปั่นเพื่อความสนุกหรือสายล่าแตกหนัก ที่นี่ตอบโจทย์ได้หมดด้วยจังหวะการเล่นที่ลื่นไหล พร้อมแจกโบนัสกันแบบไม่พัก เล่นได้เพลินๆ ไม่มีดรอป
+      ใครได้ลองเข้ามาปั่นแล้วบอกเลยว่าต้องกลับมาซ้ำแน่นอน
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxPremium>
 
   <SmoothCarousel />
 
-  <ContentBoxTwoNeumorphism as="h2" title="FUSIONNEW สล็อตเจนใหม่ เปิดโหมดความมันส์ด้วยเกมดีฟิวชั่นครบทุกสไตล์">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      คำว่าฟิวชั่นไม่ได้มีแค่ในเรื่องอาหาร เพราะ FUSIONNEW นำคอนเซปต์นี้มาปรับใช้กับการคัดสรรเกมสล็อตได้อย่างน่าสนใจ การรวมเกมดีจากทุกค่ายชั้นนำเข้ามาไว้ด้วยกัน
-      ทำให้ผู้เล่นสามารถเข้าถึงกราฟิกสุดอลังการ เอฟเฟกต์เสียงตระการตา และธีมเกมที่แปลกใหม่ได้แบบไม่มีจำกัด
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะเป็นแนวผจญภัย แฟนตาซี หรือแนวคลาสสิก ทุกเกมถูกออกแบบมาให้เล่นง่าย แตกจริง และสร้างความตื่นเต้นได้ทุกวินาทีที่กดสปิน
-    </p>
-  </ContentBoxTwoNeumorphism>
-
-  <ContentBox3Three as="h2" title="จับเกมฮิตชนเกมใหม่ใน FUSIONNEW คัดตัวน่าเล่นมาให้สลับฟีลได้ไม่มีเบื่อ">
-    <p slot="left" class="text-left text-base leading-relaxed">เคยไหมที่เล่นเกมเดิมๆ แล้วเริ่มรู้สึกเฉา? ที่ FUSIONNEW เข้าใจพฤติกรรมคนเล่นสายสปินเป็นอย่างดี</p>
-    <p slot="center" class="text-left text-base leading-relaxed">จึงจัดหมวดหมู่เกมโดยเอาตัวฮิตติดระดับตำนานมาโคจรพบกับเกมมาใหม่ล่าสุด ให้คุณได้สลับอารมณ์เล่นได้ตลอดทั้งวัน</p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ความหลากสไตล์ตรงนี้แหละที่ทำให้หลายคนลองเข้ามาเล่นแล้วติดใจจนต้องบอกต่อเพื่อน เพราะไม่ต้องคอยเปลี่ยนเว็บไปมา อยากเปลี่ยนฟีลเมื่อไหร่ก็แค่กดเลือกเกมใหม่ในหน้าเดียว
-    </p>
-  </ContentBox3Three>
-
-  <ProviderGrid />
-
-  <ContentBoxNeumorphism as="h2" title="ระบบไวไม่มีดรอป จุดเปลี่ยนเล็ก ๆ ที่ทำให้ทุกสปินต่อกันได้แบบไม่ขัดจังหวะ">
-    <p class="text-left text-base leading-relaxed">
-      เรื่องความเร็วและความเสถียรคือหัวใจหลักของ FUSIONNEW ไม่ว่าจะเป็นระบบฝากถอนอัตโนมัติที่ทำรายการได้อย่างรวดเร็ว
-      หรือระบบการเล่นเกมที่ไม่ว่าจะอยู่ช่วงเวลาที่มีผู้เล่นเข้าใช้งานเยอะแค่ไหน จังหวะสปินก็ยังคงต่อเนื่องไม่มีดรอป ไม่มีคำว่าหลุดกลางคันให้เสียอารมณ์
-      ความต่อเนื่องตรงนี้เองที่ช่วยให้คุณลุ้นรอบโบนัสและคอมโบได้อย่างเต็มที่ ไร้สิ่งรบกวนใจ
-    </p>
-  </ContentBoxNeumorphism>
-
-  <GameRankingBoard />
-
-  <ContentBoxTwo as="h2" title="อัปเดตความสนุกต่อเนื่อง เกมใหม่มาเมื่อไรพร้อมเปิดให้ตามทันทุกกระแสที่ FUSIONNEW">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      สายตามกระแสไม่มีตกเทรนด์แน่นอน เพราะ FUSIONNEW ขยันอัปเดตไลน์อัปเกมใหม่ๆ เข้าสู่ระบบอยู่เสมอ ค่ายเกมดังออกเกมอะไรมาใหม่ คุณจะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่ต้องรอคิว ไม่ต้องรอระบบอนุมัตินาน อยากรู้ว่ากระแสเกมไหนกำลังมาแรง หรือฟีเจอร์ไหนกำลังแจกหนัก มาที่นี่ที่เดียวจบ ได้ตามเทรนด์ก่อนใครแน่นอน
-    </p>
-  </ContentBoxTwo>
-
-  <LoginRtpSection />
-
-  <ContentBoxSevenThreeCyberCut as="h2" title="ฟีเจอร์โบนัสมีแจกให้ตามทุกวัน เติมลูกเล่นให้แต่ละเกมมีจังหวะน่าลุ้นมากกว่าเดิม">
+  <ContentBoxSevenThreePremium as="h2" title="249UP เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง เปิดมาทีมีแต่ตัวน่าเล่น">
     <Picture
       slot="left"
-      src={imgDailyBonus}
+      src={imgClassicGames}
       loading="lazy"
       fetchpriority="low"
       widths={[200, 400, 600]}
@@ -163,41 +119,92 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่น FUSIONNEW ข้อความ กิจกรรม วงล้อนำโชค แจกเครดิตฟรี ตลอด 24 ชม. ร่วมสนุกได้ทุกวัน รับเลย ภาพหญิงสาวชุดราตรีแดงถือแก้วแชมเปญ วงล้อเสี่ยงโชค ทองคำแท่งและสร้อยทอง พร้อมโลโก้ FUSIONNEW บนพื้นเปลวไฟแดง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e01a1a]/35 shadow-[0_10px_30px_rgba(224,26,26,0.22)]"
+      alt="แบนเนอร์เกมของ 249UP ข้อความ เกมส์คลาสสิคในตำนาน เป่า ยิง ฉุบ เล่นง่ายได้จริง! พร้อมไอคอนเหรียญทองสามเหรียญเป็นรูปมือค้อน กรรไกร และกระดาษ ภาพหญิงสาวชุดดำยืนข้างวงล้อรูเล็ตและกองเหรียญทอง มีโลโก้ 249UP กับไลน์ไอดี @249UP บนพื้นดำลายทอง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f5b626]/35 shadow-[0_10px_30px_rgba(245,182,38,0.22)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      นอกจากตัวเกมจะสนุกแล้ว เรื่องของกิจกรรมและโปรโมชันก็จัดเต็มไม่แพ้กัน ที่ FUSIONNEW มีการแจกโบนัสและลูกเล่นเสริมพิเศษให้กับผู้เล่นอยู่ตลอดเวลา เพิ่มโอกาสการชนะในแต่ละรอบให้สูงขึ้น
-      ทำให้ทุกการหมุนมีความหมายและน่าตื่นเต้นยิ่งกว่าเดิม ไม่ว่าจะเข้ามาเล่นเวลาไหน ก็มีจังหวะให้ได้ลุ้นรางวัลใหญ่กลับไปเสมอ เป็นจุดเด่นที่ทำให้เหล่านักสปินพูดเป็นเสียงเดียวกันว่าคุ้มค่าสุดๆ
+      พอกดเข้ามาหน้าเว็บ 249UP คุณจะเห็นเลยว่ารวมเอาค่ายเกมชั้นนำมารวมไว้แบบครบครัน คัดมาเฉพาะเกมที่ขึ้นชื่อเรื่องภาพสวย แตกง่าย และมีเอกลักษณ์เฉพาะตัว
+      ทำให้การเปิดหน้าเกมแต่ละครั้งเต็มไปด้วยตัวเลือกน่าเล่นทั้งนั้น ไม่ต้องมานั่งสุ่มเสี่ยงกับเกมไร้คุณภาพ เพราะทุกค่ายตระเตรียมมาให้ผู้เล่นได้สัมผัสความมันส์กันอย่างเต็มที่
     </p>
-  </ContentBoxSevenThreeCyberCut>
+  </ContentBoxSevenThreePremium>
+
+  <ProviderGrid />
+
+  <ContentBoxTwoFloatingBadge as="h2" title="เข้าเมนูไว สลับค่ายคล่อง จะเปลี่ยนฟีลกี่รอบก็ไม่ต้องเสียเวลาหาเกม">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      การจัดวางระบบของ 249UP ออกแบบมาเพื่อให้ใช้งานง่ายและรวดเร็วสุดๆ คุณสามารถสลับค่ายเกมเปลี่ยนบรรยากาศได้ทันทีที่ต้องการ เมนูจัดหมวดหมู่อย่างเป็นระเบียบ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      อยากเปลี่ยนแนวจากสล็อตสายลุยไปเล่นแนวสบายตา ก็ทำได้ทันทีโดยไม่ต้องผ่านหลายขั้นตอน ประหยัดเวลาค้นหา ให้คุณเอาเวลาไปโฟกัสกับการปั่นทำกำไรได้แบบต่อเนื่อง
+    </p>
+  </ContentBoxTwoFloatingBadge>
+
+  <LoginRtpSection />
+
+  <ContentBox3ThreePremium as="h2" title="ฟีเจอร์มีของใน 249UP คัดลูกเล่นเด็ดมาเพิ่มจังหวะสนุกให้มากกว่าแค่หมุน">
+    <p slot="left" class="text-left text-base leading-relaxed">การเล่นสล็อตที่ 249UP จะไม่น่าเบื่ออีกต่อไป เพราะตัวเกมมีฟีเจอร์เด็ดๆ คอยช่วยเพิ่มความตื่นเต้นตลอดเวลา</p>
+    <p slot="center" class="text-left text-base leading-relaxed">ไม่ว่าจะเป็นระบบคูณเงินรางวัล ฟีเจอร์ซื้อฟรีสปิน หรือตัวคูณแบบสุ่มที่โผล่มาถูกจังหวะ</p>
+    <p slot="right" class="text-left text-base leading-relaxed">เพิ่มมิติการลุ้นมากกว่าแค่การนั่งมองวงล้อหมุนเฉยๆ ยิ่งปั่นยิ่งลุ้นสนุกจนหยุดไม่ได้แน่นอน</p>
+  </ContentBox3ThreePremium>
+
+  <ContentBoxSpecial as="h2" title="ล็อบบี้ไม่จำเจ เกมฮิตมี เกมน่าลองก็มา พร้อมตัวเลือกใหม่ให้ค้นต่อเรื่อย ๆ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ล็อบบี้เกมของ 249UP มีการอัปเดตบรรยากาศและรายการเกมใหม่อยู่เสมอ นอกจากจะมีเกมฮิตระดับตำนานที่ทุกคนต้องเล่นติดไว้แล้ว ยังมีเกมใหม่ๆ นอกกระแสที่แจ็คพอตดีรอให้คุณเข้าไปค้นพบอยู่อีกเพียบ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ไม่ว่าจะเข้ามาเล่นช่วงไหนก็มีอะไรใหม่ๆ ให้ลองสัมผัส ไม่เจอปัญหาความจำเจจนไม่อยากเล่นแน่นอน
+    </p>
+  </ContentBoxSpecial>
+
+  <GameRankingBoard />
+
+  <ContentBoxSevenThree as="h2" title="โบนัสมาไม่มีแผ่ว เพราะ 249UP เติมความคุ้มให้มีอะไรน่าตามตลอดการเล่น">
+    <Picture
+      slot="left"
+      src={imgWeeklyCashback}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นของ 249UP ข้อความ เล่นเสีย ไม่ต้องเสียใจ คืนยอดเสีย ทุกสัปดาห์ สูงสุด 5,000,000 บาท ภาพหญิงสาวชุดราตรีสีทองยืนข้างกองทองคำแท่ง มีโลโก้ 249UP กับไลน์ไอดี @249UP บนพื้นดำลายทอง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f5b626]/35 shadow-[0_10px_30px_rgba(245,182,38,0.22)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เรื่องความคุ้มค่า 249UP พร้อมซัพพอร์ตผู้เล่นในทุกระดับด้วยโปรโมชันและโบนัสที่เติมให้อย่างสม่ำเสมอ ตั้งแต่ก้าวแรกที่สมัครเข้ามาจนถึงการเล่นรายวัน
+      มีสิทธิประโยชน์ดีๆ ให้กดรับเพื่อนำไปต่อยอดการปั่นได้จริง เพิ่มโอกาสทำกำไรให้สูงขึ้นโดยไม่ต้องใช้ทุนเยอะ เป็นเหตุผลสำคัญที่ทำให้ผู้เล่นไว้วางใจและอยู่ยาวกับเว็บนี้
+    </p>
+  </ContentBoxSevenThree>
+
+  <ContentBoxFloatingBadge as="h2" title="249UP ระบบโอนไวเข้าบัญชีเลย จบขั้นตอนการเงินคล่องแบบไม่ปล่อยให้รอนาน">
+    <p class="text-left text-base leading-relaxed">
+      เล่นได้เท่าไหร่ก็ถอนออกมาใช้ได้ทันทีด้วยระบบการเงินของ 249UP ที่เน้นความรวดเร็วและแม่นยำ ทุกรายการฝากถอนทำได้ด้วยตัวเองแบบออโต้ เงินเข้าบัญชีตรงเป๊ะในเวลาอันสั้น
+      ไม่ต้องนั่งรอทีมงานอนุมัตินานให้เสียอารมณ์ ให้คุณมั่นใจได้เต็มร้อยในเรื่องความปลอดภัย เล่นได้เท่าไหร่จ่ายเต็มจำนวนแบบไร้กังวล
+    </p>
+  </ContentBoxFloatingBadge>
 
   <LatestWinners />
-
-  <ContentBox as="h2" title="ฟิวชั่นทั้งเกม ระบบ และความสดใหม่ FUSIONNEW จบครบในเว็บเดียวแบบเจนใหม่ของจริง">
-    <p class="text-left text-base leading-relaxed">
-      ถ้าจะสรุปสั้นๆ ให้เพื่อนฟังว่าทำไมต้องมาเล่นที่ FUSIONNEW ก็คงเป็นเพราะความลงตัวในทุกๆ ด้าน ทั้งการรวมเกมคุณภาพ ระบบการทำงานที่สมบูรณ์แบบ และบริการที่เข้าใจผู้เล่นยุคใหม่อย่างแท้จริง
-      ไม่ต้องเสียเวลาลองผิดลองถูกกับเว็บอื่นอีกต่อไป แค่ก้าวเข้ามาสัมผัสด้วยตัวเอง แล้วคุณจะรู้ว่าคำว่าสล็อตเจนใหม่ของจริงมันเป็นอย่างไร ลองแล้วจะอยากชวนเพื่อนมาสนุกด้วยกันแน่นอน
-    </p>
-  </ContentBox>
 
   <ReviewCardSumo2 />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ff5f52] via-[#e01a1a] to-[#8c0102] px-4 py-3 text-sm font-black whitespace-nowrap text-[#f7f5f4] shadow-[0_10px_30px_rgba(224,26,26,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,95,82,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a8] via-[#f5b626] to-[#8a5c08] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0b0703] shadow-[0_10px_30px_rgba(245,182,38,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,216,107,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#d9dde3]/50 bg-[#1f0c0d]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#d9dde3] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ff5f52] hover:bg-[#e01a1a] hover:text-[#f7f5f4] hover:shadow-[0_15px_40px_rgba(224,26,26,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#f5b626]/50 bg-[#150e05]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f0e4cd] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ffe9a8] hover:bg-[#3a2606] hover:text-[#ffe9a8] hover:shadow-[0_15px_40px_rgba(245,182,38,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ FUSIONNEW" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ 249UP" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

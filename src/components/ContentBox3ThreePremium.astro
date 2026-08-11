@@ -8,59 +8,57 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright } = Astro.props;
 
-// IOK66: arrived on an older brand's red/amber (red-600 / red-900 / red-200 /
-// yellow-400 over #14040a). Remapped onto this brand's royal gold on
-// near-black — #ffe9a3 / #e3b64a / #b8862c / #5c3a10 over #1c110a / #150c07
-// with a #5c0a0c / #a3161c crimson glow, body text #f2e2c4.
+// 249UP: remapped off IOK66's royal gold + crimson (#ffe9a3 / #e3b64a / #b8862c
+// / #5c3a10 over #1c110a / #150c07 with a #5c0a0c / #a3161c glow, body #f2e2c4)
+// onto this brand's single-hue gold on near-black — #ffe9a8 / #ffd86b /
+// #f5b626 / #c98a12 / #8a5c08 over #150e05 / #1e1409, body text #f0e4cd
 //
-// The three column labels used to be <h3>. This brand's docx is flat H1 + H2
-// with no H3 anywhere, so they were downgraded to <p> with their classes kept
-// (identical rendering) and the block got a single `title` prop to carry the
-// docx section heading instead.
+// ป้ายสามคอลัมน์เป็น <p> (คลาสเดิม ไม่ใช่ <h3>) เพราะ docx ของแบรนด์นี้แบน
+// H1 + H2 ล้วน หัวข้อ section รับผ่าน `title` + `as` ตัวเดียว
 ---
 
 <section class="mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#e3b64a]/30 bg-[#1c110a]/88 p-8 text-[#f2e2c4] shadow-[0_10px_30px_rgba(227,182,74,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe9a3]/60 hover:shadow-[0_15px_40px_rgba(163,22,28,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#5c0a0c]/50 blur-[60px] transition-all duration-500 group-hover:bg-[#a3161c]/45"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#f5b626]/30 bg-[#1e1409]/88 p-8 text-[#f0e4cd] shadow-[0_10px_30px_rgba(245,182,38,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe9a8]/60 hover:shadow-[0_15px_40px_rgba(201,138,18,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#8a5c08]/50 blur-[60px] transition-all duration-500 group-hover:bg-[#c98a12]/45"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#e3b64a]/30 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a3] via-[#e3b64a] to-[#5c0a0c] shadow-[0_0_10px_rgba(227,182,74,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#ffe9a3] via-[#e3b64a] to-[#b8862c] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#f5b626]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a8] via-[#f5b626] to-[#8a5c08] shadow-[0_0_10px_rgba(245,182,38,0.5)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#ffe9a8] via-[#f5b626] to-[#c98a12] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      <article class="flex flex-col gap-3 border-b border-[#5c3a10] pb-8 text-left text-base leading-relaxed text-[#f2e2c4] md:border-r md:border-b-0 md:pr-8 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#8a5c08] pb-8 text-left text-base leading-relaxed text-[#f0e4cd] md:border-r md:border-b-0 md:pr-8 md:pb-0">
         {
           titleleft && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#e3b64a] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e3b64a] shadow-[0_0_8px_rgba(227,182,74,0.9)]" /> {titleleft}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f5b626] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f5b626] shadow-[0_0_8px_rgba(245,182,38,0.9)]" /> {titleleft}
             </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 border-b border-[#5c3a10] pb-8 text-left text-base leading-relaxed text-[#f2e2c4] md:border-r md:border-b-0 md:px-4 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#8a5c08] pb-8 text-left text-base leading-relaxed text-[#f0e4cd] md:border-r md:border-b-0 md:px-4 md:pb-0">
         {
           titlecenter && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#e3b64a] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e3b64a] shadow-[0_0_8px_rgba(227,182,74,0.9)]" /> {titlecenter}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f5b626] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f5b626] shadow-[0_0_8px_rgba(245,182,38,0.9)]" /> {titlecenter}
             </p>
           )
         }
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f2e2c4] md:pl-8">
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f0e4cd] md:pl-8">
         {
           titleright && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#e3b64a] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e3b64a] shadow-[0_0_8px_rgba(227,182,74,0.9)]" /> {titleright}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f5b626] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f5b626] shadow-[0_0_8px_rgba(245,182,38,0.9)]" /> {titleright}
             </p>
           )
         }
