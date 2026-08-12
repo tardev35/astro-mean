@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 import { itemList, pageGraph, schemaCtx } from "../lib/schema";
@@ -22,18 +22,20 @@ import image12 from "../assets/gamedemo18.webp";
 // One list, two consumers: the gallery below and the ItemList in the JSON-LD.
 // They used to be two hand-kept arrays that had to stay in the same order, and
 // the name shown to a reader could drift from the name handed to a crawler.
+// The card shows the artwork only — the provider name is chrome, so it lives in
+// the link's aria-label, never in a heading tag.
 const demoGames = [
-  { name: "AskmeSlot", src: image1, alt: "แบนเนอร์เกมสล็อตค่าย AskmeSlot ที่เปิดให้ทดลองเล่นบน 249UP" },
+  { name: "AskmeSlot", src: image1, alt: "แบนเนอร์เกมสล็อตค่าย AskmeSlot ที่เปิดให้ทดลองเล่นบน FAST369" },
   { name: "Popular Game", src: image2, alt: "แบนเนอร์รวมเกมยอดนิยม Popular Game พร้อมตัวการ์ตูนกระต่ายและแมว กองชิปและเหรียญทอง" },
-  { name: "SlotXO", src: image3, alt: "แบนเนอร์เกมสล็อตค่าย SlotXO ที่เปิดให้ทดลองเล่นบน 249UP" },
-  { name: "Skywind Group", src: image4, alt: "แบนเนอร์เกมสล็อตค่าย Skywind Group ที่เปิดให้ทดลองเล่นบน 249UP" },
-  { name: "PG Soft", src: image5, alt: "แบนเนอร์เกมสล็อตค่าย PG Soft ที่เปิดให้ทดลองเล่นบน 249UP" },
+  { name: "SlotXO", src: image3, alt: "แบนเนอร์เกมสล็อตค่าย SlotXO ที่เปิดให้ทดลองเล่นบน FAST369" },
+  { name: "Skywind Group", src: image4, alt: "แบนเนอร์เกมสล็อตค่าย Skywind Group ที่เปิดให้ทดลองเล่นบน FAST369" },
+  { name: "PG Soft", src: image5, alt: "แบนเนอร์เกมสล็อตค่าย PG Soft ที่เปิดให้ทดลองเล่นบน FAST369" },
   { name: "SBOBET", src: image6, alt: "แบนเนอร์ค่ายเกม SBOBET พร้อมตัวละครการ์ตูนถือลูกอม" },
-  { name: "Sexy Slot", src: image7, alt: "แบนเนอร์เกมสล็อตค่าย Sexy Slot ที่เปิดให้ทดลองเล่นบน 249UP" },
-  { name: "JILI", src: image8, alt: "แบนเนอร์เกมสล็อตค่าย JILI ที่เปิดให้ทดลองเล่นบน 249UP" },
+  { name: "Sexy Slot", src: image7, alt: "แบนเนอร์เกมสล็อตค่าย Sexy Slot ที่เปิดให้ทดลองเล่นบน FAST369" },
+  { name: "JILI", src: image8, alt: "แบนเนอร์เกมสล็อตค่าย JILI ที่เปิดให้ทดลองเล่นบน FAST369" },
   { name: "Ask Me Bet", src: image9, alt: "แบนเนอร์ค่ายเกม Ask Me Bet พร้อมสัญลักษณ์เกมคาสิโน" },
   { name: "New Game", src: image10, alt: "แบนเนอร์เกมออกใหม่ New Game พร้อมตัวการ์ตูนฟักทองและโครงกระดูก" },
-  { name: "JOKER", src: image11, alt: "แบนเนอร์เกมสล็อตค่าย JOKER ที่เปิดให้ทดลองเล่นบน 249UP" },
+  { name: "JOKER", src: image11, alt: "แบนเนอร์เกมสล็อตค่าย JOKER ที่เปิดให้ทดลองเล่นบน FAST369" },
   { name: "AFB Gaming", src: image12, alt: "แบนเนอร์ค่ายเกม AFB Gaming พร้อมโลโก้ค่ายบนพื้นหลังไฟนีออน" },
 ];
 
@@ -44,11 +46,11 @@ const gameList = demoGames.map((game) => ({ name: game.name, imagePath: game.src
 
 // 150–160 CHARACTERS (Thai is 3 bytes per character, so a byte count reads
 // about three times too long and will send you rewriting a fine description).
-// This one measures 159.
+// This one measures 154.
 const pageDescription =
-  "ทดลองเล่นสล็อต 249UP เปิดดูเกมแน่นจากค่ายครบเครื่องก่อนลงเครดิตจริง ดูจังหวะสปิน ฟีเจอร์ซื้อฟรีสปินและตัวคูณ พร้อมเดิมพันต่อรอบบนระบบฟอร์มตึงที่ไม่มีดรอปให้ครบ";
+  "ทดลองเล่นสล็อต FAST369 เปิดดูเกมตัวตึงครบทุกค่ายก่อนลงเครดิตจริง ดูจังหวะสปิน ฟีเจอร์ฟรีสปินและตัวคูณ พร้อมเดิมพันต่อรอบ บนระบบสปีดแรงที่สลับค่ายได้ทันฟีล";
 
-const pageHeading = "ทดลองเล่นสล็อต 249UP เปิดดูเกมแน่นค่ายครบเครื่องก่อนลงเครดิตจริง";
+const pageHeading = "ทดลองเล่นสล็อต FAST369 เปิดดูเกมตัวตึงครบค่ายก่อนลงเครดิตจริง";
 
 const ctx = schemaCtx(Astro);
 const graph = pageGraph(Astro, {
@@ -61,29 +63,30 @@ const graph = pageGraph(Astro, {
   ],
   extra: [
     itemList(ctx, {
-      name: "ทดลองเล่นเกมสล็อตจากค่ายชั้นนำของ 249UP",
-      alternateName: "249UP โหมดทดลองเล่นสล็อตฟอร์มตึงบนมือถือก่อนเล่นด้วยเงินจริง",
+      name: "ทดลองเล่นเกมสล็อตจากค่ายชั้นนำของ FAST369",
+      alternateName: "FAST369 โหมดทดลองเล่นสล็อตสปีดแรงบนมือถือก่อนเล่นด้วยเงินจริง",
       itemType: "Game",
       items: gameList,
     }),
   ],
 });
 
-const headingClass = "bg-gradient-to-r from-[#ffe9a8] via-[#ffd86b] to-[#f5b626] bg-clip-text text-2xl leading-normal font-bold text-transparent";
+// ทองแบรนด์ไล่ไปหาแดงสัญญาณ — ชุดเดียวกับที่ ContentBox ใช้กับหัวข้อของตัวเอง
+const headingClass = "bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#ff3b2f] bg-clip-text text-2xl leading-normal font-bold text-transparent";
 ---
 
-<MainLayout title="ทดลองเล่น 249UP ลองสล็อตเกมแน่นค่ายครบเครื่องก่อนเติมเครดิตจริง" description={pageDescription}>
+<MainLayout title="ทดลองเล่น FAST369 ลองสล็อตเกมตัวตึงครบค่ายก่อนเติมเครดิตจริง" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
   <ContentBox title={pageHeading} as="h1">
     <div>
-      <h2 class={`mb-6 ${headingClass}`}>โหมดทดลองของ 249UP มีไว้ทำอะไร และควรดูอะไรก่อนเลือกเกม</h2>
+      <h2 class={`mb-6 ${headingClass}`}>โหมดทดลองของ FAST369 มีไว้ทำอะไร และควรดูอะไรก่อนเลือกเกม</h2>
 
       <p class="mb-8 text-left text-base leading-relaxed">
-        249UP ขนค่ายเกมชั้นนำมารวมไว้ในเว็บเดียวแบบอัดแน่น คัดเฉพาะตัวที่ขึ้นชื่อเรื่องภาพสวย แตกง่าย และมีเอกลักษณ์ของตัวเอง เปิดหน้าล็อบบี้มาทีจึงมีแต่ตัวน่าเล่น
-        ระบบเองก็เซ็ตมาให้สปินต่อเนื่องไม่มีดรอปแม้ช่วงที่คนเข้าพร้อมกันเยอะ หน้านี้มีไว้ให้กดเปิดดูหน้าเกมก่อนว่าระบบหน้าตาเป็นแบบไหน ปุ่มปรับเดิมพันอยู่ตรงไหน
+        FAST369 ขนเกมตัวตึงจากค่ายดังมารวมไว้ในเว็บเดียวแบบอัดแน่น คัดเฉพาะตัวที่ขึ้นชื่อเรื่องภาพสวย เอฟเฟกต์อลังการ และมีเอกลักษณ์ของตัวเอง เปิดล็อบบี้มาทีจึงมีแต่ตัวน่าเล่น
+        ระบบเองก็รีดมาให้สปินต่อเนื่องไม่มีดรอปแม้ช่วงที่คนเข้าพร้อมกันเยอะ หน้านี้มีไว้ให้กดเปิดดูหน้าเกมก่อนว่าระบบหน้าตาเป็นแบบไหน ปุ่มปรับเดิมพันอยู่ตรงไหน
         ฟีเจอร์ซื้อฟรีสปินกับตัวคูณเรียกใช้อย่างไร และหนึ่งรอบกินเวลาแค่ไหน โดยยังไม่ต้องเติมเครดิตจริงและไม่มีการได้เสียเกิดขึ้นแม้แต่บาทเดียว
         สิ่งที่ควรดูจริงคือเดิมพันเริ่มต้นต่อรอบ ความผันผวนของเกม และรูปแบบการจ่ายรางวัล มากกว่าดูว่าเกมไหนกำลังดังที่สุด เกมดังช่วยให้หารีวิวง่าย
         แต่ไม่ได้ช่วยเจรจากับระบบสุ่มเป็นการส่วนตัว ถือเป็นการอ่านคู่มือก่อนขับ ซึ่งน่าเบื่อกว่าการลองขับเลยอยู่แล้ว แต่ค่าซ่อมมันถูกกว่ากันเยอะ
@@ -100,7 +103,7 @@ const headingClass = "bg-gradient-to-r from-[#ffe9a8] via-[#ffd86b] to-[#f5b626]
                 fetchpriority="low"
                 widths={[200, 400, 600]}
                 sizes="(max-width: 768px) 100vw, 25vw"
-                class="block h-auto w-full object-cover shadow-[0_10px_30px_rgba(245,182,38,0.30)] transition-transform duration-300 group-hover/game:scale-105"
+                class="block h-auto w-full object-cover shadow-[0_10px_30px_rgba(228,6,19,0.30)] transition-transform duration-300 group-hover/game:scale-105"
                 decoding="async"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
@@ -110,9 +113,9 @@ const headingClass = "bg-gradient-to-r from-[#ffe9a8] via-[#ffd86b] to-[#f5b626]
                 href="/register"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`สมัครสมาชิกเพื่อเล่น ${game.name} ที่ 249UP`}
-                class="absolute inset-0 flex items-center justify-center bg-[#0b0703]/72 opacity-0 transition-opacity duration-300 group-hover/game:opacity-100 focus-visible:opacity-100">
-                <span class="rounded-full border border-[#ffe9a8]/70 bg-gradient-to-r from-[#f5b626] to-[#8a5c08] px-6 py-2 font-bold text-[#150e05] shadow-[0_10px_30px_rgba(138,92,8,0.5)] transition-transform hover:scale-110">เล่นเลย</span>
+                aria-label={`สมัครสมาชิกเพื่อเล่น ${game.name} ที่ FAST369`}
+                class="absolute inset-0 flex items-center justify-center bg-[#0a0304]/72 opacity-0 transition-opacity duration-300 group-hover/game:opacity-100 focus-visible:opacity-100">
+                <span class="rounded-full border border-[#ffc531]/70 bg-gradient-to-r from-[#ff3b2f] to-[#8f0206] px-6 py-2 font-bold text-[#ffe27a] shadow-[0_10px_30px_rgba(228,6,19,0.5)] transition-transform hover:scale-110">เล่นเลย</span>
               </a>
             </div>
           ))
@@ -124,18 +127,18 @@ const headingClass = "bg-gradient-to-r from-[#ffe9a8] via-[#ffd86b] to-[#f5b626]
       <p class="mb-4 text-left text-base leading-relaxed">
         โหมดทดลองบอกได้ว่าเกมทำงานอย่างไร เมนูอยู่ตรงไหน ฟีเจอร์ฟรีสปินเรียกใช้ยังไง สัญลักษณ์พิเศษหน้าตาเป็นแบบไหน และหนึ่งรอบใช้เวลาเท่าไร
         แต่เครดิตในโหมดนี้เป็นยอดสมมติ ถอนไม่ได้ และผลที่ออกมาก็ไม่ได้บอกว่าเล่นจริงจะได้ผลเหมือนกัน เพราะเกมแต่ละตัววิ่งบนกลไกสุ่มผลของค่ายเกมนั้น ๆ โดยตรง
-        ผลของแต่ละสปินจึงเป็นอิสระจากกันเสมอ ระบบคูณเงินรางวัล ตัวคูณแบบสุ่มที่โผล่มาถูกจังหวะ และฟีเจอร์ซื้อฟรีสปินที่ 249UP คัดมาไว้ให้ เป็นสิ่งที่ดูรูปแบบได้จากโหมดทดลอง
+        ผลของแต่ละสปินจึงเป็นอิสระจากกันเสมอ ตัวคูณสะสม สัญลักษณ์พิเศษที่ช่วยเข้าฟีเจอร์ง่ายขึ้น และฟรีสปินที่ FAST369 คัดมาไว้ให้ เป็นสิ่งที่ดูรูปแบบได้จากโหมดทดลอง
         แต่ไม่ใช่หลักฐานว่าเกมนั้นกำลังอารมณ์ดีรอเราอยู่ โหมดนี้มีไว้ศึกษาระบบ ไม่ใช่ไว้ดูดวงผ่านหน้าจอ
       </p>
 
       <p class="mb-4 text-left text-base leading-relaxed">
         อีกเรื่องที่ควรเผื่อใจคือโหมดทดลองไม่ได้มีให้ครบทุกเกม จึงควรเปิดหน้ารายละเอียดของเกมดูก่อนเลือก และยอดที่หมุนในโหมดทดลองไม่นับเป็นยอดเทิร์นของบัญชีหรือของโปรโมชั่นใด
         ถ้าเกมที่อยากลองไม่มีปุ่มทดลอง ให้ถือว่าวันนี้โชคไม่ดี ไม่ใช่สัญญาณลับที่ระบบส่งมาให้เราคนเดียว อีกอย่างที่โหมดทดลองตามไม่ทันคือเกมที่เพิ่งอัปเดตเข้าระบบ
-        เพราะล็อบบี้ของ 249UP อัปเดตรายการเกมใหม่อยู่เสมอ ทั้งเกมฮิตระดับตำนานและเกมนอกกระแสที่รอให้ไปค้นเจอ บางตัวจึงเข้ามาให้เล่นด้วยเครดิตจริงก่อนแล้วค่อยมีโหมดทดลองตามมาทีหลัง
+        เพราะล็อบบี้ของ FAST369 อัปเดตรายการเกมใหม่อยู่เสมอ ทั้งเกมฮิตระดับตำนานและเกมนอกกระแสที่รอให้ไปค้นเจอ บางตัวจึงเข้ามาให้เล่นด้วยเครดิตจริงก่อนแล้วค่อยมีโหมดทดลองตามมาทีหลัง
         และรูปแบบการจ่ายรางวัลที่ใช้จริงก็ต้องดูจากตารางการจ่ายของเกมเอง ไม่ใช่จากจำนวนสปินที่ลองหมุนเล่นในโหมดนี้
       </p>
 
-      <h2 class={`mt-8 mb-6 ${headingClass}`}>จากโหมดทดลองไปเล่นจริงบน 249UP ควรเช็กอะไรก่อน</h2>
+      <h2 class={`mt-8 mb-6 ${headingClass}`}>จากโหมดทดลองไปเล่นจริงบน FAST369 ควรเช็กอะไรก่อน</h2>
 
       <p class="mb-2 text-left text-base leading-relaxed">
         ถ้าจะขยับจากโหมดทดลองไปเล่นด้วยเครดิตจริง เรื่องที่ควรดูก่อนคือบัญชี งบต่อรอบ และลิงก์ที่ใช้เข้าเว็บ ด้านบัญชี ขั้นตอนลงทะเบียนถูกออกแบบมาให้สั้นและกระชับ
@@ -143,7 +146,7 @@ const headingClass = "bg-gradient-to-r from-[#ffe9a8] via-[#ffd86b] to-[#f5b626]
         แล้วตรวจชื่อบัญชีธนาคารกับข้อมูลสมาชิกให้ตรงกันก่อนยืนยัน เพราะระบบออโต้อ่านชื่อบัญชีเป็นหลัก สมัครเร็วเป็นเรื่องดี แต่กรอกผิดแล้วตามแก้ทีหลัง ความเร็วก็หายหมด
         ด้านงบ ควรตั้งเดิมพันต่อรอบให้พอดีกับยอดที่ตั้งใจใช้ในวันนั้น แล้วดูยอดบนหน้าฝากและหน้าเกมแยกกันอีกครั้ง เพราะเดิมพันต่อรอบของเกมกับเงื่อนไขของการฝากถอนเป็นคนละตัวเลขกัน
         ส่วนเรื่องเงิน ระบบโอนของที่นี่ไวและเข้าบัญชีตรงเป๊ะ ทำรายการฝากถอนเองได้แบบออโต้ ไม่ต้องนั่งรอทีมงานอนุมัติให้เสียอารมณ์ ยอดในกระเป๋าอัปเดตให้ภายในไม่กี่วินาที
-        เมนูก็จัดหมวดหมู่ไว้ให้สลับค่ายได้คล่องกว่าตอนอยู่ในโหมดทดลองมาก สุดท้ายควรเข้าใช้งานผ่านทางเข้าจริงของ 249UP
+        เมนูก็จัดหมวดหมู่ไว้ให้สลับค่ายได้คล่องกว่าตอนอยู่ในโหมดทดลองมาก สุดท้ายควรเข้าใช้งานผ่านทางเข้าจริงของ FAST369
         ที่ตรวจชื่อเว็บไซต์แล้วและเชื่อมต่อแบบ HTTPS เท่านั้น ไม่ใช่ลิงก์ที่ส่งต่อกันมาในแชตพร้อมคำโฆษณา เพราะลิงก์แบบนั้นมักพาไปเจออะไรจริง แค่ไม่ใช่ในทางที่เราหวัง
       </p>
     </div>

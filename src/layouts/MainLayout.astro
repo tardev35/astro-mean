@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarPremium.astro";
-import Footer from "../components/FooterPremium.astro";
+import Navbar from "../components/NavbarStyle8.astro";
+import Footer from "../components/FooterCyber.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "249UP | เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง โบนัสมาไม่มีแผ่ว",
-  description = "249UP เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง โบนัสมาไม่มีแผ่ว เข้าเมนูไว สลับค่ายคล่อง ฟีเจอร์มีของ ล็อบบี้ไม่จำเจ พร้อมระบบโอนไวเข้าบัญชีเลย ไม่ต้องรอ",
+  title = "FAST369 | เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก",
+  description = "FAST369 เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก เกมตัวตึงลงครบ ล็อบบี้แน่น ฟีเจอร์มีของ เข้าไวสลับไว พร้อมต่อความมันส์แบบไม่ติดเบรก",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0b0703;
+        background-color: #0a0304;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ 249UP เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง โบนัสมาไม่มีแผ่ว โลโก้ 249UP.COM ตัวอักษรทองนูนบนแถบดำขอบทอง หญิงสาวชุดทองยืนถือไพ่ มือถือเปิดหน้าเกม JACKPOT 777 BIG WIN ชิปคาสิโนแดงดำ ไพ่โพแดงโพดำ วงล้อรูเล็ตทอง กองเหรียญทองและหีบสมบัติ พร้อมปุ่มสมัครสมาชิก และไอคอนระบบออโต้ ฝาก-ถอนเร็ว ปลอดภัย 100% ตลอด 24 ชม."
+          alt="แบนเนอร์ FAST369 ข้อความ FAST369 เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก พร้อมปุ่มสมัครสมาชิก โลโก้ FAST ตัวอักษรแดงและ 369 ตัวอักษรทองมีสายฟ้าทองพุ่งทะลุวงแหวนทอง หญิงสาวชุดแดงทองที่มีโลโก้ FAST369 ยืนดีดนิ้วเกิดประกายไฟ วงล้อสล็อตเลข 7 และ BAR ชิปคาสิโนดำทอง เหรียญทองและไพ่ปลิว บนพื้นดำที่มีสายฟ้าสีแดงแตกทั่วภาพ"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

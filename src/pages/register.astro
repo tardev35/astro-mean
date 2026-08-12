@@ -25,10 +25,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก 249UP | กำลังเชื่อมต่อไปหน้าสมัครอัตโนมัติ</title>
+    <title>สมัครสมาชิก FAST369 | กำลังเชื่อมต่อไปหน้าสมัครอัตโนมัติ</title>
     <meta
       name="description"
-      content="หน้าเชื่อมต่อสมัครสมาชิก 249UP เว็บสล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง กำลังพาคุณไปยังหน้าสมัครโดยอัตโนมัติ เปิดบัญชีด้วยเบอร์โทรผ่านระบบออโต้ได้เองทั้งหมด"
+      content="หน้าเชื่อมต่อสมัครสมาชิก FAST369 เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ กำลังพาคุณไปยังหน้าสมัครโดยอัตโนมัติ เปิดบัญชีด้วยเบอร์โทรผ่านระบบออโต้ได้เองทั้งหมด"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -67,24 +67,27 @@ const fontHref = usesGoogleFonts
     </style>
 
     <style>
-      /* 249UP is a gold-luxury casino brand — an almost-black page with a warm
-         brown cast, dark translucent panels, and warm gold carrying the whole
-         accent range from a pale highlight down to a deep bronze. No red, no
-         chrome silver, no neon: text is warm cream on near-black, not dark ink
-         on light. Every variable below is NAMED FOR THE COLOUR IT HOLDS, which
+      /* FAST369 is a speed/electric brand — signal RED as the lead hue with
+         gold as the second accent, on an almost-black page with a cold red
+         cast. The logo is "FAST" in blood red beside "369" in gold with a gold
+         lightning bolt through it, so red carries the structure and gold the
+         highlights. The previous brand here was gold-luxury; nothing warm-brown
+         survives. Every variable below is NAMED FOR THE COLOUR IT HOLDS, which
          previous brands stopped doing: this block once declared `--brand-gold`
-         on brands with no gold in them and `--brand-red` on this one, so the
+         on brands with no gold in them and `--brand-red` on a gold one, so the
          next editor reused it by name and shipped the wrong hue. Rename with
          the value. */
       :root {
-        --page-bg: #0b0703;
-        --panel-bg: rgba(21, 14, 5, 0.92);
-        --brand-gold: #f5b626;
-        --brand-gold-bright: #ffe9a8;
-        --brand-gold-light: #ffd86b;
-        --brand-gold-deep: #8a5c08;
-        --text-body: #f0e4cd;
-        --text-muted: #aba290;
+        --page-bg: #0a0304;
+        --panel-bg: rgba(23, 5, 6, 0.92);
+        --brand-red: #e40613;
+        --brand-red-bright: #ff3b2f;
+        --brand-red-deep: #8f0206;
+        --brand-gold: #ffc531;
+        --brand-gold-bright: #ffe27a;
+        --brand-gold-deep: #a8720a;
+        --text-body: #f4e7dd;
+        --text-muted: #cdb9b2;
       }
 
       body {
@@ -93,8 +96,8 @@ const fontHref = usesGoogleFonts
         color: var(--text-body);
 
         background:
-          radial-gradient(circle at 50% 10%, rgba(245, 182, 38, 0.2) 0%, transparent 55%),
-          radial-gradient(circle at 50% 92%, rgba(138, 92, 8, 0.28) 0%, transparent 55%), var(--page-bg);
+          radial-gradient(circle at 50% 10%, rgba(228, 6, 19, 0.28) 0%, transparent 55%),
+          radial-gradient(circle at 50% 92%, rgba(255, 197, 49, 0.18) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -108,11 +111,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(245, 182, 38, 0.3);
+        border: 1px solid rgba(228, 6, 19, 0.38);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(138, 92, 8, 0.5),
-          0 0 2rem rgba(245, 182, 38, 0.22);
+          0 1rem 3rem rgba(143, 2, 6, 0.5),
+          0 0 2rem rgba(228, 6, 19, 0.25);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -121,13 +124,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--brand-gold-bright) 0%, var(--brand-gold) 45%, var(--brand-gold-deep) 100%);
+        background: linear-gradient(180deg, var(--brand-gold-bright) 0%, var(--brand-gold) 40%, var(--brand-red) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(245, 182, 38, 0.3));
+        filter: drop-shadow(0 1px 2px rgba(228, 6, 19, 0.45));
       }
 
       .sophisticated-loader {
@@ -143,30 +146,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--brand-gold-bright) 0%, var(--brand-gold) 45%, var(--brand-gold-deep) 100%);
+        background: radial-gradient(circle, var(--brand-gold-bright) 0%, var(--brand-red-bright) 45%, var(--brand-red-deep) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(245, 182, 38, 0.35);
+        box-shadow: 0 0 2rem rgba(228, 6, 19, 0.45);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(245, 182, 38, 0.2);
+        border: 3px solid rgba(228, 6, 19, 0.22);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--brand-gold);
+        border-top-color: var(--brand-red);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--brand-gold-light);
+        border-bottom-color: var(--brand-gold);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -183,11 +186,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(245, 182, 38, 0.35);
+          box-shadow: 0 0 2rem rgba(228, 6, 19, 0.45);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(255, 233, 168, 0.45);
+          box-shadow: 0 0 3rem rgba(255, 197, 49, 0.45);
         }
       }
 
@@ -198,7 +201,7 @@ const fontHref = usesGoogleFonts
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-body);
-        text-shadow: 0 1px 1px rgba(245, 182, 38, 0.25);
+        text-shadow: 0 1px 1px rgba(228, 6, 19, 0.35);
         margin: 0;
       }
       .status-text .p {
@@ -211,7 +214,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">249UP</div>
+      <div class="brand-identity">FAST369</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -221,7 +224,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก 249UP ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก FAST369 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

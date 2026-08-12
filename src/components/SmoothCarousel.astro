@@ -1,8 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideFirstDeposit from "../assets/slide2.png";
-import slideReferFriend from "../assets/slide4.png";
+import slideReferFriend from "../assets/slide3.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -18,27 +17,26 @@ import slideReferFriend from "../assets/slide4.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// 249UP วางสองสไลด์ไว้ตรงนี้: slide2 (ฝากแรกของวัน รับโบนัส 3%) กับ slide4
-// (แนะนำเพื่อน รับทันที 18% ต่อสัปดาห์) ส่วน slide1 กับ slide3 ไม่ถูก import ใน
-// ไฟล์นี้โดยตั้งใจ — แต่ละใบมีบ้านเดียวบนหน้าเว็บ ทั้งสองใบนั้นอยู่ในบล็อก
-// ContentBoxSevenThree ของหน้าแลนดิ้ง การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียวคือ
-// สิ่งที่การแบ่งแบบนี้เลี่ยงอยู่
-// ตัวแปรตั้งชื่อตามอาร์ตบนรูป ไม่ใช่เลขไฟล์ ค่า --shift ใน stylesheet ข้างล่าง
-// คำนวณจากจำนวนรูป ถ้าเปลี่ยนจำนวนต้องคิดใหม่ทั้งคู่
+// FAST369 เหลือสไลด์ใบเดียวตรงนี้: slide3 (แนะนำเพื่อน รับค่าคอม 1%) ส่วน slide1
+// กับ slide2 อยู่ในบล็อก ContentBoxSevenThree ของหน้าแลนดิ้งแล้ว แต่ละใบมีบ้าน
+// เดียวบนหน้าเว็บ การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียวคือสิ่งที่การแบ่งแบบนี้
+// เลี่ยงอยู่ ส่วน slide4.png เป็นอาร์ตค้างของแบรนด์เก่า (mtime 2026-08-12) จึงไม่
+// ถูก import ที่ไหนทั้งสิ้น
+//
+// รูปเป็นจัตุรัส 500x500 และเหลือใบเดียว จึงลดจำนวนช่องที่มองเห็นพร้อมกันเหลือ 1
+// บนมือถือ / 2 บนเดสก์ท็อป แล้วบีบกล่องเป็น max-w-[1000px] เพื่อให้แต่ละใบวาด
+// ราวๆ 492px ใกล้ขนาดจริงของไฟล์ ค่า --shift ใน stylesheet ข้างล่างคำนวณจาก
+// จำนวนรูปต้นฉบับ (หนึ่งใบ) ถ้าเปลี่ยนจำนวนต้องคิดใหม่ทั้งคู่
 const images = [
   {
-    src: slideFirstDeposit,
-    alt: "แบนเนอร์โปรโมชั่น 249UP ข้อความ ฝากแรกของวัน รับโบนัส 3% สูงสุด 300 บาท พร้อมโลโก้ 249UP และป้าย LINE ID : @249UP ภาพหญิงสาวผมบลอนด์ในชุดสูทสีดำถือไพ่ป๊อก บนพื้นทองตัดดำ",
-  },
-  {
     src: slideReferFriend,
-    alt: "แบนเนอร์โปรโมชั่น 249UP ข้อความ แนะนำเพื่อน รับทันที 18% สัปดาห์ ไม่ต้องทำเทิร์นโอเวอร์ ถอนได้ทันที พร้อมโลโก้ 249UP และป้าย LINE ID : @249UP ภาพหญิงสาวในชุดสูทสีขาวกับชิปคาสิโนลอยรอบตัว บนพื้นทองตัดดำ",
+    alt: "แบนเนอร์โปรโมชั่น FAST369 ข้อความ แนะนำเพื่อน รับค่าคอม 1% ยิ่งชวนมาก ยิ่งได้มาก ภาพหญิงสาวสองคนในชุดราตรีสีแดงยืนคู่กัน ล้อมด้วยกล่องของขวัญ เหรียญทอง และธนบัตร บนพื้นแดงประกายทอง",
   },
 ];
 
-// สามชุด: ชุดหนึ่งอยู่บนจอ ชุดหนึ่งกำลังเลื่อนเข้า อีกชุดคลุมจังหวะรีเซ็ต
-// แอนิเมชันเลื่อนไปพอดีหนึ่งชุด ลูปจึงไม่มีรอยต่อให้เห็น
-const COPIES = 3;
+// สี่ชุด: หนึ่งชุดต่อหนึ่งช่องที่มองเห็น บวกชุดที่กำลังเลื่อนเข้า และอีกชุดคลุม
+// จังหวะรีเซ็ต แอนิเมชันเลื่อนไปพอดีหนึ่งชุด ลูปจึงไม่มีรอยต่อให้เห็น
+const COPIES = 4;
 const slides = Array.from({ length: COPIES }, () => images).flat();
 
 // สไลด์ทุกใบตรงนี้เป็น lazy: LCP ของหน้าคือ hero banner ใน MainLayout.astro และ
@@ -50,34 +48,34 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
 // (บันทึกอยู่ใน frontmatter เพราะ HTML comment ในเทมเพลตจะถูก ship ไปทุกหน้า)
 ---
 
-<div class="marquee mx-auto w-full max-w-[1301px] overflow-hidden px-4 py-5">
+<div class="marquee mx-auto w-full max-w-[1000px] overflow-hidden px-4 py-5">
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#f5b626]/60 peer-focus-visible:bg-[#1e1409] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffd86b]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#ffc531]/60 peer-focus-visible:bg-[#240709] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffc531]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
   <div class="marquee-track flex">
     {
       slides.map((slide, index) => {
-        // สองชุดท้ายคือรูปสองใบเดิมซ้ำอีก เป็นของตกแต่งที่มีไว้ให้ลูปไม่มีรอยต่อ
+        // สามชุดท้ายคือรูปใบเดิมซ้ำอีก เป็นของตกแต่งที่มีไว้ให้ลูปไม่มีรอยต่อ
         // alt="" บวก aria-hidden บนตัวครอบทำให้มันอยู่นอก accessibility tree
-        // ถ้าไม่ทำ ประโยคเดียวกันจะถูกอ่านซ้ำสามรอบ
+        // ถ้าไม่ทำ ประโยคเดียวกันจะถูกอ่านซ้ำสี่รอบ
         const isDuplicate = index >= images.length;
         return (
           <div class="marquee-slide" aria-hidden={isDuplicate ? "true" : undefined}>
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#f5b626]/30 object-cover shadow-[0_10px_30px_rgba(245,182,38,0.18)]"
+              class="block w-full rounded-xl border border-[#e40613]/35 object-cover shadow-[0_10px_30px_rgba(228,6,19,0.2)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
               fetchpriority="low"
               decoding="async"
-              widths={[200, 400, 600]}
-              sizes="(max-width: 768px) 50vw, 33vw"
+              widths={[300, 500]}
+              sizes="(max-width: 767px) 92vw, 492px"
               formats={["avif", "webp"]}
               fallbackFormat="webp"
               quality={60}
@@ -90,23 +88,23 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
 </div>
 
 <style>
-  /* --shift คือหนึ่งชุดเต็มของรูป: สไลด์สองใบบวกช่องว่างสองช่องระหว่างกัน วัดเทียบ
+  /* --shift คือหนึ่งชุดเต็มของรูป: สไลด์หนึ่งใบบวกช่องว่างหนึ่งช่องที่ตามมา วัดเทียบ
      กับความกว้างของ track (ซึ่งเท่ากับความกว้างของกล่อง — สไลด์ล้นออกไป ซึ่งเป็น
      จุดประสงค์) ตั้งค่านี้ผิดไปหนึ่งพิกเซลคือสิ่งที่ทำให้ marquee กระตุกทุกรอบลูป
 
-     mobile:  2 * (100% - 12px)/2 + 2*12px = 100% + 12px
-     desktop: 2 * (100% - 32px)/3 + 2*16px = 66.6667% + 10.667px */
+     mobile:  1 * 100% + 12px = 100% + 12px
+     desktop: 1 * (100% - 16px)/2 + 16px = 50% + 8px */
   .marquee {
     --gap: 12px;
-    --per-view: 2;
+    --per-view: 1;
     --shift: calc(-100% - 12px);
   }
 
   @media (min-width: 768px) {
     .marquee {
       --gap: 16px;
-      --per-view: 3;
-      --shift: calc(-66.6667% - 10.667px);
+      --per-view: 2;
+      --shift: calc(-50% - 8px);
     }
   }
 

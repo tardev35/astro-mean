@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxPremium.astro";
+import ContentBox from "../components/ContentBoxCyberCut.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
@@ -10,12 +10,12 @@ import { pageGraph } from "../lib/schema";
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 158.
+// count reads about three times too long. This one measures 154.
 const pageDescription =
-  "ทางเข้า 249UP เว็บหลัก สล็อตฟอร์มตึง เกมแน่นค่ายครบเครื่อง โบนัสมาไม่มีแผ่ว กดเข้าสู่ระบบสำหรับสมาชิกเดิม หรือสมัครสมาชิกใหม่ได้จากหน้านี้ เปิดตลอด 24 ชั่วโมง";
+  "ทางเข้า FAST369 เว็บหลัก สล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก กดเข้าสู่ระบบสำหรับสมาชิกเดิม หรือสมัครสมาชิกใหม่ได้จากหน้านี้ เปิดตลอด 24 ชั่วโมง";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า 249UP เว็บหลัก",
+  name: "ทางเข้า FAST369 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -24,41 +24,41 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า 249UP เว็บหลัก เข้าสู่ระบบและสมัครสมาชิก" description={pageDescription}>
+<MainLayout title="ทางเข้า FAST369 เว็บหลัก เข้าสู่ระบบและสมัครสมาชิก" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า 249UP เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า FAST369 เว็บหลัก" as="h1">
     <div>
       <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
         <div class="flex flex-col items-center justify-center gap-4">
           <a
             href="/login"
-            aria-label="เข้าสู่ระบบ 249UP"
-            class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#f5b626]/45 bg-[#150e05] px-6 py-4 shadow-[0_10px_30px_rgba(245,182,38,0.18)] transition-all duration-300 hover:scale-105 hover:border-[#f5b626] hover:bg-[#1e1409] hover:shadow-[0_15px_40px_rgba(245,182,38,0.3)]">
-            <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#f5b626]/12 to-transparent"></div>
+            aria-label="เข้าสู่ระบบ FAST369"
+            class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#e40613]/50 bg-[#170506] px-6 py-4 shadow-[0_10px_30px_rgba(228,6,19,0.22)] transition-all duration-300 hover:scale-105 hover:border-[#ff3b2f] hover:bg-[#240709] hover:shadow-[0_15px_40px_rgba(228,6,19,0.4)]">
+            <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#e40613]/18 to-transparent"></div>
 
-            <svg class="relative z-10 h-9 w-9 text-[#ffd86b]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="relative z-10 h-9 w-9 text-[#ffc531]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
             </svg>
 
-            <span class="relative z-10 text-3xl font-bold tracking-wide text-[#ffd86b]">เข้าสู่ระบบ</span>
+            <span class="relative z-10 text-3xl font-bold tracking-wide text-[#ffc531]">เข้าสู่ระบบ</span>
           </a>
         </div>
 
         <div class="flex flex-col items-center justify-center gap-4">
           <a
             href="/register"
-            aria-label="สมัครสมาชิก 249UP"
-            class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ffe9a8]/60 bg-gradient-to-r from-[#ffe9a8] via-[#f5b626] to-[#8a5c08] px-6 py-4 shadow-[0_10px_30px_rgba(245,182,38,0.3)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,168,0.45)]">
+            aria-label="สมัครสมาชิก FAST369"
+            class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ffe27a]/60 bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#a8720a] px-6 py-4 shadow-[0_10px_30px_rgba(255,197,49,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,226,122,0.45)]">
             <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 to-transparent"></div>
 
-            <svg class="relative z-10 h-9 w-9 text-[#150e05]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg class="relative z-10 h-9 w-9 text-[#170506]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
             </svg>
 
-            <span class="relative z-10 text-3xl font-bold tracking-wide text-[#150e05]">สมัครสมาชิก</span>
+            <span class="relative z-10 text-3xl font-bold tracking-wide text-[#170506]">สมัครสมาชิก</span>
           </a>
         </div>
       </div>

@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxPremium.astro";
+import ContentBox from "../components/ContentBoxCyberCut.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
@@ -10,88 +10,75 @@ import { Picture } from "astro:assets";
 // <h1>), ONE short intro paragraph, the promo image grid, one CTA. Nothing
 // else. The slides already print their own offer in large type, so prose below
 // them re-types what the visitor can already read, in smaller letters. The docx
-// gives this page a Title and a Meta and never a body.
+// gives this page a Title and a Meta and never a body. The FAST369 run inherited
+// three <h2> sections and seven paragraphs from an earlier rebrand — deleted.
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The 249UP drop (all four files mtime 2026-08-12 02:16) reads:
-//   slide1 = เกมส์คลาสสิคในตำนาน เป่า ยิง ฉุบ เล่นง่ายได้จริง!
-//   slide2 = ฝากแรกของวัน รับโบนัส 3% สูงสุด 300 บาท
-//   slide3 = เล่นเสีย ไม่ต้องเสียใจ คืนยอดเสีย ทุกสัปดาห์ สูงสุด 5,000,000 บาท
-//   slide4 = แนะนำเพื่อน รับทันที 18% สัปดาห์ ไม่ต้องทำเทิร์นโอเวอร์ ถอนได้ทันที
+// The FAST369 drop (mtime 2026-08-13 06:03) is THREE slides, not four:
+//   slide1 = สมัครสมาชิกใหม่ รับ 50% สูงสุดถึง 500 บาท
+//   slide2 = คืนยอดเสีย 5% รับได้ทุกวัน ถอนได้สูงสุด 20 เท่า
+//   slide3 = แนะนำเพื่อน รับค่าคอม 1% ยิ่งชวนมาก ยิ่งได้มาก
 // The mapping between file number and promotion changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after the promotion instead of after the file.
 //
-// All four slides belong to this drop, so the grid ships four images. Every
-// other promo/banner file in src/assets (banner.png, banner2/3/4) is a previous
-// brand's leftover and must not be pulled in. Only what is printed on each
-// banner may be stated here.
-import proRps from "../assets/slide1.png";
-import proFirstDeposit from "../assets/slide2.png";
-import proCashback from "../assets/slide3.png";
-import proReferral from "../assets/slide4.png";
+// slide4.png (mtime 2026-08-12) belongs to the PREVIOUS brand and its import was
+// removed with this rebrand; banner.png and banner2/3/4 are older leftovers.
+// None of them may be pulled in here. Only what is printed on each banner may be
+// stated on this page.
+import proWelcome from "../assets/slide1.png";
+import proCashback from "../assets/slide2.png";
+import proReferral from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
 // byte count reads ~3x too long). This one measures 156.
 const pageDescription =
-  "รวมโปรโมชั่น 249UP ทั้งโบนัสฝากแรกของวัน คืนยอดเสียรายสัปดาห์ แนะนำเพื่อนรับทันที และกิจกรรมเป่ายิงฉุบเล่นง่าย ดูเงื่อนไขของแต่ละรายการให้ครบก่อนกดรับสิทธิ์";
+  "รวมโปรโมชั่น FAST369 ทั้งโบนัสสมาชิกใหม่ 50% สูงสุด 500 บาท คืนยอดเสีย 5% รับได้ทุกวัน และค่าคอมแนะนำเพื่อน 1% ดูเงื่อนไขของแต่ละรายการให้ครบก่อนกดรับสิทธิ์";
 
 const graph = pageGraph(Astro, {
-  name: "โปรโมชั่น 249UP โบนัสฝากแรกของวัน คืนยอดเสีย และแนะนำเพื่อน",
+  name: "โปรโมชั่น FAST369 โบนัสสมาชิกใหม่ คืนยอดเสียรายวัน และค่าคอมแนะนำเพื่อน",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proFirstDeposit.src,
+  primaryImagePath: proWelcome.src,
 });
 
-// Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem),
-// two-up from sm: inside that padding plus one 2rem gap, then md: where
-// ContentBoxPremium goes to p-10 (7rem), and capped at 644px once the viewport
-// passes 1432px and its max-w-[1400px] takes over.
-const imageSizes =
-  "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1432px) calc((100vw - 9rem) / 2), 644px";
+// Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
+// two-up from sm: inside that same padding plus one 2rem grid gap. ContentBoxCyberCut
+// keeps p-8 at every breakpoint (no md:p-10) and caps at max-w-7xl, so the column
+// stops growing at 592px once the viewport passes 1312px.
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1311px) calc((100vw - 8rem) / 2), 592px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#f5b626]/35 object-contain shadow-[0_10px_30px_rgba(245,182,38,0.22)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe9a8]/70 hover:shadow-[0_15px_40px_rgba(255,216,107,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#e40613]/35 object-contain shadow-[0_10px_30px_rgba(228,6,19,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffc531]/70 hover:shadow-[0_15px_40px_rgba(255,197,49,0.45)]";
 
-const imageWidths = [320, 480, 644];
+// Capped at 500 because that is the intrinsic width of every slide*.png in this
+// drop — the column is drawn up to 592px, but asking for 592 only upscales a
+// 500px source into a bigger file with no extra detail.
+const imageWidths = [320, 400, 500];
 ---
 
-<MainLayout title="โปรโมชั่น 249UP โบนัสฝากแรกของวัน คืนยอดเสีย และแนะนำเพื่อนรับทันที" description={pageDescription}>
+<MainLayout title="โปรโมชั่น FAST369 โบนัสสมาชิกใหม่ คืนยอดเสียรายวัน และค่าคอมแนะนำเพื่อน" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น 249UP" as="h1">
+  <ContentBox title="โปรโมชั่น FAST369" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ffd86b]">249UP</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งกิจกรรมเป่ายิงฉุบ โบนัสฝากแรกของวัน
-        การคืนยอดเสียรายสัปดาห์ และสิทธิ์แนะนำเพื่อน แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ
-        และเพดานของแต่ละโปรก็ไม่เหมือนกัน จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ffc531]">FAST369</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งโบนัสสมาชิกใหม่ การคืนยอดเสียรายวัน
+        และค่าคอมจากการแนะนำเพื่อน แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และเพดานถอนของแต่ละโปรก็ไม่เหมือนกัน
+        จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={proRps}
-          alt="แบนเนอร์โปรโมชั่น 249UP เกมส์คลาสสิคในตำนาน เป่า ยิง ฉุบ เล่นง่ายได้จริง! มีหญิงสาวชุดดำ สัญลักษณ์ค้อน กรรไกร กระดาษสีทอง พร้อมโลโก้ 249UP และ LINE ID : @249UP"
-          loading="lazy"
-          fetchpriority="low"
-          widths={imageWidths}
-          sizes={imageSizes}
-          class={imageClass}
-          decoding="async"
-          formats={["avif", "webp"]}
-          fallbackFormat="webp"
-          quality={80}
-        />
-
-        <Picture
-          src={proFirstDeposit}
-          alt="แบนเนอร์โปรโมชั่น 249UP ฝากแรกของวัน รับโบนัส 3% สูงสุด 300 บาท มีหญิงสาวผมบลอนด์ชุดสูทดำและไพ่ป๊อก พร้อมโลโก้ 249UP และ LINE ID : @249UP"
+          src={proWelcome}
+          alt="แบนเนอร์โปรโมชั่น FAST369 สมัครสมาชิกใหม่ รับ 50% สูงสุดถึง 500 บาท มีหญิงสาวชุดแดงถือไพ่ มังกรทอง และกองเหรียญทองบนพื้นสีแดง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -105,7 +92,7 @@ const imageWidths = [320, 480, 644];
 
         <Picture
           src={proCashback}
-          alt="แบนเนอร์โปรโมชั่น 249UP เล่นเสีย ไม่ต้องเสียใจ คืนยอดเสีย ทุกสัปดาห์ สูงสุด 5,000,000 บาท มีหญิงสาวชุดทองยืนคู่แท่งทอง พร้อมโลโก้ 249UP และ LINE ID : @249UP"
+          alt="แบนเนอร์โปรโมชั่น FAST369 คืนยอดเสีย 5% รับได้ทุกวัน ถอนได้สูงสุด 20 เท่า มีหญิงสาวชุดแดงประดับ ลูกเต๋าแดงคู่ ไพ่ ชิป และวงล้อบนพื้นสีแดง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -119,7 +106,7 @@ const imageWidths = [320, 480, 644];
 
         <Picture
           src={proReferral}
-          alt="แบนเนอร์โปรโมชั่น 249UP แนะนำเพื่อน รับทันที 18% สัปดาห์ ไม่ต้องทำเทิร์นโอเวอร์ ถอนได้ทันที มีหญิงสาวชุดสูทขาวและชิปคาสิโนลอยรอบตัว พร้อมโลโก้ 249UP และ LINE ID : @249UP"
+          alt="แบนเนอร์โปรโมชั่น FAST369 แนะนำเพื่อน รับค่าคอม 1% ยิ่งชวนมาก ยิ่งได้มาก มีหญิงสาวสองคนชุดแดง กล่องของขวัญ และเหรียญทองบนพื้นสีแดง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -135,8 +122,8 @@ const imageWidths = [320, 480, 644];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffe9a8]/60 bg-gradient-to-r from-[#ffd86b] via-[#f5b626] to-[#8a5c08] px-10 py-3.5 text-lg font-black text-[#150e05] shadow-[0_10px_30px_rgba(245,182,38,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,216,107,0.45)]">
-          สมัครสมาชิก 249UP
+          class="flex items-center justify-center rounded-lg border border-[#ffc531]/60 bg-gradient-to-r from-[#ff3b2f] via-[#e40613] to-[#8f0206] px-10 py-3.5 text-lg font-black text-[#ffe27a] shadow-[0_10px_30px_rgba(228,6,19,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,197,49,0.45)]">
+          สมัครสมาชิก FAST369
         </a>
       </div>
     </div>

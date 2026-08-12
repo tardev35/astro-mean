@@ -8,11 +8,12 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// FUSIONNEW: ไฟล์นี้มาจาก FLASH789 บนแดง (#ff2b2b / #c1121f / #8f0806 บน #170506
-// / #f7ddd8) แล้ว JUDTEM168 ย้ายไปทอง (#feeb33 / #fac42c / #e4a434 / #cc8425 /
-// #7a4a0d บน #150d04 เนื้อความ #f3e3c4) รอบนี้ย้ายมาที่แดงสัญญาณ + โครมเงิน —
-// #ff5f52 / #e01a1a / #8c0102 คู่กับ #d9dde3 / #97a0a8 / #4a5157 บนผิว #150809
-// เนื้อความ #e7e3e1 เก็บมุมตัดสไตล์ cyber-cut ของ variant นี้ไว้เหมือนเดิม
+// FAST369: ไฟล์นี้ผ่านมาหลายแบรนด์ — FLASH789 แดง (#ff2b2b / #c1121f / #8f0806),
+// JUDTEM168 ทอง (#feeb33 / #fac42c / #e4a434), FUSIONNEW แดงคู่โครมเงิน
+// (#e01a1a / #ff5f52 / #8c0102 กับ #d9dde3 / #97a0a8 / #4a5157 บนผิว #150809
+// เนื้อความ #e7e3e1) — รอบนี้เป็นแดงสัญญาณ #e40613 / #ff3b2f / #8f0206 คู่กับทอง
+// #ffe27a / #ffc531 / #a8720a บนผิว #170506 เนื้อความ #f4e7dd ข้อความรอง #cdb9b2
+// เก็บมุมตัดสไตล์ cyber-cut ของ variant นี้ไว้เหมือนเดิม
 //
 // เดิม titleleft/titleright render เป็น <h2> คนละอัน ทำให้ section เดียวของ docx
 // ปล่อยหัวข้อออกมาสองอัน ตอนนี้ทั้งคู่เป็น <p> เพราะมันตั้งชื่อคอลัมน์ ไม่ใช่
@@ -26,44 +27,44 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 
 <section aria-label={sectionLabel} class="mx-auto mb-6 w-full max-w-7xl px-4 font-sans">
   <div
-    class="relative isolate w-full border border-[#e01a1a]/25 bg-[#150809]/92 p-8 text-[#e7e3e1] shadow-[0_10px_30px_rgba(224,26,26,0.16)] backdrop-blur-md transition-all duration-300 hover:border-[#ff5f52]/55 hover:shadow-[0_15px_40px_rgba(255,95,82,0.26)]"
+    class="relative isolate w-full border border-[#e40613]/25 bg-[#170506]/92 p-8 text-[#f4e7dd] shadow-[0_10px_30px_rgba(228,6,19,0.16)] backdrop-blur-md transition-all duration-300 hover:border-[#ff3b2f]/55 hover:shadow-[0_15px_40px_rgba(255,197,49,0.26)]"
     style="clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);">
-    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#e01a1a] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#d9dde3] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#e01a1a] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#d9dde3] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#e40613] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#ffc531] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#e40613] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#ffc531] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#e01a1a] pl-6">
-          <HeadingTag class="bg-gradient-to-r from-[#d9dde3] via-[#ff5f52] to-[#e01a1a] bg-clip-text text-xl leading-normal font-black text-transparent md:text-2xl">{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#e40613] pl-6">
+          <HeadingTag class="bg-gradient-to-r from-[#ffe27a] via-[#ff3b2f] to-[#e40613] bg-clip-text text-xl leading-normal font-black text-transparent md:text-2xl">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e7e3e1]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7dd]">
         {
           titleleft && (
-            <div class="flex items-baseline gap-2 border-b border-[#e01a1a]/25 pb-2">
-              <span aria-hidden="true" class="font-mono text-[#ff5f52]">
+            <div class="flex items-baseline gap-2 border-b border-[#e40613]/25 pb-2">
+              <span aria-hidden="true" class="font-mono text-[#ff3b2f]">
                 &gt;_
               </span>
-              <p class="text-xl leading-normal font-black text-[#d9dde3]">{titleleft}</p>
+              <p class="text-xl leading-normal font-black text-[#ffe27a]">{titleleft}</p>
             </div>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e7e3e1] md:border-l md:border-[#e01a1a]/25 md:pl-8">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7dd] md:border-l md:border-[#e40613]/25 md:pl-8">
         {
           titleright && (
-            <div class="flex items-baseline gap-2 border-b border-[#e01a1a]/25 pb-2">
-              <span aria-hidden="true" class="font-mono text-[#ff5f52]">
+            <div class="flex items-baseline gap-2 border-b border-[#e40613]/25 pb-2">
+              <span aria-hidden="true" class="font-mono text-[#ff3b2f]">
                 &gt;_
               </span>
-              <p class="text-xl leading-normal font-black text-[#d9dde3]">{titleright}</p>
+              <p class="text-xl leading-normal font-black text-[#ffe27a]">{titleright}</p>
             </div>
           )
         }

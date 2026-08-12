@@ -11,37 +11,36 @@ import img6 from "../assets/providers/game6.avif";
 // game3 JILI, game4 Evolution, game5 SA Gaming, game6 Sexy Baccarat) ข้อความ alt
 // จึงบรรยายรูปได้ตรง — ห้ามเปลี่ยนชื่อ/ค่ายของแถวโดยไม่เปลี่ยนรูปตาม
 //
-// 249UP: ย้ายจากแดงสัญญาณ + โครมเงินของ FUSIONNEW (#ff5f52 / #e01a1a / #8c0102 คู่
-// กับ #d9dde3 / #97a0a8 / #4a5157 บนผิว #150809 / #1f0c0d / #0a0405 เนื้อความ
-// #e7e3e1 ข้อความรอง #c3bcb9) มาที่ทองหรูบนพื้นเกือบดำ — #ffe9a8 / #ffd86b /
-// #f5b626 / #c98a12 / #8a5c08 / #3a2606 บนผิว #150e05 / #1e1409 / #0b0703
-// เนื้อความ #f0e4cd ข้อความรอง #f0e4cd ที่ opacity 60–70%
+// FAST369: ย้ายจากทองหรูของ 249UP (#ffe9a8 / #ffd86b / #f5b626 / #c98a12 /
+// #8a5c08 / #3a2606 บนผิว #150e05 / #1e1409 / #0b0703 เนื้อความ #f0e4cd) มาที่
+// แดงสัญญาณ #e40613 / #ff3b2f / #8f0206 คู่ทอง #ffe27a / #ffc531 / #a8720a บนผิว
+// #170506 / #240709 / #0a0304 เนื้อความ #f4e7dd ข้อความรอง #cdb9b2
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
 // เรียงสล็อตขึ้นก่อนเพราะ brief ของแบรนด์นี้เป็นเว็บสล็อต แล้วปิดท้ายด้วยคาสิโนสด
 const games = [
-  { rank: 1, name: "Mahjong Ways 2", type: "PG Soft • สล็อต", menus: ["ภาพสวยแตกง่าย", "ตัวคูณจัดหนัก"], players: 5124, img: img1 },
-  { rank: 2, name: "Roma X", type: "Joker Gaming • สล็อต", menus: ["แนวคลาสสิกกดง่าย", "เล่นเพลินลืมเวลา"], players: 3842, img: img2 },
-  { rank: 3, name: "Fortune Gems", type: "JILI • สล็อต", menus: ["รอบสั้นจังหวะไว", "ซื้อฟรีสปินได้"], players: 3517, img: img3 },
+  { rank: 1, name: "Mahjong Ways 2", type: "PG Soft • สล็อต", menus: ["ภาพสวยเอฟเฟกต์อลัง", "ตัวคูณสะสมจัดหนัก"], players: 5124, img: img1 },
+  { rank: 2, name: "Roma X", type: "Joker Gaming • สล็อต", menus: ["แนวคลาสสิกกดง่าย", "สลับมาเล่นทันฟีล"], players: 3842, img: img2 },
+  { rank: 3, name: "Fortune Gems", type: "JILI • สล็อต", menus: ["รอบสั้นจังหวะไว", "ฟรีสปินออกบ่อย"], players: 3517, img: img3 },
   { rank: 4, name: "Lightning Roulette", type: "Evolution • คาสิโนสด", menus: ["สตรีมไม่มีดรอป", "ห้องให้เลือกเพียบ"], players: 2905, img: img4 },
-  { rank: 5, name: "Dragon Tiger", type: "SA Gaming • คาสิโนสด", menus: ["ภาพคมชัด HD", "สลับฟีลได้ไว"], players: 2431, img: img5 },
+  { rank: 5, name: "Dragon Tiger", type: "SA Gaming • คาสิโนสด", menus: ["ภาพคมชัด HD", "เปลี่ยนค่ายได้ไว"], players: 2431, img: img5 },
   { rank: 6, name: "เซ็กซี่ บาคาร่า", type: "Sexy Baccarat • คาสิโนสด", menus: ["เกมมาใหม่ล่าสุด", "เล่นล่าสุด"], players: 2108, img: img6 },
 ];
 
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="เกมมาแรงที่สมาชิก 249UP กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="เกมมาแรงที่สมาชิก FAST369 กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#f5b626]/30 bg-[#150e05]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(245,182,38,0.18)] backdrop-blur-md">
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#e40613]/35 bg-[#170506]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(228,6,19,0.2)] backdrop-blur-md">
     <span aria-hidden="true" class="text-2xl">🏁</span>
-    <p class="bg-gradient-to-r from-[#ffe9a8] via-[#ffd86b] to-[#c98a12] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมมาแรงที่สมาชิก 249UP กำลังปั่นอยู่ตอนนี้</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#f0e4cd]/70">
-      กระดานนี้จับเกมฮิตระดับตำนานมาวางคู่กับเกมนอกกระแสที่แจ็คพอตดี ให้สลับอารมณ์เล่นได้ตลอดทั้งวันโดยไม่ต้องเปลี่ยนเว็บ จังหวะสปินต่อเนื่องไม่มีดรอปแม้ช่วงที่มีผู้เล่นเข้าใช้งานพร้อมกันเยอะ
+    <p class="bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#e40613] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมมาแรงที่สมาชิก FAST369 กำลังปั่นอยู่ตอนนี้</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#cdb9b2]">
+      กระดานนี้จับตัวตึงระดับท็อปจากทุกค่ายดังมาวางเรียงไว้ในที่เดียว ให้สลับอารมณ์เล่นได้ตลอดทั้งวันโดยไม่ต้องเปลี่ยนเว็บ จังหวะสปินต่อกันได้ไม่ติดเบรกแม้ช่วงที่มีผู้เล่นเข้าใช้งานพร้อมกันเยอะ
       รายชื่อเกมมาแรงเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูเดิมพันเริ่มต้นและฟีเจอร์โบนัสจากหน้าเกมจริงอีกครั้งก่อนกดเล่น
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f5b626] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e40613] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -52,10 +51,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#ffe9a8]/50 bg-gradient-to-r from-[#3a2606]/90 via-[#150e05]/92 to-[#0b0703]/88 shadow-[0_15px_40px_rgba(245,182,38,0.28)]"
-                : "border-[#f5b626]/25 bg-[#150e05]/88 shadow-[0_10px_30px_rgba(245,182,38,0.16)] hover:border-[#ffd86b]/55 hover:shadow-[0_15px_40px_rgba(255,216,107,0.28)]"
+                ? "border-[#ffc531]/55 bg-gradient-to-r from-[#8f0206]/70 via-[#170506]/92 to-[#0a0304]/88 shadow-[0_15px_40px_rgba(255,197,49,0.28)]"
+                : "border-[#e40613]/30 bg-[#170506]/88 shadow-[0_10px_30px_rgba(228,6,19,0.18)] hover:border-[#ffc531]/55 hover:shadow-[0_15px_40px_rgba(255,197,49,0.28)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#8a5c08]/35 blur-[40px] transition-all duration-500 group-hover:bg-[#f5b626]/45" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#8f0206]/45 blur-[40px] transition-all duration-500 group-hover:bg-[#e40613]/50" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {/* อันดับ 1–3 แสดงเหรียญ "แทน" ตัวเลข ถ้าซ่อนอิโมจิเฉยๆ สามแถวนั้นจะไม่
@@ -66,14 +65,14 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#ffd86b] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#ffc531] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
-            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#ffe9a8]/55" : "border-[#f5b626]/30"}`}>
+            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#ffe27a]/55" : "border-[#e40613]/35"}`}>
               <Picture
                 src={g.img}
-                alt={`โลโก้ค่ายเกมของ ${g.name} ในกระดานเกมมาแรงของ 249UP`}
+                alt={`โลโก้ค่ายเกมของ ${g.name} ในกระดานเกมมาแรงของ FAST369`}
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
                 loading="lazy"
@@ -87,20 +86,20 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#f0e4cd] sm:text-lg">{g.name}</p>
-                {top && <span class="hidden shrink-0 rounded-full border border-[#ffe9a8]/60 bg-[#f5b626] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#0b0703] sm:inline">มาแรงสูงสุด</span>}
+                <p class="truncate text-base font-black text-[#f4e7dd] sm:text-lg">{g.name}</p>
+                {top && <span class="hidden shrink-0 rounded-full border border-[#ffe27a]/60 bg-[#ffc531] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#170506] sm:inline">มาแรงสูงสุด</span>}
               </div>
-              <p class="truncate text-[11px] text-[#f0e4cd]/70 sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#cdb9b2] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#f5b626]/30 bg-[#0b0703] px-2.5 py-0.5 text-[10px] font-bold text-[#ffd86b]">{m}</span>
+                  <span class="rounded-full border border-[#ffc531]/30 bg-[#0a0304] px-2.5 py-0.5 text-[10px] font-bold text-[#ffc531]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#f0e4cd]/70">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#cdb9b2]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -111,8 +110,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#ffe9a8] to-[#f5b626] text-[#0b0703] shadow-[0_10px_30px_rgba(245,182,38,0.35)]"
-                    : "border border-[#f5b626]/60 bg-[#0b0703] text-[#ffd86b] hover:border-[#ffe9a8] hover:bg-[#3a2606] hover:text-[#ffe9a8]"
+                    ? "bg-gradient-to-r from-[#ffe27a] to-[#ffc531] text-[#170506] shadow-[0_10px_30px_rgba(255,197,49,0.35)]"
+                    : "border border-[#e40613]/60 bg-[#0a0304] text-[#ffc531] hover:border-[#ffe27a] hover:bg-[#240709] hover:text-[#ffe27a]"
                 }`}>
                 เข้าดูเกม
               </a>

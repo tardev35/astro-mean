@@ -1,31 +1,30 @@
 ---
 // Widget ไม่ใช่ article: หัวข้อ render เป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
-// assistive tech เนื้อหาตาม brief ของ 249UP — รวมค่ายเกมชั้นนำไว้ครบครัน คัดเฉพาะ
-// เกมที่ภาพสวย แตกง่าย มีเอกลักษณ์, เข้าเมนูไว สลับค่ายคล่อง, ฟีเจอร์มีของทั้งคูณเงิน
-// รางวัล ซื้อฟรีสปิน ตัวคูณสุ่ม, ล็อบบี้อัปเดตเกมใหม่ตลอด
+// assistive tech เนื้อหาตาม brief ของ FAST369 — ตัวตึงระดับท็อปจากทุกค่ายดังมา
+// ปักหลักไว้ในที่เดียว คัดมาแล้วว่าแจกจริง ภาพสวย เอฟเฟกต์อลังการ, เข้าไวสลับไว
+// เปลี่ยนค่ายทันฟีล, ฟีเจอร์ตัวคูณสะสม สัญลักษณ์พิเศษ ฟรีสปิน, ล็อบบี้อัปเดตตลอด
 //
-// 249UP: ย้ายจากแดงสัญญาณ + โครมเงินของ FUSIONNEW (#ff5f52 / #e01a1a / #8c0102 คู่
-// กับ #d9dde3 / #97a0a8 / #4a5157 บนผิว #150809 / #1f0c0d / #0a0405 เนื้อความ
-// #e7e3e1 ข้อความรอง #c3bcb9) มาที่ทองหรูบนพื้นเกือบดำ — #ffe9a8 / #ffd86b /
-// #f5b626 / #c98a12 / #8a5c08 / #3a2606 บนผิว #150e05 / #1e1409 / #0b0703
-// เนื้อความ #f0e4cd ข้อความรอง #f0e4cd ที่ opacity 60–70%
+// FAST369: ย้ายจากทองหรูของ 249UP (#ffe9a8 / #ffd86b / #f5b626 / #c98a12 /
+// #8a5c08 / #3a2606 บนผิว #150e05 / #1e1409 / #0b0703 เนื้อความ #f0e4cd) มาที่
+// แดงสัญญาณ #e40613 / #ff3b2f / #8f0206 คู่ทอง #ffe27a / #ffc531 / #a8720a บนผิว
+// #170506 / #240709 / #0a0304 เนื้อความ #f4e7dd ข้อความรอง #cdb9b2
 const providers = [
-  { name: "PG Soft", desc: "สล็อตแนวแฟนตาซี ภาพสวยจัด สปินลื่น ฟีเจอร์แน่น เป็นค่ายที่สายปั่นหยิบมาเล่นบ่อยที่สุด", tag: "ค่ายดัง", icon: "🎰" },
-  { name: "Pragmatic Play", desc: "ตัวคูณเงินรางวัลกับฟรีสปินมาบ่อย เกมฮิตระดับตำนานรออยู่เพียบตั้งแต่เปิดหน้าเว็บ", tag: "เกมฮิต", icon: "🔥" },
-  { name: "JILI", desc: "จังหวะไว รอบสั้น เข้าฟีเจอร์รัวๆ เหมาะกับคนที่ชอบปั่นยาวๆ แบบไม่มีเบื่อ", tag: "รอบไว", icon: "⚡" },
-  { name: "Joker Gaming", desc: "แนวคลาสสิกกดง่าย เล่นสบายตา สลับกี่เกมก็ยังสนุกเหมือนเดิม ไม่ต้องปรับตัวใหม่", tag: "เล่นง่าย", icon: "🃏" },
-  { name: "Evolution โต๊ะสด", desc: "ภาพคมชัดระดับ HD สตรีมเรียลไทม์ไม่มีดรอป มีห้องให้เลือกเข้าเพียบตามจังหวะที่ชอบ", tag: "โต๊ะสดจัดหนัก", icon: "🎴" },
-  { name: "เกมนอกกระแสแจ็คพอตดี", desc: "ล็อบบี้อัปเดตรายการเกมใหม่อยู่เสมอ มีตัวน่าลองให้ค้นเจอเรื่อยๆ ไม่เจอความจำเจ", tag: "ค้นเจอตัวใหม่", icon: "🆕" },
-  { name: "เล่นลื่นทุกอุปกรณ์", desc: "นอนไถจอผ่านมือถือหรือนั่งจอใหญ่ผ่านคอมพิวเตอร์ ทุกสปินก็ต่อกันได้ไม่ขัดจังหวะ", tag: "ไม่มีดรอป", icon: "📱" },
+  { name: "PG Soft", desc: "สล็อตแนวแฟนตาซี ภาพสวยจัด เอฟเฟกต์อลังการ สปินลื่นต่อกันได้ไม่มีสะดุด", tag: "ค่ายดัง", icon: "🎰" },
+  { name: "Pragmatic Play", desc: "ตัวคูณสะสมกับโหมดฟรีสปินออกบ่อย เกมตัวตึงระดับท็อปรออยู่ตั้งแต่เปิดล็อบบี้", tag: "เกมตัวตึง", icon: "🔥" },
+  { name: "JILI", desc: "จังหวะไว รอบสั้น เข้าฟีเจอร์รัวๆ เหมาะกับสายสปินที่ชอบความสะใจแบบไม่ต้องรอ", tag: "รอบไว", icon: "⚡" },
+  { name: "Joker Gaming", desc: "แนวคลาสสิกกดง่าย สลับมาเล่นทันฟีลโดยไม่ต้องปรับตัวใหม่ให้เสียจังหวะ", tag: "เล่นง่าย", icon: "🃏" },
+  { name: "Evolution โต๊ะสด", desc: "ภาพคมชัดระดับ HD สตรีมเรียลไทม์ไม่มีดรอป มีห้องให้เลือกเข้าเพียบตามฟีลที่อยากได้", tag: "โต๊ะสดจัดหนัก", icon: "🎴" },
+  { name: "เกมมาใหม่อัปเดตตลอด", desc: "ล็อบบี้อัปเดตรายการเกมอยู่เสมอ เปิดเข้ามาเมื่อไหร่ก็เจอตัวน่าลองกดสปินรออยู่", tag: "ของใหม่ตลอด", icon: "🆕" },
+  { name: "เล่นลื่นทุกอุปกรณ์", desc: "ไถจอมือถือหรือนั่งจอใหญ่ผ่านคอมพิวเตอร์ ทุกสปินก็ต่อกันได้แบบไม่ติดเบรก", tag: "สปีดไม่ตก", icon: "📱" },
 ];
 ---
 
-<section aria-label="ค่ายเกมและโต๊ะสดที่ 249UP ขนมาไว้ครบเครื่องในเว็บเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายเกมและโต๊ะสดที่ FAST369 ขนตัวตึงมารวมไว้ในเว็บเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#ffe9a8] via-[#ffd86b] to-[#c98a12] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมและโต๊ะสดที่ <span class="text-[#ffd86b]">249UP</span> ขนมาไว้ครบเครื่องในเว็บเดียว
+    <p class="bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#e40613] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายเกมและโต๊ะสดที่ <span class="text-[#ffc531]">FAST369</span> ขนตัวตึงมารวมไว้ในเว็บเดียว
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f5b626] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e40613] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
@@ -33,20 +32,20 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#f5b626]/25 bg-[#150e05]/92 p-5 shadow-[0_10px_30px_rgba(245,182,38,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#ffd86b]/55 hover:bg-[#1e1409]/95 hover:shadow-[0_15px_40px_rgba(255,216,107,0.3)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#3a2606]/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#e40613]/30 bg-[#170506]/92 p-5 shadow-[0_10px_30px_rgba(228,6,19,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#ffc531]/60 hover:bg-[#240709]/95 hover:shadow-[0_15px_40px_rgba(255,197,49,0.3)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#8f0206]/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffe9a8] via-[#ffd86b] to-[#c98a12] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#0b0703] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#a8720a] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#170506] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
             {provider.icon}
           </div>
-          <p class="text-center text-sm font-black text-[#f0e4cd] transition-colors group-hover:text-[#ffd86b]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#f0e4cd]/70">{provider.desc}</p>
+          <p class="text-center text-sm font-black text-[#f4e7dd] transition-colors group-hover:text-[#ffc531]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#cdb9b2]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#f5b626]/30 bg-[#0b0703] py-1.5 text-center text-[11px] font-bold text-[#ffd86b] shadow-inner transition-colors duration-300 group-hover:border-[#ffe9a8]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffe9a8] group-hover:via-[#ffd86b] group-hover:to-[#c98a12] group-hover:text-[#0b0703]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#ffc531]/30 bg-[#0a0304] py-1.5 text-center text-[11px] font-bold text-[#ffc531] shadow-inner transition-colors duration-300 group-hover:border-[#ffe27a]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffe27a] group-hover:via-[#ffc531] group-hover:to-[#a8720a] group-hover:text-[#170506]">
             เข้าดูเกม
           </span>
         </a>
