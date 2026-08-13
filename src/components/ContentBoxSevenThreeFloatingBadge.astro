@@ -1,54 +1,61 @@
 ---
 export interface Props {
   title?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   titleleft?: string;
   titleright?: string;
 }
-const { title, titleleft, titleright } = Astro.props;
+const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// IOK66: this variant arrived in pink/cyan (#fed0b9 / #f670b7 / #e01e83 /
-// #02dbfd over #2a0f2e / #12060f, body #f3d7e7). Fully recoloured onto this
-// brand's royal gold + crimson — #ffe9a3 / #f0cd6a / #e3b64a / #b8862c /
-// #5c3a10 over #1c110a / #0d0705 with a #5c0a0c glow, body text #f2e2c4.
+// THUNDER87: this variant last shipped IOK66's royal gold + crimson (#ffe9a3 /
+// #f0cd6a / #e3b64a / #b8862c / #5c3a10 over #1c110a / #0d0705 with a #5c0a0c /
+// #a3161c glow, body #f2e2c4). Remapped onto this brand's electric-yellow
+// lightning on near-black — #fff89a / #fae61c / #dcb309 / #ffd60a / #8a7405 over
+// #17150a / #080703, body text #f0ead6. No red, no orange survives here.
+//
+// `as` มีมาเพื่อให้หน้าเรียกกำหนดระดับหัวข้อได้เหมือน ContentBox* ตัวอื่น (เดิม
+// ไฟล์นี้ hardcode <h2> ไว้ทั้งสามจุด) ส่วน titleleft/titleright ตอนนี้เป็น <p>
+// ป้ายคอลัมน์: มันตั้งชื่อคอลัมน์ UI ไม่ใช่ section ของ docx ถ้าปล่อยเป็น <h2>
+// ต่อไป docx หัวข้อเดียวจะกลายเป็นสามหัวข้อบนหน้าเว็บ
 //
 // pt-32/md:pt-28 — the badge hangs at -top-6, so its bottom edge lands
 // (badge height − 24px) below the card's top edge, and a full-sentence Thai H2
-// wraps to two or three lines. IOK66's docx H2 for this block is 52 Thai
-// characters: on a 360px phone the badge is w-[92%] (331px) less px-4, so the
-// inner text width is ~299px and text-lg wraps it to 2 lines of 27px = 54px
-// + 24px of chrome = 78px, bottom edge at 54px against pt-32 (128px) → 74px of
-// clearance (still positive at 4 lines). At md the badge is max-w-2xl, text-2xl
-// wraps to 2 lines of 36px = 72px + 24px = 96px, bottom edge 72px against
-// md:pt-28 (112px) → 40px. The badge is w-[92%] max-w-2xl text-center, never
-// whitespace-nowrap. Kept one step shallower than ContentBoxFloatingBadge.astro,
-// which anchors its badge the same way but spends ~52px of badge width on two
-// decorative ✦ spans.
+// wraps to two or three lines. THUNDER87's docx H2 for this block is 54 Thai
+// characters ("ฝากถอนเป็นระบบจัดการคล่อง ทำรายการไวไม่ปล่อยให้เสียอารมณ์"): on a
+// 360px phone the badge is w-[92%] (331px) less px-4, so the inner text width is
+// ~299px and text-lg wraps it to 2 lines of 27px = 54px + 24px of chrome = 78px,
+// bottom edge at 54px against pt-32 (128px) → 74px of clearance (still positive
+// at 4 lines). At md the badge is max-w-2xl, text-2xl wraps to 2 lines of 36px =
+// 72px + 24px = 96px, bottom edge 72px against md:pt-28 (112px) → 40px. The
+// badge is w-[92%] max-w-2xl text-center, never whitespace-nowrap. Kept one step
+// shallower than ContentBoxFloatingBadge.astro, which anchors its badge the same
+// way but spends ~52px of badge width on two decorative ⚡ spans.
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#e3b64a]/30 bg-gradient-to-b from-[#1c110a]/95 to-[#0d0705]/95 p-8 pt-32 shadow-[0_10px_30px_rgba(227,182,74,0.18)] md:pt-28">
-    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#e3b64a]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#5c0a0c]/55 blur-[60px]"></div>
+    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#fae61c]/30 bg-gradient-to-b from-[#17150a]/95 to-[#080703]/95 p-8 pt-32 shadow-[0_10px_30px_rgba(250,230,28,0.18)] md:pt-28">
+    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#fae61c]/30 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#8a7405]/55 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#e3b64a]/45 bg-[#0d0705] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(163,22,28,0.35)] sm:px-8">
-          <h2 class="bg-gradient-to-r from-[#ffe9a3] via-[#e3b64a] to-[#b8862c] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
+        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#fae61c]/45 bg-[#080703] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(220,179,9,0.35)] sm:px-8">
+          <HeadingTag class="bg-gradient-to-r from-[#fff89a] via-[#fae61c] to-[#dcb309] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
             {title}
-          </h2>
+          </HeadingTag>
         </div>
       )
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2e2c4]">
-        {titleleft && <h2 class="text-2xl leading-normal font-bold text-[#e3b64a]">{titleleft}</h2>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f0ead6]">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#fae61c]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2e2c4] md:border-l md:border-[#5c3a10] md:pl-10">
-        {titleright && <h2 class="text-2xl leading-normal font-bold text-[#e3b64a]">{titleright}</h2>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f0ead6] md:border-l md:border-[#8a7405] md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#fae61c]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

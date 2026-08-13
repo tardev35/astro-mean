@@ -1,7 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideReferFriend from "../assets/slide3.png";
+import slideWithdrawLimit from "../assets/slide2.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -17,20 +17,21 @@ import slideReferFriend from "../assets/slide3.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// FAST369 เหลือสไลด์ใบเดียวตรงนี้: slide3 (แนะนำเพื่อน รับค่าคอม 1%) ส่วน slide1
-// กับ slide2 อยู่ในบล็อก ContentBoxSevenThree ของหน้าแลนดิ้งแล้ว แต่ละใบมีบ้าน
-// เดียวบนหน้าเว็บ การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียวคือสิ่งที่การแบ่งแบบนี้
-// เลี่ยงอยู่ ส่วน slide4.png เป็นอาร์ตค้างของแบรนด์เก่า (mtime 2026-08-12) จึงไม่
-// ถูก import ที่ไหนทั้งสิ้น
+// THUNDER87 เหลือสไลด์ใบเดียวตรงนี้: slide2 (ถอนสูงสุดต่อวัน 10,000,000 · ถอน
+// AUTO ไม่เกิน 1 นาที) ส่วน slide4 กับ slide3 ไปอยู่ในบล็อก ContentBoxSevenThree
+// สองบล็อกของหน้าแลนดิ้งแล้ว แต่ละใบมีบ้านเดียวบนหน้าเว็บ การโชว์อาร์ตใบเดียวกัน
+// สองที่ในหน้าเดียวคือสิ่งที่การแบ่งแบบนี้เลี่ยงอยู่ ส่วน slide1 เป็นต้นทางของ
+// og.png จึงไม่ถูก import ลงหน้าเว็บ
 //
-// รูปเป็นจัตุรัส 500x500 และเหลือใบเดียว จึงลดจำนวนช่องที่มองเห็นพร้อมกันเหลือ 1
-// บนมือถือ / 2 บนเดสก์ท็อป แล้วบีบกล่องเป็น max-w-[1000px] เพื่อให้แต่ละใบวาด
-// ราวๆ 492px ใกล้ขนาดจริงของไฟล์ ค่า --shift ใน stylesheet ข้างล่างคำนวณจาก
-// จำนวนรูปต้นฉบับ (หนึ่งใบ) ถ้าเปลี่ยนจำนวนต้องคิดใหม่ทั้งคู่
+// สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน 600x211 และเหลือใบเดียว จึงให้เห็นพร้อมกัน 1 ช่อง
+// บนมือถือ / 2 ช่องบนเดสก์ท็อป แล้วบีบกล่องเป็น max-w-[1000px] เพื่อให้แต่ละใบวาด
+// ราวๆ 492px ซึ่งต่ำกว่าความกว้างจริงของไฟล์ (600px) จึงไม่มีการอัปสเกล ค่า
+// --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (หนึ่งใบ) ถ้าเปลี่ยน
+// จำนวนต้องคิดใหม่ทั้งคู่
 const images = [
   {
-    src: slideReferFriend,
-    alt: "แบนเนอร์โปรโมชั่น FAST369 ข้อความ แนะนำเพื่อน รับค่าคอม 1% ยิ่งชวนมาก ยิ่งได้มาก ภาพหญิงสาวสองคนในชุดราตรีสีแดงยืนคู่กัน ล้อมด้วยกล่องของขวัญ เหรียญทอง และธนบัตร บนพื้นแดงประกายทอง",
+    src: slideWithdrawLimit,
+    alt: "แบนเนอร์โปรโมชั่น THUNDER87 ข้อความ ถอนสูงสุดต่อวัน 10,000,000 ถอน AUTO ไม่เกิน 1 นาที และที่อยู่เว็บ Thunder87.com ภาพหญิงสาวผมบลอนด์สวมชุดออกกำลังกายสีดำสกรีนโลโก้ THUNDER87 ถือปึกธนบัตรดอลลาร์ ยืนอยู่หน้าสายฟ้าสีเหลืองบนพื้นดำ",
   },
 ];
 
@@ -52,7 +53,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#ffc531]/60 peer-focus-visible:bg-[#240709] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffc531]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#fae61c]/60 peer-focus-visible:bg-[#2b2606] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#fae61c]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -68,7 +69,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#e40613]/35 object-cover shadow-[0_10px_30px_rgba(228,6,19,0.2)]"
+              class="block w-full rounded-xl border border-[#fae61c]/35 object-cover shadow-[0_10px_30px_rgba(250,230,28,0.2)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

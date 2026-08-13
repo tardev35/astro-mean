@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxCyberCut.astro";
+import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/Announcement3.astro";
 
 import { Picture } from "astro:assets";
 
@@ -10,75 +10,77 @@ import { Picture } from "astro:assets";
 // <h1>), ONE short intro paragraph, the promo image grid, one CTA. Nothing
 // else. The slides already print their own offer in large type, so prose below
 // them re-types what the visitor can already read, in smaller letters. The docx
-// gives this page a Title and a Meta and never a body. The FAST369 run inherited
-// three <h2> sections and seven paragraphs from an earlier rebrand — deleted.
+// gives this page a Title and a Meta and never a body.
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The FAST369 drop (mtime 2026-08-13 06:03) is THREE slides, not four:
-//   slide1 = สมัครสมาชิกใหม่ รับ 50% สูงสุดถึง 500 บาท
-//   slide2 = คืนยอดเสีย 5% รับได้ทุกวัน ถอนได้สูงสุด 20 เท่า
-//   slide3 = แนะนำเพื่อน รับค่าคอม 1% ยิ่งชวนมาก ยิ่งได้มาก
+// The THUNDER87 drop (mtime 2026-08-13 07:02) is four slides, but slide1 and
+// slide2 carry the SAME offer in two crops (slide2 is the short one, used by the
+// carousel on the landing page), so only three distinct offers exist:
+//   slide3 = ฝากถอนรวดเร็วทันใจ ระบบ AUTO ภายใน 10 วินาที
+//   slide1 = ถอนสูงสุดต่อวัน 10,000,000 · ถอน AUTO ไม่เกิน 1 นาที
+//   slide4 = แทงบาคาร่าสูงสุดไม้ละ 200,000 · แทงบอลสูงสุดไม้ละ 2,000,000
 // The mapping between file number and promotion changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after the promotion instead of after the file.
 //
-// slide4.png (mtime 2026-08-12) belongs to the PREVIOUS brand and its import was
-// removed with this rebrand; banner.png and banner2/3/4 are older leftovers.
-// None of them may be pulled in here. Only what is printed on each banner may be
-// stated on this page.
-import proWelcome from "../assets/slide1.png";
-import proCashback from "../assets/slide2.png";
-import proReferral from "../assets/slide3.png";
+// banner.png and banner2/3/4.png are older leftovers (mtime 2026-08-04) and may
+// not be pulled in here. Only what is printed on each banner may be stated on
+// this page.
+import proAutoSpeed from "../assets/slide3.png";
+import proWithdrawCap from "../assets/slide1.png";
+import proTableLimits from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 156.
+// byte count reads ~3x too long). This one measures 159.
 const pageDescription =
-  "รวมโปรโมชั่น FAST369 ทั้งโบนัสสมาชิกใหม่ 50% สูงสุด 500 บาท คืนยอดเสีย 5% รับได้ทุกวัน และค่าคอมแนะนำเพื่อน 1% ดูเงื่อนไขของแต่ละรายการให้ครบก่อนกดรับสิทธิ์";
+  "รวมโปรโมชั่นและเพดานบริการของ THUNDER87 ทั้งฝากถอนออโต้ภายใน 10 วินาที ถอนสูงสุดวันละ 10,000,000 บาท และแทงบาคาร่าสูงสุดไม้ละ 200,000 ดูเงื่อนไขก่อนกดรับสิทธิ์";
 
 const graph = pageGraph(Astro, {
-  name: "โปรโมชั่น FAST369 โบนัสสมาชิกใหม่ คืนยอดเสียรายวัน และค่าคอมแนะนำเพื่อน",
+  name: "โปรโมชั่น THUNDER87 ฝากถอนออโต้ ถอนสูงสุดวันละ 10 ล้าน และเพดานเดิมพัน",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proWelcome.src,
+  primaryImagePath: proAutoSpeed.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
-// two-up from sm: inside that same padding plus one 2rem grid gap. ContentBoxCyberCut
-// keeps p-8 at every breakpoint (no md:p-10) and caps at max-w-7xl, so the column
-// stops growing at 592px once the viewport passes 1312px.
-const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1311px) calc((100vw - 8rem) / 2), 592px";
+// two-up from sm: inside that same padding plus one 2rem grid gap.
+// ContentBoxPremium widens its padding at md: (p-8 → p-10) and caps at
+// max-w-[1400px], so the column stops growing at 644px once the viewport passes
+// 1432px.
+const imageSizes =
+  "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#e40613]/35 object-contain shadow-[0_10px_30px_rgba(228,6,19,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffc531]/70 hover:shadow-[0_15px_40px_rgba(255,197,49,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#fae61c]/35 object-contain shadow-[0_10px_30px_rgba(250,230,28,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#fff89a]/70 hover:shadow-[0_15px_40px_rgba(255,248,154,0.45)]";
 
-// Capped at 500 because that is the intrinsic width of every slide*.png in this
-// drop — the column is drawn up to 592px, but asking for 592 only upscales a
-// 500px source into a bigger file with no extra detail.
-const imageWidths = [320, 400, 500];
+// Capped at 600 because that is the intrinsic width of every slide*.png in this
+// drop — the column is drawn up to 644px, but asking for 644 only upscales a
+// 600px source into a bigger file with no extra detail.
+const imageWidths = [320, 440, 600];
 ---
 
-<MainLayout title="โปรโมชั่น FAST369 โบนัสสมาชิกใหม่ คืนยอดเสียรายวัน และค่าคอมแนะนำเพื่อน" description={pageDescription}>
+<MainLayout title="โปรโมชั่น THUNDER87 ฝากถอนออโต้ ถอนสูงสุดวันละ 10 ล้าน และเพดานเดิมพัน" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น FAST369" as="h1">
+  <ContentBox title="โปรโมชั่น THUNDER87" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ffc531]">FAST369</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งโบนัสสมาชิกใหม่ การคืนยอดเสียรายวัน
-        และค่าคอมจากการแนะนำเพื่อน แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และเพดานถอนของแต่ละโปรก็ไม่เหมือนกัน
+        แบนเนอร์ด้านล่างคือสิทธิ์และเพดานบริการที่ <strong class="text-[#fae61c]">THUNDER87</strong> เปิดให้ใช้อยู่ในรอบนี้ทั้งหมด ทั้งความเร็วของระบบฝากถอนออโต้ วงเงินถอนต่อวัน
+        และเพดานเดิมพันของโต๊ะบาคาร่ากับกีฬา แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ และขั้นต่ำต่อบิลก็ไม่เหมือนกัน
         จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={proWelcome}
-          alt="แบนเนอร์โปรโมชั่น FAST369 สมัครสมาชิกใหม่ รับ 50% สูงสุดถึง 500 บาท มีหญิงสาวชุดแดงถือไพ่ มังกรทอง และกองเหรียญทองบนพื้นสีแดง"
+          src={proAutoSpeed}
+          alt="แบนเนอร์โปรโมชั่น THUNDER87 ฝากถอนรวดเร็วทันใจ ระบบ AUTO ภายใน 10 วินาที มีหญิงสาวชุดกีฬาดำทองถือไพ่ ท่ามกลางสายฟ้าสีเหลืองบนพื้นดำ"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -91,8 +93,8 @@ const imageWidths = [320, 400, 500];
         />
 
         <Picture
-          src={proCashback}
-          alt="แบนเนอร์โปรโมชั่น FAST369 คืนยอดเสีย 5% รับได้ทุกวัน ถอนได้สูงสุด 20 เท่า มีหญิงสาวชุดแดงประดับ ลูกเต๋าแดงคู่ ไพ่ ชิป และวงล้อบนพื้นสีแดง"
+          src={proWithdrawCap}
+          alt="แบนเนอร์โปรโมชั่น THUNDER87 ถอนสูงสุดต่อวัน 10,000,000 ถอน AUTO ไม่เกิน 1 นาที มีหญิงสาวผมบลอนด์ถือปึกธนบัตร ท่ามกลางสายฟ้าสีเหลืองบนพื้นดำ"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -105,8 +107,8 @@ const imageWidths = [320, 400, 500];
         />
 
         <Picture
-          src={proReferral}
-          alt="แบนเนอร์โปรโมชั่น FAST369 แนะนำเพื่อน รับค่าคอม 1% ยิ่งชวนมาก ยิ่งได้มาก มีหญิงสาวสองคนชุดแดง กล่องของขวัญ และเหรียญทองบนพื้นสีแดง"
+          src={proTableLimits}
+          alt="แบนเนอร์โปรโมชั่น THUNDER87 แทงบาคาร่าสูงสุดไม้ละ 200,000 แทงบอลสูงสุดไม้ละ 2,000,000 มีหญิงสาวถือไพ่คลี่เป็นพัด ท่ามกลางสายฟ้าสีเหลืองบนพื้นดำ"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -122,8 +124,8 @@ const imageWidths = [320, 400, 500];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffc531]/60 bg-gradient-to-r from-[#ff3b2f] via-[#e40613] to-[#8f0206] px-10 py-3.5 text-lg font-black text-[#ffe27a] shadow-[0_10px_30px_rgba(228,6,19,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,197,49,0.45)]">
-          สมัครสมาชิก FAST369
+          class="flex items-center justify-center rounded-lg border border-[#fff89a]/60 bg-gradient-to-r from-[#fff89a] via-[#fae61c] to-[#8a7405] px-10 py-3.5 text-lg font-black text-[#0b0a04] shadow-[0_10px_30px_rgba(250,230,28,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,248,154,0.45)]">
+          สมัครสมาชิก THUNDER87
         </a>
       </div>
     </div>

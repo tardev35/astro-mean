@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "http://249up-new.com",
+  site: "http://thunder87plus.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

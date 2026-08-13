@@ -18,43 +18,43 @@ const { title, faqs = [] } = Astro.props;
 // content — <p> ตรงนั้นไม่ถูกต้องตามสเปก ชื่อ section มาจาก <h2> ที่ขับด้วย prop
 // `title` ซึ่งย้อนกลับไปหา brief ได้จริง
 //
-// FUSIONNEW: ย้ายจากทองมังกร + ไฟของ LONGSAP168 (#ffd76a / #f2b024 / #a86a0c คู่
-// กับ #ff4d2e / #d81f26 / #7d0508 บนผิว #170806 / #0a0402 เนื้อความ #f6e4c8) มาที่
-// แดงสัญญาณ #ff5f52 / #e01a1a / #8c0102 คู่โครมเงิน #d9dde3 บนผิว #150809 /
-// #0a0405 เนื้อความ #e7e3e1
+// THUNDER87: ย้ายจากแดงสัญญาณ + โครมเงินของ FUSIONNEW (#ff5f52 / #e01a1a /
+// #8c0102 คู่กับ #d9dde3 บนผิว #150809 / #0a0405 เนื้อความ #e7e3e1) มาที่เหลือง
+// สายฟ้าไฟฟ้า + ตัวอักษรขาวจากโลโก้ — #fff89a / #fae61c / #8a7405 คู่กับ #fdfdfd
+// บนผิว #17150a / #080703 เนื้อความ #f0ead6 แบรนด์นี้ไม่มีแดงและไม่มีส้ม
 ---
 
 <section class="mx-auto max-w-[950px] space-y-6 px-4 py-6 font-sans">
   {
     title && (
       <header class="mb-8 text-center">
-        <h2 class="bg-gradient-to-r from-[#d9dde3] via-[#ff5f52] to-[#e01a1a] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <h2 class="bg-gradient-to-r from-[#fdfdfd] via-[#fff89a] to-[#fae61c] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </h2>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e01a1a] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#fae61c] to-transparent" />
       </header>
     )
   }
 
   {
     faqs.map((faq) => (
-      <div class="group relative bg-[#8c0102] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#d9dde3] via-[#e01a1a] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
+      <div class="group relative bg-[#8a7405] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#fdfdfd] via-[#fae61c] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
 
-        <details class="faq-item relative bg-[#150809] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
+        <details class="faq-item relative bg-[#17150a] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
           <summary class="flex w-full cursor-pointer items-center gap-4 text-left">
             <span
               aria-hidden="true"
-              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#ff5f52] to-[#e01a1a] font-black text-[#0a0405] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#fff89a] to-[#fae61c] font-black text-[#080703] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
               ?
             </span>
-            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#e7e3e1]">{faq.q}</span>
-            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#ff5f52] transition-transform duration-300">
+            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#f0ead6]">{faq.q}</span>
+            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#fae61c] transition-transform duration-300">
               ▼
             </span>
           </summary>
 
-          <p class="faq-answer mt-4 border-l-2 border-[#d9dde3]/50 pl-4 text-left text-base leading-relaxed text-[#e7e3e1]/85">{faq.a}</p>
+          <p class="faq-answer mt-4 border-l-2 border-[#fdfdfd]/50 pl-4 text-left text-base leading-relaxed text-[#f0ead6]/85">{faq.a}</p>
         </details>
       </div>
     ))

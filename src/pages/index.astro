@@ -1,90 +1,93 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBox from "../components/ContentBox.astro";
+import Announcement from "../components/Announcement3.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
+import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinners3.astro";
+import LatestWinners from "../components/LatestWinnersCyber.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq4.astro";
+import Faq from "../components/Faq2.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgWelcomeBonus from "../assets/slide1.png";
-import imgDailyCashback from "../assets/slide2.png";
+import imgBaccarat from "../assets/slide4.png";
+import imgAutoTransfer from "../assets/slide3.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxCyberCut as="h1"
-//   2 → ContentBoxSevenThreeCyberCut as="h2" + slide1 (สมัครใหม่ รับ 50%)
-//   3 → ContentBoxNeumorphism as="h2"
-//   4 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอย
-//       ต่อประโยค)
-//   5 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าลง left/center/right)
-//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide2 (คืนยอดเสีย 5% ทุกวัน)
-//   7 → ContentBox as="h2"
+//   1 → ContentBoxPremium as="h1"
+//   2 → ContentBoxFloatingBadge as="h2"
+//   3 → ContentBoxSevenThreePremium as="h2" + slide4 (แทงบาคาร่า)
+//   4 → ContentBoxTwoPremium as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อประโยค)
+//   5 → ContentBox3ThreePremium as="h2" (แบ่งย่อหน้าลง left/center/right)
+//   6 → ContentBoxSevenThreeFloatingBadge as="h2" + slide3 (ฝากถอน AUTO 10 วินาที)
+//   7 → ContentBoxSpecial as="h2" (แบ่งย่อหน้าลงสองครึ่ง หนึ่ง element ต่อ slot)
 //
-// variant รอบนี้เปลี่ยนทั้งตระกูลจากแบรนด์ก่อนหน้า (249UP ใช้ Premium +
-// FloatingBadge + Special + plain) มาเป็น CyberCut + Neumorphism + plain
+// variant รอบนี้เปลี่ยนทั้งตระกูลจากแบรนด์ก่อนหน้า (FAST369 ใช้ CyberCut +
+// Neumorphism + plain) มาเป็น Premium + FloatingBadge + Special
 //
-// SevenThree ใช้สองบล็อกพอดี ซึ่งเป็นเพดานของ playbook — slide1 คู่กับหัวข้อ
-// "เปิดโหมดความมันส์ไวตั้งแต่คลิกแรก" (รูปพิมพ์ว่าสมัครสมาชิกใหม่ รับ 50%) และ
-// slide2 คู่กับหัวข้อโบนัส (รูปพิมพ์ว่าคืนยอดเสีย 5% รับได้ทุกวัน) ส่วน slide3
-// เป็นของ SmoothCarousel จึงไม่ถูก import ที่นี่ ไม่ให้รูปใบเดียวกันโผล่สองที่ใน
-// หน้าเดียว ส่วน slide4.png เป็นอาร์ตค้างของแบรนด์เก่า (mtime 2026-08-12) ไม่ถูก
-// import ที่ไหนทั้งสิ้น
+// SevenThree ใช้สองบล็อกพอดี ซึ่งเป็นเพดานของ playbook — slide4 คู่กับหัวข้อ
+// "รวมสล็อต คาสิโนสด และบาคาร่า" (รูปพิมพ์ว่าแทงบาคาร่า สูงสุดไม้ละ 200,000) และ
+// slide3 คู่กับหัวข้อฝากถอน (รูปพิมพ์ว่าฝากถอนรวดเร็วทันใจ ระบบ AUTO ภายใน 10
+// วินาที) ส่วน slide2 เป็นของ SmoothCarousel จึงไม่ถูก import ที่นี่ ไม่ให้รูปใบ
+// เดียวกันโผล่สองที่ในหน้าเดียว และ slide1 เป็นต้นทางของ og.png เท่านั้น
 //
 // banner1/banner1-mobile เป็น hero ที่ MainLayout จัดการเอง ส่วน banner.png กับ
-// banner2/3/4 เป็นอาร์ตของแบรนด์เก่า (mtime 2026-08-04) จึงไม่ถูก import ที่ไหน
-// รอบนี้จึงไม่มีรูปประกอบใน ContentBox เดี่ยว
+// banner2/3/4 เป็นอาร์ตค้างของแบรนด์เก่า จึงไม่ถูก import ที่ไหน รอบนี้จึงไม่มี
+// รูปประกอบใน ContentBox เดี่ยว
 //
-// widget ที่ไม่ได้มาจาก docx (SmoothCarousel, ProviderGrid, GameRankingBoard,
-// LoginRtpSection, LatestWinners, ReviewCardSumo2, แถวปุ่ม login/register) ใช้
-// ป้ายเป็น <p>/<span> + aria-label บน <section> จึงวางต่อท้ายหัวข้อ docx ที่มัน
-// สังกัดได้โดยลำดับ h2 ไม่เพี้ยน
+// widget ที่ไม่ได้มาจาก docx (ProviderGrid, GameRankingBoard, LoginRtpSection,
+// SmoothCarousel, LatestWinners, ReviewCardSumo2, แถวปุ่ม login/register) ใช้ป้าย
+// เป็น <p>/<span> + aria-label บน <section> จึงวางต่อท้ายหัวข้อ docx ที่มันสังกัด
+// ได้โดยลำดับ h2 ไม่เพี้ยน — ProviderGrid ต่อจากหัวข้อค่ายเกม, GameRankingBoard
+// ต่อจากหัวข้อล็อบบี้, LoginRtpSection ต่อจากหัวข้อระบบออโต้, SmoothCarousel
+// (แบนเนอร์เพดานถอน) ต่อจากหัวข้อลุยทำกำไร, LatestWinners ต่อจากหัวข้อฝากถอน
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7
-// คำถามใน Faq4 เป็น <span> ใน <summary> ไม่ใช่ h3 ตามที่ variant นั้น ship มา
+// คำถามใน Faq2 เป็น <span> ใน <summary> ไม่ใช่ h3 ตามที่ variant นั้น ship มา
 
-// Title/Des มาจาก docx ตรงตัว แล้วต่อท้ายให้อยู่ในช่วง 150–160 ตัวอักษรที่
-// verify-build บังคับ (ตัว Des ของ docx เองยาว 142 ตัวอักษร)
-const pageTitle = "FAST369 | เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก";
+// Title/Des มาจาก docx ตรงตัว ตัว Des ยาว 151 ตัวอักษร ซึ่งอยู่ในช่วง 150–160 ที่
+// verify-build บังคับอยู่แล้ว จึงใช้ทั้งประโยคโดยไม่ต้องต่อท้าย
+const pageTitle = "THUNDER87 | สล็อตฟอร์มฟาด เกมครบแบบไม่หวง ระบบแรงออโต้ไว";
 const pageDescription =
-  "FAST369 เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก เกมตัวตึงลงครบ ล็อบบี้แน่น ฟีเจอร์มีของ เข้าไวสลับไว พร้อมต่อความมันส์แบบไม่ติดเบรก โหลดไวไม่มีสะดุด";
+  "THUNDER87 สล็อตฟอร์มฟาด เกมครบแบบไม่หวง ระบบแรงออโต้ไว รวมสล็อตค่ายดัง คาสิโนสด และบาคาร่าไว้เต็มล็อบบี้ เข้าเกมคล่อง ฝากถอนเป็นระบบ พร้อมลุยได้ทุกเวลา";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji
 const announcementMessage =
-  "FAST369 เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก • เปิดโหมดความมันส์ไวตั้งแต่คลิกแรก โหลดหน้าเกมสมูธ ไม่ต้องรอนานจนหมดอารมณ์ • เกมตัวตึงลงครบ ล็อบบี้แน่น คัดมาแล้วว่าแจกจริง ภาพสวย เอฟเฟกต์อลังการ • เข้าไวสลับไว เปลี่ยนค่ายได้ทันฟีลโดยไม่ต้องกดออกหลายขั้นตอน • ฟีเจอร์มีของทั้งตัวคูณสะสม สัญลักษณ์พิเศษ และโหมดฟรีสปินที่ออกบ่อยจนน่าตกใจ • โบนัสพร้อมบวก เติมทุนให้ตลอด มีกิจกรรมและโปรเด็ดๆ รอกดรับ • พร้อมต่อความมันส์แบบไม่ติดเบรก เกม ระบบ และล็อบบี้เดินหน้าไปพร้อมกัน";
+  "THUNDER87 สล็อตฟอร์มฟาด เกมครบแบบไม่หวง ระบบแรงออโต้ไว • ขนเกมค่ายดังระดับโลกมาลงแน่นในที่เดียว คัดมาแล้วทั้งงานภาพคมชัดและอัตราการจ่ายสมน้ำสมเนื้อ • รวมสล็อต คาสิโนสด และบาคาร่าไว้เต็มล็อบบี้ สลับอารมณ์เล่นได้ในยูสเซอร์เดียว • เข้าเกมคล่อง สลับค่ายไว ระบบประมวลผลแรงและเสถียร ไม่มีกระตุกไม่หลุดกลางโบนัส • จังหวะการเล่นสุดตึงพร้อมทุกช่วงเวลา เช้า สาย บ่าย ดึก มาตรฐานการจ่ายเที่ยงตรงเสมอ • ฝากถอนออโต้แม่นยำ ทำรายการไวไม่ผ่านคนกลาง ทุกบาททุกสตางค์ตรงไปตรงมา • ปักหลักเล่นเกมโปรดที่เดียวจบ ครบทั้งความสนุกและความคุ้มค่า";
 
+// FAQ ห้าข้อเขียนจากเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบทับย่อหน้าไหนตรงๆ เพราะ
+// เนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถามที่ผู้เล่นถาม
+// จริงด้วยข้อเท็จจริงชุดเดียวกัน
 const faqs = [
   {
-    q: "FAST369 เข้าเล่นแล้วระบบไวจริงไหม ต้องรอโหลดนานหรือเปล่า",
-    a: "ก้าวแรกที่กดเข้า FAST369 คุณจะได้สัมผัสกับสปีดการตอบสนองที่ฉับไวแบบทันที ไม่ต้องรอนานจนหมดอารมณ์ ตัวระบบถูกออกแบบให้โหลดหน้าเกมและองค์ประกอบต่างๆ ได้อย่างสมูธ ช่วยให้ผู้เล่นเข้าถึงโหมดความมันส์ได้ทันทีที่ใจต้องการ ปั่นสนุก ไร้รอยต่อ ตอบโจทย์คนที่อยากเล่นเกมแล้วได้ความสะใจแบบไม่ต้องมีอะไรมาขัดจังหวะ",
+    q: "THUNDER87 มีค่ายเกมให้เลือกเยอะแค่ไหน ต้องสมัครหลายเว็บไหม",
+    a: "ไม่ต้องสมัครหลายเว็บเลย THUNDER87 รวมรายชื่อค่ายเกมชั้นนำระดับโลกมาไว้ในที่เดียว ทั้งค่ายใหญ่ในกระแสและค่ายดังเฉพาะกลุ่ม ทุกเกมถูกคัดสรรมาอย่างพิถีพิถันเพื่อตอบโจทย์สายสปินที่ต้องการงานภาพคมชัดและอัตราการจ่ายที่สมน้ำสมเนื้อ เล่นได้ยาวๆ ไม่มีคำว่ากั๊กฟีเจอร์ เปิดโอกาสให้ลุ้นแจ็คพอตแตกหนักได้เต็มที่ในทุกช่วงเวลา",
   },
   {
-    q: "ล็อบบี้ของ FAST369 มีเกมตัวตึงให้เลือกครบแค่ไหน",
-    a: "รวมเอาตัวตึงระดับท็อปจากทุกค่ายดังมาปักหลักไว้ในที่เดียว FAST369 จัดเต็มล็อบบี้แน่นๆ ด้วยเกมคุณภาพสูงที่ผ่านการคัดสรรมาแล้วว่าแจกจริง ภาพสวย และเอฟเฟกต์อลังการ ไม่ว่าจะชอบเล่นแนวไหน สไตล์ไหน ก็มีตัวเลือกเด็ดๆ คอยสลับมาให้เล่นกันอย่างไม่ขาดสาย เปิดเข้ามาเมื่อไหร่ก็เจอแต่เกมตึงๆ น่าลองกดสปินทั้งนั้น",
+    q: "อยากสลับจากสล็อตไปเล่นบาคาร่าหรือคาสิโนสด ต้องโยกเงินไหม",
+    a: "ไม่ต้องโยกเงินและไม่ต้องเปิดบัญชีเพิ่ม ล็อบบี้ของ THUNDER87 ถูกดีไซน์มาให้อยู่ในรูปแบบอาณาจักรความบันเทิงแบบครบวงจร อยากสลับอารมณ์จากการปั่นวงล้อไปลุ้นหน้าไพ่บาคาร่า หรือสัมผัสความตื่นเต้นกับคาสิโนสดถ่ายทอดตรง ก็ทำได้ทันทีในยูสเซอร์เดียว ความหลากหลายตรงนี้ช่วยเติมเต็มอารมณ์การเล่นให้สดใหม่อยู่เสมอ",
   },
   {
-    q: "อยากสลับค่ายเปลี่ยนเกมกลางรอบ ต้องกดออกหลายขั้นตอนไหม",
-    a: "ไฮไลต์เด็ดที่ทำให้หลายคนติดใจ FAST369 คือความคล่องตัวในการสลับเปลี่ยนค่ายเกม ไม่ต้องกดออกหลายขั้นตอนหรือรอรีโหลดนานๆ อยากเปลี่ยนบรรยากาศไปลุ้นเกมค่ายอื่นก็ทำได้ในทันที จังหวะกำลังมา ฟีลกำลังได้ ก็จัดต่อได้ทันทีโดยไม่เสีย mood การปั่นที่ต่อเนื่องแบบนี้แหละที่ช่วยเพิ่มโอกาสทำแจ็คพอตแตกได้ดียิ่งขึ้น",
+    q: "ระบบของ THUNDER87 เข้าเกมไวจริงไหม จะเจอเกมหลุดกลางโบนัสหรือเปล่า",
+    a: "เรื่องเทคโนโลยีเบื้องหลังคือจุดขายที่ทำให้ THUNDER87 ยืนหนึ่งในใจนักเล่น ระบบการประมวลผลแรงและเสถียร กดเข้าเกมได้ฉับไว ตอบสนองทันทีที่คลิก การสลับเปลี่ยนค่ายเกมทำได้อย่างลื่นไหลไม่มีกระตุก หมดปัญหาหน้าจอค้างหรือเกมหลุดระหว่างลุ้นโบนัส ให้ดื่มด่ำกับความสนุกได้อย่างต่อเนื่องไม่มีสะดุดแม้แต่วินาทีเดียว",
   },
   {
-    q: "ฟีเจอร์ในเกมของ FAST369 มีอะไรช่วยเพิ่มจังหวะลุ้นบ้าง",
-    a: "นอกจากความไวของระบบแล้ว เกมใน FAST369 ยังอุดมไปด้วยฟีเจอร์เด็ดที่พร้อมระเบิดรางวัลให้ผู้เล่น ไม่ว่าจะเป็นตัวคูณสะสม สัญลักษณ์พิเศษที่ช่วยเข้าฟีเจอร์ง่ายขึ้น หรือโหมดฟรีสปินที่ออกบ่อยจนน่าตกใจ ทำให้การหมุนทุกครั้งไม่ใช่แค่การรอลุ้นรอบปกติ แต่เต็มไปด้วยลูกเล่นที่ช่วยซัพพอร์ตให้ลุ้นกำไรก้อนใหญ่ได้สนุกกว่าเดิม",
+    q: "เข้าเล่นช่วงดึกหรือช่วงคนเยอะ จังหวะการจ่ายรางวัลจะเปลี่ยนไปไหม",
+    a: "ไม่ว่าจะเข้าใช้งานช่วงเช้า สาย บ่าย หรือดึก ตัวเกมยังคงรักษามาตรฐานการจ่ายรางวัลอย่างเที่ยงตรง จังหวะโบนัสแตกและฟีเจอร์พิเศษพร้อมทำงานตลอดเวลา THUNDER87 ตั้งใจเซ็ตจังหวะการเล่นสุดตึงมาเพื่อผู้เล่นทุกคน เปิดกว้างให้เข้ามาวางกลยุทธ์ ลุยทำกำไร และกอบโกยรางวัลใหญ่กลับออกไปได้ตามใจสั่ง",
   },
   {
-    q: "โบนัสและโปรโมชันของ FAST369 มีเติมให้ต่อเนื่องแค่ไหน",
-    a: "สายล่าโปรต้องเลิฟ เพราะ FAST369 จัดเตรียมสิทธิประโยชน์และโบนัสพิเศษไว้เติมทุนให้ผู้เล่นอยู่ตลอดเวลา มีกิจกรรมและโปรเด็ดๆ พร้อมบวกเพิ่มเข้าไปในยูสเซอร์ ให้คุณมีทุนเอาไปหมุนต่อยอดได้ยาวขึ้น เพิ่มความคุ้มค่าให้ทุกจังหวะการปั่นมีเรื่องน่าลุ้นและน่าติดตามอยู่เสมอแบบไม่มีคำว่าเกลือ",
+    q: "ฝากถอนกับ THUNDER87 ใช้เวลานานไหม ต้องแจ้งสลิปผ่านแอดมินหรือเปล่า",
+    a: "ไม่ต้องผ่านคนกลาง THUNDER87 พัฒนาระบบการเงินออโต้ให้มีความแม่นยำและรวดเร็วสูงสุด ไม่ว่าจะฝากเงินเพื่อเติมทุนลุยต่อ หรือถอนกำไรก้อนโตเข้าบัญชี ทุกขั้นตอนถูกจัดการอย่างเรียบร้อยภายในเวลาอันสั้น ไร้ความซับซ้อน ให้มั่นใจได้เต็มร้อยว่าทุกบาททุกสตางค์จะถูกจัดการอย่างตรงไปตรงมา",
   },
 ];
 
@@ -100,112 +103,124 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="FAST369 เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก">
+  <ContentBoxPremium as="h1" title="THUNDER87 สล็อตฟอร์มฟาด เกมครบแบบไม่หวง ระบบแรงออโต้ไว">
     <p class="text-left text-base leading-relaxed">
-      ถ้าคุณเป็นสายสปินที่ชอบความสะใจ ไม่ชอบนั่งรออะไรนานๆ FAST369 คือคำตอบที่ใช่ที่สุด การันตีเรื่องความสปีดของระบบที่รวดเร็ว ลื่นไหล จังหวะปั่นเกมต่อกันได้อย่างสมบูรณ์แบบ
-      ไม่ว่าจะเข้าเล่นช่วงเวลาไหนก็สปีดแรงไม่มีตก ควบคู่ไปกับอัตราการจ่ายและโบนัสที่พร้อมบวกเพิ่มความคุ้มค่าให้ทุกยอดปั่น ลืมความงก ความช้า หรือหน้าเว็บกระตุกไปได้เลย
-      เพราะที่นี่ถูกรีดประสิทธิภาพมาเพื่อความมันส์แบบทะลุขีดจำกัดโดยเฉพาะ
+      ยกระดับความมันส์ให้พุ่งทะลุพิกัดไปกับ THUNDER87 เว็บสล็อตสายดุดันที่พร้อมฟาดทุกวงการด้วยความครบเครื่อง ลืมความจำเจของระบบเดิมๆ ไปได้เลย
+      เพราะที่นี่ขนความบันเทิงระดับพรีเมียมมาให้สัมผัสกันแบบจัดเต็ม ทั้งเรื่องความอลังการของตัวเกม ความรวดเร็วของระบบออโต้ และจังหวะการแจกรางวัลที่มาแบบไม่หวง
+      ไม่ว่าคุณจะเป็นสายปั่นมือใหม่หรือเซียนเก๋าเกม แค่ได้ก้าวเข้ามาสัมผัสบรรยากาศความสนุกที่นี่ ก็พร้อมเปิดประตูสู่อีกระดับของการทำกำไรที่ไร้ขีดจำกัดแล้ว
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxPremium>
 
-  <SmoothCarousel />
-
-  <ContentBoxSevenThreeCyberCut as="h2" title="FAST369 เว็บสล็อตสปีดเกมไหล เปิดโหมดความมันส์ไวตั้งแต่คลิกแรก">
-    <Picture
-      slot="left"
-      src={imgWelcomeBonus}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 500]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น FAST369 ข้อความ สมัครสมาชิกใหม่ รับ 50% สูงสุดถึง 500 บาท ภาพหญิงสาวชุดแดงถือไพ่ยืนคู่กับมังกรทองและกองเหรียญทอง บนพื้นแดงประกายทอง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#ffc531]/35 shadow-[0_10px_30px_rgba(255,197,49,0.22)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ก้าวแรกที่กดเข้า FAST369 คุณจะได้สัมผัสกับสปีดการตอบสนองที่ฉับไวแบบทันที ไม่ต้องรอนานจนหมดอารมณ์ ตัวระบบถูกออกแบบให้โหลดหน้าเกมและองค์ประกอบต่างๆ ได้อย่างสมูธ
-      ช่วยให้ผู้เล่นเข้าถึงโหมดความมันส์ได้ทันทีที่ใจต้องการ ปั่นสนุก ไร้รอยต่อ ตอบโจทย์คนที่อยากเล่นเกมแล้วได้ความสะใจแบบไม่ต้องมีอะไรมาขัดจังหวะ
-    </p>
-  </ContentBoxSevenThreeCyberCut>
-
-  <ContentBoxNeumorphism as="h2" title="เกมตัวตึงลงครบ ล็อบบี้แน่นแบบ FAST369 เปิดมาทีไรก็มีตัวน่าเล่นรออยู่">
+  <ContentBoxFloatingBadge as="h2" title="THUNDER87 สล็อตฟอร์มฟาด ขนเกมค่ายดังมาลงแน่นแบบไม่หวง">
     <p class="text-left text-base leading-relaxed">
-      รวมเอาตัวตึงระดับท็อปจากทุกค่ายดังมาปักหลักไว้ในที่เดียว FAST369 จัดเต็มล็อบบี้แน่นๆ ด้วยเกมคุณภาพสูงที่ผ่านการคัดสรรมาแล้วว่าแจกจริง ภาพสวย และเอฟเฟกต์อลังการ
-      ไม่ว่าจะชอบเล่นแนวไหน สไตล์ไหน ก็มีตัวเลือกเด็ดๆ คอยสลับมาให้เล่นกันอย่างไม่ขาดสาย เปิดเข้ามาเมื่อไหร่ก็เจอแต่เกมตึงๆ น่าลองกดสปินทั้งนั้น
+      จัดหนักจัดเต็มสมชื่อ THUNDER87 ที่รวมเอารายชื่อค่ายเกมชั้นนำระดับโลกมาไว้ในที่เดียว ไม่ว่าจะเป็นค่ายใหญ่ในกระแสหรือค่ายดังเฉพาะกลุ่ม
+      ทุกเกมถูกคัดสรรมาอย่างพิถีพิถันเพื่อตอบโจทย์สายสปินที่ต้องการงานภาพคมชัดและอัตราการจ่ายที่สมน้ำสมเนื้อ เล่นได้ยาวๆ ไม่มีคำว่ากั๊กฟีเจอร์
+      เปิดโอกาสให้ผู้เล่นได้ลุ้นแจ็คพอตแตกหนักกันอย่างเต็มที่ในทุกช่วงเวลา
     </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxFloatingBadge>
 
   <ProviderGrid />
 
-  <ContentBoxTwoNeumorphism as="h2" title="ระบบเร็วแรงถึงใจ เข้าไวสลับไว เปลี่ยนค่ายได้ทันฟีลโดยไม่เสียจังหวะ">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ไฮไลต์เด็ดที่ทำให้หลายคนติดใจ FAST369 คือความคล่องตัวในการสลับเปลี่ยนค่ายเกม ไม่ต้องกดออกหลายขั้นตอนหรือรอรีโหลดนานๆ อยากเปลี่ยนบรรยากาศไปลุ้นเกมค่ายอื่นก็ทำได้ในทันที
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      จังหวะกำลังมา ฟีลกำลังได้ ก็จัดต่อได้ทันทีโดยไม่เสีย mood การปั่นที่ต่อเนื่องแบบนี้แหละที่ช่วยเพิ่มโอกาสทำแจ็คพอตแตกได้ดียิ่งขึ้น
-    </p>
-  </ContentBoxTwoNeumorphism>
-
-  <LoginRtpSection />
-
-  <ContentBox3ThreeCyberCut as="h2" title="ฟีเจอร์มีของใน FAST369 แต่ละเกมซ่อนลูกเล่นเด็ดให้ตามมากกว่าแค่การหมุน">
-    <p slot="left" class="text-left text-base leading-relaxed">นอกจากความไวของระบบแล้ว เกมใน FAST369 ยังอุดมไปด้วยฟีเจอร์เด็ดที่พร้อมระเบิดรางวัลให้ผู้เล่น</p>
-    <p slot="center" class="text-left text-base leading-relaxed">ไม่ว่าจะเป็นตัวคูณสะสม สัญลักษณ์พิเศษที่ช่วยเข้าฟีเจอร์ง่ายขึ้น หรือโหมดฟรีสปินที่ออกบ่อยจนน่าตกใจ</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ทำให้การหมุนทุกครั้งไม่ใช่แค่การรอลุ้นรอบปกติ แต่เต็มไปด้วยลูกเล่นที่ช่วยซัพพอร์ตให้ลุ้นกำไรก้อนใหญ่ได้สนุกกว่าเดิม</p>
-  </ContentBox3ThreeCyberCut>
-
-  <GameRankingBoard />
-
-  <ContentBoxSevenThreeNeumorphism as="h2" title="โบนัสพร้อมบวก เติมความคุ้มให้ทุกช่วงการเล่นมีอะไรใหม่ให้น่าจับตา">
+  <ContentBoxSevenThreePremium as="h2" title="รวมสล็อต คาสิโนสด และบาคาร่า จัดเต็มล็อบบี้เลือกสลับได้ไม่มีเบื่อ">
     <Picture
       slot="left"
-      src={imgDailyCashback}
+      src={imgBaccarat}
       loading="lazy"
       fetchpriority="low"
-      widths={[200, 400, 500]}
+      widths={[200, 400, 600]}
       sizes="(max-width: 768px) 100vw, 30vw"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่น FAST369 ข้อความ คืนยอดเสีย 5% รับได้ทุกวัน ถอนได้สูงสุด 20 เท่า ภาพหญิงสาวชุดแดงประดับเลื่อม ลูกเต๋าแดงคู่ ไพ่ ชิปคาสิโน และวงล้อ บนพื้นแดงประกายทอง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#ffc531]/35 shadow-[0_10px_30px_rgba(255,197,49,0.22)]"
+      alt="แบนเนอร์โปรโมชั่น THUNDER87 ข้อความ แทงบาคาร่า สูงสุดไม้ละ 200,000 แทงบอลสูงสุดไม้ละ 2,000,000 และที่อยู่เว็บ Thunder87.com ภาพหญิงสาวผมบลอนด์สวมชุดออกกำลังกายสีดำสกรีนโลโก้ THUNDER87 คลี่ไพ่ห้าใบไว้ข้างหน้า ยืนอยู่หน้าสายฟ้าสีเหลืองบนพื้นดำ"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fae61c]/35 shadow-[0_10px_30px_rgba(250,230,28,0.22)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      สายล่าโปรต้องเลิฟ เพราะ FAST369 จัดเตรียมสิทธิประโยชน์และโบนัสพิเศษไว้เติมทุนให้ผู้เล่นอยู่ตลอดเวลา มีกิจกรรมและโปรเด็ดๆ พร้อมบวกเพิ่มเข้าไปในยูสเซอร์
-      ให้คุณมีทุนเอาไปหมุนต่อยอดได้ยาวขึ้น เพิ่มความคุ้มค่าให้ทุกจังหวะการปั่นมีเรื่องน่าลุ้นและน่าติดตามอยู่เสมอแบบไม่มีคำว่าเกลือ
+      ไม่ได้มีดีแค่เรื่องสล็อต เพราะล็อบบี้ของ THUNDER87 ถูกดีไซน์มาให้อยู่ในรูปแบบอาณาจักรความบันเทิงแบบครบวงจร อยากสลับอารมณ์จากการปั่นวงล้อไปลุ้นหน้าไพ่บาคาร่า
+      หรือสัมผัสความตื่นเต้นกับคาสิโนสดถ่ายทอดตรง ก็ทำได้ทันทีในยูสเซอร์เดียว ไม่ต้องเสียเวลาโยกเงินหรือสมัครหลายบัญชีให้ยุ่งยาก
+      ความหลากหลายตรงนี้ช่วยเติมเต็มอารมณ์การเล่นให้สดใหม่อยู่เสมอ
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+  </ContentBoxSevenThreePremium>
 
-  <ContentBox as="h2" title="FAST369 พร้อมต่อความมันส์แบบไม่ติดเบรก เกม ระบบ และล็อบบี้เดินหน้าไปพร้อมกัน">
-    <p class="text-left text-base leading-relaxed">
-      สรุปเลยว่า FAST369 คือศูนย์รวมความบันเทิงสล็อตยุคใหม่ที่กล้าให้มากกว่าใคร ทั้งเรื่องความเร็วของระบบ หน้าล็อบบี้ที่อัปเดตตลอดเวลา และคอลเลกชันเกมที่ลงตัว
-      ทุกอย่างถูกขับเคลื่อนไปด้วยกันอย่างมีประสิทธิภาพ ใครกำลังมองหาเว็บปั่นมันส์ๆ โอนไว ได้เงินจริง และระบบไม่เคยติดขัด ต้องลองกดเข้ามาจัดสักรอบ แล้วจะรู้ว่าเว็บสปีดแรงของจริงเป็นยังไง
+  <GameRankingBoard />
+
+  <ContentBoxTwoPremium as="h2" title="เข้าเกมคล่องสลับค่ายไว ระบบออโต้สปีดแรงที่สุดใน THUNDER87">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      เรื่องเทคโนโลยีเบื้องหลังคือจุดขายที่ทำให้ THUNDER87 ยืนหนึ่งในใจนักเล่น ด้วยระบบการประมวลผลที่แรงและเสถียรที่สุด สามารถกดเข้าเกมได้ฉับไว ตอบสนองทันทีที่คลิก
     </p>
-  </ContentBox>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      การสลับเปลี่ยนค่ายเกมทำได้อย่างลื่นไหลไม่มีกระตุก หมดปัญหาหน้าจอค้างหรือเกมหลุดระหว่างลุ้นโบนัส ให้คุณดื่มด่ำกับความสนุกได้อย่างต่อเนื่องไม่มีสะดุดแม้แต่วินาทีเดียว
+    </p>
+  </ContentBoxTwoPremium>
+
+  <LoginRtpSection />
+
+  <ContentBox3ThreePremium as="h2" title="สัมผัสจังหวะการเล่นสุดตึงกับ THUNDER87 พร้อมลุยทำกำไรได้ทุกเวลา">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      สายล่ารางวัลต้องไม่พลาดจังหวะการเล่นสุดตึงที่ THUNDER87 ตั้งใจเซ็ตมาเพื่อผู้เล่นทุกคน ไม่ว่าจะเข้าใช้งานช่วงเช้า สาย บ่าย หรือดึก
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">
+      ตัวเกมยังคงรักษามาตรฐานการจ่ายรางวัลอย่างเที่ยงตรง จังหวะโบนัสแตกและฟีเจอร์พิเศษพร้อมทำงานตลอดเวลา
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เปิดกว้างให้ทุกคนเข้ามาวางกลยุทธ์ ลุยทำกำไร และกอบโกยรางวัลใหญ่กลับออกไปได้ตามใจสั่ง
+    </p>
+  </ContentBox3ThreePremium>
+
+  <SmoothCarousel />
+
+  <ContentBoxSevenThreeFloatingBadge as="h2" title="ฝากถอนเป็นระบบจัดการคล่อง ทำรายการไวไม่ปล่อยให้เสียอารมณ์">
+    <Picture
+      slot="left"
+      src={imgAutoTransfer}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น THUNDER87 ข้อความ ฝากถอนรวดเร็วทันใจ ระบบ AUTO ภายใน 10 วินาที และที่อยู่เว็บ Thunder87.com ภาพหญิงสาวผมยาวสวมชุดออกกำลังกายสีดำสกรีนโลโก้ THUNDER87 ถือไพ่ไว้สองมือ ยืนอยู่หน้าสายฟ้าสีเหลืองบนพื้นดำ"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fae61c]/35 shadow-[0_10px_30px_rgba(250,230,28,0.22)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ความสบายใจเรื่องการเงินคือเรื่องสำคัญที่สุด THUNDER87 จึงพัฒนาระบบการเงินออโต้ให้มีความแม่นยำและรวดเร็วสูงสุด ไม่ว่าจะฝากเงินเพื่อเติมทุนลุยต่อ
+      หรือถอนกำไรก้อนโตเข้าบัญชี ทุกขั้นตอนถูกจัดการอย่างเรียบร้อยภายในเวลาอันสั้น ไร้ความซับซ้อน ไม่ต้องผ่านคนกลาง
+      ให้คุณมั่นใจได้เต็มร้อยว่าทุกบาททุกสตางค์จะถูกจัดการอย่างตรงไปตรงมา
+    </p>
+  </ContentBoxSevenThreeFloatingBadge>
 
   <LatestWinners />
+
+  <ContentBoxSpecial as="h2" title="ครบเครื่องเรื่องความบันเทิง ปักหลักเล่นเกมโปรดที่ THUNDER87 ได้ยาวๆ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      หากคุณกำลังมองหาพื้นที่เล่นเกมระยะยาวที่ไม่ต้องคอยย้ายเว็บหนีปัญหา THUNDER87 คือคำตอบสุดท้ายที่รวมทุกอย่างที่คุณมองหาเอาไว้ครบ ทั้งความอุดมสมบูรณ์ของตัวเกม
+      ความเสถียรของระบบ และบริการที่จริงใจ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ปักหลักเล่นที่นี่ที่เดียวจบ ได้ทั้งความสนุก ได้ทั้งความคุ้มค่า ลองเข้ามาสัมผัสด้วยตัวเองแล้วจะรู้ว่าความบันเทิงระดับฟอร์มฟาดของจริงเป็นอย่างไร
+    </p>
+  </ContentBoxSpecial>
 
   <ReviewCardSumo2 />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#a8720a] px-4 py-3 text-sm font-black whitespace-nowrap text-[#170506] shadow-[0_10px_30px_rgba(255,197,49,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,226,122,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fff89a] via-[#fae61c] to-[#8a7405] px-4 py-3 text-sm font-black whitespace-nowrap text-[#080703] shadow-[0_10px_30px_rgba(250,230,28,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,248,154,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e40613]/60 bg-[#170506]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f4e7dd] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ff3b2f] hover:bg-[#240709] hover:text-[#ffe27a] hover:shadow-[0_15px_40px_rgba(228,6,19,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#dcb309]/60 bg-[#17150a]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f0ead6] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ffd60a] hover:bg-[#2b2606] hover:text-[#fff89a] hover:shadow-[0_15px_40px_rgba(220,179,9,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ FAST369" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ THUNDER87" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

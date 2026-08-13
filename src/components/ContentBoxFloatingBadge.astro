@@ -16,40 +16,43 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // ซึ่งสูงกว่าอีกสองไฟล์หนึ่งสเต็ป บนจอ 360–375px นั่นคือส่วนต่างระหว่างป้าย
 // 3 บรรทัดกับ 4 บรรทัด
 //
-// คำนวณกับหัวข้อ H2 ข้อ 7 ของ docx 249UP ยาว 67 ตัวอักษร
-// ("249UP ระบบโอนไวเข้าบัญชีเลย จบขั้นตอนการเงินคล่องแบบไม่ปล่อยให้รอนาน")
+// คำนวณกับหัวข้อ H2 ข้อ 2 ของ docx THUNDER87 ยาว 55 ตัวอักษร
+// ("THUNDER87 สล็อตฟอร์มฟาด ขนเกมค่ายดังมาลงแน่นแบบไม่หวง")
 // chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
-//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ ✦ สองตัว
+//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ ⚡ สองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 8.5px ต่อตัวอักษร
 //   → ~27 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด:
 //   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
 //   108px เทียบกับ pt-36 (144px) → เหลือช่องว่าง 36px
-//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ ✦ เหลือ ~566px,
+//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ ⚡ เหลือ ~566px,
 //   text-2xl/leading-normal = 36px ต่อบรรทัด, 2 บรรทัด = 72px + 24px = 96px
 //   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-32 (128px) → เหลือ 56px
 // ให้ไฟล์นี้ลึกกว่าอีกสอง *FloatingBadge หนึ่งขั้นเสมอ อย่าทำให้เท่ากัน
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// ธีม 249UP: การ์ดเป็นแผงดำอมทอง #150e05 ป้ายจึงเป็นเม็ดหมึกดำสนิท #0b0703
-// และตัวอักษรเป็น gradient ทองสว่าง → ทองเข้ม ซึ่งอ่านออกชัดบนพื้นนั้น
+// THUNDER87: ย้ายจากทองหรูของ 249UP (#ffe9a8 / #ffd86b / #f5b626 / #c98a12 /
+// #8a5c08 บนผิว #150e05 / #0b0703 เนื้อความ #f0e4cd) มาที่เหลืองสายฟ้าไฟฟ้า —
+// #fff89a / #fae61c / #dcb309 / #ffd60a / #8a7405 บนผิว #17150a / #080703
+// เนื้อความ #f0ead6 ไม่มีสีแดงหรือส้มเหลืออยู่ในไฟล์นี้ ป้ายเป็นเม็ดหมึกดำสนิท
+// #080703 ซึ่งตัวอักษร gradient เหลืองอ่านออกชัดที่สุด
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f5b626]/30 bg-[#150e05]/88 p-8 pt-36 text-left text-base leading-relaxed text-[#f0e4cd] shadow-[0_10px_30px_rgba(245,182,38,0.18)] backdrop-blur-md md:pt-32">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#f5b626]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#8a5c08]/50 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#fae61c]/30 bg-[#17150a]/88 p-8 pt-36 text-left text-base leading-relaxed text-[#f0ead6] shadow-[0_10px_30px_rgba(250,230,28,0.18)] backdrop-blur-md md:pt-32">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#fae61c]/30 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#8a7405]/50 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffe9a8]/50 bg-[#0b0703] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(245,182,38,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#ffd86b]">
-            ✦
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#fff89a]/50 bg-[#080703] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(250,230,28,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#ffd60a]">
+            ⚡
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffe9a8] via-[#f5b626] to-[#c98a12] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#ffd86b]">
-            ✦
+          <HeadingTag class={`bg-gradient-to-r from-[#fff89a] via-[#fae61c] to-[#dcb309] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#ffd60a]">
+            ⚡
           </span>
         </div>
       )
