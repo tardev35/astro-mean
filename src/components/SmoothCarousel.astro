@@ -1,7 +1,7 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideWithdrawLimit from "../assets/slide2.png";
+import slideBirthday from "../assets/slide4.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -17,21 +17,21 @@ import slideWithdrawLimit from "../assets/slide2.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// THUNDER87 เหลือสไลด์ใบเดียวตรงนี้: slide2 (ถอนสูงสุดต่อวัน 10,000,000 · ถอน
-// AUTO ไม่เกิน 1 นาที) ส่วน slide4 กับ slide3 ไปอยู่ในบล็อก ContentBoxSevenThree
-// สองบล็อกของหน้าแลนดิ้งแล้ว แต่ละใบมีบ้านเดียวบนหน้าเว็บ การโชว์อาร์ตใบเดียวกัน
-// สองที่ในหน้าเดียวคือสิ่งที่การแบ่งแบบนี้เลี่ยงอยู่ ส่วน slide1 เป็นต้นทางของ
-// og.png จึงไม่ถูก import ลงหน้าเว็บ
+// MACAUBET เหลือสไลด์ใบเดียวตรงนี้เหมือนรอบก่อน: slide4 (สุขสันต์วันเกิด รับ 500
+// เครดิต) ส่วน slide2 (โบนัสฝากประจำ 7 วัน) กับ slide1 (คืนยอดเสีย 5%) ไปอยู่ใน
+// บล็อก ContentBoxSevenThree สองบล็อกของหน้าแลนดิ้งแล้ว และ slide3 อยู่หน้า
+// /promotion แต่ละใบมีบ้านเดียวบนหน้าเว็บ การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียว
+// คือสิ่งที่การแบ่งแบบนี้เลี่ยงอยู่
 //
-// สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน 600x211 และเหลือใบเดียว จึงให้เห็นพร้อมกัน 1 ช่อง
-// บนมือถือ / 2 ช่องบนเดสก์ท็อป แล้วบีบกล่องเป็น max-w-[1000px] เพื่อให้แต่ละใบวาด
-// ราวๆ 492px ซึ่งต่ำกว่าความกว้างจริงของไฟล์ (600px) จึงไม่มีการอัปสเกล ค่า
-// --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (หนึ่งใบ) ถ้าเปลี่ยน
-// จำนวนต้องคิดใหม่ทั้งคู่
+// สไลด์ชุดนี้กลับมาเป็นแบนเนอร์แนวนอน 600x263 (รอบก่อนเป็นจัตุรัส 600x600) และยัง
+// เหลือใบเดียว จึงให้เห็นพร้อมกัน 1 ช่องบนมือถือ / 2 ช่องบนเดสก์ท็อป แล้วบีบกล่อง
+// เป็น max-w-[820px] เพื่อให้แต่ละใบวาดราวๆ 386px ซึ่งต่ำกว่าความกว้างจริงของไฟล์
+// (600px) จึงไม่มีการอัปสเกล ค่า --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูป
+// ต้นฉบับ (หนึ่งใบ) ถ้าเปลี่ยนจำนวนต้องคิดใหม่ทั้งคู่
 const images = [
   {
-    src: slideWithdrawLimit,
-    alt: "แบนเนอร์โปรโมชั่น THUNDER87 ข้อความ ถอนสูงสุดต่อวัน 10,000,000 ถอน AUTO ไม่เกิน 1 นาที และที่อยู่เว็บ Thunder87.com ภาพหญิงสาวผมบลอนด์สวมชุดออกกำลังกายสีดำสกรีนโลโก้ THUNDER87 ถือปึกธนบัตรดอลลาร์ ยืนอยู่หน้าสายฟ้าสีเหลืองบนพื้นดำ",
+    src: slideBirthday,
+    alt: "แบนเนอร์โปรโมชั่น MACAUBET ข้อความ สุขสันต์วันเกิด ยอดฝากครบกำหนด รับเลย 500 เครดิต ภาพเค้กวันเกิดสามชั้นธีมคาสิโนสีเขียวเข้มสลับทอง ประดับมงกุฎ ไพ่โพดำ วงล้อรูเล็ต และเทียนพลุ ข้างหญิงสาวชุดขาวถือกล่องของขวัญ บนพื้นสีเขียวเข้มประดับธงราว",
   },
 ];
 
@@ -49,11 +49,11 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
 // (บันทึกอยู่ใน frontmatter เพราะ HTML comment ในเทมเพลตจะถูก ship ไปทุกหน้า)
 ---
 
-<div class="marquee mx-auto w-full max-w-[1000px] overflow-hidden px-4 py-5">
+<div class="marquee mx-auto w-full max-w-[820px] overflow-hidden px-4 py-5">
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#fae61c]/60 peer-focus-visible:bg-[#2b2606] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#fae61c]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#59cb13]/60 peer-focus-visible:bg-[#0f3a11] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#8ef04a]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -69,14 +69,14 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#fae61c]/35 object-cover shadow-[0_10px_30px_rgba(250,230,28,0.2)]"
+              class="block w-full rounded-xl border border-[#59cb13]/35 object-cover shadow-[0_10px_30px_rgba(89,203,19,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
               fetchpriority="low"
               decoding="async"
-              widths={[300, 500]}
-              sizes="(max-width: 767px) 92vw, 492px"
+              widths={[300, 500, 600]}
+              sizes="(max-width: 767px) 92vw, 386px"
               formats={["avif", "webp"]}
               fallbackFormat="webp"
               quality={60}

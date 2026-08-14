@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "http://thunder87plus.com",
+  site: "https://macaubet-play.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

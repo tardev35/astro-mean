@@ -6,7 +6,7 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle6.astro";
+import Navbar from "../components/NavbarStyle1.astro";
 import Footer from "../components/FooterStyle3.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "THUNDER87 | สล็อตฟอร์มฟาด เกมครบแบบไม่หวง ระบบแรงออโต้ไว",
-  description = "THUNDER87 สล็อตฟอร์มฟาด เกมครบแบบไม่หวง ระบบแรงออโต้ไว รวมสล็อตค่ายดัง คาสิโนสด และบาคาร่าไว้เต็มล็อบบี้ เข้าเกมคล่อง ฝากถอนเป็นระบบ พร้อมลุยได้ทุกเวลา",
+  title = "MACAUBET | สล็อตฟอร์มใหญ่ ฟีลมาเก๊ามาไว้หน้าสปิน ระบบตรงโอนไว",
+  description = "MACAUBET สล็อตฟอร์มใหญ่ ยกฟีลมาเก๊ามาไว้หน้าสปิน ระบบตรงโอนไวออโต้ภายใน 3 วิ เกมดังมีครบ โต๊ะสดมีพร้อม เมนูใช้ง่าย การันตีเล่นง่ายได้กำไรจริง จบครบในเว็บเดียว",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #080703;
+        background-color: #041b06;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ THUNDER87 ข้อความ สล็อตฟอร์มฟาด เกมครบแบบไม่หวง ระบบแรงออโต้ไว พร้อมปุ่มสมัครสมาชิก โลโก้ THUNDER ตัวอักษรขาวคั่นด้วยสายฟ้าสีเหลืองและเลข 87 สีเหลือง หญิงสาวชุดกีฬาดำเหลืองที่มีโลโก้ THUNDER87 ยืนชูนิ้วชี้ขึ้น วงล้อสล็อตเลข 7 และ BAR ป้าย BIG WIN เหรียญทองปลิว บนพื้นดำที่มีสายฟ้าสีเหลืองแตกทั่วภาพ"
+          alt="แบนเนอร์ MACAUBET ข้อความ สล็อตฟอร์มใหญ่ ฟีลมาเก๊ามาไว้หน้าสปิน ระบบตรงโอนไว พร้อมปุ่มสมัครสมาชิก โลโก้ MACAU ตัวอักษรโครเมียมเงินและ BET สีเขียวนีออน หญิงสาวชุดเงินสกรีนโลโก้ MACAUBET ถือชิปคาสิโนสีเขียว ฉากหลังเป็นตึกคาสิโนมาเก๊าประดับไฟทองยามค่ำคืน วงล้อรูเล็ต ตู้สล็อตป้าย JACKPOT 777 ลูกเต๋าและเหรียญทองปลิว บนพื้นดำที่มีแสงนีออนสีเขียวสาดทั่วภาพ"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

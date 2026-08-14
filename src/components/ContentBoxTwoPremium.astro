@@ -8,12 +8,12 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// THUNDER87: this variant last shipped IOK66's royal gold + crimson (#ffe9a3 /
-// #f0cd6a / #e3b64a / #b8862c / #5c3a10 over #1c110a / #150c07 with a #5c0a0c /
-// #a3161c glow, body #f2e2c4). Remapped onto this brand's electric-yellow
-// lightning on near-black â€” #fff89a / #fae61c / #dcb309 / #ffd60a / #8a7405 over
-// #17150a / #080703 with a #2b2606 glow, body text #f0ead6. There is no red and
-// no orange in this brand, so the crimson accents are gone rather than darkened.
+// MACAUBET: this variant last shipped THUNDER87's electric yellow (#fff89a /
+// #fae61c / #dcb309 / #ffd60a / #8a7405 over #17150a / #080703 with a #2b2606
+// glow, body #f0ead6). Remapped onto this brand's Macau neon green over near
+// black â€” #dcffc0 / #8ef04a / #59cb13 / #3b9b0d / #0f3a11 over #0a2c0d /
+// #020b01 with a #041b06 glow, body text #e9f9dc. Gold #f6c445 appears once, on
+// the right column's marker, as the brief's second colour. No yellow remains.
 //
 // `title` is the ONE heading this component may emit, and it exists so the
 // block can carry a docx section. Both column titles stay <p>: they label UI
@@ -27,24 +27,24 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "à
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#fae61c]/25 bg-[#17150a]/90 p-8 text-[#f0ead6] shadow-[0_10px_30px_rgba(250,230,28,0.15)] backdrop-blur-xl transition-all duration-500 hover:border-[#fae61c]/50 hover:shadow-[0_15px_40px_rgba(220,179,9,0.28)] md:p-10">
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#2b2606]/60 to-transparent opacity-80"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#59cb13]/25 bg-[#0a2c0d]/90 p-8 text-[#e9f9dc] shadow-[0_10px_30px_rgba(89,203,19,0.15)] backdrop-blur-xl transition-all duration-500 hover:border-[#59cb13]/50 hover:shadow-[0_15px_40px_rgba(59,155,13,0.28)] md:p-10">
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#041b06]/60 to-transparent opacity-80"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#fae61c]/30 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fff89a] via-[#fae61c] to-[#8a7405] shadow-[0_0_10px_rgba(250,230,28,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fff89a] via-[#fae61c] to-[#dcb309] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#59cb13]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dcffc0] via-[#8ef04a] to-[#0f3a11] shadow-[0_0_10px_rgba(89,203,19,0.5)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#dcffc0] via-[#8ef04a] to-[#3b9b0d] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f0ead6]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e9f9dc]">
         {
           titleleft && (
-            <p class="flex items-center gap-3 border-b border-[#fae61c]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#fae61c]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fff89a] via-[#fae61c] to-[#8a7405] shadow-[0_0_10px_rgba(250,230,28,0.45)]" />
+            <p class="flex items-center gap-3 border-b border-[#59cb13]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#8ef04a]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dcffc0] via-[#8ef04a] to-[#0f3a11] shadow-[0_0_10px_rgba(89,203,19,0.45)]" />
               {titleleft}
             </p>
           )
@@ -52,11 +52,11 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "à
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f0ead6] md:border-l md:border-[#8a7405] md:pl-10">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e9f9dc] md:border-l md:border-[#2c7a08] md:pl-10">
         {
           titleright && (
-            <p class="flex items-center gap-3 border-b border-[#fae61c]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#fae61c]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffd60a] via-[#dcb309] to-[#8a7405] shadow-[0_0_10px_rgba(220,179,9,0.45)]" />
+            <p class="flex items-center gap-3 border-b border-[#59cb13]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#8ef04a]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f6c445] via-[#59cb13] to-[#0f3a11] shadow-[0_0_10px_rgba(246,196,69,0.45)]" />
               {titleright}
             </p>
           )

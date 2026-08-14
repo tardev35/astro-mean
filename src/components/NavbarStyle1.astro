@@ -19,18 +19,18 @@ const links = [
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
   { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "❄️" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🏛️" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 ---
 
-<nav class="sticky top-0 z-50 w-full border-b border-[#0a5df1]/25 bg-gradient-to-r from-[#0a5df1] via-[#0782f2] to-[#01cbf6] shadow-[0_6px_25px_rgba(10,93,241,0.35)]">
+<nav class="sticky top-0 z-50 w-full border-b border-[#59cb13]/30 bg-gradient-to-r from-[#2c7a08] via-[#3b9b0d] to-[#59cb13] shadow-[0_6px_25px_rgba(89,203,19,0.35)]">
   <div class="relative flex h-[70px] w-full items-center justify-between px-4 xl:px-12">
     <div class="z-10 flex items-center gap-2">
       <button id="hamburger-btn" class="flex flex-col items-center justify-center space-y-1.5 p-2 xl:hidden" aria-label="เปิดปิดเมนู">
-        <span class="hamburger-line h-0.5 w-6 bg-[#f0f9ff] transition-all duration-300"></span>
-        <span class="hamburger-line h-0.5 w-6 bg-[#f0f9ff] transition-all duration-300"></span>
-        <span class="hamburger-line h-0.5 w-6 bg-[#f0f9ff] transition-all duration-300"></span>
+        <span class="hamburger-line h-0.5 w-6 bg-[#f0fce8] transition-all duration-300"></span>
+        <span class="hamburger-line h-0.5 w-6 bg-[#f0fce8] transition-all duration-300"></span>
+        <span class="hamburger-line h-0.5 w-6 bg-[#f0fce8] transition-all duration-300"></span>
       </button>
 
       <div class="no-scrollbar hidden items-center gap-2 whitespace-nowrap xl:flex">
@@ -38,7 +38,7 @@ const links = [
           links.map((link) => (
             <a
               href={link.path}
-              class={`group relative flex items-center gap-2 px-4 h-[44px] rounded-xl text-sm lg:text-base font-bold transition-all duration-300 ${isActive(link.path) ? "bg-gradient-to-r from-[#f1d42c] to-[#ffe98a] text-[#062a52] shadow-md shadow-[#f1d42c]/45" : "bg-white/15 border border-white/30 text-[#f0f9ff] hover:bg-white/25 hover:border-[#f1d42c]/60"}`}>
+              class={`group relative flex items-center gap-2 px-4 h-[44px] rounded-xl text-sm lg:text-base font-bold transition-all duration-300 ${isActive(link.path) ? "bg-gradient-to-r from-[#f6c445] to-[#ffe19a] text-[#0a2c0d] shadow-md shadow-[#f6c445]/45" : "bg-black/15 border border-white/30 text-[#f0fce8] hover:bg-black/25 hover:border-[#f6c445]/60"}`}>
               <span aria-hidden="true" class="text-base">
                 {link.icon}
               </span>
@@ -50,10 +50,10 @@ const links = [
     </div>
 
     <div class="absolute top-1/2 left-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
-      <a href="/" aria-label="9UFA หน้าแรก" class="block transition-transform hover:scale-105">
+      <a href="/" aria-label="MACAUBET หน้าแรก" class="block transition-transform hover:scale-105">
         <Picture
           src={mainLogo!}
-          alt="โลโก้ 9UFA เลข 9 สีทองสวมมงกุฎ ต่อด้วยตัวอักษร UFA.com ไล่สีน้ำเงินไปฟ้า"
+          alt="โลโก้ MACAUBET ตัวอักษร MACAU สีโครเมียมเงิน ต่อด้วยตัวอักษร BET สีเขียวนีออน"
           loading="eager"
           fetchpriority="high"
           class="h-[40px] w-auto drop-shadow-xl"
@@ -70,12 +70,12 @@ const links = [
       <div class="hidden items-center gap-2.5 xl:flex">
         <a
           href="/register"
-          class="flex h-[44px] items-center gap-1.5 rounded-xl border border-[#f1d42c]/60 bg-gradient-to-r from-[#f1d42c] to-[#ffe98a] px-6 text-base font-bold text-[#062a52] shadow-md shadow-[#f1d42c]/40 transition-all hover:brightness-110">
+          class="flex h-[44px] items-center gap-1.5 rounded-xl border border-[#f6c445]/60 bg-gradient-to-r from-[#f6c445] to-[#ffe19a] px-6 text-base font-bold text-[#0a2c0d] shadow-md shadow-[#f6c445]/40 transition-all hover:brightness-110">
           <span aria-hidden="true">👤</span> สมัครสมาชิก
         </a>
         <a
           href="/login"
-          class="flex h-[44px] items-center gap-1.5 rounded-xl border border-white/45 bg-white/15 px-6 text-base font-bold text-[#f0f9ff] shadow-md transition-all hover:border-white/80 hover:bg-white/25">
+          class="flex h-[44px] items-center gap-1.5 rounded-xl border border-white/45 bg-black/15 px-6 text-base font-bold text-[#f0fce8] shadow-md transition-all hover:border-white/80 hover:bg-black/25">
           <span aria-hidden="true">🔒</span> เข้าสู่ระบบ
         </a>
       </div>
@@ -84,16 +84,16 @@ const links = [
 
   <div
     id="mobile-menu"
-    class="mobile-menu max-h-0 overflow-hidden border-b border-[#0a5df1]/20 bg-[#0743a8]/95 shadow-2xl backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] xl:hidden">
+    class="mobile-menu max-h-0 overflow-hidden border-b border-[#59cb13]/25 bg-[#072a08]/95 shadow-2xl backdrop-blur-md transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] xl:hidden">
     <div class="space-y-1.5 px-4 py-6">
       {
         links.map((link) => (
           <a
             href={link.path}
-            class={`menu-item group flex items-center px-4 py-3.5 text-sm font-medium transition-all duration-300 rounded-xl ${isActive(link.path) ? "bg-[#f1d42c]/20 text-[#ffe98a] border border-[#f1d42c]/40" : "text-[#c9e6fb] hover:text-[#f0f9ff] hover:bg-white/10"}`}>
+            class={`menu-item group flex items-center px-4 py-3.5 text-sm font-medium transition-all duration-300 rounded-xl ${isActive(link.path) ? "bg-[#f6c445]/20 text-[#ffe19a] border border-[#f6c445]/40" : "text-[#cdeeb4] hover:text-[#f0fce8] hover:bg-white/10"}`}>
             <span
               aria-hidden="true"
-              class={`mr-3 text-lg transition-transform duration-300 group-hover:scale-110 ${isActive(link.path) ? "drop-shadow-[0_0_8px_rgba(241,212,44,0.6)]" : ""}`}>
+              class={`mr-3 text-lg transition-transform duration-300 group-hover:scale-110 ${isActive(link.path) ? "drop-shadow-[0_0_8px_rgba(246,196,69,0.6)]" : ""}`}>
               {link.icon}
             </span>
             {link.name}
@@ -104,12 +104,12 @@ const links = [
       <div class="mt-4 flex flex-col space-y-3 border-t border-white/20 pt-6">
         <a
           href="/register"
-          class="menu-item relative flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#f1d42c] to-[#ffe98a] px-4 py-3.5 text-sm font-bold text-[#062a52] shadow-[0_4px_20px_-4px_rgba(241,212,44,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_6px_25px_-4px_rgba(241,212,44,0.7)]">
+          class="menu-item relative flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-[#f6c445] to-[#ffe19a] px-4 py-3.5 text-sm font-bold text-[#0a2c0d] shadow-[0_4px_20px_-4px_rgba(246,196,69,0.6)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110 hover:shadow-[0_6px_25px_-4px_rgba(246,196,69,0.7)]">
           <span aria-hidden="true" class="mr-2">🎁</span> สมัครสมาชิก
         </a>
         <a
           href="/login"
-          class="menu-item flex w-full items-center justify-center rounded-xl border border-white/35 bg-white/10 px-4 py-3.5 text-sm font-bold text-[#f0f9ff] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20">
+          class="menu-item flex w-full items-center justify-center rounded-xl border border-white/35 bg-white/10 px-4 py-3.5 text-sm font-bold text-[#f0fce8] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white/20">
           <span aria-hidden="true" class="mr-2">🔒</span> เข้าสู่ระบบ
         </a>
       </div>

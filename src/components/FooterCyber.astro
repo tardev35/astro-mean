@@ -13,14 +13,17 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 // และ opacity ทับสีตัวอักษรที่ inherit มา) — footer ทุก variant ในคลังเป็นพื้นเข้ม
 // ทั้งหมด บล็อกนี้จึงลงตัวทุกตัวโดยไม่ต้องแก้ และไม่ทิ้ง hex ของแบรนด์นี้ไว้ให้
 // รอบหน้า ป้ายชื่อเป็น <p> ไม่ใช่หัวข้อ เพราะ footer ขึ้นทุกหน้า
+//
+// SGD88 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย กับ
+// /แนวทาง (สองหน้านั้นอยู่ใน src/pages-disabled/ ไม่มี route จริง)
 ---
 
 <footer
-  class="relative mt-10 w-full overflow-hidden border-t border-[#e40613]/40 bg-[#0a0304] pt-16 pb-8 font-sans text-[#f4e7dd]"
+  class="relative mt-10 w-full overflow-hidden border-t border-[#bc07e2]/40 bg-[#0b0620] pt-16 pb-8 font-sans text-[#f3e8ff]"
   style="clip-path: polygon(0 30px, 50vw 0, 100% 30px, 100% 100%, 0 100%);">
   <div aria-hidden="true"
     class="pointer-events-none absolute inset-0 opacity-[0.14]"
-    style="background-image: linear-gradient(#8f0206 1px, transparent 1px), linear-gradient(90deg, #a8720a 1px, transparent 1px); background-size: 30px 30px;">
+    style="background-image: linear-gradient(#7a06a0 1px, transparent 1px), linear-gradient(90deg, #4c0a6b 1px, transparent 1px); background-size: 30px 30px;">
   </div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
@@ -31,43 +34,43 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ FAST369 ตัวอักษร FAST สีแดงและ 369 สีทอง มีสายฟ้าทองพุ่งทะลุวงแหวนทองบนพื้นดำ"
+                alt="โลโก้ SGD88 ตัวอักษร SGD สีเงินและเลข 88 สีชมพูบานเย็น มีสายฟ้าสีม่วงและเหรียญคาสิโนประกอบ"
                 loading="lazy"
                 decoding="async"
                 widths={[150, 300, 450]}
                 sizes="150px"
-                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(228,6,19,0.5)]"
+                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(188,7,226,0.5)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="text-3xl font-black tracking-widest text-[#e40613]">FAST369</p>
+              <p class="text-3xl font-black tracking-widest text-[#bc07e2]">SGD88</p>
             )
           }
         </a>
-        <p class="border-l-2 border-[#e40613] pl-4 text-sm leading-relaxed text-[#cdb9b2]">
-          FAST369 เว็บสล็อตสปีดเกมไหล ระบบเร็วแรงถึงใจ โบนัสพร้อมบวก รวมเกมตัวตึงจากทุกค่ายดังไว้ในล็อบบี้เดียว เข้าไวสลับไว เปลี่ยนค่ายได้ทันฟีลโดยไม่เสียจังหวะ ฝากถอนออโต้ทำเองได้ เงินเข้าตรงเป๊ะ ปั่นต่อเนื่องแบบไม่ติดเบรก
+        <p class="border-l-2 border-[#bc07e2] pl-4 text-sm leading-relaxed text-[#c9b8dd]">
+          SGD88 สล็อตอินเตอร์ระบบแรง โหลดไวทุกจังหวะ เกมฮิตครบสูตร รวมค่ายดังระดับโลกไว้เต็มล็อบบี้ พร้อมโต๊ะคาสิโนสดถ่ายทอดตรงจากสตูดิโอ สลับโหมดจากสล็อตไปโต๊ะสดได้ทันทีในยูสเซอร์เดียว ฝากถอนออโต้ไม่กี่ขั้นตอน ไม่ต้องผ่านแอดมิน
         </p>
         <div class="mt-4 flex gap-3">
-          <span class="border border-[#e40613]/50 bg-[#240709] px-3 py-1 font-mono text-xs text-[#ff3b2f]">FAST_ALL_CAMP</span>
-          <span class="border border-[#ffc531]/50 bg-[#240709] px-3 py-1 font-mono text-xs text-[#ffe27a]">NO_LAG_24H</span>
+          <span class="border border-[#bc07e2]/50 bg-[#1b0d2e] px-3 py-1 font-mono text-xs text-[#e879f9]">SGD_ALL_CAMP</span>
+          <span class="border border-[#d9dde3]/50 bg-[#1b0d2e] px-3 py-1 font-mono text-xs text-[#f0f3f7]">NO_LAG_24H</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#ffc531] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
-        <ul class="flex flex-col gap-3 font-mono text-sm text-[#cdb9b2]">
-          <li><a href="/" class="transition-colors hover:text-[#ff3b2f]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#ff3b2f]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ff3b2f]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ff3b2f]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#ff3b2f]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#ff3b2f]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
+        <p class="text-lg font-black tracking-widest text-[#d9dde3] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
+        <ul class="flex flex-col gap-3 font-mono text-sm text-[#c9b8dd]">
+          <li><a href="/" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#ffc531] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
+        <p class="text-lg font-black tracking-widest text-[#d9dde3] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
 
         <a
           href="/line"
@@ -98,22 +101,22 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
         <a
           href="/register"
-          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#8f0206] via-[#e40613] to-[#ffc531] py-3 font-black text-[#fff6ee] transition-all hover:brightness-110"
+          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#7a06a0] via-[#bc07e2] to-[#e879f9] py-3 font-black text-[#faf5ff] transition-all hover:brightness-110"
           style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
           สมัครสมาชิก
         </a>
 
-        <div class="mt-2 font-mono text-xs text-[#cdb9b2]">ACCEPTED_PAYMENTS</div>
+        <div class="mt-2 font-mono text-xs text-[#c9b8dd]">ACCEPTED_PAYMENTS</div>
         <BankStrip size={28} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#e40613]/30 pt-6 font-mono text-xs text-[#cdb9b2] md:flex-row">
-      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} FAST369</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#bc07e2]/30 pt-6 font-mono text-xs text-[#c9b8dd] md:flex-row">
+      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} SGD88</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="hover:text-[#ff3b2f]">TERMS_OF_SERVICE</a>
-        <a href="/privacy/" class="hover:text-[#ff3b2f]">PRIVACY_POLICY</a>
-        <a href="#top" class="hover:text-[#ff3b2f]">BACK_TO_TOP</a>
+        <a href="/terms/" class="hover:text-[#e879f9]">TERMS_OF_SERVICE</a>
+        <a href="/privacy/" class="hover:text-[#e879f9]">PRIVACY_POLICY</a>
+        <a href="#top" class="hover:text-[#e879f9]">BACK_TO_TOP</a>
       </div>
     </div>
   </div>

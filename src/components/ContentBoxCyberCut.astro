@@ -6,25 +6,27 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
 
-// FAST369: การ์ดใบนี้ผ่านมือหลายแบรนด์ — เคยเป็นแผงสว่าง (white/85), เคยเป็นทอง
-// #f2b024 บนผิว #170806 ของ LONGSAP168, รอบก่อนเป็นแดง #e01a1a คู่โครม #d9dde3
-// ของ FUSIONNEW — รอบนี้เป็นผิว #170506 ตัวหนังสือ #f4e7dd บนคู่สีแดงสัญญาณ
-// #e40613 / ทอง #ffc531 เก็บไว้แค่มุมตัดสไตล์ cyber-cut ของ variant นี้
+// SGD88: การ์ดใบนี้ผ่านมือหลายแบรนด์ — เคยเป็นแผงสว่าง (white/85), เคยเป็นทอง
+// #f2b024 บนผิว #170806 ของ LONGSAP168, เคยเป็นแดง #e01a1a ของ FUSIONNEW และรอบ
+// ก่อนเป็นแดงสัญญาณ #e40613 คู่ทอง #ffc531 บนผิว #170506 เนื้อความ #f4e7dd —
+// รอบนี้เป็นม่วงบานเย็นนีออน #bc07e2 / #e879f9 / #f7d0ff คู่ม่วงเข้ม #930ac5 /
+// #4c0a6b บนผิว #1b0d2e เนื้อความ #f3e8ff เก็บไว้แค่มุมตัดสไตล์ cyber-cut ของ
+// variant นี้
 ---
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#e40613]/35 bg-[#170506]/92 p-8 text-left text-base leading-relaxed text-[#f4e7dd] shadow-[0_10px_30px_rgba(228,6,19,0.2)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#bc07e2]/35 bg-[#1b0d2e]/92 p-8 text-left text-base leading-relaxed text-[#f3e8ff] shadow-[0_10px_30px_rgba(188,7,226,0.22)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#e40613] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#ffc531] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#e40613] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#ffc531] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#bc07e2] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#930ac5] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#bc07e2] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#930ac5] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#e40613] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#ffe27a] via-[#ff3b2f] to-[#e40613] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#bc07e2] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#f7d0ff] via-[#e879f9] to-[#bc07e2] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

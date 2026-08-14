@@ -6,53 +6,53 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "text-lg sm:text-xl md:text-2xl";
 
-// pt-36/md:pt-32 ไม่ใช่ pt-28/md:pt-24 ที่ไฟล์นี้เคย ship มา ป้ายชื่อถูกตรึงไว้ที่
-// -top-6 (24px เหนือขอบบนการ์ด) ขอบล่างของป้ายจึงอยู่ที่ (ความสูงป้าย − 24px)
+// pt-40/md:pt-32 ไม่ใช่ pt-36/md:pt-32 ที่ไฟล์นี้ ship มารอบก่อน ป้ายชื่อถูกตรึงไว้
+// ที่ -top-6 (24px เหนือขอบบนการ์ด) ขอบล่างของป้ายจึงอยู่ที่ (ความสูงป้าย − 24px)
 // นับจากขอบบนการ์ด หัวข้อ H1/H2 ภาษาไทยแบบเต็มประโยคทำให้ป้ายตัดบรรทัดหลายบรรทัด
 // แล้วบรรทัดสุดท้ายไปทับบรรทัดแรกของเนื้อความ
 //
 // ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge กับ ContentBoxTwoFloatingBadge
-// (ทั้งคู่ pt-32/md:pt-28) หนึ่งขั้นโดยตั้งใจ — หัวข้อในไฟล์นี้ใช้ text-lg/text-xl
-// ซึ่งสูงกว่าอีกสองไฟล์หนึ่งสเต็ป บนจอ 360–375px นั่นคือส่วนต่างระหว่างป้าย
-// 3 บรรทัดกับ 4 บรรทัด
+// (ทั้งคู่ pt-32/md:pt-28) โดยตั้งใจ — หัวข้อในไฟล์นี้ใช้ text-lg/text-xl ซึ่งสูงกว่า
+// อีกสองไฟล์หนึ่งสเต็ป และป้ายยังเสียความกว้างให้ 🎲 สองตัวข้างหัวข้ออีก ~52px
 //
-// คำนวณกับหัวข้อ H2 ข้อ 2 ของ docx THUNDER87 ยาว 55 ตัวอักษร
-// ("THUNDER87 สล็อตฟอร์มฟาด ขนเกมค่ายดังมาลงแน่นแบบไม่หวง")
+// คำนวณกับหัวข้อ H2 ข้อ 2 ของ docx MACAUBET ยาว 78 ตัวอักษร ซึ่งยาวกว่าหัวข้อที่
+// รอบก่อนใช้วัด (55 ตัวอักษร) หนึ่งช่วง จึงต้องบวก pt ขึ้นอีกหนึ่งขั้นบนมือถือ
+// ("MACAUBET สล็อตฟอร์มใหญ่ ยกบรรยากาศมาเก๊ามาไว้หน้าสปินให้ทุกเกมมีฟีลมากกว่าเดิม")
 // chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
-//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ ⚡ สองตัว
+//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ 🎲 สองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 8.5px ต่อตัวอักษร
-//   → ~27 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด:
-//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
-//   108px เทียบกับ pt-36 (144px) → เหลือช่องว่าง 36px
-//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ ⚡ เหลือ ~566px,
+//   → ~27 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 4 บรรทัด เผื่อแบบแย่สุด 5 บรรทัด:
+//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 135px + 24px = 159px ขอบล่างอยู่ที่
+//   135px เทียบกับ pt-40 (160px) → เหลือช่องว่าง 25px
+//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ 🎲 เหลือ ~556px,
 //   text-2xl/leading-normal = 36px ต่อบรรทัด, 2 บรรทัด = 72px + 24px = 96px
 //   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-32 (128px) → เหลือ 56px
-// ให้ไฟล์นี้ลึกกว่าอีกสอง *FloatingBadge หนึ่งขั้นเสมอ อย่าทำให้เท่ากัน
+// ให้ไฟล์นี้ลึกกว่าอีกสอง *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// THUNDER87: ย้ายจากทองหรูของ 249UP (#ffe9a8 / #ffd86b / #f5b626 / #c98a12 /
-// #8a5c08 บนผิว #150e05 / #0b0703 เนื้อความ #f0e4cd) มาที่เหลืองสายฟ้าไฟฟ้า —
-// #fff89a / #fae61c / #dcb309 / #ffd60a / #8a7405 บนผิว #17150a / #080703
-// เนื้อความ #f0ead6 ไม่มีสีแดงหรือส้มเหลืออยู่ในไฟล์นี้ ป้ายเป็นเม็ดหมึกดำสนิท
-// #080703 ซึ่งตัวอักษร gradient เหลืองอ่านออกชัดที่สุด
+// MACAUBET: ย้ายจากเหลืองสายฟ้าไฟฟ้าของ THUNDER87 (#fff89a / #fae61c / #dcb309 /
+// #ffd60a / #8a7405 บนผิว #17150a / #080703 เนื้อความ #f0ead6) มาที่เขียวนีออน
+// มาเก๊า + ทอง — #dcffc0 / #8ef04a / #59cb13 / #3b9b0d / #0f3a11 บนผิว #0a2c0d /
+// #020b01 เนื้อความ #e9f9dc โดยมีทอง #f6c445 เป็นสีรองบนไอคอนลูกเต๋าสองข้างป้าย
+// ไม่มีเหลืองไฟฟ้าเหลืออยู่ในไฟล์นี้
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#fae61c]/30 bg-[#17150a]/88 p-8 pt-36 text-left text-base leading-relaxed text-[#f0ead6] shadow-[0_10px_30px_rgba(250,230,28,0.18)] backdrop-blur-md md:pt-32">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#fae61c]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#8a7405]/50 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#59cb13]/30 bg-[#0a2c0d]/88 p-8 pt-40 text-left text-base leading-relaxed text-[#e9f9dc] shadow-[0_10px_30px_rgba(89,203,19,0.18)] backdrop-blur-md md:pt-32">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#59cb13]/30 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#0f3a11]/60 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#fff89a]/50 bg-[#080703] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(250,230,28,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#ffd60a]">
-            ⚡
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#dcffc0]/50 bg-[#020b01] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(89,203,19,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#f6c445]">
+            🎲
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#fff89a] via-[#fae61c] to-[#dcb309] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#ffd60a]">
-            ⚡
+          <HeadingTag class={`bg-gradient-to-r from-[#dcffc0] via-[#8ef04a] to-[#3b9b0d] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#f6c445]">
+            🎲
           </span>
         </div>
       )

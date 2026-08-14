@@ -15,32 +15,32 @@ const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.pro
 // docx ออกมาเป็นสองหัวข้อ ตอนนี้ `title` คือหัวข้อเดียวที่ปล่อยออกมาได้ (วางเหนือ
 // คอลัมน์เนื้อความ) ส่วน titleleft/titleright เป็นป้ายคอลัมน์ระดับ <p>
 //
-// FAST369: ย้ายจากทองมังกร + ไฟของ LONGSAP168 (#ffd76a / #f2b024 / #d81f26 บนผิว
-// #170806 เนื้อความ #f6e4c8 ข้อความรอง #e3c9ab) มาที่แดงสัญญาณ #e40613 / #ff3b2f
-// คู่ทอง #ffe27a / #ffc531 / #a8720a บนผิว #170506 เนื้อความ #f4e7dd ข้อความรอง
-// #cdb9b2
+// SGD88: ย้ายจากแดงสัญญาณ #e40613 / #ff3b2f คู่ทอง #ffe27a / #ffc531 บนผิว
+// #170506 เนื้อความ #f4e7dd ข้อความรอง #cdb9b2 ของ FAST369 มาที่ม่วงบานเย็นนีออน
+// #f7d0ff / #e879f9 / #bc07e2 คู่ม่วงเข้ม #930ac5 / #4c0a6b บนผิว #1b0d2e
+// เนื้อความ #f3e8ff ข้อความรอง #cbb5e6
 //
 // Neumorphism แปลว่าเงาสองด้านต้องเป็นเฉดเข้ม/อ่อนของสีการ์ดเอง ไม่ใช่สีแบรนด์:
-// #050102 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #240709 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
-// ไฮไลต์ ถ้าเอา #e40613 ไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
+// #0d0617 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #291445 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
+// ไฮไลต์ ถ้าเอา #bc07e2 ไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
 const sectionLabel = title ? undefined : (label ?? titleright ?? titleleft ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#e40613]/30 bg-[#170506] p-8 shadow-[10px_10px_20px_#050102,-10px_-10px_20px_#240709] transition-all duration-300 hover:shadow-[15px_15px_30px_#030101,-15px_-15px_30px_#2e0a0d]">
+    class="w-full rounded-[25px] border border-[#bc07e2]/30 bg-[#1b0d2e] p-8 shadow-[10px_10px_20px_#0d0617,-10px_-10px_20px_#291445] transition-all duration-300 hover:shadow-[15px_15px_30px_#080310,-15px_-15px_30px_#33195a]">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#cdb9b2]">
-        {titleleft && <p class="bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#e40613] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#cbb5e6]">
+        {titleleft && <p class="bg-gradient-to-r from-[#f7d0ff] via-[#e879f9] to-[#bc07e2] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7dd] md:border-l md:border-[#e40613]/30 md:pl-8">
-        {title && <HeadingTag class="bg-gradient-to-r from-[#ffe27a] via-[#ffc531] to-[#e40613] bg-clip-text text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e8ff] md:border-l md:border-[#bc07e2]/30 md:pl-8">
+        {title && <HeadingTag class="bg-gradient-to-r from-[#f7d0ff] via-[#e879f9] to-[#bc07e2] bg-clip-text text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
         {
           titleright && (
-            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#ffc531]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#e40613] shadow-[0_0_5px_rgba(228,6,19,0.8)]" /> {titleright}
+            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#e879f9]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#bc07e2] shadow-[0_0_5px_rgba(188,7,226,0.8)]" /> {titleright}
             </p>
           )
         }

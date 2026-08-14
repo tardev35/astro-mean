@@ -5,83 +5,83 @@ import ContentBoxTwo from "./ContentBoxTwo.astro";
 // tech มาจาก prop `label` ที่ส่งให้ ContentBoxTwo ไม่มีการส่ง `title` บล็อกนี้จึง
 // ไม่ปล่อยหัวข้อออกมาเลย
 //
-// THUNDER87: ย้ายจากแดงสัญญาณของ FAST369 (#e40613 / #ff3b2f / #8f0206 คู่ทอง
-// #ffe27a / #ffc531 / #a8720a บนผิว #170506 / #240709 / #0a0304 เนื้อความ
-// #f4e7dd ข้อความรอง #cdb9b2) มาที่เหลืองสายฟ้าไฟฟ้าล้วน — #fff89a / #fae61c /
-// #dcb309 / #ffd60a / #8a7405 บนผิว #17150a / #2b2606 / #080703 เนื้อความ
-// #f0ead6 ข้อความรอง #c9c2a6 หมึกบนพื้นเหลือง #080703
+// MACAUBET: ย้ายจากม่วงบานเย็นนีออนของ SGD88 (#f7d0ff / #e879f9 / #bc07e2 /
+// #930ac5 / #7a06a0 / #4c0a6b บนผิว #1b0d2e / #2a1145 / #050118 เนื้อความ #f3e8ff
+// ข้อความรอง #cbb5e6) มาที่เขียวนีออนมาเก๊า + ทอง — #dcffc0 / #8ef04a / #59cb13 /
+// #3b9b0d / #2c7a08 / #0f3a11 บนผิว #0a2c0d / #041b06 / #020b01 เนื้อความ #e9f9dc
+// ข้อความรอง #a8c99a หมึกบนพื้นเขียวสว่าง #020b01 เขียว LINE #00B900 ไม่ถูกแตะ
 //
-// เนื้อหาตาม brief: ขนค่ายเกมชั้นนำระดับโลกมาไว้ที่เดียว, งานภาพคมชัดอัตราจ่าย
-// สมน้ำสมเนื้อ, ล็อบบี้ครบวงจรสล็อต/คาสิโนสด/บาคาร่า, ยูสเซอร์เดียวสลับได้ทันที,
-// ระบบประมวลผลแรงและเสถียรกดเข้าเกมฉับไว, สลับค่ายลื่นไหลไม่มีกระตุก, ฝากถอน
-// ออโต้แม่นยำไม่ผ่านคนกลาง
+// เนื้อหาตาม brief: ยกบรรยากาศมาเก๊ามาไว้หน้าเกม, ระบบตรงออโต้ไฮสปีดภายใน 3 วิ,
+// ไม่ต้องส่งสลิปไม่ต้องรอแอดมิน, ล็อบบี้รวมเกมตัวฮิตจากทุกค่ายดัง, คัดเฉพาะเกม
+// คุณภาพสูงที่จ่ายสมน้ำสมเนื้อ, โต๊ะสด HD สลับได้โดยไม่ต้องเปลี่ยนยูสเซอร์,
+// เมนูจัดวางเป็นระเบียบตัดขั้นตอนซับซ้อนออก
 const menus = [
-  { icon: "⚡", name: "ขนค่ายเกมชั้นนำระดับโลกมาไว้ที่เดียว", detail: "ทั้งค่ายใหญ่ในกระแสและค่ายดังเฉพาะกลุ่ม ถูกรวมมาลงแน่นในล็อบบี้เดียวแบบไม่หวง", tag: "ครบทุกค่าย" },
-  { icon: "🎞️", name: "งานภาพคมชัด อัตราจ่ายสมน้ำสมเนื้อ", detail: "ทุกเกมถูกคัดสรรมาอย่างพิถีพิถันเพื่อตอบโจทย์สายสปิน เล่นได้ยาวๆ ไม่มีคำว่ากั๊กฟีเจอร์", tag: "คัดมาแล้ว" },
-  { icon: "🎰", name: "ล็อบบี้ครบวงจร สล็อต คาสิโนสด บาคาร่า", detail: "อาณาจักรความบันเทิงที่สลับจากวงล้อไปลุ้นหน้าไพ่หรือโต๊ะถ่ายทอดสดได้ตามอารมณ์", tag: "ครบวงจร" },
-  { icon: "🔀", name: "ยูสเซอร์เดียวสลับได้ทันที", detail: "ไม่ต้องเสียเวลาโยกเงินหรือสมัครหลายบัญชีให้ยุ่งยาก จบทุกโหมดในบัญชีเดียว", tag: "บัญชีเดียว" },
-  { icon: "🚀", name: "ระบบประมวลผลแรงและเสถียรที่สุด", detail: "กดเข้าเกมได้ฉับไว ตอบสนองทันทีที่คลิก ไม่มีหน้าจอค้างหรือเกมหลุดระหว่างลุ้นโบนัส", tag: "สปีดแรง" },
-  { icon: "🕐", name: "จังหวะการเล่นสุดตึงพร้อมทุกช่วงเวลา", detail: "เช้า สาย บ่าย ดึก ตัวเกมยังคงรักษามาตรฐานการจ่ายรางวัลอย่างเที่ยงตรงเสมอ", tag: "ตลอด 24 ชม." },
-  { icon: "💳", name: "ฝากถอนออโต้แม่นยำ ไม่ผ่านคนกลาง", detail: "ทุกขั้นตอนถูกจัดการเรียบร้อยภายในเวลาอันสั้น ทุกบาททุกสตางค์ตรงไปตรงมา", tag: "ออโต้" },
+  { icon: "🏙️", name: "ยกบรรยากาศมาเก๊ามาไว้หน้าสปิน", detail: "ดีไซน์หน้าเกมให้หรูหราสมจริง ทั้งงานภาพ แสง สี เสียง และจังหวะการออกรางวัล", tag: "ฟีลมาเก๊า" },
+  { icon: "⚡", name: "ระบบตรงออโต้ระดับไฮสปีด", detail: "ฝากถอนไวแบบทันใจภายใน 3 วินาที ต่อให้ช่วงผู้เล่นแน่นเงินก็เข้าบัญชีตรงเป๊ะ", tag: "โอนไว 3 วิ" },
+  { icon: "🧾", name: "ไม่ต้องส่งสลิป ไม่ต้องรอแอดมิน", detail: "ทำรายการเองได้ทั้งหมด หมดปัญหารออนุมัติ จัดการเรื่องการเงินได้อย่างคล่องตัว", tag: "ออโต้เต็มระบบ" },
+  { icon: "🎰", name: "ล็อบบี้รวมเกมตัวฮิตจากค่ายดัง", detail: "มีทั้งเกมในกระแส เกมแตกหนัก และเกมคลาสสิกที่ทุกคนชื่นชอบไว้เยอะที่สุด", tag: "เกมดังครบ" },
+  { icon: "💎", name: "คัดเฉพาะเกมคุณภาพสูง", detail: "เลือกมาเฉพาะตัวที่มีอัตราการจ่ายสมน้ำสมเนื้อ เปลี่ยนสไตล์การเล่นได้ไม่จำเจ", tag: "คัดมาแล้ว" },
+  { icon: "📡", name: "โต๊ะสดถ่ายทอดสดคมชัดระดับ HD", detail: "สลับจากหน้าสปินไปลุ้นไพ่ได้ทันทีโดยไม่ต้องเปลี่ยนยูสเซอร์ มีดีลเลอร์ตลอด 24 ชม.", tag: "เรียลไทม์" },
+  { icon: "🧭", name: "เมนูจัดวางเป็นระเบียบใช้ง่าย", detail: "ตัดขั้นตอนซับซ้อนออกทั้งหมด ค้นหาเกมโปรดและเข้าถึงทุกโหมดได้ตรงจุดตั้งแต่ครั้งแรก", tag: "ใช้ง่าย" },
 ];
 
-const chips = ["สล็อตฟอร์มฟาด", "เกมครบแบบไม่หวง", "ระบบแรงออโต้ไว", "คาสิโนสดครบล็อบบี้", "บาคาร่าจัดเต็ม", "เข้าเกมคล่องสลับค่ายไว", "ฝากถอนเป็นระบบ"];
+const chips = ["สล็อตฟอร์มใหญ่", "ฟีลมาเก๊าเต็มจอ", "ระบบตรงโอนไว 3 วิ", "เกมดังมีครบ", "โต๊ะสดมีพร้อม", "เมนูใช้ง่าย", "จบครบในเว็บเดียว"];
 ---
 
-<ContentBoxTwo titleleft="เข้าสู่ระบบ THUNDER87" titleright="ระบบและบริการของ THUNDER87 ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ THUNDER87 และตารางอ้างอิงระบบบริการภายในเว็บ">
+<ContentBoxTwo titleleft="เข้าสู่ระบบ MACAUBET" titleright="ระบบและบริการของ MACAUBET ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ MACAUBET และตารางอ้างอิงระบบบริการภายในเว็บ">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#fae61c]/30 bg-[#17150a] p-6 shadow-[0_10px_30px_rgba(250,230,28,0.2)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#8a7405]/60 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#59cb13]/30 bg-[#0a2c0d] p-6 shadow-[0_10px_30px_rgba(89,203,19,0.22)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#2c7a08]/60 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#fae61c]/45 bg-gradient-to-br from-[#ffd60a] via-[#dcb309] to-[#8a7405] text-xl shadow-inner">
-          ⚡
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#59cb13]/45 bg-gradient-to-br from-[#8ef04a] via-[#59cb13] to-[#0f3a11] text-xl shadow-inner">
+          🎲
         </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#fae61c]">ยินดีต้อนรับกลับ</p>
-          <span class="text-[11px] text-[#c9c2a6]">กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าล็อบบี้สล็อต คาสิโนสด และบาคาร่าของ THUNDER87 ได้จากจุดเดียว</span>
+          <p class="text-base font-black text-[#8ef04a]">ยินดีต้อนรับกลับ</p>
+          <span class="text-[11px] text-[#a8c99a]">กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าล็อบบี้สล็อตและโต๊ะคาสิโนสดของ MACAUBET ได้จากจุดเดียว</span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#fae61c]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#8ef04a]">👤</span>
           <input
             type="text"
             aria-label="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#2b2606] bg-[#080703] py-3 pr-4 pl-12 text-[#f0ead6] transition-all outline-none placeholder:text-[#c9c2a6]/70 focus:border-[#fae61c] focus:ring-1 focus:ring-[#dcb309]/55"
+            class="w-full rounded-xl border border-[#0f3a11] bg-[#020b01] py-3 pr-4 pl-12 text-[#e9f9dc] transition-all outline-none placeholder:text-[#a8c99a]/70 focus:border-[#59cb13] focus:ring-1 focus:ring-[#3b9b0d]/55"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#fae61c]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#8ef04a]">🔑</span>
           <input
             type="password"
             aria-label="รหัสผ่าน"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#2b2606] bg-[#080703] py-3 pr-4 pl-12 text-[#f0ead6] transition-all outline-none placeholder:text-[#c9c2a6]/70 focus:border-[#fae61c] focus:ring-1 focus:ring-[#dcb309]/55"
+            class="w-full rounded-xl border border-[#0f3a11] bg-[#020b01] py-3 pr-4 pl-12 text-[#e9f9dc] transition-all outline-none placeholder:text-[#a8c99a]/70 focus:border-[#59cb13] focus:ring-1 focus:ring-[#3b9b0d]/55"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#c9c2a6]">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#2b2606] bg-[#080703] accent-[#fae61c]" />
+          <label class="flex items-center gap-2 text-[#a8c99a]">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#0f3a11] bg-[#020b01] accent-[#59cb13]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#c9c2a6] transition-colors hover:text-[#fae61c]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#a8c99a] transition-colors hover:text-[#8ef04a]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#fae61c]/45 bg-gradient-to-r from-[#fff89a] via-[#fae61c] to-[#8a7405] p-3.5 font-black text-[#080703] shadow-[0_10px_30px_rgba(250,230,28,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(255,248,154,0.45)]">
+          class="mt-1 w-full rounded-xl border border-[#59cb13]/45 bg-gradient-to-r from-[#dcffc0] via-[#8ef04a] to-[#2c7a08] p-3.5 font-black text-[#020b01] shadow-[0_10px_30px_rgba(89,203,19,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(142,240,74,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#c9c2a6]">
-          <span class="h-px flex-1 bg-[#2b2606]"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#a8c99a]">
+          <span class="h-px flex-1 bg-[#0f3a11]"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#2b2606]"></span>
+          <span class="h-px flex-1 bg-[#0f3a11]"></span>
         </div>
 
         <a
@@ -92,21 +92,21 @@ const chips = ["สล็อตฟอร์มฟาด", "เกมครบแ
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#fae61c]/30 bg-[#080703] px-2.5 py-1 text-[10px] font-bold text-[#fae61c]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#2b2606] bg-[#080703] px-2.5 py-1 text-[10px] font-bold text-[#c9c2a6]"><span aria-hidden="true">🕐</span> ระบบออโต้ 24 ชั่วโมง</span>
+            <span class="rounded-full border border-[#59cb13]/30 bg-[#020b01] px-2.5 py-1 text-[10px] font-bold text-[#8ef04a]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#0f3a11] bg-[#020b01] px-2.5 py-1 text-[10px] font-bold text-[#a8c99a]"><span aria-hidden="true">🕐</span> ระบบออโต้ 24 ชั่วโมง</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#fff89a] transition-colors hover:text-[#fae61c]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#f6c445] transition-colors hover:text-[#8ef04a]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#fae61c]/30 bg-[#17150a] p-5 shadow-[0_10px_30px_rgba(250,230,28,0.2)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#59cb13]/30 bg-[#0a2c0d] p-5 shadow-[0_10px_30px_rgba(89,203,19,0.22)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#c9c2a6]">ตารางอ้างอิงระบบและบริการที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#fff89a] via-[#fae61c] to-[#dcb309] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">เกมครบไม่หวง ระบบแรงออโต้ไว จบในเว็บเดียว</div>
+          <span class="text-xs font-bold tracking-wide text-[#a8c99a]">ตารางอ้างอิงระบบและบริการที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#dcffc0] via-[#8ef04a] to-[#f6c445] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">ฟีลมาเก๊า ระบบตรงโอนไว จบครบในเว็บเดียว</div>
         </div>
         <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#0b2612] px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]"></span>
@@ -114,7 +114,7 @@ const chips = ["สล็อตฟอร์มฟาด", "เกมครบแ
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#c9c2a6]">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#a8c99a]">
         <span>ระบบ / บริการในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -122,28 +122,28 @@ const chips = ["สล็อตฟอร์มฟาด", "เกมครบแ
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#2b2606] bg-[#080703] px-3.5 py-2.5 transition-colors hover:border-[#fae61c]/55 hover:bg-[#2b2606]/80">
+            <div class="rounded-xl border border-[#0f3a11] bg-[#020b01] px-3.5 py-2.5 transition-colors hover:border-[#59cb13]/55 hover:bg-[#0f3a11]/80">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f0ead6]">
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#e9f9dc]">
                   <span aria-hidden="true" class="w-5 shrink-0 text-center">
                     {m.icon}
                   </span>{" "}
                   <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#8a7405]/60 bg-[#fae61c] px-2.5 py-0.5 text-[10px] font-bold text-[#080703]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#2c7a08]/60 bg-[#59cb13] px-2.5 py-0.5 text-[10px] font-bold text-[#020b01]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#c9c2a6]">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#a8c99a]">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#fae61c]/30 bg-[#080703] px-3 py-1 text-[10px] font-bold text-[#fae61c]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#59cb13]/30 bg-[#020b01] px-3 py-1 text-[10px] font-bold text-[#8ef04a]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#c9c2a6]">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจยอดขั้นต่ำ จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอนจากหน้าโปรโมชั่นจริงของ THUNDER87 ก่อนกดรับทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#a8c99a]">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจยอดขั้นต่ำ จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอนจากหน้าโปรโมชั่นจริงของ MACAUBET ก่อนกดรับทุกครั้ง
       </div>
     </div>
   </div>
