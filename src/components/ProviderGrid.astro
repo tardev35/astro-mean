@@ -1,32 +1,32 @@
 ---
 // Widget ไม่ใช่ article: หัวข้อ render เป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
-// assistive tech เนื้อหาตาม brief ของ MACAUBET — ล็อบบี้รวมสล็อตตัวฮิตจากทุกค่ายดัง
-// ไว้เยอะที่สุด คัดเฉพาะเกมคุณภาพสูงที่จ่ายสมน้ำสมเนื้อ มีทั้งเกมในกระแส เกมแตกหนัก
-// และเกมคลาสสิก พร้อมโต๊ะคาสิโนสดถ่ายทอดสดคมชัดระดับ HD ในล็อบบี้เดียวกัน สลับ
-// อารมณ์จากหน้าสปินไปลุ้นไพ่ได้ทันทีโดยไม่ต้องเปลี่ยนยูสเซอร์
+// assistive tech เนื้อหาตาม brief ของ DRACO65 — ล็อบบี้อัดแน่นด้วยค่ายสล็อตชั้นนำ
+// ระดับโลก คัดมาเฉพาะเกมตัวตึง เกมฮิตติดเทรนด์ และเกมแตกดี กดเลือกเกมใหม่ลุยต่อ
+// ได้ทันทีโดยไม่ต้องเสียเวลาค้นหานาน
 //
-// MACAUBET: ย้ายจากม่วงบานเย็นนีออนของ SGD88 (#f7d0ff / #e879f9 / #bc07e2 /
-// #930ac5 / #7a06a0 / #4c0a6b บนผิว #1b0d2e / #2a1145 / #050118 เนื้อความ #f3e8ff
-// ข้อความรอง #cbb5e6) มาที่เขียวนีออนมาเก๊า + ทอง — #dcffc0 / #8ef04a / #59cb13 /
-// #3b9b0d / #2c7a08 / #0f3a11 บนผิว #0a2c0d / #041b06 / #020b01 เนื้อความ #e9f9dc
-// ข้อความรอง #a8c99a ทอง #f6c445 อยู่บนป้ายมุมการ์ด
+// DRACO65: ย้ายจากม่วงโกธิคของ PHANTOM569 (#ede9fe / #b794ff / #8b5cf6 /
+// #6d28d9 / #4c1d95 / #2a0a52 บนผิว #1c0343 / #12002b เนื้อความ #ded4f5
+// ข้อความรอง #a99ac9 ทอง #f6c445) มาที่เขียวมังกรนีออน — #dcfce7 / #4ade80 /
+// #22c55e / #15803d / #14532d / #0a3318 บนผิว #062011 / #04150a เนื้อความ
+// #d6ecdd ข้อความรอง #9dbfa8 โดยป้ายมุมการ์ดรับสีรองของแบรนด์คือเงิน/โครเมียม
+// #e2e8e4 / #9dbfa8
 const providers = [
-  { name: "PG Soft", desc: "สล็อตแนวแฟนตาซี งานภาพ แสง สี เสียงจัดเต็ม ฟีเจอร์อลังการสมกับเป็นเกมในกระแส", tag: "เกมในกระแส", icon: "🎰" },
-  { name: "Pragmatic Play", desc: "ตัวคูณสะสมกับโหมดฟรีสปินขึ้นชื่อเรื่องแตกหนัก อัตราการจ่ายสมน้ำสมเนื้อ", tag: "แตกหนัก", icon: "💥" },
-  { name: "JILI", desc: "รอบสั้นจังหวะไว กดสปินแล้วตอบสนองทันที เหมาะกับคนที่เล่นต่อเนื่องยาวๆ", tag: "สปินไว", icon: "⚡" },
-  { name: "Joker Gaming", desc: "เกมคลาสสิกที่ทุกคนชื่นชอบ กติกาไม่ซับซ้อน เปลี่ยนสไตล์การเล่นมาเล่นได้ทันที", tag: "คลาสสิก", icon: "🃏" },
-  { name: "Evolution โต๊ะสด", desc: "ถ่ายทอดสดเรียลไทม์คมชัดระดับ HD ยกบรรยากาศคาสิโนมาเก๊ามาไว้ตรงหน้า", tag: "HD เรียลไทม์", icon: "📡" },
-  { name: "บาคาร่า รูเล็ต ไฮโล", desc: "โต๊ะเดิมพันยอดนิยมครบชุด มีดีลเลอร์มืออาชีพยิงตรงให้ตลอด 24 ชั่วโมง", tag: "ดีลเลอร์สด", icon: "🎴" },
-  { name: "เกมโชว์ถ่ายทอดสด", desc: "สลับจากหน้าสปินมาลุ้นเกมโชว์ได้ทันทีในยูสเซอร์เดียว ไม่ต้องเปลี่ยนบัญชี", tag: "สลับได้ทันที", icon: "🎪" },
+  { name: "PG Soft", desc: "เกมตัวตึงที่โหมดฟรีสปินออกบ่อย กราฟิกไหลลื่นไม่มีกระตุกตั้งแต่สปินแรก", tag: "ฟรีสปินบ่อย", icon: "🐲" },
+  { name: "Pragmatic Play", desc: "ตัวคูณรางวัลพร้อมระเบิดแจ็คพอตต่อเนื่อง เปลี่ยนเบทเบาๆ ให้เป็นกำไรก้อนใหญ่", tag: "ตัวคูณดุ", icon: "💥" },
+  { name: "JILI", desc: "เกมฮิตติดเทรนด์ที่คนไทยเล่นเยอะ รอบสั้นตัดสินไว เหมาะกับสายจังหวะเร็ว", tag: "ฮิตติดเทรนด์", icon: "🔥" },
+  { name: "Joker Gaming", desc: "กติกาไม่ซับซ้อน กดเข้าเล่นได้ทันที เหมาะกับคนเพิ่งเริ่มจับสล็อตเว็บตรง", tag: "เล่นง่าย", icon: "🃏" },
+  { name: "Relax Gaming", desc: "สายเกมแตกดีที่สัญลักษณ์พิเศษช่วยให้เข้าถึงรอบโบนัสได้ง่ายกว่าเดิม", tag: "เข้าโบนัสไว", icon: "🎁" },
+  { name: "Habanero", desc: "คอนเซปต์เกมหลากหลาย สลับสับเปลี่ยนเล่นได้ไม่มีเบื่อในบัญชีเดียว", tag: "เกมหลากหลาย", icon: "🎨" },
+  { name: "Nolimit City", desc: "ฟีเจอร์ดุดันสำหรับสายลุยเต็มสปีด ลุ้นระทึกได้ทุกจังหวะการหมุน", tag: "ฟีเจอร์ดุ", icon: "⚡" },
 ];
 ---
 
-<section aria-label="ค่ายเกมและโต๊ะสดที่ MACAUBET รวมไว้ครบในล็อบบี้เดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายเกมสล็อตชั้นนำที่ DRACO65 รวมไว้เต็มล็อบบี้" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#dcffc0] via-[#8ef04a] to-[#59cb13] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมและโต๊ะสดที่ <span class="text-[#f6c445]">MACAUBET</span> รวมไว้ครบในล็อบบี้เดียว
+    <p class="bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#22c55e] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายเกมสล็อตชั้นนำที่ <span class="text-[#e2e8e4]">DRACO65</span> รวมไว้เต็มล็อบบี้
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#59cb13] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#22c55e] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
@@ -34,20 +34,20 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#59cb13]/30 bg-[#0a2c0d]/92 p-5 shadow-[0_10px_30px_rgba(89,203,19,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#59cb13]/60 hover:bg-[#0f3a11]/95 hover:shadow-[0_15px_40px_rgba(142,240,74,0.3)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#2c7a08]/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#22c55e]/30 bg-[#062011]/92 p-5 shadow-[0_10px_30px_rgba(34,197,94,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#22c55e]/60 hover:bg-[#0a3318]/95 hover:shadow-[0_15px_40px_rgba(74,222,128,0.3)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#14532d]/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#f6c445] to-[#c8952a] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#020b01] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#e2e8e4] to-[#9dbfa8] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#04150a] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
             {provider.icon}
           </div>
-          <p class="text-center text-sm font-black text-[#e9f9dc] transition-colors group-hover:text-[#8ef04a]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#a8c99a]">{provider.desc}</p>
+          <p class="text-center text-sm font-black text-[#d6ecdd] transition-colors group-hover:text-[#4ade80]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#9dbfa8]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#59cb13]/30 bg-[#020b01] py-1.5 text-center text-[11px] font-bold text-[#8ef04a] shadow-inner transition-colors duration-300 group-hover:border-[#dcffc0]/60 group-hover:bg-gradient-to-r group-hover:from-[#dcffc0] group-hover:to-[#8ef04a] group-hover:text-[#020b01]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#22c55e]/30 bg-[#04150a] py-1.5 text-center text-[11px] font-bold text-[#4ade80] shadow-inner transition-colors duration-300 group-hover:border-[#dcfce7]/60 group-hover:bg-gradient-to-r group-hover:from-[#dcfce7] group-hover:to-[#4ade80] group-hover:text-[#04150a]">
             เข้าดูเกม
           </span>
         </a>

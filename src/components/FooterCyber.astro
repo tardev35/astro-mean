@@ -6,24 +6,24 @@ const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
-// โลโก้ตรง fallback เคยเป็น <h2> — chrome ห้ามกินแท็กหัวข้อ เพราะรายการ h2 ของ
-// ทุกหน้าถูก diff กับหัวข้อใน docx ตอน verify เปลี่ยนเป็น <p> โดยคงคลาสเดิมไว้
+// โลโก้ตรง fallback เป็น <p> ไม่ใช่หัวข้อ — chrome ห้ามกินแท็กหัวข้อ เพราะรายการ
+// h1/h2 ของทุกหน้าถูก diff กับหัวข้อใน docx ตอน verify และ footer ขึ้นทุกหน้า
 //
 // บล็อก <address> ด้านล่างจงใจไม่ใส่สีของแบรนด์ (ใช้ border-white/15, bg-black/20
 // และ opacity ทับสีตัวอักษรที่ inherit มา) — footer ทุก variant ในคลังเป็นพื้นเข้ม
 // ทั้งหมด บล็อกนี้จึงลงตัวทุกตัวโดยไม่ต้องแก้ และไม่ทิ้ง hex ของแบรนด์นี้ไว้ให้
-// รอบหน้า ป้ายชื่อเป็น <p> ไม่ใช่หัวข้อ เพราะ footer ขึ้นทุกหน้า
+// รอบหน้า ป้ายชื่อเป็น <p> ไม่ใช่หัวข้อด้วยเหตุผลเดียวกัน
 //
-// SGD88 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย กับ
+// DRACO65 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย กับ
 // /แนวทาง (สองหน้านั้นอยู่ใน src/pages-disabled/ ไม่มี route จริง)
 ---
 
 <footer
-  class="relative mt-10 w-full overflow-hidden border-t border-[#bc07e2]/40 bg-[#0b0620] pt-16 pb-8 font-sans text-[#f3e8ff]"
+  class="relative mt-10 w-full overflow-hidden border-t border-[#22c55e]/40 bg-[#040d07] pt-16 pb-8 font-sans text-[#dcfce7]"
   style="clip-path: polygon(0 30px, 50vw 0, 100% 30px, 100% 100%, 0 100%);">
   <div aria-hidden="true"
     class="pointer-events-none absolute inset-0 opacity-[0.14]"
-    style="background-image: linear-gradient(#7a06a0 1px, transparent 1px), linear-gradient(90deg, #4c0a6b 1px, transparent 1px); background-size: 30px 30px;">
+    style="background-image: linear-gradient(#15803d 1px, transparent 1px), linear-gradient(90deg, #0f3d22 1px, transparent 1px); background-size: 30px 30px;">
   </div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
@@ -34,43 +34,43 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ SGD88 ตัวอักษร SGD สีเงินและเลข 88 สีชมพูบานเย็น มีสายฟ้าสีม่วงและเหรียญคาสิโนประกอบ"
+                alt="โลโก้ DRACO65 กรอบสี่เหลี่ยมมนสีเขียวนีออน ครึ่งบนพื้นดำมีตัวอักษร DRACO สีเขียว ครึ่งล่างพื้นเขียวมีเลข 65 สีขาว"
                 loading="lazy"
                 decoding="async"
                 widths={[150, 300, 450]}
                 sizes="150px"
-                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(188,7,226,0.5)]"
+                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(34,197,94,0.5)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="text-3xl font-black tracking-widest text-[#bc07e2]">SGD88</p>
+              <p class="text-3xl font-black tracking-widest text-[#22c55e]">DRACO65</p>
             )
           }
         </a>
-        <p class="border-l-2 border-[#bc07e2] pl-4 text-sm leading-relaxed text-[#c9b8dd]">
-          SGD88 สล็อตอินเตอร์ระบบแรง โหลดไวทุกจังหวะ เกมฮิตครบสูตร รวมค่ายดังระดับโลกไว้เต็มล็อบบี้ พร้อมโต๊ะคาสิโนสดถ่ายทอดตรงจากสตูดิโอ สลับโหมดจากสล็อตไปโต๊ะสดได้ทันทีในยูสเซอร์เดียว ฝากถอนออโต้ไม่กี่ขั้นตอน ไม่ต้องผ่านแอดมิน
+        <p class="border-l-2 border-[#22c55e] pl-4 text-sm leading-relaxed text-[#9dbfa8]">
+          DRACO65 สล็อตเว็บตรงไฟลุก ระบบอัปเดตใหม่ที่เร็วแรงกว่าเดิม หน้าเว็บโหลดฉับไว กราฟิกไหลลื่นไม่กระตุก ฟีเจอร์ดุครบเครื่องทั้งฟรีสปิน ตัวคูณรางวัล และสัญลักษณ์พิเศษเข้ารอบโบนัสง่าย รวมเกมดังค่ายเด็ดไว้เต็มล็อบบี้ ฝาก-ถอนออโต้ไฮสปีดจบใน 3 วิ ไม่ต้องรอแอดมินอนุมัติ
         </p>
         <div class="mt-4 flex gap-3">
-          <span class="border border-[#bc07e2]/50 bg-[#1b0d2e] px-3 py-1 font-mono text-xs text-[#e879f9]">SGD_ALL_CAMP</span>
-          <span class="border border-[#d9dde3]/50 bg-[#1b0d2e] px-3 py-1 font-mono text-xs text-[#f0f3f7]">NO_LAG_24H</span>
+          <span class="border border-[#22c55e]/50 bg-[#0a2312] px-3 py-1 font-mono text-xs text-[#4ade80]">DRACO_ALL_CAMP</span>
+          <span class="border border-[#e2e8e4]/50 bg-[#0a2312] px-3 py-1 font-mono text-xs text-[#f2f7f4]">AUTO_3SEC</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#d9dde3] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
-        <ul class="flex flex-col gap-3 font-mono text-sm text-[#c9b8dd]">
-          <li><a href="/" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#e879f9]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
+        <p class="text-lg font-black tracking-widest text-[#e2e8e4] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
+        <ul class="flex flex-col gap-3 font-mono text-sm text-[#9dbfa8]">
+          <li><a href="/" class="transition-colors hover:text-[#4ade80]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#4ade80]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#4ade80]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#4ade80]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#4ade80]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#4ade80]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#d9dde3] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
+        <p class="text-lg font-black tracking-widest text-[#e2e8e4] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
 
         <a
           href="/line"
@@ -101,22 +101,22 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
         <a
           href="/register"
-          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#7a06a0] via-[#bc07e2] to-[#e879f9] py-3 font-black text-[#faf5ff] transition-all hover:brightness-110"
+          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#15803d] via-[#22c55e] to-[#4ade80] py-3 font-black text-[#04150a] transition-all hover:brightness-110"
           style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
           สมัครสมาชิก
         </a>
 
-        <div class="mt-2 font-mono text-xs text-[#c9b8dd]">ACCEPTED_PAYMENTS</div>
+        <div class="mt-2 font-mono text-xs text-[#9dbfa8]">ACCEPTED_PAYMENTS</div>
         <BankStrip size={28} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#bc07e2]/30 pt-6 font-mono text-xs text-[#c9b8dd] md:flex-row">
-      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} SGD88</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#22c55e]/30 pt-6 font-mono text-xs text-[#9dbfa8] md:flex-row">
+      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} DRACO65</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="hover:text-[#e879f9]">TERMS_OF_SERVICE</a>
-        <a href="/privacy/" class="hover:text-[#e879f9]">PRIVACY_POLICY</a>
-        <a href="#top" class="hover:text-[#e879f9]">BACK_TO_TOP</a>
+        <a href="/terms/" class="hover:text-[#4ade80]">TERMS_OF_SERVICE</a>
+        <a href="/privacy/" class="hover:text-[#4ade80]">PRIVACY_POLICY</a>
+        <a href="#top" class="hover:text-[#4ade80]">BACK_TO_TOP</a>
       </div>
     </div>
   </div>

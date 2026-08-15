@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 
 import { Picture } from "astro:assets";
 
@@ -13,32 +13,32 @@ import { Picture } from "astro:assets";
 // gives this page a Title and a Meta and never a body.
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The MACAUBET drop (mtime 2026-08-14 07:21) is four slides carrying four
-// distinct offers:
-//   slide1 = สล็อตเว็บตรง เว็บลิขสิทธิ์แท้ · คืนยอดเสียสูงสุด 5 %
-//   slide2 = โบนัสมาแล้ว ฝากประจำครบ 7 วัน · รับเครดิตฟรีไปเลย
-//   slide3 = แจกหนักจัดเต็ม สุ่มแจกของรางวัลสุดพรีเมียม · รายละเอียดคลิก
-//   slide4 = สุขสันต์วันเกิด ยอดฝากครบกำหนด · รับเลย 500 เครดิต
+// The DRACO65 drop (mtime 2026-08-15) is FOUR slides:
+//   slide1 = โปรฝากรายวันสล็อต รับโบนัส 20% · ฝากครั้งแรกรับโบนัสทันที 20%
+//   slide2 = ครบจบในเจ้าเดียว ถอนได้หลักล้าน · ดีดจากค่ายเกมโดยตรง ทุนหนากล้าจ่าย
+//   slide3 = เล่นเสียรับคืนยอดเสีย คืนไม่จำกัด 5%
+//   slide4 = สร้างรายได้แนะนำเพื่อน รับค่าคอม 5%
 // The mapping between file number and promotion changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after the promotion instead of after the file.
 //
-// banner.png and banner2/3/4.png are older leftovers (mtime 2026-08-04) and may
-// not be pulled in here. Only what is printed on each banner may be stated on
-// this page.
-import proCashback from "../assets/slide1.png";
-import proDeposit7Days from "../assets/slide2.png";
-import proPrizeGiveaway from "../assets/slide3.png";
-import proBirthday from "../assets/slide4.png";
+// banner.png / banner2-4.png (mtime 2026-08-04) are leftovers from an older
+// brand and must never be imported here: an imported image is an emitted image
+// even when nothing renders it. Only what is printed on each banner may be
+// stated on this page.
+import proDailyBonus20 from "../assets/slide1.png";
+import proWithdrawMillion from "../assets/slide2.png";
+import proCashback5 from "../assets/slide3.png";
+import proReferral5 from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 159.
+// byte count reads ~3x too long). This one measures 155.
 const pageDescription =
-  "รวมโปรโมชั่นของ MACAUBET ในรอบนี้ ทั้งคืนยอดเสียสูงสุด 5% โบนัสฝากประจำครบ 7 วัน สุ่มแจกของรางวัลพรีเมียม และเครดิตวันเกิด ดูเงื่อนไขแต่ละรายการก่อนกดรับสิทธิ์";
+  "รวมโปรโมชั่นของ DRACO65 สล็อตเว็บตรงไฟลุก ทั้งโบนัสฝากรายวัน 20% คืนยอดเสีย 5% และค่าคอมแนะนำเพื่อน 5% ดูเงื่อนไขของแต่ละรายการก่อนกดรับสิทธิ์ได้จากหน้านี้";
 
-const pageTitle = "โปรโมชั่น MACAUBET คืนยอดเสีย โบนัสฝากประจำ แจกของรางวัล และเครดิตวันเกิด";
+const pageTitle = "โปรโมชั่น DRACO65 โบนัสฝากรายวัน 20% คืนยอดเสีย 5% และค่าคอมแนะนำเพื่อน 5%";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -47,7 +47,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proCashback.src,
+  primaryImagePath: proDailyBonus20.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
@@ -59,7 +59,7 @@ const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#59cb13]/35 object-contain shadow-[0_10px_30px_rgba(89,203,19,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#f6c445]/70 hover:shadow-[0_15px_40px_rgba(142,240,74,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#22c55e]/35 object-contain shadow-[0_10px_30px_rgba(34,197,94,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e2e8e4]/70 hover:shadow-[0_15px_40px_rgba(74,222,128,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
 // drop — the column is drawn up to 644px, but asking for 644 only upscales a
@@ -72,18 +72,18 @@ const imageWidths = [320, 440, 600];
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น MACAUBET" as="h1">
+  <ContentBox title="โปรโมชั่น DRACO65" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#8ef04a]">MACAUBET</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งเครดิตคืนยอดเสียสูงสุด 5% โบนัสของสมาชิกที่ฝากประจำครบ 7 วัน
-        กิจกรรมสุ่มแจกของรางวัลสุดพรีเมียม และเครดิตวันเกิดสำหรับยอดฝากที่ครบกำหนด แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขเทิร์นโอเวอร์ หมวดเกมที่ร่วมรายการ
-        และยอดขั้นต่ำต่อครั้งก็ไม่เหมือนกัน จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#4ade80]">DRACO65</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งโบนัสฝากรายวัน ยอดถอนหลักล้าน สิทธิ์คืนยอดเสีย
+        และค่าคอมจากการแนะนำเพื่อน แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขการทำยอด หมวดเกมที่ร่วมรายการ และยอดถอนสูงสุดต่อครั้งก็ไม่เหมือนกัน
+        จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={proCashback}
-          alt="แบนเนอร์โปรโมชั่น MACAUBET สล็อตเว็บตรง เว็บลิขสิทธิ์แท้ คืนยอดเสียสูงสุด 5 % มีหญิงสาวชุดเลื่อมสีเขียวถือไพ่โพดำคลี่เป็นพัด ข้างวงล้อรูเล็ตและชิปคาสิโนสีเขียวบนพื้นเขียวเข้ม"
+          src={proDailyBonus20}
+          alt="แบนเนอร์โปรโมชั่น DRACO65 โปรฝากรายวันสล็อต รับโบนัส 20% ฝากเงินครั้งแรกรับโบนัสทันที 20%"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -96,8 +96,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proDeposit7Days}
-          alt="แบนเนอร์โปรโมชั่น MACAUBET โบนัสมาแล้ว ฝากประจำครบ 7 วัน รับเครดิตฟรีไปเลย มีหญิงสาวชุดสูทสีเขียวชูการ์ด FREE CREDIT ยืนข้างวงล้อสล็อตนีออนเขียวบนพื้นเขียวเข้ม"
+          src={proWithdrawMillion}
+          alt="แบนเนอร์โปรโมชั่น DRACO65 ครบจบในเจ้าเดียว ถอนได้หลักล้าน การดีดจากค่ายเกมโดยตรง ทุนหนากล้าจ่าย"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -110,8 +110,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proPrizeGiveaway}
-          alt="แบนเนอร์โปรโมชั่น MACAUBET แจกหนักจัดเต็ม สุ่มแจกของรางวัลสุดพรีเมียม รายละเอียดคลิก มีหญิงสาวชุดสูทดำยืนข้างกองทองและกล่องของขวัญ มีโทรศัพท์มือถือและลำโพงเป็นของรางวัล"
+          src={proCashback5}
+          alt="แบนเนอร์โปรโมชั่น DRACO65 เล่นเสียรับคืนยอดเสีย คืนไม่จำกัด 5%"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -124,8 +124,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proBirthday}
-          alt="แบนเนอร์โปรโมชั่น MACAUBET สุขสันต์วันเกิด ยอดฝากครบกำหนด รับเลย 500 เครดิต มีเค้กวันเกิดสามชั้นลายคาสิโนสีเขียวทองประดับมงกุฎ และหญิงสาวชุดขาวถือกล่องของขวัญใต้ธงราว"
+          src={proReferral5}
+          alt="แบนเนอร์โปรโมชั่น DRACO65 สร้างรายได้แนะนำเพื่อน รับค่าคอม 5%"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -141,8 +141,8 @@ const imageWidths = [320, 440, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#f6c445]/60 bg-gradient-to-r from-[#8ef04a] via-[#59cb13] to-[#2c7a08] px-10 py-3.5 text-lg font-black text-[#041b06] shadow-[0_10px_30px_rgba(89,203,19,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(142,240,74,0.45)]">
-          สมัครสมาชิก MACAUBET
+          class="flex items-center justify-center rounded-lg border border-[#e2e8e4]/60 bg-gradient-to-r from-[#4ade80] via-[#22c55e] to-[#14532d] px-10 py-3.5 text-lg font-black text-[#04150a] shadow-[0_10px_30px_rgba(34,197,94,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(74,222,128,0.45)]">
+          สมัครสมาชิก DRACO65
         </a>
       </div>
     </div>

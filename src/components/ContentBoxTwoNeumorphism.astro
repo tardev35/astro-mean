@@ -8,14 +8,16 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// FAST369: variant นี้เคยค้างพาเลตเขียวเข้ม (#0d1811 / lime-400) แล้ว FUSIONNEW
-// ย้ายไปแดงสัญญาณคู่โครมเงิน (#e01a1a / #ff5f52 / #8c0102 กับ #d9dde3 บนผิว
-// #150809 เนื้อความ #e7e3e1) รอบนี้ย้ายมาที่แดงสัญญาณ #e40613 / #ff3b2f / #8f0206
-// คู่ทอง #ffe27a / #ffc531 บนผิว #170506 เนื้อความ #f4e7dd
+// DRACO65: variant นี้เคยค้างพาเลตเขียวเข้ม (#0d1811 / lime-400) ของ FAST369
+// แล้ว FUSIONNEW ย้ายไปแดงสัญญาณคู่โครมเงิน จากนั้นเป็นแดงสัญญาณ #e40613 คู่ทอง
+// #ffc531 บนผิว #170506 และรอบก่อนเป็นม่วงโกธิค #8b5cf6 / #b794ff / #ede9fe คู่
+// #6d28d9 / #4c1d95 บนผิว #1c0343 เนื้อความ #ded4f5 คู่ทอง #f6c445 — รอบนี้ย้ายมา
+// ที่เขียวมังกรนีออน #22c55e / #4ade80 / #dcfce7 คู่เขียวเข้ม #15803d / #14532d
+// บนผิว #062011 เนื้อความ #d6ecdd แบรนด์นี้ไม่มีม่วงและไม่มีทองเหลืออยู่ในไฟล์
 //
 // คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
-// #050102 (เข้มกว่าพื้นหน้า) ไฮไลต์ใช้ #240709 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าเอา
-// #e40613 มาใส่ การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน
+// #020805 (เข้มกว่าพื้นหน้า) ไฮไลต์ใช้ #0a3318 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าเอา
+// #22c55e มาใส่ การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน
 //
 // เดิม titleleft/titleright render เป็น <h3> ทำให้ section เดียวของ docx ปล่อย
 // หัวข้อออกมาสองอัน ตอนนี้ทั้งคู่เป็น <p> เพราะมันตั้งชื่อคอลัมน์ UI ไม่ใช่ section
@@ -28,23 +30,24 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
-  <div class="w-full rounded-[25px] border border-[#e40613]/25 bg-[#170506] p-8 shadow-[10px_10px_20px_#050102,-10px_-10px_20px_#240709] transition-all duration-300 hover:shadow-[15px_15px_30px_#030101,-15px_-15px_30px_#2e0a0d]">
+  <div
+    class="w-full rounded-[25px] border border-[#22c55e]/25 bg-[#062011] p-8 shadow-[10px_10px_20px_#020805,-10px_-10px_20px_#0a3318] transition-all duration-300 hover:shadow-[15px_15px_30px_#010402,-15px_-15px_30px_#0e4a22]">
     {
       title && (
-        <header class="mb-8 border-b border-[#e40613]/25 pb-4 text-center">
-          <HeadingTag class="bg-gradient-to-r from-[#ffe27a] via-[#ff3b2f] to-[#e40613] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#22c55e]/25 pb-4 text-center">
+          <HeadingTag class="bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#22c55e] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7dd]">
-        {titleleft && <p class="text-2xl leading-normal font-black tracking-wide text-[#ffe27a]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d6ecdd]">
+        {titleleft && <p class="text-2xl leading-normal font-black tracking-wide text-[#4ade80]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7dd] md:border-l md:border-[#ffc531]/20 md:pl-8">
-        {titleright && <p class="text-2xl leading-normal font-black tracking-wide text-[#ffe27a]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d6ecdd] md:border-l md:border-[#22c55e]/20 md:pl-8">
+        {titleright && <p class="text-2xl leading-normal font-black tracking-wide text-[#4ade80]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

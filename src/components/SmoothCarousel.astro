@@ -1,7 +1,8 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideBirthday from "../assets/slide4.png";
+import slideCashback from "../assets/slide3.png";
+import slideAffiliate from "../assets/slide4.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -17,21 +18,26 @@ import slideBirthday from "../assets/slide4.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// MACAUBET เหลือสไลด์ใบเดียวตรงนี้เหมือนรอบก่อน: slide4 (สุขสันต์วันเกิด รับ 500
-// เครดิต) ส่วน slide2 (โบนัสฝากประจำ 7 วัน) กับ slide1 (คืนยอดเสีย 5%) ไปอยู่ใน
-// บล็อก ContentBoxSevenThree สองบล็อกของหน้าแลนดิ้งแล้ว และ slide3 อยู่หน้า
-// /promotion แต่ละใบมีบ้านเดียวบนหน้าเว็บ การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียว
-// คือสิ่งที่การแบ่งแบบนี้เลี่ยงอยู่
+// DRACO65: แถบนี้ถือ slide3 (คืนยอดเสีย 5%) กับ slide4 (แนะนำเพื่อนรับค่าคอม 5%)
+// ส่วน slide2 (ถอนได้หลักล้าน) กับ slide1 (โปรฝากรายวันรับโบนัส 20%) ไปอยู่ใน
+// บล็อก ContentBoxSevenThree สองบล็อกของหน้าแลนดิ้ง แต่ละใบมีบ้านเดียวบนหน้าเว็บ
+// การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียวคือสิ่งที่การแบ่งแบบนี้เลี่ยงอยู่ ส่วน
+// banner / banner2-4 เป็นอาร์ตค้างของแบรนด์ก่อน จึงไม่ถูก import ที่ไหนทั้งสิ้น
+// ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด (600x217) จึง import ตามนามสกุลจริง
 //
-// สไลด์ชุดนี้กลับมาเป็นแบนเนอร์แนวนอน 600x263 (รอบก่อนเป็นจัตุรัส 600x600) และยัง
-// เหลือใบเดียว จึงให้เห็นพร้อมกัน 1 ช่องบนมือถือ / 2 ช่องบนเดสก์ท็อป แล้วบีบกล่อง
-// เป็น max-w-[820px] เพื่อให้แต่ละใบวาดราวๆ 386px ซึ่งต่ำกว่าความกว้างจริงของไฟล์
-// (600px) จึงไม่มีการอัปสเกล ค่า --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูป
-// ต้นฉบับ (หนึ่งใบ) ถ้าเปลี่ยนจำนวนต้องคิดใหม่ทั้งคู่
+// สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน 600x217 และมีสองใบ จึงให้เห็นพร้อมกัน 1 ช่อง
+// บนมือถือ / 2 ช่องบนเดสก์ท็อป แล้วบีบกล่องเป็น max-w-[820px] เพื่อให้แต่ละใบวาด
+// ราวๆ 386px ซึ่งต่ำกว่าความกว้างจริงของไฟล์ (600px) จึงไม่มีการอัปสเกล ค่า
+// --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สองใบ) ถ้าเปลี่ยนจำนวน
+// ต้องคิด --shift ใหม่ทั้งสอง breakpoint
 const images = [
   {
-    src: slideBirthday,
-    alt: "แบนเนอร์โปรโมชั่น MACAUBET ข้อความ สุขสันต์วันเกิด ยอดฝากครบกำหนด รับเลย 500 เครดิต ภาพเค้กวันเกิดสามชั้นธีมคาสิโนสีเขียวเข้มสลับทอง ประดับมงกุฎ ไพ่โพดำ วงล้อรูเล็ต และเทียนพลุ ข้างหญิงสาวชุดขาวถือกล่องของขวัญ บนพื้นสีเขียวเข้มประดับธงราว",
+    src: slideCashback,
+    alt: "แบนเนอร์โปรโมชั่น DRACO65 ข้อความ เล่นเสียรับคืนยอดเสีย คืนไม่จำกัด 5% รับยอดเสียคืนแบบไม่จำกัด 5% ด้านบนเป็นโลโก้ DRACO 65 ตัวอักษรโครเมียมคู่กับป้าย truemoney ด้านซ้ายเป็นตัวละครโจรสลัดถือธงชาติบราซิลยืนคู่มาสคอตงูสวมชุดลายธงบราซิล บนพื้นเขียวเข้มแสงนีออน",
+  },
+  {
+    src: slideAffiliate,
+    alt: "แบนเนอร์โปรโมชั่น DRACO65 ข้อความ สร้างรายได้แนะนำเพื่อน รับค่าคอม 5% แนะนำเพื่อนรับค่าคอม 5% จากยอดแทงเพื่อน ด้านบนเป็นโลโก้ DRACO 65 ตัวอักษรโครเมียมคู่กับป้าย truemoney ด้านซ้ายเป็นมาสคอตเสือ กระต่าย และวัว สวมสูทสีเขียวปักลายทอง บนพื้นเขียวเข้มแสงนีออน",
   },
 ];
 
@@ -53,14 +59,14 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#59cb13]/60 peer-focus-visible:bg-[#0f3a11] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#8ef04a]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#22c55e]/60 peer-focus-visible:bg-[#0a3318] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#4ade80]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
   <div class="marquee-track flex">
     {
       slides.map((slide, index) => {
-        // สามชุดท้ายคือรูปใบเดิมซ้ำอีก เป็นของตกแต่งที่มีไว้ให้ลูปไม่มีรอยต่อ
+        // สามชุดท้ายคือรูปชุดเดิมซ้ำอีก เป็นของตกแต่งที่มีไว้ให้ลูปไม่มีรอยต่อ
         // alt="" บวก aria-hidden บนตัวครอบทำให้มันอยู่นอก accessibility tree
         // ถ้าไม่ทำ ประโยคเดียวกันจะถูกอ่านซ้ำสี่รอบ
         const isDuplicate = index >= images.length;
@@ -69,7 +75,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#59cb13]/35 object-cover shadow-[0_10px_30px_rgba(89,203,19,0.22)]"
+              class="block w-full rounded-xl border border-[#22c55e]/35 object-cover shadow-[0_10px_30px_rgba(34,197,94,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
@@ -89,23 +95,23 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
 </div>
 
 <style>
-  /* --shift คือหนึ่งชุดเต็มของรูป: สไลด์หนึ่งใบบวกช่องว่างหนึ่งช่องที่ตามมา วัดเทียบ
+  /* --shift คือหนึ่งชุดเต็มของรูป: สองสไลด์บวกช่องว่างที่ตามมาสองช่อง วัดเทียบ
      กับความกว้างของ track (ซึ่งเท่ากับความกว้างของกล่อง — สไลด์ล้นออกไป ซึ่งเป็น
      จุดประสงค์) ตั้งค่านี้ผิดไปหนึ่งพิกเซลคือสิ่งที่ทำให้ marquee กระตุกทุกรอบลูป
 
-     mobile:  1 * 100% + 12px = 100% + 12px
-     desktop: 1 * (100% - 16px)/2 + 16px = 50% + 8px */
+     mobile:  2 * (100% + 12px) = 200% + 24px
+     desktop: 2 * ((100% - 16px)/2 + 16px) = 100% + 16px */
   .marquee {
     --gap: 12px;
     --per-view: 1;
-    --shift: calc(-100% - 12px);
+    --shift: calc(-200% - 24px);
   }
 
   @media (min-width: 768px) {
     .marquee {
       --gap: 16px;
       --per-view: 2;
-      --shift: calc(-50% - 8px);
+      --shift: calc(-100% - 16px);
     }
   }
 

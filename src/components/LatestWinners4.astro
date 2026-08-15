@@ -21,7 +21,13 @@ const bankPool = [
 // build time, and the gate fails the build on a random call there.
 //
 // The four `bg-[#…]` swatches above are the banks' own brand colours and stay
-// as they are through a rebrand; only the surface around them follows 9UFA.
+// as they are through a rebrand; only the surface around them follows the
+// brand.
+//
+// PHANTOM569: ย้ายจากแผงสว่างฟ้าของ 9UFA (#0a5df1 / #01cbf6 / #acddfb / #eaf4fe
+// บนพื้น white/85 เนื้อความ #0b3a63 / #0743a8) มาที่ม่วงโกธิค — #ede9fe / #b794ff
+// / #8b5cf6 / #4c1d95 / #2a0a52 บนผิว #1c0343 / #12002b เนื้อความ #ded4f5
+// ข้อความรอง #a99ac9
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const pick = (salt: string, n: number) => brandPick(Astro.site, salt, n);
 
@@ -34,10 +40,12 @@ const initialRows = Array.from({ length: 8 }, (_, i) => ({
 
 <div class="mx-auto w-full max-w-[1000px] p-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก 9UFA"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#0a5df1]/25 bg-white/85 px-4 py-8 shadow-[0_15px_40px_rgba(10,93,241,0.15)] backdrop-blur-md">
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก PHANTOM569"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#8b5cf6]/30 bg-[#1c0343]/88 px-4 py-8 shadow-[0_15px_40px_rgba(139,92,246,0.2)] backdrop-blur-md">
     <div class="mb-6 text-center">
-      <p class="bg-gradient-to-b from-[#0a5df1] to-[#01cbf6] bg-clip-text text-xl font-black text-transparent md:text-2xl"><span aria-hidden="true">⚡</span> 9UFA ถอนเงินแบบเรียลไทม์</p>
+      <p class="bg-gradient-to-b from-[#ede9fe] to-[#8b5cf6] bg-clip-text text-xl font-black text-transparent md:text-2xl">
+        <span aria-hidden="true">⚡</span> PHANTOM569 โอนไวทันใจทุกยอดแบบเรียลไทม์
+      </p>
     </div>
 
     <div
@@ -50,12 +58,12 @@ const initialRows = Array.from({ length: 8 }, (_, i) => ({
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-pill transition-all duration-500 ease-out">
-            <div class="flex items-center gap-3 rounded-full border border-[#acddfb] bg-[#eaf4fe] py-1.5 pr-4 pl-1.5 shadow-[0_4px_12px_rgba(10,93,241,0.14)] hover:border-[#0a5df1]/60">
+            <div class="flex items-center gap-3 rounded-full border border-[#8b5cf6]/40 bg-[#12002b] py-1.5 pr-4 pl-1.5 shadow-[0_4px_12px_rgba(139,92,246,0.18)] hover:border-[#b794ff]/70">
               <div data-winner-bank class={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${row.bank.color}`}>
                 <img data-winner-icon src={row.bank.icon} alt="" width="16" height="16" loading="lazy" decoding="async" class="h-4 w-4 object-contain" />
               </div>
-              <div data-winner-user class="text-sm font-bold text-[#0b3a63]">{row.user}</div>
-              <div class="text-sm font-black text-[#0743a8]">+<span data-winner-amount>{row.amount}</span> ฿</div>
+              <div data-winner-user class="text-sm font-bold text-[#ded4f5]">{row.user}</div>
+              <div class="text-sm font-black text-[#b794ff]">+<span data-winner-amount>{row.amount}</span> ฿</div>
             </div>
           </div>
         ))

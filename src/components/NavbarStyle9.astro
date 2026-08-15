@@ -19,11 +19,14 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // ลำดับ: หน้าแรก → โปรโมชั่น → ที่เหลือ แบรนด์นี้ปิดสวิตช์หน้า cta
 // (/login กับ /register ยังเป็นหน้า redirect แบบ noindex) เมนูจึงไม่มีรายการ
 // สมัครสมาชิก/เข้าสู่ระบบ ให้จัดลำดับ และ /ทางเข้า ยังอยู่ในเมนูตามเดิม
+//
+// ไอคอนเลือกให้เข้าธีมยมทูต/คาสิโนพรีเมียมของ PHANTOM569 — ไม่มีไอคอนหวย
+// เพราะแบรนด์นี้เป็นคาสิโน ไม่ใช่เว็บหวย
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
-  { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
-  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🐉" },
+  { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🃏" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🔮" },
   { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🛡️" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
@@ -32,22 +35,22 @@ const links = [
 // และเคยใส่ fetchpriority="high" แย่ง priority กับ hero banner ที่เป็น LCP จริง
 const LOGO_WIDTHS = [112, 224, 336];
 
-const LOGO_ALT = "โลโก้ LONGSAP168 ตัวอักษร LONGSAP สีทองและ 168 สีเงิน บนโล่ทอง มีมังกรทองพ่นไฟ สล็อต 777 ไพ่โพดำ ชิปคาสิโนและกองเหรียญทอง";
+const LOGO_ALT = "โลโก้ PHANTOM569 ตัวอักษร PHANTOM สีเงินโครเมียมและเลข 569 สีม่วง บนตราสัญลักษณ์ยมทูตสวมฮู้ดถือเคียว ล้อมด้วยเปลวไฟและหนามโลหะสีม่วงเรืองแสง";
 ---
 
 <header class="sticky top-0 z-50 w-full font-sans">
-  <nav class="relative z-50 w-full border-b border-[#f2b024]/35 bg-gradient-to-r from-[#0a0402] via-[#24100c] to-[#0a0402] shadow-[0_4px_25px_rgba(10,4,2,0.75)]">
+  <nav class="relative z-50 w-full border-b border-[#8b5cf6]/35 bg-gradient-to-r from-[#0a0118] via-[#1c0343] to-[#0a0118] shadow-[0_4px_25px_rgba(10,1,24,0.75)]">
     <div class="mx-auto flex h-[70px] w-full max-w-[1600px] items-center justify-between px-4 lg:h-[85px] lg:px-8">
       <div class="flex items-center">
         <a href="/" class="relative flex-shrink-0 transition-transform hover:scale-105">
-          <div aria-hidden="true" class="absolute inset-0 rounded-full bg-[#f2b024]/25 blur-xl"></div>
+          <div aria-hidden="true" class="absolute inset-0 rounded-full bg-[#8b5cf6]/25 blur-xl"></div>
           <Picture
             src={mainLogo!}
             alt={LOGO_ALT}
             loading="eager"
             widths={LOGO_WIDTHS}
             sizes="112px"
-            class="relative h-[40px] w-auto drop-shadow-[0_0_8px_rgba(242,176,36,0.45)] lg:h-[50px]"
+            class="relative h-[40px] w-auto drop-shadow-[0_0_8px_rgba(139,92,246,0.55)] lg:h-[50px]"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
           />
@@ -59,17 +62,17 @@ const LOGO_ALT = "โลโก้ LONGSAP168 ตัวอักษร LONGSAP �
           links.map((link) => (
             <a
               href={link.path}
-              class={`group relative flex h-full items-center gap-2 px-4 text-sm font-bold transition-all duration-300 xl:px-6 xl:text-base ${isActive(link.path) ? "text-[#ffd76a]" : "text-[#f6e4c8]/80 hover:text-[#ffd76a]"}`}>
+              class={`group relative flex h-full items-center gap-2 px-4 text-sm font-bold transition-all duration-300 xl:px-6 xl:text-base ${isActive(link.path) ? "text-[#c4b5fd]" : "text-[#ded4f5]/80 hover:text-[#c4b5fd]"}`}>
               <div
                 aria-hidden="true"
-                class={`absolute inset-0 bg-gradient-to-b from-transparent to-[#d81f26]/20 transition-opacity duration-300 ${isActive(link.path) ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+                class={`absolute inset-0 bg-gradient-to-b from-transparent to-[#5b21b6]/35 transition-opacity duration-300 ${isActive(link.path) ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
               />
               <span aria-hidden="true" class="relative z-10 text-base">
                 {link.icon}
               </span>
               <span class="relative z-10">{link.name}</span>
               <div
-                class={`absolute bottom-0 left-1/2 h-[3px] -translate-x-1/2 bg-gradient-to-r from-[#f2b024] to-[#d81f26] transition-all duration-300 ${isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"}`}
+                class={`absolute bottom-0 left-1/2 h-[3px] -translate-x-1/2 bg-gradient-to-r from-[#8b5cf6] to-[#f6c445] transition-all duration-300 ${isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"}`}
               />
             </a>
           ))
@@ -79,28 +82,28 @@ const LOGO_ALT = "โลโก้ LONGSAP168 ตัวอักษร LONGSAP �
       <div class="flex items-center gap-3 md:gap-4">
         <a
           href="/login"
-          class="hidden items-center justify-center rounded-full border border-[#f2b024]/70 px-6 py-2.5 text-sm font-bold text-[#ffd76a] shadow-[0_0_10px_rgba(242,176,36,0.25)] transition-all hover:bg-[#f2b024] hover:text-[#0a0402] lg:flex">
+          class="hidden items-center justify-center rounded-full border border-[#8b5cf6]/70 px-6 py-2.5 text-sm font-bold text-[#c4b5fd] shadow-[0_0_10px_rgba(139,92,246,0.3)] transition-all hover:bg-[#8b5cf6] hover:text-[#0a0118] lg:flex">
           เข้าสู่ระบบ
         </a>
         <a
           href="/register"
-          class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#d81f26] px-6 py-2.5 text-sm font-extrabold text-[#0a0402] shadow-[0_0_20px_rgba(216,31,38,0.4)] transition-all hover:scale-105 hover:brightness-110 lg:flex">
+          class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#c4b5fd] via-[#8b5cf6] to-[#5b21b6] px-6 py-2.5 text-sm font-extrabold text-[#12002b] shadow-[0_0_20px_rgba(139,92,246,0.45)] transition-all hover:scale-105 hover:brightness-110 lg:flex">
           สมัครสมาชิก
         </a>
 
         <button
           id="hamburger-btn"
-          class="relative z-[60] flex h-10 w-10 flex-col items-center justify-center overflow-hidden rounded-full border-2 border-[#7d0508] bg-gradient-to-tr from-[#d81f26] to-[#f2b024] shadow-[0_0_15px_rgba(216,31,38,0.5)] lg:hidden"
+          class="relative z-[60] flex h-10 w-10 flex-col items-center justify-center overflow-hidden rounded-full border-2 border-[#3b0764] bg-gradient-to-tr from-[#5b21b6] to-[#b794ff] shadow-[0_0_15px_rgba(139,92,246,0.55)] lg:hidden"
           aria-label="Menu">
-          <span class="hamburger-line absolute h-[2px] w-5 -translate-y-1.5 transform rounded-full bg-[#0a0402] transition-all duration-300"></span>
-          <span class="hamburger-line absolute h-[2px] w-5 rounded-full bg-[#0a0402] transition-all duration-300"></span>
-          <span class="hamburger-line absolute h-[2px] w-5 translate-y-1.5 transform rounded-full bg-[#0a0402] transition-all duration-300"></span>
+          <span class="hamburger-line absolute h-[2px] w-5 -translate-y-1.5 transform rounded-full bg-[#0a0118] transition-all duration-300"></span>
+          <span class="hamburger-line absolute h-[2px] w-5 rounded-full bg-[#0a0118] transition-all duration-300"></span>
+          <span class="hamburger-line absolute h-[2px] w-5 translate-y-1.5 transform rounded-full bg-[#0a0118] transition-all duration-300"></span>
         </button>
       </div>
     </div>
   </nav>
 
-  <div id="mobile-circular-menu" class="pointer-events-none fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#0a0402]/98 backdrop-blur-2xl lg:hidden">
+  <div id="mobile-circular-menu" class="pointer-events-none fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#0a0118]/98 backdrop-blur-2xl lg:hidden">
     <div class="flex w-full flex-col items-center space-y-6 px-6">
       <Picture
         src={mainLogo!}
@@ -109,7 +112,7 @@ const LOGO_ALT = "โลโก้ LONGSAP168 ตัวอักษร LONGSAP �
         sizes="112px"
         loading="lazy"
         decoding="async"
-        class="menu-item mb-6 h-[50px] w-auto opacity-0 drop-shadow-[0_0_15px_rgba(242,176,36,0.55)]"
+        class="menu-item mb-6 h-[50px] w-auto opacity-0 drop-shadow-[0_0_15px_rgba(139,92,246,0.6)]"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
       />
@@ -118,7 +121,7 @@ const LOGO_ALT = "โลโก้ LONGSAP168 ตัวอักษร LONGSAP �
         links.map((link) => (
           <a
             href={link.path}
-            class={`menu-item flex items-center gap-3 text-3xl font-black tracking-wider uppercase opacity-0 transition-all duration-300 ${isActive(link.path) ? "text-[#ffd76a] drop-shadow-[0_0_8px_rgba(242,176,36,0.8)]" : "text-[#f6e4c8]/80 hover:text-white"}`}>
+            class={`menu-item flex items-center gap-3 text-3xl font-black tracking-wider uppercase opacity-0 transition-all duration-300 ${isActive(link.path) ? "text-[#c4b5fd] drop-shadow-[0_0_8px_rgba(139,92,246,0.85)]" : "text-[#ded4f5]/80 hover:text-white"}`}>
             <span aria-hidden="true" class="text-2xl">
               {link.icon}
             </span>
@@ -127,13 +130,13 @@ const LOGO_ALT = "โลโก้ LONGSAP168 ตัวอักษร LONGSAP �
         ))
       }
 
-      <div class="menu-item mt-4 flex w-full max-w-[280px] flex-col gap-4 border-t border-[#f2b024]/40 pt-8 opacity-0">
+      <div class="menu-item mt-4 flex w-full max-w-[280px] flex-col gap-4 border-t border-[#8b5cf6]/40 pt-8 opacity-0">
         <a
           href="/register"
-          class="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ffd76a] via-[#f2b024] to-[#d81f26] py-3.5 text-lg font-extrabold text-[#0a0402] shadow-[0_0_20px_rgba(216,31,38,0.4)]">
+          class="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#c4b5fd] via-[#8b5cf6] to-[#5b21b6] py-3.5 text-lg font-extrabold text-[#12002b] shadow-[0_0_20px_rgba(139,92,246,0.45)]">
           <span aria-hidden="true">🔥</span> สมัครสมาชิก
         </a>
-        <a href="/login" class="flex w-full items-center justify-center rounded-full border border-[#f2b024]/50 py-3.5 text-lg font-bold text-[#ffd76a] hover:bg-[#f2b024]/10">เข้าสู่ระบบ</a>
+        <a href="/login" class="flex w-full items-center justify-center rounded-full border border-[#8b5cf6]/50 py-3.5 text-lg font-bold text-[#c4b5fd] hover:bg-[#8b5cf6]/10">เข้าสู่ระบบ</a>
       </div>
     </div>
   </div>

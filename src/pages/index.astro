@@ -1,94 +1,100 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
-import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
-import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
+import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import ContentBox from "../components/ContentBox.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinners2.astro";
+import LatestWinners from "../components/LatestWinnersCyber.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq4.astro";
+import Faq from "../components/Faq2.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgAutoTransfer from "../assets/slide2.png";
-import imgLiveCasino from "../assets/slide1.png";
+import imgLobby from "../assets/slide2.png";
+import imgDailyBonus from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1"
-//   2 → ContentBoxFloatingBadge as="h2"
-//   3 → ContentBoxSevenThreePremium as="h2" + slide2 (โบนัสฝากประจำครบ 7 วัน)
-//   4 → ContentBoxTwoPremium as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อประโยค)
-//   5 → ContentBoxSevenThreeFloatingBadge as="h2" + slide1 (คืนยอดเสียสูงสุด 5%)
-//   6 → ContentBoxSpecial as="h2" (สองครึ่งที่มีไอคอนนำ ส่งหนึ่ง element ต่อ slot)
-//   7 → ContentBox3ThreePremium as="h2" (แบ่งย่อหน้าลง left/center/right)
+//   1 → ContentBoxCyberCut as="h1"
+//   2 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อประโยค)
+//   3 → ContentBoxNeumorphism as="h2"
+//   4 → ContentBoxSevenThreeCyberCut as="h2" + slide2 (ถอนได้หลักล้าน)
+//   5 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าลง left/center/right)
+//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (โปรฝากรายวันรับโบนัส 20%)
+//   7 → ContentBox as="h2" (การ์ดคอลัมน์เดียวแบบเรียบ สองย่อหน้าห่อใน div เดียว
+//       ตามกติกาหนึ่ง element ต่อหนึ่ง slot)
 //
-// variant รอบนี้เปลี่ยนทั้งตระกูลจากแบรนด์ก่อนหน้า (SGD88 ใช้ CyberCut +
-// Neumorphism) มาเป็น Premium + FloatingBadge + Special
+// variant รอบนี้เปลี่ยนทั้งตระกูลจากแบรนด์ก่อนหน้า (MACAUBET ใช้ Premium +
+// FloatingBadge + Special + 3ThreePremium) มาเป็น CyberCut + Neumorphism + plain
+// ส่วน Faq ย้ายจาก Faq4 มาเป็น Faq2
 //
-// SevenThree ใช้สองบล็อกพอดี ซึ่งเป็นเพดานของ playbook — slide2 คู่กับหัวข้อระบบ
-// ตรงโอนไว (แบนเนอร์เขียนว่า "โบนัสมาแล้ว ฝากประจำครบ 7 วัน" อยู่ข้างเครื่องสล็อต
-// เป็นภาพฝั่งการเงิน/ฝากถอนของชุดนี้) และ slide1 คู่กับหัวข้อโต๊ะสด (แบนเนอร์เป็น
-// หญิงสาวถือไพ่โพดำข้างวงล้อรูเล็ตและชิป ซึ่งเป็นภาพโต๊ะคาสิโนของชุดนี้)
-// ส่วน slide4 เป็นของ SmoothCarousel และ slide3 อยู่หน้า /promotion จึงไม่ถูก
-// import ที่นี่ ไม่ให้รูปใบเดียวกันโผล่สองที่ในหน้าเดียว
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide2 คู่กับหัวข้อรวมเกมดัง
+// ค่ายเด็ดเต็มล็อบบี้ ส่วน slide1 คู่กับหัวข้อฝาก-ถอน 3 วิ ที่เหลือ slide3/slide4
+// เป็นของ SmoothCarousel แต่ละใบมีบ้านเดียวบนหน้าเว็บ ส่วน banner.png กับ
+// banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ จึงไม่ถูก import ที่ไหน — รูปที่ import
+// คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม
 //
-// banner1 เป็น hero ที่ MainLayout จัดการเอง ส่วน banner2/3/4 เป็นอาร์ตค้างของ
-// แบรนด์เก่า (mtime 08-04) จึงไม่ถูก import ที่ไหน รอบนี้จึงไม่มีรูปประกอบใน
-// ContentBox เดี่ยว
+// banner1 เป็น hero ที่ MainLayout จัดการเอง รอบนี้จึงไม่มีรูปประกอบใน ContentBox
+// เดี่ยว
 //
 // widget ที่ไม่ได้มาจาก docx (ProviderGrid, GameRankingBoard, LoginRtpSection,
 // SmoothCarousel, LatestWinners, ReviewCardSumo2, แถวปุ่ม login/register) ใช้ป้าย
 // เป็น <p>/<span> + aria-label บน <section> จึงวางต่อท้ายหัวข้อ docx ที่มันสังกัด
-// ได้โดยลำดับ h2 ไม่เพี้ยน — ProviderGrid ต่อจากหัวข้อล็อบบี้เกมดัง,
-// GameRankingBoard ต่อจากหัวข้อโต๊ะสด, LoginRtpSection ต่อจากหัวข้อเมนูใช้ง่าย,
-// SmoothCarousel กับ LatestWinners ต่อจากหัวข้อสรุป, ReviewCardSumo2 ปิดท้าย
+// ได้โดยลำดับ h2 ไม่เพี้ยน — GameRankingBoard ต่อจากหัวข้อฟีเจอร์ดุครบเครื่อง,
+// ProviderGrid ต่อจากหัวข้อรวมเกมดังค่ายเด็ด, LoginRtpSection ต่อจากหัวข้อระบบใหม่
+// ทำอะไรได้ไวขึ้น, LatestWinners ต่อจากหัวข้อฝาก-ถอน 3 วิ, ReviewCardSumo2 ต่อจาก
+// หัวข้อสรุป แล้วปิดท้ายด้วย SmoothCarousel + แถวปุ่ม + FAQ
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7
-// คำถามใน Faq4 เป็น <span> ใน <summary> ไม่ใช่ h3 — docx รอบนี้แบน H1+H2 ล้วน
+// คำถามใน Faq2 เป็น <span> ใน <summary> ไม่ใช่ h3 — docx รอบนี้แบน H1+H2 ล้วน
 // หน้านี้จึงไม่มี h3 เลย
 
-// Title มาจาก docx ตรงตัว ส่วน Des ของ docx ยาว 141 ตัวอักษร ซึ่งต่ำกว่าเพดานล่าง
-// 150 ที่ verify-build บังคับ จึงต่อท้ายด้วย "จบครบในเว็บเดียว" เป็น 158
-const pageTitle = "MACAUBET | สล็อตฟอร์มใหญ่ ฟีลมาเก๊ามาไว้หน้าสปิน ระบบตรงโอนไว";
-const pageDescription = "MACAUBET สล็อตฟอร์มใหญ่ ยกฟีลมาเก๊ามาไว้หน้าสปิน ระบบตรงโอนไวออโต้ภายใน 3 วิ เกมดังมีครบ โต๊ะสดมีพร้อม เมนูใช้ง่าย การันตีเล่นง่ายได้กำไรจริง จบครบในเว็บเดียว";
+// Title กับ Des มาจาก docx ตรงตัว แก้คำสะกดผิดใน docx สองจุดแล้ว:
+// เร็วแรว → เร็วแรง, ค่านเด็ด → ค่ายเด็ด
+//
+// Des ของ docx ยาว 145 ตัวอักษร ต่ำกว่าช่วง 150–160 ที่ verify-build บังคับ
+// (นับ "ตัวอักษร" ไม่ใช่ไบต์ — ไทยตัวละ 3 ไบต์ wc -c จึงอ่านเกินจริงสามเท่า)
+// จึงเติมสองคำที่มาจากเนื้อ docx เองคือ "ครบ" กับ "ออโต้" ได้ 153 ตัวอักษร
+const pageTitle = "DRACO65 | สล็อตเว็บตรงไฟลุก ฟีเจอร์ดุครบเครื่อง ฝาก-ถอน 3 วิ";
+const pageDescription =
+  "DRACO65 สล็อตเว็บตรงไฟลุก ระบบอัปเดตใหม่เร็วแรงกว่าเดิม ฟีเจอร์ดุครบเครื่อง รวมเกมดังค่ายเด็ดยอดฮิตมาให้ครบ พร้อมฝาก-ถอนออโต้ 3 วิ ไม่ต้องรอให้เสียจังหวะ";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji
 const announcementMessage =
-  "MACAUBET สล็อตฟอร์มใหญ่ ฟีลมาเก๊ามาไว้หน้าสปิน ระบบตรงโอนไว • ดีไซน์หน้าเกมและบรรยากาศให้หรูหราสมจริง เหมือนนั่งกดสปินอยู่ในคาสิโนชื่อดังที่มาเก๊า • ระบบตรงออโต้ระดับไฮสปีด ฝากถอนไวภายใน 3 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ • ล็อบบี้รวมสล็อตตัวฮิตจากทุกค่ายดัง คัดเฉพาะเกมคุณภาพสูงที่จ่ายสมน้ำสมเนื้อ • โต๊ะคาสิโนสดถ่ายทอดสดคมชัดระดับ HD ดีลเลอร์มืออาชีพยิงตรงตลอด 24 ชั่วโมง • สลับจากหน้าสปินไปลุ้นไพ่ได้ทันทีโดยไม่ต้องเปลี่ยนยูสเซอร์ • เมนูจัดวางเป็นระเบียบ ตัดขั้นตอนซับซ้อนออก มือใหม่ก็เข้าถึงทุกฟังก์ชันได้ตั้งแต่ครั้งแรก";
+  "DRACO65 สล็อตเว็บตรงไฟลุก ฟีเจอร์ดุครบเครื่อง ฝาก-ถอน 3 วิ ปั่นได้แบบไม่มีจังหวะให้อารมณ์ค้าง • อัปเดตระบบใหม่ล่าสุด เสถียรและตอบสนองไวกว่าที่เคย หน้าเว็บโหลดฉับไว กราฟิกไหลลื่นไม่มีกระตุก • ฟีเจอร์แตกหนักครบครัน ทั้งฟรีสปินออกบ่อย ตัวคูณรางวัลระเบิดแจ็คพอต และสัญลักษณ์พิเศษเข้ารอบโบนัสง่ายกว่าเดิม • ล็อบบี้อัดแน่นด้วยค่ายชั้นนำระดับโลก คัดเฉพาะเกมตัวตึง เกมฮิตติดเทรนด์ และเกมแตกดี กดเลือกลุยต่อได้ทันที • ระบบเบื้องหลังเชื่อมเซิร์ฟเวอร์หลักโดยตรง สลับค่ายเกมไว ตัดยอดแม่นยำ ไม่ต้องเจอกดสปินแล้วค้าง • ฝาก-ถอนออโต้ไฮสปีดจัดการยอดเสร็จภายใน 3 วิ ทำเองได้ ไม่ต้องรอแอดมินอนุมัติ เงินเข้าตรงเป๊ะทุกบาททุกสตางค์ • เกมถึง ฟีเจอร์ดุ ระบบแรง ครบเครื่องสำหรับสายสล็อตยุคใหม่ ลองเข้ามาปั่นแล้วจะอยากบอกต่อเพื่อน";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
 // ที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน
 const faqs = [
   {
-    q: "MACAUBET ต่างจากเว็บสล็อตทั่วไปตรงไหน ทำไมถึงเรียกว่าฟีลมาเก๊า",
-    a: "ต่างกันที่บรรยากาศตั้งแต่คลิกแรก หน้าเกมของ MACAUBET ถูกดีไซน์ให้หรูหราและสมจริงเหมือนนั่งกดสปินอยู่ในคาสิโนชื่อดังที่มาเก๊า ทั้งงานภาพ แสง สี เสียง และจังหวะการออกรางวัลถูกยกระดับให้มีฟีลลิ่งเหนือกว่าเว็บทั่วไป จึงได้ความหรูหราตระการตาแบบคาสิโนระดับโลกโดยไม่ต้องเสียเวลาเดินทางไปถึงที่",
+    q: "ระบบใหม่ของ DRACO65 ต่างจากของเดิมตรงไหน",
+    a: "ระบบถูกยกเครื่องใหม่ทั้งชุดให้มีความเสถียรและตอบสนองได้ไวกว่าที่เคย หน้าเว็บโหลดรวดเร็วฉับไว กราฟิกสีสันสดใสไหลลื่นไม่มีกระตุกตั้งแต่คลิกแรก และไม่ว่าจะเข้าใช้งานผ่านมือถือหรือคอมพิวเตอร์ก็พร้อมลุยได้อย่างราบรื่นเหมือนกัน",
   },
   {
-    q: "ฝากถอนกับ MACAUBET ใช้เวลานานแค่ไหน ต้องส่งสลิปหรือทักแอดมินไหม",
-    a: "ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ เพราะที่นี่ใช้ระบบตรงออโต้ระดับไฮสปีดที่ไม่ผ่านคนกลาง ทำรายการฝากถอนเสร็จภายใน 3 วินาทีเท่านั้น ต่อให้เป็นช่วงเวลาที่ผู้เล่นแน่นหนาแค่ไหน เงินก็เข้าบัญชีตรงเป๊ะแบบไม่ต้องรอนาน จัดการเรื่องการเงินจบแล้วลุยต่อได้ทันทีไม่มีติดขัด",
+    q: "ฟีเจอร์ในเกมของ DRACO65 มีอะไรช่วยเพิ่มโอกาสทำกำไรบ้าง",
+    a: "แต่ละเกมรวมลูกเล่นซัพพอร์ตการทำกำไรไว้ครบครัน ทั้งโหมดฟรีสปินที่ออกบ่อย ตัวคูณรางวัลที่พร้อมระเบิดแจ็คพอตอย่างต่อเนื่อง และสัญลักษณ์พิเศษที่ช่วยให้เข้าถึงรอบโบนัสได้ง่ายกว่าเดิม ทุกจังหวะการหมุนจึงมีโอกาสเปลี่ยนเบทเบาๆ ให้เป็นกำไรก้อนใหญ่",
   },
   {
-    q: "ในล็อบบี้ของ MACAUBET มีเกมแนวไหนบ้าง เล่นไปนานๆ จะเจอเกมซ้ำไหม",
-    a: "ล็อบบี้รวบรวมสล็อตตัวฮิตจากทุกค่ายดังไว้เยอะที่สุด มีทั้งเกมในกระแส เกมแตกหนัก และเกมคลาสสิกที่ทุกคนชื่นชอบ โดยคัดสรรเฉพาะตัวเกมคุณภาพสูงที่มีอัตราการจ่ายสมน้ำสมเนื้อมาให้เลือกเล่นแบบจุใจ อยากเปลี่ยนสไตล์การเล่นตอนไหนก็เลือกได้ทันที ไม่มีคำว่าจำเจหรือขาดช่วง",
+    q: "ในล็อบบี้ของ DRACO65 มีเกมจากค่ายไหนให้เลือกบ้าง",
+    a: "ล็อบบี้อัดแน่นไปด้วยค่ายชั้นนำระดับโลก คัดมาเฉพาะเกมตัวตึง เกมฮิตติดเทรนด์ และเกมแตกดีที่ไม่ควรพลาด ไม่ว่าจะชอบสไตล์ไหนหรือคอนเซปต์ไหนก็มีตัวเลือกให้สลับสับเปลี่ยนเล่นได้ไม่มีเบื่อ อยากเปลี่ยนฟีลเมื่อไหร่ก็กดเลือกเกมใหม่แล้วลุยต่อได้ทันที",
   },
   {
-    q: "อยากสลับจากปั่นสล็อตไปลงโต๊ะสด ต้องเปลี่ยนยูสเซอร์หรือสมัครใหม่หรือเปล่า",
-    a: "ไม่ต้องเปลี่ยนยูสเซอร์และไม่ต้องสมัครเพิ่ม MACAUBET จัดเต็มด้วยคาสิโนโต๊ะสดถ่ายทอดสดแบบเรียลไทม์คมชัดระดับ HD ให้สลับอารมณ์จากการกดสปินไปลุ้นไพ่หรือเปิดโต๊ะเดิมพันอื่นได้ในทันที มีดีลเลอร์มืออาชีพยิงตรงให้ตลอด 24 ชั่วโมง จึงเติมความสนุกได้หลากหลายในบัญชีเดียว",
+    q: "ฝาก-ถอนกับ DRACO65 ใช้เวลานานไหม ต้องรอแอดมินอนุมัติหรือเปล่า",
+    a: "ระบบฝาก-ถอนออโต้ไฮสปีดจัดการยอดเงินเสร็จสรรพภายใน 3 วินาที ทำได้ง่ายๆ ด้วยตัวเอง ไร้ขั้นตอนซับซ้อน และไม่ต้องรอแอดมินอนุมัติ ไม่ว่าจะเป็นการเติมทุนเพื่อลุยต่อหรือถอนกำไรก้อนโตเข้าบัญชี เงินก็เข้าตรงเป๊ะทุกบาททุกสตางค์",
   },
   {
-    q: "มือใหม่ที่ไม่เคยเล่นมาก่อน จะหาเกมและใช้งานเมนูของ MACAUBET ยากไหม",
-    a: "ไม่ยากเลย เพราะระบบเน้นความเรียบง่ายและใช้งานได้จริง เมนูต่างๆ ถูกจัดวางอย่างเป็นระเบียบและตัดขั้นตอนที่ซับซ้อนออกทั้งหมด จึงค้นหาเกมโปรด เลือกค่ายที่ต้องการ หรือเข้าถึงโหมดบริการต่างๆ ได้อย่างรวดเร็ว ไม่ว่าจะเป็นมือใหม่หรือผู้เล่นระดับเก๋าก็เข้าถึงทุกฟังก์ชันได้ตั้งแต่ครั้งแรก",
+    q: "กดสปินแล้วค้างหรือต้องรีโหลดหน้าเว็บบ่อยไหม",
+    a: "ระบบเบื้องหลังถูกพัฒนาให้ประมวลผลได้อย่างฉับไว ทั้งการสลับเปลี่ยนค่ายเกม การตัดยอดเงินที่แม่นยำ และการเชื่อมต่อเซิร์ฟเวอร์หลักโดยตรง ผู้เล่นจึงปั่นเกมต่อกันได้อย่างลื่นไหล ไม่ต้องเจอปัญหากดสปินแล้วค้าง หรือคอยรีโหลดหน้าเว็บใหม่ให้เสียเวลา",
   },
 ];
 
@@ -104,114 +110,123 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="MACAUBET สล็อตฟอร์มใหญ่ ฟีลมาเก๊ามาไว้หน้าสปิน ระบบตรงโอนไว">
+  <ContentBoxCyberCut as="h1" title="DRACO65 สล็อตเว็บตรงไฟลุก ฟีเจอร์ดุครบเครื่อง ฝาก-ถอน 3 วิ">
     <p class="text-left text-base leading-relaxed">
-      ถ้าคุณอยากสัมผัสบรรยากาศความหรูหราตระการตาแบบคาสิโนระดับโลก แต่ไม่อยากเสียเวลาเดินทาง บอกเลยว่าต้องมาลอง MACAUBET เว็บสล็อตฟอร์มใหญ่ที่ยกความมันส์แบบมาเก๊ามาเสิร์ฟให้ถึงหน้าจอ
-      ขนความบันเทิงระดับพรีเมียมมาแบบอัดแน่น พร้อมระบบการทำงานตรงที่ไม่ผ่านคนกลาง จัดเต็มความเร็วเรื่องการโอนไวให้คุณลุ้นโบนัสได้อย่างมั่นใจทุกวินาที ใครที่กำลังมองหาเว็บปั่นสล็อตที่ได้ทั้งอารมณ์
-      ได้ทั้งความชัวร์ ที่นี่คือจุดหมายที่ไม่ควรมองข้าม
+      พร้อมหรือยังที่จะสัมผัสความเดือดระดับปะทุกับ DRACO65 เว็บสล็อตตรงสายลุยที่จัดเต็มความมันส์แบบไม่มีออมมือ ยุคนี้การเล่นสล็อตต้องเร็ว ต้องแรง และต้องลุ้นสนุกทุกวินาที
+      ที่นี่เลยรวมเอาความเพียบพร้อมในทุกมิติมาเสิร์ฟให้ถึงมือ ทั้งระบบการประมวลผลที่ไวฟ้าผ่า ฟีเจอร์ตัวช่วยแตกหนักที่ดุดันเกินใคร และระบบการเงินที่รวดเร็วทันใจ ปั่นแล้วฟีลดี
+      ลุ้นรางวัลใหญ่ได้แบบต่อเนื่อง ไม่มีจังหวะให้อารมณ์ค้างแน่นอน
     </p>
-  </ContentBoxPremium>
+  </ContentBoxCyberCut>
 
-  <ContentBoxFloatingBadge as="h2" title="MACAUBET สล็อตฟอร์มใหญ่ ยกบรรยากาศมาเก๊ามาไว้หน้าสปินให้ทุกเกมมีฟีลมากกว่าเดิม">
-    <p class="text-left text-base leading-relaxed">
-      สัมผัสความยิ่งใหญ่ตั้งแต่คลิกแรกที่เข้าใช้งาน MACAUBET ได้ดีไซน์หน้าเกมและบรรยากาศให้มีความหรูหรา สมจริง เหมือนคุณกำลังนั่งกดสปินอยู่ในคาสิโนชื่อดังที่มาเก๊า ไม่ว่าจะเป็นงานภาพ แสง สี เสียง
-      หรือจังหวะการออกรางวัล ทุกอย่างถูกยกระดับให้มีฟีลลิ่งเหนือกว่าเว็บทั่วไป ปั่นเพลิน เพิ่มความตื่นเต้นตื่นตาตื่นใจให้ทุกการหมุนกลายเป็นเรื่องน่าลุ้นตลอดเวลา
-    </p>
-  </ContentBoxFloatingBadge>
-
-  <ContentBoxSevenThreePremium as="h2" title="ระบบตรงโอนไวออโต้ภายใน 3 วิ จุดเด่นของ MACAUBET ที่ทำให้ทุกขั้นตอนคล่องตัว">
-    <Picture
-      slot="left"
-      src={imgAutoTransfer}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น MACAUBET ข้อความ โบนัสมาแล้ว ฝากประจำครบ 7 วัน รับเครดิตฟรีไปเลย ภาพหญิงสาวสวมชุดสูทสีเขียวยิ้มพร้อมชูการ์ด FREE CREDIT อยู่ข้างเครื่องสล็อตเรืองแสงสีเขียวนีออนบนพื้นสีเขียวเข้ม"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#59cb13]/35 shadow-[0_10px_30px_rgba(89,203,19,0.25)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เรื่องความเร็วต้องยกให้เป็นไฮไลต์หลัก เพราะ MACAUBET ใช้ระบบตรงออโต้ระดับไฮสปีด ทำรายการฝากถอนไวแบบทันใจภายใน 3 วินาทีเท่านั้น ไม่ว่าจะเป็นช่วงเวลาที่ผู้เล่นแน่นหนาแค่ไหน
-      เงินก็เข้าบัญชีตรงเป๊ะแบบไม่ต้องรอนาน หมดปัญหาการส่งสลิปหรือรอแอดมินอนุมัติ เพิ่มความสะดวกสบายให้คุณจัดการเรื่องการเงินได้อย่างคล่องตัว ลุยต่อได้ทันทีไม่มีติดขัด
-    </p>
-  </ContentBoxSevenThreePremium>
-
-  <ContentBoxTwoPremium as="h2" title="เกมดังมีครบแค่ไหน? เปิดล็อบบี้เจอทั้งสล็อตตัวฮิตและค่ายยอดนิยมให้เลือกเต็มที่">
+  <ContentBoxTwoNeumorphism as="h2" title="DRACO65 สล็อตเว็บตรงไฟลุก เปิดระบบอัปเดตใหม่ที่เร็วแรงกว่าเดิม">
     <p slot="left" class="text-left text-base leading-relaxed">
-      แค่เปิดเข้ามาในหน้าล็อบบี้ของ MACAUBET คุณจะพบกับอาณาจักรเกมสล็อตที่รวบรวมตัวฮิตจากทุกค่ายดังไว้เยอะที่สุด ไม่ว่าจะเป็นเกมในกระแส เกมแตกหนัก หรือเกมคลาสสิกที่ทุกคนชื่นชอบ
+      ยกระดับความตื่นเต้นขึ้นไปอีกขั้นกับการอัปเดตระบบใหม่ล่าสุดของ DRACO65 ที่ถูกยกเครื่องให้มีความเสถียรและตอบสนองได้ไวกว่าที่เคย หน้าเว็บโหลดรวดเร็วฉับไว กราฟิกสีสันสดใสไหลลื่นไม่มีกระตุก
     </p>
     <p slot="right" class="text-left text-base leading-relaxed">
-      ที่นี่คัดสรรเฉพาะตัวเกมคุณภาพสูงที่มีอัตราการจ่ายสมน้ำสมเนื้อมาให้เลือกเล่นกันแบบจุใจ อยากเปลี่ยนสไตล์การเล่นตอนไหนก็เลือกได้ทันที ไม่มีคำว่าจำเจหรือขาดช่วงแน่นอน
+      ให้ผู้เล่นได้สัมผัสบรรยากาศความสนุกสุดเอ็กซ์คลูซีฟตั้งแต่คลิกแรก ไม่ว่าจะเข้าใช้งานผ่านอุปกรณ์ไหนก็พร้อมลุยได้อย่างราบรื่น สมกับเป็นเว็บตรงสล็อตไฟลุกแห่งยุคอย่างแท้จริง
     </p>
-  </ContentBoxTwoPremium>
+  </ContentBoxTwoNeumorphism>
 
-  <ProviderGrid />
-
-  <ContentBoxSevenThreeFloatingBadge as="h2" title="MACAUBET โต๊ะสดมีพร้อม เติมฟีลคาสิโนเรียลไทม์ให้สลับจากหน้าสปินได้ทันที">
-    <Picture
-      slot="left"
-      src={imgLiveCasino}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น MACAUBET ข้อความ สล็อตเว็บตรง เว็บลิขสิทธิ์แท้ คืนยอดเสียสูงสุด 5 % ภาพหญิงสาวสวมชุดเดรสเลื่อมสีเขียวถือไพ่โพดำเรียงเป็นพัด ข้างวงล้อรูเล็ตและชิปคาสิโนสีเขียวสลับขาวบนพื้นสีเขียวเข้ม"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#59cb13]/35 shadow-[0_10px_30px_rgba(89,203,19,0.25)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      นอกจากเกมสล็อตแล้ว MACAUBET ยังจัดเต็มด้วยบริการคาสิโนโต๊ะสดถ่ายทอดสดแบบเรียลไทม์ คมชัดระดับ HD ให้คุณสลับอารมณ์จากการกดสปินไปลุ้นไพ่หรือเปิดโต๊ะเดิมพันอื่นๆ ได้ในทันทีโดยไม่ต้องเปลี่ยนยูสเซอร์
-      เติมเต็มอารมณ์ความสนุกให้หลากหลายยิ่งขึ้น ตอบโจทย์คนที่ชอบความตื่นเต้นแบบสดๆ ยิงตรงจากดีลเลอร์มืออาชีพตลอด 24 ชั่วโมง
+  <ContentBoxNeumorphism as="h2" title="ฟีเจอร์ดุครบเครื่อง ลูกเล่นเด็ดพร้อมเติมไฟให้ทุกจังหวะการสปิน">
+    <p class="text-left text-base leading-relaxed">
+      จุดเด่นที่ทำให้เหล่านักปั่นต้องยกนิ้วให้ DRACO65 คือความดุดันของฟีเจอร์ในแต่ละเกม ที่รวมเอาลูกเล่นซัพพอร์ตการทำกำไรมาให้แบบครบครัน ทั้งโหมดฟรีสปินออกบ่อย
+      ตัวคูณรางวัลที่พร้อมระเบิดแจ็คพอตอย่างต่อเนื่อง และสัญลักษณ์พิเศษที่ช่วยให้เข้าถึงรอบโบนัสได้ง่ายกว่าเดิม ทุกจังหวะในการหมุนจึงเต็มไปด้วยความลุ้นระทึก เพิ่มโอกาสเปลี่ยนเบทเบาๆ
+      ให้กลายเป็นกำไรก้อนใหญ่ได้เสมอ
     </p>
-  </ContentBoxSevenThreeFloatingBadge>
+  </ContentBoxNeumorphism>
 
   <GameRankingBoard />
 
-  <ContentBoxSpecial as="h2" title="เมนูใช้ง่าย ลดขั้นตอนที่ไม่จำเป็น เลือกเกมไวและเข้าถึงทุกโหมดได้ตรงจุด">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      หมดปัญหากับการหลงทางในเว็บด้วยการออกแบบระบบของ MACAUBET ที่เน้นความเรียบง่ายและใช้งานได้จริง เมนูต่างๆ ถูกจัดวางอย่างเป็นระเบียบ ตัดขั้นตอนที่ซับซ้อนออกทั้งหมด
-    </p>
+  <ContentBoxSevenThreeCyberCut as="h2" title="รวมเกมดังค่ายเด็ด DRACO65 ตัวฮิตตัวท็อปพร้อมให้เลือกเต็มล็อบบี้">
+    <Picture
+      slot="left"
+      src={imgLobby}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น DRACO65 ข้อความ ครบจบในเจ้าเดียว การดีดจากค่ายเกมโดยตรงทุนหนากล้าจ่าย ถอนได้หลักล้าน พร้อมบรรทัดเกมสล็อต บาคาร่า คาสิโน ไฮโล หวย กีฬา ด้านบนเป็นโลโก้ DRACO 65 ตัวอักษรโครเมียมคู่กับป้าย truemoney ด้านซ้ายเป็นหญิงสาวชุดเขียวกับลูกเต๋าสีเขียว ด้านขวาเป็นมือถือที่เปิดล็อบบี้เกมสล็อตและวงล้อรูเล็ต บนพื้นเขียวเข้มลายสัญลักษณ์ไพ่"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#22c55e]/35 shadow-[0_10px_30px_rgba(34,197,94,0.25)]"
+    />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ทำให้ผู้เล่นสามารถค้นหาเกมโปรด เลือกค่ายที่ต้องการ หรือเข้าถึงโหมดบริการต่างๆได้อย่างรวดเร็ว ไม่ว่าจะเป็นมือใหม่หรือผู้เล่นระดับเก๋า ก็สามารถเข้าถึงทุกฟังก์ชันได้อย่างง่ายดายตั้งแต่ครั้งแรก
+      เปิดเข้ามาในหน้าล็อบบี้ของ DRACO65 คุณจะได้พบกับอาณาจักรเกมสล็อตที่อัดแน่นไปด้วยค่ายชั้นนำระดับโลก คัดมาเฉพาะเกมตัวตึง เกมฮิตติดเทรนด์ และเกมแตกดีที่ไม่ควรพลาด ไม่ว่าจะชอบสไตล์ไหน คอนเซปต์ไหน
+      ที่นี่ก็มีตัวเลือกให้สลับสับเปลี่ยนเล่นกันได้อย่างไม่มีเบื่อ อยากเปลี่ยนฟีลเมื่อไหร่ก็แค่กดเลือกเกมใหม่ ลุยต่อได้ทันทีโดยไม่ต้องเสียเวลาค้นหานาน
     </p>
-  </ContentBoxSpecial>
+  </ContentBoxSevenThreeCyberCut>
+
+  <ProviderGrid />
+
+  <ContentBox3ThreeCyberCut
+    as="h2"
+    title="ระบบใหม่ของ DRACO65 ทำอะไรได้ไวขึ้น ถึงเล่นต่อได้แบบไม่สะดุดฟีล?"
+    titleleft="ระบบเบื้องหลังฉับไว"
+    titlecenter="ปั่นต่อได้ลื่นไหล"
+    titleright="รักษาจังหวะทำกำไร">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      เคล็ดลับความคล่องตัวของ DRACO65 อยู่ที่การพัฒนาระบบเบื้องหลังให้ประมวลผลได้อย่างฉับไว ไม่ว่าจะเป็นการสลับเปลี่ยนค่ายเกม การตัดยอดเงินที่แม่นยำ หรือการเชื่อมต่อเซิร์ฟเวอร์หลักโดยตรง
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">ทำให้ผู้เล่นสามารถปั่นเกมต่อกันได้อย่างลื่นไหล ไม่ต้องเจอปัญหากดสปินแล้วค้าง หรือคอยรีโหลดหน้าเว็บใหม่ให้เสียเวลา</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ความต่อเนื่องนี้เองที่ช่วยให้คุณรักษาจังหวะการทำกำไรได้อย่างมืออาชีพ</p>
+  </ContentBox3ThreeCyberCut>
 
   <LoginRtpSection />
 
-  <ContentBox3ThreePremium as="h2" title="MACAUBET การันตีเล่นง่าย พร้อมระบบและตัวเลือกเกมที่ออกแบบมาให้ใช้งานสะดวก">
-    <p slot="left" class="text-left text-base leading-relaxed">สรุปได้เลยว่า MACAUBET คือตัวเลือกที่ตอบโจทย์คนที่มองหาเว็บสล็อตเล่นง่าย ไว และน่าเชื่อถือ</p>
-    <p slot="center" class="text-left text-base leading-relaxed">ด้วยการรวมเอาความบันเทิงระดับพรีเมียม ระบบการเงินที่มั่นคงปลอดภัย และตัวเลือกเกมที่ครอบคลุมทุกความต้องการมาไว้ในที่เดียว</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ปักหลักเล่นที่นี่ไม่มีผิดหวัง ลองเข้ามาสัมผัสด้วยตัวเอง แล้วคุณจะรู้ว่าทำไมใครๆ ก็บอกต่อและเลือกใช้งานที่นี่กันยาวๆ</p>
-  </ContentBox3ThreePremium>
-
-  <SmoothCarousel />
+  <ContentBoxSevenThreeNeumorphism as="h2" title="ฝาก-ถอน 3 วิ จัดการยอดทันใจ ไม่ต้องรอจนเสียจังหวะ">
+    <Picture
+      slot="left"
+      src={imgDailyBonus}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่น DRACO65 ข้อความ โปรฝากรายวันสล็อต รับโบนัส 20% ฝากเงินครั้งแรกรับโบนัสทันที 20% และบรรทัดฝากขั้นต่ำ 100 รับเงินโบนัสสูงสุดไม่เกิน 1,000 บาท ทำยอดเทิร์นโอเวอร์ 5 เท่า ด้านบนเป็นโลโก้ DRACO 65 ตัวอักษรโครเมียมคู่กับป้าย truemoney ด้านซ้ายเป็นเทพอสูรผิวเขียวถือลูกแก้วเรืองแสงยืนคู่ชายชุดไทยสีเขียวสวมแว่นดำยกมือไหว้ บนพื้นเขียวเข้มแสงนีออน"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#22c55e]/35 shadow-[0_10px_30px_rgba(34,197,94,0.25)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เรื่องความเร็วการเงินคืออีกหนึ่งหัวใจสำคัญที่ DRACO65 ให้ความสำคัญสูงสุด ด้วยระบบฝาก-ถอนออโต้ไฮสปีดที่จัดการยอดเงินเสร็จสรรพภายใน 3 วิเท่านั้น ไม่ว่าจะเป็นการเติมทุนเพื่อลุยต่อ
+      หรือการถอนกำไรก้อนโตเข้าบัญชี ก็ทำได้ง่ายๆ ด้วยตัวเอง ไร้ขั้นตอนซับซ้อน ไม่ต้องรอแอดมินอนุมัติ เงินเข้าตรงเป๊ะทุกบาททุกสตางค์ ให้คุณมั่นใจและสบายใจได้ในทุกธุรกรรม
+    </p>
+  </ContentBoxSevenThreeNeumorphism>
 
   <LatestWinners />
 
+  <ContentBox as="h2" title="DRACO65 เกมถึง ฟีเจอร์ดุ ระบบแรง ครบเครื่องสำหรับสายสล็อตยุคใหม่">
+    <div class="flex flex-col gap-4">
+      <p class="text-left text-base leading-relaxed">
+        สรุปได้เลยว่าถ้าคุณกำลังมองหาเว็บสล็อตที่ตอบโจทย์ความสะใจในทุกด้าน DRACO65 คือตัวเลือกที่ต้องลองเข้ามาสัมผัสด้วยตัวเองสักครั้ง ทั้งความหลากหลายของค่ายเกม ฟีเจอร์รางวัลสุดดุดัน
+        และระบบออโต้ที่เร็วแรงเกินต้าน
+      </p>
+      <p class="text-left text-base leading-relaxed">เป็นเว็บที่รวมทุกความต้องการของสายสล็อตยุคใหม่ไว้อย่างลงตัว ลองเข้ามาปั่นแล้วจะรู้ว่าความสนุกแบบเต็มสปีดเป็นยังไง จนต้องอยากบอกต่อเพื่อนแน่นอน</p>
+    </div>
+  </ContentBox>
+
   <ReviewCardSumo2 />
+
+  <SmoothCarousel />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#dcffc0] via-[#8ef04a] to-[#2c7a08] px-4 py-3 text-sm font-black whitespace-nowrap text-[#020b01] shadow-[0_10px_30px_rgba(89,203,19,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(142,240,74,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#14532d] px-4 py-3 text-sm font-black whitespace-nowrap text-[#04150a] shadow-[0_10px_30px_rgba(34,197,94,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(74,222,128,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#f6c445]/60 bg-[#0a2c0d]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e9f9dc] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#8ef04a] hover:bg-[#0f3a11] hover:text-[#dcffc0] hover:shadow-[0_15px_40px_rgba(246,196,69,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e2e8e4]/60 bg-[#062011]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#d6ecdd] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#4ade80] hover:bg-[#0a3318] hover:text-[#dcfce7] hover:shadow-[0_15px_40px_rgba(226,232,228,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ MACAUBET" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ DRACO65" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>
