@@ -10,32 +10,34 @@ export interface Props {
 }
 
 const { title, faqs = [] } = Astro.props;
+
+// กงล้อ88: ย้ายจากแผงสว่างฟ้าของ 9UFA (#0743a8 / #0a5df1 / #01cbf6 / #acddfb /
+// #eaf4fe บนพื้นขาว เนื้อความ #0b3a63) มาที่ทองอร่ามคู่เปลวไฟบนพื้นเข้ม —
+// #ffe974 / #ffcc4b / #eb9a1d / #8b4c0b คู่เปลวไฟ #ff6a13 / #ffa34d บนผิว
+// #1e1105 / #140a02 เนื้อความ #f6e6c2
+//
+// คำถามแต่ละข้ออยู่ใน <span> ภายใน <summary> ไม่ใช่ heading — หัวข้อเดียวที่
+// ไฟล์นี้ปล่อยออกมาได้คือ prop `title` ซึ่งมาจากหน้าเรียก (docx)
 ---
 
 <div class="mx-auto max-w-[1000px] px-4 py-10 font-sans">
-  {
-    title && (
-      <h2 class="mb-8 bg-gradient-to-b from-[#0743a8] to-[#01cbf6] bg-clip-text text-center text-2xl font-black tracking-tight text-transparent md:text-4xl">
-        {title}
-      </h2>
-    )
-  }
+  {title && <h2 class="mb-8 bg-gradient-to-r from-[#ffe974] via-[#ffcc4b] to-[#ff6a13] bg-clip-text text-center text-2xl font-black tracking-tight text-transparent md:text-4xl">{title}</h2>}
 
   <div class="space-y-4">
     {
       faqs.map((faq) => (
         // `name` makes this an exclusive accordion natively — opening one closes
         // the rest, which is what the removed script did by hand.
-        <details name="faq-plain" class="faq-item group overflow-hidden rounded-xl border border-[#0a5df1]/25 bg-gradient-to-br from-white to-[#eaf4fe] transition-all hover:border-[#0a5df1]/55">
+        <details name="faq-plain" class="faq-item group overflow-hidden rounded-xl border border-[#ffcc4b]/25 bg-gradient-to-br from-[#1e1105] to-[#140a02] transition-all hover:border-[#ffcc4b]/55">
           <summary class="flex w-full cursor-pointer items-center justify-between p-5 text-left transition-all">
-            <span class="text-base font-bold text-[#0743a8] md:text-lg">{faq.q}</span>
+            <span class="text-base font-bold text-[#ffcc4b] md:text-lg">{faq.q}</span>
             <span
               aria-hidden="true"
-              class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#0a5df1]/40 text-lg leading-none font-black text-[#0a5df1] transition-transform duration-300">
+              class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#ff6a13]/40 text-lg leading-none font-black text-[#ffa34d] transition-transform duration-300">
               +
             </span>
           </summary>
-          <div class="faq-answer border-t border-[#acddfb] p-5 pt-0 text-left text-base leading-relaxed text-[#0b3a63]">{faq.a}</div>
+          <div class="faq-answer border-t border-[#8b4c0b]/50 p-5 pt-0 text-left text-base leading-relaxed text-[#f6e6c2]">{faq.a}</div>
         </details>
       ))
     }
@@ -55,13 +57,13 @@ const { title, faqs = [] } = Astro.props;
     display: none;
   }
   .faq-item[open] {
-    border-color: rgba(10, 93, 241, 0.6);
-    box-shadow: 0 0 20px rgba(1, 203, 246, 0.35);
+    border-color: rgba(255, 204, 75, 0.6);
+    box-shadow: 0 0 20px rgba(255, 106, 19, 0.35);
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    border-color: #0a5df1;
-    color: #0743a8;
+    border-color: #ffcc4b;
+    color: #ffe974;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;

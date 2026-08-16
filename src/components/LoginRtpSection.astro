@@ -5,84 +5,84 @@ import ContentBoxTwo from "./ContentBoxTwo.astro";
 // tech มาจาก prop `label` ที่ส่งให้ ContentBoxTwo ไม่มีการส่ง `title` บล็อกนี้จึง
 // ไม่ปล่อยหัวข้อออกมาเลย
 //
-// TANGTEM168: ย้ายจากเขียวมังกรนีออนของ DRACO65 (#dcfce7 / #4ade80 / #22c55e /
-// #15803d / #14532d / #0a3318 บนผิว #062011 / #04150a เนื้อความ #d6ecdd
-// ข้อความรอง #9dbfa8 เงิน #e2e8e4) มาที่ทองบนม่วงพลัม — #ffe9a8 / #fcc30b /
-// #e09a05 / #ce5a03 คู่กับม่วง #c79bf0 / #7e3ac7 / #3c0f52 บนผิว #2a0a2e /
-// #1c0620 เนื้อความ #f7e6c4 ข้อความรอง #c3a98e เขียว LINE #00B900 กับจุด live
+// กงล้อ88: ย้ายจากทองบนม่วงพลัมของ TANGTEM168 (#ffe9a8 / #fcc30b / #e09a05 /
+// #ce5a03 คู่ม่วง #c79bf0 / #7e3ac7 / #3c0f52 บนผิว #2a0a2e / #1c0620 เนื้อความ
+// #f7e6c4 ข้อความรอง #c3a98e) มาที่ทองอร่ามคู่เปลวไฟ — #ffe974 / #ffcc4b /
+// #eb9a1d / #8b4c0b คู่เปลวไฟ #ff6a13 / #ffa34d บนผิว #1e1105 / #140a02 /
+// #2c1808 เนื้อความ #f6e6c2 ข้อความรอง #c9ab7a เขียว LINE #00B900 กับจุด live
 // สีเขียวเป็นสีเชิงความหมาย ไม่ถูกแตะ
 //
-// เนื้อหาตาม brief: คอนเซปต์ตังเต็มระบบสัมผัสได้ตั้งแต่ครั้งแรก, ระบบเสถียรสูง,
-// อัตราการแตกของแจ็คพอตตรงไปตรงมาไม่ปรับลดเปอร์เซ็นต์การชนะ, รวมเกมตัวเด็ด
-// ตัวฮิตจากค่ายดังระดับโลกไว้หน้าเดียว, สิทธิพิเศษเติมทุนสม่ำเสมอ, ระบบการเงิน
-// แบ่งทุกขั้นตอนชัดเจนจัดการเองได้, ปลอดภัย 100% ด้วยการเข้ารหัสขั้นสูง
+// เนื้อหาตาม brief: เว็บแท้ไม่ผ่านเอเย่นต์ไม่ล็อคยูสไม่ปรับลด RTP, โปร่งใส 100%
+// ไม่หักเปอร์เซ็นต์ย้อนหลัง, ฟีเจอร์เสี่ยงทายลุ้นรางวัลใหญ่ทุกวัน, ฝากถอนออโต้
+// ทำเองได้ไม่ต้องส่งสลิป, รองรับทุกธนาคารและทรูวอเลท, เกมครบทุกค่ายดัง,
+// ฐานการเงินมั่นคงจ่ายเต็มถอนไม่อั้น
 const menus = [
-  { icon: "🪙", name: "คอนเซปต์ตังเต็มระบบที่สัมผัสได้จริง", detail: "รู้สึกได้ตั้งแต่ครั้งแรกที่ใช้งาน ไม่ใช่แค่ชื่อเว็บที่เอาไว้เรียกให้ติดปาก", tag: "ตังเต็มระบบ" },
-  { icon: "🛡️", name: "ระบบพัฒนาให้มีความเสถียรสูง", detail: "ทำงานต่อเนื่องไม่มีสะดุด เข้าใช้งานผ่านมือถือหรือคอมพิวเตอร์ก็ลื่นเหมือนกัน", tag: "เสถียรสูง" },
-  { icon: "🎯", name: "อัตราการแตกของแจ็คพอตตรงไปตรงมา", detail: "ไม่มีการปรับลดเปอร์เซ็นต์การชนะ ทุกสปินจึงเต็มไปด้วยความหวังและโอกาสจริง", tag: "ไม่ปรับลด %" },
-  { icon: "🎰", name: "รวมเกมตัวเด็ดจากค่ายดังระดับโลก", detail: "ทั้งแนวสตรีทสุดมันส์ แนวแฟนตาซีอลังการ และแนวคลาสสิกเล่นง่าย อยู่หน้าเดียว", tag: "หลายค่าย" },
-  { icon: "🎁", name: "สิทธิพิเศษเติมทุนให้สม่ำเสมอ", detail: "โปรโมชันต้อนรับ โบนัสประจำวัน และเครดิตคืนยอดเสีย ช่วยเพิ่มรอบการปั่น", tag: "เติมทุน" },
-  { icon: "💸", name: "ระบบการเงินแบ่งทุกขั้นตอนชัดเจน", detail: "ฝาก ถอน และเช็กประวัติย้อนหลัง จัดการเองได้ผ่านหน้าเว็บ ไร้ขั้นตอนซับซ้อน", tag: "ตรวจสอบง่าย" },
-  { icon: "🔐", name: "ปลอดภัย 100% ด้วยการเข้ารหัสขั้นสูง", detail: "ปกป้องข้อมูลส่วนตัวของสมาชิก และเชื่อมต่อตรงกับสถาบันการเงินชั้นนำ", tag: "ปลอดภัย 100%" },
+  { icon: "🐉", name: "เว็บแท้ไม่ผ่านเอเย่นต์", detail: "ไม่มีการล็อคยูสหรือปรับลดอัตราการชนะ ทุกเกมที่เข้าเล่นได้ค่า RTP ตามจริง", tag: "เว็บตรง" },
+  { icon: "🎡", name: "หมุนกงล้อลุ้นรางวัลได้ทุกวัน", detail: "แค่ล็อกอินเข้ามาร่วมสนุกกับเกมโปรด ก็มีสิทธิ์ลุ้นรับรางวัลใหญ่จากกิจกรรมเสี่ยงทาย", tag: "ลุ้นทุกวัน" },
+  { icon: "💠", name: "โปร่งใส 100% ไม่หักย้อนหลัง", detail: "เล่นได้เท่าไหร่รับกำไรไปเต็มๆ ไม่มีการหักเปอร์เซ็นต์ย้อนหลังทีหลัง", tag: "รับเต็ม" },
+  { icon: "⚡", name: "ฝากถอนออโต้เต็มรูปแบบ", detail: "ทำรายการเองผ่านหน้าเว็บ ไม่ต้องทักแอดมินหรือส่งสลิป เงินเข้าไวในไม่กี่วินาที", tag: "ออโต้" },
+  { icon: "🏦", name: "รองรับทุกธนาคารและทรูวอเลท", detail: "เลือกช่องทางที่ถนัดได้เลย ลุยต่อยอดกำไรได้แบบไม่มีสะดุดตลอดทั้งวัน", tag: "ครบทุกช่องทาง" },
+  { icon: "🎰", name: "เกมครบทุกค่ายดังในที่เดียว", detail: "PG Slot, Joker Gaming, Pragmatic Play และค่ายระดับโลกอีกเพียบ ภาพคมไม่กระตุก", tag: "ทุกค่าย" },
+  { icon: "🔥", name: "จ่ายเต็มถอนไม่อั้นทุกยอด", detail: "ฐานการเงินมั่นคงระดับเอเชีย ไม่มีเงื่อนไขจุกจิก ไม่อั้นถอนและไม่แบ่งจ่าย", tag: "จ่ายจริง" },
 ];
 
-const chips = ["เว็บตรงสล็อตชื่อดัง", "ตังเต็มระบบ", "เกมเด็ดให้เลือกครบ", "คัดตัวฮิตหลายค่าย", "โบนัสประจำวัน", "ทำรายการเองได้", "ปลอดภัย 100%"];
+const chips = ["สล็อตเว็บตรงแตกหนัก", "ไม่ล็อคยูส", "หมุนกงล้อพารวย", "แจ็คพอตแตกทุกวัน", "ฝากถอนออโต้", "รองรับทรูวอเลท", "ถอนไม่อั้น"];
 ---
 
-<ContentBoxTwo titleleft="เข้าสู่ระบบ TANGTEM168" titleright="ระบบและสิทธิพิเศษของ TANGTEM168 ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ TANGTEM168 และตารางอ้างอิงระบบกับสิทธิพิเศษภายในเว็บ">
+<ContentBoxTwo titleleft="เข้าสู่ระบบ กงล้อ88" titleright="ระบบและสิทธิพิเศษของ กงล้อ88 ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ กงล้อ88 และตารางอ้างอิงระบบกับสิทธิพิเศษภายในเว็บ">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#fcc30b]/30 bg-[#2a0a2e] p-6 shadow-[0_10px_30px_rgba(252,195,11,0.22)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#7e3ac7]/55 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#ffcc4b]/30 bg-[#1e1105] p-6 shadow-[0_10px_30px_rgba(255,204,75,0.22)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#ff6a13]/45 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#fcc30b]/45 bg-gradient-to-br from-[#ffe9a8] via-[#fcc30b] to-[#e09a05] text-xl shadow-inner">
-          🪙
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#ffcc4b]/45 bg-gradient-to-br from-[#ffe974] via-[#ffcc4b] to-[#eb9a1d] text-xl shadow-inner">
+          🎡
         </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#fcc30b]">ยินดีต้อนรับกลับ</p>
-          <span class="text-[11px] text-[#c3a98e]">กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าล็อบบี้เกมเด็ดจากค่ายดังของ TANGTEM168 ได้จากจุดเดียว</span>
+          <p class="text-base font-black text-[#ffcc4b]">ยินดีต้อนรับกลับ</p>
+          <span class="text-[11px] text-[#c9ab7a]">กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าล็อบบี้เกมสล็อตทุกค่ายดังของ กงล้อ88 ได้จากจุดเดียว</span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#fcc30b]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#ffcc4b]">👤</span>
           <input
             type="text"
             aria-label="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#3c0f52] bg-[#1c0620] py-3 pr-4 pl-12 text-[#f7e6c4] transition-all outline-none placeholder:text-[#c3a98e]/70 focus:border-[#fcc30b] focus:ring-1 focus:ring-[#7e3ac7]/60"
+            class="w-full rounded-xl border border-[#2c1808] bg-[#140a02] py-3 pr-4 pl-12 text-[#f6e6c2] transition-all outline-none placeholder:text-[#c9ab7a]/70 focus:border-[#ffcc4b] focus:ring-1 focus:ring-[#ff6a13]/60"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#fcc30b]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#ffcc4b]">🔑</span>
           <input
             type="password"
             aria-label="รหัสผ่าน"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#3c0f52] bg-[#1c0620] py-3 pr-4 pl-12 text-[#f7e6c4] transition-all outline-none placeholder:text-[#c3a98e]/70 focus:border-[#fcc30b] focus:ring-1 focus:ring-[#7e3ac7]/60"
+            class="w-full rounded-xl border border-[#2c1808] bg-[#140a02] py-3 pr-4 pl-12 text-[#f6e6c2] transition-all outline-none placeholder:text-[#c9ab7a]/70 focus:border-[#ffcc4b] focus:ring-1 focus:ring-[#ff6a13]/60"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#c3a98e]">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#3c0f52] bg-[#1c0620] accent-[#fcc30b]" />
+          <label class="flex items-center gap-2 text-[#c9ab7a]">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#2c1808] bg-[#140a02] accent-[#ffcc4b]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#c3a98e] transition-colors hover:text-[#fcc30b]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#c9ab7a] transition-colors hover:text-[#ffcc4b]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#e09a05]/50 bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#e09a05] p-3.5 font-black text-[#2a0a2e] shadow-[0_10px_30px_rgba(252,195,11,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(255,233,168,0.45)]">
+          class="mt-1 w-full rounded-xl border border-[#eb9a1d]/50 bg-gradient-to-r from-[#ffe974] via-[#ffcc4b] to-[#eb9a1d] p-3.5 font-black text-[#140a02] shadow-[0_10px_30px_rgba(255,204,75,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(255,106,19,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#c3a98e]">
-          <span class="h-px flex-1 bg-[#3c0f52]"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#c9ab7a]">
+          <span class="h-px flex-1 bg-[#2c1808]"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#3c0f52]"></span>
+          <span class="h-px flex-1 bg-[#2c1808]"></span>
         </div>
 
         <a
@@ -93,29 +93,29 @@ const chips = ["เว็บตรงสล็อตชื่อดัง", "ต
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#fcc30b]/30 bg-[#1c0620] px-2.5 py-1 text-[10px] font-bold text-[#fcc30b]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#3c0f52] bg-[#1c0620] px-2.5 py-1 text-[10px] font-bold text-[#c3a98e]"><span aria-hidden="true">🕐</span> ทำรายการได้ 24 ชั่วโมง</span>
+            <span class="rounded-full border border-[#ffcc4b]/30 bg-[#140a02] px-2.5 py-1 text-[10px] font-bold text-[#ffcc4b]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#2c1808] bg-[#140a02] px-2.5 py-1 text-[10px] font-bold text-[#c9ab7a]"><span aria-hidden="true">🕐</span> ทำรายการได้ 24 ชั่วโมง</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#c79bf0] transition-colors hover:text-[#fcc30b]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#ffa34d] transition-colors hover:text-[#ffcc4b]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#fcc30b]/30 bg-[#2a0a2e] p-5 shadow-[0_10px_30px_rgba(252,195,11,0.22)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#ffcc4b]/30 bg-[#1e1105] p-5 shadow-[0_10px_30px_rgba(255,204,75,0.22)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#c3a98e]">ตารางอ้างอิงระบบและสิทธิพิเศษที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#c79bf0] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">เกมเด็ดครบ ตังเต็มระบบ</div>
+          <span class="text-xs font-bold tracking-wide text-[#c9ab7a]">ตารางอ้างอิงระบบและสิทธิพิเศษที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#ffe974] via-[#ffcc4b] to-[#ff6a13] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">เว็บตรงแตกหนัก จ่ายเต็มทุกยอด</div>
         </div>
-        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#1c0620] px-2.5 py-1">
+        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#140a02] px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]"></span>
           <span class="text-[10px] font-bold tracking-widest text-green-300 uppercase">Live</span>
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#c3a98e]">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#c9ab7a]">
         <span>ระบบ / สิทธิพิเศษในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -123,28 +123,28 @@ const chips = ["เว็บตรงสล็อตชื่อดัง", "ต
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#3c0f52] bg-[#1c0620] px-3.5 py-2.5 transition-colors hover:border-[#fcc30b]/55 hover:bg-[#3c0f52]/70">
+            <div class="rounded-xl border border-[#2c1808] bg-[#140a02] px-3.5 py-2.5 transition-colors hover:border-[#ffcc4b]/55 hover:bg-[#2c1808]/70">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f7e6c4]">
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f6e6c2]">
                   <span aria-hidden="true" class="w-5 shrink-0 text-center">
                     {m.icon}
                   </span>{" "}
                   <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#e09a05]/60 bg-[#fcc30b] px-2.5 py-0.5 text-[10px] font-bold text-[#2a0a2e]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#eb9a1d]/60 bg-[#ffcc4b] px-2.5 py-0.5 text-[10px] font-bold text-[#140a02]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#c3a98e]">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#c9ab7a]">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#fcc30b]/30 bg-[#1c0620] px-3 py-1 text-[10px] font-bold text-[#fcc30b]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#ffcc4b]/30 bg-[#140a02] px-3 py-1 text-[10px] font-bold text-[#ffcc4b]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#c3a98e]">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจยอดขั้นต่ำ จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอนจากหน้าโปรโมชั่นจริงของ TANGTEM168 ก่อนกดรับทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#c9ab7a]">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจยอดขั้นต่ำ จำนวนเทิร์น เกมที่ร่วมรายการ และเพดานถอนจากหน้าโปรโมชั่นจริงของ กงล้อ88 ก่อนกดรับทุกครั้ง
       </div>
     </div>
   </div>

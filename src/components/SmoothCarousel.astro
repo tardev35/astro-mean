@@ -1,8 +1,8 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideDeposit60 from "../assets/slide2.png";
-import slideDeposit80 from "../assets/slide3.png";
+import slideReferFriend from "../assets/slide2.png";
+import slideVipMonthly from "../assets/slide3.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -18,26 +18,26 @@ import slideDeposit80 from "../assets/slide3.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// TANGTEM168: แถบนี้ถือ slide2 (ฝาก 60 รับ 300) กับ slide3 (ฝาก 80 รับ 410)
-// ส่วน slide4 (Lucky Spin) กับ slide1 (ฝาก 20 รับ 100) ไปอยู่ในบล็อก
-// ContentBoxSevenThree สองบล็อกของหน้าแลนดิ้ง แต่ละใบมีบ้านเดียวบนหน้าเว็บ
-// การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียวคือสิ่งที่การแบ่งแบบนี้เลี่ยงอยู่ ส่วน
-// banner / banner2-4 เป็นอาร์ตค้างของแบรนด์ก่อน จึงไม่ถูก import ที่ไหนทั้งสิ้น
-// ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด (600x600) จึง import ตามนามสกุลจริง
+// กงล้อ88: แถบนี้ถือ slide2 (แนะนำเพื่อนรับ 10%) กับ slide3 (ขาใหญ่ ฝากต่อเนื่อง
+// ประจำเดือน) ส่วน slide1 (คืนยอดเสียทุกวัน 5%) กับ slide4 (ฝากต่อเนื่องครบ 10 วัน)
+// ไปอยู่ในบล็อก ContentBoxSevenThree สองบล็อกของหน้าแลนดิ้ง แต่ละใบมีบ้านเดียวบน
+// หน้าเว็บ การโชว์อาร์ตใบเดียวกันสองที่ในหน้าเดียวคือสิ่งที่การแบ่งแบบนี้เลี่ยงอยู่
+// ส่วน banner / banner2-4 เป็นอาร์ตค้างของแบรนด์ก่อน จึงไม่ถูก import ที่ไหนทั้งสิ้น
+// ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตามนามสกุลจริง
 //
-// สไลด์ชุดนี้เป็นแบนเนอร์จัตุรัส 600x600 และมีสองใบ จึงให้เห็นพร้อมกัน 1 ช่อง
+// สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน 600x198 และมีสองใบ จึงให้เห็นพร้อมกัน 1 ช่อง
 // บนมือถือ / 2 ช่องบนเดสก์ท็อป แล้วบีบกล่องเป็น max-w-[820px] เพื่อให้แต่ละใบวาด
 // ราวๆ 386px ซึ่งต่ำกว่าความกว้างจริงของไฟล์ (600px) จึงไม่มีการอัปสเกล ค่า
 // --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สองใบ) ถ้าเปลี่ยนจำนวน
 // ต้องคิด --shift ใหม่ทั้งสอง breakpoint
 const images = [
   {
-    src: slideDeposit60,
-    alt: "แบนเนอร์โปรโมชั่น TANGTEM168 ข้อความ สายสล็อต ห้ามพลาด!! ฝาก 60 รับ 300 ทำยอด 5 เท่า ถอนได้ 300 พร้อมบรรทัดเล่นได้แค่สล็อตเท่านั้น กดรับโบนัสก่อนฝากเท่านั้น และซื้อฟรีสปินได้ รับได้วันละครั้ง ด้านบนเป็นโลโก้ TANGTEM168 รูปเทพเจ้าจีนถือทอง สองข้างเป็นพรีเซนเตอร์หญิงชุดสีชมพูขาว บนพื้นชมพูพาสเทลกับกองเหรียญทอง แถบล่างเรียงโลโก้ค่ายเกม",
+    src: slideReferFriend,
+    alt: "แบนเนอร์โปรโมชั่น กงล้อ88 ข้อความ แนะนำเพื่อน รับ 10% ด้านซ้ายเป็นพรีเซนเตอร์หญิงชุดเดรสสีทองยืนถือโทรศัพท์มือถือ มุมบนซ้ายเป็นโลโก้ กงล้อ88 ตัวอักษรทองบนโล่ทรงจีน พื้นหลังสีดำน้ำตาลเข้มมีเปลวไฟทองและกงล้อเสี่ยงโชคเรืองแสง แถบล่างเรียงโลโก้ธนาคาร แอปสโตร์ กูเกิลเพลย์ และทรูมันนี่วอลเล็ท",
   },
   {
-    src: slideDeposit80,
-    alt: "แบนเนอร์โปรโมชั่น TANGTEM168 ข้อความ ฝากไม่เกินร้อย ได้สอยตังแน่ ฝาก 80 รับ 410 ทำยอด 5 เท่า ถอนได้ 420 พร้อมบรรทัดเล่นได้แค่สล็อตเท่านั้น กดรับโบนัสก่อนฝากเท่านั้น และซื้อฟรีสปินได้ รับได้วันละครั้ง ด้านบนเป็นโลโก้ TANGTEM168 รูปเทพเจ้าจีนถือทอง สองข้างเป็นพรีเซนเตอร์หญิงชุดสีชมพูขาว บนพื้นชมพูพาสเทลกับเพชรสีฟ้า แถบล่างเรียงโลโก้ค่ายเกม",
+    src: slideVipMonthly,
+    alt: "แบนเนอร์โปรโมชั่น กงล้อ88 ข้อความ ขาใหญ่ ฝากต่อเนื่อง ประจำเดือน ฝาก 20,000 ขึ้นไป รับโบนัสสูงสุด 30,000 พร้อมตารางสี่ช่อง ฝาก 3 วัน รับ 1,200 ฝาก 7 วัน รับ 5,600 ฝาก 15 วัน รับ 12,000 และ ฝาก 30 วัน รับ 30,000 ด้านซ้ายเป็นพรีเซนเตอร์หญิงชุดดำใส่แว่นกันแดด มุมบนซ้ายเป็นโลโก้ กงล้อ88 บนพื้นดำน้ำตาลเข้มกับเปลวไฟทอง แถบล่างเรียงโลโก้ธนาคารและทรูมันนี่วอลเล็ท",
   },
 ];
 
@@ -59,7 +59,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#fcc30b]/60 peer-focus-visible:bg-[#3c0f52] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#fcc30b]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#ffcc4b]/60 peer-focus-visible:bg-[#2c1808] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffcc4b]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -75,13 +75,13 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#fcc30b]/35 object-cover shadow-[0_10px_30px_rgba(252,195,11,0.22)]"
+              class="block w-full rounded-xl border border-[#ffcc4b]/35 object-cover shadow-[0_10px_30px_rgba(255,204,75,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
               fetchpriority="low"
               decoding="async"
-              widths={[300, 500, 600]}
+              widths={[300, 400, 600]}
               sizes="(max-width: 767px) 92vw, 386px"
               formats={["avif", "webp"]}
               fallbackFormat="webp"

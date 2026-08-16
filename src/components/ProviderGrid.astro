@@ -1,33 +1,33 @@
 ---
 // Widget ไม่ใช่ article: หัวข้อ render เป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
-// assistive tech เนื้อหาตาม brief ของ TANGTEM168 — รวบรวมเกมสล็อตตัวเด็ด ตัวฮิต
-// และเกมแตกง่ายจากค่ายดังระดับโลกมาไว้หน้าเดียว ทั้งแนวสตรีทสุดมันส์ แนวแฟนตาซี
-// อลังการ และแนวคลาสสิกเล่นง่าย อยากเปลี่ยนฟีลก็คลิกเลือกเกมใหม่ในล็อบบี้ได้ทันที
-// โดยไม่ต้องโยกเงินหรือสลับเว็บ
+// assistive tech เนื้อหาตาม brief ของ กงล้อ88 — คัดสรรทุกค่ายดังมาให้ครบจบในที่
+// เดียว ทั้ง PG Slot, Joker Gaming, Pragmatic Play และค่ายชั้นนำระดับโลกอีกเพียบ
+// ทุกเกมภาพสวยคมชัด ไหลลื่นไม่มีกระตุก และคัดมาเฉพาะเกมที่โบนัสเข้าลึก ฟรีสปิน
+// ออกบ่อย
 //
-// TANGTEM168: ย้ายจากเขียวมังกรนีออนของ DRACO65 (#dcfce7 / #4ade80 / #22c55e /
-// #15803d / #14532d / #0a3318 บนผิว #062011 / #04150a เนื้อความ #d6ecdd
-// ข้อความรอง #9dbfa8 เงิน #e2e8e4) มาที่ทองบนม่วงพลัม — #ffe9a8 / #fcc30b /
-// #e09a05 / #ce5a03 คู่กับม่วง #c79bf0 / #7e3ac7 / #3c0f52 บนผิว #2a0a2e /
-// #1c0620 เนื้อความ #f7e6c4 ข้อความรอง #c3a98e โดยป้ายมุมการ์ดรับสีรองของแบรนด์
-// คือม่วง #c79bf0 / #7e3ac7
+// กงล้อ88: ย้ายจากทองบนม่วงพลัมของ TANGTEM168 (#ffe9a8 / #fcc30b / #e09a05 /
+// #ce5a03 คู่ม่วง #c79bf0 / #7e3ac7 / #3c0f52 บนผิว #2a0a2e / #1c0620 เนื้อความ
+// #f7e6c4 ข้อความรอง #c3a98e) มาที่ทองอร่ามคู่เปลวไฟ — #ffe974 / #ffcc4b /
+// #eb9a1d / #8b4c0b คู่เปลวไฟ #ff6a13 / #ffa34d บนผิว #1e1105 / #140a02 /
+// #2c1808 เนื้อความ #f6e6c2 ข้อความรอง #c9ab7a โดยป้ายมุมการ์ดรับสีรองของแบรนด์
+// คือเปลวไฟ #ffa34d / #ff6a13
 const providers = [
-  { name: "PG Soft", desc: "เกมตัวฮิตที่ภาพสวยสมจริง เล่นง่ายไม่ยุ่งยาก เปิดจากล็อบบี้เดียวได้ทันที", tag: "ตัวฮิตตลอดกาล", icon: "🐷" },
-  { name: "Pragmatic Play", desc: "แนวแฟนตาซีอลังการ อัตราการแตกของแจ็คพอตตรงไปตรงมา ไม่ปรับลดเปอร์เซ็นต์", tag: "แจ็คพอตตรง", icon: "✨" },
+  { name: "PG Slot", desc: "ค่ายที่สายปั่นถามหามากที่สุด ภาพสวยคมชัด ไหลลื่นไม่มีกระตุก เปิดเล่นจากล็อบบี้เดียว", tag: "ตัวฮิตตลอดกาล", icon: "🐷" },
+  { name: "Joker Gaming", desc: "แนวคลาสสิกเล่นง่าย กติกาไม่ซับซ้อน กดเข้าเล่นได้เลยไม่ต้องศึกษานาน", tag: "เล่นง่าย", icon: "🃏" },
+  { name: "Pragmatic Play", desc: "เกมโบนัสเข้าลึก ฟรีสปินออกบ่อย ค่า RTP ตรงไปตรงมาไม่มีการปรับลด", tag: "โบนัสเข้าลึก", icon: "✨" },
   { name: "JILI", desc: "เกมแตกง่ายที่คนไทยเล่นเยอะ รอบสั้นตัดสินไว เหมาะกับสายจับจังหวะเร็ว", tag: "แตกง่าย", icon: "🔥" },
-  { name: "Joker Gaming", desc: "แนวคลาสสิกเล่นง่าย กติกาไม่ซับซ้อน กดเข้าเล่นได้เลยไม่ต้องศึกษานาน", tag: "คลาสสิก", icon: "🃏" },
-  { name: "Relax Gaming", desc: "เกมแนวสตรีทสุดมันส์ที่คัดมาแล้วว่าทำเงินได้จริง ไม่ต้องไล่หาทีละเว็บ", tag: "สายสตรีท", icon: "🎧" },
-  { name: "Habanero", desc: "คอนเซปต์เกมหลากหลาย อยากเปลี่ยนฟีลเปลี่ยนบรรยากาศก็คลิกเลือกใหม่ได้", tag: "เปลี่ยนฟีลได้", icon: "🎨" },
-  { name: "Nolimit City", desc: "ฟีเจอร์จัดหนักสำหรับสายลุย ระบบเสถียรสูงจึงปั่นยาวได้โดยไม่มีสะดุด", tag: "ระบบเสถียร", icon: "⚡" },
+  { name: "Relax Gaming", desc: "คัดมาเฉพาะเกมที่ทำเงินได้จริง เล่นยาวได้ทั้งวันโดยระบบไม่มีสะดุด", tag: "ปั่นยาวได้", icon: "🎧" },
+  { name: "Habanero", desc: "ธีมเกมหลากหลาย อยากเปลี่ยนฟีลเปลี่ยนบรรยากาศก็คลิกเลือกใหม่ได้ทันที", tag: "เปลี่ยนฟีลได้", icon: "🎨" },
+  { name: "Nolimit City", desc: "ฟีเจอร์จัดหนักสำหรับสายลุย ลุ้นแจ็คพอตก้อนโตแบบพลิกเกมได้ในสปินเดียว", tag: "สายลุย", icon: "⚡" },
 ];
 ---
 
-<section aria-label="ค่ายเกมสล็อตชื่อดังที่ TANGTEM168 คัดมาไว้ในหน้าเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายเกมสล็อตทุกค่ายดังที่ กงล้อ88 คัดมาไว้ในหน้าเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#ce5a03] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมสล็อตชื่อดังที่ <span class="text-[#c79bf0]">TANGTEM168</span> คัดมาไว้ในหน้าเดียว
+    <p class="bg-gradient-to-r from-[#ffe974] via-[#ffcc4b] to-[#ff6a13] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายเกมสล็อตทุกค่ายดังที่ <span class="text-[#ffa34d]">กงล้อ88</span> คัดมาไว้ในหน้าเดียว
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#fcc30b] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ffcc4b] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
@@ -35,20 +35,20 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#fcc30b]/30 bg-[#2a0a2e]/92 p-5 shadow-[0_10px_30px_rgba(252,195,11,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#fcc30b]/60 hover:bg-[#3c0f52]/95 hover:shadow-[0_15px_40px_rgba(126,58,199,0.35)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#7e3ac7]/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#ffcc4b]/30 bg-[#1e1105]/92 p-5 shadow-[0_10px_30px_rgba(255,204,75,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#ffcc4b]/60 hover:bg-[#2c1808]/95 hover:shadow-[0_15px_40px_rgba(255,106,19,0.35)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#ff6a13]/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#c79bf0] to-[#7e3ac7] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#1c0620] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffa34d] to-[#ff6a13] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#140a02] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
             {provider.icon}
           </div>
-          <p class="text-center text-sm font-black text-[#f7e6c4] transition-colors group-hover:text-[#fcc30b]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#c3a98e]">{provider.desc}</p>
+          <p class="text-center text-sm font-black text-[#f6e6c2] transition-colors group-hover:text-[#ffcc4b]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#c9ab7a]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#fcc30b]/30 bg-[#1c0620] py-1.5 text-center text-[11px] font-bold text-[#fcc30b] shadow-inner transition-colors duration-300 group-hover:border-[#ffe9a8]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffe9a8] group-hover:to-[#fcc30b] group-hover:text-[#2a0a2e]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#ffcc4b]/30 bg-[#140a02] py-1.5 text-center text-[11px] font-bold text-[#ffcc4b] shadow-inner transition-colors duration-300 group-hover:border-[#ffe974]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffe974] group-hover:to-[#ffcc4b] group-hover:text-[#140a02]">
             เข้าดูเกม
           </span>
         </a>
