@@ -1,63 +1,69 @@
 ---
 export interface Props {
   title?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   titleleft?: string;
   titlecenter?: string;
   titleright?: string;
 }
-const { title, titleleft, titlecenter, titleright } = Astro.props;
+const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright } = Astro.props;
 
-// pt-36/md:pt-28, up from the flat pt-18 (72px) this file shipped with. The
-// badge is anchored at -top-6, so its bottom edge sits at (badge height − 24px)
-// measured from the card's top; pt-18 was sized for a short one-line title and
-// a real docx H2 wraps to three or four lines on a phone.
+// TANGTEM168: ไฟล์นี้ค้างสีน้ำเงิน/ทองของ BUFFXBET มาตลอด (#3b8df1 / #7cc0ff /
+// #fbe57d / #f5c542 บนผิว #0a2563 / #051a5b / #02061a เนื้อความ #dbe7fb) รอบนี้
+// ย้ายมาทองบนม่วงพลัม — #ffe9a8 / #fcc30b / #e09a05 / #ce5a03 คู่กับม่วง #7e3ac7 /
+// #3c0f52 บนผิว #3c0f52 / #2a0a2e / #1c0620 เนื้อความ #f7e6c4 ไม่มีน้ำเงินเหลือ
+// อยู่ในไฟล์นี้
 //
-// Arithmetic for BUFFXBET's docx H2 #3, 54 Thai characters
-// ("รวมเกมฮิตจากค่ายดัง เลือกเล่นสนุกได้หลากหลายไม่มีเบื่อ"), badge chrome =
-// py-3 (24px) + border-2 (4px) = 28px:
-//   360px phone — card 328px, badge w-[92%] = 302px, minus px-5 (40px) leaves
-//   ~262px. text-lg with tracking-widest (0.1em) costs ~10.8px per Thai
-//   character, so ~24 characters fit a line → 3 lines. leading-normal at 18px =
-//   27px per line: 3 lines = 81px + 28px = 109px, bottom edge at 85px — which
-//   is why pt-18 (72px) overlapped. A pessimistic 4 lines = 108px + 28px =
-//   136px, bottom edge 112px against pt-36 (144px) → 32px of daylight.
-//   md — badge capped at max-w-2xl (672px), minus px-10 (80px) leaves ~592px.
-//   sm:text-2xl = 36px per line and ~41 characters fit, so 2 lines = 72px +
-//   28px = 100px, bottom edge 76px against md:pt-28 (112px) → 36px.
+// `as` เพิ่งเพิ่มเข้ามารอบนี้ เดิมไฟล์นี้ hardcode <h2> ไว้ที่ป้าย ทำให้หน้าเรียก
+// กำหนดระดับหัวข้อไม่ได้เหมือน ContentBox* ตัวอื่น
 //
-// The badge is w-[92%] max-w-2xl text-center with no whitespace-nowrap — the
-// long-title bug this family shipped with. Do not put it back.
+// titleleft/titlecenter/titleright เคย render เป็น <h3> ตอนนี้เป็น <p> ป้ายคอลัมน์
+// (คลาสเดิม บวก leading-normal): มันตั้งชื่อคอลัมน์ UI ไม่ใช่ section ของ docx
+// ถ้าปล่อยเป็นหัวข้อ docx หัวข้อเดียวจะกลายเป็นสี่หัวข้อบนหน้าเว็บ และ docx ของ
+// TANGTEM168 แบน H1+H2 ล้วน หน้าเว็บจึงต้องไม่มี h3 เลย
 //
-// titleleft/titlecenter/titleright render <h3>. BUFFXBET's docx is flat
-// (H1 + H2, zero H3), so index.astro passes `title` only and splits the
-// paragraph across the three slots. The <h3>s stay for a future brief that
-// genuinely has sub-headings.
+// pt-40/md:pt-32 ขยับขึ้นจาก pt-36/md:pt-28 ป้ายถูกตรึงไว้ที่ -top-6 ขอบล่างของมัน
+// จึงอยู่ต่ำจากขอบบนการ์ดเท่ากับ (ความสูงป้าย − 24px) chrome ของป้าย = py-3 (24px)
+// + border-2 (4px) = 28px คำนวณกับหัวข้อ H2 ข้อ 5 ของ docx ยาว 68 ตัวอักษร
+// ("ระบบการเงินของ TANGTEM168 แบ่งทุกขั้นตอนชัด ใช้งานคล่องและตรวจสอบง่าย"):
+//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-5 (40px) เหลือ ~262px,
+//   text-lg + tracking-widest (0.1em) ≈ 10.8px ต่อตัวอักษร → ~24 ตัวต่อบรรทัด →
+//   3 บรรทัด เผื่อแย่สุด 4 บรรทัด: leading-normal ที่ 18px = 27px ต่อบรรทัด →
+//   108px + 28px = 136px ขอบล่างอยู่ที่ 112px เทียบกับ pt-40 (160px) → เหลือ 48px
+//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-10 (80px) เหลือ ~592px,
+//   sm:text-2xl = 36px ต่อบรรทัด และ ~41 ตัวต่อบรรทัด → 2 บรรทัด = 72px + 28px =
+//   100px ขอบล่าง 76px เทียบกับ md:pt-32 (128px) → เหลือ 52px
+// ป้ายเป็น w-[92%] max-w-2xl text-center ไม่มี whitespace-nowrap ซึ่งเป็นบั๊กที่
+// ตระกูลนี้เคย ship มา ห้ามใส่กลับ และให้ตื้นกว่า ContentBoxFloatingBadge.astro
+// เสมอ เพราะไฟล์นั้นเสียความกว้างป้ายไปกับไอคอนตกแต่งสองตัว
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
-  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#3b8df1]/40 bg-gradient-to-b from-[#0a2563] to-[#02061a] p-8 pt-36 shadow-[0_20px_50px_rgba(2,6,26,0.6)] md:pt-28">
+  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#fcc30b]/35 bg-gradient-to-b from-[#3c0f52] to-[#1c0620] p-8 pt-40 shadow-[0_20px_50px_rgba(28,6,32,0.6)] md:pt-32">
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#3b8df1]/60 bg-gradient-to-b from-[#051a5b] to-[#02061a] px-5 py-3 text-center shadow-[0_10px_20px_rgba(2,6,26,0.5)] sm:px-10">
-          <h2 class="bg-gradient-to-r from-[#fbe57d] via-[#f5c542] to-[#7cc0ff] bg-clip-text text-lg leading-normal font-black tracking-widest text-transparent uppercase sm:text-2xl">{title}</h2>
-          <div aria-hidden="true" class="absolute bottom-1 left-1/2 h-[2px] w-1/2 -translate-x-1/2 bg-[#3b8df1]/80 shadow-[0_0_5px_rgba(59,141,241,1)]" />
+        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#fcc30b]/55 bg-gradient-to-b from-[#2a0a2e] to-[#1c0620] px-5 py-3 text-center shadow-[0_10px_20px_rgba(28,6,32,0.5)] sm:px-10">
+          <HeadingTag class="bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#ce5a03] bg-clip-text text-lg leading-normal font-black tracking-widest text-transparent uppercase sm:text-2xl">
+            {title}
+          </HeadingTag>
+          <div aria-hidden="true" class="absolute bottom-1 left-1/2 h-[2px] w-1/2 -translate-x-1/2 bg-[#fcc30b]/80 shadow-[0_0_5px_rgba(252,195,11,1)]" />
         </div>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#dbe7fb]/85 md:border-r md:border-[#3b8df1]/20 md:pr-6">
-        {titleleft && <h3 class="text-center text-xl leading-normal font-black text-[#f5c542] uppercase drop-shadow-md">{titleleft}</h3>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f7e6c4] md:border-r md:border-[#7e3ac7]/40 md:pr-6">
+        {titleleft && <p class="text-center text-xl leading-normal font-black text-[#fcc30b] uppercase drop-shadow-md">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#dbe7fb]/85 md:border-r md:border-[#3b8df1]/20 md:px-4">
-        {titlecenter && <h3 class="text-center text-xl leading-normal font-black text-[#f5c542] uppercase drop-shadow-md">{titlecenter}</h3>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f7e6c4] md:border-r md:border-[#7e3ac7]/40 md:px-4">
+        {titlecenter && <p class="text-center text-xl leading-normal font-black text-[#fcc30b] uppercase drop-shadow-md">{titlecenter}</p>}
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#dbe7fb]/85 md:pl-6">
-        {titleright && <h3 class="text-center text-xl leading-normal font-black text-[#f5c542] uppercase drop-shadow-md">{titleright}</h3>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f7e6c4] md:pl-6">
+        {titleright && <p class="text-center text-xl leading-normal font-black text-[#fcc30b] uppercase drop-shadow-md">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

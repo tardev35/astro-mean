@@ -2,22 +2,23 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
 // This page is an IMAGE page, not an article: the ContentBox title (the single
 // <h1>), ONE short intro paragraph, the promo image grid, one CTA. Nothing
-// else. The slides already print their own offer in large type, so prose below
-// them re-types what the visitor can already read, in smaller letters. The docx
-// gives this page a Title and a Meta and never a body.
+// else — no <h2>, no second section. The slides already print their own offer
+// in large type, so prose below them re-types what the visitor can already
+// read, in smaller letters. The docx gives this page a Title and a Meta and
+// never a body.
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The DRACO65 drop (mtime 2026-08-15) is FOUR slides:
-//   slide1 = โปรฝากรายวันสล็อต รับโบนัส 20% · ฝากครั้งแรกรับโบนัสทันที 20%
-//   slide2 = ครบจบในเจ้าเดียว ถอนได้หลักล้าน · ดีดจากค่ายเกมโดยตรง ทุนหนากล้าจ่าย
-//   slide3 = เล่นเสียรับคืนยอดเสีย คืนไม่จำกัด 5%
-//   slide4 = สร้างรายได้แนะนำเพื่อน รับค่าคอม 5%
+// The TANGTEM168 drop (mtime 2026-08-16) is FOUR slides:
+//   slide1 = ฝากนี้เกินคุ้ม รับทุนฟรีๆ · ฝาก 20 รับ 100 · ทำยอด 5 เท่า ถอนได้ 100
+//   slide2 = สายสล็อต ห้ามพลาด!! · ฝาก 60 รับ 300 · ทำยอด 5 เท่า ถอนได้ 300
+//   slide3 = ฝากไม่เกินร้อย ได้สอยตังแน่ · ฝาก 80 รับ 410 · ทำยอด 5 เท่า ถอนได้ 420
+//   slide4 = Lucky Spin · สะสมครบ 50 แต้ม หมุนกงล้อฟรี 1 ครั้ง
 // The mapping between file number and promotion changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after the promotion instead of after the file.
@@ -26,19 +27,19 @@ import { Picture } from "astro:assets";
 // brand and must never be imported here: an imported image is an emitted image
 // even when nothing renders it. Only what is printed on each banner may be
 // stated on this page.
-import proDailyBonus20 from "../assets/slide1.png";
-import proWithdrawMillion from "../assets/slide2.png";
-import proCashback5 from "../assets/slide3.png";
-import proReferral5 from "../assets/slide4.png";
+import proDeposit20Get100 from "../assets/slide1.png";
+import proDeposit60Get300 from "../assets/slide2.png";
+import proDeposit80Get410 from "../assets/slide3.png";
+import proLuckySpin from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 155.
+// byte count reads ~3x too long). This one measures 152.
 const pageDescription =
-  "รวมโปรโมชั่นของ DRACO65 สล็อตเว็บตรงไฟลุก ทั้งโบนัสฝากรายวัน 20% คืนยอดเสีย 5% และค่าคอมแนะนำเพื่อน 5% ดูเงื่อนไขของแต่ละรายการก่อนกดรับสิทธิ์ได้จากหน้านี้";
+  "รวมโปรโมชั่น TANGTEM168 เว็บตรงสล็อตชื่อดัง ทั้งโปรฝากรับเพิ่ม โบนัสประจำวัน เครดิตคืนยอดเสีย และกิจกรรมสะสมแต้มหมุนกงล้อ เงื่อนไขต่างกันไปในแต่ละรายการ";
 
-const pageTitle = "โปรโมชั่น DRACO65 โบนัสฝากรายวัน 20% คืนยอดเสีย 5% และค่าคอมแนะนำเพื่อน 5%";
+const pageTitle = "โปรโมชั่น TANGTEM168 ฝาก 20 รับ 100 ฝาก 60 รับ 300 และกิจกรรมสะสมแต้ม Lucky Spin";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -47,7 +48,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proDailyBonus20.src,
+  primaryImagePath: proDeposit20Get100.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
@@ -59,7 +60,7 @@ const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#22c55e]/35 object-contain shadow-[0_10px_30px_rgba(34,197,94,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e2e8e4]/70 hover:shadow-[0_15px_40px_rgba(74,222,128,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#fcc30b]/35 object-contain shadow-[0_10px_30px_rgba(252,195,11,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe9a8]/70 hover:shadow-[0_15px_40px_rgba(126,58,199,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
 // drop — the column is drawn up to 644px, but asking for 644 only upscales a
@@ -72,18 +73,18 @@ const imageWidths = [320, 440, 600];
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น DRACO65" as="h1">
+  <ContentBox title="โปรโมชั่น TANGTEM168" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#4ade80]">DRACO65</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งโบนัสฝากรายวัน ยอดถอนหลักล้าน สิทธิ์คืนยอดเสีย
-        และค่าคอมจากการแนะนำเพื่อน แต่ละรายการคิดจากฐานคนละชุดและมีรอบเวลาของตัวเอง เงื่อนไขการทำยอด หมวดเกมที่ร่วมรายการ และยอดถอนสูงสุดต่อครั้งก็ไม่เหมือนกัน
-        จึงควรอ่านรายละเอียดของรายการที่จะรับอีกครั้งก่อนกด
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#fcc30b]">TANGTEM168</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งโปรฝากรับเพิ่มหลายระดับและกิจกรรมสะสมแต้มหมุนกงล้อ
+        แต่ละรายการคิดจากยอดฝากคนละชุด มีเงื่อนไขทำยอด ยอดถอนสูงสุด และรอบการรับสิทธิ์เป็นของตัวเอง บางรายการจำกัดเฉพาะเกมสล็อตและต้องกดรับโบนัสก่อนโอนเงินเข้า
+        จึงควรอ่านรายละเอียดบนแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={proDailyBonus20}
-          alt="แบนเนอร์โปรโมชั่น DRACO65 โปรฝากรายวันสล็อต รับโบนัส 20% ฝากเงินครั้งแรกรับโบนัสทันที 20%"
+          src={proDeposit20Get100}
+          alt="แบนเนอร์โปรโมชั่น ฝากนี้เกินคุ้ม รับทุนฟรีๆ ฝาก 20 รับ 100 ทำยอด 5 เท่า ถอนได้ 100 เล่นได้เฉพาะเกมสล็อต ต้องกดรับโบนัสก่อนฝาก"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -96,8 +97,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proWithdrawMillion}
-          alt="แบนเนอร์โปรโมชั่น DRACO65 ครบจบในเจ้าเดียว ถอนได้หลักล้าน การดีดจากค่ายเกมโดยตรง ทุนหนากล้าจ่าย"
+          src={proDeposit60Get300}
+          alt="แบนเนอร์โปรโมชั่น สายสล็อตห้ามพลาด ฝาก 60 รับ 300 ทำยอด 5 เท่า ถอนได้ 300 รับสิทธิ์ได้วันละหนึ่งครั้ง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -110,8 +111,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proCashback5}
-          alt="แบนเนอร์โปรโมชั่น DRACO65 เล่นเสียรับคืนยอดเสีย คืนไม่จำกัด 5%"
+          src={proDeposit80Get410}
+          alt="แบนเนอร์โปรโมชั่น ฝากไม่เกินร้อย ได้สอยตังแน่ ฝาก 80 รับ 410 ทำยอด 5 เท่า ถอนได้ 420 เล่นได้เฉพาะเกมสล็อต"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -124,8 +125,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proReferral5}
-          alt="แบนเนอร์โปรโมชั่น DRACO65 สร้างรายได้แนะนำเพื่อน รับค่าคอม 5%"
+          src={proLuckySpin}
+          alt="แบนเนอร์กิจกรรม Lucky Spin สะสมครบ 50 แต้ม หมุนกงล้อฟรี 1 ครั้ง พร้อมตารางเงื่อนไขการสะสมแต้ม 5 ข้อ"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -141,8 +142,8 @@ const imageWidths = [320, 440, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#e2e8e4]/60 bg-gradient-to-r from-[#4ade80] via-[#22c55e] to-[#14532d] px-10 py-3.5 text-lg font-black text-[#04150a] shadow-[0_10px_30px_rgba(34,197,94,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(74,222,128,0.45)]">
-          สมัครสมาชิก DRACO65
+          class="flex items-center justify-center rounded-lg border border-[#ffe9a8]/60 bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#e09a05] px-10 py-3.5 text-lg font-black text-[#2a0a2e] shadow-[0_10px_30px_rgba(252,195,11,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(126,58,199,0.45)]">
+          สมัครสมาชิก TANGTEM168
         </a>
       </div>
     </div>

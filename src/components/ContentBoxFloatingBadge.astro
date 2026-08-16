@@ -10,48 +10,47 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // (ความสูงป้าย − 24px) นับจากขอบบนการ์ด หัวข้อ H1/H2 ภาษาไทยแบบเต็มประโยคทำให้
 // ป้ายตัดบรรทัดหลายบรรทัด แล้วบรรทัดสุดท้ายไปทับบรรทัดแรกของเนื้อความ
 //
-// ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge กับ ContentBoxTwoFloatingBadge
-// (ทั้งคู่ pt-32/md:pt-28) โดยตั้งใจ — หัวข้อในไฟล์นี้ใช้ text-lg/text-xl ซึ่งสูงกว่า
-// อีกสองไฟล์หนึ่งสเต็ป และป้ายยังเสียความกว้างให้ 🐉 สองตัวข้างหัวข้ออีก ~52px
+// ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge (pt-36/md:pt-28) กับ
+// ContentBox3ThreeFloatingBadge (pt-40/md:pt-32) โดยตั้งใจ — หัวข้อในไฟล์นี้ใช้
+// text-lg/text-xl ซึ่งสูงกว่าอีกสองไฟล์หนึ่งสเต็ป และป้ายยังเสียความกว้างให้ไอคอน
+// สองตัวข้างหัวข้ออีก ~52px รอบนี้จึงขยับเป็น pt-44/md:pt-36 ตามที่อีกสองไฟล์
+// ขยับขึ้น ให้ไฟล์นี้ลึกกว่าอีกสอง *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ H2 ข้อ 3 ของ docx DRACO65 ยาว 61 ตัวอักษร
-// ("ฟีเจอร์ดุครบเครื่อง ลูกเล่นเด็ดพร้อมเติมไฟให้ทุกจังหวะการสปิน")
-// chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
-//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ 🐉 สองตัว
+// คำนวณกับหัวข้อ H2 ที่ยาวที่สุดใน docx ของ TANGTEM168 (82 ตัวอักษร) chrome ของ
+// ป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
+//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 8.5px ต่อตัวอักษร
-//   → ~27 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด:
-//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
-//   108px เทียบกับ pt-40 (160px) → เหลือช่องว่าง 52px
-//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ 🐉 เหลือ ~556px,
+//   → ~27 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 4 บรรทัด เผื่อแย่สุด 5 บรรทัด:
+//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 135px + 24px = 159px ขอบล่างอยู่ที่
+//   135px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 41px
+//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ไอคอน เหลือ ~556px,
 //   text-2xl/leading-normal = 36px ต่อบรรทัด, 2 บรรทัด = 72px + 24px = 96px
-//   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-32 (128px) → เหลือ 56px
-// ให้ไฟล์นี้ลึกกว่าอีกสอง *FloatingBadge เสมอ อย่าทำให้เท่ากัน
+//   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-36 (144px) → เหลือ 72px
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// DRACO65: ย้ายจากเขียวนีออนมาเก๊า + ทองของ MACAUBET (#dcffc0 / #8ef04a /
-// #59cb13 / #3b9b0d / #0f3a11 บนผิว #0a2c0d / #020b01 เนื้อความ #e9f9dc และทอง
-// #f6c445 บนไอคอนลูกเต๋าสองข้างป้าย) มาที่เขียวมังกรนีออน + เงิน — #dcfce7 /
-// #4ade80 / #22c55e / #15803d / #052e16 บนผิว #0a3318 / #040d07 เนื้อความ
-// #d6ecdd โดยไอคอนสองข้างป้ายเปลี่ยนเป็นมังกรสีเงิน #e2e8e4 ตามตัวอักษรโครเมียม
-// ในโลโก้ ไม่มีทองเหลืออยู่ในไฟล์นี้
+// TANGTEM168: ย้ายจากเขียวมังกรนีออนของ DRACO65 (#dcfce7 / #4ade80 / #22c55e /
+// #15803d / #052e16 บนผิว #0a3318 / #040d07 เนื้อความ #d6ecdd และมังกรเงิน
+// #e2e8e4 สองข้างป้าย) มาที่ทองบนม่วงพลัม — #ffe9a8 / #fcc30b / #e09a05 /
+// #ce5a03 คู่กับม่วง #7e3ac7 / #3c0f52 บนผิว #3c0f52 / #1c0620 เนื้อความ #f7e6c4
+// โดยไอคอนสองข้างป้ายเปลี่ยนเป็นเหรียญทอง ไม่มีเขียวเหลืออยู่ในไฟล์นี้
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#22c55e]/30 bg-[#0a3318]/88 p-8 pt-40 text-left text-base leading-relaxed text-[#d6ecdd] shadow-[0_10px_30px_rgba(34,197,94,0.18)] backdrop-blur-md md:pt-32">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#22c55e]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#052e16]/60 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#fcc30b]/30 bg-[#3c0f52]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#f7e6c4] shadow-[0_10px_30px_rgba(252,195,11,0.18)] backdrop-blur-md md:pt-36">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#7e3ac7]/45 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#ce5a03]/30 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#dcfce7]/50 bg-[#040d07] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(34,197,94,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#e2e8e4]">
-            🐉
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffe9a8]/55 bg-[#1c0620] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(252,195,11,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#fcc30b]">
+            🪙
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#15803d] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#e2e8e4]">
-            🐉
+          <HeadingTag class={`bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#ce5a03] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#fcc30b]">
+            🪙
           </span>
         </div>
       )

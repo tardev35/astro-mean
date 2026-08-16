@@ -7,41 +7,44 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// DRACO65: ไฟล์นี้เคยเป็นเขียวนีออนมาเก๊า + ทองของ MACAUBET (#dcffc0 / #8ef04a /
-// #59cb13 / #3b9b0d / #2c7a08 / #0f3a11 บนผิว #0a2c0d / #020b01 เนื้อความ
-// #e9f9dc และทอง #f6c445 บนเส้นขอบป้าย) ตอนนี้ย้ายมาเขียวมังกรนีออน — #dcfce7 /
-// #4ade80 / #22c55e / #15803d / #14532d / #052e16 บนผิว #0a3318 / #040d07
-// เนื้อความ #d6ecdd โดยสีรองบนเส้นขอบป้ายเป็นเงิน/โครเมียม #e2e8e4 ตามตัวอักษร
-// "65" ในโลโก้ ไม่มีทองเหลืออยู่ในไฟล์นี้
+// TANGTEM168: ไฟล์นี้เคยเป็นเขียวมังกรนีออนของ DRACO65 (#dcfce7 / #4ade80 /
+// #22c55e / #15803d / #14532d / #052e16 บนผิว #0a3318 / #040d07 เนื้อความ
+// #d6ecdd และเงิน/โครเมียม #e2e8e4 บนเส้นขอบป้าย) ตอนนี้ย้ายมาทองบนม่วงพลัม —
+// #ffe9a8 / #fcc30b / #e09a05 / #ce5a03 คู่กับม่วง #7e3ac7 / #3c0f52 บนผิว
+// #3c0f52 / #1c0620 เนื้อความ #f7e6c4 ไม่มีเขียวเหลืออยู่ในไฟล์นี้
 //
 // `as` มีมาเพื่อให้หน้าเรียกกำหนดระดับหัวข้อได้เหมือน ContentBox* ตัวอื่น (เดิม
 // ไฟล์นี้ hardcode <h2> ไว้ทั้งสามจุด) ส่วน titleleft/titleright ตอนนี้เป็น <p>
 // ป้ายคอลัมน์: มันตั้งชื่อคอลัมน์ UI ไม่ใช่ section ของ docx ถ้าปล่อยเป็น <h2>
 // ต่อไป docx หัวข้อเดียวจะกลายเป็นสามหัวข้อบนหน้าเว็บ
 //
-// pt-32/md:pt-28 — ป้ายห้อยอยู่ที่ -top-6 ขอบล่างของมันจึงอยู่ต่ำจากขอบบนการ์ด
-// เท่ากับ (ความสูงป้าย − 24px) และหัวข้อ H2 ภาษาไทยเต็มประโยคตัดได้สองถึงสี่บรรทัด
-// หัวข้อ docx ของ DRACO65 สำหรับบล็อกนี้ยาว 49 ตัวอักษร ("ฝาก-ถอน 3 วิ จัดการยอด
-// ทันใจ ไม่ต้องรอจนเสียจังหวะ"): บนจอ 360px ป้ายเป็น w-[92%] (302px) หัก px-4
-// เหลือพื้นที่ข้อความ ~270px, text-lg ตัดได้ ~31 ตัวต่อบรรทัด → 2 บรรทัด × 27px =
-// 54px + chrome 24px = 78px ขอบล่างอยู่ที่ 54px เทียบกับ pt-32 (128px) → เหลือ
-// 74px (ยังบวกอยู่ที่ 4 บรรทัด: เหลือ 20px) ที่ md ป้ายเป็น max-w-2xl, text-2xl
-// ตัดบรรทัดเดียว = 36px + 24px = 60px ขอบล่าง 36px เทียบกับ md:pt-28 (112px) →
-// เหลือ 76px ป้ายเป็น w-[92%] max-w-2xl text-center เสมอ ห้ามใส่ whitespace-nowrap
-// และให้ตื้นกว่า ContentBoxFloatingBadge.astro หนึ่งขั้นเสมอ เพราะไฟล์นั้นเสีย
-// ความกว้างป้ายไปกับไอคอนตกแต่งสองตัว
+// pt-36/md:pt-28 ขยับขึ้นจาก pt-32 เพราะหัวข้อ docx ของ TANGTEM168 สำหรับบล็อกนี้
+// ยาว 82 ตัวอักษร ("แจกตังเต็มระบบมีอะไรให้ตาม? เปิดสิทธิพิเศษที่เติมความคุ้มให้
+// การเล่นน่าสนใจกว่าเดิม") ยาวกว่าหัวข้อรอบก่อน 33 ตัว ป้ายห้อยอยู่ที่ -top-6
+// ขอบล่างของมันจึงอยู่ต่ำจากขอบบนการ์ดเท่ากับ (ความสูงป้าย − 24px) chrome ของป้าย
+// = py-2.5 (20px) + border-2 (4px) = 24px:
+//   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) เหลือพื้นที่
+//   ข้อความ ~270px, text-lg/tracking-tight ≈ 8.5px ต่อตัวอักษร → ~31 ตัวต่อบรรทัด
+//   → 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด: leading-normal ที่ 18px = 27px ต่อบรรทัด
+//   → 108px + 24px = 132px ขอบล่างอยู่ที่ 108px เทียบกับ pt-36 (144px) → เหลือ 36px
+//   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) เหลือ ~608px,
+//   text-2xl/leading-normal = 36px ต่อบรรทัด และ ~52 ตัวต่อบรรทัด → 2 บรรทัด =
+//   72px + 24px = 96px ขอบล่าง 72px เทียบกับ md:pt-28 (112px) → เหลือ 40px
+// ป้ายเป็น w-[92%] max-w-2xl text-center เสมอ ห้ามใส่ whitespace-nowrap กลับมา
+// และให้ตื้นกว่า ContentBoxFloatingBadge.astro เสมอ เพราะไฟล์นั้นเสียความกว้าง
+// ป้ายไปกับไอคอนตกแต่งสองตัว
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#22c55e]/30 bg-gradient-to-b from-[#0a3318]/95 to-[#040d07]/95 p-8 pt-32 shadow-[0_10px_30px_rgba(34,197,94,0.18)] md:pt-28">
-    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#22c55e]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#052e16]/60 blur-[60px]"></div>
+    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#fcc30b]/30 bg-gradient-to-b from-[#3c0f52]/95 to-[#1c0620]/95 p-8 pt-36 shadow-[0_10px_30px_rgba(252,195,11,0.18)] md:pt-28">
+    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#7e3ac7]/45 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#ce5a03]/30 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#e2e8e4]/45 bg-[#040d07] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(34,197,94,0.35)] sm:px-8">
-          <HeadingTag class="bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#15803d] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
+        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#fcc30b]/55 bg-[#1c0620] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(252,195,11,0.35)] sm:px-8">
+          <HeadingTag class="bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#ce5a03] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
             {title}
           </HeadingTag>
         </div>
@@ -49,13 +52,13 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d6ecdd]">
-        {titleleft && <p class="text-2xl leading-normal font-bold text-[#4ade80]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e6c4]">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#fcc30b]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d6ecdd] md:border-l md:border-[#14532d] md:pl-10">
-        {titleright && <p class="text-2xl leading-normal font-bold text-[#4ade80]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e6c4] md:border-l md:border-[#7e3ac7]/50 md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#fcc30b]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

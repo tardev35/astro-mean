@@ -1,43 +1,43 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import Announcement from "../components/Announcement5.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
+import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import ContentBox3ThreeFloatingBadge from "../components/ContentBox3ThreeFloatingBadge.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
 import ContentBox from "../components/ContentBox.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import LatestWinners from "../components/LatestWinnersCyber.astro";
+import LatestWinners from "../components/LatestWinners3.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq2.astro";
+import Faq from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgLobby from "../assets/slide2.png";
-import imgDailyBonus from "../assets/slide1.png";
+import imgLuckySpin from "../assets/slide4.png";
+import imgDeposit20 from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxCyberCut as="h1"
-//   2 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อประโยค)
-//   3 → ContentBoxNeumorphism as="h2"
-//   4 → ContentBoxSevenThreeCyberCut as="h2" + slide2 (ถอนได้หลักล้าน)
-//   5 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าลง left/center/right)
-//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (โปรฝากรายวันรับโบนัส 20%)
-//   7 → ContentBox as="h2" (การ์ดคอลัมน์เดียวแบบเรียบ สองย่อหน้าห่อใน div เดียว
-//       ตามกติกาหนึ่ง element ต่อหนึ่ง slot)
+//   1 → ContentBoxPremium as="h1"
+//   2 → ContentBoxSevenThreePremium as="h2" + slide4 (Lucky Spin)
+//   3 → ContentBoxTwoPremium as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อประโยค)
+//   4 → ContentBoxSevenThreeFloatingBadge as="h2" + slide1 (ฝาก 20 รับ 100)
+//   5 → ContentBox3ThreeFloatingBadge as="h2" (แบ่งย่อหน้าลง left/center/right)
+//   6 → ContentBoxSpecial as="h2" (สองครึ่ง หนึ่ง element ต่อหนึ่ง slot)
+//   7 → ContentBox as="h2" (การ์ดคอลัมน์เดียวแบบเรียบ)
 //
-// variant รอบนี้เปลี่ยนทั้งตระกูลจากแบรนด์ก่อนหน้า (MACAUBET ใช้ Premium +
-// FloatingBadge + Special + 3ThreePremium) มาเป็น CyberCut + Neumorphism + plain
-// ส่วน Faq ย้ายจาก Faq4 มาเป็น Faq2
+// variant รอบนี้เปลี่ยนทั้งตระกูลจากแบรนด์ก่อนหน้า (DRACO65 ใช้ CyberCut +
+// Neumorphism + plain) มาเป็น Premium + FloatingBadge + Special + plain
+// ส่วน Faq ย้ายจาก Faq2 มาเป็น Faq3 และ LatestWinners จาก Cyber มาเป็น 3
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide2 คู่กับหัวข้อรวมเกมดัง
-// ค่ายเด็ดเต็มล็อบบี้ ส่วน slide1 คู่กับหัวข้อฝาก-ถอน 3 วิ ที่เหลือ slide3/slide4
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide4 (Lucky Spin สะสมแต้ม
+// หมุนกงล้อ) คู่กับหัวข้อคอนเซปต์ตังเต็มระบบที่แจกจริงไม่มีออมมือ ส่วน slide1
+// (ฝาก 20 รับ 100) คู่กับหัวข้อสิทธิพิเศษเติมความคุ้ม ที่เหลือ slide2/slide3
 // เป็นของ SmoothCarousel แต่ละใบมีบ้านเดียวบนหน้าเว็บ ส่วน banner.png กับ
 // banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ จึงไม่ถูก import ที่ไหน — รูปที่ import
 // คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม
@@ -45,56 +45,50 @@ import imgDailyBonus from "../assets/slide1.png";
 // banner1 เป็น hero ที่ MainLayout จัดการเอง รอบนี้จึงไม่มีรูปประกอบใน ContentBox
 // เดี่ยว
 //
-// widget ที่ไม่ได้มาจาก docx (ProviderGrid, GameRankingBoard, LoginRtpSection,
-// SmoothCarousel, LatestWinners, ReviewCardSumo2, แถวปุ่ม login/register) ใช้ป้าย
-// เป็น <p>/<span> + aria-label บน <section> จึงวางต่อท้ายหัวข้อ docx ที่มันสังกัด
-// ได้โดยลำดับ h2 ไม่เพี้ยน — GameRankingBoard ต่อจากหัวข้อฟีเจอร์ดุครบเครื่อง,
-// ProviderGrid ต่อจากหัวข้อรวมเกมดังค่ายเด็ด, LoginRtpSection ต่อจากหัวข้อระบบใหม่
-// ทำอะไรได้ไวขึ้น, LatestWinners ต่อจากหัวข้อฝาก-ถอน 3 วิ, ReviewCardSumo2 ต่อจาก
-// หัวข้อสรุป แล้วปิดท้ายด้วย SmoothCarousel + แถวปุ่ม + FAQ
+// widget ที่ไม่ได้มาจาก docx (GameRankingBoard, ProviderGrid, LatestWinners,
+// LoginRtpSection, ReviewCardSumo2, SmoothCarousel, แถวปุ่ม login/register) ใช้
+// ป้ายเป็น <p>/<span> + aria-label บน <section> จึงวางต่อท้ายหัวข้อ docx ที่มัน
+// สังกัดได้โดยลำดับ h2 ไม่เพี้ยน — GameRankingBoard ต่อจากหัวข้อตังเต็มระบบ,
+// ProviderGrid ต่อจากหัวข้อคัดตัวฮิตหลายค่าย, LatestWinners ต่อจากหัวข้อสิทธิพิเศษ,
+// LoginRtpSection ต่อจากหัวข้อระบบการเงิน แล้วปิดท้ายด้วย ReviewCardSumo2 +
+// SmoothCarousel + แถวปุ่ม + FAQ
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้เขียนเอง = 7
-// คำถามใน Faq2 เป็น <span> ใน <summary> ไม่ใช่ h3 — docx รอบนี้แบน H1+H2 ล้วน
-// หน้านี้จึงไม่มี h3 เลย
-
-// Title กับ Des มาจาก docx ตรงตัว แก้คำสะกดผิดใน docx สองจุดแล้ว:
-// เร็วแรว → เร็วแรง, ค่านเด็ด → ค่ายเด็ด
-//
-// Des ของ docx ยาว 145 ตัวอักษร ต่ำกว่าช่วง 150–160 ที่ verify-build บังคับ
-// (นับ "ตัวอักษร" ไม่ใช่ไบต์ — ไทยตัวละ 3 ไบต์ wc -c จึงอ่านเกินจริงสามเท่า)
-// จึงเติมสองคำที่มาจากเนื้อ docx เองคือ "ครบ" กับ "ออโต้" ได้ 153 ตัวอักษร
-const pageTitle = "DRACO65 | สล็อตเว็บตรงไฟลุก ฟีเจอร์ดุครบเครื่อง ฝาก-ถอน 3 วิ";
+// คำถามใน Faq3 เป็น <span> ใน <summary> ไม่ใช่ h3 และ titleleft/titlecenter/
+// titleright ของ ContentBox3ThreeFloatingBadge ถูกลดเป็น <p> แล้ว — docx รอบนี้
+// แบน H1+H2 ล้วน หน้านี้จึงไม่มี h3 เลย
+const pageTitle = "TANGTEM168 | เว็บตรงสล็อตชื่อดัง ตังเต็มระบบ เกมเด็ดให้เลือกครบ";
 const pageDescription =
-  "DRACO65 สล็อตเว็บตรงไฟลุก ระบบอัปเดตใหม่เร็วแรงกว่าเดิม ฟีเจอร์ดุครบเครื่อง รวมเกมดังค่ายเด็ดยอดฮิตมาให้ครบ พร้อมฝาก-ถอนออโต้ 3 วิ ไม่ต้องรอให้เสียจังหวะ";
+  "TANGTEM168 เว็บตรงสล็อตชื่อดัง แจกตังเต็มระบบ เกมเด็ดให้เลือกครบ คัดตัวฮิตจากหลายค่ายดังมาไว้หน้าเดียว ระบบการเงินแบ่งทุกขั้นตอนชัดเจน ปลอดภัย 100% ทุกการใช้งาน";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji
 const announcementMessage =
-  "DRACO65 สล็อตเว็บตรงไฟลุก ฟีเจอร์ดุครบเครื่อง ฝาก-ถอน 3 วิ ปั่นได้แบบไม่มีจังหวะให้อารมณ์ค้าง • อัปเดตระบบใหม่ล่าสุด เสถียรและตอบสนองไวกว่าที่เคย หน้าเว็บโหลดฉับไว กราฟิกไหลลื่นไม่มีกระตุก • ฟีเจอร์แตกหนักครบครัน ทั้งฟรีสปินออกบ่อย ตัวคูณรางวัลระเบิดแจ็คพอต และสัญลักษณ์พิเศษเข้ารอบโบนัสง่ายกว่าเดิม • ล็อบบี้อัดแน่นด้วยค่ายชั้นนำระดับโลก คัดเฉพาะเกมตัวตึง เกมฮิตติดเทรนด์ และเกมแตกดี กดเลือกลุยต่อได้ทันที • ระบบเบื้องหลังเชื่อมเซิร์ฟเวอร์หลักโดยตรง สลับค่ายเกมไว ตัดยอดแม่นยำ ไม่ต้องเจอกดสปินแล้วค้าง • ฝาก-ถอนออโต้ไฮสปีดจัดการยอดเสร็จภายใน 3 วิ ทำเองได้ ไม่ต้องรอแอดมินอนุมัติ เงินเข้าตรงเป๊ะทุกบาททุกสตางค์ • เกมถึง ฟีเจอร์ดุ ระบบแรง ครบเครื่องสำหรับสายสล็อตยุคใหม่ ลองเข้ามาปั่นแล้วจะอยากบอกต่อเพื่อน";
+  "TANGTEM168 เว็บตรงสล็อตชื่อดัง ตังเต็มระบบ เกมเด็ดให้เลือกครบ ศูนย์รวมความบันเทิงยุคใหม่ที่เล่นง่ายไม่ยุ่งยาก • คอนเซปต์ตังเต็มระบบสัมผัสได้จริงตั้งแต่ครั้งแรกที่ใช้งาน ระบบพัฒนาให้มีความเสถียรสูง อัตราการแตกของแจ็คพอตตรงไปตรงมา ไม่มีการปรับลดเปอร์เซ็นต์การชนะ • คัดเกมตัวเด็ด ตัวฮิต และเกมแตกง่ายจากค่ายดังระดับโลกมาไว้หน้าเดียว ทั้งแนวสตรีทสุดมันส์ แนวแฟนตาซีอลังการ และแนวคลาสสิกเล่นง่าย ไม่ต้องโยกเงินหรือสลับเว็บ • สิทธิพิเศษเติมทุนให้สมาชิกอย่างสม่ำเสมอ ทั้งโปรโมชันต้อนรับ โบนัสประจำวัน และเครดิตคืนยอดเสีย เพิ่มรอบการปั่นและยืดระยะเวลาความสนุก • ระบบการเงินแบ่งทุกขั้นตอนชัดเจน ฝาก ถอน และเช็กประวัติย้อนหลัง จัดการเองได้ผ่านหน้าเว็บ ไร้ขั้นตอนซับซ้อน • ปลอดภัย 100% ด้วยเทคโนโลยีการเข้ารหัสขั้นสูงที่ปกป้องข้อมูลส่วนตัวของสมาชิก และระบบการเงินที่เชื่อมต่อตรงกับสถาบันการเงินชั้นนำ • สอบผ่านครบทุกมิติ ทั้งเกมเด็ดจากค่ายดัง ระบบหลังบ้านไร้รอยต่อ และการเงินที่รวดเร็ว สมชื่อตังเต็มระบบอย่างแท้จริง";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
 // ที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน
 const faqs = [
   {
-    q: "ระบบใหม่ของ DRACO65 ต่างจากของเดิมตรงไหน",
-    a: "ระบบถูกยกเครื่องใหม่ทั้งชุดให้มีความเสถียรและตอบสนองได้ไวกว่าที่เคย หน้าเว็บโหลดรวดเร็วฉับไว กราฟิกสีสันสดใสไหลลื่นไม่มีกระตุกตั้งแต่คลิกแรก และไม่ว่าจะเข้าใช้งานผ่านมือถือหรือคอมพิวเตอร์ก็พร้อมลุยได้อย่างราบรื่นเหมือนกัน",
+    q: "คอนเซปต์ตังเต็มระบบของ TANGTEM168 หมายถึงอะไร",
+    a: "หมายถึงความตรงไปตรงมาที่ผู้เล่นสัมผัสได้จริงตั้งแต่ครั้งแรกที่ใช้งาน ตัวระบบถูกพัฒนาให้มีความเสถียรสูง อัตราการแตกของแจ็คพอตเป็นไปอย่างตรงไปตรงมา และไม่มีการปรับลดเปอร์เซ็นต์การชนะ ทุกสปินจึงเต็มไปด้วยความหวังและโอกาสรับเงินรางวัลใหญ่เท่าที่เกมนั้นให้ได้จริง",
   },
   {
-    q: "ฟีเจอร์ในเกมของ DRACO65 มีอะไรช่วยเพิ่มโอกาสทำกำไรบ้าง",
-    a: "แต่ละเกมรวมลูกเล่นซัพพอร์ตการทำกำไรไว้ครบครัน ทั้งโหมดฟรีสปินที่ออกบ่อย ตัวคูณรางวัลที่พร้อมระเบิดแจ็คพอตอย่างต่อเนื่อง และสัญลักษณ์พิเศษที่ช่วยให้เข้าถึงรอบโบนัสได้ง่ายกว่าเดิม ทุกจังหวะการหมุนจึงมีโอกาสเปลี่ยนเบทเบาๆ ให้เป็นกำไรก้อนใหญ่",
+    q: "ในล็อบบี้ของ TANGTEM168 มีเกมแนวไหนจากค่ายไหนให้เลือกบ้าง",
+    a: "รวบรวมเกมสล็อตตัวเด็ด ตัวฮิต และเกมแตกง่ายจากค่ายดังระดับโลกมาไว้ในหน้าเดียว ทั้งเกมแนวสตรีทสุดมันส์ แนวแฟนตาซีอลังการ และแนวคลาสสิกเล่นง่าย ทุกเกมผ่านการคัดสรรมาแล้วว่าทำเงินได้จริงและภาพสวยสมจริง จึงไม่ต้องเสียเวลาโยกเงินหรือสลับเว็บไปมาให้ยุ่งยาก",
   },
   {
-    q: "ในล็อบบี้ของ DRACO65 มีเกมจากค่ายไหนให้เลือกบ้าง",
-    a: "ล็อบบี้อัดแน่นไปด้วยค่ายชั้นนำระดับโลก คัดมาเฉพาะเกมตัวตึง เกมฮิตติดเทรนด์ และเกมแตกดีที่ไม่ควรพลาด ไม่ว่าจะชอบสไตล์ไหนหรือคอนเซปต์ไหนก็มีตัวเลือกให้สลับสับเปลี่ยนเล่นได้ไม่มีเบื่อ อยากเปลี่ยนฟีลเมื่อไหร่ก็กดเลือกเกมใหม่แล้วลุยต่อได้ทันที",
+    q: "สมาชิกใหม่และสมาชิกเดิมได้สิทธิพิเศษอะไรบ้าง",
+    a: "มีกิจกรรมและสิทธิพิเศษคอยเติมทุนให้สมาชิกอย่างสม่ำเสมอ ทั้งโปรโมชันต้อนรับสำหรับคนเปิดบัญชีใหม่ โบนัสประจำวัน และเครดิตคืนยอดเสีย ทุกสิทธิประโยชน์ถูกออกแบบมาเพื่อเพิ่มรอบการปั่นและยืดระยะเวลาความสนุก โดยไม่ต้องแบกรับความเสี่ยงสูงจนเกินไป",
   },
   {
-    q: "ฝาก-ถอนกับ DRACO65 ใช้เวลานานไหม ต้องรอแอดมินอนุมัติหรือเปล่า",
-    a: "ระบบฝาก-ถอนออโต้ไฮสปีดจัดการยอดเงินเสร็จสรรพภายใน 3 วินาที ทำได้ง่ายๆ ด้วยตัวเอง ไร้ขั้นตอนซับซ้อน และไม่ต้องรอแอดมินอนุมัติ ไม่ว่าจะเป็นการเติมทุนเพื่อลุยต่อหรือถอนกำไรก้อนโตเข้าบัญชี เงินก็เข้าตรงเป๊ะทุกบาททุกสตางค์",
+    q: "ฝาก ถอน และเช็กประวัติย้อนหลังกับ TANGTEM168 ต้องทำอย่างไร",
+    a: "ระบบการทำรายการถูกจัดสรรมาอย่างมีระเบียบ ทุกขั้นตอนถูกแบ่งออกอย่างชัดเจน ไม่ว่าจะเป็นการฝาก การถอน หรือการเช็กประวัติย้อนหลัง ผู้เล่นจัดการทุกอย่างได้ด้วยตัวเองผ่านหน้าเว็บอย่างรวดเร็ว ไร้ขั้นตอนซับซ้อน ทำรายการจบได้ภายในเวลาไม่นาน",
   },
   {
-    q: "กดสปินแล้วค้างหรือต้องรีโหลดหน้าเว็บบ่อยไหม",
-    a: "ระบบเบื้องหลังถูกพัฒนาให้ประมวลผลได้อย่างฉับไว ทั้งการสลับเปลี่ยนค่ายเกม การตัดยอดเงินที่แม่นยำ และการเชื่อมต่อเซิร์ฟเวอร์หลักโดยตรง ผู้เล่นจึงปั่นเกมต่อกันได้อย่างลื่นไหล ไม่ต้องเจอปัญหากดสปินแล้วค้าง หรือคอยรีโหลดหน้าเว็บใหม่ให้เสียเวลา",
+    q: "ข้อมูลส่วนตัวและเงินในบัญชีปลอดภัยแค่ไหน",
+    a: "เว็บไซต์ใช้เทคโนโลยีการเข้ารหัสขั้นสูงเพื่อปกป้องข้อมูลส่วนตัวของสมาชิกทุกคน ไม่ให้รั่วไหลไปสู่ภายนอก รวมถึงระบบการเงินที่เชื่อมต่อตรงกับสถาบันการเงินชั้นนำเพื่อป้องกันความเสี่ยงทุกรูปแบบ ผู้เล่นจึงลงเดิมพันได้อย่างสบายใจในทุกครั้งที่เข้ามาร่วมสนุก",
   },
 ];
 
@@ -110,75 +104,52 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="DRACO65 สล็อตเว็บตรงไฟลุก ฟีเจอร์ดุครบเครื่อง ฝาก-ถอน 3 วิ">
+  <ContentBoxPremium as="h1" title="TANGTEM168 เว็บตรงสล็อตชื่อดัง ตังเต็มระบบ เกมเด็ดให้เลือกครบ">
     <p class="text-left text-base leading-relaxed">
-      พร้อมหรือยังที่จะสัมผัสความเดือดระดับปะทุกับ DRACO65 เว็บสล็อตตรงสายลุยที่จัดเต็มความมันส์แบบไม่มีออมมือ ยุคนี้การเล่นสล็อตต้องเร็ว ต้องแรง และต้องลุ้นสนุกทุกวินาที
-      ที่นี่เลยรวมเอาความเพียบพร้อมในทุกมิติมาเสิร์ฟให้ถึงมือ ทั้งระบบการประมวลผลที่ไวฟ้าผ่า ฟีเจอร์ตัวช่วยแตกหนักที่ดุดันเกินใคร และระบบการเงินที่รวดเร็วทันใจ ปั่นแล้วฟีลดี
-      ลุ้นรางวัลใหญ่ได้แบบต่อเนื่อง ไม่มีจังหวะให้อารมณ์ค้างแน่นอน
+      ถ้าพูดถึงเว็บสล็อตที่กำลังมาแรงและถูกพูดถึงกันปากต่อปากในตอนนี้ คงมองข้าม TANGTEM168 ไปไม่ได้เลย ที่นี่คือศูนย์รวมความบันเทิงยุคใหม่ที่จัดเต็มทั้งเรื่องความหลากหลายของเกมสล็อตและระบบการทำงานที่ทันสมัย
+      ออกแบบมาเพื่อตอบโจทย์สายปั่นที่ต้องการความชัวร์ ความสนุก และความคุ้มค่าแบบจัดเต็ม เล่นง่าย ไม่ยุ่งยาก พร้อมขนความตื่นเต้นมาให้สัมผัสกันแบบครบรส ปั่นได้เพลินๆ ทำกำไรเข้ากระเป๋าได้จริงตลอดทั้งวัน
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxPremium>
 
-  <ContentBoxTwoNeumorphism as="h2" title="DRACO65 สล็อตเว็บตรงไฟลุก เปิดระบบอัปเดตใหม่ที่เร็วแรงกว่าเดิม">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ยกระดับความตื่นเต้นขึ้นไปอีกขั้นกับการอัปเดตระบบใหม่ล่าสุดของ DRACO65 ที่ถูกยกเครื่องให้มีความเสถียรและตอบสนองได้ไวกว่าที่เคย หน้าเว็บโหลดรวดเร็วฉับไว กราฟิกสีสันสดใสไหลลื่นไม่มีกระตุก
-    </p>
+  <ContentBoxSevenThreePremium as="h2" title="TANGTEM168 เว็บตรงสล็อตชื่อดัง เปิดสูตรตังเต็มระบบที่ไม่ได้มีดีแค่ชื่อ">
+    <Picture
+      slot="left"
+      src={imgLuckySpin}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[200, 400, 600]}
+      sizes="(max-width: 768px) 100vw, 30vw"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์กิจกรรม TANGTEM168 ข้อความ Lucky Spin สะสมครบ 50 แต้ม หมุนกงล้อฟรี 1 ครั้ง กลางภาพเป็นวงล้อเสี่ยงโชคช่องรางวัล 10 20 30 50 100 300 500 และ 1000 ใต้ภาพเป็นตารางเงื่อนไขห้าข้อ ทุกยอดฝาก 300 แบบรับโบนัส รับฟรี 10 แต้ม, ทุกการกดรับคอมมิชชั่น 10 บาท รับฟรี 5 แต้ม, ทุกการกดรับยอดเสียสล็อต 10 บาท รับฟรี 5 แต้ม, ทุกการกดรับยอดเสียยิงปลา 10 บาท รับฟรี 5 แต้ม และออนไลน์ทุก 1 ชั่วโมง รับฟรี 1 แต้ม ด้านซ้ายเป็นพรีเซนเตอร์หญิงชุดชมพูขาว ด้านบนเป็นโลโก้ TANGTEM168 รูปเทพเจ้าจีนถือทอง แถบล่างเรียงโลโก้ค่ายเกม"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fcc30b]/40 shadow-[0_10px_30px_rgba(252,195,11,0.25)]"
+    />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ให้ผู้เล่นได้สัมผัสบรรยากาศความสนุกสุดเอ็กซ์คลูซีฟตั้งแต่คลิกแรก ไม่ว่าจะเข้าใช้งานผ่านอุปกรณ์ไหนก็พร้อมลุยได้อย่างราบรื่น สมกับเป็นเว็บตรงสล็อตไฟลุกแห่งยุคอย่างแท้จริง
+      สมกับเป็นเว็บตรงชื่อดัง เพราะ TANGTEM168 มาพร้อมกับคอนเซปต์ "ตังเต็มระบบ" ที่ผู้เล่นทุกคนสัมผัสได้จริงตั้งแต่ครั้งแรกที่ใช้งาน ตัวระบบได้รับการพัฒนาให้มีความเสถียรสูง
+      อัตราการแตกของแจ็คพอตเป็นไปอย่างตรงไปตรงมา ไม่มีการปรับลดเปอร์เซ็นต์การชนะ ทำให้ทุกสปินของคุณเต็มไปด้วยความหวังและโอกาสรับเงินรางวัลใหญ่ ความตรงไปตรงมาและแจกจริงแบบไม่มีออมมือนี้เองที่ทำให้ชื่อเสียงของเว็บนี้ถูกบอกต่ออย่างรวดเร็ว
     </p>
-  </ContentBoxTwoNeumorphism>
-
-  <ContentBoxNeumorphism as="h2" title="ฟีเจอร์ดุครบเครื่อง ลูกเล่นเด็ดพร้อมเติมไฟให้ทุกจังหวะการสปิน">
-    <p class="text-left text-base leading-relaxed">
-      จุดเด่นที่ทำให้เหล่านักปั่นต้องยกนิ้วให้ DRACO65 คือความดุดันของฟีเจอร์ในแต่ละเกม ที่รวมเอาลูกเล่นซัพพอร์ตการทำกำไรมาให้แบบครบครัน ทั้งโหมดฟรีสปินออกบ่อย
-      ตัวคูณรางวัลที่พร้อมระเบิดแจ็คพอตอย่างต่อเนื่อง และสัญลักษณ์พิเศษที่ช่วยให้เข้าถึงรอบโบนัสได้ง่ายกว่าเดิม ทุกจังหวะในการหมุนจึงเต็มไปด้วยความลุ้นระทึก เพิ่มโอกาสเปลี่ยนเบทเบาๆ
-      ให้กลายเป็นกำไรก้อนใหญ่ได้เสมอ
-    </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxSevenThreePremium>
 
   <GameRankingBoard />
 
-  <ContentBoxSevenThreeCyberCut as="h2" title="รวมเกมดังค่ายเด็ด DRACO65 ตัวฮิตตัวท็อปพร้อมให้เลือกเต็มล็อบบี้">
-    <Picture
-      slot="left"
-      src={imgLobby}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 768px) 100vw, 30vw"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่น DRACO65 ข้อความ ครบจบในเจ้าเดียว การดีดจากค่ายเกมโดยตรงทุนหนากล้าจ่าย ถอนได้หลักล้าน พร้อมบรรทัดเกมสล็อต บาคาร่า คาสิโน ไฮโล หวย กีฬา ด้านบนเป็นโลโก้ DRACO 65 ตัวอักษรโครเมียมคู่กับป้าย truemoney ด้านซ้ายเป็นหญิงสาวชุดเขียวกับลูกเต๋าสีเขียว ด้านขวาเป็นมือถือที่เปิดล็อบบี้เกมสล็อตและวงล้อรูเล็ต บนพื้นเขียวเข้มลายสัญลักษณ์ไพ่"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#22c55e]/35 shadow-[0_10px_30px_rgba(34,197,94,0.25)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เปิดเข้ามาในหน้าล็อบบี้ของ DRACO65 คุณจะได้พบกับอาณาจักรเกมสล็อตที่อัดแน่นไปด้วยค่ายชั้นนำระดับโลก คัดมาเฉพาะเกมตัวตึง เกมฮิตติดเทรนด์ และเกมแตกดีที่ไม่ควรพลาด ไม่ว่าจะชอบสไตล์ไหน คอนเซปต์ไหน
-      ที่นี่ก็มีตัวเลือกให้สลับสับเปลี่ยนเล่นกันได้อย่างไม่มีเบื่อ อยากเปลี่ยนฟีลเมื่อไหร่ก็แค่กดเลือกเกมใหม่ ลุยต่อได้ทันทีโดยไม่ต้องเสียเวลาค้นหานาน
+  <ContentBoxTwoPremium as="h2" title="คัดตัวฮิตหลายค่ายมาไว้หน้าเดียว TANGTEM168 เกมเด็ดครบจนไม่ต้องไล่หาทีละเว็บ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ไม่ต้องเสียเวลาโยกเงินหรือสลับเว็บไปมาให้ยุ่งยาก เพราะ TANGTEM168 ได้ทำการรวบรวมเกมสล็อตตัวเด็ด ตัวฮิต และเกมแตกง่ายจากค่ายดังระดับโลกมาไว้ในหน้าเดียว ไม่ว่าจะเป็นเกมแนวสตรีทสุดมันส์
+      แนวแฟนตาซีอลังการ หรือแนวคลาสสิกเล่นง่าย
     </p>
-  </ContentBoxSevenThreeCyberCut>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ทุกเกมผ่านการคัดสรรมาแล้วว่าทำเงินได้จริงและภาพสวยสมจริง อยากเปลี่ยนฟีลเปลี่ยนบรรยากาศเมื่อไหร่ก็แค่คลิกเลือกเกมใหม่ในล็อบบี้ได้ทันที
+    </p>
+  </ContentBoxTwoPremium>
 
   <ProviderGrid />
 
-  <ContentBox3ThreeCyberCut
-    as="h2"
-    title="ระบบใหม่ของ DRACO65 ทำอะไรได้ไวขึ้น ถึงเล่นต่อได้แบบไม่สะดุดฟีล?"
-    titleleft="ระบบเบื้องหลังฉับไว"
-    titlecenter="ปั่นต่อได้ลื่นไหล"
-    titleright="รักษาจังหวะทำกำไร">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      เคล็ดลับความคล่องตัวของ DRACO65 อยู่ที่การพัฒนาระบบเบื้องหลังให้ประมวลผลได้อย่างฉับไว ไม่ว่าจะเป็นการสลับเปลี่ยนค่ายเกม การตัดยอดเงินที่แม่นยำ หรือการเชื่อมต่อเซิร์ฟเวอร์หลักโดยตรง
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">ทำให้ผู้เล่นสามารถปั่นเกมต่อกันได้อย่างลื่นไหล ไม่ต้องเจอปัญหากดสปินแล้วค้าง หรือคอยรีโหลดหน้าเว็บใหม่ให้เสียเวลา</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ความต่อเนื่องนี้เองที่ช่วยให้คุณรักษาจังหวะการทำกำไรได้อย่างมืออาชีพ</p>
-  </ContentBox3ThreeCyberCut>
-
-  <LoginRtpSection />
-
-  <ContentBoxSevenThreeNeumorphism as="h2" title="ฝาก-ถอน 3 วิ จัดการยอดทันใจ ไม่ต้องรอจนเสียจังหวะ">
+  <ContentBoxSevenThreeFloatingBadge as="h2" title="แจกตังเต็มระบบมีอะไรให้ตาม? เปิดสิทธิพิเศษที่เติมความคุ้มให้การเล่นน่าสนใจกว่าเดิม">
     <Picture
       slot="left"
-      src={imgDailyBonus}
+      src={imgDeposit20}
       loading="lazy"
       fetchpriority="low"
       widths={[200, 400, 600]}
@@ -187,25 +158,46 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่น DRACO65 ข้อความ โปรฝากรายวันสล็อต รับโบนัส 20% ฝากเงินครั้งแรกรับโบนัสทันที 20% และบรรทัดฝากขั้นต่ำ 100 รับเงินโบนัสสูงสุดไม่เกิน 1,000 บาท ทำยอดเทิร์นโอเวอร์ 5 เท่า ด้านบนเป็นโลโก้ DRACO 65 ตัวอักษรโครเมียมคู่กับป้าย truemoney ด้านซ้ายเป็นเทพอสูรผิวเขียวถือลูกแก้วเรืองแสงยืนคู่ชายชุดไทยสีเขียวสวมแว่นดำยกมือไหว้ บนพื้นเขียวเข้มแสงนีออน"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#22c55e]/35 shadow-[0_10px_30px_rgba(34,197,94,0.25)]"
+      alt="แบนเนอร์โปรโมชั่น TANGTEM168 ข้อความ ฝากนี้เกินคุ้ม รับทุนฟรีๆ ฝาก 20 รับ 100 ทำยอด 5 เท่า ถอนได้ 100 พร้อมบรรทัดเล่นได้แค่สล็อตเท่านั้น รับได้ทั้งวัน ซื้อฟรีสปินได้ และกดรับโบนัสก่อนฝาก สองข้างเป็นพรีเซนเตอร์หญิงชุดสีชมพูขาว ด้านบนเป็นโลโก้ TANGTEM168 รูปเทพเจ้าจีนถือทอง บนพื้นชมพูพาสเทลกับกองเหรียญทอง แถบล่างเรียงโลโก้ค่ายเกม"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fcc30b]/40 shadow-[0_10px_30px_rgba(252,195,11,0.25)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      เรื่องความเร็วการเงินคืออีกหนึ่งหัวใจสำคัญที่ DRACO65 ให้ความสำคัญสูงสุด ด้วยระบบฝาก-ถอนออโต้ไฮสปีดที่จัดการยอดเงินเสร็จสรรพภายใน 3 วิเท่านั้น ไม่ว่าจะเป็นการเติมทุนเพื่อลุยต่อ
-      หรือการถอนกำไรก้อนโตเข้าบัญชี ก็ทำได้ง่ายๆ ด้วยตัวเอง ไร้ขั้นตอนซับซ้อน ไม่ต้องรอแอดมินอนุมัติ เงินเข้าตรงเป๊ะทุกบาททุกสตางค์ ให้คุณมั่นใจและสบายใจได้ในทุกธุรกรรม
+      เรื่องความคุ้มค่าคืออีกหนึ่งจุดเด่นที่ทำให้ TANGTEM168 ครองใจนักเล่นได้อยู่หมัด ที่นี่มีกิจกรรมและสิทธิพิเศษมากมายคอยเติมทุนให้กับสมาชิกอย่างสม่ำเสมอ ไม่ว่าจะเป็นโปรโมชันต้อนรับ โบนัสประจำวัน
+      หรือเครดิตคืนยอดเสีย ทุกสิทธิประโยชน์ถูกออกแบบมาเพื่อเพิ่มรอบการปั่นและยืดระยะเวลาความสนุก ให้คุณมีโอกาสทำกำไรเพิ่มขึ้นโดยไม่ต้องแบกรับความเสี่ยงสูงจนเกินไป
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+  </ContentBoxSevenThreeFloatingBadge>
 
   <LatestWinners />
 
-  <ContentBox as="h2" title="DRACO65 เกมถึง ฟีเจอร์ดุ ระบบแรง ครบเครื่องสำหรับสายสล็อตยุคใหม่">
-    <div class="flex flex-col gap-4">
-      <p class="text-left text-base leading-relaxed">
-        สรุปได้เลยว่าถ้าคุณกำลังมองหาเว็บสล็อตที่ตอบโจทย์ความสะใจในทุกด้าน DRACO65 คือตัวเลือกที่ต้องลองเข้ามาสัมผัสด้วยตัวเองสักครั้ง ทั้งความหลากหลายของค่ายเกม ฟีเจอร์รางวัลสุดดุดัน
-        และระบบออโต้ที่เร็วแรงเกินต้าน
-      </p>
-      <p class="text-left text-base leading-relaxed">เป็นเว็บที่รวมทุกความต้องการของสายสล็อตยุคใหม่ไว้อย่างลงตัว ลองเข้ามาปั่นแล้วจะรู้ว่าความสนุกแบบเต็มสปีดเป็นยังไง จนต้องอยากบอกต่อเพื่อนแน่นอน</p>
-    </div>
+  <ContentBox3ThreeFloatingBadge
+    as="h2"
+    title="ระบบการเงินของ TANGTEM168 แบ่งทุกขั้นตอนชัด ใช้งานคล่องและตรวจสอบง่าย"
+    titleleft="แบ่งขั้นตอนชัดเจน"
+    titlecenter="จัดการเองได้ทันที"
+    titleright="คล่องตัวทุกการใช้งาน">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      หมดกังวลเรื่องการเงินไปได้เลย เพราะระบบการทำรายการของ TANGTEM168 ถูกจัดสรรมาอย่างมีระเบียบและเป็นระบบสุดๆ ทุกขั้นตอนถูกแบ่งออกอย่างชัดเจน ไม่ว่าจะเป็นการฝาก การถอน หรือการเช็กประวัติย้อนหลัง
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">ผู้เล่นสามารถจัดการทุกอย่างได้ด้วยตัวเองผ่านหน้าเว็บได้อย่างรวดเร็ว ไร้ขั้นตอนซับซ้อน</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ทำรายการจบได้ภายในเวลาไม่นาน ให้ความคล่องตัวสูงสุดในทุกการใช้งาน</p>
+  </ContentBox3ThreeFloatingBadge>
+
+  <LoginRtpSection />
+
+  <ContentBoxSpecial as="h2" title="ปลอดภัย 100% ตั้งแต่ข้อมูลสมาชิกไปจนถึงขั้นตอนทำรายการทางการเงิน">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      เรื่องความปลอดภัยคือหัวใจหลักที่ TANGTEM168 ให้ความสำคัญสูงสุด เว็บไซต์ใช้เทคโนโลยีการเข้ารหัสขั้นสูงเพื่อปกป้องข้อมูลส่วนตัวของสมาชิกทุกคน ไม่ให้รั่วไหลไปสู่ภายนอกได้อย่างสิ้นเชิง
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      รวมถึงระบบการเงินที่เชื่อมต่อตรงกับสถาบันการเงินชั้นนำ ป้องกันความเสี่ยงทุกรูปแบบ ให้คุณได้มั่นใจและลงเดิมพันได้อย่างสบายใจ ไร้กังวลในทุกครั้งที่ก้าวเข้ามาร่วมสนุก
+    </p>
+  </ContentBoxSpecial>
+
+  <ContentBox as="h2" title="รีวิว TANGTEM168 จากเกมเด็ดถึงระบบหลังบ้าน จัดความครบมาให้แบบเต็มสมชื่อ">
+    <p class="text-left text-base leading-relaxed">
+      สรุปภาพรวมจากการใช้งานจริง TANGTEM168 ถือเป็นเว็บสล็อตที่สอบผ่านในทุกมิติ ทั้งการรวบรวมเกมเด็ดจากค่ายดัง ความเสถียรของระบบหลังบ้านที่ไร้รอยต่อ และระบบการเงินที่รวดเร็วปลอดภัย
+      สมกับชื่อตังเต็มระบบอย่างแท้จริง ใครที่กำลังมองหาเว็บปั่นสล็อตคู่ใจที่เล่นแล้วสบายใจ ได้เงินจริง และมีความน่าเชื่อถือสูง บอกเลยว่าต้องลองเข้ามาสัมผัสด้วยตัวเองสักครั้ง แล้วคุณจะรู้ว่าเว็บคุณภาพของจริงเป็นอย่างไร
+    </p>
   </ContentBox>
 
   <ReviewCardSumo2 />
@@ -215,18 +207,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#14532d] px-4 py-3 text-sm font-black whitespace-nowrap text-[#04150a] shadow-[0_10px_30px_rgba(34,197,94,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(74,222,128,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#e09a05] px-4 py-3 text-sm font-black whitespace-nowrap text-[#2a0a2e] shadow-[0_10px_30px_rgba(252,195,11,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,168,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e2e8e4]/60 bg-[#062011]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#d6ecdd] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#4ade80] hover:bg-[#0a3318] hover:text-[#dcfce7] hover:shadow-[0_15px_40px_rgba(226,232,228,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#7e3ac7]/70 bg-[#2a0a2e]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f7e6c4] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fcc30b] hover:bg-[#3c0f52] hover:text-[#ffe9a8] hover:shadow-[0_15px_40px_rgba(126,58,199,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ DRACO65" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ TANGTEM168" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

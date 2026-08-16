@@ -8,12 +8,11 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// DRACO65: ไฟล์นี้เคยเป็นเขียวนีออนมาเก๊าของ MACAUBET (#dcffc0 / #8ef04a /
-// #59cb13 / #3b9b0d / #2c7a08 / #0f3a11 บนผิว #0a2c0d / #041b06 เนื้อความ
-// #e9f9dc และทอง #f6c445 บนป้ายคอลัมน์ขวา) ตอนนี้ย้ายมาเขียวมังกรนีออน —
-// #dcfce7 / #4ade80 / #22c55e / #15803d / #14532d / #052e16 บนผิว #0a3318 /
-// #062011 เนื้อความ #d6ecdd โดยสีรองเปลี่ยนจากทองเป็นเงิน/โครเมียม #e2e8e4
-// ตามตัวอักษร "65" ในโลโก้ ไม่มีเหลือง/ทองเหลืออยู่ในไฟล์นี้
+// TANGTEM168: ไฟล์นี้เคยเป็นเขียวมังกรนีออนของ DRACO65 (#dcfce7 / #4ade80 /
+// #22c55e / #15803d / #14532d / #052e16 บนผิว #0a3318 / #062011 เนื้อความ
+// #d6ecdd และเงิน/โครเมียม #e2e8e4) ตอนนี้ย้ายมาทองบนม่วงพลัม — #ffe9a8 /
+// #fcc30b / #e09a05 / #ce5a03 คู่กับม่วง #7e3ac7 / #3c0f52 บนผิว #3c0f52 /
+// #2a0a2e เนื้อความ #f7e6c4 ไม่มีเขียวเหลืออยู่ในไฟล์นี้
 //
 // `title` เป็นหัวข้อเดียวที่ component นี้ปล่อยออกมาได้ และมีไว้ให้บล็อกนี้แบก
 // section ของ docx ได้ ส่วนหัวคอลัมน์ทั้งสองยังเป็น <p>: มันตั้งชื่อแผง UI
@@ -27,24 +26,24 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#22c55e]/25 bg-[#0a3318]/90 p-8 text-[#d6ecdd] shadow-[0_10px_30px_rgba(34,197,94,0.15)] backdrop-blur-xl transition-all duration-500 hover:border-[#22c55e]/50 hover:shadow-[0_15px_40px_rgba(21,128,61,0.28)] md:p-10">
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#062011]/60 to-transparent opacity-80"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#fcc30b]/25 bg-[#3c0f52]/90 p-8 text-[#f7e6c4] shadow-[0_10px_30px_rgba(252,195,11,0.15)] backdrop-blur-xl transition-all duration-500 hover:border-[#fcc30b]/55 hover:shadow-[0_15px_40px_rgba(126,58,199,0.32)] md:p-10">
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#2a0a2e]/70 to-transparent opacity-80"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#22c55e]/30 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dcfce7] via-[#4ade80] to-[#052e16] shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#15803d] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#fcc30b]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a8] via-[#fcc30b] to-[#7e3ac7] shadow-[0_0_10px_rgba(252,195,11,0.55)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#ce5a03] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d6ecdd]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e6c4]">
         {
           titleleft && (
-            <p class="flex items-center gap-3 border-b border-[#22c55e]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#4ade80]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dcfce7] via-[#4ade80] to-[#052e16] shadow-[0_0_10px_rgba(34,197,94,0.45)]" />
+            <p class="flex items-center gap-3 border-b border-[#fcc30b]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#fcc30b]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a8] via-[#fcc30b] to-[#7e3ac7] shadow-[0_0_10px_rgba(252,195,11,0.5)]" />
               {titleleft}
             </p>
           )
@@ -52,11 +51,11 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d6ecdd] md:border-l md:border-[#14532d] md:pl-10">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e6c4] md:border-l md:border-[#7e3ac7]/50 md:pl-10">
         {
           titleright && (
-            <p class="flex items-center gap-3 border-b border-[#22c55e]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#4ade80]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#e2e8e4] via-[#22c55e] to-[#052e16] shadow-[0_0_10px_rgba(226,232,228,0.45)]" />
+            <p class="flex items-center gap-3 border-b border-[#fcc30b]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#fcc30b]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#c79bf0] via-[#7e3ac7] to-[#3c0f52] shadow-[0_0_10px_rgba(199,155,240,0.5)]" />
               {titleright}
             </p>
           )

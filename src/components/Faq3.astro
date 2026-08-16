@@ -11,7 +11,7 @@ export interface Props {
 
 const { title, faqs = [] } = Astro.props;
 
-// คำถาม render เป็น <span> ไม่ใช่ <h3> — docx ของแบรนด์นี้แบนราบ (H1 ×1 + H2 ×5)
+// คำถาม render เป็น <span> ไม่ใช่ <h3> — docx ของแบรนด์นี้แบนราบ (H1 ×1 + H2 ×6)
 // และ h2/h3 ที่ขึ้นหน้าเว็บถูกเทียบกับ checklist ของ brief ทุกรอบรีแบรนด์ FAQ ห้า
 // ข้อที่โผล่มาเป็น <h3> คือสิ่งที่ทำให้การเทียบนั้นไม่ตรง อีกอย่าง <span> เป็น
 // ตัวเลือกเดียวที่ปลอดภัยใน <summary> ซึ่ง content model เป็น phrasing content —
@@ -19,20 +19,20 @@ const { title, faqs = [] } = Astro.props;
 // ซึ่งเป็นหัวข้อเดียวที่ component นี้ปล่อยออกมา ห้ามใส่ <script>:
 // <details>/<summary> ทำ accordion ได้เองอยู่แล้ว
 //
-// SGD88: variant นี้ยังไม่เคยถูกรีธีมมาก่อน — ค้างสีทองหรูของ 249UP (#ffe9a8 /
-// #ffd86b / #f5b626 / #c98a12 บนผิว #150e05 / #1e1409 เนื้อความ #f0e4cd) รอบนี้
-// ย้ายมาที่ม่วงบานเย็นนีออน #f7d0ff / #e879f9 / #bc07e2 / #7a06a0 บนผิว #1b0d2e /
-// #2a1145 เนื้อความ #f3e8ff
+// TANGTEM168: ไฟล์นี้เคยเป็นม่วงบานเย็นนีออนของ SGD88 (#f7d0ff / #e879f9 /
+// #bc07e2 / #7a06a0 บนผิว #1b0d2e / #2a1145 เนื้อความ #f3e8ff) รอบนี้ย้ายมาทอง
+// บนม่วงพลัม — #ffe9a8 / #fcc30b / #e09a05 / #ce5a03 คู่กับม่วง #7e3ac7 /
+// #3c0f52 บนผิว #2a0a2e / #1c0620 เนื้อความ #f7e6c4
 ---
 
 <section class="relative z-10 mx-auto mb-10 w-full max-w-[950px] px-4 font-sans">
   {
     title && (
       <header class="mb-8 text-center">
-        <h2 class="bg-gradient-to-r from-[#f7d0ff] via-[#e879f9] to-[#7a06a0] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <h2 class="bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#ce5a03] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </h2>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#bc07e2] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#fcc30b] to-transparent" />
       </header>
     )
   }
@@ -40,8 +40,8 @@ const { title, faqs = [] } = Astro.props;
   <div class="space-y-3">
     {
       faqs.map((faq) => (
-        <details class="faq-item rounded-3xl border border-[#bc07e2]/30 bg-[#1b0d2e]/85 p-2 shadow-[0_10px_30px_rgba(5,1,24,0.8)] backdrop-blur-xl transition-all hover:border-[#bc07e2]/60 hover:bg-[#2a1145]/85">
-          <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left text-[#f3e8ff] transition-colors hover:text-[#e879f9]">
+        <details class="faq-item rounded-3xl border border-[#fcc30b]/30 bg-[#2a0a2e]/85 p-2 shadow-[0_10px_30px_rgba(28,6,32,0.8)] backdrop-blur-xl transition-all hover:border-[#fcc30b]/60 hover:bg-[#3c0f52]/85">
+          <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left text-[#f7e6c4] transition-colors hover:text-[#fcc30b]">
             <span class="flex-1 text-left text-sm leading-normal font-bold md:text-base">{faq.q}</span>
             <span aria-hidden="true" class="faq-icon ml-4 flex h-6 w-6 shrink-0 items-center justify-center text-2xl transition-transform duration-300 ease-in-out">
               +
@@ -49,7 +49,7 @@ const { title, faqs = [] } = Astro.props;
           </summary>
 
           <div class="faq-answer overflow-hidden">
-            <p class="px-4 pb-4 text-left text-base leading-relaxed text-[#f3e8ff]/85">{faq.a}</p>
+            <p class="px-4 pb-4 text-left text-base leading-relaxed text-[#f7e6c4]">{faq.a}</p>
           </div>
         </details>
       ))
@@ -70,7 +70,7 @@ const { title, faqs = [] } = Astro.props;
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    color: #e879f9;
+    color: #fcc30b;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;

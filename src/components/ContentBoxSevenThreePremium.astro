@@ -8,11 +8,11 @@ export interface Props {
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 const rightHeading = titleright ?? title;
 
-// DRACO65: ไฟล์นี้เคยเป็นเขียวนีออนมาเก๊า + ทองของ MACAUBET (#dcffc0 / #8ef04a /
-// #59cb13 / #3b9b0d / #2c7a08 / #0f3a11 บนผิว #0a2c0d / #020b01 เนื้อความ
-// #e9f9dc และทอง #f6c445 บนเส้นขอบตอน hover) ตอนนี้ย้ายมาเขียวมังกรนีออน —
-// #dcfce7 / #4ade80 / #22c55e / #15803d / #14532d / #052e16 บนผิว #0a3318 /
-// #040d07 เนื้อความ #d6ecdd โดยสีรองเป็นเงิน/โครเมียม #e2e8e4 ไม่มีทองเหลืออยู่
+// TANGTEM168: ไฟล์นี้เคยเป็นเขียวมังกรนีออนของ DRACO65 (#dcfce7 / #4ade80 /
+// #22c55e / #15803d / #14532d / #052e16 บนผิว #0a3318 / #040d07 เนื้อความ
+// #d6ecdd และเงิน/โครเมียม #e2e8e4 บนเส้นขอบตอน hover) ตอนนี้ย้ายมาทองบนม่วงพลัม
+// — #ffe9a8 / #fcc30b / #e09a05 / #ce5a03 คู่กับม่วง #7e3ac7 / #3c0f52 บนผิว
+// #3c0f52 / #1c0620 เนื้อความ #f7e6c4 ไม่มีเขียวเหลืออยู่ในไฟล์นี้
 //
 // titleleft เคย render เป็น <h2> คู่กับ rightHeading ทำให้ docx หนึ่งหัวข้อกลาย
 // เป็นสองหัวข้อ ตอนนี้เป็น <p> ป้ายคอลัมน์ (คลาสเดิม) ส่วนหัวข้อจริงรับผ่าน
@@ -24,15 +24,15 @@ const rightHeading = titleright ?? title;
 
 <section class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#22c55e]/30 bg-gradient-to-br from-[#0a3318]/92 to-[#040d07]/88 p-8 text-[#d6ecdd] shadow-[0_10px_30px_rgba(34,197,94,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#e2e8e4]/60 hover:shadow-[0_15px_40px_rgba(21,128,61,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#22c55e]/22 blur-[60px] transition-all duration-500 group-hover:bg-[#4ade80]/30"></div>
-    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#052e16]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#15803d]/40"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#fcc30b]/30 bg-gradient-to-br from-[#3c0f52]/92 to-[#1c0620]/88 p-8 text-[#f7e6c4] shadow-[0_10px_30px_rgba(252,195,11,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe9a8]/65 hover:shadow-[0_15px_40px_rgba(126,58,199,0.38)] md:p-10">
+    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#7e3ac7]/45 blur-[60px] transition-all duration-500 group-hover:bg-[#fcc30b]/35"></div>
+    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#3c0f52]/65 blur-[60px] transition-all duration-500 group-hover:bg-[#ce5a03]/40"></div>
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d6ecdd]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e6c4]">
         {
           titleleft && (
-            <p class="bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#15803d] bg-clip-text text-center text-xl leading-normal font-black tracking-widest text-transparent uppercase md:text-left">
+            <p class="bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#ce5a03] bg-clip-text text-center text-xl leading-normal font-black tracking-widest text-transparent uppercase md:text-left">
               {titleleft}
             </p>
           )
@@ -40,10 +40,10 @@ const rightHeading = titleright ?? title;
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d6ecdd] md:border-l md:border-[#14532d] md:pl-10">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e6c4] md:border-l md:border-[#7e3ac7]/50 md:pl-10">
         {
           rightHeading && (
-            <HeadingTag class="mb-2 bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#15803d] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase">
+            <HeadingTag class="mb-2 bg-gradient-to-r from-[#ffe9a8] via-[#fcc30b] to-[#ce5a03] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase">
               {rightHeading}
             </HeadingTag>
           )
