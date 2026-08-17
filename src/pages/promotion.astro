@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxCyberCut.astro";
+import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement2.astro";
+import Announcement from "../components/Announcement3.astro";
 
 import { Picture } from "astro:assets";
 
@@ -14,32 +14,34 @@ import { Picture } from "astro:assets";
 // never a body.
 //
 // Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The กงล้อ88 drop (mtime 2026-08-16) is FOUR slides:
-//   slide1 = คืนยอดเสียทุกวัน 5%
-//   slide2 = แนะนำเพื่อนรับ 10%
-//   slide3 = ขาใหญ่ ฝากต่อเนื่องประจำเดือน · ฝาก 20,000 ขึ้นไป รับโบนัสสูงสุด 30,000
-//   slide4 = ฝากต่อเนื่อง · ฝาก 100 ครบ 10 วันรับ 100 ถึง ฝาก 1,000 รับ 1,000
+// The MAHAHENG333 drop (mtime 2026-08-17) is FOUR slides:
+//   slide1 = แชร์ลิงก์รับทรัพย์ · เครดิตฟรีเพียงชวนเพื่อนมาเล่น
+//   slide2 = โปรโมชั่นกงล้อรับโชค · ลุ้นรางวัลใหญ่ทองคำหนัก 1 บาท
+//   slide3 = คืนยอดเสีย 4% ทุกวันอาทิตย์ เวลา 14.00 น. ขึ้นไป
+//   slide4 = อาร์ตเวิร์กชุดเดียวกับ slide3 ต่างกันแค่ระดับพิกเซล ไม่ใช่โปรคนละตัว
+//            จึงไม่ import ที่นี่ — วางคู่กันในกริดเดียวมันอ่านเป็นบั๊กการ render
+//            ไม่ใช่โปรสองรายการ หน้านี้แสดงโปรที่ต่างกันจริงสามรายการ ส่วน
+//            SmoothCarousel บนหน้าแรกใช้ slide4 อยู่แล้ว ไฟล์จึงไม่ได้ถูกทิ้ง
 // The mapping between file number and promotion changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after the promotion instead of after the file.
 //
 // banner.png / banner2-4.png (mtime 2026-08-04) are leftovers from an older
 // brand and must never be imported here: an imported image is an emitted image
-// even when nothing renders it. Only what is printed on each banner may be
-// stated on this page.
-import proCashbackDaily from "../assets/slide1.png";
-import proReferFriend from "../assets/slide2.png";
-import proHighRollerMonthly from "../assets/slide3.png";
-import proDepositStreak from "../assets/slide4.png";
+// even when nothing renders it. banner1-mobile.png belongs to MainLayout's hero
+// <picture> alone. Only what is printed on each banner may be stated on this page.
+import proReferFriend from "../assets/slide1.png";
+import proLuckyWheel from "../assets/slide2.png";
+import proCashback from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 159.
+// byte count reads ~3x too long). This one measures 158.
 const pageDescription =
-  "รวมโปรโมชั่น กงล้อ88 เว็บตรงสล็อตแตกหนัก ทั้งคืนยอดเสียทุกวัน 5% แนะนำเพื่อนรับ 10% โปรขาใหญ่ และฝากต่อเนื่องครบ 10 วันรับโบนัสเพิ่ม เงื่อนไขต่างกันแต่ละรายการ";
+  "รวมโปรโมชั่น MAHAHENG333 คาสิโนสด ทั้งแชร์ลิงก์ชวนเพื่อนรับเครดิตฟรี กงล้อรับโชคลุ้นทองคำ และคืนยอดเสีย 4% ทุกวันอาทิตย์ เงื่อนไขรับสิทธิ์ต่างกันในแต่ละรายการ";
 
-const pageTitle = "โปรโมชั่น กงล้อ88 คืนยอดเสียทุกวัน 5% แนะนำเพื่อนรับ 10% และโปรฝากต่อเนื่อง";
+const pageTitle = "โปรโมชั่น MAHAHENG333 แชร์ลิงก์รับเครดิตฟรี กงล้อรับโชค และคืนยอดเสีย 4%";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -48,21 +50,21 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proCashbackDaily.src,
+  primaryImagePath: proReferFriend.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
 // two-up from sm: inside that same padding plus one 2rem grid gap.
-// ContentBoxCyberCut keeps p-8 at every breakpoint and caps at max-w-7xl
-// (1280px), so the column stops growing at 592px once the viewport passes
-// 1312px.
-const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1311px) calc((100vw - 8rem) / 2), 592px";
+// ContentBoxPremium goes p-8 → md:p-10 and caps at max-w-[1400px], so the
+// column stops growing at 644px once the viewport passes 1432px.
+const imageSizes =
+  "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#ffcc4b]/35 object-contain shadow-[0_10px_30px_rgba(255,204,75,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe974]/70 hover:shadow-[0_15px_40px_rgba(255,106,19,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#e8b923]/35 object-contain shadow-[0_10px_30px_rgba(232,185,35,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe98a]/70 hover:shadow-[0_15px_40px_rgba(180,35,28,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
-// drop — the column is drawn up to 592px, so nothing above 600 buys detail.
+// drop — the column is drawn up to 644px, so nothing above 600 buys detail.
 const imageWidths = [320, 440, 600];
 ---
 
@@ -71,32 +73,18 @@ const imageWidths = [320, 440, 600];
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น กงล้อ88" as="h1">
+  <ContentBox title="โปรโมชั่น MAHAHENG333" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffcc4b]">กงล้อ88</strong> เปิดให้รับอยู่ในรอบนี้ทั้งหมด ทั้งเครดิตคืนยอดเสียรายวัน ค่าแนะนำเพื่อน โปรขาใหญ่ที่คิดจากยอดฝากสะสมประจำเดือน
-        และโบนัสฝากต่อเนื่องครบสิบวัน แต่ละรายการคิดจากยอดฝากคนละชุด มีเพดานโบนัส เงื่อนไขทำยอด และรอบการรับสิทธิ์เป็นของตัวเอง
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#e8b923]">MAHAHENG333</strong> เปิดให้สมาชิกคาสิโนสดรับอยู่ในรอบนี้ทั้งหมด ทั้งเครดิตฟรีจากการแชร์ลิงก์ชวนเพื่อน
+        กงล้อรับโชคที่ลุ้นรางวัลใหญ่เป็นทองคำ และเครดิตคืนยอดเสียประจำทุกวันอาทิตย์ แต่ละรายการคิดจากยอดคนละชุด มีเพดานเครดิต เงื่อนไขทำยอด และรอบเวลาการรับสิทธิ์เป็นของตัวเอง
         จึงควรอ่านรายละเอียดบนแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={proCashbackDaily}
-          alt="แบนเนอร์โปรโมชั่นคืนยอดเสียทุกวัน 5% ของ กงล้อ88 พร้อมพรีเซนเตอร์หญิงชุดเลื่อมสีทองถือกล่องของขวัญ"
-          loading="lazy"
-          fetchpriority="low"
-          widths={imageWidths}
-          sizes={imageSizes}
-          class={imageClass}
-          decoding="async"
-          formats={["avif", "webp"]}
-          fallbackFormat="webp"
-          quality={80}
-        />
-
-        <Picture
           src={proReferFriend}
-          alt="แบนเนอร์โปรโมชั่นแนะนำเพื่อนรับ 10% ของ กงล้อ88 พร้อมพรีเซนเตอร์หญิงชุดเลื่อมสีทองถือโทรศัพท์มือถือ"
+          alt="แบนเนอร์โปรโมชั่นแชร์ลิงก์รับทรัพย์ของ MAHAHENG333 ข้อความเครดิตฟรีเพียงชวนเพื่อนมาเล่น พร้อมผู้หญิงชุดดำชี้ไปที่หน้าจอมือถือที่เปิดหน้าคัดลอกลิงก์ชวนเพื่อน ข้างวงล้อรูเล็ตและกองชิปคาสิโนบนพื้นหลังทอง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -109,8 +97,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proHighRollerMonthly}
-          alt="แบนเนอร์โปรโมชั่นขาใหญ่ ฝากต่อเนื่องประจำเดือน ฝาก 20,000 ขึ้นไป รับโบนัสสูงสุด 30,000 พร้อมตารางฝากครบ 3 วันรับ 1,200 ไปจนถึงฝากครบ 30 วันรับ 30,000"
+          src={proLuckyWheel}
+          alt="แบนเนอร์โปรโมชั่นกงล้อรับโชคของ MAHAHENG333 ระบุลุ้นรับรางวัลใหญ่ทองคำหนัก 1 บาท พร้อมผู้หญิงชุดแดงยืนข้างมือถือที่เปิดวงล้อหมุนรางวัล ไพ่โพดำโพดอก สร้อยคอทองคำบนกล่องกำมะหยี่แดง และทองแท่ง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -123,8 +111,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proDepositStreak}
-          alt="แบนเนอร์โปรโมชั่นฝากต่อเนื่อง ฝาก 100 ครบ 10 วันรับ 100 ไล่ขึ้นไปจนถึงฝาก 1,000 ครบ 10 วันรับ 1,000 พร้อมภาพมังกรทองพ่นไฟ"
+          src={proCashback}
+          alt="แบนเนอร์โปรโมชั่นคืนยอดเสีย 4% ทุกวันอาทิตย์ ตั้งแต่เวลา 14.00 น. ขึ้นไป ของ MAHAHENG333 พร้อมผู้หญิงชุดดำแถบแดงถือธนบัตรดอลลาร์คลี่เป็นพัด บนพื้นหลังทองประกาย"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -140,8 +128,8 @@ const imageWidths = [320, 440, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffe974]/60 bg-gradient-to-r from-[#ffe974] via-[#ffcc4b] to-[#eb9a1d] px-10 py-3.5 text-lg font-black text-[#1e1105] shadow-[0_10px_30px_rgba(255,204,75,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,106,19,0.45)]">
-          สมัครสมาชิก กงล้อ88
+          class="flex items-center justify-center rounded-lg border border-[#ffe98a]/60 bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-[#a5760a] px-10 py-3.5 text-lg font-black text-[#0a0704] shadow-[0_10px_30px_rgba(232,185,35,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(180,35,28,0.45)]">
+          สมัครสมาชิก MAHAHENG333
         </a>
       </div>
     </div>

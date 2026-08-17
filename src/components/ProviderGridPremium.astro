@@ -6,39 +6,51 @@ import img3 from "../assets/providers/game3.avif";
 import img4 from "../assets/providers/game4.avif";
 import img5 from "../assets/providers/game5.avif";
 import img6 from "../assets/providers/game6.avif";
-
-// IOK66: remapped off JUDTEM168's light gold (#feeb33 / #fac42c / #e4a434 /
-// #cc8425 / #7a4a0d over #150d04 / #1e1206 / #0a0602, muted #d8c49a) onto this
-// brand's royal gold + crimson — #ffe9a3 / #f0cd6a / #e3b64a / #b8862c /
-// #5c3a10 over #150c07 / #1c110a / #0d0705, muted #ddc8a4.
 //
-// Widget, not article: the board title is a <p> and the <section> carries the
-// accessible name. The card labels are the images' alt text, not headings.
+// ชื่อค่ายในลิสต์นี้ต้องตรงกับ "โลโก้ที่พิมพ์อยู่บนรูปจริง" เพราะ alt ถูกประกอบจาก
+// ชื่อนั้น — ไฟล์ในโฟลเดอร์ providers/ อ่านออกมาได้ตามนี้ game1 = PG (Pocket Games
+// Soft), game2 = SexySlot, game3 = SlotXO, game4 = Joker, game5 = JILI,
+// game6 = PP SLOT (Pragmatic Play) ถ้าจะเปลี่ยนชื่อค่ายของช่องไหน ต้องเปลี่ยนไฟล์
+// รูปตามด้วย ห้ามตั้งชื่อค่ายที่โฟลเดอร์นี้ไม่มีโลโก้อยู่จริง
+//
+// MAHAHENG333: ย้ายจากทองราชวงศ์คู่แดงเลือดหมูของ IOK66 (#ffe9a3 / #f0cd6a /
+// #e3b64a / #b8862c / #5c3a10 บนผิว #150c07 / #1c110a / #0d0705 ข้อความรอง
+// #ddc8a4) มาที่ทองมังกรจีนบนดำ — #ffe98a / #e8b923 / #a5760a คู่แดง #b4231c /
+// #6d1410 บนผิว #221708 / #15100a / #0a0704 / #33230b เนื้อความ #f3e2b8 ข้อความรอง
+// #c2a469
+//
+// Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
+// assistive tech ชื่อค่ายอยู่ใน alt ของรูป ไม่ใช่หัวข้อ
 const providers = [
-  { alt: "PG Soft", users: "4,592", isHot: true, img: img1 },
-  { alt: "Joker Gaming", users: "2,184", isHot: true, img: img2 },
-  { alt: "JILI", users: "3,845", isHot: true, img: img3 },
-  { alt: "Evolution", users: "2,901", isHot: true, img: img4 },
-  { alt: "SA Gaming", users: "1,754", isHot: false, img: img5 },
-  { alt: "Sexy Baccarat", users: "3,245", isHot: true, img: img6 },
+  { alt: "PG (Pocket Games Soft)", users: "4,592", isHot: true, img: img1 },
+  { alt: "SexySlot", users: "2,184", isHot: true, img: img2 },
+  { alt: "SlotXO", users: "3,845", isHot: false, img: img3 },
+  { alt: "Joker", users: "2,901", isHot: true, img: img4 },
+  { alt: "JILI", users: "1,754", isHot: false, img: img5 },
+  { alt: "Pragmatic Play", users: "3,245", isHot: true, img: img6 },
 ];
 ---
 
-<section aria-label="ค่ายเกมลิขสิทธิ์แท้ที่ส่งตรงจากค่ายแม่มาไว้ใน IOK66" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
+<section aria-label="ค่ายเกมพันธมิตรที่ยกมาไว้ในล็อบบี้เดียวของ MAHAHENG333" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#e3b64a]/30 bg-[#150c07]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(227,182,74,0.18)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(227,182,74,0.7)]">🎰</span>
-    <p class="bg-gradient-to-r from-[#ffe9a3] via-[#e3b64a] to-[#b8862c] bg-clip-text text-3xl font-black tracking-wide text-transparent">ค่ายเกมลิขสิทธิ์แท้ที่ส่งตรงจากค่ายแม่มาไว้ใน IOK66</p>
-    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e3b64a] to-transparent"></div>
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#e8b923]/30 bg-[#221708]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(232,185,35,0.18)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(232,185,35,0.7)]">🐉</span>
+    <p class="bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-[#a5760a] bg-clip-text text-3xl font-black tracking-wide text-transparent">
+      ค่ายเกมพันธมิตรที่ยกมาไว้ในล็อบบี้เดียวของ MAHAHENG333
+    </p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#c2a469]">
+      ทุกค่ายเปิดให้เข้าใช้งานจากบัญชีเดียว กดสลับห้องเดิมพันได้ทันทีโดยไม่ต้องโยกเงินหรือออกจากระบบ
+    </p>
+    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e8b923] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
     {
       providers.map((p) => (
-        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#1c110a] shadow-[0_10px_30px_rgba(227,182,74,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(227,182,74,0.3)]">
-          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#5c3a10] transition-all duration-500 group-hover:border-[#e3b64a]/60 group-hover:shadow-[inset_0_0_20px_rgba(227,182,74,0.25)]" />
+        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#15100a] shadow-[0_10px_30px_rgba(232,185,35,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(232,185,35,0.3)]">
+          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#33230b] transition-all duration-500 group-hover:border-[#e8b923]/60 group-hover:shadow-[inset_0_0_20px_rgba(232,185,35,0.25)]" />
 
-          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#5c3a10] bg-[#0d0705]/85 px-3 py-1.5 text-[10px] font-medium text-[#ddc8a4] backdrop-blur-md transition-colors group-hover:text-[#ffe9a3]">
+          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#33230b] bg-[#0a0704]/85 px-3 py-1.5 text-[10px] font-medium text-[#c2a469] backdrop-blur-md transition-colors group-hover:text-[#ffe98a]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
@@ -46,7 +58,7 @@ const providers = [
           </div>
 
           {p.isHot && (
-            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#b8862c]/60 bg-gradient-to-r from-[#ffe9a3] to-[#e3b64a] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#0d0705] shadow-md">
+            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#a5760a]/60 bg-gradient-to-r from-[#ffe98a] to-[#e8b923] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#0a0704] shadow-md">
               <span aria-hidden="true" class="animate-pulse">
                 🔥
               </span>{" "}
@@ -56,7 +68,7 @@ const providers = [
 
           <Picture
             src={p.img}
-            alt={`โลโก้ค่ายเกม ${p.alt} ที่เปิดให้เล่นบน IOK66`}
+            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายพันธมิตรที่เปิดให้เข้าเล่นบน MAHAHENG333`}
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="lazy"
@@ -69,7 +81,7 @@ const providers = [
 
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#e3b64a]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#e8b923]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         </div>
       ))

@@ -8,12 +8,11 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright } = Astro.props;
 
-// DRACO65: ไฟล์นี้เคยเป็นเขียวนีออนมาเก๊าของ MACAUBET (#dcffc0 / #8ef04a /
-// #59cb13 / #3b9b0d / #2c7a08 / #0f3a11 บนผิว #0a2c0d / #020b01 เนื้อความ
-// #e9f9dc และทอง #f6c445 บนจุดนำหน้าป้ายคอลัมน์) ตอนนี้ย้ายมาเขียวมังกรนีออน —
-// #dcfce7 / #4ade80 / #22c55e / #15803d / #14532d / #052e16 บนผิว #0a3318 /
-// #040d07 เนื้อความ #d6ecdd โดยจุดนำหน้าเปลี่ยนเป็นเงิน/โครเมียม #e2e8e4
-// ไม่มีทองเหลืออยู่ในไฟล์นี้
+// GALA89: ไฟล์นี้เคยเป็นเขียวมังกรนีออนของแบรนด์ก่อน (#dcfce7 / #4ade80 / #22c55e /
+// #15803d / #14532d / #052e16 บนผิว #0a3318 / #040d07 เนื้อความ #d6ecdd และจุดนำ
+// หน้าป้ายคอลัมน์สีเงิน #e2e8e4) ตอนนี้ย้ายมาชมพูกลอสคู่ทอง — ชมพู #ff4d9c /
+// #d41c6b / #9e154a / #f9a8cd กับทอง #ffe0a3 / #f0c274 / #b8801f บนผิว #3c0214 /
+// #1f0311 / #12010a เนื้อความ #f7dce8 ไม่มีเขียวเหลืออยู่ในไฟล์นี้
 //
 // ป้ายสามคอลัมน์เป็น <p> (คลาสเดิม ไม่ใช่ <h3>) เพราะ docx ของแบรนด์นี้แบน
 // H1 + H2 ล้วน หัวข้อ section รับผ่าน `title` + `as` ตัวเดียว
@@ -21,46 +20,46 @@ const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright } = Ast
 
 <section class="mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#22c55e]/30 bg-[#0a3318]/88 p-8 text-[#d6ecdd] shadow-[0_10px_30px_rgba(34,197,94,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#dcfce7]/60 hover:shadow-[0_15px_40px_rgba(21,128,61,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#052e16]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#15803d]/45"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#d41c6b]/30 bg-[#3c0214]/88 p-8 text-[#f7dce8] shadow-[0_10px_30px_rgba(212,28,107,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe0a3]/60 hover:shadow-[0_15px_40px_rgba(240,194,116,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#9e154a]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#d41c6b]/45"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#22c55e]/30 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dcfce7] via-[#4ade80] to-[#052e16] shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#15803d] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#d41c6b]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe0a3] via-[#f0c274] to-[#d41c6b] shadow-[0_0_10px_rgba(212,28,107,0.5)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#ffe0a3] via-[#f0c274] to-[#ff4d9c] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      <article class="flex flex-col gap-3 border-b border-[#14532d] pb-8 text-left text-base leading-relaxed text-[#d6ecdd] md:border-r md:border-b-0 md:pr-8 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#5a0526] pb-8 text-left text-base leading-relaxed text-[#f7dce8] md:border-r md:border-b-0 md:pr-8 md:pb-0">
         {
           titleleft && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#4ade80] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e2e8e4] shadow-[0_0_8px_rgba(226,232,228,0.9)]" /> {titleleft}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f0c274] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff4d9c] shadow-[0_0_8px_rgba(255,77,156,0.9)]" /> {titleleft}
             </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 border-b border-[#14532d] pb-8 text-left text-base leading-relaxed text-[#d6ecdd] md:border-r md:border-b-0 md:px-4 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#5a0526] pb-8 text-left text-base leading-relaxed text-[#f7dce8] md:border-r md:border-b-0 md:px-4 md:pb-0">
         {
           titlecenter && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#4ade80] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e2e8e4] shadow-[0_0_8px_rgba(226,232,228,0.9)]" /> {titlecenter}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f0c274] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff4d9c] shadow-[0_0_8px_rgba(255,77,156,0.9)]" /> {titlecenter}
             </p>
           )
         }
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#d6ecdd] md:pl-8">
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f7dce8] md:pl-8">
         {
           titleright && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#4ade80] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#e2e8e4] shadow-[0_0_8px_rgba(226,232,228,0.9)]" /> {titleright}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f0c274] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff4d9c] shadow-[0_0_8px_rgba(255,77,156,0.9)]" /> {titleright}
             </p>
           )
         }

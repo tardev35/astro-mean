@@ -16,47 +16,46 @@ const { title, faqs = [] } = Astro.props;
 // FAQ ห้าข้อที่โผล่มาเป็น <h3> คือสิ่งที่ทำให้การเทียบนั้นไม่ตรง อีกอย่าง <span>
 // เป็นตัวเลือกเดียวที่ปลอดภัยใน <summary> ซึ่ง content model เป็น phrasing
 // content — <p> ตรงนั้นไม่ถูกต้องตามสเปก ชื่อ section มาจาก <h2> ที่ขับด้วย prop
-// `title` ซึ่งย้อนกลับไปหา brief ได้จริง
+// `title` ซึ่งย้อนกลับไปหา brief ได้จริง จึงเป็นหัวข้อเดียวที่ไฟล์นี้ปล่อยออกมา
 //
-// DRACO65: ย้ายจากเหลืองสายฟ้าไฟฟ้าของ THUNDER87 (#fff89a / #fae61c / #8a7405)
-// แล้ว PHANTOM569 พาไปม่วงโกธิค #ede9fe / #b794ff / #8b5cf6 คู่ #6d28d9 /
-// #4c1d95 บนผิว #1c0343 / #12002b เนื้อความ #ded4f5 ป้าย "?" เป็นทอง #ffe9a8 /
-// #f6c445 — รอบนี้เป็นเขียวมังกรนีออน #dcfce7 / #4ade80 / #22c55e คู่เขียวเข้ม
-// #15803d / #14532d บนผิว #062011 / #04150a เนื้อความ #d6ecdd และป้าย "?" รับ
-// เขียวอ่อนไล่เข้ม แบรนด์นี้ไม่มีเหลืองและไม่มีทองเหลืออยู่
+// MAHAHENG333: ย้ายจากเขียวมังกรนีออนของ DRACO65 (#dcfce7 / #4ade80 / #22c55e คู่
+// เขียวเข้ม #15803d / #14532d บนผิว #062011 / #04150a เนื้อความ #d6ecdd) มาที่ทอง
+// มังกรจีนบนดำ — ทอง #ffe98a / #e8b923 / #a5760a คู่แดง #b4231c / #6d1410 บนผิว
+// #221708 / #15100a / #0a0704 / #33230b เนื้อความ #f3e2b8 ข้อความรอง #c2a469
+// ไม่มีเขียวเหลืออยู่ในไฟล์
 ---
 
 <section class="mx-auto max-w-[950px] space-y-6 px-4 py-6 font-sans">
   {
     title && (
       <header class="mb-8 text-center">
-        <h2 class="bg-gradient-to-r from-[#dcfce7] via-[#4ade80] to-[#22c55e] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <h2 class="bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-[#a5760a] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </h2>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#22c55e] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e8b923] to-transparent" />
       </header>
     )
   }
 
   {
     faqs.map((faq) => (
-      <div class="group relative bg-[#14532d] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#dcfce7] via-[#22c55e] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
+      <div class="group relative bg-[#33230b] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
 
-        <details class="faq-item relative bg-[#062011] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
+        <details name="faq-mahaheng333" class="faq-item relative bg-[#221708] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
           <summary class="flex w-full cursor-pointer items-center gap-4 text-left">
             <span
               aria-hidden="true"
-              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#dcfce7] to-[#4ade80] font-black text-[#04150a] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#ffe98a] to-[#e8b923] font-black text-[#0a0704] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
               ?
             </span>
-            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#d6ecdd]">{faq.q}</span>
-            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#4ade80] transition-transform duration-300">
+            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#f3e2b8]">{faq.q}</span>
+            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#e8b923] transition-transform duration-300">
               ▼
             </span>
           </summary>
 
-          <p class="faq-answer mt-4 border-l-2 border-[#22c55e]/50 pl-4 text-left text-base leading-relaxed text-[#d6ecdd]/85">{faq.a}</p>
+          <p class="faq-answer mt-4 border-l-2 border-[#e8b923]/50 pl-4 text-left text-base leading-relaxed text-[#f3e2b8]/85">{faq.a}</p>
         </details>
       </div>
     ))
