@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement3.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
@@ -13,35 +13,34 @@ import { Picture } from "astro:assets";
 // read, in smaller letters. The docx gives this page a Title and a Meta and
 // never a body.
 //
-// Named for the promotion each banner ACTUALLY shows, not for its file number.
-// The MAHAHENG333 drop (mtime 2026-08-17) is FOUR slides:
-//   slide1 = แชร์ลิงก์รับทรัพย์ · เครดิตฟรีเพียงชวนเพื่อนมาเล่น
-//   slide2 = โปรโมชั่นกงล้อรับโชค · ลุ้นรางวัลใหญ่ทองคำหนัก 1 บาท
-//   slide3 = คืนยอดเสีย 4% ทุกวันอาทิตย์ เวลา 14.00 น. ขึ้นไป
-//   slide4 = อาร์ตเวิร์กชุดเดียวกับ slide3 ต่างกันแค่ระดับพิกเซล ไม่ใช่โปรคนละตัว
-//            จึงไม่ import ที่นี่ — วางคู่กันในกริดเดียวมันอ่านเป็นบั๊กการ render
-//            ไม่ใช่โปรสองรายการ หน้านี้แสดงโปรที่ต่างกันจริงสามรายการ ส่วน
-//            SmoothCarousel บนหน้าแรกใช้ slide4 อยู่แล้ว ไฟล์จึงไม่ได้ถูกทิ้ง
-// The mapping between file number and promotion changes with every asset drop,
+// Named for what each banner ACTUALLY prints, not for its file number.
+// The MONACO89 drop (mtime 2026-08-18) is THREE usable slides:
+//   slide1 = เว็บไซต์สล็อต API แท้ · ไม่ผ่านเอเย่นต์ · ส่งตรงจากเซิร์ฟหลัก
+//   slide2 = เว็บตรง ไม่มีขั้นต่ำ · ทรูวอเลท · บริการ 24 ชม.
+//   slide3 = อันดับ 1 ในทุกๆ เรื่องของการเดิมพัน · ฝาก-ถอน ออโต้ · จ่ายตรงทุกยอด
+// slide4.png is STALE artwork left over from the PREVIOUS brand — it still
+// prints that brand's logo and LINE id, so it must not be imported here or
+// rendered anywhere. The file stays on disk as inventory; only the import is gone.
+// The mapping between file number and artwork changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
-// are named after the promotion instead of after the file.
+// are named after what is printed instead of after the file.
 //
 // banner.png / banner2-4.png (mtime 2026-08-04) are leftovers from an older
 // brand and must never be imported here: an imported image is an emitted image
-// even when nothing renders it. banner1-mobile.png belongs to MainLayout's hero
+// even when nothing renders it. banner1-mobile.* belongs to MainLayout's hero
 // <picture> alone. Only what is printed on each banner may be stated on this page.
-import proReferFriend from "../assets/slide1.png";
-import proLuckyWheel from "../assets/slide2.png";
-import proCashback from "../assets/slide3.png";
+import promoApiDirect from "../assets/slide1.png";
+import promoWebtrong from "../assets/slide2.png";
+import promoRankOne from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 158.
+// byte count reads ~3x too long). This one measures 153.
 const pageDescription =
-  "รวมโปรโมชั่น MAHAHENG333 คาสิโนสด ทั้งแชร์ลิงก์ชวนเพื่อนรับเครดิตฟรี กงล้อรับโชคลุ้นทองคำ และคืนยอดเสีย 4% ทุกวันอาทิตย์ เงื่อนไขรับสิทธิ์ต่างกันในแต่ละรายการ";
+  "รวมโปรโมชั่น MONACO89 สล็อตพรีเมียมระบบตรง API แท้ ดูสิทธิ์ที่เปิดให้สมาชิกรับอยู่ในรอบนี้ได้จากแบนเนอร์ในหน้าเดียว เงื่อนไขรับสิทธิ์ต่างกันในแต่ละรายการ";
 
-const pageTitle = "โปรโมชั่น MAHAHENG333 แชร์ลิงก์รับเครดิตฟรี กงล้อรับโชค และคืนยอดเสีย 4%";
+const pageTitle = "โปรโมชั่น MONACO89 สล็อตพรีเมียมระบบตรง API แท้ โบนัสแตกบ่อย ไม่ล็อกยูส";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -50,7 +49,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: proReferFriend.src,
+  primaryImagePath: promoApiDirect.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
@@ -61,7 +60,7 @@ const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#e8b923]/35 object-contain shadow-[0_10px_30px_rgba(232,185,35,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe98a]/70 hover:shadow-[0_15px_40px_rgba(180,35,28,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#ef8f22]/35 object-contain shadow-[0_10px_30px_rgba(239,143,34,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffd77a]/70 hover:shadow-[0_15px_40px_rgba(209,32,26,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
 // drop — the column is drawn up to 644px, so nothing above 600 buys detail.
@@ -73,18 +72,18 @@ const imageWidths = [320, 440, 600];
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น MAHAHENG333" as="h1">
+  <ContentBox title="โปรโมชั่น MONACO89" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#e8b923]">MAHAHENG333</strong> เปิดให้สมาชิกคาสิโนสดรับอยู่ในรอบนี้ทั้งหมด ทั้งเครดิตฟรีจากการแชร์ลิงก์ชวนเพื่อน
-        กงล้อรับโชคที่ลุ้นรางวัลใหญ่เป็นทองคำ และเครดิตคืนยอดเสียประจำทุกวันอาทิตย์ แต่ละรายการคิดจากยอดคนละชุด มีเพดานเครดิต เงื่อนไขทำยอด และรอบเวลาการรับสิทธิ์เป็นของตัวเอง
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ef8f22]">MONACO89</strong> เปิดให้สมาชิกสล็อตรับอยู่ในรอบนี้ทั้งหมด ทั้งเบทขั้นต่ำเพียง 1 บาท ระบบฝากถอนออโต้ที่จ่ายตรงทุกยอด
+        และช่องทางทรูวอลเล็ทกับธนาคารที่รองรับ แต่ละรายการคิดจากยอดคนละชุด มีเพดานเครดิต เงื่อนไขทำยอด และรอบเวลาการรับสิทธิ์เป็นของตัวเอง
         จึงควรอ่านรายละเอียดบนแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={proReferFriend}
-          alt="แบนเนอร์โปรโมชั่นแชร์ลิงก์รับทรัพย์ของ MAHAHENG333 ข้อความเครดิตฟรีเพียงชวนเพื่อนมาเล่น พร้อมผู้หญิงชุดดำชี้ไปที่หน้าจอมือถือที่เปิดหน้าคัดลอกลิงก์ชวนเพื่อน ข้างวงล้อรูเล็ตและกองชิปคาสิโนบนพื้นหลังทอง"
+          src={promoApiDirect}
+          alt="แบนเนอร์ MONACO89 ข้อความเว็บไซต์สล็อต API แท้ ไม่ผ่านเอเย่นต์ ส่งตรงจากเซิร์ฟหลัก ระบุปลอดภัยมั่นใจ 100% เบทขั้นต่ำเพียง 1 บาท ถอนรวดเร็วภายใน 10 วินาที และบริการ 24 ชม. พร้อมหญิงสาวชุดราตรีสีทองสามคนถือช่อดอกไม้ทองท่ามกลางเหรียญทองปลิว และแถบโลโก้ธนาคารกับแอปสโตร์ด้านล่าง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -97,8 +96,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proLuckyWheel}
-          alt="แบนเนอร์โปรโมชั่นกงล้อรับโชคของ MAHAHENG333 ระบุลุ้นรับรางวัลใหญ่ทองคำหนัก 1 บาท พร้อมผู้หญิงชุดแดงยืนข้างมือถือที่เปิดวงล้อหมุนรางวัล ไพ่โพดำโพดอก สร้อยคอทองคำบนกล่องกำมะหยี่แดง และทองแท่ง"
+          src={promoWebtrong}
+          alt="แบนเนอร์ MONACO89 ข้อความเว็บตรง ไม่ผ่านเอเย่นต์ ไม่มีขั้นต่ำ รับทรูวอเลท บริการ 24 ชม. และหมวดเดิมพัน บอล หวย มวย เกม คาสิโน พร้อมมาสคอตวัวกระทิงสีทองสวมแว่นกันแดด กองเหรียญทอง และเส้นขอบฟ้าเมืองยามค่ำคืนเป็นฉากหลัง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -111,8 +110,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={proCashback}
-          alt="แบนเนอร์โปรโมชั่นคืนยอดเสีย 4% ทุกวันอาทิตย์ ตั้งแต่เวลา 14.00 น. ขึ้นไป ของ MAHAHENG333 พร้อมผู้หญิงชุดดำแถบแดงถือธนบัตรดอลลาร์คลี่เป็นพัด บนพื้นหลังทองประกาย"
+          src={promoRankOne}
+          alt="แบนเนอร์ MONACO89 ข้อความอันดับ 1 ในทุกๆ เรื่องของการเดิมพัน เราเป็นเว็บตรง ฝาก-ถอน ออโต้ จ่ายตรงทุกยอด และแอดมินพร้อมบริการ 24 ชม. พร้อมมาสคอตกระต่ายขาวสวมแจ็กเก็ตทองกับหมวกแก๊ปยกนิ้วโป้ง ข้างตู้สล็อตเลข 777 และกองเหรียญทอง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -128,8 +127,8 @@ const imageWidths = [320, 440, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffe98a]/60 bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-[#a5760a] px-10 py-3.5 text-lg font-black text-[#0a0704] shadow-[0_10px_30px_rgba(232,185,35,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(180,35,28,0.45)]">
-          สมัครสมาชิก MAHAHENG333
+          class="flex items-center justify-center rounded-lg border border-[#ffd77a]/60 bg-gradient-to-r from-[#ffd77a] via-[#ef8f22] to-[#a44516] px-10 py-3.5 text-lg font-black text-[#1a0d03] shadow-[0_10px_30px_rgba(239,143,34,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(209,32,26,0.45)]">
+          สมัครสมาชิก MONACO89
         </a>
       </div>
     </div>

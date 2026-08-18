@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle9.astro";
-import Footer from "../components/FooterStyle3.astro";
+import Navbar from "../components/NavbarStyle7.astro";
+import Footer from "../components/FooterPremium.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "MAHAHENG333 | คาสิโนฟลอร์ใหญ่ เปิดโต๊ะมหาเฮง เกมสดหลายโต๊ะ",
-  description = "MAHAHENG333 คาสิโนฟลอร์ใหญ่ เปิดโต๊ะมหาเฮง เกมสดหลายโต๊ะ ครบทั้งบาคาร่า รูเล็ต และโต๊ะยอดนิยม เลือกห้องง่าย เปลี่ยนโต๊ะคล่อง ฝากถอน 5 วิ พร้อมดูแลทุกเวลา",
+  title = "MONACO89 | สล็อตพรีเมียมเบอร์ 1 ระบบตรง API แท้ โบนัสแตกบ่อย",
+  description = "MONACO89 สล็อตพรีเมียมเบอร์ 1 ระบบตรง API แท้ โบนัสแตกบ่อย ยกเกมดังระดับอินเตอร์มาไว้หน้าเดียว ไม่ล็อกยูส ระบบหลังบ้านเสถียร พร้อมทีมงานบริการดูแลตลอดทั้งวัน",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #15100a;
+        background-color: #160d05;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ MAHAHENG333 ตัวอักษร MAHAHENG สีเงินโครเมียมและเลข 333 สีทองขนาดใหญ่ ขนาบข้างด้วยมังกรทองคู่และไหอั่งเปาสีแดงที่มีเหรียญทองล้นออกมา ใต้ลงมาเป็นข้อความ คาสิโนฟลอร์ใหญ่ เปิดโต๊ะมหาเฮง เกมสดหลายโต๊ะ ด้านขวาเป็นหญิงสาวชุดทองนั่งอยู่ริมโต๊ะบาคาร่าที่มีไพ่เอซสามใบและวงล้อรูเล็ต ฉากหลังเป็นห้องคาสิโนประดับโคมไฟจีนสีแดง ด้านซ้ายเป็นโทรศัพท์ที่แสดงหน้าเว็บกับกองเหรียญทอง มุมซ้ายบนเป็นตรากลมเขียนว่า แจกหนัก จัดเต็ม ทุกวัน มีปุ่มสมัครสมาชิกกรอบทองอยู่มุมขวาล่าง แถบล่างเรียงจุดเด่นห้าข้อ ปลอดภัยมั่นคง 100% คาสิโนฟลอร์ใหญ่มาตรฐานสากล เกมสดหลายโต๊ะให้เลือกเล่น แจกหนักจัดเต็มทุกวัน และฝาก-ถอนรวดเร็ว 10 วินาที บนพื้นดำประกายทอง"
+          alt="แบนเนอร์ MONACO89 ตัวอักษร Monaco89 สีทองสามมิติขนาดใหญ่ โดยมีดวงอาทิตย์ทองฉายรัศมีแทนตัวโอตัวท้าย ใต้ลงมาเป็นป้ายดำสามบรรทัดเขียนว่า สล็อตพรีเมียม เบอร์ 1 ระบบตรง API แท้ และ โบนัสแตกบ่อย ตัวอักษรสีแดง ด้านซ้ายเป็นมังกรทองกับหีบสมบัติที่มีเหรียญทองล้นออกมา ด้านขวาเป็นหญิงสาวชุดทองยืนคู่โทรศัพท์ที่แสดงแจ็กพอต 999,999,999 กับไอคอนเกมสล็อต ถัดมาเป็นวงล้อรูเล็ต กองชิป และไพ่ เอ เค คิว เจ เจ สิบ พร้อมปุ่มแดงเขียนว่า สมัครสมาชิก อยู่มุมขวาล่าง แถบล่างเรียงจุดเด่นห้าข้อ ระบบปลอดภัยมั่นคง 100% สล็อตพรีเมียมค่ายดังครบ บาคาร่าคาสิโนสด ฝาก-ถอนออโต้ไว 10 วิ และโบนัสจัดเต็มทุกวัน บนพื้นห้องคาสิโนสีดำประกายทอง"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

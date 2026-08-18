@@ -1,8 +1,9 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideReferFriend from "../assets/slide1.png";
-import slideCashback from "../assets/slide4.png";
+import slideApiDirect from "../assets/slide1.png";
+import slideTrueWallet from "../assets/slide2.png";
+import slideRankOne from "../assets/slide3.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -18,31 +19,36 @@ import slideCashback from "../assets/slide4.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// MAHAHENG333: แถบนี้ถือ slide1 (แชร์ลิงค์รับทรัพย์ เครดิตฟรีจากการชวนเพื่อน) กับ
-// slide4 (คืนยอดเสีย 4% ทุกวันอาทิตย์) ส่วน slide2 (โปรโมชั่นกงล้อรับโชค) กับ
-// slide3 ไปอยู่ในบล็อก ContentBoxSevenThree สองบล็อกของหน้าแลนดิ้ง แต่ละใบมีบ้าน
-// เดียวบนหน้าเว็บ ส่วน banner.png กับ banner2-4 เป็นอาร์ตค้างของแบรนด์ก่อน จึงไม่
-// ถูก import ที่ไหนทั้งสิ้น ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตาม
-// นามสกุลจริง
+// MONACO89: แถบนี้ถือสไลด์ของ asset drop รอบนี้ทั้งสามใบ — slide1 (เว็บไซต์สล็อต
+// API แท้), slide2 (เว็บตรง ทรูวอเลท บริการ 24 ชม.) และ slide3 (อันดับ 1 ในทุกๆ
+// เรื่องของการเดิมพัน) ส่วน slide4.png เป็นอาร์ตค้างของ MAHAHENG333 (โลโก้เก่า +
+// ไลน์ @iheng333) จึงถูกถอด import ออกรอบนี้และต้องไม่ถูก render ที่ไหนอีก ไฟล์ยัง
+// อยู่บนดิสก์แต่ไม่มีใคร import — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร
+// render ก็ตาม เช่นเดียวกับ banner.png กับ banner2-4 ที่เป็นอาร์ตค้างของแบรนด์ก่อนๆ
+// ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตามนามสกุลจริง
 //
-// สไลด์ชุดนี้เป็นแบนเนอร์จัตุรัสและมีสองใบ จึงให้เห็นพร้อมกัน 1 ช่องบนมือถือ /
+// สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน 2:1 และมีสามใบ จึงให้เห็นพร้อมกัน 1 ช่องบนมือถือ /
 // 2 ช่องบนเดสก์ท็อป แล้วบีบกล่องเป็น max-w-[820px] เพื่อให้แต่ละใบวาดราวๆ 386px
-// ค่า --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สองใบ) ถ้าเปลี่ยน
+// ค่า --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สามใบ) ถ้าเปลี่ยน
 // จำนวนต้องคิด --shift ใหม่ทั้งสอง breakpoint
 const images = [
   {
-    src: slideReferFriend,
-    alt: "แบนเนอร์โปรโมชั่น MAHAHENG333 พื้นดำสลับทอง ด้านบนเป็นโลโก้ MAHAHENG333 มังกรทองคู่ ข้อความ แชร์ลิงค์รับทรัพย์ และ เครดิตฟรี เพียงชวนเพื่อนมาเล่นเท่านั้น ด้านซ้ายเป็นวงล้อรูเล็ต ชิปคาสิโนและไพ่ กับผู้หญิงชุดดำกำลังชี้ไปที่หน้าจอมือถือด้านขวาที่แสดงหน้าชวนเพื่อนของเว็บ แถบล่างเขียนว่า เว็บตรง ฝาก-ถอนรวดเร็ว ตลอด 24 ชม. คู่กับไลน์ไอดี @iheng333",
+    src: slideApiDirect,
+    alt: "แบนเนอร์โปรโมชั่น MONACO89 พื้นน้ำตาลเข้มประกายทอง มุมบนซ้ายเป็นโลโก้ MONACO89 ตัวอักษรทองสามมิติ ข้อความตัวใหญ่เขียนว่า เว็บไซต์สล็อต API แท้ ไม่ผ่านเอเย่นต์ ส่งตรงจากเซิร์ฟหลัก ด้านขวาเป็นหญิงสาวสามคนในชุดราตรีสีทองถือช่อดอกไม้ทองท่ามกลางเหรียญทองที่ปลิวว่อน ใต้ข้อความเป็นป้ายสี่ช่องเขียนว่า ปลอดภัยมั่นใจ 100% เบทขั้นต่ำเพียง 1 บาท ถอนรวดเร็วภายใน 10 วินาที และ บริการ 24 ชม. ตลอดทุกวัน แถบล่างสุดเขียนว่า รองรับฝาก-ถอน ทุกธนาคารและทรูวอลเล็ต พร้อมโลโก้ธนาคารและปุ่มดาวน์โหลดจาก App Store กับ Google Play",
   },
   {
-    src: slideCashback,
-    alt: "แบนเนอร์โปรโมชั่น MAHAHENG333 พื้นดำสลับทอง ข้อความตัวใหญ่ว่า คืนยอดเสีย 4% ทุกวันอาทิตย์ เวลา 14.00 น. ขึ้นไป ด้านซ้ายเป็นผู้หญิงชุดดำแดงถือธนบัตรคลี่เป็นพัด มุมบนขวาเป็นโลโก้ MAHAHENG333 มังกรทองคู่ แถบล่างเขียนว่า เว็บตรง ฝาก-ถอนรวดเร็ว ตลอด 24 ชม. คู่กับไลน์ไอดี @iheng333",
+    src: slideTrueWallet,
+    alt: "แบนเนอร์โปรโมชั่น MONACO89 พื้นทองสว่างมีวิวตึกยามค่ำคืนอยู่ด้านหลัง มุมบนซ้ายเป็นโลโก้ MONACO89 ตัวอักษรทอง ข้อความตัวใหญ่เขียนว่า เว็บตรง ไม่ผ่านเอเย่นต์ ไม่มีขั้นต่ำ ทรูวอเลท บริการ 24 ชม. และบรรทัดล่างว่า บอล หวย มวย เกม คาสิโน ด้านขวาเป็นมาสคอตวัวกระทิงทองคำใส่แว่นกันแดดยิ้มกว้าง รายล้อมด้วยเหรียญทองจำนวนมาก แถบล่างสุดเขียนว่า รองรับฝาก-ถอน ทุกธนาคารและทรูวอลเล็ต พร้อมโลโก้ TrueMoney Wallet และธนาคารต่างๆ คู่ปุ่ม App Store กับ Google Play",
+  },
+  {
+    src: slideRankOne,
+    alt: "แบนเนอร์โปรโมชั่น MONACO89 พื้นทองอร่ามมีเหรียญทองเต็มภาพ ด้านบนเป็นโลโก้ MONACO89 ตัวอักษรทอง ข้อความตัวใหญ่เขียนว่า อันดับ 1 ในทุกๆเรื่องของการเดิมพัน ตามด้วยบรรทัด เราเป็นเว็บตรง ฝาก-ถอน ออโต้ เราเป็นเว็บตรง จ่ายตรงทุกยอด และ แอดมินพร้อม บริการ 24 ชม. ด้านขวาเป็นมาสคอตกระต่ายขาวใส่แจ็กเก็ตกับหมวกแก๊ปสีทองกำลังยกนิ้วโป้ง ข้างตู้สล็อตที่ขึ้นเลข 777 แถบล่างสุดเขียนว่า รองรับฝาก-ถอน ทุกธนาคารและทรูวอลเล็ต พร้อมปุ่ม App Store กับ Google Play",
   },
 ];
 
-// สี่ชุด: หนึ่งชุดต่อหนึ่งช่องที่มองเห็น บวกชุดที่กำลังเลื่อนเข้า และอีกชุดคลุม
-// จังหวะรีเซ็ต แอนิเมชันเลื่อนไปพอดีหนึ่งชุด ลูปจึงไม่มีรอยต่อให้เห็น
-const COPIES = 4;
+// สามชุด: หนึ่งชุดครอบคลุมช่องที่มองเห็นได้เกินพอ บวกชุดที่กำลังเลื่อนเข้า และอีก
+// ชุดคลุมจังหวะรีเซ็ต แอนิเมชันเลื่อนไปพอดีหนึ่งชุด ลูปจึงไม่มีรอยต่อให้เห็น
+const COPIES = 3;
 const slides = Array.from({ length: COPIES }, () => images).flat();
 
 // สไลด์ทุกใบตรงนี้เป็น lazy: LCP ของหน้าคือ hero banner ใน MainLayout.astro และ
@@ -58,23 +64,23 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e8b923]/60 peer-focus-visible:bg-[#33230b] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#e8b923]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#ef8f22]/60 peer-focus-visible:bg-[#3a2109] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ef8f22]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
   <div class="marquee-track flex">
     {
       slides.map((slide, index) => {
-        // สามชุดท้ายคือรูปชุดเดิมซ้ำอีก เป็นของตกแต่งที่มีไว้ให้ลูปไม่มีรอยต่อ
+        // สองชุดท้ายคือรูปชุดเดิมซ้ำอีก เป็นของตกแต่งที่มีไว้ให้ลูปไม่มีรอยต่อ
         // alt="" บวก aria-hidden บนตัวครอบทำให้มันอยู่นอก accessibility tree
-        // ถ้าไม่ทำ ประโยคเดียวกันจะถูกอ่านซ้ำสี่รอบ
+        // ถ้าไม่ทำ ประโยคเดียวกันจะถูกอ่านซ้ำสามรอบ
         const isDuplicate = index >= images.length;
         return (
           <div class="marquee-slide" aria-hidden={isDuplicate ? "true" : undefined}>
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#e8b923]/35 object-cover shadow-[0_10px_30px_rgba(232,185,35,0.22)]"
+              class="block w-full rounded-xl border border-[#ef8f22]/35 object-cover shadow-[0_10px_30px_rgba(239,143,34,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
@@ -94,30 +100,30 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
 </div>
 
 <style>
-  /* --shift คือหนึ่งชุดเต็มของรูป: สองสไลด์บวกช่องว่างที่ตามมาสองช่อง วัดเทียบ
+  /* --shift คือหนึ่งชุดเต็มของรูป: สามสไลด์บวกช่องว่างที่ตามมาสามช่อง วัดเทียบ
      กับความกว้างของ track (ซึ่งเท่ากับความกว้างของกล่อง — สไลด์ล้นออกไป ซึ่งเป็น
      จุดประสงค์) ตั้งค่านี้ผิดไปหนึ่งพิกเซลคือสิ่งที่ทำให้ marquee กระตุกทุกรอบลูป
 
-     mobile:  2 * (100% + 12px) = 200% + 24px
-     desktop: 2 * ((100% - 16px)/2 + 16px) = 100% + 16px */
+     mobile:  3 * (100% + 12px) = 300% + 36px
+     desktop: 3 * ((100% - 16px)/2 + 16px) = 150% + 24px */
   .marquee {
     --gap: 12px;
     --per-view: 1;
-    --shift: calc(-200% - 24px);
+    --shift: calc(-300% - 36px);
   }
 
   @media (min-width: 768px) {
     .marquee {
       --gap: 16px;
       --per-view: 2;
-      --shift: calc(-100% - 16px);
+      --shift: calc(-150% - 24px);
     }
   }
 
   .marquee-track {
     gap: var(--gap);
     width: 100%;
-    animation: carousel-scroll 18s linear infinite;
+    animation: carousel-scroll 27s linear infinite;
     will-change: transform;
   }
 

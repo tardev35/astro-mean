@@ -1,33 +1,31 @@
 ---
 // Widget ไม่ใช่ article: หัวข้อ render เป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
-// assistive tech เนื้อหาตาม brief ของ GALA89 — คอลเลกชันเกมนอกชั้นนำที่คัดสรรมา
-// แบบเน้นๆ รวมตัวเด็ดตัวฮิตจากต่างประเทศไว้ในล็อบบี้เดียว ทั้งแนวแอ็กชันสุดมันส์
-// แฟนตาซีอลังการ และเกมสไตล์เอเชียยอดนิยม ทุกเกมมาพร้อมฟีเจอร์โบนัสจัดเต็ม ทั้ง
-// ฟรีสปิน ตัวคูณรางวัลสะสม และสัญลักษณ์พิเศษที่ช่วยให้โบนัสแตกง่ายขึ้น
+// assistive tech เนื้อหาตาม brief ของ MONACO89 — กริดเกมสล็อตอินเตอร์ตัวดังจาก
+// ค่ายใหญ่ทั่วโลกรวมไว้ในหน้าเดียว ทั้งแนวแฟนตาซีสุดตระการตา แนวคลาสสิก และเกม
+// ยอดฮิตติดเทรนด์ ทุกค่ายเชื่อมด้วยระบบตรง API แท้จากเซิร์ฟเวอร์หลัก ไม่ผ่าน
+// เอเย่นต์ พร้อมฟีเจอร์ตัวคูณเงินรางวัล ฟรีสปิน และการสุ่มแจกรางวัลใหญ่
 //
-// GALA89: ย้ายจากทองอร่ามคู่เปลวไฟของแบรนด์ก่อนหน้า (#ffe974 / #ffcc4b / #eb9a1d /
-// #8b4c0b คู่เปลวไฟ #ff6a13 / #ffa34d บนผิว #1e1105 / #140a02 / #2c1808 เนื้อความ
-// #f6e6c2 ข้อความรอง #c9ab7a) มาที่ชมพูกลอสคู่ทอง — ชมพู #ff4d9c / #d41c6b /
-// #9e154a กับทอง #ffe0a3 / #f0c274 / #b8801f บนผิว #1f0311 / #12010a / #3c0214
-// เนื้อความ #f7dce8 ข้อความรอง #f9a8cd โดยป้ายมุมการ์ดรับสีหลักของแบรนด์คือชมพู
-// #ff4d9c / #d41c6b
+// MONACO89: ย้ายจากชุดสีชมพูกลอสคู่ทองของแบรนด์เก่ากว่า (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่ทองแอมเบอร์–คอปเปอร์คู่แดงรอยัลบนมะฮอกกานีดำ — ทอง
+// #ffe9b8 / #ffd77a / #ef8f22 / #a44516 คู่แดง #d1201a / #7e120e บนผิว #26150a /
+// #160d05 / #0b0602 เนื้อความ #f6e3c0 ข้อความรอง #c9a06a โดยป้ายมุมการ์ดรับคู่สี
+// ทอง–แดงของแบรนด์
 const providers = [
   { name: "PG Slot", desc: "ตัวฮิตที่สายสปินถามหามากที่สุด ภาพลื่นไหล เข้าเล่นได้จากล็อบบี้เดียวไม่ต้องสลับเว็บ", tag: "ตัวเด็ดตลอดกาล", icon: "🎰" },
-  { name: "Pragmatic Play", desc: "เกมนอกตัวฮิตระดับโลก ฟีเจอร์โบนัสจัดเต็มทั้งฟรีสปินและตัวคูณรางวัลสะสม", tag: "โบนัสจัดเต็ม", icon: "✨" },
+  { name: "Pragmatic Play", desc: "เกมนอกตัวฮิตระดับโลก ฟีเจอร์โบนัสจัดเต็มทั้งฟรีสปินและตัวคูณเงินรางวัลแบบทวีคูณ", tag: "โบนัสจัดเต็ม", icon: "✨" },
   { name: "Nolimit City", desc: "สายแอ็กชันสุดมันส์ สัญลักษณ์พิเศษเยอะ ลุ้นพลิกเกมได้ในสปินเดียว", tag: "สายแอ็กชัน", icon: "⚡" },
-  { name: "Play'n GO", desc: "ธีมแฟนตาซีอลังการ เกมลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ อัตราการชนะตรงไปตรงมา", tag: "แฟนตาซี", icon: "🐉" },
+  { name: "Play'n GO", desc: "ธีมแฟนตาซีสุดตระการตา เกมลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ อัตราการจ่ายตรงไปตรงมา", tag: "แฟนตาซี", icon: "🐉" },
   { name: "JILI", desc: "เกมสไตล์เอเชียยอดนิยม รอบสั้นตัดสินไว เหมาะกับคนที่ชอบจับจังหวะเร็ว", tag: "สไตล์เอเชีย", icon: "🏮" },
   { name: "Relax Gaming", desc: "คัดมาเฉพาะตัวที่ฟีเจอร์ครบ ปั่นยาวได้ทั้งวันโดยระบบไม่มีสะดุด", tag: "ปั่นยาวได้", icon: "🎧" },
-  { name: "Habanero", desc: "ธีมหลากหลาย อยากเปลี่ยนบรรยากาศไปลองฟีลใหม่ก็เลือกเล่นได้ทันทีแบบไม่ซ้ำ", tag: "เปลี่ยนฟีลได้", icon: "🎨" },
+  { name: "Habanero", desc: "แนวคลาสสิกและธีมหลากหลาย อยากเปลี่ยนบรรยากาศไปลองฟีลใหม่ก็เลือกเล่นได้ทันที", tag: "เปลี่ยนฟีลได้", icon: "🎨" },
 ];
 ---
 
-<section aria-label="ค่ายเกมนอกตัวฮิตที่ GALA89 คัดมาไว้ในล็อบบี้เดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายเกมสล็อตอินเตอร์ที่ MONACO89 คัดมาไว้ในล็อบบี้เดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#ffe0a3] via-[#f0c274] to-[#ff4d9c] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมนอกตัวฮิตที่ <span class="text-[#ff4d9c]">GALA89</span> คัดมาไว้ในล็อบบี้เดียว
+    <p class="bg-gradient-to-r from-[#ffe9b8] via-[#ef8f22] to-[#d1201a] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายเกมสล็อตอินเตอร์ที่ <span class="text-[#ef8f22]">MONACO89</span> คัดมาไว้ในล็อบบี้เดียว
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f0c274] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ef8f22] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
@@ -35,20 +33,20 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#f0c274]/30 bg-[#1f0311]/92 p-5 shadow-[0_10px_30px_rgba(240,194,116,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#f0c274]/60 hover:bg-[#3c0214]/95 hover:shadow-[0_15px_40px_rgba(212,28,107,0.35)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#d41c6b]/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#ef8f22]/30 bg-[#160d05]/92 p-5 shadow-[0_10px_30px_rgba(239,143,34,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#ef8f22]/60 hover:bg-[#26150a]/95 hover:shadow-[0_15px_40px_rgba(209,32,26,0.35)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#d1201a]/25 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ff4d9c] to-[#d41c6b] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#ffe6f2] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ef8f22] to-[#d1201a] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#ffe9b8] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
             {provider.icon}
           </div>
-          <p class="text-center text-sm font-black text-[#f7dce8] transition-colors group-hover:text-[#f0c274]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#f9a8cd]">{provider.desc}</p>
+          <p class="text-center text-sm font-black text-[#f6e3c0] transition-colors group-hover:text-[#ef8f22]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#c9a06a]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#f0c274]/30 bg-[#12010a] py-1.5 text-center text-[11px] font-bold text-[#f0c274] shadow-inner transition-colors duration-300 group-hover:border-[#ffe0a3]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffe0a3] group-hover:to-[#f0c274] group-hover:text-[#2b0210]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#ef8f22]/30 bg-[#0b0602] py-1.5 text-center text-[11px] font-bold text-[#ef8f22] shadow-inner transition-colors duration-300 group-hover:border-[#ffd77a]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffd77a] group-hover:to-[#ef8f22] group-hover:text-[#1a0d03]">
             เข้าดูเกม
           </span>
         </a>

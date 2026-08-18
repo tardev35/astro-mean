@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement3.astro";
+import Announcement from "../components/Announcement5.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
@@ -10,12 +10,12 @@ import { pageGraph } from "../lib/schema";
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 160.
+// count reads about three times too long. This one measures 153.
 const pageDescription =
-  "ทางเข้า MAHAHENG333 เว็บหลัก คาสิโนสดฟลอร์ใหญ่ เปิดโต๊ะมหาเฮงทั้งบาคาร่าและรูเล็ต กดเข้าสู่ระบบสำหรับสมาชิกเดิม หรือสมัครสมาชิกใหม่ได้จากหน้านี้ ตลอด 24 ชั่วโมง";
+  "ทางเข้า MONACO89 เว็บหลัก สล็อตพรีเมียมระบบตรง API แท้ โบนัสแตกบ่อย ไม่ล็อกยูส กดเข้าสู่ระบบสำหรับสมาชิกเดิม หรือสมัครสมาชิกใหม่ได้จากหน้านี้ ตลอด 24 ชม.";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า MAHAHENG333 เว็บหลัก",
+  name: "ทางเข้า MONACO89 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -24,40 +24,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า MAHAHENG333 เว็บหลัก เข้าสู่ระบบและสมัครสมาชิก" description={pageDescription}>
+<MainLayout title="ทางเข้า MONACO89 เว็บหลัก เข้าสู่ระบบและสมัครสมาชิก" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า MAHAHENG333 เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า MONACO89 เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ MAHAHENG333"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#b4231c]/60 bg-[#0a0704] px-6 py-4 shadow-[0_10px_30px_rgba(232,185,35,0.22)] transition-all duration-300 hover:scale-105 hover:border-[#e8b923] hover:bg-[#221708] hover:shadow-[0_15px_40px_rgba(232,185,35,0.4)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#b4231c]/18 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ MONACO89"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#d1201a]/60 bg-[#0b0602] px-6 py-4 shadow-[0_10px_30px_rgba(239,143,34,0.22)] transition-all duration-300 hover:scale-105 hover:border-[#ef8f22] hover:bg-[#26150a] hover:shadow-[0_15px_40px_rgba(239,143,34,0.4)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#d1201a]/18 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#e8b923]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#ef8f22]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#e8b923]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#ef8f22]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก MAHAHENG333"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ffe98a]/60 bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-[#a5760a] px-6 py-4 shadow-[0_10px_30px_rgba(232,185,35,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,138,0.45)]">
+          aria-label="สมัครสมาชิก MONACO89"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ffd77a]/60 bg-gradient-to-r from-[#ffd77a] via-[#ef8f22] to-[#a44516] px-6 py-4 shadow-[0_10px_30px_rgba(239,143,34,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,215,122,0.45)]">
           <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#0a0704]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#1a0d03]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#0a0704]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#1a0d03]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

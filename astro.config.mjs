@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://mahaheng333-main.com",
+  site: "https://www.monaco89-live.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

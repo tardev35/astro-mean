@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement3.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 import imgLine from "../assets/contact-line.webp";
@@ -29,11 +29,11 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // too long and will send you rewriting a description that was fine). This one
 // measures 153.
 const pageDescription =
-  "ช่องทางติดต่อทีมงาน MAHAHENG333 คาสิโนสดฟลอร์ใหญ่ ทักผ่าน LINE Official สอบถามเรื่องสมัครสมาชิก เข้าสู่ระบบ การเลือกโต๊ะบาคาร่ารูเล็ต และฝากถอนออโต้ 5 วิ";
+  "ช่องทางติดต่อทีมงาน MONACO89 สล็อตพรีเมียมระบบตรง API แท้ ทักผ่าน LINE Official สอบถามเรื่องสมัครสมาชิก เข้าสู่ระบบ ไม่ล็อกยูส และฝากถอนออโต้ ตลอด 24 ชม.";
 
 const graph = pageGraph(Astro, {
   type: "ContactPage",
-  name: "ติดต่อทีมงาน MAHAHENG333",
+  name: "ติดต่อทีมงาน MONACO89",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -41,7 +41,7 @@ const graph = pageGraph(Astro, {
   ],
   org: {
     alternateName:
-      "MAHAHENG333 คาสิโนฟลอร์ใหญ่ เปิดโต๊ะมหาเฮง เกมสดหลายโต๊ะ ครบทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล เลือกห้องง่าย สลับโต๊ะคล่อง ฝากถอน 5 วิ พร้อมดูแลทุกเวลา",
+      "MONACO89 สล็อตพรีเมียมระบบตรง API แท้ ยกกริดเกมค่ายใหญ่มาไว้หน้าเดียว โบนัสแตกบ่อย ไม่ล็อกยูส ระบบหลังบ้านเสถียร ฝากถอนอัตโนมัติ พร้อมดูแลตลอดทั้งวัน",
     contactPoints: [
       {
         contactType: "customer service",
@@ -63,21 +63,21 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ติดต่อเรา MAHAHENG333 แจ้งปัญหาสมัครสมาชิกและฝาก-ถอน ผ่าน LINE Official" description={pageDescription}>
+<MainLayout title="ติดต่อเรา MONACO89 แจ้งปัญหาสมัครสมาชิกและฝาก-ถอน ผ่าน LINE Official" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ติดต่อทีมงาน MAHAHENG333" as="h1">
+  <ContentBox title="ติดต่อทีมงาน MONACO89" as="h1">
     <div>
       <Picture
         src={imgLine}
-        alt="พนักงานหญิงยิ้มในชุดเลื่อมสีชมพู ยืนอยู่เหนือปุ่ม LINE Support สีเขียว ช่องทางแชตกับทีมงาน MAHAHENG333"
+        alt="พนักงานหญิงยิ้มในชุดเลื่อมสีชมพู ยืนอยู่เหนือปุ่ม LINE Support สีเขียว ช่องทางแชตกับทีมงาน MONACO89"
         loading="lazy"
         fetchpriority="low"
         widths={[200, 400, 600]}
         sizes="(max-width: 495px) calc(100vw - 6rem), 400px"
-        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(232,185,35,0.4)]"
+        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(239,143,34,0.4)]"
         decoding="async"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
@@ -114,15 +114,15 @@ const graph = pageGraph(Astro, {
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก MAHAHENG333"
-          class="flex items-center justify-center rounded-lg border border-[#ffe98a]/60 bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-[#a5760a] px-8 py-3 font-bold text-[#0a0704] shadow-[0_10px_30px_rgba(232,185,35,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,138,0.45)]">
+          aria-label="สมัครสมาชิก MONACO89"
+          class="flex items-center justify-center rounded-lg border border-[#ffd77a]/60 bg-gradient-to-r from-[#ffd77a] via-[#ef8f22] to-[#a44516] px-8 py-3 font-bold text-[#1a0d03] shadow-[0_10px_30px_rgba(239,143,34,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,215,122,0.45)]">
           สมัครสมาชิก
         </a>
 
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ MAHAHENG333"
-          class="flex items-center justify-center rounded-lg border border-[#b4231c]/60 bg-gradient-to-r from-[#221708] to-[#0a0704] px-8 py-3 font-extrabold text-[#e8b923] shadow-[0_4px_14px_rgba(232,185,35,0.25)] transition-transform hover:scale-105 hover:shadow-[0_10px_30px_rgba(232,185,35,0.4)]">
+          aria-label="เข้าสู่ระบบ MONACO89"
+          class="flex items-center justify-center rounded-lg border border-[#d1201a]/60 bg-gradient-to-r from-[#26150a] to-[#0b0602] px-8 py-3 font-extrabold text-[#ef8f22] shadow-[0_4px_14px_rgba(239,143,34,0.25)] transition-transform hover:scale-105 hover:shadow-[0_10px_30px_rgba(239,143,34,0.4)]">
           เข้าสู่ระบบ
         </a>
 
