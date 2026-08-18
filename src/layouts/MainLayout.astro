@@ -7,7 +7,7 @@ import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
 import Navbar from "../components/NavbarStyle7.astro";
-import Footer from "../components/FooterPremium.astro";
+import Footer from "../components/FooterStyle3.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "MONACO89 | สล็อตพรีเมียมเบอร์ 1 ระบบตรง API แท้ โบนัสแตกบ่อย",
-  description = "MONACO89 สล็อตพรีเมียมเบอร์ 1 ระบบตรง API แท้ โบนัสแตกบ่อย ยกเกมดังระดับอินเตอร์มาไว้หน้าเดียว ไม่ล็อกยูส ระบบหลังบ้านเสถียร พร้อมทีมงานบริการดูแลตลอดทั้งวัน",
+  title = "BOOST168 | สล็อตเว็บตรงจัดหนัก เกมดีมีบูสต์ ระบบไวไม่เกินจริง",
+  description = "BOOST168 สล็อตเว็บตรงจัดหนัก อัปคลังเกมใหม่ให้มีของตามต่อ เกมดีมีบูสต์ เติมทั้งฟีเจอร์และโบนัสหลายรูปแบบ ระบบไวไม่เกินจริง พร้อมออโต้ช่วยให้ทุกขั้นตอนคล่องขึ้น",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #160d05;
+        background-color: #050818;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ MONACO89 ตัวอักษร Monaco89 สีทองสามมิติขนาดใหญ่ โดยมีดวงอาทิตย์ทองฉายรัศมีแทนตัวโอตัวท้าย ใต้ลงมาเป็นป้ายดำสามบรรทัดเขียนว่า สล็อตพรีเมียม เบอร์ 1 ระบบตรง API แท้ และ โบนัสแตกบ่อย ตัวอักษรสีแดง ด้านซ้ายเป็นมังกรทองกับหีบสมบัติที่มีเหรียญทองล้นออกมา ด้านขวาเป็นหญิงสาวชุดทองยืนคู่โทรศัพท์ที่แสดงแจ็กพอต 999,999,999 กับไอคอนเกมสล็อต ถัดมาเป็นวงล้อรูเล็ต กองชิป และไพ่ เอ เค คิว เจ เจ สิบ พร้อมปุ่มแดงเขียนว่า สมัครสมาชิก อยู่มุมขวาล่าง แถบล่างเรียงจุดเด่นห้าข้อ ระบบปลอดภัยมั่นคง 100% สล็อตพรีเมียมค่ายดังครบ บาคาร่าคาสิโนสด ฝาก-ถอนออโต้ไว 10 วิ และโบนัสจัดเต็มทุกวัน บนพื้นห้องคาสิโนสีดำประกายทอง"
+          alt="แบนเนอร์ BOOST168 ตัวอักษร BOOST สีเงินโครเมียมต่อด้วยเลข 168 สีทองขนาดใหญ่ มีจรวดพ่นเปลวไฟส้มทองพุ่งอยู่ด้านบน ใต้โลโก้เป็นข้อความ สล็อตเว็บตรง จัดหนัก และ เกมดีมีบูสต์ ระบบไวไม่เกินจริง พร้อมปุ่มสีแดงขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดเงินแดงสกรีน BOOST168 กำลังชี้นิ้วมาข้างหน้า ล้อมด้วยเหรียญทอง ชิปคาสิโน ลูกเต๋า ไพ่เอ และตู้สล็อตขึ้นเลข 777 บนพื้นอวกาศสีดำน้ำเงินที่มีเส้นแสงสีน้ำเงินและแดงพุ่งออกจากกลางภาพ"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

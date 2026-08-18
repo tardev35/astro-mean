@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/Announcement3.astro";
 
 import { Picture } from "astro:assets";
 
@@ -14,33 +14,31 @@ import { Picture } from "astro:assets";
 // never a body.
 //
 // Named for what each banner ACTUALLY prints, not for its file number.
-// The MONACO89 drop (mtime 2026-08-18) is THREE usable slides:
-//   slide1 = เว็บไซต์สล็อต API แท้ · ไม่ผ่านเอเย่นต์ · ส่งตรงจากเซิร์ฟหลัก
-//   slide2 = เว็บตรง ไม่มีขั้นต่ำ · ทรูวอเลท · บริการ 24 ชม.
-//   slide3 = อันดับ 1 ในทุกๆ เรื่องของการเดิมพัน · ฝาก-ถอน ออโต้ · จ่ายตรงทุกยอด
-// slide4.png is STALE artwork left over from the PREVIOUS brand — it still
-// prints that brand's logo and LINE id, so it must not be imported here or
-// rendered anywhere. The file stays on disk as inventory; only the import is gone.
+// The BOOST168 drop (mtime 2026-08-19) is FOUR usable slides, all 600x338:
+//   slide1 = เว็บสล็อตค่ายดัง การันตีคุณภาพ + โบนัสสูงสุด 100%
+//   slide2 = เว็บบาคาร่าครบทุกค่ายชั้นนำ เดิมพันเริ่มต้น 10 บาท
+//   slide3 = เว็บแทงบอลครบทุกลีกทั่วโลก บอลเดี่ยวขั้นต่ำ 10 บาท
+//   slide4 = แทงมวยครบทุกคู่ โบนัสสูงสุด 1,000 บาท
 // The mapping between file number and artwork changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after what is printed instead of after the file.
 //
-// banner.png / banner2-4.png (mtime 2026-08-04) are leftovers from an older
-// brand and must never be imported here: an imported image is an emitted image
-// even when nothing renders it. banner1-mobile.* belongs to MainLayout's hero
-// <picture> alone. Only what is printed on each banner may be stated on this page.
-import promoApiDirect from "../assets/slide1.png";
-import promoWebtrong from "../assets/slide2.png";
-import promoRankOne from "../assets/slide3.png";
+// banner2/3/4.png are leftovers from an older brand and must never be imported
+// here: an imported image is an emitted image even when nothing renders it.
+// banner1-mobile.* belongs to MainLayout's hero <picture> alone. Only what is
+// printed on each banner may be stated on this page.
+import promoSlot from "../assets/slide1.png";
+import promoBaccarat from "../assets/slide2.png";
+import promoFootball from "../assets/slide3.png";
+import promoBoxing from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 153.
-const pageDescription =
-  "รวมโปรโมชั่น MONACO89 สล็อตพรีเมียมระบบตรง API แท้ ดูสิทธิ์ที่เปิดให้สมาชิกรับอยู่ในรอบนี้ได้จากแบนเนอร์ในหน้าเดียว เงื่อนไขรับสิทธิ์ต่างกันในแต่ละรายการ";
+// byte count reads ~3x too long). This one measures 160.
+const pageDescription = "รวมโปรโมชั่น BOOST168 สล็อตเว็บตรงจัดหนัก ทั้งสล็อตค่ายดัง บาคาร่า แทงบอล และแทงมวย ดูโบนัสและสิทธิ์ทั้งหมดที่เปิดให้รับอยู่ในรอบนี้จากแบนเนอร์ได้ครบในหน้าเดียว";
 
-const pageTitle = "โปรโมชั่น MONACO89 สล็อตพรีเมียมระบบตรง API แท้ โบนัสแตกบ่อย ไม่ล็อกยูส";
+const pageTitle = "โปรโมชั่น BOOST168 รวมสิทธิ์สล็อต บาคาร่า แทงบอล และมวยไว้หน้าเดียว";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -49,18 +47,17 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoApiDirect.src,
+  primaryImagePath: promoSlot.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
 // two-up from sm: inside that same padding plus one 2rem grid gap.
 // ContentBoxPremium goes p-8 → md:p-10 and caps at max-w-[1400px], so the
 // column stops growing at 644px once the viewport passes 1432px.
-const imageSizes =
-  "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
 
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#ef8f22]/35 object-contain shadow-[0_10px_30px_rgba(239,143,34,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffd77a]/70 hover:shadow-[0_15px_40px_rgba(209,32,26,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#ffc233]/35 object-contain shadow-[0_10px_30px_rgba(255,194,51,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe680]/70 hover:shadow-[0_15px_40px_rgba(63,140,255,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
 // drop — the column is drawn up to 644px, so nothing above 600 buys detail.
@@ -72,18 +69,17 @@ const imageWidths = [320, 440, 600];
 
   <Announcement />
 
-  <ContentBox title="โปรโมชั่น MONACO89" as="h1">
+  <ContentBox title="โปรโมชั่น BOOST168" as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ef8f22]">MONACO89</strong> เปิดให้สมาชิกสล็อตรับอยู่ในรอบนี้ทั้งหมด ทั้งเบทขั้นต่ำเพียง 1 บาท ระบบฝากถอนออโต้ที่จ่ายตรงทุกยอด
-        และช่องทางทรูวอลเล็ทกับธนาคารที่รองรับ แต่ละรายการคิดจากยอดคนละชุด มีเพดานเครดิต เงื่อนไขทำยอด และรอบเวลาการรับสิทธิ์เป็นของตัวเอง
-        จึงควรอ่านรายละเอียดบนแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffe680]">BOOST168</strong> เปิดให้สมาชิกรับอยู่ในรอบนี้ทั้งหมด รายละเอียดของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองครบแล้ว แต่ละรายการคิดจากยอดคนละชุด
+        มีเพดานโบนัส เงื่อนไขทำยอด และรอบเวลาการรับสิทธิ์เป็นของตัวเอง จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์กดรับเองได้ผ่านระบบออโต้บนหน้าเว็บ ทำรายการจบได้ในไม่กี่คลิกโดยไม่ต้องรอแอดมิน
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={promoApiDirect}
-          alt="แบนเนอร์ MONACO89 ข้อความเว็บไซต์สล็อต API แท้ ไม่ผ่านเอเย่นต์ ส่งตรงจากเซิร์ฟหลัก ระบุปลอดภัยมั่นใจ 100% เบทขั้นต่ำเพียง 1 บาท ถอนรวดเร็วภายใน 10 วินาที และบริการ 24 ชม. พร้อมหญิงสาวชุดราตรีสีทองสามคนถือช่อดอกไม้ทองท่ามกลางเหรียญทองปลิว และแถบโลโก้ธนาคารกับแอปสโตร์ด้านล่าง"
+          src={promoSlot}
+          alt="แบนเนอร์โปรโมชั่นแนวนอนพื้นม่วงน้ำเงิน มุมบนซ้ายเป็นโลโก้ BOOST168 พร้อมจรวด ข้อความตัวใหญ่สีขาวขอบทองว่า เว็บสล็อต ค่ายดัง และแถบว่า การันตีคุณภาพ ใต้ลงมาเขียนว่า สล็อตแตกจริง จ่ายจริง ปลอดภัย 100% พร้อมไอคอนสามข้อ ระบบออโต้ฝากถอนรวดเร็วทันใจ มาตรฐานสากลมั่นคงปลอดภัยเชื่อถือได้ และบริการลูกค้า 24 ชั่วโมง ด้านขวาเป็นหญิงสาวชุดม่วงถือไพ่เอสองใบยืนหน้าตู้สล็อต มีเหรียญทองลอยรอบตัว และป้ายสมัครสมาชิกใหม่รับโบนัสสูงสุด 100% ฝาก-ถอนไม่มีขั้นต่ำ แถบล่างเป็นโลโก้ทรูมันนี่วอลเล็ต ค่ายเกม และไลน์ไอดี @boost168"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -96,8 +92,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={promoWebtrong}
-          alt="แบนเนอร์ MONACO89 ข้อความเว็บตรง ไม่ผ่านเอเย่นต์ ไม่มีขั้นต่ำ รับทรูวอเลท บริการ 24 ชม. และหมวดเดิมพัน บอล หวย มวย เกม คาสิโน พร้อมมาสคอตวัวกระทิงสีทองสวมแว่นกันแดด กองเหรียญทอง และเส้นขอบฟ้าเมืองยามค่ำคืนเป็นฉากหลัง"
+          src={promoBaccarat}
+          alt="แบนเนอร์โปรโมชั่นแนวนอนพื้นม่วงทอง มุมบนซ้ายเป็นโลโก้ BOOST168 พร้อมจรวด ข้อความตัวใหญ่สีขาวขอบทองว่า เว็บบาคาร่า ครบทุกค่ายชั้นนำ และแถบว่า รวมบาคาร่าออนไลน์ เดิมพันเริ่มต้นเพียง 10 บาท ใต้ลงมาเป็นไอคอนสามข้อ ระบบออโต้ฝากถอนรวดเร็วทันใจ มาตรฐานสากลมั่นคงปลอดภัยเชื่อถือได้ และบริการลูกค้า 24 ชั่วโมง ด้านขวาเป็นหญิงสาวสองคนในชุดราตรีทองและม่วงถือไพ่ มีป้ายสมาชิกใหม่รับโบนัสสูงสุด 100% ฝาก-ถอนรวดเร็วทันใจ แถบล่างเป็นโลโก้ทรูมันนี่วอลเล็ต ค่ายเกมชั้นนำ และไลน์ไอดี @boost168"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -110,8 +106,22 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={promoRankOne}
-          alt="แบนเนอร์ MONACO89 ข้อความอันดับ 1 ในทุกๆ เรื่องของการเดิมพัน เราเป็นเว็บตรง ฝาก-ถอน ออโต้ จ่ายตรงทุกยอด และแอดมินพร้อมบริการ 24 ชม. พร้อมมาสคอตกระต่ายขาวสวมแจ็กเก็ตทองกับหมวกแก๊ปยกนิ้วโป้ง ข้างตู้สล็อตเลข 777 และกองเหรียญทอง"
+          src={promoFootball}
+          alt="แบนเนอร์โปรโมชั่นแนวนอนพื้นน้ำเงินเข้ม มุมบนซ้ายเป็นโลโก้ BOOST168 พร้อมจรวด ข้อความตัวใหญ่สีขาวขอบทองว่า เว็บแทงบอล และแถบว่า ครบทุกลีก ทั่วโลก ราคาดีที่สุด จ่ายจริง ไม่มีโกง ใต้ลงมาเป็นไอคอนสี่ข้อ บอลเดี่ยวขั้นต่ำ 10 บาท บอลสเต็ปค่าน้ำสูง ถ่ายทอดสดดูบอล 24 ชั่วโมง และแทงง่ายผ่านมือถือ มุมล่างซ้ายเป็นป้ายสมัครวันนี้รับโบนัส 100% ด้านขวาเป็นนักฟุตบอลสามคนในชุดแข่งกำลังตะโกนดีใจ ถัดมาเป็นมือถือแสดงหน้าเว็บราคาบอล พร้อมถ้วยรางวัลทอง ลูกฟุตบอล และไลน์ไอดี @boost168"
+          loading="lazy"
+          fetchpriority="low"
+          widths={imageWidths}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
+
+        <Picture
+          src={promoBoxing}
+          alt="แบนเนอร์โปรโมชั่นแนวนอนพื้นเวทีมวยโทนแดงส้ม มุมบนซ้ายเป็นโลโก้ BOOST168 พร้อมจรวด ข้อความตัวใหญ่สีขาวขอบทองว่า แทงมวย และแถบว่า ครบทุกคู่ มันส์ทุกไฟท์ ราคาดีที่สุด จ่ายจริง ไม่อั้น ใต้ลงมาเป็นไอคอนสี่ข้อ ราคาดีที่สุดจ่ายจริงไม่อั้น อัปเดตราคาน้ำทันทุกคู่ทุกสนาม ถ่ายทอดสดครบทุกสนาม และแทงสะดวกผ่านมือถือ 24 ชั่วโมง มุมล่างซ้ายเป็นป้ายสมัครวันนี้รับโบนัส 100% สูงสุด 1,000 บาท ด้านขวาเป็นนักมวยไทยสองคนกำลังปะทะเข่ากลางเวทีที่มีป้าย MUAY THAI ถัดมาเป็นมือถือแสดงหน้าเว็บราคามวย พร้อมถ้วยรางวัลทอง นวมแดง และไลน์ไอดี @boost168"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -127,8 +137,8 @@ const imageWidths = [320, 440, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffd77a]/60 bg-gradient-to-r from-[#ffd77a] via-[#ef8f22] to-[#a44516] px-10 py-3.5 text-lg font-black text-[#1a0d03] shadow-[0_10px_30px_rgba(239,143,34,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(209,32,26,0.45)]">
-          สมัครสมาชิก MONACO89
+          class="flex items-center justify-center rounded-lg border border-[#3f8cff]/60 bg-gradient-to-r from-[#ffe680] via-[#ffc233] to-[#b26a00] px-10 py-3.5 text-lg font-black text-[#0a0f22] shadow-[0_10px_30px_rgba(255,194,51,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(63,140,255,0.45)]">
+          สมัครสมาชิก BOOST168
         </a>
       </div>
     </div>

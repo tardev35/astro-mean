@@ -7,24 +7,24 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// GALA89: ไฟล์นี้เคยเป็นทองบนม่วงพลัมของแบรนด์ก่อนหน้า (#ffe9a8 / #fcc30b / #e09a05
-// / #ce5a03 คู่ม่วง #7e3ac7 / #3c0f52 บนผิว #3c0f52 / #1c0620 เนื้อความ #f7e6c4)
-// ตอนนี้ย้ายมาชมพูกลอสคู่ทอง — ชมพู #d41c6b / #ff4d9c / #9e154a กับทอง #ffe0a3 /
-// #f0c274 / #b8801f บนผิว #3c0214 / #12010a เนื้อความ #f7dce8 ไม่มีม่วงเหลืออยู่
-// ในไฟล์นี้
+// GDK88: ย้ายจากชมพูกลอสคู่ทองของ GALA89 (#d41c6b / #ff4d9c / #9e154a กับทอง
+// #ffe0a3 / #f0c274 / #b8801f บนผิว #3c0214 / #12010a เนื้อความ #f7dce8) มาที่
+// นีออนม่วงคู่ทองของแบรนด์นี้ — สีเน้นหลัก #a855f7 / #d8b4fe / #5b1497 คู่สีเน้นรอง
+// ทอง #f0b429 / #ffd85e บนผิว #2a0f45 / #0a0118 เนื้อความ #ece0ff ไม่มีชมพูเหลือ
+// อยู่ในไฟล์นี้
 //
 // `as` มีมาเพื่อให้หน้าเรียกกำหนดระดับหัวข้อได้เหมือน ContentBox* ตัวอื่น (เดิม
 // ไฟล์นี้ hardcode <h2> ไว้ทั้งสามจุด) ส่วน titleleft/titleright ตอนนี้เป็น <p>
 // ป้ายคอลัมน์: มันตั้งชื่อคอลัมน์ UI ไม่ใช่ section ของ docx ถ้าปล่อยเป็น <h2>
 // ต่อไป docx หัวข้อเดียวจะกลายเป็นสามหัวข้อบนหน้าเว็บ
 //
-// pt-36/md:pt-28 ตั้งไว้เผื่อหัวข้อ docx ที่ยาวที่สุดของ GALA89 สำหรับบล็อกนี้
-// ("โอนไวใส่ใจทุกยอดกับ GALA89 เน้นความคล่องพร้อมดูแลทุกรายการแบบเป็นระบบ" —
-// 68 ตัวอักษร) ป้ายห้อยอยู่ที่ -top-6 ขอบล่างของมันจึงอยู่ต่ำจากขอบบนการ์ดเท่ากับ
+// pt-36/md:pt-28 ตั้งไว้เผื่อหัวข้อ docx ที่ยาวที่สุดของ GDK88 สำหรับบล็อกนี้
+// ("ฝากถอนวอเลทไม่กั้นทุน เปิดทางให้จัดการยอดได้ยืดหยุ่นตามสไตล์" — 59 ตัวอักษร)
+// ป้ายห้อยอยู่ที่ -top-6 ขอบล่างของมันจึงอยู่ต่ำจากขอบบนการ์ดเท่ากับ
 // (ความสูงป้าย − 24px) chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) เหลือพื้นที่
 //   ข้อความ ~270px, text-lg/tracking-tight ≈ 8.5px ต่อตัวอักษร → ~31 ตัวต่อบรรทัด
-//   → 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด: leading-normal ที่ 18px = 27px ต่อบรรทัด
+//   → 2 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด: leading-normal ที่ 18px = 27px ต่อบรรทัด
 //   → 108px + 24px = 132px ขอบล่างอยู่ที่ 108px เทียบกับ pt-36 (144px) → เหลือ 36px
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) เหลือ ~608px,
 //   text-2xl/leading-normal = 36px ต่อบรรทัด และ ~52 ตัวต่อบรรทัด → 2 บรรทัด =
@@ -36,14 +36,14 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#f0c274]/30 bg-gradient-to-b from-[#3c0214]/95 to-[#12010a]/95 p-8 pt-36 shadow-[0_10px_30px_rgba(240,194,116,0.18)] md:pt-28">
-    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#d41c6b]/45 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f0c274]/30 blur-[60px]"></div>
+    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#f0b429]/30 bg-gradient-to-b from-[#2a0f45]/95 to-[#0a0118]/95 p-8 pt-36 shadow-[0_10px_30px_rgba(240,180,41,0.18)] md:pt-28">
+    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#a855f7]/45 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f0b429]/30 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#f0c274]/55 bg-[#12010a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(240,194,116,0.35)] sm:px-8">
-          <HeadingTag class="bg-gradient-to-r from-[#ffe0a3] via-[#f0c274] to-[#ff4d9c] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
+        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#f0b429]/55 bg-[#0a0118] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(240,180,41,0.35)] sm:px-8">
+          <HeadingTag class="bg-gradient-to-r from-[#ffd85e] via-[#f0b429] to-[#a855f7] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
             {title}
           </HeadingTag>
         </div>
@@ -51,13 +51,13 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7dce8]">
-        {titleleft && <p class="text-2xl leading-normal font-bold text-[#f0c274]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0ff]">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#f0b429]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7dce8] md:border-l md:border-[#d41c6b]/50 md:pl-10">
-        {titleright && <p class="text-2xl leading-normal font-bold text-[#f0c274]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0ff] md:border-l md:border-[#a855f7]/50 md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#d8b4fe]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

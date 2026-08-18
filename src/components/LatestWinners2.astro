@@ -6,15 +6,14 @@ import ktbLogo from "../assets/banks/ktb.png";
 import ttbLogo from "../assets/banks/ttb.png";
 import { brandFlag, brandPick } from "../lib/brandProfile";
 
-// GALA89: this feed variant last shipped the previous brand's neon green + gold
-// (#dcffc0 / #8ef04a / #59cb13 / #3b9b0d over #041b06 / #0a2c0d / #0f3a11, muted
-// #a8c99a, body #e9f9dc, gold #f6c445) and still carried that brand's name in
-// the heading and the section label. Remapped onto this brand's glossy hot pink
-// with gold as the second colour — #ffe6f2 / #ff4d9c / #d41c6b / #9e154a over
-// #12010a / #1f0311 / #3c0214, muted #f9a8cd, body #f7dce8, gold #f0c274.
+// BOOST168: ฟีดตัวนี้ยังค้างชุดชมพูกลอสคู่ทองของแบรนด์ก่อนหน้า และยังมีชื่อแบรนด์เก่า
+// อยู่ในหัวข้อกับชื่อ section (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็น
+// ข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย
+// ดูของเดิมได้จาก git history) แมปมาที่ทองบูสต์คู่น้ำเงินไฟฉายของแบรนด์นี้ — ทอง
+// #fff6dd / #ffe680 / #ffc233 / #b26a00 คู่น้ำเงิน #9ecbff / #3f8cff / #12306e
+// บนผิว #050818 / #0e1430 / #03060f เนื้อความ #e6ecfb ข้อความรอง #9ecbff
 //
-// Bank swatches are the banks' own brand colours, not this site's palette —
-// they stay exactly as they are through every rebrand.
+// สีโลโก้ธนาคารเป็นสีของธนาคารเอง ไม่ใช่พาเลตต์ของเว็บ — คงไว้ทุกรอบรีแบรนด์
 const bankPool = [
   { name: "KBank", color: "bg-[#1155cc]", icon: kbankLogo.src },
   { name: "SCB", color: "bg-[#4e1c80]", icon: scbLogo.src },
@@ -23,10 +22,9 @@ const bankPool = [
   { name: "TTB", color: "bg-[#1279be]", icon: ttbLogo.src },
 ];
 
-// Ported off `<script define:vars={{ bankPool }}>` — see src/lib/winnersFeed.ts.
-// Rows are server-rendered; values come from the domain hash, never
-// Math.random(), which in frontmatter would run at build time and make two
-// builds of the same domain differ.
+// ย้ายออกจาก `<script define:vars={{ bankPool }}>` แล้ว — ดู src/lib/winnersFeed.ts
+// แถวแรกถูก server-render และค่าที่ใช้มาจากแฮชของโดเมน ไม่ใช่ Math.random() ซึ่งถ้า
+// เรียกใน frontmatter จะรันตอน build แล้วทำให้สอง build ของโดเมนเดียวกันไม่เหมือนกัน
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const pick = (salt: string, n: number) => brandPick(Astro.site, salt, n);
 const digits = (salt: string, n: number) => Array.from({ length: n }, (_, d) => pick(`${salt}-${d}`, 10)).join("");
@@ -38,23 +36,25 @@ const initialRows = Array.from({ length: 4 }, (_, i) => ({
   pending: brandFlag(Astro.site, `card-pending-${i}`),
 }));
 
-// The two status looks are passed to the feed module as data-* strings so the
-// module never has to learn this brand's palette. The "done" pill is near-black
-// wine ink on the hot-pink/gold gradient — #2b0210 on #ff4d9c is 6.0:1 and on
-// #f0c274 is 11.4:1, while white on either is under 3.
-const PENDING_CLASS = "text-[#f9a8cd] bg-[#3c0214] animate-pulse";
-const DONE_CLASS = "text-[#2b0210] bg-gradient-to-r from-[#ff4d9c] via-[#f0c274] to-[#ff4d9c] font-black shadow-md";
+// สถานะสองแบบถูกส่งให้โมดูลฟีดเป็นสตริงใน data-* โมดูลจึงไม่ต้องรู้จักพาเลตต์ของ
+// แบรนด์นี้เลย ป้าย "ถอนสำเร็จ" ใช้หมึกดำน้ำเงิน #0a0f22 บนไล่สีทอง–น้ำเงิน — บน
+// #ffc233 ได้ราว 13:1 และบน #3f8cff ได้ราว 6:1 ส่วนสีขาวบนทองอยู่ต่ำกว่า 2:1
+// ป้าย "กำลังดำเนินการ" ใช้ #9ecbff บนน้ำเงินเข้ม #12306e ได้ราว 7:1
+const PENDING_CLASS = "text-[#9ecbff] bg-[#12306e] animate-pulse";
+const DONE_CLASS = "text-[#0a0f22] bg-gradient-to-r from-[#ffc233] via-[#3f8cff] to-[#ffc233] font-black shadow-md";
 ---
 
 <div class="mx-auto w-full max-w-[1300px] p-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก GALA89"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#d41c6b]/25 bg-[#12010a]/92 px-4 py-8 shadow-[0_10px_30px_rgba(212,28,107,0.18)] backdrop-blur-md md:p-10">
-    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#9e154a]/35 blur-[50px]"></div>
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก BOOST168"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#ffc233]/25 bg-[#050818]/92 px-4 py-8 shadow-[0_10px_30px_rgba(255,194,51,0.18)] backdrop-blur-md md:p-10">
+    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#3f8cff]/35 blur-[50px]"></div>
 
     <div class="relative z-10 mb-8 flex items-center justify-center gap-3">
       <span aria-hidden="true" class="text-2xl">🏆</span>
-      <p class="bg-gradient-to-r from-[#ffe6f2] via-[#ff4d9c] to-[#f0c274] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">รายการถอนเงินล่าสุดของสมาชิก GALA89</p>
+      <p class="bg-gradient-to-r from-[#fff6dd] via-[#ffc233] to-[#3f8cff] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">
+        รายการถอนเงินล่าสุดของสมาชิก BOOST168
+      </p>
       <span aria-hidden="true" class="text-2xl">🏆</span>
     </div>
 
@@ -71,7 +71,7 @@ const DONE_CLASS = "text-[#2b0210] bg-gradient-to-r from-[#ff4d9c] via-[#f0c274]
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-card transition-all duration-500 ease-out">
-            <div class="flex flex-col rounded-[20px] border border-[#d41c6b]/25 bg-[#1f0311]/95 p-5 shadow-sm transition-all hover:border-[#ff4d9c]/50 hover:bg-[#3c0214]/90">
+            <div class="flex flex-col rounded-[20px] border border-[#ffc233]/25 bg-[#0e1430]/95 p-5 shadow-sm transition-all hover:border-[#ffc233]/50 hover:bg-[#18204a]/90">
               <div class="mb-4 flex items-start justify-between">
                 <div data-winner-bank class={`flex h-10 w-10 items-center justify-center rounded-full border border-white/10 shadow-inner ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="24" height="24" loading="lazy" decoding="async" class="h-6 w-6 object-contain" />
@@ -87,14 +87,14 @@ const DONE_CLASS = "text-[#2b0210] bg-gradient-to-r from-[#ff4d9c] via-[#f0c274]
                 </div>
               </div>
               <div>
-                <div class="text-sm text-[#f9a8cd]">
+                <div class="text-sm text-[#9ecbff]">
                   ยูสเซอร์:{" "}
-                  <span data-winner-user class="font-bold text-[#f7dce8]">
+                  <span data-winner-user class="font-bold text-[#e6ecfb]">
                     {row.user}
                   </span>
                 </div>
-                <div class="mt-1 text-2xl font-black text-[#ff4d9c]">
-                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#f9a8cd]">THB</span>
+                <div class="mt-1 text-2xl font-black text-[#ffc233]">
+                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#9ecbff]">THB</span>
                 </div>
               </div>
             </div>
@@ -103,7 +103,7 @@ const DONE_CLASS = "text-[#2b0210] bg-gradient-to-r from-[#ff4d9c] via-[#f0c274]
       }
     </div>
 
-    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#f9a8cd]">
+    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#9ecbff]">
       ก่อนฝากหรือถอนควรตรวจยอด ช่องทาง และชื่อบัญชีรับเงินให้ตรงกับข้อมูลสมาชิก หากรายการยังประมวลผลอยู่ไม่ควรกดซ้ำทันที
     </p>
 

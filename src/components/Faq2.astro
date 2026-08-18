@@ -11,51 +11,52 @@ export interface Props {
 
 const { title, faqs = [] } = Astro.props;
 
-// คำถาม render เป็น <span> ไม่ใช่ <h3> — docx ที่หน้าพวกนี้ถูกเติมมาแบนราบ (H1 +
-// H2 ล้วน) และ inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์ คำถาม
-// FAQ ห้าข้อที่โผล่มาเป็น <h3> คือสิ่งที่ทำให้การเทียบนั้นไม่ตรง อีกอย่าง <span>
-// เป็นตัวเลือกเดียวที่ปลอดภัยใน <summary> ซึ่ง content model เป็น phrasing
-// content — <p> ตรงนั้นไม่ถูกต้องตามสเปก ชื่อ section มาจาก <h2> ที่ขับด้วย prop
-// `title` ซึ่งย้อนกลับไปหา brief ได้จริง จึงเป็นหัวข้อเดียวที่ไฟล์นี้ปล่อยออกมา
+// คำถาม render เป็น <span> ไม่ใช่ <h3> — docx ของแบรนด์นี้ถูกเติมมาแบนราบ (H1 + H2
+// ล้วน ไม่มี H3 เลย) และ inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์
+// คำถาม FAQ ที่โผล่มาเป็น <h3> คือสิ่งที่ทำให้การเทียบนั้นไม่ตรง อีกอย่าง <span>
+// เป็นตัวเลือกเดียวที่ปลอดภัยใน <summary> ซึ่ง content model เป็น phrasing content
+// — <p> ตรงนั้นไม่ถูกต้องตามสเปก ชื่อ section มาจาก <h2> ที่ขับด้วย prop `title`
+// ซึ่งย้อนกลับไปหา brief ได้จริง จึงเป็นหัวข้อเดียวที่ไฟล์นี้ปล่อยออกมา
 //
-// MAHAHENG333: ย้ายจากเขียวมังกรนีออนของ DRACO65 (#dcfce7 / #4ade80 / #22c55e คู่
-// เขียวเข้ม #15803d / #14532d บนผิว #062011 / #04150a เนื้อความ #d6ecdd) มาที่ทอง
-// มังกรจีนบนดำ — ทอง #ffe98a / #e8b923 / #a5760a คู่แดง #b4231c / #6d1410 บนผิว
-// #221708 / #15100a / #0a0704 / #33230b เนื้อความ #f3e2b8 ข้อความรอง #c2a469
-// ไม่มีเขียวเหลืออยู่ในไฟล์
+// BOOST168: ย้ายจากทองมังกรจีนคู่แดงบนดำของแบรนด์ก่อนหน้า (ค่า hex เดิมไม่พิมพ์ไว้
+// ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่
+// ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่ทองบูสต์คู่น้ำเงิน
+// ไฟฉายบนพื้นดำน้ำเงิน — ทอง
+// #ffe680 / #ffc233 / #b26a00 คู่น้ำเงิน #3f8cff บนผิว #0e1430 / #18204a / #03060f
+// เนื้อความ #e6ecfb หมึกบนป้ายทอง #0a0f22 ไม่มีสีของแบรนด์เก่าเหลืออยู่ในไฟล์
 ---
 
 <section class="mx-auto max-w-[950px] space-y-6 px-4 py-6 font-sans">
   {
     title && (
       <header class="mb-8 text-center">
-        <h2 class="bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-[#a5760a] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <h2 class="bg-gradient-to-r from-[#fff6dd] via-[#ffc233] to-[#3f8cff] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </h2>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e8b923] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ffc233] to-transparent" />
       </header>
     )
   }
 
   {
     faqs.map((faq) => (
-      <div class="group relative bg-[#33230b] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#ffe98a] via-[#e8b923] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
+      <div class="group relative bg-[#18204a] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#ffe680] via-[#ffc233] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
 
-        <details name="faq-mahaheng333" class="faq-item relative bg-[#221708] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
+        <details name="faq-boost168" class="faq-item relative bg-[#0e1430] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
           <summary class="flex w-full cursor-pointer items-center gap-4 text-left">
             <span
               aria-hidden="true"
-              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#ffe98a] to-[#e8b923] font-black text-[#0a0704] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#ffe680] to-[#ffc233] font-black text-[#0a0f22] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
               ?
             </span>
-            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#f3e2b8]">{faq.q}</span>
-            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#e8b923] transition-transform duration-300">
+            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#e6ecfb]">{faq.q}</span>
+            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#ffc233] transition-transform duration-300">
               ▼
             </span>
           </summary>
 
-          <p class="faq-answer mt-4 border-l-2 border-[#e8b923]/50 pl-4 text-left text-base leading-relaxed text-[#f3e2b8]/85">{faq.a}</p>
+          <p class="faq-answer mt-4 border-l-2 border-[#ffc233]/50 pl-4 text-left text-base leading-relaxed text-[#e6ecfb]/85">{faq.a}</p>
         </details>
       </div>
     ))
