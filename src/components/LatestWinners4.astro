@@ -12,22 +12,25 @@ const bankPool = [
   { name: "KTB", color: "bg-[#0ea5e9]", icon: ktbLogo.src },
 ];
 
-// Ported off `<script define:vars={{ bankPool }}>` — see src/lib/winnersFeed.ts.
-// This is the only variant that does not insert strictly at the front: new
-// pills land at a random spot near the head so the cloud reads as a crowd
-// rather than a queue. `data-insert="scatter"` on the feed asks for that.
+// แถวชุดแรก render จากฝั่งเซิร์ฟเวอร์ และ src/lib/winnersFeed.ts เป็นตัวรับช่วงต่อ
+// — ห้ามย้ายลอจิกกลับมาเป็น `<script define:vars={{ bankPool }}>` ตัวนั้นบังคับ
+// is:inline ซึ่งตัด type/async/defer ทิ้ง แล้วเหลือสคริปต์ที่บล็อก parser อยู่กลาง
+// เอกสาร และห้าม render กล่องเปล่าแล้วเติมด้วย JS: crawler จะไม่เห็นอะไรเลย
 //
-// Values come from the domain hash, never Math.random() — frontmatter runs at
-// build time, and the gate fails the build on a random call there.
+// variant นี้เป็นตัวเดียวที่ไม่ได้แทรกแถวใหม่ไว้หน้าสุดเสมอ — pill ใหม่จะลงตำแหน่ง
+// สุ่มใกล้ๆ หัวแถวเพื่อให้อ่านเป็นกลุ่มคน ไม่ใช่คิว `data-insert="scatter"` บน feed
+// เป็นตัวขอพฤติกรรมนั้น
 //
-// The four `bg-[#…]` swatches above are the banks' own brand colours and stay
-// as they are through a rebrand; only the surface around them follows the
-// brand.
+// ค่าเริ่มต้นมาจาก hash ของโดเมนแบรนด์ ไม่ใช่ Math.random() — frontmatter รันตอน
+// build และเกทจะทำให้ build ล้มถ้ามีการเรียกสุ่มตรงนี้
 //
-// กงล้อ88: ย้ายจากม่วงโกธิคของ PHANTOM569 (#ede9fe / #b794ff / #8b5cf6 / #4c1d95
-// / #2a0a52 บนผิว #1c0343 / #12002b เนื้อความ #ded4f5 ข้อความรอง #a99ac9) มาที่
-// ทองอร่ามคู่เปลวไฟ — #ffe974 / #ffcc4b / #eb9a1d / #8b4c0b คู่เปลวไฟ #ff6a13 /
-// #ffa34d บนผิว #1e1105 / #140a02 เนื้อความ #f6e6c2
+// สี่ swatch `bg-[#…]` ข้างบนเป็นสีโลโก้ธนาคารจริง ไม่ใช่สีแบรนด์ — ห้ามรีธีมตาม
+// palette เปลี่ยนได้แค่ผิวรอบๆ มัน
+//
+// AURORA688: ย้ายจากทองอร่ามคู่เปลวไฟของกงล้อ88 (#ffe974 / #ffcc4b / #eb9a1d /
+// #8b4c0b คู่เปลวไฟ #ff6a13 / #ffa34d บนผิว #1e1105 / #140a02 เนื้อความ #f6e6c2)
+// มาที่ทองหรูคู่เงินโครเมียมของแบรนด์นี้ — ทอง #ffe9a3 / #e2c443 / #c9a13a /
+// #7d5714 คู่เงิน #c3cddb / #eef2f7 บนผิว #15120a / #0a0806 เนื้อความ #f2ead6
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const pick = (salt: string, n: number) => brandPick(Astro.site, salt, n);
 
@@ -40,11 +43,11 @@ const initialRows = Array.from({ length: 8 }, (_, i) => ({
 
 <div class="mx-auto w-full max-w-[1000px] p-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก กงล้อ88"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#ffcc4b]/30 bg-[#1e1105]/88 px-4 py-8 shadow-[0_15px_40px_rgba(255,204,75,0.2)] backdrop-blur-md">
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก AURORA688"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#e2c443]/30 bg-[#15120a]/88 px-4 py-8 shadow-[0_15px_40px_rgba(226,196,67,0.2)] backdrop-blur-md">
     <div class="mb-6 text-center">
-      <p class="bg-gradient-to-b from-[#ffe974] to-[#ff6a13] bg-clip-text text-xl font-black text-transparent md:text-2xl">
-        <span aria-hidden="true">⚡</span> กงล้อ88 ถอนออโต้ทันใจ จ่ายเต็มทุกยอดแบบเรียลไทม์
+      <p class="bg-gradient-to-b from-[#ffe9a3] to-[#c9a13a] bg-clip-text text-xl font-black text-transparent md:text-2xl">
+        <span aria-hidden="true">⚡</span> AURORA688 ระบบออโต้พร้อมรับทุกช่วงเวลา ถอนเองได้ในไม่กี่วินาที
       </p>
     </div>
 
@@ -52,14 +55,14 @@ const initialRows = Array.from({ length: 8 }, (_, i) => ({
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-pill transition-all duration-500 ease-out">
-            <div class="flex items-center gap-3 rounded-full border border-[#ffcc4b]/40 bg-[#140a02] py-1.5 pr-4 pl-1.5 shadow-[0_4px_12px_rgba(255,204,75,0.18)] hover:border-[#ffa34d]/70">
+            <div class="flex items-center gap-3 rounded-full border border-[#e2c443]/40 bg-[#0a0806] py-1.5 pr-4 pl-1.5 shadow-[0_4px_12px_rgba(226,196,67,0.18)] hover:border-[#c3cddb]/70">
               <div data-winner-bank class={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${row.bank.color}`}>
                 <img data-winner-icon src={row.bank.icon} alt="" width="16" height="16" loading="lazy" decoding="async" class="h-4 w-4 object-contain" />
               </div>
-              <div data-winner-user class="text-sm font-bold text-[#f6e6c2]">
+              <div data-winner-user class="text-sm font-bold text-[#f2ead6]">
                 {row.user}
               </div>
-              <div class="text-sm font-black text-[#ffa34d]">
+              <div class="text-sm font-black text-[#ffe9a3]">
                 +<span data-winner-amount>{row.amount}</span> ฿
               </div>
             </div>

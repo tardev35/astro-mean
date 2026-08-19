@@ -9,20 +9,18 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright, label } = Astro.props;
 
-// GDK88: ไฟล์นี้เป็นม่วงอยู่แล้วตั้งแต่ PHANTOM569 (#ede9fe / #b794ff / #8b5cf6 คู่
-// #6d28d9 / #4c1d95 บนผิว #1c0343 เนื้อความ #ded4f5 ข้อความรอง #a99ac9) แต่ยังไม่
-// ตรงพาเลตต์ของแบรนด์นี้ จึงดันสีเน้นหลักไปที่ #a855f7 / #d8b4fe / #f3e8ff คู่ลึก
-// #5b1497 / #3c0a6b บนผิว #1b0733 เนื้อความ #ece0ff แล้วเติมทอง #f0b429 / #ffd85e
-// เป็นสีเน้นรองให้เข้ากับโลโก้ (ตัวอักษร GDK ทอง / 88 ม่วง)
+// AURORA688: ไฟล์นี้เป็นม่วงมาสองแบรนด์ติด (PHANTOM569 #ede9fe / #b794ff / #8b5cf6
+// แล้ว GDK88 #a855f7 / #d8b4fe / #f3e8ff คู่ทองโลโก้ #f0b429 / #ffd85e บนผิว
+// #1b0733 เนื้อความ #ece0ff ข้อความรอง #a99ac9) รอบนี้ย้ายมาทองหรูคู่เงินโครเมียม —
+// สีเน้นหลัก #e2c443 / #ffe9a3 / #c9a13a บนผิว #15120a เนื้อความ #f2ead6 และเงิน
+// #c3cddb / #eef2f7 เป็นสีเน้นรองให้ตรงกับโลโก้ (ตัวอักษร AURORA ทอง / 688 เงิน)
 //
 // Neumorphism แปลว่าเงาสองด้านต้องเป็นเฉดเข้ม/อ่อนของสีการ์ดเอง ไม่ใช่สีแบรนด์:
-// #0a0118 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #2a0f45 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
-// ไฮไลต์ ถ้าเอา #a855f7 ไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
+// #050403 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #262010 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
+// ไฮไลต์ ถ้าเอา #e2c443 ไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
 //
-// เดิม component นี้ไม่มี prop `title` เลย และป้ายหัวคอลัมน์สามตัว render เป็น
-// <h3> ทั้งชุด ซึ่งเป็นหัวข้อที่ docx ไม่เคยมี รอบนี้ `title` คือหัวข้อเดียวที่
-// ปล่อยออกมาได้ (แบก section ของ docx) ส่วน titleleft/titlecenter/titleright
-// ลดลงมาเป็น <p> โดยเก็บคลาสเดิมไว้ เพราะมันตั้งชื่อคอลัมน์ ไม่ใช่ section
+// `title` คือหัวข้อเดียวที่ปล่อยออกมาได้ (แบก section ของ docx) ส่วน
+// titleleft/titlecenter/titleright เป็น <p> เพราะมันตั้งชื่อคอลัมน์ ไม่ใช่ section
 //
 // text-center อยู่บน <header> ซึ่งเป็นพี่น้องของกริด ไม่ใช่บนการ์ด ถ้าย้ายขึ้นไป
 // วางบนการ์ดมันจะ inherit ลงไปใน slot แล้วย่อหน้าเนื้อความจะถูกจัดกึ่งกลางตามไปด้วย
@@ -31,28 +29,28 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titlecenter ?? t
 
 <section aria-label={sectionLabel} class="mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#a855f7]/30 bg-[#1b0733] p-8 shadow-[10px_10px_20px_#0a0118,-10px_-10px_20px_#2a0f45] transition-all duration-300 hover:shadow-[15px_15px_30px_#0a0118,-15px_-15px_30px_#3c0a6b]">
+    class="w-full rounded-[25px] border border-[#e2c443]/30 bg-[#15120a] p-8 shadow-[10px_10px_20px_#050403,-10px_-10px_20px_#262010] transition-all duration-300 hover:shadow-[15px_15px_30px_#050403,-15px_-15px_30px_#332b16]">
     {
       title && (
-        <header class="mb-8 border-b border-[#f0b429]/25 pb-4 text-center">
-          <HeadingTag class="bg-gradient-to-r from-[#f3e8ff] via-[#a855f7] to-[#f0b429] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#c3cddb]/25 pb-4 text-center">
+          <HeadingTag class="bg-gradient-to-r from-[#eef2f7] via-[#e2c443] to-[#c9a13a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      <article class="flex flex-col gap-4 border-b border-[#a855f7]/20 pb-6 text-left text-base leading-relaxed text-[#ece0ff] md:border-r md:border-b-0 md:pr-6 md:pb-0">
-        {titleleft && <p class="text-xl leading-normal font-bold text-[#d8b4fe]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 border-b border-[#e2c443]/20 pb-6 text-left text-base leading-relaxed text-[#f2ead6] md:border-r md:border-b-0 md:pr-6 md:pb-0">
+        {titleleft && <p class="text-xl leading-normal font-bold text-[#ffe9a3]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 border-b border-[#a855f7]/20 pb-6 text-left text-base leading-relaxed text-[#ece0ff] md:border-r md:border-b-0 md:px-4 md:pb-0">
-        {titlecenter && <p class="text-xl leading-normal font-bold text-[#ffd85e]">{titlecenter}</p>}
+      <article class="flex flex-col gap-4 border-b border-[#e2c443]/20 pb-6 text-left text-base leading-relaxed text-[#f2ead6] md:border-r md:border-b-0 md:px-4 md:pb-0">
+        {titlecenter && <p class="text-xl leading-normal font-bold text-[#c3cddb]">{titlecenter}</p>}
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0ff] md:pl-6">
-        {titleright && <p class="text-xl leading-normal font-bold text-[#d8b4fe]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ead6] md:pl-6">
+        {titleright && <p class="text-xl leading-normal font-bold text-[#ffe9a3]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

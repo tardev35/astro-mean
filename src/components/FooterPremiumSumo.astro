@@ -1,32 +1,41 @@
 ---
 import { Picture } from "astro:assets";
 import BankStrip from "./BankStrip.astro";
+import { BRAND_ADDRESS } from "../lib/brandProfile";
 const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png,webp,jpg}", { eager: true });
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
+// AURORA688: ย้ายจากเขียว BETKUB77 (#7ee356 / #1f7a35 / #dcecd6 บนผิว #050a06)
+// มาที่ทองแบรนด์นี้ #e2c443 / #ffe9a3 / #c9a13a / #7d5714 คู่เงินโครเมียม
+// #c3cddb บนผิว #0a0806 / #15120a เนื้อความ #f2ead6 รอง #c8bda1
+//
+// เขียว LINE (#00B900 / #009900) บนปุ่มติดต่อแอดมินไม่ใช่สีแบรนด์ — คงไว้
+//
+// AURORA688 ไม่ใช่เว็บหวย จึงไม่มีลิงก์ /ตรวจหวย และ /แนวทาง ใน shortcuts
 const shortcuts = [
   { name: "หน้าหลัก", path: "/" },
   { name: "โปรโมชั่น", path: "/promotion" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น" },
   { name: "ทางเข้า", path: "/ทางเข้า" },
+  { name: "เกี่ยวกับเรา", path: "/about-us" },
   { name: "ติดต่อเรา", path: "/contact-us" },
 ];
 ---
 
-<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#7ee356]/60 bg-[#050a06] pt-16 pb-8 font-sans text-[#dcecd6] shadow-[0_-15px_40px_rgba(126,227,86,0.25)]">
-  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#7ee356]/20 blur-[100px]"></div>
-  <div class="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-[220px] w-full max-w-2xl rounded-full bg-[#1f7a35]/25 blur-[100px]"></div>
+<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#e2c443]/60 bg-[#0a0806] pt-16 pb-8 font-sans text-[#f2ead6] shadow-[0_-15px_40px_rgba(226,196,67,0.25)]">
+  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#e2c443]/20 blur-[100px]"></div>
+  <div class="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-[220px] w-full max-w-2xl rounded-full bg-[#7d5714]/30 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-12">
       <div class="flex flex-col gap-5 md:col-span-5">
-        <a href="/" class="inline-block max-w-max rounded-xl border border-[#7ee356]/30 bg-[#0b160d] px-4 py-2 transition-transform duration-300 hover:scale-105">
+        <a href="/" class="inline-block max-w-max rounded-xl border border-[#e2c443]/30 bg-[#15120a] px-4 py-2 transition-transform duration-300 hover:scale-105">
           {
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ BETKUB77 ตัวอักษรสีขาวคู่กับไพ่สีเขียว"
+                alt="โลโก้ AURORA688 เหรียญกลมขอบทองนูน กลางเหรียญเป็นอักษร A ทองประดับลายไทยและมงกุฎ ใต้ลงมาเขียนว่า AURORA สีทองต่อด้วยเลข 688 สีเงินโครเมียม"
                 widths={[140, 280, 420]}
                 sizes="140px"
                 loading="lazy"
@@ -36,30 +45,30 @@ const shortcuts = [
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="text-3xl font-black tracking-widest text-[#dcecd6]">
-                BETKUB<span class="text-[#7ee356]">77</span>
+              <span class="text-3xl font-black tracking-widest text-[#ffe9a3]">
+                AURORA<span class="text-[#c3cddb]">688</span>
               </span>
             )
           }
         </a>
-        <p class="border-l-2 border-[#7ee356]/50 pl-4 text-sm leading-relaxed text-[#9db8a1]">
-          BETKUB77 สล็อตเว็บตรงอันดับต้น รวมเกมลิขสิทธิ์แท้จากค่ายดังไว้ครบในบัญชีเดียว ต่อตรง API แท้จากเซิร์ฟเวอร์หลักของค่ายเกม ระบบออโต้ไวได้มาตรฐาน ฝากไวถอนจริงตลอด 24 ชั่วโมง
-          ไม่มีประวัติโกง เบทหนักไม่มีบิดครับ
+        <p class="border-l-2 border-[#e2c443]/50 pl-4 text-sm leading-relaxed text-[#c8bda1]">
+          AURORA688 เว็บสล็อตฟีลดีที่เปิดคลังเกมกว่า 1,000+ ตัวเลือกจากค่ายยักษ์ใหญ่ทั่วโลก รวมเกมฮิตติดแสงกับเกมใหม่มาแรงไว้ในล็อบบี้เดียว แจ็คพอตและรอบโบนัสกระจายอยู่ในทุกเกม
+          พร้อมระบบออโต้ฝากถอนที่ทำรายการเองได้ตลอด 24 ชั่วโมง
         </p>
         <div class="mt-4 flex flex-wrap gap-3">
-          <span class="rounded-full border border-[#7ee356]/30 bg-[#0b160d] px-4 py-1 text-xs font-medium text-[#b6f38a] backdrop-blur-sm">สมาชิกใหม่รับโบนัส 200%</span>
-          <span class="rounded-full border border-[#f2c94c]/40 bg-[#161104] px-4 py-1 text-xs font-medium text-[#f7e08a] backdrop-blur-sm">คืนยอดเสีย 3% ทุกวัน</span>
+          <span class="rounded-full border border-[#e2c443]/40 bg-[#15120a] px-4 py-1 text-xs font-medium text-[#ffe9a3] backdrop-blur-sm">สมาชิกใหม่ ฝากรับเพิ่มทันที 100%</span>
+          <span class="rounded-full border border-[#c3cddb]/40 bg-[#15120a] px-4 py-1 text-xs font-medium text-[#eef2f7] backdrop-blur-sm">คืนยอดเสีย 5% ทุกวัน</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#dcecd6] uppercase drop-shadow-sm">ทางลัด</p>
-        <div class="h-[1px] w-12 bg-[#7ee356]"></div>
-        <ul class="flex flex-col gap-3 text-sm font-medium text-[#9db8a1]">
+        <p class="text-lg font-black tracking-widest text-[#ffe9a3] uppercase drop-shadow-sm">ทางลัด</p>
+        <div class="h-[1px] w-12 bg-[#e2c443]"></div>
+        <ul class="flex flex-col gap-3 text-sm font-medium text-[#c8bda1]">
           {
             shortcuts.map((item) => (
               <li>
-                <a href={item.path} class="transition-colors hover:text-[#7ee356]">
+                <a href={item.path} class="transition-colors hover:text-[#e2c443]">
                   {item.name}
                 </a>
               </li>
@@ -69,8 +78,8 @@ const shortcuts = [
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#dcecd6] uppercase drop-shadow-sm">บริการลูกค้า 24 ชม.</p>
-        <div class="h-[1px] w-12 bg-[#7ee356]"></div>
+        <p class="text-lg font-black tracking-widest text-[#ffe9a3] uppercase drop-shadow-sm">บริการลูกค้า 24 ชม.</p>
+        <div class="h-[1px] w-12 bg-[#e2c443]"></div>
 
         <a
           href="/line"
@@ -78,16 +87,43 @@ const shortcuts = [
           ติดต่อแอดมิน LINE
         </a>
 
-        <div class="mt-4 text-xs font-medium tracking-widest text-[#9db8a1] uppercase">Supported Payments</div>
+        {
+          BRAND_ADDRESS.lines.length > 0 && (
+            <address aria-label={BRAND_ADDRESS.label} class="mt-2 rounded-xl border border-white/15 bg-black/20 p-4 text-xs leading-relaxed not-italic opacity-90">
+              <p class="mb-2 flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase opacity-80">
+                <span aria-hidden="true" class="text-sm">
+                  📍
+                </span>
+                {BRAND_ADDRESS.label}
+              </p>
+              {BRAND_ADDRESS.lines.map((line) => (
+                <span class="block">{line}</span>
+              ))}
+              {BRAND_ADDRESS.email && (
+                <a
+                  href={`mailto:${BRAND_ADDRESS.email}`}
+                  class="mt-3 inline-flex items-center gap-2 font-bold underline decoration-current/40 underline-offset-4 opacity-90 transition-opacity hover:opacity-100">
+                  <span aria-hidden="true" class="text-sm">
+                    ✉️
+                  </span>
+                  {BRAND_ADDRESS.email}
+                </a>
+              )}
+            </address>
+          )
+        }
+
+        <div class="mt-4 text-xs font-medium tracking-widest text-[#c8bda1] uppercase">Supported Payments</div>
         <BankStrip size={30} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#1f7a35]/60 pt-8 text-xs font-medium tracking-wide text-[#9db8a1] md:flex-row">
-      <p>COPYRIGHT &copy; {new Date().getFullYear()} BETKUB77TH.COM. ALL RIGHTS RESERVED.</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#3a3116] pt-8 text-xs font-medium tracking-wide text-[#c8bda1] md:flex-row">
+      <p>COPYRIGHT &copy; {new Date().getFullYear()} AURORA688-TH.COM. ALL RIGHTS RESERVED.</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="transition-colors hover:text-[#7ee356]">เงื่อนไขข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#7ee356]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#e2c443]">เงื่อนไขข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#e2c443]">นโยบายความเป็นส่วนตัว</a>
+        <a href="#top" class="transition-colors hover:text-[#e2c443]">กลับขึ้นบน</a>
       </div>
     </div>
   </div>

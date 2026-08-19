@@ -1,25 +1,37 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import { BRAND_NAME } from "../lib/brandProfile";
 
 // wrangler.toml declares `not_found_handling = "404-page"`, which makes
 // Cloudflare serve dist/404.html for any unmatched path. That file did not
 // exist, so every mistyped URL fell through to Cloudflare's own bare 404.
 //
-// This page is deliberately BRAND-NEUTRAL: no brand name, no brand hex, no
-// per-brand copy. It is one of the few files a rebrand has no reason to
-// rewrite, and the moment it hardcodes a name it silently rots into the
+// This page stays BRAND-NEUTRAL IN ITS BODY: no brand hex, no per-brand copy
+// inside <section>. The moment it hardcodes a palette it silently rots into the
 // PREVIOUS brand's 404 page. Everything brand-specific a visitor sees here —
 // fonts, palette, navbar, footer, background — arrives through MainLayout, so
-// it retheme itself for free on every launch.
+// it rethemes itself for free on every launch.
+//
+// The title/description DO name the brand, because the brief writes one per
+// launch — but they take it from BRAND_NAME rather than typing it, so this file
+// keeps the same self-rebranding property the body has. Never hardcode the
+// literal here.
+//
+// No pageGraph on purpose: Cloudflare serves this one file for EVERY unmatched
+// path, so any node built from Astro.url would claim /404's identity while
+// sitting at some other URL, and a breadcrumb to a page that does not exist is
+// nonsense. The page is noindex anyway — there is nothing for structured data
+// to help.
 //
 // noindex, follow: a 404 must never be indexed, but its links should still be
 // crawled so the crawler finds its way back to the real pages.
+//
+// 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character. This one
+// measures 157 once BRAND_NAME is substituted.
+const pageDescription = `ไม่พบหน้าที่คุณกำลังมองหาบน ${BRAND_NAME} อาจถูกย้ายหรือลิงก์หมดอายุแล้ว กลับไปหน้าแรกเพื่อเลือกเกมฮิตติดแสง โปรโมชั่น หรือทางเข้าเว็บหลักได้ทันทีตลอด 24 ชั่วโมง`;
 ---
 
-<MainLayout
-  title="ไม่พบหน้าที่ต้องการ (404)"
-  description="ไม่พบหน้าที่คุณกำลังมองหา ลิงก์อาจหมดอายุ ถูกย้าย หรือพิมพ์ที่อยู่คลาดเคลื่อน กลับไปหน้าแรกเพื่อเข้าใช้งานเมนูทั้งหมด หรือเลือกหน้าที่ต้องการจากเมนูด้านบนได้เลย"
-  robots="noindex, follow">
+<MainLayout title={`ไม่พบหน้านี้ | ${BRAND_NAME}`} description={pageDescription} robots="noindex, follow">
   <section class="mx-auto flex w-full max-w-3xl flex-col items-center px-4 py-20 text-center font-sans">
     <p class="text-6xl font-black tracking-widest opacity-40 md:text-8xl" aria-hidden="true">404</p>
 

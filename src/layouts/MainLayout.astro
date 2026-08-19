@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle7.astro";
-import Footer from "../components/FooterStyle3.astro";
+import Navbar from "../components/NavbarPremium.astro";
+import Footer from "../components/FooterPremiumSumo.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "BOOST168 | สล็อตเว็บตรงจัดหนัก เกมดีมีบูสต์ ระบบไวไม่เกินจริง",
-  description = "BOOST168 สล็อตเว็บตรงจัดหนัก อัปคลังเกมใหม่ให้มีของตามต่อ เกมดีมีบูสต์ เติมทั้งฟีเจอร์และโบนัสหลายรูปแบบ ระบบไวไม่เกินจริง พร้อมออโต้ช่วยให้ทุกขั้นตอนคล่องขึ้น",
+  title = "AURORA688 | เว็บสล็อตฟีลดี รวมเกมฮิตติดแสง แจ็คพอตแตกทุกวัน",
+  description = "AURORA688 เว็บสล็อตฟีลดี อัดเกมกว่า 1,000+ รวมเกมฮิตติดแสงและตัวน่าลอง แจ็คพอตแตกทุกวัน โปรมีให้ตามหลายจังหวะ ระบบออโต้ฝากถอนพร้อมรับทุกช่วงเวลา ตลอด 24 ชั่วโมง",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #050818;
+        background-color: #0a0806;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ BOOST168 ตัวอักษร BOOST สีเงินโครเมียมต่อด้วยเลข 168 สีทองขนาดใหญ่ มีจรวดพ่นเปลวไฟส้มทองพุ่งอยู่ด้านบน ใต้โลโก้เป็นข้อความ สล็อตเว็บตรง จัดหนัก และ เกมดีมีบูสต์ ระบบไวไม่เกินจริง พร้อมปุ่มสีแดงขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดเงินแดงสกรีน BOOST168 กำลังชี้นิ้วมาข้างหน้า ล้อมด้วยเหรียญทอง ชิปคาสิโน ลูกเต๋า ไพ่เอ และตู้สล็อตขึ้นเลข 777 บนพื้นอวกาศสีดำน้ำเงินที่มีเส้นแสงสีน้ำเงินและแดงพุ่งออกจากกลางภาพ"
+          alt="แบนเนอร์ AURORA688 พื้นดำทอง ซ้ายมือเป็นเหรียญโลโก้ขอบทองที่มีอักษร A ประดับลายไทยและมงกุฎอยู่ด้านบน ใต้ลงมาเป็นตัวอักษรขนาดใหญ่ AURORA สีทองต่อด้วยเลข 688 สีเงินโครเมียม และข้อความไทยว่า เว็บสล็อตฟีลดี รวมเกมฮิตติดแสง แจ็คพอตแตกทุกวัน พร้อมปุ่มขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดดำทองถือไพ่โพแดง ล้อมด้วยเหรียญทอง ลูกเต๋า กล่องของขวัญ ป้าย JACKPOT และตู้สล็อตขึ้นเลข 777"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

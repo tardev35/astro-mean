@@ -13,11 +13,11 @@ import img6 from "../assets/providers/game6.avif";
 // game6 = PP SLOT (Pragmatic Play) ถ้าจะเปลี่ยนชื่อค่ายของช่องไหน ต้องเปลี่ยนไฟล์
 // รูปตามด้วย ห้ามตั้งชื่อค่ายที่โฟลเดอร์นี้ไม่มีโลโก้อยู่จริง
 //
-// GDK88: ย้ายจากทองมังกรจีนบนดำของ MAHAHENG333 (#ffe98a / #e8b923 / #a5760a คู่แดง
-// #b4231c / #6d1410 บนผิว #221708 / #15100a / #0a0704 / #33230b เนื้อความ #f3e2b8
-// ข้อความรอง #c2a469) มาที่นีออนม่วงคู่ทองของแบรนด์นี้ — สีเน้นหลัก #a855f7 /
-// #d8b4fe / #5b1497 คู่สีเน้นรองทอง #f0b429 / #ffd85e บนผิว #1b0733 / #0a0118 /
-// #2a0f45 เนื้อความ #ece0ff ข้อความรอง #c9a6f0
+// AURORA688: ย้ายจากนีออนม่วงคู่ทองของ GDK88 (#a855f7 / #d8b4fe / #5b1497 คู่ทอง
+// #f0b429 / #ffd85e บนผิว #1b0733 / #0a0118 / #2a0f45 เนื้อความ #ece0ff ข้อความรอง
+// #c9a6f0) มาที่ทองหรูคู่เงินโครเมียมของแบรนด์นี้ — สีเน้นหลัก #e2c443 / #ffe9a3 /
+// #7d5714 คู่สีเน้นรองเงิน #c3cddb / #eef2f7 บนผิว #15120a / #0a0806 / #3a3116
+// เนื้อความ #f2ead6 ข้อความรอง #c8bda1
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อค่ายอยู่ใน alt ของรูป ไม่ใช่หัวข้อ
@@ -31,26 +31,24 @@ const providers = [
 ];
 ---
 
-<section aria-label="ค่ายเกมฮิตที่ GDK88 ยกมารวมไว้ในล็อบบี้เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
+<section aria-label="ค่ายยักษ์ใหญ่ที่ AURORA688 ยกมารวมไว้ในล็อบบี้เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#a855f7]/30 bg-[#1b0733]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(168,85,247,0.18)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(168,85,247,0.7)]">⚡</span>
-    <p class="bg-gradient-to-r from-[#f3e8ff] via-[#a855f7] to-[#f0b429] bg-clip-text text-3xl font-black tracking-wide text-transparent">
-      ค่ายเกมฮิตที่ GDK88 ยกมารวมไว้ในล็อบบี้เดียว
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#e2c443]/30 bg-[#15120a]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(226,196,67,0.18)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(226,196,67,0.7)]">⚡</span>
+    <p class="bg-gradient-to-r from-[#eef2f7] via-[#e2c443] to-[#c3cddb] bg-clip-text text-3xl font-black tracking-wide text-transparent">ค่ายยักษ์ใหญ่ที่ AURORA688 ยกมารวมไว้ในล็อบบี้เดียว</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#c8bda1]">
+      ทุกค่ายเปิดให้เข้าใช้งานจากบัญชีเดียว อยากสลับฟีลจากแฟนตาซีตระการตาไปเป็นแอ็กชันสุดมันส์ตอนไหนก็คลิกเลือกเกมใหม่ได้ทันที ไม่ต้องโยกเงินหรือออกจากระบบ
     </p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#c9a6f0]">
-      ทุกค่ายเปิดให้เข้าใช้งานจากบัญชีเดียว อยากเปลี่ยนฟีลเปลี่ยนบรรยากาศตอนไหนก็คลิกเลือกเกมใหม่ได้ทันที ไม่ต้องโยกเงินหรือออกจากระบบ
-    </p>
-    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f0b429] to-transparent"></div>
+    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#c3cddb] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
     {
       providers.map((p) => (
-        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#1b0733] shadow-[0_10px_30px_rgba(168,85,247,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(168,85,247,0.3)]">
-          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#2a0f45] transition-all duration-500 group-hover:border-[#a855f7]/60 group-hover:shadow-[inset_0_0_20px_rgba(168,85,247,0.25)]" />
+        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#15120a] shadow-[0_10px_30px_rgba(226,196,67,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(226,196,67,0.3)]">
+          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#3a3116] transition-all duration-500 group-hover:border-[#e2c443]/60 group-hover:shadow-[inset_0_0_20px_rgba(226,196,67,0.25)]" />
 
-          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#2a0f45] bg-[#0a0118]/85 px-3 py-1.5 text-[10px] font-medium text-[#c9a6f0] backdrop-blur-md transition-colors group-hover:text-[#f3e8ff]">
+          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#3a3116] bg-[#0a0806]/85 px-3 py-1.5 text-[10px] font-medium text-[#c8bda1] backdrop-blur-md transition-colors group-hover:text-[#eef2f7]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
@@ -58,7 +56,7 @@ const providers = [
           </div>
 
           {p.isHot && (
-            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#f0b429]/60 bg-gradient-to-r from-[#ffd85e] to-[#f0b429] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#0a0118] shadow-md">
+            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#e2c443]/60 bg-gradient-to-r from-[#ffe9a3] to-[#e2c443] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#0a0806] shadow-md">
               <span aria-hidden="true" class="animate-pulse">
                 🔥
               </span>{" "}
@@ -68,7 +66,7 @@ const providers = [
 
           <Picture
             src={p.img}
-            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายพันธมิตรที่เปิดให้เข้าเล่นบน GDK88`}
+            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายพันธมิตรที่เปิดให้เข้าเล่นบน AURORA688`}
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="lazy"
@@ -81,7 +79,7 @@ const providers = [
 
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#a855f7]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#e2c443]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         </div>
       ))

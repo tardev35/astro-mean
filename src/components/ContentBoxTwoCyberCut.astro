@@ -10,12 +10,9 @@ const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.pro
 const intro = Astro.slots.has("default") ? (await Astro.slots.render("default")).trim() : "";
 
 // `title` คือหัวข้อเดียวที่ component นี้ปล่อยออกมาได้ และมีไว้รับหัวข้อ docx ของ
-// section — เดิมมันถูก render เป็น <p> ตอนที่ variant นี้ถูกใช้เป็น widget แต่รอบ
-// นี้มันแบกหัวข้อ docx จริง จึงเป็น HeadingTag เหมือนที่ ContentBoxTwo ทำ
-//
-// ป้ายหัวคอลัมน์สองตัว (titleleft/titleright) ยังเป็น <p> เหมือนเดิม: มันตั้งชื่อ
-// แผง UI ไม่ใช่ section ของ docx ถ้าเลื่อนขึ้นเป็นหัวข้อ จำนวน h2 บนหน้าจะไม่ตรง
-// กับ checklist ของ brief ซึ่งเป็นสิ่งที่ทำให้การตรวจรอบถัดไปเชื่อถือไม่ได้
+// section — ป้ายหัวคอลัมน์สองตัว (titleleft/titleright) ยังเป็น <p> เหมือนเดิม:
+// มันตั้งชื่อแผง UI ไม่ใช่ section ของ docx ถ้าเลื่อนขึ้นเป็นหัวข้อ จำนวน h2 บนหน้า
+// จะไม่ตรงกับ checklist ของ brief ซึ่งเป็นสิ่งที่ทำให้การตรวจรอบถัดไปเชื่อถือไม่ได้
 //
 // เมื่อส่ง `title` มาแล้ว หัวข้อทำหน้าที่ตั้งชื่อ section ให้เอง จึงไม่ต้องมี
 // aria-label ซ้อนทับ ถ้าไม่มี title ให้ section ใช้ `label` เป็นชื่อแทน
@@ -23,44 +20,44 @@ const intro = Astro.slots.has("default") ? (await Astro.slots.render("default"))
 // <div> ครอบ intro ข้างล่างเป็นหนึ่งในสามตัวของทั้งตระกูล ContentBox* ที่ต้องอยู่
 // ต่อไป: มันถือ mb-8 จริงและวางอยู่ข้างกริด จึง hoist ขึ้นการ์ดไม่ได้
 //
-// GDK88: ไฟล์นี้เป็นม่วงอยู่แล้วตั้งแต่ PHANTOM569 (#ede9fe / #b794ff / #8b5cf6 คู่
-// #6d28d9 / #4c1d95 บนผิว #1c0343 เนื้อความ #ded4f5) แต่ยังไม่ตรงพาเลตต์ของแบรนด์นี้
-// จึงดันสีเน้นหลักไปที่ #a855f7 / #d8b4fe / #f3e8ff คู่ลึก #5b1497 / #3c0a6b บนผิว
-// #1b0733 เนื้อความ #ece0ff แล้วเติมทอง #f0b429 / #ffd85e เป็นสีเน้นรองให้เข้ากับ
-// โลโก้ (ตัวอักษร GDK ทอง / 88 ม่วง)
+// AURORA688: ไฟล์นี้เป็นม่วงมาสองแบรนด์ติด (PHANTOM569 #ede9fe / #b794ff / #8b5cf6
+// แล้ว GDK88 #a855f7 / #d8b4fe / #f3e8ff คู่ทองโลโก้ #f0b429 / #ffd85e บนผิว
+// #1b0733 เนื้อความ #ece0ff) รอบนี้ย้ายมาทองหรูคู่เงินโครเมียม — สีเน้นหลัก
+// #e2c443 / #ffe9a3 / #eef2f7 บนผิว #15120a เนื้อความ #f2ead6 และเงิน #c3cddb เป็น
+// สีเน้นรองที่ถือเส้นมุมฝั่งล่างขวากับคอลัมน์ขวา ให้ตรงกับโลโก้ (AURORA ทอง / 688 เงิน)
 const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="mx-auto mb-6 w-full max-w-7xl px-4 font-sans">
   <div
-    class="relative isolate w-full border border-[#a855f7]/30 bg-[#1b0733]/92 p-8 text-[#ece0ff] shadow-[0_10px_30px_rgba(168,85,247,0.2)] backdrop-blur-md transition-all duration-300 hover:border-[#d8b4fe]/60 hover:shadow-[0_15px_40px_rgba(216,180,254,0.28)]"
+    class="relative isolate w-full border border-[#e2c443]/30 bg-[#15120a]/92 p-8 text-[#f2ead6] shadow-[0_10px_30px_rgba(226,196,67,0.2)] backdrop-blur-md transition-all duration-300 hover:border-[#ffe9a3]/60 hover:shadow-[0_15px_40px_rgba(255,233,163,0.28)]"
     style="clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);">
-    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#a855f7] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#f0b429] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#a855f7] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#f0b429] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#e2c443] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#c3cddb] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#e2c443] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#c3cddb] to-transparent"></div>
 
-    {title && <HeadingTag class="mb-4 bg-gradient-to-r from-[#f3e8ff] via-[#d8b4fe] to-[#a855f7] bg-clip-text text-center text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
+    {title && <HeadingTag class="mb-4 bg-gradient-to-r from-[#eef2f7] via-[#ffe9a3] to-[#c9a13a] bg-clip-text text-center text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
 
-    {intro && <div class="mb-8 text-left text-base leading-relaxed text-[#ece0ff]" set:html={intro} />}
+    {intro && <div class="mb-8 text-left text-base leading-relaxed text-[#f2ead6]" set:html={intro} />}
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0ff]">
+      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ead6]">
         {
           titleleft && (
-            <p class="flex items-center gap-2 border-b border-[#a855f7]/30 pb-2 text-xl leading-normal font-black text-[#d8b4fe]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#a855f7] shadow-[0_0_5px_rgba(168,85,247,0.8)]" /> {titleleft}
+            <p class="flex items-center gap-2 border-b border-[#e2c443]/30 pb-2 text-xl leading-normal font-black text-[#ffe9a3]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#e2c443] shadow-[0_0_5px_rgba(226,196,67,0.8)]" /> {titleleft}
             </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0ff] md:border-l md:border-[#a855f7]/30 md:pl-8">
+      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ead6] md:border-l md:border-[#e2c443]/30 md:pl-8">
         {
           titleright && (
-            <p class="flex items-center gap-2 border-b border-[#f0b429]/30 pb-2 text-xl leading-normal font-black text-[#ffd85e]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#f0b429] shadow-[0_0_5px_rgba(240,180,41,0.8)]" /> {titleright}
+            <p class="flex items-center gap-2 border-b border-[#c3cddb]/30 pb-2 text-xl leading-normal font-black text-[#eef2f7]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#c3cddb] shadow-[0_0_5px_rgba(195,205,219,0.8)]" /> {titleright}
             </p>
           )
         }

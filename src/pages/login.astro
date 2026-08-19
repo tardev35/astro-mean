@@ -27,10 +27,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ BOOST168 | ทางเข้าสล็อตเว็บตรงจัดหนัก เกมดีมีบูสต์</title>
+    <title>เข้าสู่ระบบ AURORA688 | ทางเข้าเว็บสล็อตฟีลดี เกมฮิตติดแสง</title>
     <meta
       name="description"
-      content="เข้าสู่ระบบ BOOST168 สล็อตเว็บตรงจัดหนัก สำหรับสมาชิกเดิม ระบบจะพาไปหน้าล็อกอินของเว็บหลักให้อัตโนมัติ เข้าเล่นเกมค่ายดัง รับโบนัส และฝากถอนออโต้ได้ทันที"
+      content="เข้าสู่ระบบ AURORA688 เว็บสล็อตฟีลดี สำหรับสมาชิกเดิม ระบบจะพาไปหน้าล็อกอินของเว็บหลักให้อัตโนมัติ เข้าเล่นเกมฮิตติดแสงจากค่ายดัง รับโบนัส ฝากถอนออโต้ได้ทันที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,8 +51,8 @@ const fontHref = usesGoogleFonts
       /* Self-hosted Kanit. This page has its own <head> and does not import
          global.css, so the @font-face rules there never reach it — which is why
          it used to pull Kanit from Google instead. Only the weights this page
-         actually draws are declared. Kanit stays the fallback face inside the
-         Google Sans stack, so these rules still carry weight on this brand. */
+         actually draws are declared. AURORA688 runs BRAND_FONT = "kanit", so
+         these two rules ARE the body face on this brand, not a fallback. */
       @font-face {
         font-family: "Kanit";
         font-style: normal;
@@ -70,26 +70,27 @@ const fontHref = usesGoogleFonts
     </style>
 
     <style>
-      /* BOOST168 is a rocket-boost slot brand — BOOST GOLD/AMBER is the identity
-         hue (the "168" of the wordmark, the rocket flame, the coins) with
-         ELECTRIC BLUE as the second accent (the chrome outline and the light
-         streaks), on a near-black navy space background. The outgoing brand here
-         was neon purple with gold as the sparing accent, and none of that
-         survives — the two hues have swapped roles. Every variable below is
-         NAMED FOR THE COLOUR IT HOLDS, which previous brands stopped doing: this
-         block once declared `--brand-gold` on brands with no gold in them and
+      /* AURORA688 is a gold-luxury casino brand — GOLD is the identity hue (the
+         "AURORA" of the wordmark, the coin badge, the frame) with CHROME SILVER
+         as the second accent (the "688" of the wordmark), on a near-black warm
+         background. The outgoing brand here was electric-blue primary with gold
+         as the sparing accent, and none of that survives — the two families
+         have swapped roles, gold moved from accent to primary and silver took
+         the second slot the blue used to hold. Every variable below is NAMED
+         FOR THE COLOUR IT HOLDS, which previous brands stopped doing: this block
+         once declared `--brand-gold` on brands with no gold in them and
          `--brand-red` on a gold one, so the next editor reused it by name and
          shipped the wrong hue. Rename with the value. */
       :root {
-        --page-bg: #050818;
-        --panel-bg: rgba(14, 20, 48, 0.92);
-        --brand-gold: #ffc233;
-        --brand-gold-pale: #ffe680;
-        --brand-gold-deep: #b26a00;
-        --brand-blue: #3f8cff;
-        --brand-blue-deep: #12306e;
-        --text-body: #e6ecfb;
-        --text-muted: #9ecbff;
+        --page-bg: #0a0806;
+        --panel-bg: rgba(34, 28, 13, 0.92);
+        --brand-gold: #e2c443;
+        --brand-gold-pale: #ffe9a3;
+        --brand-gold-deep: #7d5714;
+        --brand-silver: #c3cddb;
+        --edge-dark: #3a3116;
+        --text-body: #f2ead6;
+        --text-muted: #c8bda1;
       }
 
       body {
@@ -98,8 +99,8 @@ const fontHref = usesGoogleFonts
         color: var(--text-body);
 
         background:
-          radial-gradient(circle at 50% 10%, rgba(255, 194, 51, 0.28) 0%, transparent 55%),
-          radial-gradient(circle at 50% 92%, rgba(63, 140, 255, 0.22) 0%, transparent 55%), var(--page-bg);
+          radial-gradient(circle at 50% 10%, rgba(226, 196, 67, 0.28) 0%, transparent 55%),
+          radial-gradient(circle at 50% 92%, rgba(195, 205, 219, 0.22) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -113,11 +114,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(255, 194, 51, 0.38);
+        border: 1px solid rgba(226, 196, 67, 0.38);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(3, 6, 15, 0.5),
-          0 0 2rem rgba(255, 194, 51, 0.25);
+          0 1rem 3rem rgba(5, 4, 3, 0.5),
+          0 0 2rem rgba(226, 196, 67, 0.25);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -132,7 +133,7 @@ const fontHref = usesGoogleFonts
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(255, 194, 51, 0.45));
+        filter: drop-shadow(0 1px 2px rgba(226, 196, 67, 0.45));
       }
 
       .sophisticated-loader {
@@ -150,14 +151,14 @@ const fontHref = usesGoogleFonts
         height: 40px;
         background: radial-gradient(circle, var(--brand-gold-pale) 0%, var(--brand-gold) 45%, var(--brand-gold-deep) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(255, 194, 51, 0.45);
+        box-shadow: 0 0 2rem rgba(226, 196, 67, 0.45);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(255, 194, 51, 0.22);
+        border: 3px solid rgba(226, 196, 67, 0.22);
         animation: spin linear infinite;
       }
 
@@ -171,7 +172,7 @@ const fontHref = usesGoogleFonts
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--brand-blue);
+        border-bottom-color: var(--brand-silver);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -188,11 +189,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(255, 194, 51, 0.45);
+          box-shadow: 0 0 2rem rgba(226, 196, 67, 0.45);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(255, 230, 128, 0.45);
+          box-shadow: 0 0 3rem rgba(255, 233, 163, 0.45);
         }
       }
 
@@ -203,7 +204,7 @@ const fontHref = usesGoogleFonts
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-body);
-        text-shadow: 0 1px 1px var(--brand-blue-deep);
+        text-shadow: 0 1px 1px var(--edge-dark);
         margin: 0;
       }
       .status-text .p {
@@ -216,7 +217,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">BOOST168</div>
+      <div class="brand-identity">AURORA688</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -226,7 +227,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ BOOST168 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ AURORA688 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

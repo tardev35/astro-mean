@@ -14,46 +14,91 @@ import img6 from "../assets/providers/game6.avif";
 // ชื่อค่ายเดินทางไปด้วยกันในอ็อบเจกต์เดียว ส่วน `name`/`type` เป็นชื่อห้องเกมสล็อต
 // ซึ่งไม่ได้ผูกกับรูป จึงเปลี่ยนได้อิสระ
 //
-// BOOST168: ย้ายจากนีออนม่วงคู่ทองของแบรนด์ก่อนหน้า (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ —
-// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
-// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่ทองบูสต์คู่น้ำเงินไฟฉาย —
-// ทอง #ffe680 / #ffc233 / #b26a00 คู่น้ำเงิน #9ecbff / #3f8cff / #12306e บนผิว
-// #0e1430 / #050818 / #03060f / #18204a เนื้อความ #e6ecfb ข้อความรอง #9ecbff
-// สองสีสลับบทบาทกัน: ม่วงหลักเดิมกลายเป็นทอง ทองรองเดิมกลายเป็นน้ำเงิน แถวอันดับ
-// หนึ่งจึงรับคู่น้ำเงิน #3f8cff / #9ecbff ตัดกับกริดทองที่เหลือ
-// จุด live สีเขียวเป็นสีเชิงความหมาย ไม่ถูกแตะ
+// AURORA688: ย้ายจากทองบูสต์คู่น้ำเงินไฟฉายของ BOOST168 (#ffe680 / #ffc233 /
+// #b26a00 คู่น้ำเงิน #9ecbff / #3f8cff / #12306e บนผิว #0e1430 / #050818 / #03060f
+// / #18204a เนื้อความ #e6ecfb ข้อความรอง #9ecbff) มาที่ทองหรูคู่เงินโครเมียม —
+// ทองหลัก #ffe9a3 / #e2c443 / #c9a13a / #7d5714 คู่เงิน #eef2f7 / #c3cddb / #8d99a8
+// บนผิว #221c0d / #0a0806 / #050403 / #3a3116 เนื้อความ #f2ead6 ข้อความรอง #c8bda1
+// ทองยังเป็นสีหลักของกริดเหมือนเดิม ส่วนแถวอันดับหนึ่งรับคู่เงินโครเมียมเพื่อให้ตัด
+// กับแถวที่เหลือ จุด live สีเขียวเป็นสีเชิงความหมาย ไม่ถูกแตะ
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
-// กระดานนี้เน้นคลังเกมที่อัปใหม่ไม่ขาดช่วงและฟีเจอร์บูสต์ของแต่ละห้องตาม brief ของ
-// แบรนด์นี้ ไม่ใช่การชูอัตราจ่ายของเกมใดเกมหนึ่ง
+// กระดานนี้เน้นความหลากหลายของคลังเกมกว่า 1,000+ และจังหวะลุ้นแจ็คพอตที่กระจายอยู่
+// ทุกเกมตาม brief ของแบรนด์นี้ ไม่ใช่การชูอัตราจ่ายของเกมใดเกมหนึ่ง
 //
 // อันดับ 1–3 แสดงเหรียญ "แทน" ตัวเลข ถ้าซ่อนอิโมจิเฉยๆ สามแถวนั้นจะไม่เหลืออันดับ
 // ให้อ่านเลย ข้อความ sr-only จึงใส่กลับเข้าไปคู่กับ aria-hidden
 const games = [
-  { rank: 1, name: "ห้องสล็อตแอ็กชันโหลดไว", type: "สล็อตแอ็กชัน • เข้าหน้าสปินแทบไม่ต้องรอ", brand: "PP SLOT (Pragmatic Play)", menus: ["เข้าเกมต่อเนื่องไม่มีจอดำ", "ฟีเจอร์คูณเงินรางวัลมาบ่อย"], players: 5124, img: img6 },
-  { rank: 2, name: "ห้องแฟนตาซีเวทมนตร์กราฟิกอลังการ", type: "สล็อตแฟนตาซี • ภาพจัดเต็มแต่ยังลื่น", brand: "Joker", menus: ["ภาพหนักแต่ไม่กระตุก", "โหมดฟรีสปินเข้าถึงง่าย"], players: 3842, img: img4 },
-  { rank: 3, name: "ห้องสล็อตรอบสั้นรู้ผลไว", type: "สล็อตสไตล์เอเชีย • จังหวะกระชับ", brand: "JILI", menus: ["รักษาจังหวะการปั่นได้ต่อเนื่อง", "เหมาะกับสายเบทเบา"], players: 3517, img: img5 },
-  { rank: 4, name: "ห้องรวมเกมใหม่ตัวเด็ดตามกระแส", type: "สล็อตหลายค่าย • อัปคลังไม่ขาดช่วง", brand: "SexySlot", menus: ["คลิกเลือกเกมใหม่ได้ทันที", "ไม่ต้องโยกเงินข้ามค่าย"], players: 2905, img: img2 },
-  { rank: 5, name: "ห้องสล็อตแนวคลาสสิกโบนัสแตกง่าย", type: "สล็อตคลาสสิก • กติกาตรงไปตรงมา", brand: "PG (Pocket Games Soft)", menus: ["อัตราแจกโบนัสตรงไปตรงมา", "เหมาะกับสายวางแผนทุน"], players: 2431, img: img1 },
-  { rank: 6, name: "ห้องเกมตัวตึงคัดมาแล้ว", type: "สล็อตคัดพิเศษ • ฟีเจอร์รีสปินครบ", brand: "SlotXO", menus: ["เปิดให้เข้าตลอดทั้งวัน", "ความเสถียรอยู่ระดับสูง"], players: 2108, img: img3 },
+  {
+    rank: 1,
+    name: "ห้องเกมฮิตติดแสงระดับตำนาน",
+    type: "สล็อตยอดนิยม • เกมที่ทุกคนต้องรู้จัก",
+    brand: "PP SLOT (Pragmatic Play)",
+    menus: ["ภาพสวยกราฟิกอลังการ", "จังหวะลุ้นแจ็คพอตมาถี่"],
+    players: 5124,
+    img: img6,
+  },
+  {
+    rank: 2,
+    name: "ห้องแฟนตาซีตระการตา",
+    type: "สล็อตแฟนตาซี • โลกเวทมนตร์เต็มจอ",
+    brand: "Joker",
+    menus: ["ภาพจัดเต็มแต่ยังลื่นไหล", "รอบโบนัสเข้าถึงได้ง่าย"],
+    players: 3842,
+    img: img4,
+  },
+  {
+    rank: 3,
+    name: "ห้องแอ็กชันสุดมันส์จังหวะกระชับ",
+    type: "สล็อตแอ็กชัน • รู้ผลไวไม่ต้องรอนาน",
+    brand: "JILI",
+    menus: ["เข้าหน้าสปินแทบไม่ต้องรอ", "เหมาะกับสายเบทเบาเล่นชิล"],
+    players: 3517,
+    img: img5,
+  },
+  {
+    rank: 4,
+    name: "ห้องเกมใหม่มาแรงนอกกระแส",
+    type: "สล็อตมาใหม่ • ซ่อนโบนัสเด็ดเอาไว้เพียบ",
+    brand: "SexySlot",
+    menus: ["ค้นฟีเจอร์แปลกใหม่ได้ทุกวัน", "อัปตัวเลือกเข้าคลังต่อเนื่อง"],
+    players: 2905,
+    img: img2,
+  },
+  {
+    rank: 5,
+    name: "ห้องสล็อตแนวสตรีทสุดเท่",
+    type: "สล็อตสไตล์สตรีท • อัตราจ่ายคุ้มค่า",
+    brand: "PG (Pocket Games Soft)",
+    menus: ["กติกาตรงไปตรงมา", "เหมาะกับสายวางแผนทุน"],
+    players: 2431,
+    img: img1,
+  },
+  {
+    rank: 6,
+    name: "ห้องเกมตัวตึงทำเงินคัดมาแล้ว",
+    type: "สล็อตคัดพิเศษ • รอบโบนัสกระจายทุกเกม",
+    brand: "SlotXO",
+    menus: ["เปิดให้เข้าตลอดทั้งวัน", "ความเสถียรอยู่ระดับสูง"],
+    players: 2108,
+    img: img3,
+  },
 ];
 
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="ห้องเกมสล็อตมาแรงที่สมาชิก BOOST168 กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="ห้องเกมสล็อตมาแรงที่สมาชิก AURORA688 กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#ffc233]/35 bg-[#0e1430]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(255,194,51,0.22)] backdrop-blur-md">
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#e2c443]/35 bg-[#221c0d]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(226,196,67,0.22)] backdrop-blur-md">
     <span aria-hidden="true" class="text-2xl">🎰</span>
-    <p class="bg-gradient-to-r from-[#fff6dd] via-[#ffc233] to-[#3f8cff] bg-clip-text text-2xl font-black tracking-wide text-transparent">
-      ห้องเกมสล็อตมาแรงที่สมาชิก BOOST168 กำลังปั่นอยู่ตอนนี้
-    </p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#9ecbff]">
-      กระดานนี้จับห้องเกมที่คนเข้าเยอะที่สุดมาเรียงไว้ในล็อบบี้เดียว กดสลับค่ายได้ตลอดทั้งวันในบัญชีเดียวโดยไม่ต้องโยกเงินหรือออกจากระบบ รายชื่อห้องมาแรงเปลี่ยนได้ตามช่วงเวลา
+    <p class="bg-gradient-to-r from-[#eef2f7] via-[#e2c443] to-[#c9a13a] bg-clip-text text-2xl font-black tracking-wide text-transparent">ห้องเกมสล็อตมาแรงที่สมาชิก AURORA688 กำลังปั่นอยู่ตอนนี้</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#c8bda1]">
+      กระดานนี้จับห้องเกมที่คนเข้าเยอะที่สุดจากคลังกว่า 1,000+ เกมมาเรียงไว้ในล็อบบี้เดียว กดสลับค่ายได้ตลอดทั้งวันในบัญชีเดียวโดยไม่ต้องโยกเงินหรือออกจากระบบ รายชื่อห้องมาแรงเปลี่ยนได้ตามช่วงเวลา
       ควรเปิดดูเบทขั้นต่ำและเงื่อนไขฟีเจอร์ของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ffc233] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e2c443] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -64,10 +109,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#3f8cff]/60 bg-gradient-to-r from-[#12306e]/70 via-[#0e1430]/92 to-[#03060f]/88 shadow-[0_15px_40px_rgba(63,140,255,0.28)]"
-                : "border-[#ffc233]/30 bg-[#0e1430]/88 shadow-[0_10px_30px_rgba(255,194,51,0.18)] hover:border-[#ffc233]/55 hover:shadow-[0_15px_40px_rgba(255,194,51,0.32)]"
+                ? "border-[#c3cddb]/60 bg-gradient-to-r from-[#3a3116]/75 via-[#221c0d]/92 to-[#050403]/88 shadow-[0_15px_40px_rgba(195,205,219,0.25)]"
+                : "border-[#e2c443]/30 bg-[#221c0d]/88 shadow-[0_10px_30px_rgba(226,196,67,0.18)] hover:border-[#e2c443]/55 hover:shadow-[0_15px_40px_rgba(226,196,67,0.32)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#3f8cff]/30 blur-[40px] transition-all duration-500 group-hover:bg-[#ffc233]/35" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#c3cddb]/20 blur-[40px] transition-all duration-500 group-hover:bg-[#e2c443]/35" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {medal(g.rank) ? (
@@ -76,14 +121,14 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#ffc233] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#e2c443] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
-            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#3f8cff]/60" : "border-[#ffc233]/35"}`}>
+            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#c3cddb]/60" : "border-[#e2c443]/35"}`}>
               <Picture
                 src={g.img}
-                alt={`โลโก้ค่ายเกมพันธมิตร ${g.brand} ที่อยู่ในล็อบบี้เกมสล็อตของ BOOST168`}
+                alt={`โลโก้ค่ายเกมพันธมิตร ${g.brand} ที่อยู่ในล็อบบี้เกมสล็อตของ AURORA688`}
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
                 loading="lazy"
@@ -97,24 +142,24 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#e6ecfb] sm:text-lg">{g.name}</p>
+                <p class="truncate text-base font-black text-[#f2ead6] sm:text-lg">{g.name}</p>
                 {top && (
-                  <span class="hidden shrink-0 rounded-full border border-[#9ecbff]/70 bg-gradient-to-r from-[#9ecbff] to-[#3f8cff] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#03060f] sm:inline">
+                  <span class="hidden shrink-0 rounded-full border border-[#eef2f7]/70 bg-gradient-to-r from-[#eef2f7] to-[#c3cddb] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#050403] sm:inline">
                     มาแรงสูงสุด
                   </span>
                 )}
               </div>
-              <p class="truncate text-[11px] text-[#9ecbff] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#c8bda1] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#ffc233]/30 bg-[#03060f] px-2.5 py-0.5 text-[10px] font-bold text-[#ffe680]">{m}</span>
+                  <span class="rounded-full border border-[#e2c443]/30 bg-[#050403] px-2.5 py-0.5 text-[10px] font-bold text-[#ffe9a3]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#9ecbff]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#c8bda1]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -125,8 +170,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#9ecbff] to-[#3f8cff] text-[#03060f] shadow-[0_10px_30px_rgba(63,140,255,0.35)]"
-                    : "border border-[#ffc233]/60 bg-[#03060f] text-[#ffe680] hover:border-[#3f8cff] hover:bg-[#18204a] hover:text-[#9ecbff]"
+                    ? "bg-gradient-to-r from-[#eef2f7] to-[#c3cddb] text-[#050403] shadow-[0_10px_30px_rgba(195,205,219,0.35)]"
+                    : "border border-[#e2c443]/60 bg-[#050403] text-[#ffe9a3] hover:border-[#c3cddb] hover:bg-[#3a3116] hover:text-[#eef2f7]"
                 }`}>
                 เข้าดูเกม
               </a>
