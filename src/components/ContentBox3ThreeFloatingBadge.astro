@@ -8,21 +8,20 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright } = Astro.props;
 
-// MONACO89: ไฟล์นี้ค้างทองบนม่วงพลัมของ TANGTEM168 มา (#ffe9a8 / #fcc30b / #e09a05
-// / #ce5a03 คู่ม่วง #7e3ac7 / #3c0f52 บนผิว #3c0f52 / #2a0a2e / #1c0620 เนื้อความ
-// #f7e6c4) รอบนี้ย้ายมาทองแอมเบอร์–คอปเปอร์คู่แดงรอยัลบนมะฮอกกานีดำ — #ffe9b8 /
-// #ffd77a / #ef8f22 / #a44516 คู่แดง #d1201a / #7e120e บนผิว #26150a / #160d05 /
-// #0b0602 เนื้อความ #f6e3c0 ไม่มีม่วงเหลืออยู่ในไฟล์นี้
+// DEKDDD: ไฟล์นี้ค้างชุดสีของแบรนด์ก่อนหน้ามา (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ —
+// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
+// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้ย้ายมาทองคู่แดงของ
+// DEKDDD — ทอง #ffe08a / #eebb1a / #a3760a คู่แดง #e01f26 / #a80d10 / #5c0201
+// บนผิว #2a0806 / #1a0503 / #0b0100 เนื้อความ #f7e7c8
 //
-// titleleft/titlecenter/titleright เป็น <p> ป้ายคอลัมน์ (คลาสเดิม บวก
-// leading-normal): มันตั้งชื่อคอลัมน์ UI ไม่ใช่ section ของ docx ถ้าปล่อยเป็น
-// หัวข้อ docx หัวข้อเดียวจะกลายเป็นสี่หัวข้อบนหน้าเว็บ และ docx ของ MONACO89 แบน
-// H1+H2 ล้วน หน้าเว็บจึงต้องไม่มี h3 เลย
+// titleleft/titlecenter/titleright เป็น <p> ป้ายคอลัมน์ (ไม่ใช่หัวข้อ docx):
+// มันตั้งชื่อคอลัมน์ UI ถ้าปล่อยเป็นหัวข้อ docx หัวข้อเดียวจะกลายเป็นสี่หัวข้อบน
+// หน้าเว็บ และ docx ของ DEKDDD แบน H1 + H2 ล้วน หน้าเว็บจึงต้องไม่มี h3 เลย
 //
 // pt-40/md:pt-32 ป้ายถูกตรึงไว้ที่ -top-6 ขอบล่างของมันจึงอยู่ต่ำจากขอบบนการ์ด
 // เท่ากับ (ความสูงป้าย − 24px) chrome ของป้าย = py-3 (24px) + border-2 (4px) =
-// 28px คำนวณกับหัวข้อ H2 ข้อ 4 ของ docx ยาว 67 ตัวอักษร ("โบนัสแตกบ่อย ฟีเจอร์
-// เด่นของเกมดังที่เพิ่มอะไรให้แต่ละรอบน่าตามขึ้น?"):
+// 28px คำนวณกับหัวข้อ H2 ข้อ 3 ของ docx ยาว 51 ตัวอักษร ("เกมฮิตติดล็อบบี้
+// พร้อมตัวใหม่สลับมาให้ลองแบบไม่จำเจ"):
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-5 (40px) เหลือ ~262px,
 //   text-lg + tracking-widest (0.1em) ≈ 10.8px ต่อตัวอักษร → ~24 ตัวต่อบรรทัด →
 //   3 บรรทัด เผื่อแย่สุด 4 บรรทัด: leading-normal ที่ 18px = 27px ต่อบรรทัด →
@@ -36,31 +35,31 @@ const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright } = Ast
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
-  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#ef8f22]/35 bg-gradient-to-b from-[#26150a] to-[#0b0602] p-8 pt-40 shadow-[0_20px_50px_rgba(11,6,2,0.6)] md:pt-32">
+  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#eebb1a]/35 bg-gradient-to-b from-[#2a0806] to-[#0b0100] p-8 pt-40 shadow-[0_20px_50px_rgba(11,1,0,0.6)] md:pt-32">
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#ef8f22]/55 bg-gradient-to-b from-[#160d05] to-[#0b0602] px-5 py-3 text-center shadow-[0_10px_20px_rgba(11,6,2,0.5)] sm:px-10">
-          <HeadingTag class="bg-gradient-to-r from-[#ffe9b8] via-[#ef8f22] to-[#a44516] bg-clip-text text-lg leading-normal font-black tracking-widest text-transparent uppercase sm:text-2xl">
+        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#eebb1a]/55 bg-gradient-to-b from-[#1a0503] to-[#0b0100] px-5 py-3 text-center shadow-[0_10px_20px_rgba(11,1,0,0.5)] sm:px-10">
+          <HeadingTag class="bg-gradient-to-r from-[#ffe08a] via-[#eebb1a] to-[#e01f26] bg-clip-text text-lg leading-normal font-black tracking-widest text-transparent uppercase sm:text-2xl">
             {title}
           </HeadingTag>
-          <div aria-hidden="true" class="absolute bottom-1 left-1/2 h-[2px] w-1/2 -translate-x-1/2 bg-[#ef8f22]/80 shadow-[0_0_5px_rgba(239,143,34,1)]" />
+          <div aria-hidden="true" class="absolute bottom-1 left-1/2 h-[2px] w-1/2 -translate-x-1/2 bg-[#eebb1a]/80 shadow-[0_0_5px_rgba(238,187,26,1)]" />
         </div>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f6e3c0] md:border-r md:border-[#a44516]/40 md:pr-6">
-        {titleleft && <p class="text-center text-xl leading-normal font-black text-[#ef8f22] uppercase drop-shadow-md">{titleleft}</p>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f7e7c8] md:border-r md:border-[#a80d10]/50 md:pr-6">
+        {titleleft && <p class="text-center text-xl leading-normal font-black text-[#eebb1a] uppercase drop-shadow-md">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f6e3c0] md:border-r md:border-[#a44516]/40 md:px-4">
-        {titlecenter && <p class="text-center text-xl leading-normal font-black text-[#ef8f22] uppercase drop-shadow-md">{titlecenter}</p>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f7e7c8] md:border-r md:border-[#a80d10]/50 md:px-4">
+        {titlecenter && <p class="text-center text-xl leading-normal font-black text-[#eebb1a] uppercase drop-shadow-md">{titlecenter}</p>}
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f6e3c0] md:pl-6">
-        {titleright && <p class="text-center text-xl leading-normal font-black text-[#ef8f22] uppercase drop-shadow-md">{titleright}</p>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f7e7c8] md:pl-6">
+        {titleright && <p class="text-center text-xl leading-normal font-black text-[#eebb1a] uppercase drop-shadow-md">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

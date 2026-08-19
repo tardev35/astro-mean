@@ -1,10 +1,10 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideNewMember from "../assets/slide1.png";
-import slideReferral from "../assets/slide2.png";
-import slideDiamond from "../assets/slide3.png";
-import slideCashback from "../assets/slide4.png";
+import slideWheel from "../assets/slide1.png";
+import slideNewMember from "../assets/slide2.png";
+import slideCashback from "../assets/slide3.png";
+import slideReferral from "../assets/slide4.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -20,11 +20,11 @@ import slideCashback from "../assets/slide4.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// AURORA688: แถบนี้ถือสไลด์ของ asset drop รอบนี้ครบทั้งสี่ใบ — slide1 (โปรสมาชิก
-// ใหม่ ฝากรับเพิ่มทันที 100%) slide2 (แนะนำเพื่อน รับค่าคอมมิชชั่น 10% ตลอดชีพ)
-// slide3 (สะสมเพชร รับแลกรางวัล) slide4 (คืนยอดเสีย 5% ทุกวัน)
+// DEKDDD: แถบนี้ถือสไลด์ของ asset drop รอบนี้ครบทั้งสี่ใบ — slide1 (ฝากครั้งแรก
+// 299 ขึ้นไป รับสิทธิ์หมุนวงล้อ) slide2 (สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100)
+// slide3 (ทุกวัน คืนยอดเสีย 5%) slide4 (แนะนำเพื่อน รับ 1%)
 //
-// ทำไมต้องสี่: slide4 กับ slide1 ถูกใช้ไปแล้วในบล็อก ContentBoxSevenThree* สอง
+// ทำไมต้องสี่: slide2 กับ slide3 ถูกใช้ไปแล้วในบล็อก ContentBoxSevenThree* สอง
 // อันบนหน้าแรก ถ้าแถบนี้ถือแค่สองใบนั้น หน้าแรกจะโชว์รูปเดิมซ้ำสองรอบ และบน
 // เดสก์ท็อปที่เห็นพร้อมกัน 2 ช่องก็จะเห็นทั้งชุดพร้อมกันจนไม่เหลือความเป็น
 // carousel เลย อีกสองใบเป็นอาร์ตของ drop รอบนี้เหมือนกัน (หน้า /promotion ใช้ครบ
@@ -40,20 +40,20 @@ import slideCashback from "../assets/slide4.png";
 // ต้องคิด --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
 const images = [
   {
+    src: slideWheel,
+    alt: "แบนเนอร์โปรโมชั่นพื้นแดงทอง เขียนว่า ฝากครั้งแรก 299 ขึ้นไป รับสิทธิ์หมุนวงล้อ กลางภาพเป็นวงล้อทองในช่อใบไม้ทอง มีป้ายรางวัลทองคำ 2 สลึง ด้านขวาเป็นตัวการ์ตูนหญิงสาวผมยาวคู่กับมาสคอตแพนด้าถือไพ่โพดำ ล้อมด้วยเหรียญทอง",
+  },
+  {
     src: slideNewMember,
-    alt: "แบนเนอร์โปรโมชั่นพื้นดำทอง เขียนว่า โปรสมาชิกใหม่ ฝากรับเพิ่มทันที 100% มีตราสัญลักษณ์ สมาชิกใหม่รับสิทธิพิเศษ เฉพาะคุณเท่านั้น ไอคอนสี่ข้อ ฝากครั้งแรกรับเพิ่มทันที 100% ระบบปลอดภัยขั้นสูงเชื่อถือได้ 100% ฝาก-ถอนออโต้ 24 ชั่วโมงภายใน 30 วินาที และบริการลูกค้าตลอด 24 ชั่วโมง ซ้ายมือเป็นหญิงสาวชุดดำ ล้อมด้วยเหรียญทองและหีบสมบัติ",
-  },
-  {
-    src: slideReferral,
-    alt: "แบนเนอร์โปรโมชั่นพื้นดำทอง เขียนว่า แนะนำเพื่อน รับค่าคอมมิชชั่น 10% ตลอดชีพ พร้อมไอคอนสี่ข้อ แนะนำง่ายเพียงส่งลิงก์ รับทันทีไม่มีขั้นต่ำ ตลอดชีพไม่มีวันหมดอายุ และมั่นคงปลอดภัยจ่ายจริงตรงเวลา ซ้ายมือเป็นหญิงสาวชุดดำกำลังชี้นิ้ว",
-  },
-  {
-    src: slideDiamond,
-    alt: "แบนเนอร์โปรโมชั่นพื้นดำทอง เขียนว่า สะสมเพชร รับแลกรางวัล ยิ่งสะสมมากยิ่งได้มาก แสดงตัวอย่างรางวัลตั้งแต่ 500 เพชรแลกของที่ระลึก ไปจนถึง 20,000 เพชรแลกรางวัล 2,000 บาท พร้อมขั้นตอนสามข้อ เล่นเกมทำกิจกรรมรับเพชร สะสมเพชรให้ครบตามที่กำหนด แล้วแลกรางวัลได้ทันที",
+    alt: "แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100 ด้านหลังเป็นตัวการ์ตูนหญิงสาวผมมวยสองข้างถือแว่นขยาย มีมาสคอตยูนิคอร์นและเพนกวินอยู่ซ้ายขวา ล้อมด้วยช่อใบไม้ทอง มงกุฎ และกองเหรียญทอง",
   },
   {
     src: slideCashback,
-    alt: "แบนเนอร์โปรโมชั่นพื้นดำทอง ตัวอักษรใหญ่เขียนว่า คืนยอดเสีย 5% ทุกวัน คืนให้ทุกวันไม่มีขั้นต่ำ ถอนได้จริง พร้อมไอคอนสี่ข้อ รับคืนอัตโนมัติทุกวัน 00.00 น. มั่นคงปลอดภัยเชื่อถือได้ 100% ถอนได้จริงไม่มีขั้นต่ำ และเล่นได้ทุกเกมทั้งสล็อตบอลคาสิโน ซ้ายมือเป็นหญิงสาวชุดดำ ล้อมด้วยเหรียญทอง",
+    alt: "แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า ทุกวัน คืนยอดเสีย 5% ด้านหลังเป็นมาสคอตแรคคูนสวมฮู้ดสีม่วงคู่กับสิงโตจีนขนทองที่ถือทองคำแท่ง มีหีบสมบัติและเหรียญทองกระจายอยู่รอบ",
+  },
+  {
+    src: slideReferral,
+    alt: "แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า แนะนำเพื่อน รับ 1% ด้านหลังเป็นตัวละครหญิงชุดนักรบแอซเท็กสวมเครื่องประดับขนนก มาสคอตไข่ตาโต และหีบสมบัติที่เปิดอยู่ ล้อมด้วยช่อใบไม้ทองและเหรียญทอง",
   },
 ];
 
@@ -79,7 +79,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e2c443]/60 peer-focus-visible:bg-[#3a3116] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffe9a3]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#eebb1a]/60 peer-focus-visible:bg-[#2a0806] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffe08a]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -92,7 +92,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#e2c443]/35 object-cover shadow-[0_10px_30px_rgba(226,196,67,0.22)]"
+              class="block w-full rounded-xl border border-[#eebb1a]/35 object-cover shadow-[0_10px_30px_rgba(238,187,26,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

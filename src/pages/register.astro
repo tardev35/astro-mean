@@ -27,10 +27,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก AURORA688 | เปิดบัญชีเว็บสล็อตฟีลดี ฝากถอนออโต้</title>
+    <title>สมัครสมาชิก DEKDDD | เปิดบัญชีเว็บสล็อตสายเอ็นจอย ฝากถอนออโต้</title>
     <meta
       name="description"
-      content="สมัครสมาชิก AURORA688 เว็บสล็อตฟีลดี เปิดบัญชีใหม่ผ่านระบบออโต้ในไม่กี่คลิก ระบบจะพาไปหน้าสมัครของเว็บหลักให้อัตโนมัติ รับโบนัสต้อนรับและเริ่มปั่นได้ทันที"
+      content="สมัครสมาชิก DEKDDD สล็อตสายเอ็นจอย เปิดบัญชีใหม่ผ่านระบบออโต้ในไม่กี่คลิก ระบบจะพาไปหน้าสมัครของเว็บหลักให้อัตโนมัติ พร้อมเริ่มปั่นเกมฮิตติดล็อบบี้ได้ทันที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -51,8 +51,10 @@ const fontHref = usesGoogleFonts
       /* Self-hosted Kanit. This page has its own <head> and does not import
          global.css, so the @font-face rules there never reach it — which is why
          it used to pull Kanit from Google instead. Only the weights this page
-         actually draws are declared. AURORA688 runs BRAND_FONT = "kanit", so
-         these two rules ARE the body face on this brand, not a fallback. */
+         actually draws are declared. DEKDDD runs BRAND_FONT = "google-sans", so
+         on this brand these two rules are the SECOND entry in the stack, not
+         the body face — leave them in place, the flag flips every rebrand and
+         a Kanit brand would otherwise render in the browser default here. */
       @font-face {
         font-family: "Kanit";
         font-style: normal;
@@ -70,27 +72,26 @@ const fontHref = usesGoogleFonts
     </style>
 
     <style>
-      /* AURORA688 is a gold-luxury casino brand — GOLD is the identity hue (the
-         "AURORA" of the wordmark, the coin badge, the frame) with CHROME SILVER
-         as the second accent (the "688" of the wordmark), on a near-black warm
-         background. The outgoing brand here was electric-blue primary with gold
-         as the sparing accent, and none of that survives — the two families
-         have swapped roles, gold moved from accent to primary and silver took
-         the second slot the blue used to hold. Every variable below is NAMED
-         FOR THE COLOUR IT HOLDS, which previous brands stopped doing: this block
-         once declared `--brand-gold` on brands with no gold in them and
-         `--brand-red` on a gold one, so the next editor reused it by name and
-         shipped the wrong hue. Rename with the value. */
+      /* DEKDDD is an esports/gamer brand dressed as a gold-and-red casino — GOLD
+         is the identity hue (the shield, the wings, the wordmark) with DEEP RED
+         as the second accent (the blood-red field behind the mascot), on a
+         near-black warm-brown background. The outgoing brand here was gold with
+         CHROME SILVER second; the silver is gone entirely and red took that
+         slot. Every variable below is NAMED FOR THE COLOUR IT HOLDS, which
+         previous brands stopped doing: this block once declared `--brand-gold`
+         on brands with no gold in them and `--brand-red` on a gold one, so the
+         next editor reused it by name and shipped the wrong hue. Rename with
+         the value. */
       :root {
-        --page-bg: #0a0806;
-        --panel-bg: rgba(34, 28, 13, 0.92);
-        --brand-gold: #e2c443;
-        --brand-gold-pale: #ffe9a3;
-        --brand-gold-deep: #7d5714;
-        --brand-silver: #c3cddb;
-        --edge-dark: #3a3116;
-        --text-body: #f2ead6;
-        --text-muted: #c8bda1;
+        --page-bg: #0b0100;
+        --panel-bg: rgba(42, 8, 6, 0.92);
+        --brand-gold: #eebb1a;
+        --brand-gold-pale: #ffe08a;
+        --brand-gold-deep: #a3760a;
+        --brand-red: #a80d10;
+        --edge-dark: #5c0201;
+        --text-body: #f7e7c8;
+        --text-muted: #d8c39a;
       }
 
       body {
@@ -99,8 +100,8 @@ const fontHref = usesGoogleFonts
         color: var(--text-body);
 
         background:
-          radial-gradient(circle at 50% 10%, rgba(226, 196, 67, 0.28) 0%, transparent 55%),
-          radial-gradient(circle at 50% 92%, rgba(195, 205, 219, 0.22) 0%, transparent 55%), var(--page-bg);
+          radial-gradient(circle at 50% 10%, rgba(238, 187, 26, 0.28) 0%, transparent 55%),
+          radial-gradient(circle at 50% 92%, rgba(168, 13, 16, 0.35) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -114,11 +115,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(226, 196, 67, 0.38);
+        border: 1px solid rgba(238, 187, 26, 0.38);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(5, 4, 3, 0.5),
-          0 0 2rem rgba(226, 196, 67, 0.25);
+          0 1rem 3rem rgba(11, 1, 0, 0.6),
+          0 0 2rem rgba(238, 187, 26, 0.25);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -133,7 +134,7 @@ const fontHref = usesGoogleFonts
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(226, 196, 67, 0.45));
+        filter: drop-shadow(0 1px 2px rgba(238, 187, 26, 0.45));
       }
 
       .sophisticated-loader {
@@ -151,14 +152,14 @@ const fontHref = usesGoogleFonts
         height: 40px;
         background: radial-gradient(circle, var(--brand-gold-pale) 0%, var(--brand-gold) 45%, var(--brand-gold-deep) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(226, 196, 67, 0.45);
+        box-shadow: 0 0 2rem rgba(238, 187, 26, 0.45);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(226, 196, 67, 0.22);
+        border: 3px solid rgba(238, 187, 26, 0.22);
         animation: spin linear infinite;
       }
 
@@ -172,7 +173,7 @@ const fontHref = usesGoogleFonts
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--brand-silver);
+        border-bottom-color: var(--brand-red);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -189,11 +190,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(226, 196, 67, 0.45);
+          box-shadow: 0 0 2rem rgba(238, 187, 26, 0.45);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(255, 233, 163, 0.45);
+          box-shadow: 0 0 3rem rgba(255, 224, 138, 0.45);
         }
       }
 
@@ -217,7 +218,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">AURORA688</div>
+      <div class="brand-identity">DEKDDD</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -227,7 +228,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก AURORA688 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก DEKDDD ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

@@ -7,6 +7,9 @@ const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
+const logoAlt =
+  "โลโก้ DEKDDD ด้านซ้ายเป็นโล่ทองรูปเด็กสวมแว่น VR และหูฟัง ใส่ชุดแดงลายจีน คาบจุกนม ถือจอยเกมสีทอง มีปีกทองกางออกสองข้าง ด้านขวาเป็นตัวอักษร DEK สีขาวต่อด้วย DDD สีทอง ใต้ลงมาเป็นป้ายทองเขียนว่า เว็บเกมสร้างรายได้";
+
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
   { name: "โปรโมชั่น", path: "/promotion" },
@@ -19,9 +22,9 @@ const quickLinks = [
 const gameCategories = ["สล็อตออนไลน์ (Slot)", "ซื้อฟรีสปิน (Buy Feature)", "สล็อตผลไม้คลาสสิก (Classic)", "เกมแจ็กพอต (Jackpot)", "เกมมาใหม่ (New Release)"];
 ---
 
-<footer class="relative w-full overflow-hidden border-t-[3px] border-[#ffcc4b] bg-[#140a02] pt-16 pb-8 font-sans text-[#f6e6c2] shadow-[0_-10px_30px_rgba(255,106,19,0.28)]">
-  <div class="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-[#ffcc4b]/15 blur-[100px]"></div>
-  <div class="pointer-events-none absolute bottom-0 left-0 h-96 w-96 rounded-full bg-[#ff6a13]/25 blur-[100px]"></div>
+<footer class="relative w-full overflow-hidden border-t-[3px] border-[#eebb1a] bg-[#1a0503] pt-16 pb-8 font-sans text-[#f7e7c8] shadow-[0_-10px_30px_rgba(168,13,16,0.35)]">
+  <div class="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-[#eebb1a]/15 blur-[100px]"></div>
+  <div class="pointer-events-none absolute bottom-0 left-0 h-96 w-96 rounded-full bg-[#a80d10]/35 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
@@ -31,8 +34,8 @@ const gameCategories = ["สล็อตออนไลน์ (Slot)", "ซื�
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ กงล้อ88 ตัวอักษรไทยคำว่า กงล้อ สีทองพร้อมเลข 88 อยู่กลางวงแหวนเปลวไฟ มีมังกรทองพันอยู่ด้านซ้ายและก้อนเมฆมงคลสีทองอยู่ด้านล่าง"
-                class="h-[50px] w-auto drop-shadow-[0_0_15px_rgba(255,204,75,0.5)]"
+                alt={logoAlt}
+                class="h-[50px] w-auto drop-shadow-[0_0_15px_rgba(238,187,26,0.5)]"
                 widths={[120, 150]}
                 sizes="150px"
                 loading="lazy"
@@ -41,34 +44,34 @@ const gameCategories = ["สล็อตออนไลน์ (Slot)", "ซื�
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="bg-gradient-to-b from-[#ffe974] to-[#eb9a1d] bg-clip-text text-4xl font-black text-transparent drop-shadow-[0_0_10px_rgba(255,204,75,0.45)]">{BRAND_NAME}</span>
+              <span class="bg-gradient-to-b from-[#ffe08a] to-[#a3760a] bg-clip-text text-4xl font-black text-transparent drop-shadow-[0_0_10px_rgba(238,187,26,0.45)]">{BRAND_NAME}</span>
             )
           }
         </a>
-        <p class="text-base leading-relaxed text-[#c9ab7a]">
-          {BRAND_NAME} สล็อตเว็บตรงแตกหนัก เว็บแท้ไม่ผ่านเอเย่นต์ ไม่ล็อคยูสและไม่ปรับลดอัตราการชนะ รวมค่ายดังไว้ครบทั้ง PG Slot, Joker Gaming และ Pragmatic Play หมุนกงล้อพารวยลุ้นแจ็คพอตแตกได้ทุกวัน
-          พร้อมระบบฝากถอนออโต้ที่ทำรายการเองได้ตลอด 24 ชั่วโมง รองรับทุกธนาคารชั้นนำและทรูวอลเล็ท
+        <p class="text-base leading-relaxed text-[#c9a98a]">
+          {BRAND_NAME} สล็อตสายเอ็นจอย เว็บสล็อตยุคใหม่ที่รวบรวมเกมเด็ดเกมฮิตไว้เต็มล็อบบี้ พร้อมเกมมาใหม่จากค่ายชั้นนำสลับสับเปลี่ยนเข้ามาให้ลองตลอดเวลา โดดเด่นด้วยระบบตอบสนองไว สลับเกมสลับค่ายได้ลื่นไหลไร้รอยต่อ
+          รองรับทั้งสมาร์ตโฟน แท็บเล็ต และคอมพิวเตอร์ พร้อมฟีเจอร์เด่นและกิจกรรมน่าติดตามที่จัดขึ้นเพื่อสมาชิกโดยเฉพาะ
         </p>
         <div class="mt-2 flex items-center gap-3">
-          <div class="flex items-center gap-1.5 rounded border border-[#ffcc4b]/50 bg-[#ffcc4b]/15 px-3 py-1.5 text-xs font-bold text-[#ffe974] shadow-[0_0_10px_rgba(255,204,75,0.25)]">
+          <div class="flex items-center gap-1.5 rounded border border-[#eebb1a]/50 bg-[#eebb1a]/15 px-3 py-1.5 text-xs font-bold text-[#ffe08a] shadow-[0_0_10px_rgba(238,187,26,0.25)]">
             <span aria-hidden="true" class="text-base">🛡️</span> SSL/TLS 256-BIT
           </div>
-          <div class="flex items-center gap-1.5 rounded border border-[#ff6a13]/60 bg-[#2c1808] px-3 py-1.5 text-xs font-bold text-[#ffa34d]">
+          <div class="flex items-center gap-1.5 rounded border border-[#a80d10]/70 bg-[#2a0806] px-3 py-1.5 text-xs font-bold text-[#eebb1a]">
             <span aria-hidden="true" class="text-base">⚡</span> AUTO 24H
           </div>
         </div>
       </div>
 
       <nav aria-label="เมนูหลัก" class="flex flex-col gap-4 lg:pl-8">
-        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffe974]">
-          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ffe974] to-[#eb9a1d]"></span> เมนูหลัก
+        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffe08a]">
+          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ffe08a] to-[#a3760a]"></span> เมนูหลัก
         </p>
         <ul class="flex flex-col gap-3 text-sm">
           {
             quickLinks.map((link) => (
               <li>
-                <a href={link.path} class="group flex items-center text-[#c9ab7a] transition-all hover:text-[#ffe974]">
-                  <span aria-hidden="true" class="mr-2 -ml-4 text-[#ff6a13] opacity-0 transition-all group-hover:ml-0 group-hover:opacity-100">
+                <a href={link.path} class="group flex items-center text-[#c9a98a] transition-all hover:text-[#ffe08a]">
+                  <span aria-hidden="true" class="mr-2 -ml-4 text-[#e01f26] opacity-0 transition-all group-hover:ml-0 group-hover:opacity-100">
                     ➤
                   </span>
                   {link.name}
@@ -80,15 +83,15 @@ const gameCategories = ["สล็อตออนไลน์ (Slot)", "ซื�
       </nav>
 
       <nav aria-label="หมวดหมู่เกม" class="flex flex-col gap-4">
-        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffe974]">
-          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ffe974] to-[#eb9a1d]"></span> หมวดหมู่เกม
+        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffe08a]">
+          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ffe08a] to-[#a3760a]"></span> หมวดหมู่เกม
         </p>
         <ul class="flex flex-col gap-3 text-sm">
           {
             gameCategories.map((game) => (
               <li>
-                <a href="/register" class="group flex items-center text-[#c9ab7a] transition-all hover:text-[#ffe974]">
-                  <span class="mr-3 h-1.5 w-1.5 rounded-full bg-[#ff6a13] transition-colors group-hover:bg-[#ffcc4b] group-hover:shadow-[0_0_8px_rgba(255,204,75,0.85)]" />
+                <a href="/register" class="group flex items-center text-[#c9a98a] transition-all hover:text-[#ffe08a]">
+                  <span class="mr-3 h-1.5 w-1.5 rounded-full bg-[#a80d10] transition-colors group-hover:bg-[#eebb1a] group-hover:shadow-[0_0_8px_rgba(238,187,26,0.85)]" />
                   {game}
                 </a>
               </li>
@@ -98,8 +101,8 @@ const gameCategories = ["สล็อตออนไลน์ (Slot)", "ซื�
       </nav>
 
       <div class="flex flex-col gap-5">
-        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffe974]">
-          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ffe974] to-[#eb9a1d]"></span> บริการลูกค้า
+        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffe08a]">
+          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ffe08a] to-[#a3760a]"></span> บริการลูกค้า
         </p>
 
         <a
@@ -133,25 +136,25 @@ const gameCategories = ["สล็อตออนไลน์ (Slot)", "ซื�
         }
 
         <div class="mt-2">
-          <p class="mb-3 text-xs font-bold tracking-wider text-[#ffa34d] uppercase">รองรับทุกธนาคาร & True Wallet</p>
+          <p class="mb-3 text-xs font-bold tracking-wider text-[#eebb1a] uppercase">รองรับทุกธนาคาร & True Wallet</p>
           <BankStrip size={26} />
         </div>
       </div>
     </div>
 
-    <div class="mb-6 flex flex-wrap justify-center gap-4 border-y border-[#ffcc4b]/25 py-6 opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:gap-8">
-      <span class="text-lg font-black text-[#c9ab7a] italic md:text-2xl">PG<span class="text-[#ffcc4b]">SOFT</span></span>
-      <span class="text-lg font-black text-[#c9ab7a] italic md:text-2xl">JOKER<span class="text-[#ffcc4b]">GAMING</span></span>
-      <span class="text-lg font-black text-[#c9ab7a] italic md:text-2xl">PRAGMATIC<span class="text-[#ffcc4b]">PLAY</span></span>
-      <span class="text-lg font-black text-[#c9ab7a] italic md:text-2xl">JILI<span class="text-[#ffcc4b]">GAMES</span></span>
-      <span class="text-lg font-black text-[#c9ab7a] italic md:text-2xl">MICRO<span class="text-[#ffcc4b]">GAMING</span></span>
+    <div class="mb-6 flex flex-wrap justify-center gap-4 border-y border-[#eebb1a]/25 py-6 opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:gap-8">
+      <span class="text-lg font-black text-[#c9a98a] italic md:text-2xl">PG<span class="text-[#eebb1a]">SOFT</span></span>
+      <span class="text-lg font-black text-[#c9a98a] italic md:text-2xl">JOKER<span class="text-[#eebb1a]">GAMING</span></span>
+      <span class="text-lg font-black text-[#c9a98a] italic md:text-2xl">PRAGMATIC<span class="text-[#eebb1a]">PLAY</span></span>
+      <span class="text-lg font-black text-[#c9a98a] italic md:text-2xl">JILI<span class="text-[#eebb1a]">GAMES</span></span>
+      <span class="text-lg font-black text-[#c9a98a] italic md:text-2xl">MICRO<span class="text-[#eebb1a]">GAMING</span></span>
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 text-xs text-[#c9ab7a] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold text-[#ffe974]">{BRAND_NAME}</span>. All rights reserved. สล็อตเว็บตรงแตกหนัก ฝากถอนออโต้ จ่ายจริงถอนไม่อั้น</p>
+    <div class="flex flex-col items-center justify-between gap-4 text-xs text-[#c9a98a] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold text-[#ffe08a]">{BRAND_NAME}</span>. All rights reserved. สล็อตสายเอ็นจอย เกมฮิตติดล็อบบี้ เล่นลื่นไม่มีสะดุดทุกอุปกรณ์</p>
       <div class="flex gap-4">
-        <a href="/terms/" class="transition-colors hover:text-[#ffe974]">เงื่อนไขการให้บริการ</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#ffe974]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#ffe08a]">เงื่อนไขการให้บริการ</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#ffe08a]">นโยบายความเป็นส่วนตัว</a>
       </div>
     </div>
   </div>

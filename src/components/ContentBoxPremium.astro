@@ -5,19 +5,22 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
+
+// DEKDDD: ทอง #eebb1a / #ffe08a / #a3760a คู่แดง #a80d10 / #e01f26 / #5c0201
+// บนผิวไล่เฉด #2a0806 → #0b0100 เนื้อความ #f7e7c8
 ---
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#ffc233]/35 bg-gradient-to-br from-[#0e1430]/92 to-[#03060f]/88 p-8 text-left text-base leading-relaxed text-[#e6ecfb] shadow-[0_10px_30px_rgba(255,194,51,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe680]/70 hover:shadow-[0_15px_40px_rgba(63,140,255,0.4)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#3f8cff]/45 blur-[55px] transition-all duration-500 group-hover:bg-[#ffc233]/55"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#ffc233]/35 blur-[55px] transition-all duration-500 group-hover:bg-[#b26a00]/50"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#eebb1a]/35 bg-gradient-to-br from-[#2a0806]/92 to-[#0b0100]/88 p-8 text-left text-base leading-relaxed text-[#f7e7c8] shadow-[0_10px_30px_rgba(238,187,26,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe08a]/70 hover:shadow-[0_15px_40px_rgba(168,13,16,0.45)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#a80d10]/50 blur-[55px] transition-all duration-500 group-hover:bg-[#eebb1a]/55"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#eebb1a]/35 blur-[55px] transition-all duration-500 group-hover:bg-[#a3760a]/50"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#ffc233]/35 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe680] via-[#ffc233] to-[#3f8cff] shadow-[0_0_10px_rgba(255,194,51,0.55)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#fff6dd] via-[#ffc233] to-[#3f8cff] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#eebb1a]/35 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe08a] via-[#eebb1a] to-[#a80d10] shadow-[0_0_10px_rgba(238,187,26,0.55)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#fff6dd] via-[#eebb1a] to-[#e01f26] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
             {title}
           </HeadingTag>
         </header>

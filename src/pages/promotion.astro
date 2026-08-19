@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxNeumorphism.astro";
+import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
@@ -14,11 +14,11 @@ import { Picture } from "astro:assets";
 // Meta and never a body.
 //
 // Named for what each banner ACTUALLY prints, not for its file number.
-// The AURORA688 drop (mtime 2026-08-19) is FOUR usable slides, all 600 wide:
-//   slide1 = โปรสมาชิกใหม่ ฝากรับเพิ่มทันที 100%
-//   slide2 = แนะนำเพื่อน รับค่าคอมมิชชั่น 10% ตลอดชีพ
-//   slide3 = สะสมเพชร รับแลกรางวัล
-//   slide4 = คืนยอดเสีย 5% ทุกวัน
+// The DEKDDD drop (mtime 2026-08-20) is FOUR usable slides, all 600 wide:
+//   slide1 = ฝากครั้งแรก 299 ขึ้นไป รับสิทธิ์หมุนวงล้อ
+//   slide2 = สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100
+//   slide3 = ทุกวัน คืนยอดเสีย 5%
+//   slide4 = แนะนำเพื่อน รับ 1%
 // The mapping between file number and artwork changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after what is printed instead of after the file.
@@ -27,21 +27,21 @@ import { Picture } from "astro:assets";
 // here: an imported image is an emitted image even when nothing renders it.
 // banner1-mobile.* belongs to MainLayout's hero <picture> alone. Only what is
 // printed on each banner may be stated on this page.
-import promoNewMember from "../assets/slide1.png";
-import promoReferral from "../assets/slide2.png";
-import promoDiamond from "../assets/slide3.png";
-import promoCashback from "../assets/slide4.png";
+import promoWheel from "../assets/slide1.png";
+import promoNewMember from "../assets/slide2.png";
+import promoCashback from "../assets/slide3.png";
+import promoReferral from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 154.
-const pageDescription = "รวมโปรโมชั่น AURORA688 ครบทุกสิทธิ์ในหน้าเดียว ทั้งโบนัสต้อนรับสมาชิกใหม่ เติมเงินรายวัน คืนยอดเสีย และแนะนำเพื่อน กดรับเองผ่านระบบออโต้ได้ตลอด 24 ชั่วโมง";
+// byte count reads ~3x too long). This one measures 160.
+const pageDescription = "รวมโปรโมชั่น DEKDDD ครบในหน้าเดียว ทั้งฝากครั้งแรกรับสิทธิ์หมุนวงล้อ สมาชิกใหม่ฝาก 49 รับ 100 คืนยอดเสียทุกวัน 5% และแนะนำเพื่อนรับ 1% เงื่อนไขอ่านได้บนแบนเนอร์";
 
-const pageTitle = "โปรโมชั่น AURORA688 | รวมโบนัสและสิทธิพิเศษครบทุกจังหวะ";
+const pageTitle = "โปรโมชั่น DEKDDD | รวมสิทธิ์สมาชิกใหม่ หมุนวงล้อ คืนยอดเสีย";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น AURORA688 รวมโบนัสและสิทธิพิเศษครบทุกจังหวะ";
+const pageHeading = "โปรโมชั่น DEKDDD รวมสิทธิ์ที่กดรับได้ครบทุกจังหวะการเล่น";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -50,22 +50,22 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoNewMember.src,
+  primaryImagePath: promoWheel.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
 // two-up from sm: inside that same padding plus one 2rem grid gap.
-// ContentBoxNeumorphism stays at p-8 on every breakpoint and caps at
-// max-w-[1400px], so the column stops growing at 652px once the viewport
-// passes 1432px.
-const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1431px) calc((100vw - 8rem) / 2), 652px";
+// ContentBoxPremium moves to p-10 at md: (7rem total) and caps at
+// max-w-[1400px], so the column stops growing at 644px once the viewport
+// passes 1512px.
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1511px) calc((100vw - 9rem) / 2), 644px";
 
-// ขอบเงินโครเมียมตัดกับงานอาร์ตที่เป็นดำทอง แล้วเรืองทองแบรนด์ตอน hover
+// ขอบทองแบรนด์ตัดกับงานอาร์ตพื้นแดง แล้วเรืองทองเข้มขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#c3cddb]/35 object-contain shadow-[0_10px_30px_rgba(195,205,219,0.25)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e2c443]/70 hover:shadow-[0_15px_40px_rgba(226,196,67,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#eebb1a]/35 object-contain shadow-[0_10px_30px_rgba(168,13,16,0.35)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe08a]/70 hover:shadow-[0_15px_40px_rgba(238,187,26,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
-// drop — the column is drawn up to 652px, so nothing above 600 buys detail.
+// drop — the column is drawn up to 644px, so nothing above 600 buys detail.
 const imageWidths = [320, 440, 600];
 ---
 
@@ -77,43 +77,29 @@ const imageWidths = [320, 440, 600];
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffe9a3]">AURORA688</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ทั้งหมด รายละเอียดของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองครบแล้ว
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffe08a]">DEKDDD</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ทั้งหมด รายละเอียดของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองครบแล้ว
         แต่ละรายการคิดจากยอดคนละชุด มีเพดาน เงื่อนไขทำยอด และรอบเวลาการรับสิทธิ์เป็นของตัวเอง จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด
         ทุกสิทธิ์กดรับเองได้ผ่านระบบออโต้บนหน้าเว็บตลอด 24 ชั่วโมง จบได้ในไม่กี่คลิกโดยไม่ต้องส่งสลิปและไม่ต้องรอแอดมิน
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
+          src={promoWheel}
+          alt="แบนเนอร์โปรโมชั่นพื้นแดงทอง เขียนว่า ฝากครั้งแรก 299 ขึ้นไป รับสิทธิ์หมุนวงล้อ กลางภาพเป็นวงล้อทองในกรอบช่อใบลอเรล มีป้ายรางวัลทองคำ 2 สลึง ข้างตัวการ์ตูนหญิงสาวผมดำชุดจีนสีดำแดงและหมีแพนด้าถือไพ่ ล้อมด้วยเหรียญทองที่ร่วงลงมา"
+          loading="lazy"
+          fetchpriority="low"
+          widths={imageWidths}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
+
+        <Picture
           src={promoNewMember}
-          alt="แบนเนอร์โปรโมชั่นพื้นดำทอง เขียนว่า โปรสมาชิกใหม่ ฝากรับเพิ่มทันที 100% มีตราสัญลักษณ์ สมาชิกใหม่รับสิทธิพิเศษ เฉพาะคุณเท่านั้น ไอคอนสี่ข้อ ฝากครั้งแรกรับเพิ่มทันที 100% ระบบปลอดภัยขั้นสูงเชื่อถือได้ 100% ฝาก-ถอนออโต้ 24 ชั่วโมงภายใน 30 วินาที และบริการลูกค้าตลอด 24 ชั่วโมง ซ้ายมือเป็นหญิงสาวชุดดำ ล้อมด้วยเหรียญทองและหีบสมบัติ"
-          loading="lazy"
-          fetchpriority="low"
-          widths={imageWidths}
-          sizes={imageSizes}
-          class={imageClass}
-          decoding="async"
-          formats={["avif", "webp"]}
-          fallbackFormat="webp"
-          quality={80}
-        />
-
-        <Picture
-          src={promoReferral}
-          alt="แบนเนอร์โปรโมชั่นพื้นดำทอง เขียนว่า แนะนำเพื่อน รับค่าคอมมิชชั่น 10% ตลอดชีพ พร้อมไอคอนสี่ข้อ แนะนำง่ายเพียงส่งลิงก์ รับทันทีไม่มีขั้นต่ำ ตลอดชีพไม่มีวันหมดอายุ และมั่นคงปลอดภัยจ่ายจริงตรงเวลา ซ้ายมือเป็นหญิงสาวชุดดำกำลังชี้นิ้ว"
-          loading="lazy"
-          fetchpriority="low"
-          widths={imageWidths}
-          sizes={imageSizes}
-          class={imageClass}
-          decoding="async"
-          formats={["avif", "webp"]}
-          fallbackFormat="webp"
-          quality={80}
-        />
-
-        <Picture
-          src={promoDiamond}
-          alt="แบนเนอร์โปรโมชั่นพื้นดำทอง เขียนว่า สะสมเพชร รับแลกรางวัล ยิ่งสะสมมากยิ่งได้มาก แสดงตัวอย่างรางวัลตั้งแต่ 500 เพชรแลกของที่ระลึก ไปจนถึง 20,000 เพชรแลกรางวัล 2,000 บาท พร้อมขั้นตอนสามข้อ เล่นเกมทำกิจกรรมรับเพชร สะสมเพชรให้ครบตามที่กำหนด แล้วแลกรางวัลได้ทันที"
+          alt="แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100 กลางภาพเป็นตัวการ์ตูนหญิงสาวมวยผมสองข้างถือแว่นขยาย ขนาบด้วยยูนิคอร์นสีขาวและนกเพนกวินสีฟ้า ใต้ช่อใบลอเรลทองและกองเหรียญทอง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -127,7 +113,21 @@ const imageWidths = [320, 440, 600];
 
         <Picture
           src={promoCashback}
-          alt="แบนเนอร์โปรโมชั่นพื้นดำทอง ตัวอักษรใหญ่เขียนว่า คืนยอดเสีย 5% ทุกวัน คืนให้ทุกวันไม่มีขั้นต่ำ ถอนได้จริง พร้อมไอคอนสี่ข้อ รับคืนอัตโนมัติทุกวัน 00.00 น. มั่นคงปลอดภัยเชื่อถือได้ 100% ถอนได้จริงไม่มีขั้นต่ำ และเล่นได้ทุกเกมทั้งสล็อตบอลคาสิโน ซ้ายมือเป็นหญิงสาวชุดดำ ล้อมด้วยเหรียญทอง"
+          alt="แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า ทุกวัน คืนยอดเสีย 5% กลางภาพเป็นตัวการ์ตูนแรคคูนสวมฮู้ดสีม่วงถือกล่องสมบัติ คู่กับสิงโตขนสีทองสวมหมวกจีนกำลังยกก้อนทอง ล้อมด้วยเหรียญทองและฉากม่านสีแดง"
+          loading="lazy"
+          fetchpriority="low"
+          widths={imageWidths}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
+
+        <Picture
+          src={promoReferral}
+          alt="แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า แนะนำเพื่อน รับ 1% กลางภาพเป็นตัวละครหญิงสวมเครื่องประดับขนนกสีสดสไตล์มายาคู่กับหญิงนักผจญภัย ข้างตัวการ์ตูนไข่สวมหมวกและหีบสมบัติ ใต้ช่อใบลอเรลทอง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -143,8 +143,8 @@ const imageWidths = [320, 440, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#c3cddb]/50 bg-gradient-to-r from-[#ffe9a3] via-[#e2c443] to-[#7d5714] px-10 py-3.5 text-lg font-black text-[#0a0806] shadow-[0_10px_30px_rgba(226,196,67,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(195,205,219,0.45)]">
-          สมัครสมาชิก AURORA688
+          class="flex items-center justify-center rounded-lg border border-[#eebb1a]/50 bg-gradient-to-r from-[#ffe08a] via-[#eebb1a] to-[#a3760a] px-10 py-3.5 text-lg font-black text-[#0b0100] shadow-[0_10px_30px_rgba(238,187,26,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(168,13,16,0.45)]">
+          สมัครสมาชิก DEKDDD
         </a>
       </div>
     </div>
