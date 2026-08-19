@@ -1,73 +1,73 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
-import ContentBox3ThreeFloatingBadge from "../components/ContentBox3ThreeFloatingBadge.astro";
-import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
+import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
 import ContentBox from "../components/ContentBox.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
+import ProviderGrid from "../components/ProviderGridPremium.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners from "../components/LatestWinners3.astro";
+import LatestWinners from "../components/LatestWinnersCyber.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq4.astro";
+import Faq from "../components/Faq2.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgNewMemberBonus from "../assets/slide2.png";
-import imgDailyCashback from "../assets/slide3.png";
+import imgSpinPrize from "../assets/slide3.png";
+import imgCashbackReferral from "../assets/slide2.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1"
-//   2 → ContentBoxSevenThreePremium as="h2" + slide2 (สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100)
-//   3 → ContentBox3ThreeFloatingBadge as="h2" (แบ่งย่อหน้าเดียวลง left/center/right ที่รอยต่อประโยค)
-//   4 → ContentBoxTwoPremium as="h2" (แบ่งย่อหน้าเดียวลง left/right)
-//   5 → ContentBoxSpecial as="h2" (หนึ่ง element ต่อหนึ่ง slot)
-//   6 → ContentBoxSevenThreeFloatingBadge as="h2" + slide3 (ทุกวัน คืนยอดเสีย 5%)
+//   1 → ContentBoxCyberCut as="h1"
+//   2 → ContentBoxSevenThreeCyberCut as="h2" + slide3 (ทุกยอดฝาก 300 ได้ 1 สิทธิ์หมุน)
+//   3 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อประโยค)
+//   4 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
+//   5 → ContentBoxNeumorphism as="h2" (สล็อตเดียว)
+//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide2 (คืนยอดเสีย 10% / ค่าคอม 1%)
 //   7 → ContentBox as="h2" (การ์ดกลางที่ terms/privacy ใช้ร่วม)
 //
-// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (รอบก่อนใช้ Neumorphism ×3 +
-// CyberCut ×2 + plain ×2) มาเป็น Premium ×3 + FloatingBadge ×2 + Special ×1 +
-// plain ×1 ส่วน Navbar ย้ายจาก NavbarPremium มาเป็น NavbarStyle6, Footer จาก
-// FooterPremiumSumo มาเป็น FooterStyle2, Announcement จาก AnnouncementPremium
-// มาเป็น Announcement5, LatestWinners จาก LatestWinners4 มาเป็น LatestWinners3,
-// Faq จาก Faq3 มาเป็น Faq4 และ ProviderGrid จาก ProviderGridPremium มาเป็นตัวธรรมดา
+// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (DEKDDD ใช้ Premium ×3 +
+// FloatingBadge ×2 + Special ×1 + plain ×1) มาเป็น CyberCut ×3 + Neumorphism ×3 +
+// plain ×1 ส่วน Navbar ย้ายจาก NavbarStyle6 มาเป็น NavbarCyber, Footer จาก
+// FooterStyle2 มาเป็น FooterCyber, Announcement จาก Announcement5 มาเป็น
+// AnnouncementCyber, LatestWinners จาก LatestWinners3 มาเป็น LatestWinnersCyber,
+// Faq จาก Faq4 มาเป็น Faq2 และ ProviderGrid จากตัวธรรมดามาเป็น ProviderGridPremium
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide2 (สมาชิกใหม่ ฝากครั้งแรก
-// 49 รับ 100) คู่กับหัวข้อที่พูดถึงความเอ็นจอยที่มากกว่าแค่เกมฮิต และ slide3
-// (ทุกวัน คืนยอดเสีย 5%) คู่กับหัวข้อฟีเจอร์เด่นและกิจกรรมน่าติดตาม ส่วน slide1
-// (หมุนวงล้อ) กับ slide4 (แนะนำเพื่อน) ไม่ถูก import ในไฟล์นี้ — ทั้งคู่ยังขึ้นใน
-// SmoothCarousel และหน้า /promotion อยู่ เช่นเดียวกับ banner.png และ banner2/3/4
-// ที่เป็นอาร์ตค้างของแบรนด์ก่อนๆ ซึ่งห้ามแตะ — รูปที่ import คือรูปที่ถูก emit
-// ถึงจะไม่มีใคร render ก็ตาม
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide3 (ลุ้นรางวัลจากยอดฝาก 300)
+// คู่กับหัวข้อคลังเกมในล็อบบี้ และ slide2 (คืนยอดเสีย 10% + ค่าคอมแนะนำเพื่อน 1%)
+// คู่กับหัวข้อระบบฝากถอนไวใน 3 วิ ส่วน slide1 กับ slide4 ไม่ถูก import ในไฟล์นี้ —
+// ทั้งคู่ยังขึ้นใน SmoothCarousel และหน้า /promotion อยู่ เช่นเดียวกับ banner.png
+// และ banner2/3/4 ที่เป็นอาร์ตค้างของแบรนด์ก่อนๆ ซึ่งห้ามแตะ — รูปที่ import คือรูป
+// ที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม
 //
 // banner1 เป็น hero ที่ MainLayout จัดการเอง รอบนี้จึงไม่มีรูปประกอบใน ContentBox
 // เดี่ยว
 //
-// widget ที่ไม่ได้มาจาก docx (ProviderGrid, GameRankingBoard, LatestWinners,
-// LoginRtpSection, ReviewCardSumo2, SmoothCarousel, แถวปุ่ม login/register, FAQ)
-// ใช้ป้ายเป็น <p>/<span> + aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx
-// ข้อสุดท้ายทั้งชุด จึงไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อเลย
+// widget ที่ไม่ได้มาจาก docx (ProviderGridPremium, GameRankingBoard,
+// LatestWinnersCyber, LoginRtpSection, ReviewCardSumo2, SmoothCarousel, แถวปุ่ม
+// login/register, FAQ) ใช้ป้ายเป็น <p>/<span> + aria-label บน <section> และถูกวาง
+// ต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด จึงไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อเลย
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้ส่งเป็น prop = 7
-// คำถามใน Faq4 เป็น <span> ใน <summary> ไม่ใช่ h3 และป้ายคอลัมน์ของ
-// ContentBox3ThreeFloatingBadge / ContentBoxSevenThree* / ContentBoxTwoPremium
+// คำถามใน Faq2 เป็น <span> ใน <summary> ไม่ใช่ h3 และป้ายคอลัมน์ของ
+// ContentBox3ThreeCyberCut / ContentBoxSevenThree* / ContentBoxTwoNeumorphism
 // เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
-const pageTitle = "DEKDDD | สล็อตสายเอ็นจอย เกมฮิตติดล็อบบี้ เล่นลื่นไม่มีสะดุด ลองเลย";
-// คำอธิบายยาว 156 ตัวอักษร อยู่ในเกท 150–160 ของ verify-build พอดี ตั้งต้นจาก
-// บรรทัด Meta ของ docx แล้วต่อท้ายให้ครบช่วง และเป็นสตริงเดียวกับที่ส่งเข้า pageGraph
-const pageDescription = "DEKDDD สล็อตสายเอ็นจอย รวมเกมฮิตติดล็อบบี้พร้อมเกมใหม่สลับมาให้ลอง ระบบตอบสนองไว เล่นลื่นไม่มีสะดุดทุกอุปกรณ์ ฟีเจอร์และกิจกรรมน่าติดตาม เปิดให้ลองเลยวันนี้";
+const pageTitle = "ORCA789 | สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่";
+// คำอธิบายยาว 158 ตัวอักษร อยู่ในเกท 150–160 ของ verify-build พอดี ตั้งต้นจาก
+// บรรทัด Meta ของ docx (แก้ typo "ุฝากถอน" เป็น "ฝากถอน") และเป็นสตริงเดียวกับที่
+// ส่งเข้า pageGraph
+const pageDescription = "ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่องจัดมาแน่น บาคาร่าและฟุตบอล เติมเกมใหม่ให้ลองเรื่อยๆ ระบบใหม่อัปเดตตลอด ฝากถอนไวใน 3 วิ เว็บเดียวเอาอยู่ครบจบที่เดียว";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji เพราะ marquee
 // render ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 const announcementMessage =
-  "DEKDDD สล็อตสายเอ็นจอย เกมฮิตติดล็อบบี้ เล่นลื่นไม่มีสะดุด • เว็บสล็อตยุคใหม่ที่รวบรวมเกมเด็ดเกมฮิตไว้เต็มล็อบบี้ เข้ามาเล่นเพื่อผ่อนคลายหรือล่าโบนัสแจ็คพอตก็พร้อมเสิร์ฟความบันเทิงแบบจัดเต็ม • ความเอ็นจอยไม่ได้จบแค่อัตราการแตกของเกมฮิต แต่คือดีไซน์หน้าเว็บที่สบายตา คลังเกมหลากสไตล์ และจังหวะแจกโบนัสที่มาสม่ำเสมอ • เปิดล็อบบี้เมื่อไหร่ก็เจอแต่ตัวเต็ง ทั้งเกมสล็อตยอดฮิตระดับตำนานและเกมมาใหม่ล่าสุดจากค่ายชั้นนำ สลับสับเปลี่ยนเข้ามาให้ลองตลอดเวลา • ระบบหลังบ้านตอบสนองไว สลับเกมหรือสลับค่ายได้สมูธไร้รอยต่อ ไม่ต้องนั่งรอโหลดหน้าเว็บนานให้เสียอารมณ์ • รองรับทุกแพลตฟอร์ม ทั้งสมาร์ตโฟน แท็บเล็ต และคอมพิวเตอร์ หน้าจอปรับให้เหมาะกับอุปกรณ์อัตโนมัติ ปุ่มกดใกล้มือ กราฟิกคมชัด • ฟีเจอร์เด่นครบทั้งตัวคูณรางวัลสุดพิเศษ โหมดฟรีสปินที่ออกบ่อย และกิจกรรมโปรโมชันที่จัดขึ้นเพื่อสมาชิกโดยเฉพาะ • เลือกเกมที่ตรงสไตล์แล้วเปิดโหมดความสนุกไปกับระบบที่ได้มาตรฐาน โอนไว และปลอดภัย 100%";
+  "ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่ • ครบทุกมิติในที่เดียว ทั้งสล็อตตัวฮิตกระแสแรง บาคาร่าสด คาสิโน และแทงบอลออนไลน์ ไม่ต้องย้ายเว็บไปมาให้เสียเวลา • ล็อบบี้คัดเฉพาะเกมเด็ดแตกหนักจากทุกค่ายชั้นนำ ทั้งธีมแฟนตาซีตระการตา แนวสตรีทสุดเท่ และคลาสสิกโบนัสแตกง่าย กราฟิกคมชัด เอฟเฟกต์อลังการ • บาคาร่ายิงตรงสัญญาณสดความละเอียดสูง HD จากคาสิโนจริง ส่วนโหมดเดิมพันฟุตบอลราคาน้ำดี ค่าน้ำเปิดกว้างทุกลีกทั่วโลก สลับเล่นได้ในยูสเซอร์เดียว • ทีมงานอัปเดตไลน์อัปเกมใหม่เข้าระบบต่อเนื่อง ค่ายดังออกเกมอะไรมาก็ได้ลองเป็นกลุ่มแรกๆ เสมอ ล็อบบี้จึงสดใหม่ไม่จำเจ • ระบบหลังบ้านปรับจูนให้เสถียรสูงสุด รองรับสมาชิกจำนวนมากพร้อมกันโดยไม่หน่วง ไม่กระตุก ไม่มีเกมหลุดระหว่างลุ้นโบนัส • ฝากถอนออโต้ไฮสปีดจบภายใน 3 วินาที ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ คล่องตัวและปลอดภัยทุกธุรกรรม";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
@@ -75,24 +75,24 @@ const announcementMessage =
 // <Faq> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "DEKDDD เหมาะกับคนที่อยากเล่นสล็อตแบบสายเอ็นจอยตรงไหน",
-    a: "ที่นี่ออกแบบบรรยากาศการเล่นมาให้เป็นมิตรและผ่อนคลาย ตั้งแต่ดีไซน์หน้าเว็บที่สบายตา คลังเกมที่มีให้เลือกหลากหลายสไตล์ ไปจนถึงจังหวะการแจกโบนัสที่มาแบบสม่ำเสมอ จะเข้ามาปั่นเพื่อผ่อนคลายหรือล่าโบนัสแจ็คพอตก็เล่นได้ยาวๆ แบบไม่กดดัน และพร้อมต้อนรับสายสปินทุกระดับเข้ามาร่วมสนุกด้วยกัน",
+    q: "ORCA789 มีโหมดเดิมพันอะไรให้เล่นบ้างในยูสเซอร์เดียว",
+    a: "เปิดครบทั้งสล็อตตัวฮิตกระแสแรง บาคาร่าสด คาสิโนออนไลน์ และเดิมพันฟุตบอล ทุกโหมดใช้บัญชีเดียวกัน จึงสลับอารมณ์จากการปั่นสล็อตไปนั่งโต๊ะบาคาร่าหรือไปแทงบอลได้ทันทีโดยไม่ต้องโยกเงินข้ามกระเป๋าและไม่ต้องเปิดเว็บใหม่ให้เสียเวลา",
   },
   {
-    q: "ในล็อบบี้ของ DEKDDD มีเกมแบบไหนให้เลือกบ้าง",
-    a: "เปิดล็อบบี้เข้ามาเมื่อไหร่ก็เจอแต่ตัวเต็ง เพราะคัดสรรเฉพาะเกมฮิตติดกระแสมาไว้ให้เลือกแบบแน่นๆ ทั้งเกมสล็อตยอดฮิตติดระดับตำนานและเกมมาใหม่ล่าสุดจากค่ายชั้นนำ ที่มีสลับสับเปลี่ยนเข้ามาให้ทดลองเล่นอยู่ตลอดเวลา อยากเปลี่ยนบรรยากาศหรือค้นหารูปแบบการเล่นใหม่ๆ ก็แค่คลิกเลือกเกมใหม่ได้ทันที",
+    q: "เกมสล็อตในล็อบบี้คัดมาแบบไหน มีธีมอะไรให้เลือก",
+    a: "คัดเฉพาะตัวเด็ดแตกหนักจากค่ายชั้นนำมารวมไว้ มีทั้งธีมแฟนตาซีตระการตา แนวสตรีทสุดเท่ และสไตล์คลาสสิกที่โบนัสแตกง่าย แต่ละเกมมาพร้อมกราฟิกคมชัดกับเอฟเฟกต์อลังการ อัตราการจ่ายรางวัลคุ้มค่า และจังหวะโบนัสกับแจ็คพอตที่พร้อมระเบิดได้ตลอดเวลา",
   },
   {
-    q: "เวลาสลับเกมหรือสลับค่ายต้องรอโหลดนานไหม",
-    a: "ไม่ต้องรอนาน จุดเด่นที่ทำให้หลายคนติดใจคือความฉับไวของระบบหลังบ้านที่ตอบสนองได้อย่างทันใจ เวลาต้องการเปลี่ยนเกมหรือสลับค่ายเล่นก็ไม่ต้องนั่งรอโหลดหน้าเว็บนานๆ ให้เสียอารมณ์ ระบบสลับเข้าเกมใหม่ได้อย่างสมูธ รวดเร็ว ไร้รอยต่อ จังหวะกำลังได้ อารมณ์กำลังมา ก็ปั่นต่อได้ทันที",
+    q: "บาคาร่าสดของที่นี่ถ่ายทอดจากคาสิโนจริงหรือเปล่า",
+    a: "เป็นการยิงตรงสัญญาณสดความละเอียดสูงระดับ HD จากคาสิโนจริง จึงได้ฟีลลิ่งเรียลไทม์เหมือนนั่งอยู่หน้าโต๊ะ ส่วนโหมดเดิมพันฟุตบอลก็มีราคาน้ำดี ค่าน้ำเปิดกว้าง เลือกเล่นได้ทุกลีกทั่วโลก อยากสลับไปมาระหว่างสองโหมดก็ทำได้ในยูสเซอร์เดียว",
   },
   {
-    q: "เล่นผ่านมือถือกับคอมได้เหมือนกันหรือเปล่า",
-    a: "ได้เหมือนกันทั้งหมด เพราะพัฒนามารองรับการใช้งานในทุกแพลตฟอร์ม ทั้งสมาร์ตโฟน แท็บเล็ต และคอมพิวเตอร์ ทุกระบบปฏิบัติการ หน้าจอจะถูกปรับให้เหมาะสมกับอุปกรณ์ที่ใช้อย่างอัตโนมัติ ปุ่มกดใกล้มือ กราฟิกแสดงผลได้อย่างคมชัดและไหลลื่น จึงพกพาความสนุกไปเล่นได้ทุกที่ทุกเวลาตามต้องการ",
+    q: "เกมใหม่เข้าระบบบ่อยแค่ไหน จะเจอแต่เกมเดิมไหม",
+    a: "ทีมงานอัปเดตไลน์อัปเกมใหม่เข้าสู่ระบบอย่างต่อเนื่อง ค่ายดังปล่อยเกมอะไรออกมา สมาชิกที่นี่จะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ หน้าล็อบบี้จึงสดใหม่อยู่ตลอด ไม่วนอยู่แต่เกมเดิม อยากลองฟีเจอร์แปลกใหม่เมื่อไหร่ก็คลิกเลือกเล่นได้ทันที",
   },
   {
-    q: "มีฟีเจอร์หรือกิจกรรมอะไรที่ช่วยเพิ่มความน่าลุ้นบ้าง",
-    a: "ภายในเกมมีฟีเจอร์เด่นทั้งตัวคูณรางวัลสุดพิเศษและโหมดฟรีสปินที่ออกบ่อย รวมถึงกิจกรรมและโปรโมชันน่าติดตามที่จัดขึ้นเพื่อสมาชิกโดยเฉพาะ สิ่งเหล่านี้ช่วยเติมเต็มจังหวะการหมุนให้น่าลุ้นยิ่งขึ้นและเพิ่มโอกาสรับกำไรก้อนใหญ่ ควรอ่านเงื่อนไขของแต่ละกิจกรรมจากหน้าโปรโมชั่นจริงก่อนกดรับทุกครั้ง",
+    q: "ฝากถอนใช้เวลานานไหม ต้องส่งสลิปให้แอดมินหรือเปล่า",
+    a: "ใช้ระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จภายใน 3 วินาที ทั้งเติมทุนเข้าเล่นต่อและถอนยอดกำไรก้อนโตเข้าบัญชี จัดการเองได้ง่ายๆ ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ ระบบหลังบ้านยังปรับจูนให้เสถียร รองรับสมาชิกจำนวนมากพร้อมกันโดยไม่หน่วง",
   },
 ];
 
@@ -110,18 +110,18 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="DEKDDD สล็อตสายเอ็นจอย เกมฮิตติดล็อบบี้ เล่นลื่นไม่มีสะดุด ลองเลย">
+  <ContentBoxCyberCut as="h1" title="ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่">
     <p class="text-left text-base leading-relaxed">
-      ถ้าคุณกำลังมองหาพื้นที่ปั่นสล็อตสายเอ็นจอยที่เน้นความสนุก เล่นสบายๆ ไม่ต้องเครียด ต้องไม่พลาดที่จะมาลอง DEKDDD เว็บสล็อตยุคใหม่ที่รวบรวมเกมเด็ดเกมฮิตไว้เต็มล็อบบี้
-      โดดเด่นด้วยระบบการทำงานที่ลื่นไหล สมูธ ไม่มีสะดุด ไม่ว่าจะเข้ามาเล่นเพื่อผ่อนคลายหรือล่าโบนัสแจ็คพอต ที่นี่ก็พร้อมเสิร์ฟความบันเทิงให้แบบจัดเต็ม ลองกดเข้ามาสัมผัสด้วยตัวเองสักครั้ง
-      แล้วคุณจะรู้ว่าคำว่าเอ็นจอยของจริงเป็นอย่างไร
+      ถ้าคุณกำลังมองหาความครบเครื่องแบบไม่ต้องย้ายเว็บไปมา ORCA789 คือตัวเลือกสุดปังที่ตอบโจทย์สายปั่นยุคนี้ได้อย่างแท้จริง ที่นี่รวมเอาความตื่นเต้นครบทุกมิติมาเสิร์ฟไว้ในที่เดียว
+      ทั้งสล็อตตัวฮิตกระแสแรง บาคาร่าสด คาสิโน และแทงบอลออนไลน์ โดดเด่นด้วยระบบประมวลผลที่เร็ว เสถียร ลื่นไหล เล่นได้อย่างต่อเนื่องไม่มีสะดุด
+      มอบประสบการณ์ความมันส์ระดับพรีเมียมที่ทำให้ใครลองแล้วก็ต้องบอกต่อว่าเว็บนี้เว็บเดียวเอาอยู่ของจริง
     </p>
-  </ContentBoxPremium>
+  </ContentBoxCyberCut>
 
-  <ContentBoxSevenThreePremium as="h2" title="DEKDDD สล็อตสายเอ็นจอย มีอะไรให้สนุกมากกว่าแค่เกมฮิต?" titleleft="สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100">
+  <ContentBoxSevenThreeCyberCut as="h2" title="ORCA789 สล็อตตัวฮิตมาแรง มีเกมเด็ดอะไรซ่อนอยู่ในล็อบบี้บ้าง?" titleleft="ทุกยอดฝาก 300 ได้ 1 สิทธิ์หมุน">
     <Picture
       slot="left"
-      src={imgNewMemberBonus}
+      src={imgSpinPrize}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -130,46 +130,53 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100 ด้านหลังเป็นตัวการ์ตูนหญิงสาวผมมวยสองข้างถือแว่นขยาย มีมาสคอตยูนิคอร์นและเพนกวินอยู่ซ้ายขวา ล้อมด้วยช่อใบไม้ทอง มงกุฎ และกองเหรียญทอง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#eebb1a]/40 shadow-[0_10px_30px_rgba(238,187,26,0.25)]"
+      alt="แบนเนอร์โปรโมชั่นเขียนว่า สมาชิกเก่าและใหม่ ทุกยอดฝาก 300 บาท ได้ 1 สิทธิ์การหมุน รางวัลมอเตอร์ไซต์ 2 รางวัล iPhone 2 รางวัล ทองคำ 5 รางวัล ลุ้นรางวัลโบนัสสูงสุด 100,000 ภาพหญิงสาวชุดน้ำเงินถือไพ่ ล้อมด้วยเหรียญทอง มงกุฎ สร้อยทอง มือถือ และมอเตอร์ไซค์ พื้นหลังใต้ทะเลสีน้ำเงิน"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#00abfc]/40 shadow-[0_10px_30px_rgba(0,171,252,0.3)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ความเอ็นจอยที่ DEKDDD มอบให้ ไม่ได้จบอยู่แค่อัตราการแตกของเกมฮิตเท่านั้น แต่คือบรรยากาศการเล่นที่ถูกออกแบบมาให้เป็นมิตรและผ่อนคลายสุดๆ ตั้งแต่ดีไซน์หน้าเว็บที่สบายตา
-      คลังเกมที่มีให้เลือกหลากหลายสไตล์ ไปจนถึงจังหวะการแจกโบนัสที่มาแบบสม่ำเสมอ ทำให้ทุกวินาทีที่คุณอยู่ในเว็บเต็มไปด้วยความรู้สึกเพลิดเพลิน เล่นได้ยาวๆ แบบไม่กดดัน
-      และพร้อมต้อนรับสายสปินทุกระดับเข้ามาร่วมสนุกด้วยกัน
+      ก้าวเข้าสู่หน้าล็อบบี้ของ ORCA789 คุณจะได้เจอกับคลังเกมสล็อตที่คัดสรรมาเฉพาะตัวเด็ดแตกหนักจากทุกค่ายชั้นนำ ไม่ว่าจะเป็นเกมธีมแฟนตาซีตระการตา เกมแนวสตรีทสุดเท่ หรือเกมสไตล์คลาสสิกโบนัสแตกง่าย
+      แต่ละเกมอัดแน่นไปด้วยกราฟิกคมชัดและเอฟเฟกต์สุดอลังการ ที่สำคัญคือมีอัตราการจ่ายรางวัลคุ้มค่า จังหวะโบนัสและแจ็คพอตพร้อมระเบิดได้ตลอดเวลา ให้คุณลุ้นสนุกทำกำไรได้เพลินๆ ทุกวัน
     </p>
-  </ContentBoxSevenThreePremium>
+  </ContentBoxSevenThreeCyberCut>
 
-  <ContentBox3ThreeFloatingBadge as="h2" title="เกมฮิตติดล็อบบี้ พร้อมตัวใหม่สลับมาให้ลองแบบไม่จำเจ" titleleft="ล็อบบี้มีแต่ตัวเต็ง" titlecenter="ตำนานชนของมาใหม่" titleright="คลิกเดียวเปลี่ยนฟีล">
-    <p slot="left" class="text-left text-base leading-relaxed">เปิดล็อบบี้เข้ามาเมื่อไหร่ก็เจอแต่ตัวเต็ง เพราะ DEKDDD คัดสรรเฉพาะเกมฮิตติดกระแสมาไว้ให้เลือกแบบแน่นๆ</p>
-    <p slot="center" class="text-left text-base leading-relaxed">ไม่ว่าจะเป็นเกมสล็อตยอดฮิตติดระดับตำนาน หรือเกมมาใหม่ล่าสุดจากค่ายชั้นนำ ก็มีสลับสับเปลี่ยนเข้ามาให้ทดลองเล่นอยู่ตลอดเวลา</p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ช่วยให้ผู้เล่นสามารถเปลี่ยนบรรยากาศและค้นหารูปแบบการเล่นใหม่ๆ ได้ตลอดทั้งวันไม่มีเบื่อ อยากเปลี่ยนฟีลเมื่อไหร่ก็แค่คลิกเลือกเกมใหม่ได้ทันที
-    </p>
-  </ContentBox3ThreeFloatingBadge>
-
-  <ContentBoxTwoPremium as="h2" title="ระบบตอบสนองไวของ DEKDDD ช่วยให้สลับเกมลื่นแค่ไหน" titleleft="ระบบหลังบ้านตอบสนองทันใจ" titleright="สลับเข้าเกมใหม่แบบไร้รอยต่อ">
+  <ContentBoxTwoNeumorphism
+    as="h2"
+    title="บาคาร่าและฟุตบอลจัดเต็ม อีกสองโหมดที่สายเล่นจริงไม่ควรมองข้าม"
+    titleleft="บาคาร่าสดสัญญาณ HD"
+    titleright="ราคาน้ำดีครบทุกลีก">
     <p slot="left" class="text-left text-base leading-relaxed">
-      จุดเด่นที่ทำให้หลายคนติดใจ DEKDDD คือความฉับไวของระบบหลังบ้านที่ตอบสนองได้อย่างทันใจสุดๆ เวลาที่คุณต้องการเปลี่ยนเกม หรือสลับค่ายเล่น ไม่ต้องนั่งรอโหลดหน้าเว็บนานๆ ให้เสียอารมณ์
+      ไม่ได้มีดีแค่เกมสล็อตเท่านั้น แต่ ORCA789 ยังจัดเต็มอีกสองโหมดฮิตอย่างบาคาร่าสดและเดิมพันฟุตบอลแบบครบรส ในส่วนของบาคาร่าเป็นการยิงตรงสัญญาณสดความละเอียดสูง HD จากคาสิโนจริง
+      ได้ฟีลลิ่งเรียลไทม์สุดๆ
     </p>
     <p slot="right" class="text-left text-base leading-relaxed">
-      ระบบสามารถสลับเข้าเกมใหม่ได้อย่างสมูธ รวดเร็ว ไร้รอยต่อ จังหวะกำลังได้ อารมณ์กำลังมา ก็ปั่นต่อได้ทันทีโดยไม่มีคำว่าสะดุดมาทำลายบรรยากาศ
+      ขณะที่โหมดเดิมพันฟุตบอลก็มีราคาน้ำดี ค่าน้ำเปิดกว้างให้เลือกเล่นทุกลีกทั่วโลก สลับอารมณ์มาเล่นได้ทันทีในยูสเซอร์เดียว ไม่ต้องเสียเวลาโยกเงินให้ยุ่งยาก
     </p>
-  </ContentBoxTwoPremium>
+  </ContentBoxTwoNeumorphism>
 
-  <ContentBoxSpecial as="h2" title="เล่นลื่นทุกอุปกรณ์ เข้า DEKDDD ผ่านมือถือหรือคอมก็คล่องตัว">
+  <ContentBox3ThreeCyberCut
+    as="h2"
+    title="เกมใหม่เข้าเรื่อยๆ ที่ ORCA789 ล็อบบี้จึงสดใหม่ไม่วนอยู่แต่เกมเดิม"
+    titleleft="อัปเดตต่อเนื่อง"
+    titlecenter="ได้ลองเป็นกลุ่มแรก"
+    titleright="คลิกเดียวเปลี่ยนเกม">
     <p slot="left" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะอยู่ที่ไหน หรือใช้อุปกรณ์อะไรก็ไม่ใช่ปัญหา เพราะ DEKDDD ถูกพัฒนาขึ้นมารองรับการใช้งานในทุกแพลตฟอร์ม ทั้งสมาร์ตโฟน แท็บเล็ต และคอมพิวเตอร์ ทุกระบบปฏิบัติการ
+      เบื่อไหมกับการเล่นเว็บเดิมๆ แล้วเจอแต่เกมเก่า? ที่ ORCA789 ตัดปัญหานั้นออกไปได้เลย เพราะทีมงานขยันอัปเดตไลน์อัปเกมใหม่ๆ เข้าสู่ระบบอย่างต่อเนื่อง
     </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      หน้าจอจะถูกปรับให้เหมาะสมกับอุปกรณ์ที่คุณใช้อย่างอัตโนมัติ ปุ่มกดใกล้มือ กราฟิกแสดงผลได้อย่างคมชัดและไหลลื่น ให้คุณพกพาความสนุกไปเล่นได้ทุกที่ทุกเวลาตามต้องการ
-    </p>
-  </ContentBoxSpecial>
+    <p slot="center" class="text-left text-base leading-relaxed">ค่ายดังออกเกมอะไรใหม่มา คุณจะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ ทำให้หน้าล็อบบี้มีความสดใหม่อยู่ตลอดเวลา</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ไม่เจอปัญหาความจำเจ อยากเปลี่ยนไปลุ้นเกมฟีเจอร์แปลกใหม่เมื่อไหร่ก็แค่คลิกเลือกเล่นได้ทันที</p>
+  </ContentBox3ThreeCyberCut>
 
-  <ContentBoxSevenThreeFloatingBadge as="h2" title="ฟีเจอร์เด่นและกิจกรรมน่าติดตาม เพิ่มสีสันให้ทุกจังหวะเล่น" titleleft="ทุกวัน คืนยอดเสีย 5%">
+  <ContentBoxNeumorphism as="h2" title="ระบบใหม่อัปเดตตลอด เล่น ORCA789 แล้วต่างจากระบบทั่วไปตรงไหน?">
+    <p class="text-left text-base leading-relaxed">
+      จุดต่างที่เห็นได้ชัดระหว่าง ORCA789 กับเว็บทั่วไปคือความใส่ใจในการพัฒนาระบบหลังบ้านอย่างสม่ำเสมอ ตัวระบบถูกปรับจูนให้มีความเสถียรสูงสุด รองรับการใช้งานพร้อมกันของสมาชิกจำนวนมากได้โดยไม่หน่วง
+      ไม่กระตุก และไม่มีปัญหาเกมหลุดระหว่างลุ้นโบนัส การเข้าสู่ระบบ สลับค่ายเกม หรือเลือกโหมดต่างๆ ทำได้อย่างฉับไว ไร้รอยต่อ ช่วยรักษา mood การทำกำไรให้ไหลลื่นต่อเนื่องตลอดวัน
+    </p>
+  </ContentBoxNeumorphism>
+
+  <ContentBoxSevenThreeNeumorphism as="h2" title="ฝากถอนไวใน 3 วิ ลดช่วงรอแล้วไปต่อกับเกมโปรดได้ทันใจ" titleleft="คืนยอดเสีย 10% ค่าคอม 1%">
     <Picture
       slot="left"
-      src={imgDailyCashback}
+      src={imgCashbackReferral}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -178,19 +185,19 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า ทุกวัน คืนยอดเสีย 5% ด้านหลังเป็นมาสคอตแรคคูนสวมฮู้ดสีม่วงคู่กับสิงโตจีนขนทองที่ถือทองคำแท่ง มีหีบสมบัติและเหรียญทองกระจายอยู่รอบ"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#eebb1a]/40 shadow-[0_10px_30px_rgba(238,187,26,0.25)]"
+      alt="แบนเนอร์โปรโมชั่นเขียนว่า คืนยอดเสีย 10% และ แนะนำเพื่อน รับค่าคอม 1% ภาพหญิงสาวชุดเขียวเข้ม ล้อมด้วยเหรียญทองและชิปคาสิโนสีฟ้า พื้นหลังน้ำเงินเข้ม โลโก้ ORCA789 อยู่มุมซ้ายบน"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#ffd54a]/40 shadow-[0_10px_30px_rgba(255,213,74,0.25)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      นอกจากความสนุกจากตัวเกมแล้ว DEKDDD ยังเพิ่มสีสันและความคุ้มค่าให้การเล่นด้วยฟีเจอร์เด่นๆ ภายในเกม ไม่ว่าจะเป็นตัวคูณรางวัลสุดพิเศษ โหมดฟรีสปินที่ออกบ่อย
-      รวมถึงกิจกรรมและโปรโมชันน่าติดตามที่จัดขึ้นเพื่อสมาชิกโดยเฉพาะ สิ่งเหล่านี้เข้ามาช่วยเติมเต็มจังหวะการหมุนให้มีความน่าลุ้น น่าติดตามยิ่งขึ้น เพิ่มโอกาสรับกำไรก้อนใหญ่กลับไปได้ง่ายกว่าเดิม
+      เรื่องระบบการเงินต้องยกให้ ORCA789 เป็นระดับท็อปด้วยระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จสรรพภายใน 3 วินาทีเท่านั้น ไม่ว่าจะเป็นการเติมทุนเข้าลุยต่อ หรือการถอนยอดกำไรก้อนโตเข้าบัญชี
+      ก็จัดการได้ด้วยตัวเองง่ายๆ ไม่ต้องส่งสลิปยืนยัน และไม่ต้องนั่งรอแอดมินอนุมัตินานให้เสียอารมณ์ ให้ความคล่องตัวและความปลอดภัยสูงในทุกธุรกรรม
     </p>
-  </ContentBoxSevenThreeFloatingBadge>
+  </ContentBoxSevenThreeNeumorphism>
 
-  <ContentBox as="h2" title="เลือกเกมให้ตรงสไตล์ แล้วเริ่มเอ็นจอยกับ DEKDDD ได้ง่ายกว่าเดิม">
+  <ContentBox as="h2" title="ครบทั้งเกมและระบบ ทำไม ORCA789 ถึงเป็นเว็บเดียวที่เอาอยู่ทุกสาย?">
     <p class="text-left text-base leading-relaxed">
-      DEKDDD คือพื้นที่ความบันเทิงที่ตอบโจทย์สายสล็อตได้อย่างลงตัวที่สุด แค่ก้าวเข้ามาเลือกเกมที่ตรงกับสไตล์ของคุณ ไม่ว่าจะเป็นสายเน้นภาพสวย สายปั่นชิลๆ หรือสายล่ารางวัลใหญ่
-      แล้วเปิดโหมดความสนุกไปกับระบบที่ได้มาตรฐาน โอนไว และปลอดภัย 100% ลองเข้ามาสัมผัสความเอ็นจอยด้วยตัวเองวันนี้ รับรองว่าคุณจะติดใจจนอยากบอกต่อเพื่อนแน่นอน
+      สรุปได้เลยว่า ORCA789 คือพื้นที่ความบันเทิงที่ตอบโจทย์นักเดิมพันได้ครบทุกสไตล์อย่างแท้จริง ทั้งความอุดมสมบูรณ์ของเกมสล็อต โหมดคาสิโนสด บาคาร่า และกีฬา ประกอบกับระบบออโต้ที่รวดเร็วปลอดภัย
+      ไม่ว่าจะเข้ามาเล่นเพื่อความสนุกผ่อนคลายหรือลุยทำกำไรจริงจัง ที่นี่ก็พร้อมรองรับทุกความต้องการ สมกับเป็นเว็บเดียวที่เอาอยู่ทุกสาย ลองเข้ามาสัมผัสด้วยตัวเองแล้วคุณจะประทับใจแน่นอน
     </p>
   </ContentBox>
 
@@ -209,18 +216,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe08a] via-[#eebb1a] to-[#a3760a] px-4 py-3 text-sm font-black whitespace-nowrap text-[#1a0503] shadow-[0_10px_30px_rgba(238,187,26,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(238,187,26,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe89a] via-[#ffd54a] to-[#8a6206] px-4 py-3 text-sm font-black whitespace-nowrap text-[#010614] shadow-[0_10px_30px_rgba(255,213,74,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,213,74,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e01f26]/70 bg-[#0b0100]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f7e7c8] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ffe08a] hover:bg-[#5c0201] hover:text-[#fff6dd] hover:shadow-[0_15px_40px_rgba(168,13,16,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#00abfc]/70 bg-[#041028]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#dbeafe] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#84ccfb] hover:bg-[#062a6b] hover:text-[#f0f9ff] hover:shadow-[0_15px_40px_rgba(1,108,250,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ DEKDDD" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ ORCA789" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

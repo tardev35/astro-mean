@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle6.astro";
-import Footer from "../components/FooterStyle2.astro";
+import Navbar from "../components/NavbarCyber.astro";
+import Footer from "../components/FooterCyber.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "DEKDDD | สล็อตสายเอ็นจอย เกมฮิตติดล็อบบี้ เล่นลื่นไม่มีสะดุด ลองเลย",
-  description = "DEKDDD สล็อตสายเอ็นจอย รวมเกมฮิตติดล็อบบี้พร้อมเกมใหม่สลับมาให้ลอง ระบบตอบสนองไว เล่นลื่นไม่มีสะดุดทุกอุปกรณ์ ฟีเจอร์และกิจกรรมน่าติดตาม ตลอด 24 ชั่วโมง",
+  title = "ORCA789 | สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่",
+  description = "ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่องจัดมาแน่น บาคาร่าและฟุตบอล เติมเกมใหม่ให้ลองเรื่อยๆ ระบบใหม่อัปเดตตลอด ฝากถอนไวใน 3 วิ เว็บเดียวเอาอยู่ครบจบที่เดียว",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0b0100;
+        background-color: #041028;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ DEKDDD พื้นแดงเลือดหมูประดับทอง ซ้ายมือเป็นโลโก้โล่ทองรูปเด็กสวมแว่น VR และหูฟัง ใส่ชุดแดงลายจีน คาบจุกนม ถือจอยเกมสีทอง มีปีกทองกางอยู่สองข้าง กลางภาพเป็นตัวอักษรขนาดใหญ่ DEK สีขาวต่อด้วย DDD สีทอง ใต้ลงมาเป็นป้ายทองเขียนว่า สล็อตสายเอ็นจอย เกมฮิตติดล็อบบี้ ตามด้วยข้อความ เล่นลื่นไม่มีสะดุด ลองเลย และปุ่มแดงขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดแดงถือจอยเกมสีทอง รอบภาพมีเหรียญทอง ลูกเต๋าแดง ชิปคาสิโน มงกุฎทอง ป้าย JACKPOT และตู้สล็อตขึ้นเลข 777"
+          alt="แบนเนอร์ ORCA789 พื้นน้ำเงินเข้มเกือบดำ ซ้ายมือเป็นวาฬออร์ก้าสีดำลายฟ้านีออนสวมมงกุฎทอง กระโดดออกจากวงแหวนน้ำวนเรืองแสงสีฟ้า กลางภาพเป็นตัวอักษรขนาดใหญ่ ORCA ไล่เฉดฟ้าโครเมียมและเลข 789 สีเงิน ใต้ลงมาเป็นข้อความ สล็อตตัวฮิตมาแรง ตามด้วยป้ายทองเขียนว่า เกมเด็ดครบเครื่อง และป้ายน้ำเงินเขียนว่า เว็บเดียวเอาอยู่ พร้อมปุ่มขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดน้ำเงินเมทัลลิกถือจอยเกม ข้างตู้สล็อตขึ้นป้าย JACKPOT BIG WIN และเลข 777 รอบภาพมีเหรียญทอง ลูกเต๋าและชิปคาสิโนสีน้ำเงิน แถบล่างเขียนว่า เว็บตรงไม่ผ่านเอเย่นต์ ระบบปลอดภัยมั่นใจ 100% ฝาก-ถอน ออโต้รวดเร็วทันใจ และบริการตลอด 24 ชม. แอดมินพร้อมดูแล"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

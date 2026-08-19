@@ -7,6 +7,10 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 const currentPath = Astro.url.pathname;
 const isActive = (path: string) => isActivePath(currentPath, path);
 
+// ORCA789: ย้ายจากม่วงนีออนของ SGD88 (#bc07e2 / #e879f9 / #7a06a0 / #d9dde3 บนผิว
+// #0b0620) มาเป็นฟ้านีออนใต้ทะเลของแบรนด์นี้ — #00abfc / #84ccfb / #011dc4 บนผิว
+// #041028 ตัวอักษร #f0f9ff เมนูปกติ #9dc3e6 ทรงมุมตัดสไตล์ cyber เก็บไว้ทั้งหมด
+//
 // One source of truth for the menu. This file used to declare the same array
 // twice — once for the desktop bar and once for the mobile drawer — which is
 // how a route gets added to one and not the other. The icon rides in the data
@@ -14,42 +18,42 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // concatenated into the label text (that would put "house หน้าแรก" into the
 // accessible name).
 //
-// SGD88: หน้าแรก แล้ว โปรโมชั่น มาก่อนหน้าที่เหลือตามลำดับใน SKILL.md —
+// ORCA789: หน้าแรก แล้ว โปรโมชั่น มาก่อนหน้าที่เหลือตามลำดับใน SKILL.md —
 // รอบนี้ /login กับ /register ยังเป็นหน้า interstitial (noindex) จึงไม่มีรายการ
 // เมนูของสองหน้านั้นให้จัดลำดับ มีแต่ปุ่ม CTA ที่มุมขวาซึ่งเป็น chrome ของ
 // variant นี้เอง และ /ทางเข้า จึงยังอยู่ในเมนูตามปกติ
 //
-// ไม่มี /ตรวจหวย กับ /แนวทาง เพราะ SGD88 เป็นเว็บสล็อต ไม่ใช่เว็บหวย —
+// ไม่มี /ตรวจหวย กับ /แนวทาง เพราะ ORCA789 เป็นเว็บสล็อต ไม่ใช่เว็บหวย —
 // สองหน้านั้นอยู่ใน src/pages-disabled/ จึงไม่มี route ให้ลิงก์ไปหา
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
   { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🏁" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🐋" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 ---
 
 <header class="sticky top-0 z-[100] w-full font-sans">
   <nav
-    class="relative mx-auto flex h-[80px] w-full items-center justify-between border-b border-[#bc07e2]/45 bg-[#0b0620]/95 px-4 shadow-[0_5px_25px_rgba(188,7,226,0.28)] backdrop-blur-xl xl:px-8"
+    class="relative mx-auto flex h-[80px] w-full items-center justify-between border-b border-[#00abfc]/45 bg-[#041028]/95 px-4 shadow-[0_5px_25px_rgba(0,171,252,0.28)] backdrop-blur-xl xl:px-8"
     style="clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));">
     <a href="/" class="z-[110] flex-shrink-0 transition-transform hover:scale-105">
       {
         mainLogo ? (
           <Picture
             src={mainLogo}
-            alt="โลโก้ SGD88 ตัวอักษร SGD สีเงินและเลข 88 สีชมพูบานเย็น มีสายฟ้าสีม่วงและเหรียญคาสิโนประกอบ"
+            alt="โลโก้ ORCA789 รูปวาฬออร์ก้าสีดำลายฟ้านีออนกระโดดขึ้นจากน้ำ สวมมงกุฎทองประดับพลอยแดง ด้านขวาเป็นตัวอักษร ORCA ไล่เฉดฟ้าโครเมียมและเลข 789 สีเงิน มีเหรียญทองและใบโคลเวอร์สี่แฉกสีฟ้าประกอบ"
             loading="eager"
             widths={[140, 280, 420]}
             sizes="140px"
-            class="h-[46px] w-auto drop-shadow-[0_0_12px_rgba(188,7,226,0.6)] xl:h-[58px]"
+            class="h-[46px] w-auto drop-shadow-[0_0_12px_rgba(0,171,252,0.6)] xl:h-[58px]"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
           />
         ) : (
-          <span class="bg-gradient-to-r from-[#d9dde3] via-[#e879f9] to-[#bc07e2] bg-clip-text text-3xl font-black tracking-wider text-transparent">SGD88</span>
+          <span class="bg-gradient-to-r from-[#f0f9ff] via-[#84ccfb] to-[#00abfc] bg-clip-text text-3xl font-black tracking-wider text-transparent">ORCA789</span>
         )
       }
     </a>
@@ -59,13 +63,13 @@ const links = [
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative flex h-full items-center gap-1.5 px-1 text-xs font-bold tracking-widest uppercase transition-colors xl:text-sm ${isActive(item.path) ? "text-[#e879f9] drop-shadow-[0_0_8px_rgba(188,7,226,0.85)]" : "text-[#c9b8dd] hover:text-[#d9dde3]"}`}>
+            class={`group relative flex h-full items-center gap-1.5 px-1 text-xs font-bold tracking-widest uppercase transition-colors xl:text-sm ${isActive(item.path) ? "text-[#84ccfb] drop-shadow-[0_0_8px_rgba(0,171,252,0.85)]" : "text-[#9dc3e6] hover:text-[#f0f9ff]"}`}>
             <span aria-hidden="true" class="text-base">
               {item.icon}
             </span>
             <span>{item.name}</span>
             <div
-              class={`absolute bottom-0 left-0 h-[4px] w-full bg-gradient-to-r from-[#bc07e2] to-[#d9dde3] shadow-[0_-2px_10px_rgba(188,7,226,0.9)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+              class={`absolute bottom-0 left-0 h-[4px] w-full bg-gradient-to-r from-[#00abfc] to-[#ffd54a] shadow-[0_-2px_10px_rgba(0,171,252,0.9)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
             />
           </a>
         ))
@@ -75,40 +79,40 @@ const links = [
     <div class="z-[110] flex items-center gap-4">
       <a
         href="/login"
-        class="hidden items-center justify-center border border-[#d9dde3]/60 bg-transparent px-6 py-2 text-sm font-bold text-[#d9dde3] transition-all hover:bg-[#d9dde3]/15 lg:flex"
+        class="hidden items-center justify-center border border-[#84ccfb]/60 bg-transparent px-6 py-2 text-sm font-bold text-[#f0f9ff] transition-all hover:bg-[#84ccfb]/15 lg:flex"
         style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
         เข้าระบบ
       </a>
       <a
         href="/register"
-        class="hidden items-center justify-center bg-gradient-to-r from-[#e879f9] via-[#bc07e2] to-[#7a06a0] px-6 py-2 text-sm font-black text-[#faf5ff] shadow-[0_0_15px_rgba(188,7,226,0.5)] transition-all hover:scale-105 lg:flex"
+        class="hidden items-center justify-center bg-gradient-to-r from-[#84ccfb] via-[#00abfc] to-[#011dc4] px-6 py-2 text-sm font-black text-[#f0f9ff] shadow-[0_0_15px_rgba(0,171,252,0.5)] transition-all hover:scale-105 lg:flex"
         style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
         สมัครสมาชิก
       </a>
 
       <button
         id="hamburger-btn"
-        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] border border-[#bc07e2]/55 bg-[#1b0d2e] lg:hidden"
+        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] border border-[#00abfc]/55 bg-[#08203f] lg:hidden"
         style="clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);"
         aria-label="เปิดเมนู"
         aria-controls="mobile-menu"
         aria-expanded="false">
-        <span class="line-1 h-[2px] w-6 origin-center bg-[#bc07e2] shadow-[0_0_5px_rgba(188,7,226,0.9)] transition-all duration-300"></span>
-        <span class="line-2 h-[2px] w-6 origin-center bg-[#bc07e2] shadow-[0_0_5px_rgba(188,7,226,0.9)] transition-all duration-300"></span>
-        <span class="line-3 h-[2px] w-6 origin-center bg-[#bc07e2] shadow-[0_0_5px_rgba(188,7,226,0.9)] transition-all duration-300"></span>
+        <span class="line-1 h-[2px] w-6 origin-center bg-[#00abfc] shadow-[0_0_5px_rgba(0,171,252,0.9)] transition-all duration-300"></span>
+        <span class="line-2 h-[2px] w-6 origin-center bg-[#00abfc] shadow-[0_0_5px_rgba(0,171,252,0.9)] transition-all duration-300"></span>
+        <span class="line-3 h-[2px] w-6 origin-center bg-[#00abfc] shadow-[0_0_5px_rgba(0,171,252,0.9)] transition-all duration-300"></span>
       </button>
     </div>
   </nav>
 
   <div
     id="mobile-menu"
-    class="pointer-events-none absolute top-[80px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col border-b border-[#bc07e2]/45 bg-[#0b0620]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden">
+    class="pointer-events-none absolute top-[80px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col border-b border-[#00abfc]/45 bg-[#041028]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden">
     <div class="flex flex-col gap-2">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`flex items-center gap-3 border-l-4 px-4 py-3 text-lg font-bold tracking-widest uppercase transition-colors ${isActive(item.path) ? "border-[#d9dde3] bg-[#bc07e2]/20 text-[#e879f9]" : "border-transparent text-[#c9b8dd] hover:bg-white/5 hover:text-[#d9dde3]"}`}>
+            class={`flex items-center gap-3 border-l-4 px-4 py-3 text-lg font-bold tracking-widest uppercase transition-colors ${isActive(item.path) ? "border-[#ffd54a] bg-[#00abfc]/20 text-[#84ccfb]" : "border-transparent text-[#9dc3e6] hover:bg-white/5 hover:text-[#f0f9ff]"}`}>
             <span aria-hidden="true">{item.icon}</span>
             <span>{item.name}</span>
           </a>
@@ -118,13 +122,13 @@ const links = [
     <div class="mt-6 flex flex-col gap-4">
       <a
         href="/register"
-        class="flex w-full justify-center bg-gradient-to-r from-[#e879f9] via-[#bc07e2] to-[#7a06a0] py-3.5 text-lg font-black text-[#faf5ff] shadow-[0_0_15px_rgba(188,7,226,0.5)]"
+        class="flex w-full justify-center bg-gradient-to-r from-[#84ccfb] via-[#00abfc] to-[#011dc4] py-3.5 text-lg font-black text-[#f0f9ff] shadow-[0_0_15px_rgba(0,171,252,0.5)]"
         style="clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);">
         สมัครสมาชิก
       </a>
       <a
         href="/login"
-        class="flex w-full justify-center border border-[#d9dde3]/60 bg-transparent py-3.5 text-lg font-bold text-[#d9dde3]"
+        class="flex w-full justify-center border border-[#84ccfb]/60 bg-transparent py-3.5 text-lg font-bold text-[#f0f9ff]"
         style="clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);">
         เข้าระบบ
       </a>

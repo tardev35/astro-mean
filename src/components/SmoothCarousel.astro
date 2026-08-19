@@ -1,10 +1,10 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideWheel from "../assets/slide1.png";
-import slideNewMember from "../assets/slide2.png";
-import slideCashback from "../assets/slide3.png";
-import slideReferral from "../assets/slide4.png";
+import slideMigrate from "../assets/slide1.png";
+import slideCashbackReferral from "../assets/slide2.png";
+import slideSpinPrize from "../assets/slide3.png";
+import slideNewMemberSpin from "../assets/slide4.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -20,11 +20,13 @@ import slideReferral from "../assets/slide4.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// DEKDDD: แถบนี้ถือสไลด์ของ asset drop รอบนี้ครบทั้งสี่ใบ — slide1 (ฝากครั้งแรก
-// 299 ขึ้นไป รับสิทธิ์หมุนวงล้อ) slide2 (สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100)
-// slide3 (ทุกวัน คืนยอดเสีย 5%) slide4 (แนะนำเพื่อน รับ 1%)
+// ORCA789: แถบนี้ถือสไลด์ของ asset drop รอบนี้ครบทั้งสี่ใบ — slide1 (ลูกค้าใหม่
+// ย้ายค่าย สุดคุ้ม 100%) slide2 (คืนยอดเสีย 10% / แนะนำเพื่อน รับค่าคอม 1%)
+// slide3 (ทุกยอดฝาก 300 ได้ 1 สิทธิ์การหมุน ลุ้นโบนัสสูงสุด 100,000) และ slide4
+// (สมาชิกใหม่ ทุกยอดฝาก 50 ได้ 1 สิทธิ์การหมุน ลุ้นโบนัสสูงสุด 10,000)
+// สีขอบ/เงาย้ายจากทองคู่แดงของ DEKDDD มาเป็นฟ้านีออน #00abfc ของแบรนด์นี้
 //
-// ทำไมต้องสี่: slide2 กับ slide3 ถูกใช้ไปแล้วในบล็อก ContentBoxSevenThree* สอง
+// ทำไมต้องสี่: slide3 กับ slide2 ถูกใช้ไปแล้วในบล็อก ContentBoxSevenThree* สอง
 // อันบนหน้าแรก ถ้าแถบนี้ถือแค่สองใบนั้น หน้าแรกจะโชว์รูปเดิมซ้ำสองรอบ และบน
 // เดสก์ท็อปที่เห็นพร้อมกัน 2 ช่องก็จะเห็นทั้งชุดพร้อมกันจนไม่เหลือความเป็น
 // carousel เลย อีกสองใบเป็นอาร์ตของ drop รอบนี้เหมือนกัน (หน้า /promotion ใช้ครบ
@@ -40,20 +42,20 @@ import slideReferral from "../assets/slide4.png";
 // ต้องคิด --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
 const images = [
   {
-    src: slideWheel,
-    alt: "แบนเนอร์โปรโมชั่นพื้นแดงทอง เขียนว่า ฝากครั้งแรก 299 ขึ้นไป รับสิทธิ์หมุนวงล้อ กลางภาพเป็นวงล้อทองในช่อใบไม้ทอง มีป้ายรางวัลทองคำ 2 สลึง ด้านขวาเป็นตัวการ์ตูนหญิงสาวผมยาวคู่กับมาสคอตแพนด้าถือไพ่โพดำ ล้อมด้วยเหรียญทอง",
+    src: slideMigrate,
+    alt: "แบนเนอร์โปรโมชั่นพื้นน้ำเงิน เขียนว่า ลูกค้าใหม่ ย้ายค่าย สุดคุ้ม 100% พร้อมตารางสี่ช่อง ฝาก 50 เครดิตครบ 500 รับ 100 ถอนได้ 250, ฝาก 100 เครดิตครบ 1000 รับ 200 ถอนได้ 500, ฝาก 200 เครดิตครบ 2000 รับ 400 ถอนได้ 1000 และ ฝาก 300 เครดิตครบ 3000 รับ 600 ถอนได้ 1500 ด้านขวาเป็นหญิงสาวชุดฟ้าทำมือเป็นรูปหัวใจ ล้อมด้วยเหรียญทอง โลโก้ ORCA789 มุมขวาบน",
   },
   {
-    src: slideNewMember,
-    alt: "แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า สมาชิกใหม่ ฝากครั้งแรก 49 รับ 100 ด้านหลังเป็นตัวการ์ตูนหญิงสาวผมมวยสองข้างถือแว่นขยาย มีมาสคอตยูนิคอร์นและเพนกวินอยู่ซ้ายขวา ล้อมด้วยช่อใบไม้ทอง มงกุฎ และกองเหรียญทอง",
+    src: slideCashbackReferral,
+    alt: "แบนเนอร์โปรโมชั่นเขียนว่า คืนยอดเสีย 10% และ แนะนำเพื่อน รับค่าคอม 1% ภาพหญิงสาวชุดเขียวเข้ม ล้อมด้วยเหรียญทองและชิปคาสิโนสีฟ้า พื้นหลังน้ำเงินเข้ม โลโก้ ORCA789 อยู่มุมซ้ายบน",
   },
   {
-    src: slideCashback,
-    alt: "แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า ทุกวัน คืนยอดเสีย 5% ด้านหลังเป็นมาสคอตแรคคูนสวมฮู้ดสีม่วงคู่กับสิงโตจีนขนทองที่ถือทองคำแท่ง มีหีบสมบัติและเหรียญทองกระจายอยู่รอบ",
+    src: slideSpinPrize,
+    alt: "แบนเนอร์โปรโมชั่นเขียนว่า สมาชิกเก่าและใหม่ ทุกยอดฝาก 300 บาท ได้ 1 สิทธิ์การหมุน รางวัลมอเตอร์ไซต์ 2 รางวัล iPhone 2 รางวัล ทองคำ 5 รางวัล ลุ้นรางวัลโบนัสสูงสุด 100,000 ภาพหญิงสาวชุดน้ำเงินถือไพ่ ล้อมด้วยเหรียญทอง มงกุฎ สร้อยทอง มือถือ และมอเตอร์ไซค์ พื้นหลังใต้ทะเลสีน้ำเงิน",
   },
   {
-    src: slideReferral,
-    alt: "แบนเนอร์โปรโมชั่นพื้นแดงทอง ตัวอักษรใหญ่เขียนว่า แนะนำเพื่อน รับ 1% ด้านหลังเป็นตัวละครหญิงชุดนักรบแอซเท็กสวมเครื่องประดับขนนก มาสคอตไข่ตาโต และหีบสมบัติที่เปิดอยู่ ล้อมด้วยช่อใบไม้ทองและเหรียญทอง",
+    src: slideNewMemberSpin,
+    alt: "แบนเนอร์โปรโมชั่นพื้นน้ำเงิน เขียนว่า สมาชิกใหม่ ทุกยอดฝาก 50 บาท ได้ 1 สิทธิ์การหมุน ลุ้นรางวัลโบนัสสูงสุด 10,000 ภาพหญิงสาวชุดน้ำเงินสวมมงกุฎทอง ด้านหลังเป็นไพ่เอซและวงแหวนเรืองแสง ล้อมด้วยเหรียญทองและชิปคาสิโน โลโก้ ORCA789 มุมซ้ายบน",
   },
 ];
 
@@ -79,7 +81,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#eebb1a]/60 peer-focus-visible:bg-[#2a0806] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffe08a]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#00abfc]/60 peer-focus-visible:bg-[#08203f] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#84ccfb]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -92,7 +94,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#eebb1a]/35 object-cover shadow-[0_10px_30px_rgba(238,187,26,0.22)]"
+              class="block w-full rounded-xl border border-[#00abfc]/35 object-cover shadow-[0_10px_30px_rgba(0,171,252,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

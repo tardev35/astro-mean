@@ -5,27 +5,32 @@
 //
 // ห้ามขึ้นต้นด้วย emoji — marquee นี้ render ข้อความซ้ำสองรอบเพื่อให้วนไม่มีรอยต่อ
 // emoji ที่ฝังในข้อความ prop ทำ aria-hidden ไม่ได้ จึงถูกอ่านออกเสียงซ้ำทุกรอบ
+//
+// ORCA789: ย้ายจากม่วงนีออนของ GDK88 (#a855f7 / #5b1497 / #f3e8ff / #ece0ff บนผิว
+// #0f0320 คู่ทอง #f0b429) มาเป็นฟ้านีออนใต้ทะเลของแบรนด์นี้ — ฟ้าหลัก #00abfc /
+// #84ccfb / #011dc4 บนผิว #041028 เนื้อความ #dbeafe จุดสัญญาณเป็นทอง #ffd54a
+// (วัดจาก palette.json: vivid ของโลโก้คือ #011dc4 / #84ccfb / #00abfc)
 const {
-  message = "GDK88 เว็บสล็อตลื่นจัด เกมค่ายฮิตครบ ฝากถอนวอเลทไม่กั้นทุน • ยกค่ายเกมชั้นนำระดับโลกมารวมไว้ในล็อบบี้เดียว ทั้งแนวแอ็กชัน แฟนตาซี และคลาสสิกเล่นง่าย อยากเปลี่ยนฟีลตอนไหนก็คลิกเลือกเกมใหม่ได้ทันที • ระบบหลังบ้านเสถียรสูงสุด ตั้งแต่กดเลือกค่ายเกม ค้นหารายการ ไปจนถึงโหลดเข้าหน้าสปิน ทำงานประสานกันฉับไวไร้รอยต่อ ไม่มีอาการค้างหรือจอดำ • ฝากถอนผ่าน TrueMoney Wallet และบัญชีธนาคารชั้นนำแบบไม่มีข้อจำกัดเรื่องทุน จะปั่นเบทหลักสิบหรือล่าแจ็คพอตหลักหมื่นก็ทำรายการได้อิสระ • ฝากง่าย ถอนไว เงินเข้าตรงเป๊ะทุกบาททุกสตางค์โดยไม่ต้องผ่านแอดมิน • ตัดขั้นตอนยุ่งยากและเมนูที่ไม่จำเป็นออกทั้งหมด เข้าถึงฝากเงิน เช็กโปรโมชัน และถอนกำไรได้ในไม่กี่คลิก • เกมเปลี่ยน ฟีลเปลี่ยน แต่ความลื่นยังอยู่ครบทุกจังหวะการหมุนวงล้อ",
+  message = "ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่ • รวมความตื่นเต้นครบทุกมิติไว้ในที่เดียว ทั้งสล็อตตัวฮิตกระแสแรง บาคาร่าสด คาสิโน และแทงบอลออนไลน์ ไม่ต้องย้ายเว็บไปมาให้เสียเวลา • ล็อบบี้คัดมาเฉพาะเกมเด็ดแตกหนักจากทุกค่ายชั้นนำ ทั้งธีมแฟนตาซีตระการตา แนวสตรีทสุดเท่ และคลาสสิกโบนัสแตกง่าย • บาคาร่ายิงตรงสัญญาณสดความละเอียดสูง HD จากคาสิโนจริง ส่วนโหมดฟุตบอลราคาน้ำดี เปิดกว้างทุกลีกทั่วโลก สลับเล่นได้ในยูสเซอร์เดียว • ทีมงานอัปเดตไลน์อัปเกมใหม่เข้าระบบต่อเนื่อง ค่ายดังออกเกมอะไรมาก็ได้ลองเป็นกลุ่มแรกเสมอ • ระบบหลังบ้านปรับจูนให้เสถียรสูงสุด รองรับสมาชิกจำนวนมากพร้อมกันโดยไม่หน่วง ไม่กระตุก ไม่มีเกมหลุดระหว่างลุ้นโบนัส • ฝากถอนออโต้ไฮสปีดจบใน 3 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ปลอดภัยทุกธุรกรรม",
 } = Astro.props;
 ---
 
 <div class="mx-auto w-full max-w-7xl px-4 py-3 font-sans">
   <div
-    class="relative flex overflow-hidden border border-[#a855f7]/55 bg-[#0f0320]/92 shadow-[0_0_15px_rgba(168,85,247,0.32)] backdrop-blur-md"
+    class="relative flex overflow-hidden border border-[#00abfc]/55 bg-[#041028]/92 shadow-[0_0_15px_rgba(0,171,252,0.32)] backdrop-blur-md"
     style="clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);">
     <div
-      class="relative z-10 flex shrink-0 items-center justify-center bg-gradient-to-r from-[#5b1497] to-[#a855f7] px-6 py-2.5 font-black text-[#f3e8ff]"
+      class="relative z-10 flex shrink-0 items-center justify-center bg-gradient-to-r from-[#011dc4] to-[#00abfc] px-6 py-2.5 font-black text-[#f0f9ff]"
       style="clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);">
       ประกาศ
     </div>
 
     <div class="marquee-container relative flex-1 overflow-hidden py-2.5 pr-6">
-      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#0f0320] to-transparent"></div>
+      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#041028] to-transparent"></div>
 
-      <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-widest whitespace-nowrap text-[#ece0ff]">
-        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#f0b429] shadow-[0_0_8px_rgba(240,180,41,1)]"></span>{message}</span>
-        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#f0b429] shadow-[0_0_8px_rgba(240,180,41,1)]"></span>{message}</span>
+      <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-widest whitespace-nowrap text-[#dbeafe]">
+        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#ffd54a] shadow-[0_0_8px_rgba(255,213,74,1)]"></span>{message}</span>
+        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#ffd54a] shadow-[0_0_8px_rgba(255,213,74,1)]"></span>{message}</span>
       </div>
     </div>
   </div>

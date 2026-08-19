@@ -5,118 +5,122 @@ import ContentBoxTwo from "./ContentBoxTwo.astro";
 // tech มาจาก prop `label` ที่ส่งให้ ContentBoxTwo ไม่มีการส่ง `title` บล็อกนี้จึง
 // ไม่ปล่อยหัวข้อออกมาเลย
 //
-// DEKDDD: ย้ายจากชุดสีของแบรนด์ก่อนหน้ามาที่ทองคู่แดง — ทองหลัก #ffe08a / #eebb1a
-// / #a3760a คู่แดง #e01f26 / #a80d10 / #5c0201 บนผิว #2a0806 / #1a0503 / #0b0100
-// เนื้อความ #f7e7c8 หมึกบนปุ่มทอง #1a0503 เขียว LINE #00B900 กับจุด live สีเขียว
-// เป็นสีเชิงความหมาย ไม่ถูกแตะ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์
-// เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น
-// CSS ตาย ดูของเดิมได้จาก git history)
+// ORCA789: ย้ายจากทองคู่แดงของ DEKDDD (#ffe08a / #eebb1a / #a3760a คู่ #e01f26 /
+// #a80d10 / #5c0201 บนผิว #2a0806 / #1a0503 / #0b0100 เนื้อความ #f7e7c8) มาที่ฟ้า
+// นีออนใต้ทะเลคู่ทอง — ฟ้าหลัก #00abfc / #84ccfb / #016cfa / #011dc4 คู่ทอง #ffd54a
+// / #ffe89a / #8a6206 บนผิว #08203f / #041028 / #010614 ขอบ #062a6b เนื้อความ
+// #dbeafe หมึกบนปุ่มทอง #010614 เขียว LINE #00B900 กับจุด live สีเขียวเป็นสีเชิง
+// ความหมาย ไม่ถูกแตะ
 //
-// เนื้อหาตาม brief ของแบรนด์นี้: สล็อตสายเอ็นจอย เกมฮิตติดล็อบบี้พร้อมตัวใหม่สลับมา
-// ให้ลอง ระบบตอบสนองไวสลับเกมได้สมูธไร้รอยต่อ เล่นลื่นทุกอุปกรณ์ ฟีเจอร์เด่นทั้ง
-// ตัวคูณรางวัลกับฟรีสปิน และกิจกรรมโปรโมชันที่จัดเพื่อสมาชิกโดยเฉพาะ
+// เนื้อหาตาม brief ของแบรนด์นี้: สล็อตตัวฮิตมาแรงรวมกับบาคาร่าสด คาสิโน และแทงบอล
+// ในยูสเซอร์เดียว บาคาร่ายิงตรงสัญญาณ HD จากคาสิโนจริง บอลราคาน้ำดีครบทุกลีก
+// ไลน์อัปเกมใหม่เข้าระบบต่อเนื่อง ระบบหลังบ้านเสถียรไม่หน่วง และฝากถอนออโต้ไฮสปีด
+// จบภายใน 3 วินาที
 const menus = [
   {
     icon: "🎰",
-    name: "เกมฮิตติดล็อบบี้คัดมาให้เลือกแบบแน่นๆ",
-    detail: "เปิดล็อบบี้เข้ามาเมื่อไหร่ก็เจอแต่ตัวเต็ง ทั้งเกมสล็อตยอดฮิตติดระดับตำนานและเกมมาใหม่ล่าสุดจากค่ายชั้นนำ วางไว้ให้เลือกในหน้าเดียวไม่ต้องไล่หาข้ามหลายจอ",
-    tag: "ตัวเต็งครบ",
+    name: "รวมสล็อต บาคาร่า คาสิโน และแทงบอลไว้ที่เดียว",
+    detail: "ความตื่นเต้นครบทุกมิติถูกยกมาเสิร์ฟไว้ในเว็บเดียว ไม่ต้องย้ายเว็บไปมาให้เสียเวลา อยากสลับอารมณ์จากการปั่นสล็อตไปนั่งโต๊ะสดหรือไปดูราคาบอลก็ทำได้ในยูสเซอร์เดียว",
+    tag: "ครบทุกโหมด",
   },
   {
-    icon: "🔄",
-    name: "ตัวใหม่สลับสับเปลี่ยนเข้ามาให้ลองตลอดเวลา",
-    detail: "อยากเปลี่ยนบรรยากาศหรือค้นหารูปแบบการเล่นใหม่ๆ ก็ทำได้ตลอดทั้งวันไม่มีเบื่อ อยากเปลี่ยนฟีลเมื่อไหร่ก็แค่คลิกเลือกเกมใหม่ได้ทันที",
+    icon: "🃏",
+    name: "บาคาร่าสดยิงตรงสัญญาณ HD จากคาสิโนจริง",
+    detail: "ภาพถ่ายทอดสดความละเอียดสูงจากโต๊ะจริง ให้ฟีลลิ่งเรียลไทม์เหมือนนั่งอยู่ในคาสิโน เห็นทุกจังหวะเปิดไพ่ด้วยตาตัวเองโดยไม่ต้องเดา",
+    tag: "เรียลไทม์",
+  },
+  {
+    icon: "⚽",
+    name: "เดิมพันฟุตบอลราคาน้ำดี ครบทุกลีกทั่วโลก",
+    detail: "ค่าน้ำเปิดกว้างให้เลือกเล่นได้ทุกลีก ตั้งแต่ลีกใหญ่ไปจนถึงลีกรอง สลับอารมณ์มาเล่นได้ทันทีในยูสเซอร์เดียว ไม่ต้องเสียเวลาโยกเงินให้ยุ่งยาก",
+    tag: "ทุกลีกทั่วโลก",
+  },
+  {
+    icon: "🆕",
+    name: "ไลน์อัปเกมใหม่เข้าสู่ระบบอย่างต่อเนื่อง",
+    detail: "ค่ายดังออกเกมอะไรใหม่มา สมาชิกที่นี่จะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ หน้าล็อบบี้จึงสดใหม่อยู่ตลอด ไม่วนอยู่แต่เกมเดิมให้จำเจ",
     tag: "ไม่จำเจ",
   },
   {
     icon: "⚡",
-    name: "ระบบตอบสนองไว สลับเกมได้สมูธไร้รอยต่อ",
-    detail: "เวลาต้องการเปลี่ยนเกมหรือสลับค่ายเล่น ไม่ต้องนั่งรอโหลดหน้าเว็บนานๆ ให้เสียอารมณ์ จังหวะกำลังได้ อารมณ์กำลังมา ก็ปั่นต่อได้ทันทีโดยไม่มีคำว่าสะดุด",
-    tag: "ไวทันใจ",
+    name: "ระบบเสถียรสูง รองรับสมาชิกพร้อมกันได้โดยไม่หน่วง",
+    detail: "ระบบหลังบ้านถูกปรับจูนอย่างสม่ำเสมอ ไม่กระตุก และไม่มีปัญหาเกมหลุดระหว่างลุ้นโบนัส การเข้าสู่ระบบ สลับค่ายเกม หรือเลือกโหมดต่างๆ ทำได้ฉับไวไร้รอยต่อ",
+    tag: "ไร้รอยต่อ",
   },
   {
-    icon: "📱",
-    name: "เล่นลื่นทุกอุปกรณ์ ทั้งมือถือ แท็บเล็ต และคอม",
-    detail: "รองรับการใช้งานทุกแพลตฟอร์มและทุกระบบปฏิบัติการ หน้าจอปรับให้เหมาะกับอุปกรณ์อัตโนมัติ ปุ่มกดใกล้มือ กราฟิกแสดงผลคมชัดและไหลลื่น",
-    tag: "ทุกแพลตฟอร์ม",
-  },
-  {
-    icon: "🎁",
-    name: "ฟีเจอร์เด่นในเกมที่เพิ่มความน่าลุ้น",
-    detail: "ทั้งตัวคูณรางวัลสุดพิเศษและโหมดฟรีสปินที่ออกบ่อย เข้ามาช่วยเติมเต็มจังหวะการหมุนให้น่าติดตามยิ่งขึ้น และเพิ่มโอกาสรับกำไรก้อนใหญ่กลับไปได้ง่ายกว่าเดิม",
-    tag: "ฟีเจอร์แน่น",
-  },
-  {
-    icon: "🎉",
-    name: "กิจกรรมและโปรโมชันจัดเพื่อสมาชิกโดยเฉพาะ",
-    detail: "มีให้ติดตามอยู่เรื่อยๆ ช่วยเพิ่มสีสันและความคุ้มค่าให้ทุกจังหวะเล่น ควรอ่านเงื่อนไขของแต่ละสิทธิ์จากหน้าโปรโมชั่นจริงก่อนกดรับทุกครั้ง",
-    tag: "น่าติดตาม",
+    icon: "💸",
+    name: "ฝากถอนออโต้ไฮสปีด จบภายใน 3 วินาที",
+    detail: "ทั้งเติมทุนเข้าลุยต่อและถอนยอดกำไรก้อนโตเข้าบัญชี จัดการได้ด้วยตัวเองง่ายๆ ไม่ต้องส่งสลิปยืนยัน และไม่ต้องนั่งรอแอดมินอนุมัตินานให้เสียอารมณ์",
+    tag: "3 วินาที",
   },
   {
     icon: "🛡️",
-    name: "ระบบได้มาตรฐาน โอนไว และปลอดภัย",
-    detail: "แค่ก้าวเข้ามาเลือกเกมที่ตรงกับสไตล์ของคุณ ไม่ว่าจะสายเน้นภาพสวย สายปั่นชิลๆ หรือสายล่ารางวัลใหญ่ ก็เปิดโหมดความสนุกได้เลยแบบไม่ต้องกังวล",
-    tag: "โอนไวมั่นใจ",
+    name: "คล่องตัวและปลอดภัยสูงในทุกธุรกรรม",
+    detail: "ระบบการเงินทำงานอัตโนมัติตลอดเวลา ตรวจสอบรายการย้อนหลังได้เอง ควรอ่านเงื่อนไขของแต่ละสิทธิ์จากหน้าโปรโมชั่นจริงก่อนกดรับทุกครั้ง",
+    tag: "ปลอดภัย",
   },
 ];
 
-const chips = ["สล็อตสายเอ็นจอย", "เกมฮิตติดล็อบบี้", "ตัวใหม่สลับมาให้ลอง", "ระบบตอบสนองไว", "เล่นลื่นทุกอุปกรณ์", "ฟรีสปินออกบ่อย", "กิจกรรมน่าติดตาม"];
+const chips = ["สล็อตตัวฮิตมาแรง", "บาคาร่าสด HD", "แทงบอลทุกลีก", "เกมใหม่เข้าเรื่อยๆ", "ระบบเสถียรไม่หน่วง", "ฝากถอนไวใน 3 วิ", "ยูสเซอร์เดียวเล่นครบ"];
 ---
 
-<ContentBoxTwo titleleft="เข้าสู่ระบบ DEKDDD" titleright="ระบบและสิทธิพิเศษของ DEKDDD ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ DEKDDD และตารางอ้างอิงระบบกับสิทธิพิเศษภายในเว็บ">
+<ContentBoxTwo
+  titleleft="เข้าสู่ระบบ ORCA789"
+  titleright="ระบบและสิทธิพิเศษของ ORCA789 ที่รวมไว้ในบัญชีเดียว"
+  label="เข้าสู่ระบบ ORCA789 และตารางอ้างอิงระบบกับสิทธิพิเศษภายในเว็บ">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#eebb1a]/30 bg-[#1a0503] p-6 shadow-[0_10px_30px_rgba(238,187,26,0.22)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#a80d10]/45 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#00abfc]/30 bg-[#041028] p-6 shadow-[0_10px_30px_rgba(0,171,252,0.22)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#016cfa]/45 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#eebb1a]/45 bg-gradient-to-br from-[#ffe08a] via-[#eebb1a] to-[#a3760a] text-xl shadow-inner">
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#ffd54a]/45 bg-gradient-to-br from-[#ffe89a] via-[#ffd54a] to-[#8a6206] text-xl shadow-inner">
           🎰
         </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#ffe08a]">ยินดีต้อนรับกลับ</p>
-          <span class="text-[11px] text-[#f7e7c8]/75">กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าล็อบบี้เกมฮิตของ DEKDDD ได้จากจุดเดียว ไม่ต้องรอโหลดนาน</span>
+          <p class="text-base font-black text-[#ffe89a]">ยินดีต้อนรับกลับ</p>
+          <span class="text-[11px] text-[#dbeafe]/75">กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าล็อบบี้เกมเด็ดของ ORCA789 ได้จากจุดเดียว ทั้งสล็อต บาคาร่าสด และแทงบอล</span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#eebb1a]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#00abfc]">👤</span>
           <input
             type="text"
             aria-label="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#5c0201] bg-[#0b0100] py-3 pr-4 pl-12 text-[#f7e7c8] transition-all outline-none placeholder:text-[#f7e7c8]/55 focus:border-[#eebb1a] focus:ring-1 focus:ring-[#eebb1a]/60"
+            class="w-full rounded-xl border border-[#062a6b] bg-[#010614] py-3 pr-4 pl-12 text-[#dbeafe] transition-all outline-none placeholder:text-[#dbeafe]/55 focus:border-[#00abfc] focus:ring-1 focus:ring-[#00abfc]/60"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#eebb1a]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#00abfc]">🔑</span>
           <input
             type="password"
             aria-label="รหัสผ่าน"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#5c0201] bg-[#0b0100] py-3 pr-4 pl-12 text-[#f7e7c8] transition-all outline-none placeholder:text-[#f7e7c8]/55 focus:border-[#eebb1a] focus:ring-1 focus:ring-[#eebb1a]/60"
+            class="w-full rounded-xl border border-[#062a6b] bg-[#010614] py-3 pr-4 pl-12 text-[#dbeafe] transition-all outline-none placeholder:text-[#dbeafe]/55 focus:border-[#00abfc] focus:ring-1 focus:ring-[#00abfc]/60"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#f7e7c8]/80">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#5c0201] bg-[#0b0100] accent-[#eebb1a]" />
+          <label class="flex items-center gap-2 text-[#dbeafe]/80">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#062a6b] bg-[#010614] accent-[#00abfc]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#f7e7c8]/80 transition-colors hover:text-[#ffe08a]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#dbeafe]/80 transition-colors hover:text-[#84ccfb]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#a3760a]/50 bg-gradient-to-r from-[#ffe08a] via-[#eebb1a] to-[#a3760a] p-3.5 font-black text-[#1a0503] shadow-[0_10px_30px_rgba(238,187,26,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(238,187,26,0.45)]">
+          class="mt-1 w-full rounded-xl border border-[#8a6206]/50 bg-gradient-to-r from-[#ffe89a] via-[#ffd54a] to-[#8a6206] p-3.5 font-black text-[#010614] shadow-[0_10px_30px_rgba(255,213,74,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(255,213,74,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#f7e7c8]/70">
-          <span class="h-px flex-1 bg-[#5c0201]"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#dbeafe]/70">
+          <span class="h-px flex-1 bg-[#062a6b]"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#5c0201]"></span>
+          <span class="h-px flex-1 bg-[#062a6b]"></span>
         </div>
 
         <a
@@ -127,29 +131,29 @@ const chips = ["สล็อตสายเอ็นจอย", "เกมฮิ
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#eebb1a]/30 bg-[#0b0100] px-2.5 py-1 text-[10px] font-bold text-[#ffe08a]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#5c0201] bg-[#0b0100] px-2.5 py-1 text-[10px] font-bold text-[#f7e7c8]/80"><span aria-hidden="true">🕐</span> ทำรายการได้ 24 ชั่วโมง</span>
+            <span class="rounded-full border border-[#00abfc]/30 bg-[#010614] px-2.5 py-1 text-[10px] font-bold text-[#84ccfb]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#062a6b] bg-[#010614] px-2.5 py-1 text-[10px] font-bold text-[#dbeafe]/80"><span aria-hidden="true">🕐</span> ทำรายการได้ 24 ชั่วโมง</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#e01f26] transition-colors hover:text-[#ffe08a]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#00abfc] transition-colors hover:text-[#ffd54a]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#eebb1a]/30 bg-[#1a0503] p-5 shadow-[0_10px_30px_rgba(238,187,26,0.22)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#00abfc]/30 bg-[#041028] p-5 shadow-[0_10px_30px_rgba(0,171,252,0.22)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#f7e7c8]/75">ตารางอ้างอิงระบบและสิทธิพิเศษที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#fff6dd] via-[#eebb1a] to-[#e01f26] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">สล็อตสายเอ็นจอย เล่นลื่นไม่มีสะดุด</div>
+          <span class="text-xs font-bold tracking-wide text-[#dbeafe]/75">ตารางอ้างอิงระบบและสิทธิพิเศษที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#f0f9ff] via-[#84ccfb] to-[#ffd54a] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">สล็อตตัวฮิตมาแรง เว็บเดียวเอาอยู่</div>
         </div>
-        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#0b0100] px-2.5 py-1">
+        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#010614] px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]"></span>
           <span class="text-[10px] font-bold tracking-widest text-green-300 uppercase">Live</span>
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#f7e7c8]/75">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#dbeafe]/75">
         <span>ระบบ / สิทธิพิเศษในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -157,28 +161,28 @@ const chips = ["สล็อตสายเอ็นจอย", "เกมฮิ
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#5c0201] bg-[#0b0100] px-3.5 py-2.5 transition-colors hover:border-[#eebb1a]/55 hover:bg-[#2a0806]/80">
+            <div class="rounded-xl border border-[#062a6b] bg-[#010614] px-3.5 py-2.5 transition-colors hover:border-[#00abfc]/55 hover:bg-[#08203f]/80">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f7e7c8]">
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#dbeafe]">
                   <span aria-hidden="true" class="w-5 shrink-0 text-center">
                     {m.icon}
                   </span>{" "}
                   <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#ffe08a]/60 bg-[#eebb1a] px-2.5 py-0.5 text-[10px] font-bold text-[#1a0503]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#ffe89a]/60 bg-[#ffd54a] px-2.5 py-0.5 text-[10px] font-bold text-[#010614]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#f7e7c8]/75">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#dbeafe]/75">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#eebb1a]/30 bg-[#0b0100] px-3 py-1 text-[10px] font-bold text-[#ffe08a]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#00abfc]/30 bg-[#010614] px-3 py-1 text-[10px] font-bold text-[#84ccfb]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#f7e7c8]/70">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจเดิมพันขั้นต่ำและสูงสุดของแต่ละเกม เงื่อนไขการรับสิทธิ์ และเพดานถอนจากหน้าโปรโมชั่นจริงของ DEKDDD ก่อนกดรับทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#dbeafe]/70">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจเดิมพันขั้นต่ำและสูงสุดของแต่ละเกม เงื่อนไขการรับสิทธิ์ และเพดานถอนจากหน้าโปรโมชั่นจริงของ ORCA789 ก่อนกดรับทุกครั้ง
       </div>
     </div>
   </div>

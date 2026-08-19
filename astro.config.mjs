@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.dekdddb.com",
+  site: "https://www.orca789-game.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({
