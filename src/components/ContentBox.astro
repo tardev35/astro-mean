@@ -5,11 +5,12 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h1" } = Astro.props;
 
-// ORCA789: ย้ายจากทองคู่แดงของ DEKDDD (#eebb1a / #ffe08a / #a3760a คู่ #a80d10 /
-// #e01f26 / #5c0201 บนผิว #1a0503 เนื้อความ #f7e7c8) มาเป็นฟ้านีออนใต้ทะเลคู่ทอง
-// ของแบรนด์นี้ — ฟ้าหลัก #00abfc / #84ccfb / #016cfa / #011dc4 คู่ทอง #ffd54a /
-// #ffe89a บนผิว #010614 เนื้อความ #dbeafe (วัดจาก palette.json: vivid ของโลโก้
-// วาฬออร์ก้าคือ #011dc4 / #84ccfb / #00abfc ส่วนมงกุฎ-เหรียญบนแบนเนอร์เป็นทอง)
+// LUCKYBKK: ย้ายจากเขียวมิ้นต์คู่ทองของ AM88K (#8cdcad / #d6fbe8 / #4cb783 /
+// #1d6f47 คู่ทอง #e4b314 / #f3db6b / #a8790a บนผิว #04120a เนื้อความ #e6f6ec)
+// มาเป็นน้ำเงินรอยัลคู่ทองของแบรนด์นี้ — น้ำเงิน #3f9dfb / #cfe8ff / #1f5fd0 /
+// #0a2a86 คู่ทอง #f0b323 / #ffdf7e / #9a6c05 บนผิว #030b28 เนื้อความ #e4eeff
+// (วัดจาก palette.json: vivid ของโลโก้คือ #0393fe / #1443a4 / #0d3ca5 / #041b6c
+// ส่วนเหรียญรอบโลโก้กับคำว่า VIP บนแบนเนอร์เป็นทอง)
 //
 // ไฟล์นี้เป็นการ์ดถาวรของ terms/privacy ด้วย — ข้างในสองหน้านั้นไม่ระบุสีเลย
 // โดยตั้งใจ สีเนื้อความจึงต้องอยู่บนการ์ดใบนี้เสมอ ห้ามย้ายออก
@@ -20,15 +21,15 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#00abfc]/35 bg-[#010614]/90 p-8 text-left text-base leading-relaxed text-[#dbeafe] shadow-[0_10px_30px_rgba(0,171,252,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#84ccfb]/55 hover:shadow-[0_15px_40px_rgba(0,171,252,0.28)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#00abfc]/25 blur-[60px] transition-all duration-500 group-hover:bg-[#84ccfb]/35"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#011dc4]/55 blur-[60px] transition-all duration-500 group-hover:bg-[#016cfa]/45"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#3f9dfb]/35 bg-[#030b28]/90 p-8 text-left text-base leading-relaxed text-[#e4eeff] shadow-[0_10px_30px_rgba(63,157,251,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#cfe8ff]/55 hover:shadow-[0_15px_40px_rgba(63,157,251,0.28)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#3f9dfb]/25 blur-[60px] transition-all duration-500 group-hover:bg-[#cfe8ff]/35"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#0a2a86]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#1f5fd0]/45"></div>
 
     {
       title && (
-        <header class="mb-6 flex items-center gap-4 border-b border-[#00abfc]/35 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffd54a] to-[#8a6206] shadow-[0_0_10px_rgba(255,213,74,0.6)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#f0f9ff] via-[#84ccfb] to-[#00abfc] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-6 flex items-center gap-4 border-b border-[#3f9dfb]/35 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffdf7e] to-[#9a6c05] shadow-[0_0_10px_rgba(240,179,35,0.6)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#f5f9ff] via-[#cfe8ff] to-[#3f9dfb] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }

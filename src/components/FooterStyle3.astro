@@ -9,7 +9,7 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // ลิงก์ด่วนชุดเดียว ใช้ .map ด้านล่าง — เดิมเขียน <a> ซ้ำหกก้อน ทำให้เพิ่ม/ลบหน้า
 // ต้องไล่แก้ทีละอัน (และเป็นที่ที่ลิงก์หน้าหวยของแบรนด์ก่อนเคยค้างอยู่)
-// BOOST168 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
+// LUCKYBKK เป็นคาสิโนสด หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
   { name: "ทดลองเล่นเกมฟรี", path: "/ทดลองเล่น" },
@@ -21,26 +21,32 @@ const quickLinks = [
 ];
 
 const LOGO_ALT =
-  "โลโก้ BOOST168 ตัวอักษร BOOST สีเงินโครเมียมขอบน้ำเงินต่อด้วยเลข 168 สีทองส้ม มีจรวดสีเงินหัวแดงพุ่งขึ้นพร้อมเปลวไฟสีส้มทองโค้งอยู่ด้านบน ใต้ตัวอักษรเป็นแถบไอคอนจอยเกม โพดำ ข้าวหลามตัด โพแดง ดอกจิก และลูกเต๋าสีทอง";
+  "โลโก้ LUCKYBKK ตัวอักษร LUCKYBKK สีฟ้าน้ำแข็งไล่เงาสามมิติ ขอบน้ำเงินเข้มเรืองแสง มีสัญลักษณ์โพดำแทรกอยู่ในตัวอักษร ด้านบนเป็นโพดำสีฟ้าใส ล้อมด้วยไพ่เอซโพดำและโพแดง กับเหรียญทองกองอยู่สองข้าง";
+
+// LUCKYBKK: ย้ายจากน้ำเงินคู่ส้มทองของ BOOST168 (#3f8cff / #9ecbff / #12306e /
+// #0e1430 / #03060f คู่ทอง #ffc233 / #ffe680 / #b26a00 เนื้อความ #e6ecfb /
+// #7d93c4) มาเป็นน้ำเงินรอยัลคู่ทองของแบรนด์นี้ — น้ำเงิน #3f9dfb / #cfe8ff /
+// #1f5fd0 / #0a2a86 คู่ทอง #f0b323 / #ffdf7e / #9a6c05 บนผิว #030b28 / #061442 /
+// #0d2160 เนื้อความ #e4eeff รองด้วย #93b4e8
 ---
 
-<footer class="relative mt-32 w-full border-t border-[#ffc233]/30 bg-[#03060f] pt-64 pb-6 font-sans text-[#e6ecfb] shadow-[0_-10px_30px_rgba(63,140,255,0.18)] md:pt-40">
+<footer class="relative mt-32 w-full border-t border-[#f0b323]/30 bg-[#030b28] pt-64 pb-6 font-sans text-[#e4eeff] shadow-[0_-10px_30px_rgba(63,157,251,0.18)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#ffc233]/35 bg-gradient-to-r from-[#0e1430] via-[#12306e] to-[#050818] p-6 shadow-[0_15px_40px_rgba(63,140,255,0.35)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#f0b323]/35 bg-gradient-to-r from-[#061442] via-[#1f5fd0] to-[#030b28] p-6 shadow-[0_15px_40px_rgba(63,157,251,0.35)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#ffc233] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
-        <span aria-hidden="true">🚀</span> พร้อมบูสต์ความมันส์กับ BOOST168 หรือยัง?
+      <p class="text-xl font-black tracking-wide text-[#f0b323] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
+        <span aria-hidden="true">🃏</span> พร้อมนั่งโต๊ะเกมสด VIP กับ LUCKYBKK หรือยัง?
       </p>
-      <p class="mt-2 text-sm font-medium text-[#9ecbff] md:text-base">
-        สมัคร BOOST168 แล้วเข้าปั่นได้ทันที สล็อตเว็บตรงจัดหนักที่อัปคลังเกมใหม่ให้มีตัวเด็ดตามต่อไม่ขาดช่วง เกมดีมีบูสต์ทั้งฟีเจอร์คูณเงินรางวัลและฟรีสปิน ระบบไวไม่เกินจริง พร้อมออโต้ตั้งแต่สมัครถึงฝากถอน
+      <p class="mt-2 text-sm font-medium text-[#93b4e8] md:text-base">
+        สมัคร LUCKYBKK แล้วเข้าโต๊ะได้ทันที คาสิโนสดยิงตรงสัญญาณจากสตูดิโอชั้นนำ คมชัดระดับ HD ทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ดำเนินเกมโดยดีลเลอร์มืออาชีพ ระบบตรงไม่ผ่านเอเย่นต์ ฝากถอนออโต้ตรวจสอบย้อนหลังได้ทุกรายการ
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#ffc233] bg-gradient-to-b from-[#ffe680] to-[#ffc233] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#0a0f22] shadow-[0_0_15px_rgba(255,194,51,0.45)] transition-all hover:scale-105 md:text-base">
-      <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🚀</span></span>
-      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffe680] transition-transform duration-300 group-hover:translate-y-0"></div>
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#f0b323] bg-gradient-to-b from-[#ffdf7e] to-[#f0b323] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#030b28] shadow-[0_0_15px_rgba(240,179,35,0.45)] transition-all hover:scale-105 md:text-base">
+      <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🎲</span></span>
+      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffdf7e] transition-transform duration-300 group-hover:translate-y-0"></div>
     </a>
   </div>
 
@@ -58,18 +64,18 @@ const LOGO_ALT =
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(255,194,51,0.6)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(63,157,251,0.6)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#ffe680] to-[#b26a00] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(255,194,51,0.55)]">BOOST168</p>
+              <p class="bg-gradient-to-b from-[#cfe8ff] to-[#0a2a86] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(63,157,251,0.55)]">LUCKYBKK</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#9ecbff]">
-          BOOST168 สล็อตเว็บตรงจัดหนักที่ขนเกมตัวตึงจากทุกค่ายชั้นนำมารวบรวมไว้ให้เลือกเล่นอย่างจุใจ ทั้งแนวสตรีทสุดมันส์ แฟนตาซีเวทมนตร์ และคลาสสิกโบนัสแตกง่าย ทุกเกมคัดมาแล้วว่ากราฟิกสวยและมีจังหวะจ่ายรางวัลที่น่าลุ้น
-          เสริมด้วยฟีเจอร์สุ่มคูณเงินรางวัล รีสปินล็อกสัญลักษณ์ และโหมดฟรีสปินที่เข้าถึงง่าย บนระบบหลังบ้านที่ตอบสนองไวแบบพอดี ไม่มีกระตุกหรือเกมหลุด และมีออโต้ช่วยลดขั้นตอนตั้งแต่สมัครจนถึงฝากถอน
+        <p class="text-sm leading-relaxed text-[#93b4e8]">
+          LUCKYBKK คาสิโนอันดับต้นที่รวบรวมเกมสดคุณภาพ VIP จากสตูดิโอชั้นนำมาไว้ในที่เดียว ทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ยิงตรงสัญญาณสดคมชัดระดับ HD ทั้งภาพและเสียง มีห้องเดิมพันให้เลือกตั้งแต่เบทเริ่มต้นสบายๆ
+          ไปจนถึงห้องระดับ High Roller หน้าต่างการใช้งานแสดงสถิติย้อนหลังชัดเจน บนระบบตรงที่ไม่ผ่านเอเย่นต์ หลังบ้านเสถียรรองรับผู้ใช้งานพร้อมกันจำนวนมากโดยไม่หน่วง พร้อมทีมแอดมินดูแลตลอด 24 ชั่วโมง
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -102,16 +108,16 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#e6ecfb] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#e4eeff] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#ffc233] to-[#3f8cff] shadow-[0_0_8px_rgba(255,194,51,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#f0b323] to-[#3f9dfb] shadow-[0_0_8px_rgba(240,179,35,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#9ecbff] transition-colors hover:text-[#ffc233]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#ffc233] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#93b4e8] transition-colors hover:text-[#f0b323]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#f0b323] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -120,39 +126,39 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#e6ecfb] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#e4eeff] uppercase">
           ระบบการเงิน
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#ffc233] to-[#3f8cff] shadow-[0_0_8px_rgba(255,194,51,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#f0b323] to-[#3f9dfb] shadow-[0_0_8px_rgba(240,179,35,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#9ecbff]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#93b4e8]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#0e1430] transition-colors hover:border-[#ffc233]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#e6ecfb]"><span aria-hidden="true" class="text-lg text-[#ffc233]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#061442] transition-colors hover:border-[#f0b323]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#e4eeff]"><span aria-hidden="true" class="text-lg text-[#f0b323]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#ffc233]/25" />
+    <hr class="mb-6 border-[#f0b323]/25" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#7d93c4] md:block">
-      สล็อตเว็บตรงจัดหนัก อัปคลังเกมใหม่ให้มีตัวเด็ดตามต่อไม่ขาดช่วง รวมเกมตัวตึงจากทุกค่ายชั้นนำไว้ในล็อบบี้เดียว ครบทั้งแนวสตรีท แฟนตาซี และคลาสสิกโบนัสแตกง่าย เกมดีมีบูสต์ด้วยฟีเจอร์สุ่มคูณเงินรางวัล
-      ฟีเจอร์รีสปินล็อกสัญลักษณ์ และโหมดฟรีสปินที่ออกบ่อยเข้าถึงง่าย พร้อมโบนัสหลายรูปแบบทั้งโปรโมชันต้อนรับสมาชิกใหม่ โบนัสเติมเงินรายวัน และกิจกรรมคืนกำไรให้ผู้เล่น ระบบไวไม่เกินจริง หน้าเว็บโหลดฉับไว
-      กดเข้าเกมได้ทันทีโดยไม่ต้องรอ สัญญาณเชื่อมต่อตรงกับค่ายเกมหลักอย่างเสถียร ไม่มีอาการกระตุกหรือเกมหลุด ลดขั้นตอนด้วยระบบออโต้ตั้งแต่สมัครสมาชิก กดรับโปรโมชัน ไปจนถึงฝากถอน ทางเข้าเว็บล่าสุด ทดลองเล่นฟรี สมัครสมาชิกใหม่ BOOST168
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#6f8dc4] md:block">
+      คาสิโนอันดับต้นที่ยกระดับมาตรฐานเกมสดออนไลน์ ส่งตรงสัญญาณจากสตูดิโอชั้นนำแบบเรียลไทม์ คมชัดระดับ HD ทั้งภาพและเสียง ครบทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ดำเนินเกมโดยดีลเลอร์มืออาชีพตลอด 24 ชั่วโมง
+      คัดสรรโต๊ะเดิมพันและค่ายเกมชั้นนำมารวมไว้ในที่เดียว มีห้องให้เลือกหลากหลายระดับตั้งแต่เบทเริ่มต้นไปจนถึงห้อง High Roller พร้อมหน้าต่างแสดงสถิติย้อนหลังที่อ่านง่าย ให้วางแผนเดิมพันได้แม่นยำ ระบบตรงไม่ผ่านเอเย่นต์
+      ทุกขั้นตอนโปร่งใสตรวจสอบได้จริง อัตราการจ่ายได้มาตรฐานสากล ระบบหลังบ้านเสถียรรองรับผู้ใช้งานพร้อมกันจำนวนมากโดยไม่หน่วง ฝากถอนออโต้ด้วยตัวเองในไม่กี่ขั้นตอน ทางเข้าเว็บล่าสุด ทดลองเล่นฟรี สมัครสมาชิกใหม่ LUCKYBKK
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#7d93c4] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#ffc233] uppercase">BOOST168</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#6f8dc4] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#f0b323] uppercase">LUCKYBKK</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#e6ecfb]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#e6ecfb]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#e4eeff]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#e4eeff]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#e6ecfb] transition-all hover:border-[#ffc233] hover:bg-[#0e1430] hover:shadow-[0_0_15px_rgba(255,194,51,0.5)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#e4eeff] transition-all hover:border-[#f0b323] hover:bg-[#061442] hover:shadow-[0_0_15px_rgba(240,179,35,0.5)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

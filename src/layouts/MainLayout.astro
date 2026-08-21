@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarCyber.astro";
-import Footer from "../components/FooterCyber.astro";
+import Navbar from "../components/NavbarStyle9.astro";
+import Footer from "../components/FooterStyle3.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "ORCA789 | สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่",
-  description = "ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่องจัดมาแน่น บาคาร่าและฟุตบอล เติมเกมใหม่ให้ลองเรื่อยๆ ระบบใหม่อัปเดตตลอด ฝากถอนไวใน 3 วิ เว็บเดียวเอาอยู่ครบจบที่เดียว",
+  title = "LUCKYBKK | คาสิโนอันดับต้น เกมสดคุณภาพ VIP ระบบตรงไว้ใจได้",
+  description = "LUCKYBKK คาสิโนอันดับต้น รวมเกมสดคุณภาพ VIP แบบเรียลไทม์ ระบบตรงไว้ใจได้ ชัดเจนทุกขั้นตอน หลังบ้านเสถียร การเงินคล่อง พร้อมทีมบริการตลอดวัน",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #041028;
+        background-color: #030b28;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ ORCA789 พื้นน้ำเงินเข้มเกือบดำ ซ้ายมือเป็นวาฬออร์ก้าสีดำลายฟ้านีออนสวมมงกุฎทอง กระโดดออกจากวงแหวนน้ำวนเรืองแสงสีฟ้า กลางภาพเป็นตัวอักษรขนาดใหญ่ ORCA ไล่เฉดฟ้าโครเมียมและเลข 789 สีเงิน ใต้ลงมาเป็นข้อความ สล็อตตัวฮิตมาแรง ตามด้วยป้ายทองเขียนว่า เกมเด็ดครบเครื่อง และป้ายน้ำเงินเขียนว่า เว็บเดียวเอาอยู่ พร้อมปุ่มขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดน้ำเงินเมทัลลิกถือจอยเกม ข้างตู้สล็อตขึ้นป้าย JACKPOT BIG WIN และเลข 777 รอบภาพมีเหรียญทอง ลูกเต๋าและชิปคาสิโนสีน้ำเงิน แถบล่างเขียนว่า เว็บตรงไม่ผ่านเอเย่นต์ ระบบปลอดภัยมั่นใจ 100% ฝาก-ถอน ออโต้รวดเร็วทันใจ และบริการตลอด 24 ชม. แอดมินพร้อมดูแล"
+          alt="แบนเนอร์ LUCKYBKK พื้นคาสิโนกลางคืนสีน้ำเงินเข้มประดับแสงนีออนฟ้า ซ้ายมือเป็นโลโก้ขนาดใหญ่ อักษร LUCKYBKK สีฟ้าน้ำแข็งไล่เงาสามมิติขอบน้ำเงินเข้ม มีสัญลักษณ์โพดำเรืองแสงแทรกอยู่กลางคำ ใต้ลงมาเป็นข้อความสีขาวว่า คาสิโนอันดับต้น ตามด้วย เกมสดคุณภาพ VIP โดยคำว่า VIP เป็นสีทอง และ ระบบตรงไว้ใจได้ ปิดท้ายด้วยปุ่มน้ำเงินขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดสีน้ำเงินเมทัลลิกประดับโพดำถือไพ่เอซสองใบ รอบภาพมีเหรียญทอง ชิปคาสิโน ลูกเต๋าสีน้ำเงิน วงล้อรูเล็ต และไพ่เอซโพดำ"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

@@ -16,41 +16,41 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // สองตัวข้างหัวข้ออีก ~52px จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
 // *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ H2 ที่ยาวที่สุดใน docx ของ GALA89 (68 ตัวอักษร) chrome ของป้าย
+// คำนวณกับหัวข้อ H1 ที่ยาวที่สุดใน docx ของ LUCKYBKK (56 ตัวอักษร) chrome ของป้าย
 // = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
-//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 8.5px ต่อตัวอักษร
-//   → ~27 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
-//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
-//   108px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 68px
+//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-xl ≈ 9.5px ต่อตัวอักษร
+//   → ~24 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
+//   leading-normal ที่ 20px = 30px ต่อบรรทัด → 120px + 24px = 144px ขอบล่างอยู่ที่
+//   120px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 56px
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ไอคอน เหลือ ~556px,
-//   text-2xl/leading-normal = 36px ต่อบรรทัด, 2 บรรทัด = 72px + 24px = 96px
-//   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-36 (144px) → เหลือ 72px
+//   text-3xl/leading-normal = 45px ต่อบรรทัด, 2 บรรทัด = 90px + 24px = 114px
+//   ขอบล่างอยู่ที่ 90px เทียบกับ md:pt-36 (144px) → เหลือ 54px
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// GALA89: ย้ายจากทองบนม่วงพลัมของแบรนด์ก่อนหน้า (#ffe9a8 / #fcc30b / #e09a05 /
-// #ce5a03 คู่ม่วง #7e3ac7 / #3c0f52 บนผิว #3c0f52 / #1c0620 เนื้อความ #f7e6c4
-// และเหรียญทองสองข้างป้าย) มาที่ชมพูกลอสคู่ทอง — ชมพู #d41c6b / #ff4d9c /
-// #9e154a กับทอง #ffe0a3 / #f0c274 / #b8801f บนผิว #3c0214 / #12010a เนื้อความ
-// #f7dce8 โดยไอคอนสองข้างป้ายเปลี่ยนเป็นเพชรชมพู ไม่มีม่วงเหลืออยู่ในไฟล์นี้
+// LUCKYBKK: ย้ายจากชมพูกลอสคู่ทองของ GALA89 (#d41c6b / #ff4d9c / #9e154a คู่ทอง
+// #ffe0a3 / #f0c274 / #b8801f บนผิว #3c0214 / #12010a เนื้อความ #f7dce8 และเพชร
+// ชมพูสองข้างป้าย) มาที่น้ำเงินรอยัลคู่ทอง — น้ำเงิน #3f9dfb / #cfe8ff / #1f5fd0 /
+// #0a2a86 กับทอง #ffdf7e / #f0b323 / #9a6c05 บนผิว #061442 / #030b28 เนื้อความ
+// #e4eeff โดยไอคอนสองข้างป้ายเปลี่ยนเป็นโพดำตามโลโก้ ไม่มีชมพูเหลืออยู่ในไฟล์นี้
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f0c274]/30 bg-[#3c0214]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#f7dce8] shadow-[0_10px_30px_rgba(240,194,116,0.18)] backdrop-blur-md md:pt-36">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#d41c6b]/45 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f0c274]/30 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f0b323]/30 bg-[#061442]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#e4eeff] shadow-[0_10px_30px_rgba(240,179,35,0.18)] backdrop-blur-md md:pt-36">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#3f9dfb]/45 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f0b323]/30 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffe0a3]/55 bg-[#12010a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(240,194,116,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#ff4d9c]">
-            💎
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffdf7e]/55 bg-[#030b28] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(240,179,35,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#3f9dfb]">
+            ♠
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffe0a3] via-[#f0c274] to-[#ff4d9c] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#ff4d9c]">
-            💎
+          <HeadingTag class={`bg-gradient-to-r from-[#ffdf7e] via-[#f0b323] to-[#3f9dfb] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#3f9dfb]">
+            ♠
           </span>
         </div>
       )

@@ -1,73 +1,79 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import Announcement from "../components/Announcement5.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ContentBox3ThreeFloatingBadge from "../components/ContentBox3ThreeFloatingBadge.astro";
+import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
 import ContentBox from "../components/ContentBox.astro";
-import ProviderGrid from "../components/ProviderGridPremium.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners from "../components/LatestWinnersCyber.astro";
+import LatestWinners from "../components/LatestWinners3.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq2.astro";
+import Faq from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgSpinPrize from "../assets/slide3.png";
-import imgCashbackReferral from "../assets/slide2.png";
+import imgCashback8 from "../assets/slide2.png";
+import imgDeposit200 from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxCyberCut as="h1"
-//   2 → ContentBoxSevenThreeCyberCut as="h2" + slide3 (ทุกยอดฝาก 300 ได้ 1 สิทธิ์หมุน)
-//   3 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right ที่รอยต่อประโยค)
-//   4 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
-//   5 → ContentBoxNeumorphism as="h2" (สล็อตเดียว)
-//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide2 (คืนยอดเสีย 10% / ค่าคอม 1%)
-//   7 → ContentBox as="h2" (การ์ดกลางที่ terms/privacy ใช้ร่วม)
+//   1 → ContentBoxFloatingBadge as="h1"
+//   2 → ContentBoxFloatingBadge as="h2" + GameRankingBoard + ProviderGrid ต่อท้าย
+//   3 → ContentBox3ThreeFloatingBadge as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
+//   4 → ContentBoxSevenThree as="h2" + slide2 (คืนยอดเสีย 8% / ค่าคอมมิชชั่น 5%)
+//   5 → ContentBox as="h2" (การ์ดกลางที่ terms/privacy ใช้ร่วม)
+//   6 → ContentBoxSevenThree as="h2" + slide1 (ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม)
+//   7 → ContentBoxSpecial as="h2" (แบ่งย่อหน้าเดียวลง left/right)
 //
-// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (DEKDDD ใช้ Premium ×3 +
-// FloatingBadge ×2 + Special ×1 + plain ×1) มาเป็น CyberCut ×3 + Neumorphism ×3 +
-// plain ×1 ส่วน Navbar ย้ายจาก NavbarStyle6 มาเป็น NavbarCyber, Footer จาก
-// FooterStyle2 มาเป็น FooterCyber, Announcement จาก Announcement5 มาเป็น
-// AnnouncementCyber, LatestWinners จาก LatestWinners3 มาเป็น LatestWinnersCyber,
-// Faq จาก Faq4 มาเป็น Faq2 และ ProviderGrid จากตัวธรรมดามาเป็น ProviderGridPremium
+// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (AM88K ใช้ Premium ×3 + plain ×2 +
+// FloatingBadge ×1 + Special ×1) มาเป็น FloatingBadge ×3 + SevenThree ธรรมดา ×2 +
+// plain ×1 + Special ×1 ส่วน Navbar ย้ายจาก NavbarPremium มาเป็น NavbarStyle9,
+// Footer จาก FooterPremium มาเป็น FooterStyle3, Announcement จาก Announcement3
+// มาเป็น Announcement5, LatestWinners จาก LatestWinnersPremium มาเป็น
+// LatestWinners3, Faq จาก Faq3 มาเป็น Faq4 และโครงสองคอลัมน์ที่ LoginRtpSection
+// ใช้ย้ายจาก ContentBoxTwo มาเป็น ContentBoxTwoPremium
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide3 (ลุ้นรางวัลจากยอดฝาก 300)
-// คู่กับหัวข้อคลังเกมในล็อบบี้ และ slide2 (คืนยอดเสีย 10% + ค่าคอมแนะนำเพื่อน 1%)
-// คู่กับหัวข้อระบบฝากถอนไวใน 3 วิ ส่วน slide1 กับ slide4 ไม่ถูก import ในไฟล์นี้ —
-// ทั้งคู่ยังขึ้นใน SmoothCarousel และหน้า /promotion อยู่ เช่นเดียวกับ banner.png
-// และ banner2/3/4 ที่เป็นอาร์ตค้างของแบรนด์ก่อนๆ ซึ่งห้ามแตะ — รูปที่ import คือรูป
-// ที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide2 (คืนยอดเสีย 8% ทุกวัน /
+// ค่าคอมมิชชั่น 5% ทุกวัน) คู่กับหัวข้อ "ระบบตรงไว้ใจได้ ทุกขั้นตอนชัดเจน" และ
+// slide1 (ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม) คู่กับหัวข้อ "เรื่องการเงินต้องไม่
+// ซับซ้อน" ส่วน slide3 (รายได้แนะนำเพื่อน รับสูงสุด 2.5%) ไม่ถูก import ในไฟล์นี้
+// แต่ยังขึ้นใน SmoothCarousel และหน้า /promotion ส่วน slide4 เป็นอาร์ตพื้นชมพูของ
+// แบรนด์ก่อนหน้า และ banner.png กับ banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด
+// จึงห้าม import ที่ไหนทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร
+// render ก็ตาม
 //
 // banner1 เป็น hero ที่ MainLayout จัดการเอง รอบนี้จึงไม่มีรูปประกอบใน ContentBox
 // เดี่ยว
 //
-// widget ที่ไม่ได้มาจาก docx (ProviderGridPremium, GameRankingBoard,
-// LatestWinnersCyber, LoginRtpSection, ReviewCardSumo2, SmoothCarousel, แถวปุ่ม
-// login/register, FAQ) ใช้ป้ายเป็น <p>/<span> + aria-label บน <section> และถูกวาง
-// ต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด จึงไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อเลย
+// widget ที่ไม่ได้มาจาก docx (LatestWinners3, LoginRtpSection, ReviewCardSumo2,
+// SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น <p>/<span> +
+// aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้น
+// GameRankingBoard กับ ProviderGrid ที่เป็นภาพประกอบของหัวข้อ docx ข้อ 2 โดยตรง
+// (โต๊ะเกมสดและค่ายเกมที่คัดมา) จึงวางต่อท้ายบล็อกนั้น ไม่มีตัวไหนคั่นระหว่าง
+// หัวข้อ docx สองข้อ
 //
-// h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx + หัวข้อ FAQ ที่หน้านี้ส่งเป็น prop = 7
-// คำถามใน Faq2 เป็น <span> ใน <summary> ไม่ใช่ h3 และป้ายคอลัมน์ของ
-// ContentBox3ThreeCyberCut / ContentBoxSevenThree* / ContentBoxTwoNeumorphism
-// เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
-const pageTitle = "ORCA789 | สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่";
-// คำอธิบายยาว 158 ตัวอักษร อยู่ในเกท 150–160 ของ verify-build พอดี ตั้งต้นจาก
-// บรรทัด Meta ของ docx (แก้ typo "ุฝากถอน" เป็น "ฝากถอน") และเป็นสตริงเดียวกับที่
-// ส่งเข้า pageGraph
-const pageDescription = "ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่องจัดมาแน่น บาคาร่าและฟุตบอล เติมเกมใหม่ให้ลองเรื่อยๆ ระบบใหม่อัปเดตตลอด ฝากถอนไวใน 3 วิ เว็บเดียวเอาอยู่ครบจบที่เดียว";
+// h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx พอดี ไม่มีตัวที่เจ็ด — หัว FAQ ถูกลดเป็น <p>
+// ใน Faq4.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq4 เป็น <span> ใน
+// <summary> ไม่ใช่ h3 และป้ายคอลัมน์ของ ContentBox3ThreeFloatingBadge /
+// ContentBoxSevenThree / ContentBoxTwoPremium เป็น <p> — docx รอบนี้แบน H1 + H2
+// ล้วน หน้านี้จึงไม่มี h3 เลย
+const pageTitle = "LUCKYBKK | คาสิโนอันดับต้น เกมสดคุณภาพ VIP ระบบตรงไว้ใจได้";
+// บรรทัด Des ของ docx ยาว 139 ตัวอักษร ต่ำกว่าเกท 150–160 ของ verify-build จึงต่อ
+// ท้ายวรรคสุดท้ายให้เป็น "พร้อมทีมแอดมินมืออาชีพคอยดูแลตลอดวัน" ตามเนื้อหัวข้อ
+// ข้อ 7 ของ docx เอง ได้ 154 ตัวอักษร ทุกวรรคอื่นคงคำเดิมของ docx ไว้ทั้งหมด และ
+// เป็นสตริงเดียวกับที่ส่งเข้า pageGraph
+const pageDescription =
+  "LUCKYBKK คาสิโนอันดับต้น รวมเกมสดคุณภาพ VIP แบบเรียลไทม์ ระบบตรงไว้ใจได้ ชัดเจนทุกขั้นตอน หลังบ้านเสถียร การเงินคล่อง พร้อมทีมแอดมินมืออาชีพคอยดูแลตลอดวัน";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji เพราะ marquee
 // render ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 const announcementMessage =
-  "ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่ • ครบทุกมิติในที่เดียว ทั้งสล็อตตัวฮิตกระแสแรง บาคาร่าสด คาสิโน และแทงบอลออนไลน์ ไม่ต้องย้ายเว็บไปมาให้เสียเวลา • ล็อบบี้คัดเฉพาะเกมเด็ดแตกหนักจากทุกค่ายชั้นนำ ทั้งธีมแฟนตาซีตระการตา แนวสตรีทสุดเท่ และคลาสสิกโบนัสแตกง่าย กราฟิกคมชัด เอฟเฟกต์อลังการ • บาคาร่ายิงตรงสัญญาณสดความละเอียดสูง HD จากคาสิโนจริง ส่วนโหมดเดิมพันฟุตบอลราคาน้ำดี ค่าน้ำเปิดกว้างทุกลีกทั่วโลก สลับเล่นได้ในยูสเซอร์เดียว • ทีมงานอัปเดตไลน์อัปเกมใหม่เข้าระบบต่อเนื่อง ค่ายดังออกเกมอะไรมาก็ได้ลองเป็นกลุ่มแรกๆ เสมอ ล็อบบี้จึงสดใหม่ไม่จำเจ • ระบบหลังบ้านปรับจูนให้เสถียรสูงสุด รองรับสมาชิกจำนวนมากพร้อมกันโดยไม่หน่วง ไม่กระตุก ไม่มีเกมหลุดระหว่างลุ้นโบนัส • ฝากถอนออโต้ไฮสปีดจบภายใน 3 วินาที ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ คล่องตัวและปลอดภัยทุกธุรกรรม";
+  "LUCKYBKK คาสิโนอันดับต้น เกมสดคุณภาพ VIP ระบบตรงไว้ใจได้ • ศูนย์รวมความบันเทิงระดับพรีเมียมที่ยกระดับมาตรฐานคาสิโนออนไลน์ ด้วยเกมสดส่งตรงจากสตูดิโอชั้นนำ ระบบตรงไม่ผ่านคนกลาง เสถียร ปลอดภัย และโปร่งใสในทุกมิติ • ยิงตรงสัญญาณสดความละเอียดสูง คมชัดระดับ HD ทั้งภาพและเสียง ครบทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ดำเนินเกมโดยดีลเลอร์มืออาชีพตลอด 24 ชั่วโมง • คัดสรรโต๊ะเดิมพันและค่ายเกมชั้นนำมารวบรวมไว้ในที่เดียว มีห้องให้เลือกหลากหลายระดับ ตั้งแต่เบทเริ่มต้นสบายๆ ไปจนถึงห้องระดับ High Roller สำหรับสายลุยหนัก • หน้าต่างการใช้งานแสดงข้อมูลและสถิติย้อนหลังได้ชัดเจน ช่วยให้วางแผนเดิมพันได้ง่ายและแม่นยำยิ่งขึ้น • ระบบตรงไม่ผ่านเอเย่นต์ ทุกขั้นตอนโปร่งใสตรวจสอบได้จริง อัตราการจ่ายได้มาตรฐานสากล ผลการเดิมพันยุติธรรมตรงไปตรงมา ไร้การหมกเม็ด ไร้เงื่อนไขซับซ้อน • หลังบ้านเสถียร รองรับผู้เข้าใช้งานพร้อมกันจำนวนมากโดยไม่หน่วงหรือกระตุก สลับเปลี่ยนโต๊ะเดิมพันได้ฉับไว • ฝากถอนผ่านระบบออโต้ด้วยตัวเองในไม่กี่ขั้นตอน ยอดเงินอัปเดตไว โอนเข้าบัญชีโดยตรง พร้อมหน้าต่างเช็กประวัติย้อนหลังที่เปิดดูได้ชัดเจน • ทีมงานแอดมินมืออาชีพคอยดูแลและซัพพอร์ตสมาชิกทุกคนตลอด 24 ชั่วโมง สุภาพ รวดเร็ว และเป็นกันเอง";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
@@ -75,24 +81,24 @@ const announcementMessage =
 // <Faq> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "ORCA789 มีโหมดเดิมพันอะไรให้เล่นบ้างในยูสเซอร์เดียว",
-    a: "เปิดครบทั้งสล็อตตัวฮิตกระแสแรง บาคาร่าสด คาสิโนออนไลน์ และเดิมพันฟุตบอล ทุกโหมดใช้บัญชีเดียวกัน จึงสลับอารมณ์จากการปั่นสล็อตไปนั่งโต๊ะบาคาร่าหรือไปแทงบอลได้ทันทีโดยไม่ต้องโยกเงินข้ามกระเป๋าและไม่ต้องเปิดเว็บใหม่ให้เสียเวลา",
+    q: "เกมสดของ LUCKYBKK มีเกมอะไรบ้าง และถ่ายทอดมาจากไหน",
+    a: "เกมสดถูกส่งตรงจากสตูดิโอชั้นนำ ยิงตรงสัญญาณสดด้วยความละเอียดสูง คมชัดระดับ HD ทั้งภาพและเสียง ครบทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ทุกเกมดำเนินการโดยดีลเลอร์มืออาชีพ ให้สัมผัสที่สมจริงเหมือนได้เข้าไปนั่งอยู่ในคาสิโนชั้นนำจริงๆ ตลอด 24 ชั่วโมง",
   },
   {
-    q: "เกมสล็อตในล็อบบี้คัดมาแบบไหน มีธีมอะไรให้เลือก",
-    a: "คัดเฉพาะตัวเด็ดแตกหนักจากค่ายชั้นนำมารวมไว้ มีทั้งธีมแฟนตาซีตระการตา แนวสตรีทสุดเท่ และสไตล์คลาสสิกที่โบนัสแตกง่าย แต่ละเกมมาพร้อมกราฟิกคมชัดกับเอฟเฟกต์อลังการ อัตราการจ่ายรางวัลคุ้มค่า และจังหวะโบนัสกับแจ็คพอตที่พร้อมระเบิดได้ตลอดเวลา",
+    q: "มีห้องเดิมพันให้เลือกกี่ระดับ มือใหม่กับสายเบทหนักเล่นห้องเดียวกันไหม",
+    a: "มีห้องเดิมพันให้เลือกหลากหลายระดับ ตั้งแต่เบทเริ่มต้นสบายๆ สำหรับคนที่เพิ่งเริ่ม ไปจนถึงห้องระดับ High Roller สำหรับสายลุยหนัก โต๊ะเดิมพันและค่ายเกมชั้นนำถูกคัดสรรมารวบรวมไว้ในที่เดียว เลือกระดับเดิมพันให้พอดีกับทุนของตัวเองได้จากหน้าเดียว",
   },
   {
-    q: "บาคาร่าสดของที่นี่ถ่ายทอดจากคาสิโนจริงหรือเปล่า",
-    a: "เป็นการยิงตรงสัญญาณสดความละเอียดสูงระดับ HD จากคาสิโนจริง จึงได้ฟีลลิ่งเรียลไทม์เหมือนนั่งอยู่หน้าโต๊ะ ส่วนโหมดเดิมพันฟุตบอลก็มีราคาน้ำดี ค่าน้ำเปิดกว้าง เลือกเล่นได้ทุกลีกทั่วโลก อยากสลับไปมาระหว่างสองโหมดก็ทำได้ในยูสเซอร์เดียว",
+    q: "ระบบตรงไม่ผ่านเอเย่นต์ ต่างจากเว็บทั่วไปตรงไหน",
+    a: "การให้บริการผ่านระบบตรงที่ไม่ผ่านเอเย่นต์ทำให้ทุกขั้นตอนของการใช้งานโปร่งใสและตรวจสอบได้จริง ทั้งอัตราการจ่ายที่ได้มาตรฐานสากล ผลการเดิมพันที่ยุติธรรมตรงไปตรงมา ไปจนถึงขั้นตอนการทำรายการทางการเงิน ไร้การหมกเม็ดและไร้เงื่อนไขซับซ้อนให้ต้องตีความ",
   },
   {
-    q: "เกมใหม่เข้าระบบบ่อยแค่ไหน จะเจอแต่เกมเดิมไหม",
-    a: "ทีมงานอัปเดตไลน์อัปเกมใหม่เข้าสู่ระบบอย่างต่อเนื่อง ค่ายดังปล่อยเกมอะไรออกมา สมาชิกที่นี่จะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ หน้าล็อบบี้จึงสดใหม่อยู่ตลอด ไม่วนอยู่แต่เกมเดิม อยากลองฟีเจอร์แปลกใหม่เมื่อไหร่ก็คลิกเลือกเล่นได้ทันที",
+    q: "ช่วงที่คนเข้าเล่นพร้อมกันเยอะ ระบบจะหน่วงหรือหลุดไหม",
+    a: "ทีมพัฒนาได้ปรับแต่งโครงสร้างหลังบ้านให้รองรับจำนวนผู้เข้าใช้งานพร้อมกันได้จำนวนมากโดยไม่มีอาการหน่วงหรือกระตุก สลับเปลี่ยนโต๊ะเดิมพันได้ฉับไว เข้าถึงทุกโหมดบริการได้ทันใจ ความต่อเนื่องของระบบตรงนี้เองที่ช่วยให้ผู้เล่นไม่พลาดจังหวะสำคัญตลอดวัน",
   },
   {
-    q: "ฝากถอนใช้เวลานานไหม ต้องส่งสลิปให้แอดมินหรือเปล่า",
-    a: "ใช้ระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จภายใน 3 วินาที ทั้งเติมทุนเข้าเล่นต่อและถอนยอดกำไรก้อนโตเข้าบัญชี จัดการเองได้ง่ายๆ ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ ระบบหลังบ้านยังปรับจูนให้เสถียร รองรับสมาชิกจำนวนมากพร้อมกันโดยไม่หน่วง",
+    q: "ฝากถอนต้องแจ้งแอดมินไหม และย้อนดูรายการเก่าได้หรือเปล่า",
+    a: "ทำรายการฝากและถอนเงินผ่านระบบออโต้ได้ด้วยตัวเองง่ายๆ ภายในไม่กี่ขั้นตอน ยอดเงินอัปเดตไว โอนเข้าบัญชีโดยตรงอย่างแม่นยำ พร้อมหน้าต่างเช็กประวัติย้อนหลังที่เปิดดูได้ชัดเจน และยังมีทีมงานแอดมินคอยซัพพอร์ตตลอด 24 ชั่วโมงหากติดขัดระหว่างทำรายการ",
   },
 ];
 
@@ -110,100 +116,100 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่">
+  <ContentBoxFloatingBadge as="h1" title="LUCKYBKK คาสิโนอันดับต้น เกมสดคุณภาพ VIP ระบบตรงไว้ใจได้">
     <p class="text-left text-base leading-relaxed">
-      ถ้าคุณกำลังมองหาความครบเครื่องแบบไม่ต้องย้ายเว็บไปมา ORCA789 คือตัวเลือกสุดปังที่ตอบโจทย์สายปั่นยุคนี้ได้อย่างแท้จริง ที่นี่รวมเอาความตื่นเต้นครบทุกมิติมาเสิร์ฟไว้ในที่เดียว
-      ทั้งสล็อตตัวฮิตกระแสแรง บาคาร่าสด คาสิโน และแทงบอลออนไลน์ โดดเด่นด้วยระบบประมวลผลที่เร็ว เสถียร ลื่นไหล เล่นได้อย่างต่อเนื่องไม่มีสะดุด
-      มอบประสบการณ์ความมันส์ระดับพรีเมียมที่ทำให้ใครลองแล้วก็ต้องบอกต่อว่าเว็บนี้เว็บเดียวเอาอยู่ของจริง
+      หากคุณกำลังมองหาประสบการณ์เดิมพันสดที่ยกระดับความหรูหราและความน่าเชื่อถือขึ้นไปอีกขั้น LUCKYBKK คือจุดหมายปลายทางที่ไม่ควรมองข้าม
+      ที่นี่คือศูนย์รวมความบันเทิงระดับพรีเมียมที่ยกระดับมาตรฐานคาสิโนออนไลน์ ด้วยการนำเสนอเกมสดส่งตรงจากสตูดิโอชั้นนำ โดดเด่นด้วยระบบตรงที่ไม่ผ่านคนกลาง มีความเสถียร ปลอดภัย และโปร่งใสในทุกมิติ
+      ช่วยให้คุณเข้าถึงความสนุกได้อย่างมั่นใจ ลื่นไหล ไม่มีสะดุด พร้อมสัมผัสการดูแลและการบริการที่เหนือระดับในสไตล์ VIP อย่างแท้จริง
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxFloatingBadge>
 
-  <ContentBoxSevenThreeCyberCut as="h2" title="ORCA789 สล็อตตัวฮิตมาแรง มีเกมเด็ดอะไรซ่อนอยู่ในล็อบบี้บ้าง?" titleleft="ทุกยอดฝาก 300 ได้ 1 สิทธิ์หมุน">
-    <Picture
-      slot="left"
-      src={imgSpinPrize}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นเขียนว่า สมาชิกเก่าและใหม่ ทุกยอดฝาก 300 บาท ได้ 1 สิทธิ์การหมุน รางวัลมอเตอร์ไซต์ 2 รางวัล iPhone 2 รางวัล ทองคำ 5 รางวัล ลุ้นรางวัลโบนัสสูงสุด 100,000 ภาพหญิงสาวชุดน้ำเงินถือไพ่ ล้อมด้วยเหรียญทอง มงกุฎ สร้อยทอง มือถือ และมอเตอร์ไซค์ พื้นหลังใต้ทะเลสีน้ำเงิน"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#00abfc]/40 shadow-[0_10px_30px_rgba(0,171,252,0.3)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ก้าวเข้าสู่หน้าล็อบบี้ของ ORCA789 คุณจะได้เจอกับคลังเกมสล็อตที่คัดสรรมาเฉพาะตัวเด็ดแตกหนักจากทุกค่ายชั้นนำ ไม่ว่าจะเป็นเกมธีมแฟนตาซีตระการตา เกมแนวสตรีทสุดเท่ หรือเกมสไตล์คลาสสิกโบนัสแตกง่าย
-      แต่ละเกมอัดแน่นไปด้วยกราฟิกคมชัดและเอฟเฟกต์สุดอลังการ ที่สำคัญคือมีอัตราการจ่ายรางวัลคุ้มค่า จังหวะโบนัสและแจ็คพอตพร้อมระเบิดได้ตลอดเวลา ให้คุณลุ้นสนุกทำกำไรได้เพลินๆ ทุกวัน
-    </p>
-  </ContentBoxSevenThreeCyberCut>
-
-  <ContentBoxTwoNeumorphism
-    as="h2"
-    title="บาคาร่าและฟุตบอลจัดเต็ม อีกสองโหมดที่สายเล่นจริงไม่ควรมองข้าม"
-    titleleft="บาคาร่าสดสัญญาณ HD"
-    titleright="ราคาน้ำดีครบทุกลีก">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ไม่ได้มีดีแค่เกมสล็อตเท่านั้น แต่ ORCA789 ยังจัดเต็มอีกสองโหมดฮิตอย่างบาคาร่าสดและเดิมพันฟุตบอลแบบครบรส ในส่วนของบาคาร่าเป็นการยิงตรงสัญญาณสดความละเอียดสูง HD จากคาสิโนจริง
-      ได้ฟีลลิ่งเรียลไทม์สุดๆ
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ขณะที่โหมดเดิมพันฟุตบอลก็มีราคาน้ำดี ค่าน้ำเปิดกว้างให้เลือกเล่นทุกลีกทั่วโลก สลับอารมณ์มาเล่นได้ทันทีในยูสเซอร์เดียว ไม่ต้องเสียเวลาโยกเงินให้ยุ่งยาก
-    </p>
-  </ContentBoxTwoNeumorphism>
-
-  <ContentBox3ThreeCyberCut
-    as="h2"
-    title="เกมใหม่เข้าเรื่อยๆ ที่ ORCA789 ล็อบบี้จึงสดใหม่ไม่วนอยู่แต่เกมเดิม"
-    titleleft="อัปเดตต่อเนื่อง"
-    titlecenter="ได้ลองเป็นกลุ่มแรก"
-    titleright="คลิกเดียวเปลี่ยนเกม">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      เบื่อไหมกับการเล่นเว็บเดิมๆ แล้วเจอแต่เกมเก่า? ที่ ORCA789 ตัดปัญหานั้นออกไปได้เลย เพราะทีมงานขยันอัปเดตไลน์อัปเกมใหม่ๆ เข้าสู่ระบบอย่างต่อเนื่อง
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">ค่ายดังออกเกมอะไรใหม่มา คุณจะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ ทำให้หน้าล็อบบี้มีความสดใหม่อยู่ตลอดเวลา</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ไม่เจอปัญหาความจำเจ อยากเปลี่ยนไปลุ้นเกมฟีเจอร์แปลกใหม่เมื่อไหร่ก็แค่คลิกเลือกเล่นได้ทันที</p>
-  </ContentBox3ThreeCyberCut>
-
-  <ContentBoxNeumorphism as="h2" title="ระบบใหม่อัปเดตตลอด เล่น ORCA789 แล้วต่างจากระบบทั่วไปตรงไหน?">
+  <ContentBoxFloatingBadge as="h2" title="LUCKYBKK คาสิโนอันดับต้น เปิดประสบการณ์เกมสดคุณภาพ VIP แบบเรียลไทม์">
     <p class="text-left text-base leading-relaxed">
-      จุดต่างที่เห็นได้ชัดระหว่าง ORCA789 กับเว็บทั่วไปคือความใส่ใจในการพัฒนาระบบหลังบ้านอย่างสม่ำเสมอ ตัวระบบถูกปรับจูนให้มีความเสถียรสูงสุด รองรับการใช้งานพร้อมกันของสมาชิกจำนวนมากได้โดยไม่หน่วง
-      ไม่กระตุก และไม่มีปัญหาเกมหลุดระหว่างลุ้นโบนัส การเข้าสู่ระบบ สลับค่ายเกม หรือเลือกโหมดต่างๆ ทำได้อย่างฉับไว ไร้รอยต่อ ช่วยรักษา mood การทำกำไรให้ไหลลื่นต่อเนื่องตลอดวัน
+      สัมผัสบรรยากาศคาสิโนระดับโลกได้จากทุกที่ทุกเวลาเมื่อเข้ามาที่ LUCKYBKK ที่พร้อมเสิร์ฟความตื่นเต้นแบบเรียลไทม์ ยิงตรงสัญญาณสดด้วยความละเอียดสูง คมชัดระดับ HD ทั้งภาพและเสียง
+      ไม่ว่าจะเป็นบาคาร่า รูเล็ต เสือมังกร หรือไฮโล ทุกเกมดำเนินการโดยดีลเลอร์มืออาชีพ เพิ่มความหรูหราน่าเล่นให้ทุกโต๊ะเดิมพัน มอบสัมผัสที่สมจริงเหมือนคุณได้เข้าไปนั่งอยู่ในคาสิโนชั้นนำจริงๆ
+      ตลอด 24 ชั่วโมง
     </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxFloatingBadge>
 
-  <ContentBoxSevenThreeNeumorphism as="h2" title="ฝากถอนไวใน 3 วิ ลดช่วงรอแล้วไปต่อกับเกมโปรดได้ทันใจ" titleleft="คืนยอดเสีย 10% ค่าคอม 1%">
-    <Picture
-      slot="left"
-      src={imgCashbackReferral}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นเขียนว่า คืนยอดเสีย 10% และ แนะนำเพื่อน รับค่าคอม 1% ภาพหญิงสาวชุดเขียวเข้ม ล้อมด้วยเหรียญทองและชิปคาสิโนสีฟ้า พื้นหลังน้ำเงินเข้ม โลโก้ ORCA789 อยู่มุมซ้ายบน"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#ffd54a]/40 shadow-[0_10px_30px_rgba(255,213,74,0.25)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เรื่องระบบการเงินต้องยกให้ ORCA789 เป็นระดับท็อปด้วยระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จสรรพภายใน 3 วินาทีเท่านั้น ไม่ว่าจะเป็นการเติมทุนเข้าลุยต่อ หรือการถอนยอดกำไรก้อนโตเข้าบัญชี
-      ก็จัดการได้ด้วยตัวเองง่ายๆ ไม่ต้องส่งสลิปยืนยัน และไม่ต้องนั่งรอแอดมินอนุมัตินานให้เสียอารมณ์ ให้ความคล่องตัวและความปลอดภัยสูงในทุกธุรกรรม
-    </p>
-  </ContentBoxSevenThreeNeumorphism>
-
-  <ContentBox as="h2" title="ครบทั้งเกมและระบบ ทำไม ORCA789 ถึงเป็นเว็บเดียวที่เอาอยู่ทุกสาย?">
-    <p class="text-left text-base leading-relaxed">
-      สรุปได้เลยว่า ORCA789 คือพื้นที่ความบันเทิงที่ตอบโจทย์นักเดิมพันได้ครบทุกสไตล์อย่างแท้จริง ทั้งความอุดมสมบูรณ์ของเกมสล็อต โหมดคาสิโนสด บาคาร่า และกีฬา ประกอบกับระบบออโต้ที่รวดเร็วปลอดภัย
-      ไม่ว่าจะเข้ามาเล่นเพื่อความสนุกผ่อนคลายหรือลุยทำกำไรจริงจัง ที่นี่ก็พร้อมรองรับทุกความต้องการ สมกับเป็นเว็บเดียวที่เอาอยู่ทุกสาย ลองเข้ามาสัมผัสด้วยตัวเองแล้วคุณจะประทับใจแน่นอน
-    </p>
-  </ContentBox>
+  <GameRankingBoard />
 
   <ProviderGrid />
 
-  <GameRankingBoard />
+  <ContentBox3ThreeFloatingBadge
+    as="h2"
+    title="เกมสดจะพรีเมียมแค่ไหน เมื่อ LUCKYBKK คัดทั้งโต๊ะและประสบการณ์มาให้ครบ"
+    titleleft="ห้องเบทเริ่มต้นสบายๆ"
+    titlecenter="ห้องระดับ High Roller"
+    titleright="หน้าต่างสถิติย้อนหลัง">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      คำว่าพรีเมียมที่ LUCKYBKK ไม่ใช่แค่เรื่องงานภาพ แต่คือความพิถีพิถันในการคัดสรรโต๊ะเดิมพันและค่ายเกมชั้นนำมารวบรวมไว้ในที่เดียว มีห้องเดิมพันให้เลือกหลากหลายระดับ ตั้งแต่เบทเริ่มต้นสบายๆ
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">ไปจนถึงห้องระดับ High Roller สำหรับสายลุยหนัก</p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      หน้าต่างการใช้งานถูกออกแบบมาให้แสดงผลข้อมูลและสถิติย้อนหลังได้อย่างชัดเจน ช่วยให้ผู้เล่นวางแผนเดิมพันได้ง่ายและแม่นยำยิ่งขึ้น เติมเต็มประสบการณ์การเล่นให้ครบถ้วนในทุกรายละเอียด
+    </p>
+  </ContentBox3ThreeFloatingBadge>
+
+  <ContentBoxSevenThree as="h2" title="ระบบตรงไว้ใจได้ ทุกขั้นตอนชัดเจนตั้งแต่เข้าเกมจนถึงการทำรายการ" titleleft="คืนยอดเสีย 8% ค่าคอมมิชชั่น 5% ทุกวัน">
+    <Picture
+      slot="left"
+      src={imgCashback8}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มของ LUCKYBKK.net เขียนว่า คืนยอดเสีย 8% ทุกวัน และ ค่าคอมมิชชั่น 5% ทุกวัน โดยมีบรรทัดล่างกำกับว่า ทุกยอดฝากเล่น ภาพหญิงสาวชุดจีนสีน้ำเงินยืนคู่หีบสมบัติที่มีเพชรน้ำเงินล้นออกมา มีเหรียญทองปลิวและโคมไฟจีนสีแดงประดับสองข้าง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#3f9dfb]/40 shadow-[0_10px_30px_rgba(63,157,251,0.3)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ความสบายใจของผู้เล่นคือสิ่งที่ LUCKYBKK ให้ความสำคัญสูงสุด ด้วยการให้บริการผ่านระบบตรงที่ไม่ผ่านเอเย่นต์ ทำให้ทุกขั้นตอนของการใช้งานมีความโปร่งใส และสามารถตรวจสอบได้จริง
+      ไม่ว่าจะเป็นอัตราการจ่ายที่ได้มาตรฐานสากล ผลการเดิมพันที่ยุติธรรมตรงไปตรงมา ไปจนถึงขั้นตอนการทำรายการทางการเงิน ไร้การหมกเม็ด ไร้เงื่อนไขซับซ้อน ให้คุณมั่นใจได้เต็มร้อยในทุกๆ วินาทีที่ลงเดิมพัน
+    </p>
+  </ContentBoxSevenThree>
+
+  <ContentBox as="h2" title="เบื้องหลังความคล่องของ LUCKYBKK คือระบบหลังบ้านเสถียรที่พร้อมทำงานตลอดวัน">
+    <p class="text-left text-base leading-relaxed">
+      ความเสถียรของระบบเบื้องหลังคือหัวใจสำคัญที่ทำให้ LUCKYBKK ทำงานได้อย่างลื่นไหลไร้รอยต่อ
+      ทีมพัฒนาได้ปรับแต่งโครงสร้างหลังบ้านให้สามารถรองรับจำนวนผู้เข้าใช้งานพร้อมกันได้จำนวนมากโดยไม่มีอาการหน่วงหรือกระตุก สลับเปลี่ยนโต๊ะเดิมพันได้ฉับไว เข้าถึงทุกโหมดบริการได้อย่างทันใจ
+      ความต่อเนื่องของระบบตรงนี้เองที่ช่วยให้ผู้เล่นไม่พลาดจังหวะสำคัญ และรักษาอารมณ์การทำกำไรได้อย่างดีเยี่ยมตลอดวัน
+    </p>
+  </ContentBox>
+
+  <ContentBoxSevenThree as="h2" title="เรื่องการเงินต้องไม่ซับซ้อน ระบบจัดการคล่องและตรวจสอบรายการได้ตรงจุด" titleleft="ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม">
+    <Picture
+      slot="left"
+      src={imgDeposit200}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มของ LUCKYBKK.net เขียนว่า ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม! พร้อมป้ายกำกับ รับเลย 30 เพชร เปิดกล่องสมบัติลุ้นรับสูงสุด 500 เพชร ฝากครั้งเดียวรับสิทธิ์ร่วมสนุกหลายกิจกรรม และฝากครบ 200 บาท รับสิทธิ์ทันที ภาพหญิงสาวชุดจีนสีน้ำเงินยืนคู่หีบสมบัติที่มีเพชรน้ำเงินล้น มีเหรียญทอง ชิปคาสิโน และโคมไฟจีนสีแดงประดับรอบ"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f0b323]/40 shadow-[0_10px_30px_rgba(240,179,35,0.25)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      หมดกังวลเรื่องขั้นตอนการเงินที่ยุ่งยากน่ารำคาญ เพราะระบบการเงินของ LUCKYBKK ถูกออกแบบมาให้เน้นความกระชับและแม่นยำ สามารถทำรายการฝากและถอนเงินผ่านระบบออโต้ได้ด้วยตัวเองง่ายๆ
+      ภายในไม่กี่ขั้นตอน ยอดเงินอัปเดตไว โอนเข้าบัญชีโดยตรงอย่างแม่นยำ พร้อมหน้าต่างเช็กประวัติย้อนหลังที่เปิดชัดเจน ให้ผู้เล่นบริหารจัดการทุนและกำไรได้อย่างคล่องตัวและสบายใจที่สุด
+    </p>
+  </ContentBoxSevenThree>
+
+  <ContentBoxSpecial as="h2" title="เกมดีอย่างเดียวไม่พอ LUCKYBKK เติมทีมบริการที่พร้อมดูแลตลอดทั้งวัน">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      นอกจากตัวเกมสดคุณภาพ VIP และระบบหลังบ้านที่แน่นหนาแล้ว LUCKYBKK ยังให้ความสำคัญกับงานบริการอย่างใกล้ชิด ด้วยทีมงานแอดมินมืออาชีพที่คอยดูแลและซัพพอร์ตสมาชิกทุกคนตลอด 24 ชั่วโมง
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ไม่ว่าจะติดขัดปัญหาการใช้งาน ต้องการสอบถามรายละเอียดโปรโมชัน หรือขอคำแนะนำในด้านใด ก็สามารถติดต่อได้ทันที บริการด้วยความสุภาพ รวดเร็ว และเป็นกันเอง
+      มอบดูแลให้คุณใช้งานได้อย่างอุ่นใจสมกับเป็นคาสิโนอันดับต้นๆ อย่างแท้จริง
+    </p>
+  </ContentBoxSpecial>
 
   <LatestWinners />
 
@@ -216,18 +222,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe89a] via-[#ffd54a] to-[#8a6206] px-4 py-3 text-sm font-black whitespace-nowrap text-[#010614] shadow-[0_10px_30px_rgba(255,213,74,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,213,74,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffdf7e] via-[#f0b323] to-[#9a6c05] px-4 py-3 text-sm font-black whitespace-nowrap text-[#030b28] shadow-[0_10px_30px_rgba(240,179,35,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(240,179,35,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#00abfc]/70 bg-[#041028]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#dbeafe] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#84ccfb] hover:bg-[#062a6b] hover:text-[#f0f9ff] hover:shadow-[0_15px_40px_rgba(1,108,250,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#3f9dfb]/70 bg-[#030b28]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e4eeff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#cfe8ff] hover:bg-[#0d2160] hover:text-[#f5f9ff] hover:shadow-[0_15px_40px_rgba(31,95,208,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ ORCA789" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ LUCKYBKK" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

@@ -1,10 +1,9 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideMigrate from "../assets/slide1.png";
-import slideCashbackReferral from "../assets/slide2.png";
-import slideSpinPrize from "../assets/slide3.png";
-import slideNewMemberSpin from "../assets/slide4.png";
+import slideDeposit200 from "../assets/slide1.png";
+import slideCashback8 from "../assets/slide2.png";
+import slideReferral25 from "../assets/slide3.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -20,42 +19,36 @@ import slideNewMemberSpin from "../assets/slide4.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// ORCA789: แถบนี้ถือสไลด์ของ asset drop รอบนี้ครบทั้งสี่ใบ — slide1 (ลูกค้าใหม่
-// ย้ายค่าย สุดคุ้ม 100%) slide2 (คืนยอดเสีย 10% / แนะนำเพื่อน รับค่าคอม 1%)
-// slide3 (ทุกยอดฝาก 300 ได้ 1 สิทธิ์การหมุน ลุ้นโบนัสสูงสุด 100,000) และ slide4
-// (สมาชิกใหม่ ทุกยอดฝาก 50 ได้ 1 สิทธิ์การหมุน ลุ้นโบนัสสูงสุด 10,000)
-// สีขอบ/เงาย้ายจากทองคู่แดงของ DEKDDD มาเป็นฟ้านีออน #00abfc ของแบรนด์นี้
+// LUCKYBKK: แถบนี้ถือสไลด์ของ asset drop รอบนี้ "สามใบ" — slide1 (ฝากเพียง 200
+// บาท รับสิทธิ์สุดคุ้ม) slide2 (คืนยอดเสีย 8% ทุกวัน / ค่าคอมมิชชั่น 5% ทุกวัน)
+// และ slide3 (รายได้แนะนำเพื่อน รับสูงสุด 2.5%) ส่วน slide4 เป็นอาร์ตพื้นชมพูของ
+// แบรนด์ก่อนหน้า จึงถูกถอด import ออกจากไฟล์นี้ — รูปที่ import คือรูปที่ถูก emit
+// ถึงจะไม่มีใคร render ก็ตาม เช่นเดียวกับ banner.png และ banner2/3/4 ที่ห้ามแตะ
+// สีขอบ/เงาย้ายจากเขียวมิ้นต์ของ AM88K มาเป็นน้ำเงินรอยัล #3f9dfb ของแบรนด์นี้
 //
-// ทำไมต้องสี่: slide3 กับ slide2 ถูกใช้ไปแล้วในบล็อก ContentBoxSevenThree* สอง
-// อันบนหน้าแรก ถ้าแถบนี้ถือแค่สองใบนั้น หน้าแรกจะโชว์รูปเดิมซ้ำสองรอบ และบน
-// เดสก์ท็อปที่เห็นพร้อมกัน 2 ช่องก็จะเห็นทั้งชุดพร้อมกันจนไม่เหลือความเป็น
-// carousel เลย อีกสองใบเป็นอาร์ตของ drop รอบนี้เหมือนกัน (หน้า /promotion ใช้ครบ
-// ทั้งสี่อยู่แล้ว) จึงไม่ใช่ของค้างจากแบรนด์เก่า
+// slide1 กับ slide2 ถูกใช้ในบล็อก ContentBoxSevenThree สองอันบนหน้าแรกด้วย แต่
+// แถบนี้ยังถือครบทั้งสามใบ เพราะถ้าเหลือ slide3 ใบเดียวก็ไม่มีอะไรให้เลื่อน และบน
+// เดสก์ท็อปที่เห็นพร้อมกัน 2 ช่องจะเห็นทั้งชุดค้างอยู่นิ่งๆ จนไม่เหลือความเป็น
+// carousel
 //
-// ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตามนามสกุลจริง ห้าม import
-// banner.png กับ banner2-4 ที่เป็นอาร์ตค้างของแบรนด์ก่อนๆ — รูปที่ import คือรูป
-// ที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม
+// ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตามนามสกุลจริง
 //
 // สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน 2:1 ให้เห็นพร้อมกัน 1 ช่องบนมือถือ / 2 ช่องบน
 // เดสก์ท็อป แล้วบีบกล่องเป็น max-w-[820px] เพื่อให้แต่ละใบวาดราวๆ 386px ค่า
-// --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สี่ใบ) ถ้าเปลี่ยนจำนวน
-// ต้องคิด --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
+// --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สามใบรอบนี้ ไม่ใช่สี่)
+// ถ้าเปลี่ยนจำนวนต้องคิด --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
 const images = [
   {
-    src: slideMigrate,
-    alt: "แบนเนอร์โปรโมชั่นพื้นน้ำเงิน เขียนว่า ลูกค้าใหม่ ย้ายค่าย สุดคุ้ม 100% พร้อมตารางสี่ช่อง ฝาก 50 เครดิตครบ 500 รับ 100 ถอนได้ 250, ฝาก 100 เครดิตครบ 1000 รับ 200 ถอนได้ 500, ฝาก 200 เครดิตครบ 2000 รับ 400 ถอนได้ 1000 และ ฝาก 300 เครดิตครบ 3000 รับ 600 ถอนได้ 1500 ด้านขวาเป็นหญิงสาวชุดฟ้าทำมือเป็นรูปหัวใจ ล้อมด้วยเหรียญทอง โลโก้ ORCA789 มุมขวาบน",
+    src: slideDeposit200,
+    alt: "แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มของ LUCKYBKK.net เขียนว่า ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม! พร้อมป้ายกำกับ รับเลย 30 เพชร เปิดกล่องสมบัติลุ้นรับสูงสุด 500 เพชร ฝากครั้งเดียวรับสิทธิ์ร่วมสนุกหลายกิจกรรม และฝากครบ 200 บาท รับสิทธิ์ทันที ภาพหญิงสาวชุดจีนสีน้ำเงินยืนคู่หีบสมบัติที่มีเพชรน้ำเงินล้น มีเหรียญทอง ชิปคาสิโน และโคมไฟจีนสีแดงประดับรอบ",
   },
   {
-    src: slideCashbackReferral,
-    alt: "แบนเนอร์โปรโมชั่นเขียนว่า คืนยอดเสีย 10% และ แนะนำเพื่อน รับค่าคอม 1% ภาพหญิงสาวชุดเขียวเข้ม ล้อมด้วยเหรียญทองและชิปคาสิโนสีฟ้า พื้นหลังน้ำเงินเข้ม โลโก้ ORCA789 อยู่มุมซ้ายบน",
+    src: slideCashback8,
+    alt: "แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มของ LUCKYBKK.net เขียนว่า คืนยอดเสีย 8% ทุกวัน และ ค่าคอมมิชชั่น 5% ทุกวัน โดยมีบรรทัดล่างกำกับว่า ทุกยอดฝากเล่น ภาพหญิงสาวชุดจีนสีน้ำเงินยืนคู่หีบสมบัติที่มีเพชรน้ำเงินล้นออกมา มีเหรียญทองปลิวและโคมไฟจีนสีแดงประดับสองข้าง",
   },
   {
-    src: slideSpinPrize,
-    alt: "แบนเนอร์โปรโมชั่นเขียนว่า สมาชิกเก่าและใหม่ ทุกยอดฝาก 300 บาท ได้ 1 สิทธิ์การหมุน รางวัลมอเตอร์ไซต์ 2 รางวัล iPhone 2 รางวัล ทองคำ 5 รางวัล ลุ้นรางวัลโบนัสสูงสุด 100,000 ภาพหญิงสาวชุดน้ำเงินถือไพ่ ล้อมด้วยเหรียญทอง มงกุฎ สร้อยทอง มือถือ และมอเตอร์ไซค์ พื้นหลังใต้ทะเลสีน้ำเงิน",
-  },
-  {
-    src: slideNewMemberSpin,
-    alt: "แบนเนอร์โปรโมชั่นพื้นน้ำเงิน เขียนว่า สมาชิกใหม่ ทุกยอดฝาก 50 บาท ได้ 1 สิทธิ์การหมุน ลุ้นรางวัลโบนัสสูงสุด 10,000 ภาพหญิงสาวชุดน้ำเงินสวมมงกุฎทอง ด้านหลังเป็นไพ่เอซและวงแหวนเรืองแสง ล้อมด้วยเหรียญทองและชิปคาสิโน โลโก้ ORCA789 มุมซ้ายบน",
+    src: slideReferral25,
+    alt: "แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มของ LUCKYBKK.net เขียนว่า รายได้แนะนำเพื่อน รับสูงสุด 2.5% ในกรอบทอง ภาพหญิงสาวชุดจีนสีน้ำเงินยืนคู่หีบสมบัติที่มีเพชรน้ำเงินล้นออกมา พร้อมกล่องของขวัญ เหรียญทอง และโคมไฟจีนสีแดงประดับสองข้าง",
   },
 ];
 
@@ -81,7 +74,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#00abfc]/60 peer-focus-visible:bg-[#08203f] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#84ccfb]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#3f9dfb]/60 peer-focus-visible:bg-[#0d2160] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#cfe8ff]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -94,7 +87,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#00abfc]/35 object-cover shadow-[0_10px_30px_rgba(0,171,252,0.22)]"
+              class="block w-full rounded-xl border border-[#3f9dfb]/35 object-cover shadow-[0_10px_30px_rgba(63,157,251,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
@@ -114,31 +107,31 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
 </div>
 
 <style>
-  /* --shift คือหนึ่งชุดเต็มของรูป: สี่สไลด์บวกช่องว่างที่ตามมาสี่ช่อง วัดเทียบ
+  /* --shift คือหนึ่งชุดเต็มของรูป: สามสไลด์บวกช่องว่างที่ตามมาสามช่อง วัดเทียบ
      กับความกว้างของ track (ซึ่งเท่ากับความกว้างของกล่อง — สไลด์ล้นออกไป ซึ่งเป็น
      จุดประสงค์) ตั้งค่านี้ผิดไปหนึ่งพิกเซลคือสิ่งที่ทำให้ marquee กระตุกทุกรอบลูป
 
-     mobile:  4 * (100% + 12px) = 400% + 48px
-     desktop: 4 * ((100% - 16px)/2 + 16px) = 4 * (50% + 8px) = 200% + 32px */
+     mobile:  3 * (100% + 12px) = 300% + 36px
+     desktop: 3 * ((100% - 16px)/2 + 16px) = 3 * (50% + 8px) = 150% + 24px */
   .marquee {
     --gap: 12px;
     --per-view: 1;
-    --shift: calc(-400% - 48px);
+    --shift: calc(-300% - 36px);
   }
 
   @media (min-width: 768px) {
     .marquee {
       --gap: 16px;
       --per-view: 2;
-      --shift: calc(-200% - 32px);
+      --shift: calc(-150% - 24px);
     }
   }
 
   .marquee-track {
     gap: var(--gap);
     width: 100%;
-    /* 9 วินาทีต่อสไลด์ คูณสี่ใบ — ความเร็วต่อสไลด์เท่าเดิมทุกรอบรีแบรนด์ */
-    animation: carousel-scroll 36s linear infinite;
+    /* 9 วินาทีต่อสไลด์ คูณสามใบ — ความเร็วต่อสไลด์เท่าเดิมทุกรอบรีแบรนด์ */
+    animation: carousel-scroll 27s linear infinite;
     will-change: transform;
   }
 

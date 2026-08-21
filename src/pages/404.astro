@@ -27,8 +27,11 @@ import { BRAND_NAME } from "../lib/brandProfile";
 // crawled so the crawler finds its way back to the real pages.
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character. This one
-// measures 155 once BRAND_NAME is substituted.
-const pageDescription = `ไม่พบหน้าที่คุณกำลังมองหาบน ${BRAND_NAME} อาจถูกย้ายหรือลิงก์หมดอายุแล้ว กลับไปหน้าแรกเพื่อเลือกสล็อต บาคาร่าสด แทงบอล หรือทางเข้าเว็บหลักได้ทันทีตลอด 24 ชั่วโมง`;
+// measures 151 once BRAND_NAME is substituted. The length moves with the brand
+// name: it read 158 on the 5-character AM88K and went over 160 on the
+// 8-character LUCKYBKK, so re-count it every launch rather than assuming the
+// sentence is still in the window.
+const pageDescription = `ไม่พบหน้าที่คุณกำลังมองหาบน ${BRAND_NAME} อาจถูกย้ายหรือลิงก์หมดอายุ กลับไปหน้าแรกเพื่อเลือกเกมสดคาสิโน โปรโมชั่น หรือทางเข้าเว็บหลักได้ทันทีตลอด 24 ชั่วโมง`;
 ---
 
 <MainLayout title={`ไม่พบหน้านี้ | ${BRAND_NAME}`} description={pageDescription} robots="noindex, follow">

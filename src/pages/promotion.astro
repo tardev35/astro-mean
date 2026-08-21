@@ -1,8 +1,8 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxCyberCut.astro";
+import ContentBox from "../components/ContentBoxFloatingBadge.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
@@ -14,34 +14,33 @@ import { Picture } from "astro:assets";
 // Meta and never a body.
 //
 // Named for what each banner ACTUALLY prints, not for its file number.
-// The ORCA789 drop (2026-08-20) is FOUR usable slides, all 600 wide:
-//   slide1 = ลูกค้าใหม่ ย้ายค่าย สุดคุ้ม 100% (ตารางฝาก 50/100/200/300)
-//   slide2 = คืนยอดเสีย 10% + แนะนำเพื่อน รับค่าคอม 1%
-//   slide3 = ฝาก 300 ได้ 1 สิทธิ์หมุน ลุ้นโบนัสสูงสุด 100,000
-//   slide4 = สมาชิกใหม่ ฝาก 50 ได้ 1 สิทธิ์หมุน ลุ้นโบนัสสูงสุด 10,000
+// The LUCKYBKK drop (2026-08-21) is THREE usable slides, all 600x216:
+//   slide1 = ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม / เปิดกล่องสมบัติลุ้นสูงสุด 500 เพชร
+//   slide2 = คืนยอดเสีย 8% ทุกวัน / ค่าคอมมิชชั่น 5% ทุกวัน ทุกยอดฝากเล่น
+//   slide3 = รายได้แนะนำเพื่อน รับสูงสุด 2.5%
 // The mapping between file number and artwork changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after what is printed instead of after the file.
 //
-// banner2/3/4.png are leftovers from an older brand and must never be imported
-// here: an imported image is an emitted image even when nothing renders it.
-// banner1-mobile.* belongs to MainLayout's hero <picture> alone. Only what is
-// printed on each banner may be stated on this page.
-import promoWelcome from "../assets/slide1.png";
-import promoCashback from "../assets/slide2.png";
-import promoWheel100k from "../assets/slide3.png";
-import promoWheel10k from "../assets/slide4.png";
+// slide4.png is a PINK leftover from the previous brand ("ฝากต่อเนื่องวันละ 188
+// บาท") and is deliberately NOT imported: an imported image is an emitted image
+// even when nothing renders it. Same for banner2/3/4.png. banner1-mobile.*
+// belongs to MainLayout's hero <picture> alone. Only what is printed on each
+// banner may be stated on this page.
+import promoDeposit200 from "../assets/slide1.png";
+import promoCashback8 from "../assets/slide2.png";
+import promoReferral25 from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 158.
-const pageDescription = "รวมโปรโมชั่น ORCA789 ครบหน้าเดียว ทั้งลูกค้าใหม่ย้ายค่ายสุดคุ้ม 100% คืนยอดเสีย 10% แนะนำเพื่อนรับค่าคอม 1% และสิทธิ์หมุนวงล้อลุ้นโบนัส เงื่อนไขอ่านบนแบนเนอร์";
+// byte count reads ~3x too long). This one measures 154.
+const pageDescription = "รวมโปรโมชั่น LUCKYBKK ครบในหน้าเดียว ฝากเพียง 200 บาทรับสิทธิ์เปิดกล่องสมบัติ คืนยอดเสีย 8% ทุกวัน ค่าคอมมิชชั่น 5% ทุกวัน และรายได้แนะนำเพื่อนสูงสุด 2.5%";
 
-const pageTitle = "โปรโมชั่น ORCA789 | ย้ายค่ายรับ 100% คืนยอดเสีย หมุนวงล้อ";
+const pageTitle = "โปรโมชั่น LUCKYBKK | ฝาก 200 รับสิทธิ์ คืนยอดเสีย 8% แนะนำเพื่อน 2.5%";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น ORCA789 รวมสิทธิ์ที่กดรับได้ครบทุกจังหวะการเล่น";
+const pageHeading = "โปรโมชั่น LUCKYBKK รวมสิทธิพิเศษที่กดรับได้ครบทุกจังหวะเดิมพัน";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -50,22 +49,22 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoWelcome.src,
+  primaryImagePath: promoDeposit200.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
 // two-up from sm: inside that same padding plus one 2rem grid gap.
-// ContentBoxCyberCut keeps p-8 at every breakpoint and caps at max-w-7xl
-// (1280px), so the column stops growing at 592px once the viewport passes
-// 1312px.
-const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1311px) calc((100vw - 8rem) / 2), 592px";
+// ContentBoxFloatingBadge keeps p-8 at every width and caps at max-w-[1400px],
+// so the card stops growing once the viewport passes 1432px and the column
+// settles at 652px.
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1431px) calc((100vw - 8rem) / 2), 652px";
 
-// ขอบทองแบรนด์ตัดกับงานอาร์ตพื้นน้ำเงินนีออน แล้วเรืองทองเข้มขึ้นตอน hover
+// ขอบทองแบรนด์ตัดกับงานอาร์ตพื้นน้ำเงินเข้ม แล้วเรืองทองอ่อนขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#ffd54a]/35 object-contain shadow-[0_10px_30px_rgba(1,108,250,0.35)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe89a]/70 hover:shadow-[0_15px_40px_rgba(255,213,74,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#f0b323]/35 object-contain shadow-[0_10px_30px_rgba(63,157,251,0.35)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffdf7e]/70 hover:shadow-[0_15px_40px_rgba(240,179,35,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
-// drop — the column is drawn up to 592px, so nothing above 600 buys detail.
+// drop — the column is drawn up to 652px, so nothing above 600 buys detail.
 const imageWidths = [320, 440, 600];
 ---
 
@@ -77,15 +76,15 @@ const imageWidths = [320, 440, 600];
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffe89a]">ORCA789</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ทั้งหมด รายละเอียดของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองครบแล้ว
-        แต่ละรายการคิดจากยอดคนละชุด มีเพดาน เงื่อนไขทำยอด และรอบเวลาการรับสิทธิ์เป็นของตัวเอง จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด
-        ทุกสิทธิ์กดรับเองได้ผ่านระบบออโต้บนหน้าเว็บตลอด 24 ชั่วโมง จบได้ในไม่กี่คลิกโดยไม่ต้องส่งสลิปและไม่ต้องรอแอดมิน
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffdf7e]">LUCKYBKK</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ทั้งหมด รายละเอียดของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองครบแล้ว
+        ทั้งยอดฝากที่ต้องทำ จำนวนครั้งที่ต้องเดิมพัน เปอร์เซ็นต์ที่ได้คืน และรอบเวลาการรับสิทธิ์ แต่ละรายการคิดจากยอดคนละชุด จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด
+        ทุกสิทธิ์กดรับเองได้ผ่านระบบออโต้บนหน้าเว็บตลอด 24 ชั่วโมง จบได้ในไม่กี่ขั้นตอนโดยไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={promoWelcome}
-          alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินนีออน ตัวอักษรใหญ่เขียนว่า ลูกค้าใหม่ ย้ายค่าย สุดคุ้ม 100% พร้อมตารางสี่ช่อง ฝาก 50 เครดิตครบ 500 รับ 100 ถอนได้ 250 ฝาก 100 เครดิตครบ 1000 รับ 200 ถอนได้ 500 ฝาก 200 เครดิตครบ 2000 รับ 400 ถอนได้ 1000 และฝาก 300 เครดิตครบ 3000 รับ 600 ถอนได้ 1500 ข้างหญิงสาวชุดฟ้าเมทัลลิกทำมือเป็นรูปหัวใจ ล้อมด้วยเหรียญทอง"
+          src={promoDeposit200}
+          alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มมีโคมไฟจีนและเหรียญทองลอยรอบโลโก้ LUCKYBKK ข้อความใหญ่เขียนว่า ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม กลางภาพเป็นหีบสมบัติเปิดออกมาเป็นเพชรสีน้ำเงินข้างหญิงสาวชุดจีนสีน้ำเงิน มีป้ายเขียนว่า รับเลย 30 เพชร เดิมพันครบ 3 ครั้ง สะสมเพิ่มทุกยอด 1 แสน เปิดกล่องสมบัติลุ้นรับสูงสุด 500 เพชร และแถบล่างเขียนว่า ฝากครั้งเดียวได้ร่วมหลายกิจกรรม"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -98,8 +97,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={promoCashback}
-          alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินนีออน ตัวอักษรใหญ่เขียนว่า คืนยอดเสีย 10% และบรรทัดล่างเขียนว่า แนะนำเพื่อน รับค่าคอม 1% ข้างหญิงสาวชุดเดรสสีน้ำเงินเมทัลลิก ล้อมด้วยชิปคาสิโนและเหรียญทอง มุมบนซ้ายเป็นโลโก้วาฬออร์ก้าสวมมงกุฎ"
+          src={promoCashback8}
+          alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มใต้ลำแสงสปอตไลต์ มีโลโก้ LUCKYBKK ชิปคาสิโนและเหรียญทองลอยอยู่ ข้อความใหญ่สองบรรทัดเขียนว่า คืนยอดเสีย 8% ทุกวัน และ ค่าคอมมิชชั่น 5% ทุกวัน โดยมีบรรทัดสรุปด้านล่างว่า ทุกยอดฝากเล่น ด้านขวาเป็นหญิงสาวชุดจีนสีน้ำเงินยืนข้างหีบสมบัติที่เต็มไปด้วยเพชรสีน้ำเงินและกล่องของขวัญ"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -112,22 +111,8 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={promoWheel100k}
-          alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินใต้ทะเล เขียนว่า สมาชิกเก่าและใหม่ ทุกยอดฝาก 300 บาท ได้ 1 สิทธิ์การหมุน ลุ้นรางวัลโบนัสสูงสุด 100,000 พร้อมภาพรางวัลรถมอเตอร์ไซค์ โทรศัพท์ และสร้อยทองคำ ข้างหญิงสาวสวมมงกุฎทองถือไพ่ ล้อมด้วยชิปคาสิโนและกองธนบัตร"
-          loading="lazy"
-          fetchpriority="low"
-          widths={imageWidths}
-          sizes={imageSizes}
-          class={imageClass}
-          decoding="async"
-          formats={["avif", "webp"]}
-          fallbackFormat="webp"
-          quality={80}
-        />
-
-        <Picture
-          src={promoWheel10k}
-          alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินนีออน เขียนว่า สมาชิกใหม่ ทุกยอดฝาก 50 บาท ได้ 1 สิทธิ์การหมุน ลุ้นรางวัลโบนัสสูงสุด 10,000 กลางภาพเป็นหญิงสาวชุดฟ้าประกายสวมมงกุฎทอง ล้อมด้วยไพ่โพดำ เหรียญทอง และวงล้อเรืองแสง"
+          src={promoReferral25}
+          alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มประดับโคมไฟจีนและก้อนทอง มีโลโก้ LUCKYBKK อยู่ด้านบน ข้อความใหญ่เขียนว่า รายได้แนะนำเพื่อน และบรรทัดในกรอบทองเขียนว่า รับสูงสุด 2.5% ด้านขวาเป็นหญิงสาวชุดจีนสีน้ำเงินยืนพนมมือข้างหีบสมบัติที่มีเพชรสีน้ำเงินล้นออกมา"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -143,8 +128,8 @@ const imageWidths = [320, 440, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffd54a]/50 bg-gradient-to-r from-[#ffe89a] via-[#ffd54a] to-[#8a6206] px-10 py-3.5 text-lg font-black text-[#010614] shadow-[0_10px_30px_rgba(255,213,74,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(1,108,250,0.45)]">
-          สมัครสมาชิก ORCA789
+          class="flex items-center justify-center rounded-lg border border-[#f0b323]/50 bg-gradient-to-r from-[#ffdf7e] via-[#f0b323] to-[#9a6c05] px-10 py-3.5 text-lg font-black text-[#030b28] shadow-[0_10px_30px_rgba(240,179,35,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(63,157,251,0.45)]">
+          สมัครสมาชิก LUCKYBKK
         </a>
       </div>
     </div>
