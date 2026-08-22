@@ -1,107 +1,113 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement6.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
+import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
 import ContentBox from "../components/ContentBox.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners from "../components/LatestWinners.astro";
+import LatestWinners2 from "../components/LatestWinners2.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq.astro";
+import Faq3 from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgFirstDepositBonus from "../assets/slide2.png";
-import imgDailyCashback from "../assets/slide1.png";
+import imgFreeBonus500 from "../assets/slide1.png";
+import imgCashback5 from "../assets/slide2.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1"
-//   2 → ContentBoxSevenThreeCyberCut as="h2" + slide2 แล้วต่อด้วย GameRankingBoard
-//       และ ProviderGrid
-//   3 → ContentBox3ThreePremium as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
-//   4 → ContentBoxSevenThreeNeumorphism as="h2" + slide1
-//   5 → ContentBoxCyberCut as="h2"
-//   6 → ContentBox as="h2" (การ์ดกลางที่ terms/privacy ใช้ร่วม)
-//   7 → ContentBoxNeumorphism as="h2"
+//   1 → ContentBoxFloatingBadge as="h1"
+//   2 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
+//   3 → ContentBoxTwoNeumorphism as="h2" แล้วต่อด้วย GameRankingBoard และ
+//       ProviderGrid ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (ไลน์อัปเกมและค่าย)
+//   4 → ContentBoxSevenThreePremium as="h2" + slide1
+//   5 → ContentBoxSevenThree as="h2" + slide2
+//   6 → ContentBoxSpecial as="h2"
+//   7 → ContentBox as="h2" (การ์ดกลางที่ terms/privacy ใช้ร่วม)
 //
-// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (LUCKYBKK ใช้ FloatingBadge ×3 +
-// SevenThree ธรรมดา ×2 + plain ×1 + Special ×1) มาเป็น Premium + SevenThreeCyberCut
-// + 3ThreePremium + SevenThreeNeumorphism + CyberCut + plain + Neumorphism ส่วน
-// Navbar ย้ายจาก NavbarStyle9 มาเป็น NavbarStyle10, Footer จาก FooterStyle3 มาเป็น
-// Footer.astro, Announcement จาก Announcement5 มาเป็น Announcement6, LatestWinners
-// จาก LatestWinners3 มาเป็น LatestWinners.astro, Faq จาก Faq4 มาเป็น Faq.astro และ
-// โครงสองคอลัมน์ที่ LoginRtpSection ใช้ย้ายจาก ContentBoxTwoPremium มาเป็น
-// ContentBoxTwoCyberCut
+// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (PABO88 ใช้ Premium +
+// SevenThreeCyberCut + 3ThreePremium + SevenThreeNeumorphism + CyberCut + plain +
+// Neumorphism) มาเป็น FloatingBadge + 3ThreeCyberCut + TwoNeumorphism +
+// SevenThreePremium + SevenThree + Special + plain ส่วน Navbar ย้ายจาก
+// NavbarStyle10 มาเป็น NavbarStyle11, Footer จาก Footer.astro มาเป็น
+// FooterPremium, Announcement จาก Announcement6 มาเป็น AnnouncementPremium,
+// LatestWinners จาก LatestWinners.astro มาเป็น LatestWinners2, Faq จาก Faq.astro
+// มาเป็น Faq3 และโครงสองคอลัมน์ที่ LoginRtpSection ใช้ย้ายจาก
+// ContentBoxTwoCyberCut มาเป็น ContentBoxTwoPremium
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide2 (ฝากแรก รับโบนัส 100% พร้อม
-// แถบโลโก้ค่าย PG / Pragmatic Play / Joker / Relax / Habanero / Play'n GO) คู่กับ
-// หัวข้อข้อ 2 "จับทุกตัวน่าเล่นมาไว้ครบจบในเว็บเดียว" เพราะแถบค่ายบนรูปคือภาพของ
-// การคัดค่ายมาไว้ครบ และ slide1 (คืนยอดเสีย ทุกวัน 30%) คู่กับหัวข้อข้อ 4
-// "โปรถึงโบนัสแรง" ซึ่งเป็นเรื่องโปรโมชันคืนยอดเสียตรงๆ
+// plain ContentBox ซ้ำจากรอบก่อนโดยบังคับ — terms.astro กับ privacy.astro ตรึงไว้
+// ที่ไฟล์นี้ถาวร มันจึงเป็น always-live ไม่ว่าจะหมุน variant อย่างไร
 //
-// slide3 กับ slide4 เป็นอาร์ตของแบรนด์ก่อนหน้า และ banner.png กับ banner2/3/4 เป็น
-// อาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด จึงห้าม import ที่ไหนทั้งสิ้น — รูปที่ import คือ
-// รูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 เป็น hero ที่ MainLayout
-// จัดการเอง รอบนี้จึงไม่มีรูปประกอบใน ContentBox เดี่ยว
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide1 (รับฟรีโบนัส สูงสุด 500.-
+// เพียงทำการฝากในช่วงเวลา 20:00-22:00) คู่กับหัวข้อข้อ 4 ซึ่งเป็นเรื่องโบนัสและ
+// สิทธิพิเศษตรงๆ และ slide2 (คืนยอดเสียทุกวัน 5% ถอนได้ทันที ไม่มีเทิร์น) คู่กับ
+// หัวข้อข้อ 5 เรื่องเว็บทุนหนาจ่ายจริง เพราะ "ถอนได้ทันที ไม่มีเทิร์น" บนรูปคือ
+// ภาพของการรับยอดแบบไม่เล่นแง่
 //
-// widget ที่ไม่ได้มาจาก docx (LatestWinners, LoginRtpSection, ReviewCardSumo2,
+// slide3 กับ slide4 เป็นอาร์ตของโปรโมชันอื่นที่หน้า /promotion ถือไว้ ส่วน
+// banner.png กับ banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด จึงห้าม import
+// ที่นี่ทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม
+// ส่วน banner1 กับ banner1-mobile เป็น hero ที่ MainLayout จัดการเอง รอบนี้จึง
+// ไม่มีรูปประกอบใน ContentBox เดี่ยว
+//
+// widget ที่ไม่ได้มาจาก docx (LatestWinners2, LoginRtpSection, ReviewCardSumo2,
 // SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น <p>/<span> + aria-label
 // บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้น GameRankingBoard
-// กับ ProviderGrid ที่เป็นภาพประกอบของหัวข้อ docx ข้อ 2 โดยตรง (เกมและค่ายที่คัดมา)
-// จึงวางต่อท้ายบล็อกนั้น ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อ
+// กับ ProviderGrid ที่เป็นภาพประกอบของหัวข้อ docx ข้อ 3 โดยตรง จึงวางต่อท้ายบล็อก
+// นั้น ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อ
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx พอดี ไม่มีตัวที่เจ็ด — หัว FAQ ถูกลดเป็น <p>
-// ใน Faq.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน <summary>
-// ไม่ใช่ h3 บรรทัดหัวของ LatestWinners เป็น <p> และป้ายคอลัมน์ของ
-// ContentBox3ThreePremium / SevenThree ทั้งสองตัว / ContentBoxTwoCyberCut เป็น <p>
-// — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
-const pageTitle = "PABO88 | เว็บสล็อตคัดของดี เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ถอนไว";
-// บรรทัด Des ของ docx ยาว 145 ตัวอักษร ต่ำกว่าเกท 150–160 ของ verify-build จึงขยาย
-// วรรคที่สองจาก "มาให้ครบในเว็บเดียว" เป็น "รวมตัวเด็ดแตกง่ายไว้ครบในเว็บเดียว" ตาม
-// คำในย่อหน้าแรกของ docx เอง ได้ 157 ตัวอักษร ทุกวรรคอื่นคงคำเดิมของ docx ไว้ และ
-// เป็นสตริงเดียวกับที่ส่งเข้า pageGraph
-const pageDescription = "PABO88 เว็บสล็อตคัดของดี รวมตัวเด็ดแตกง่ายไว้ครบในเว็บเดียว เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ฟีเจอร์พร้อมเซอร์ไพรส์ ระบบออโต้คล่อง ถอนไวไม่ค้างฟีลตลอดทั้งวัน";
+// ใน Faq3.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน
+// <summary> ไม่ใช่ h3 บรรทัดหัวของ LatestWinners2 เป็น <p> และป้ายคอลัมน์ของ
+// ContentBox3ThreeCyberCut / ContentBoxTwoNeumorphism / SevenThree ทั้งสองตัว /
+// ContentBoxTwoPremium เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
+//
+// title กับ description ใช้บรรทัด Title/Des ของ docx ตรงๆ (60 / 156 ตัวอักษร
+// อยู่ในเกท 150–160 ของ verify-build แล้ว) และ description เป็นสตริงเดียวกับที่
+// ส่งเข้า pageGraph
+const pageTitle = "UOK789 | สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง";
+const pageDescription =
+  "UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมเกมตรงผ่าน API ตัวเด็ดเข้าไม่พัก โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง ไม่ล็อกยูส ฝากถอนออโต้ พร้อมระบบการเงินที่ทำงานเป็นขั้นตอน";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji เพราะ marquee
 // render ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้ — ข้อความชุดนี้
-// ตรงกับ default ของ Announcement6 เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก
+// ตรงกับ default ของ AnnouncementPremium เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก
 // <Announcement /> เปล่าๆ วิ่งข้อความเดียวกับหน้าแรก
 const announcementMessage =
-  "PABO88 เว็บสล็อตคัดของดี เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ถอนไว • คัดเฉพาะเกมสล็อตคุณภาพสูง อัตราการจ่ายยุติธรรม ธีมน่าสนใจ มารวมไว้ครบจบในเว็บเดียว • งานภาพระดับ HD กราฟิกสีสันสดใส เอฟเฟกต์อลังการ พร้อมอัตราคูณโบนัสก้อนโตที่สุ่มแจกต่อเนื่อง • โบนัสต้อนรับสมาชิกใหม่ สิทธิพิเศษเพิ่มทุนรายวัน และเครดิตคืนยอดเสีย • ฟรีสปินออกบ่อย สัญลักษณ์พิเศษ และตัวคูณสะสมแบบทวีคูณ • ระบบออโต้เต็มรูปแบบ เข้าสู่ระบบ เลือกค่ายเกม และฝากเงินเองได้ในไม่กี่คลิก • ถอนออโต้โอนไว ยอดเข้าตรงเป๊ะ ไม่ต้องรอแอดมินอนุมัติ ตลอด 24 ชั่วโมง";
+  "UOK789 สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง • เชื่อมตรงกับเซิร์ฟเวอร์หลักของค่ายเกมผ่าน API ไม่ผ่านเอเย่นต์หรือคนกลาง ไม่ดัดแปลงโปรแกรมและไม่ล็อกผล • ล็อบบี้อัปเดตเกมสล็อตใหม่เข้ามาต่อเนื่อง ทั้งเกมฮิตติดลมบนและเกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก • โปรโมชันเติมเงินรายวัน เครดิตพิเศษต้อนรับสมาชิกใหม่ และกิจกรรมคืนยอดเสียที่แจกให้อย่างต่อเนื่อง • ถอนหลักร้อยหรือหลักแสนก็อนุมัติเต็มจำนวน ไร้ประวัติการเบี้ยว ยอดไม่ค้าง ไม่มีเงื่อนไขจุกจิกมาประวิงเวลา • ไม่ล็อกยูส ปรับเบทขึ้นลง ซื้อฟีเจอร์ หรือสลับหลายค่ายในวันเดียวได้เต็มสไตล์ • ฝากถอนออโต้เสร็จในไม่กี่วินาที ไม่ต้องส่งสลิปให้แอดมินตรวจสอบ ตลอด 24 ชั่วโมง";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
 // ที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+// <Faq3> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "PABO88 คัดเกมสล็อตเข้าเว็บด้วยเกณฑ์อะไรบ้าง",
-    a: "ทุกเกมถูกคัดกรองมาก่อนเข้าเว็บด้วยสามเกณฑ์ คือคุณภาพของตัวเกม อัตราการจ่ายที่ยุติธรรม และธีมเกมที่น่าสนใจพอจะเล่นได้ยาวๆ ในลิสต์จึงมีทั้งเกมฮิตติดเทรนด์ ค่ายใหญ่นอกกระแส และเกมคลาสสิกที่โบนัสแตกหนัก ผู้เล่นไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อหาเกมโปรดอีกต่อไป",
+    q: "UOK789 เชื่อมเกมกับค่ายอย่างไร ต่างจากเว็บที่ผ่านเอเย่นต์ตรงไหน",
+    a: "ตัวระบบเชื่อมต่อตรงกับเซิร์ฟเวอร์หลักของค่ายเกมผ่าน API โดยไม่ผ่านเอเย่นต์หรือคนกลาง จึงไม่มีการดัดแปลงโปรแกรม ไม่มีการปรับลดเปอร์เซ็นต์ชนะ และไม่มีการล็อกผลใดๆ ทุกสปินลื่นไหลไร้ปัญหากระตุก และให้ผลการออกรางวัลที่แม่นยำตามมาตรฐานสากล",
   },
   {
-    q: "โปรโมชันของ PABO88 มีแบบไหนให้เลือกบ้าง",
-    a: "โปรโมชันถูกคิดมาเพื่อผู้เล่นทุกระดับ ทั้งโบนัสต้อนรับสมาชิกใหม่ สิทธิพิเศษเพิ่มทุนรายวัน และเครดิตคืนยอดเสีย ทุกกิจกรรมช่วยเติมทุนให้นำไปปั่นสล็อตลุ้นรางวัลได้ยาวนานขึ้น เพิ่มโอกาสเข้าถึงรอบแจ็คพอตใหญ่โดยไม่ต้องแบกรับความเสี่ยงสูงกว่าที่ตั้งใจไว้",
+    q: "ล็อบบี้เกมสล็อตของ UOK789 อัปเดตเกมใหม่บ่อยแค่ไหน",
+    a: "ล็อบบี้มีการอัปเดตเกมสล็อตใหม่เข้ามาอย่างต่อเนื่องไม่ขาดสาย ทั้งเกมฮิตติดลมบนที่ใครๆ ก็ปั่น และเกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก เลือกสลับเปลี่ยนเล่นได้ไม่มีซ้ำ ทำให้การทำกำไรมีตัวเลือกหลากหลายและสดใหม่อยู่ตลอดเวลา",
   },
   {
-    q: "ในเกมมีฟีเจอร์อะไรที่ช่วยเพิ่มจังหวะทำเงินบ้าง",
-    a: "นอกจากตัวเกมที่แตกง่ายแล้ว ยังมีโหมดฟรีสปินที่ออกบ่อยเกินคาด สัญลักษณ์พิเศษที่พร้อมเปลี่ยนเป็นเงินรางวัลใหญ่ และระบบตัวคูณสะสมแบบทวีคูณ ลูกเล่นเหล่านี้ทำให้แต่ละสปินมีความน่าลุ้นและไม่น่าเบื่อ แม้จะนั่งเล่นต่อเนื่องเป็นเวลานานก็ยังมีเซอร์ไพรส์ให้เจอ",
+    q: "โบนัสและสิทธิพิเศษของ UOK789 มีแบบไหนให้เลือกบ้าง",
+    a: "สิทธิพิเศษถูกคิดมาเพื่อซัพพอร์ตสมาชิกทุกระดับ ทั้งโปรโมชันเติมเงินรายวัน เครดิตพิเศษต้อนรับสมาชิกใหม่ และกิจกรรมคืนยอดเสียที่แจกให้อย่างต่อเนื่อง ทั้งหมดช่วยเพิ่มทุนในการปั่นให้หมุนลุ้นรอบแจ็คพอตได้นานยิ่งขึ้นโดยไม่ต้องใช้ทุนเยอะ",
   },
   {
-    q: "ฝากเงินกับ PABO88 ต้องแจ้งแอดมินหรือรอยืนยันไหม",
-    a: "ระบบหลังบ้านเป็นออโต้เต็มรูปแบบ ตัดขั้นตอนซับซ้อนออกทั้งหมด ผู้เล่นเข้าสู่ระบบ เลือกค่ายเกม และทำรายการฝากเงินได้เองภายในไม่กี่คลิก ไม่ต้องแจ้งสลิปหรือรอใครยืนยัน หน้าเว็บโหลดฉับไวและตอบสนองทันใจ จังหวะการเล่นจึงลื่นไหลต่อเนื่องโดยไม่ขาดช่วง",
+    q: "ถอนยอดใหญ่หลักแสนกับ UOK789 ได้เต็มจำนวนจริงไหม",
+    a: "ไม่ว่าจะทำกำไรถอนหลักร้อยหรือสปินแตกโบนัสใหญ่หลักแสน ทางเว็บก็พร้อมอนุมัติและโอนเงินออกให้เต็มจำนวน ไร้ประวัติการเบี้ยว ยอดไม่ค้าง และไม่มีการอ้างเงื่อนไขจุกจิกมาประวิงเวลา จึงมั่นใจได้ว่าจะได้รับเงินรางวัลครบถ้วนทุกบาททุกสตางค์",
   },
   {
-    q: "ถอนเงินใช้เวลานานไหม และถอนได้ช่วงไหนบ้าง",
-    a: "ระบบถอนเงินเป็นออโต้ที่โอนไว ยอดเข้าตรงเป๊ะโดยไม่ต้องนั่งคอยแอดมินอนุมัติ เปิดให้ทำรายการได้ตลอด 24 ชั่วโมง ไม่ว่าจะเล่นได้กำไรหลักร้อยหรือหลักแสนก็กดถอนออกมาใช้ได้ทันที จบรายการไวไม่ค้างฟีล และไม่มีเงื่อนไขซ่อนให้ต้องมานั่งตีความทีหลัง",
+    q: "ฝากถอนกับ UOK789 ต้องส่งสลิปให้แอดมินไหม และมีการล็อกยูสหรือเปล่า",
+    a: "ทุกรายการฝากและถอนดำเนินการผ่านระบบอัตโนมัติภายในเวลาไม่กี่วินาที ไม่ต้องส่งสลิปให้แอดมินตรวจสอบและไม่ต้องนั่งรอ ทำรายการได้ตลอด 24 ชั่วโมง ส่วนการเล่นก็ไม่ล็อกยูส จะปรับเบทขึ้นลง ซื้อฟีเจอร์ หรือสลับหลายค่ายในวันเดียวก็ทำได้เต็มสไตล์",
   },
 ];
 
@@ -119,55 +125,52 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="PABO88 เว็บสล็อตคัดของดี เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ถอนไว">
+  <ContentBoxFloatingBadge as="h1" title="UOK789 สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง">
     <p class="text-left text-base leading-relaxed">
-      เปิดมิติใหม่ของการปั่นสล็อตที่เน้นคุณภาพเน้นๆ กับ PABO88 เว็บสล็อตที่คัดสรรเฉพาะตัวเด็ดแตกง่ายมาให้เล่นแบบไม่เสียเวลา ที่นี่ตอบโจทย์ความสนุกของสายล่ารางวัลด้วยไลน์อัปเกมระดับพรีเมียม
-      จัดเต็มโปรโมชันสุดคุ้มที่อัปดีกรีความแรงของโบนัสอย่างต่อเนื่อง พร้อมระบบฝากถอนออโต้สุดฉับไว ทำรายการได้อย่างลื่นไหลไร้สะดุด ถอนเงินออกได้จริงแบบทันใจในทุกช่วงเวลา
+      ถ้าคุณกำลังมองหาความชัวร์ในการเล่นสล็อตออนไลน์ บอกเลยว่า UOK789 สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง คือตัวเลือกที่ตอบโจทย์สายปั่นได้ตรงจุดที่สุด
+      ที่นี่โดดเด่นด้วยการเป็นศูนย์รวมเกมลิขสิทธิ์แท้ที่พร้อมแจกแจ็คพอตก้อนโตตลอดวัน ประกอบกับฐานการเงินที่มั่นคงปลอดภัยระดับสากล ไม่ว่าจะเล่นได้ยอดเล็กหรือโบนัสแตกหลักแสน
+      ก็ถอนเงินออกไปใช้ได้จริงแบบไม่ต้องนั่งลุ้น ให้คุณได้สัมผัสความสนุกของการสปินแบบไร้กังวลตั้งแต่วินาทีแรก
     </p>
-  </ContentBoxPremium>
+  </ContentBoxFloatingBadge>
 
-  <ContentBoxSevenThreeCyberCut as="h2" title="PABO88 เว็บสล็อตคัดของดี จับทุกตัวน่าเล่นมาไว้ครบจบในเว็บเดียว" titleleft="ฝากแรก รับโบนัส 100%">
-    <Picture
-      slot="left"
-      src={imgFirstDepositBonus}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นม่วงนีออนของ PABO88 เขียนตัวใหญ่ว่า ฝากแรก รับโบนัส 100% ภาพหญิงสาวชุดม่วงติดหูแมวถือไพ่เอซโพดำ ข้างกล่องของขวัญและหีบสมบัติที่มีเหรียญทองล้นออกมา มีตู้สล็อตเลข 777 ติดมงกุฎอยู่ด้านหลัง และแถบโลโก้ค่ายเกม PG, Pragmatic Play, Joker, Relax Gaming, Habanero และ Play'n GO เรียงอยู่ตลอดขอบล่าง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#bf3cfa]/40 shadow-[0_10px_30px_rgba(191,60,250,0.3)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อหาเกมโปรด เพราะ PABO88 ได้ทำการคัดกรองเฉพาะเกมสล็อตที่มีคุณภาพสูง อัตราการจ่ายยุติธรรม และมีธีมเกมที่น่าสนใจมารวบรวมไว้ในที่เดียว ทั้งเกมฮิตติดเทรนด์
-      ค่ายใหญ่นอกกระแส หรือเกมคลาสสิกโบนัสแตกหนัก ทุกเกมผ่านการเลือกสรรมาแล้วอย่างดีเพื่อให้ผู้เล่นได้สัมผัสความสนุกและทำกำไรได้จริงตั้งแต่สปินแรก
+  <ContentBox3ThreeCyberCut
+    as="h2"
+    title="UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมตรงผ่าน API ต่างจากเกมทั่วไปตรงไหน?"
+    titleleft="เสถียรและจ่ายเป็นธรรม"
+    titlecenter="เชื่อมตรงไม่ผ่านคนกลาง"
+    titleright="ทุกสปินลื่นไหล">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      เหตุผลที่ทำให้ UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมตรงผ่าน API ต่างจากเกมทั่วไปตรงไหน? คำตอบอยู่ที่ความเสถียรและอัตราการจ่ายที่เป็นธรรมขั้นสุด
     </p>
-  </ContentBoxSevenThreeCyberCut>
+    <p slot="center" class="text-left text-base leading-relaxed">
+      เนื่องจากตัวระบบเชื่อมต่อตรงกับเซิร์ฟเวอร์หลักของค่ายเกมโดยไม่ผ่านเอเย่นต์หรือคนกลาง ทำให้ไม่มีการดัดแปลงโปรแกรม การปรับลดเปอร์เซ็นต์ชนะ หรือการล็อกผลใดๆ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ทุกสปินจึงลื่นไหล ไร้ปัญหากระตุก และให้ผลการออกรางวัลที่แม่นยำตามมาตรฐานสากล 100%</p>
+  </ContentBox3ThreeCyberCut>
+
+  <ContentBoxTwoNeumorphism
+    as="h2"
+    title="ตัวเด็ดเข้าไม่พัก เปิดลิสต์ UOK789 เจอทั้งเกมกระแสและตัวใหม่ให้น่าตาม"
+    titleleft="ล็อบบี้อัปเดตไม่ขาดสาย"
+    titleright="ทั้งเกมกระแสและตัวใหม่">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ความน่าตื่นเต้นอีกอย่างคือไลน์อัปเกมที่จัดมาให้แบบ ตัวเด็ดเข้าไม่พัก เปิดลิสต์ UOK789 เจอทั้งเกมกระแสและตัวใหม่ให้น่าตาม กันแบบไม่ขาดสาย
+      ล็อบบี้ของที่นี่มีการอัปเดตเกมสล็อตใหม่ๆ เข้ามาอย่างต่อเนื่อง
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ไม่ว่าจะเป็นเกมฮิตติดลมบนที่ใครๆ ก็ปั่น หรือเกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก ก็มีให้เลือกสลับเปลี่ยนเล่นได้ไม่มีซ้ำ
+      ช่วยให้การทำกำไรของคุณมีตัวเลือกหลากหลายและสดใหม่อยู่ตลอดเวลา
+    </p>
+  </ContentBoxTwoNeumorphism>
 
   <GameRankingBoard />
 
   <ProviderGrid />
 
-  <ContentBox3ThreePremium
-    as="h2"
-    title="เกมเด็ดเกินเรื่องตรงไหน? เปิดลิสต์ PABO88 แล้วดูว่ามีอะไรน่าตามบ้าง"
-    titleleft="งานภาพระดับ HD"
-    titlecenter="อัตราคูณโบนัสก้อนโต"
-    titleright="ตื่นเต้นทุกรอบวงล้อ">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      คำว่าเกมเด็ดเกินเรื่องของ PABO88 สัมผัสได้ทันทีตั้งแต่เปิดหน้าล็อบบี้ เพราะแต่ละเกมอัดแน่นไปด้วยงานภาพระดับ HD กราฟิกสีสันสดใส และเอฟเฟกต์สุดอลังการ
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">ที่สำคัญคือมีรูปแบบการจ่ายเงินที่หลากหลาย พร้อมอัตราคูณโบนัสก้อนโตที่สุ่มแจกอย่างต่อเนื่อง</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ทำให้การหมุนวงล้อในแต่ละรอบไม่ได้มีแค่ความเพลิดเพลิน แต่ยังเต็มไปด้วยความตื่นเต้นตระการตาตลอดการเล่น</p>
-  </ContentBox3ThreePremium>
-
-  <ContentBoxSevenThreeNeumorphism as="h2" title="โปรถึงโบนัสแรง เพิ่มจังหวะความคุ้มให้ทุกช่วงมีอะไรให้ลุ้นต่อ" titleleft="คืนยอดเสีย ทุกวัน 30%">
+  <ContentBoxSevenThreePremium as="h2" title="โบนัสจัดหนักมีจังหวะไหนน่าสนใจ สิทธิพิเศษที่เพิ่มความคุ้มให้มากกว่าเดิม" titleleft="รับฟรีโบนัส สูงสุด 500.-">
     <Picture
       slot="left"
-      src={imgDailyCashback}
+      src={imgFreeBonus500}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -176,37 +179,55 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นม่วงนีออนของ PABO88 เขียนตัวใหญ่ว่า คืนยอดเสีย ทุกวัน 30% ภาพหญิงสาวสวมหูกระต่ายชุดม่วงยืนคู่ตู้สล็อตเลข 777 ฝั่งขวาเป็นฉลามใส่แว่นกันแดดคล้องสร้อยทองข้างหีบสมบัติที่มีเหรียญทองและชิปคาสิโนล้นออกมา ด้านล่างมีป้ายโล่กำกับว่า เล่นสนุก มั่นใจ ปลอดภัย 100%"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#f5c518]/40 shadow-[0_10px_30px_rgba(245,197,24,0.25)]"
+      alt="แบนเนอร์โปรโมชั่นของ UOK789 พื้นเขียวมรกตเข้มมีวงล้อรูเล็ตและริบบิ้นทองปลิว เขียนตัวทองใหญ่ว่า รับฟรีโบนัส สูงสุด 500.- เพียงทำการฝากในช่วงเวลา 20:00-22:00 ด้านขวาเป็นหญิงสาวสวมแจ็คเก็ตหนังเงาสีเขียวเข้ม แถบล่างมีโลโก้ทอง UOK789 คำว่า คาสิโนออนไลน์จาก USA โลโก้ช่องทางชำระเงินกับค่ายเกม และป้าย TrueMoney Wallet"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f6c945]/40 shadow-[0_10px_30px_rgba(246,201,69,0.25)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      เรื่องความคุ้มค่า PABO88 จัดหนักจัดเต็มด้วยโปรโมชันที่คิดมาเพื่อผู้เล่นทุกระดับ ไม่ว่าจะเป็นโบนัสต้อนรับสมาชิกใหม่ สิทธิพิเศษเพิ่มทุนรายวัน หรือเครดิตคืนยอดเสีย
-      ทุกกิจกรรมช่วยเติมทุนให้คุณนำไปปั่นสล็อตลุ้นรางวัลได้ยาวนานยิ่งขึ้น เพิ่มโอกาสการเข้าถึงรอบแจ็คพอตใหญ่ได้โดยไม่ต้องแบกรับความเสี่ยงสูง ถือเป็นจุดเด่นที่เติมความคุ้มให้การเล่นมีสีสันอยู่ตลอดเวลา
+      เรื่องความคุ้มค่าต้องยอมรับว่า โบนัสจัดหนักมีจังหวะไหนน่าสนใจ สิทธิพิเศษที่เพิ่มความคุ้มให้มากกว่าเดิม ถูกคิดมาเพื่อซัพพอร์ตสมาชิกทุกระดับอย่างแท้จริง
+      ไม่ว่าจะเป็นโปรโมชันเติมเงินรายวัน เครดิตพิเศษต้อนรับสมาชิกใหม่ หรือกิจกรรมคืนยอดเสียที่แจกให้อย่างต่อเนื่อง สิทธิประโยชน์เหล่านี้เข้ามาช่วยเพิ่มทุนในการปั่น
+      ทำให้คุณมีโอกาสหมุนลุ้นรอบแจ็คพอตได้นานยิ่งขึ้นโดยไม่ต้องใช้ทุนเยอะ
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+  </ContentBoxSevenThreePremium>
 
-  <ContentBoxCyberCut as="h2" title="ฟีเจอร์พร้อมเซอร์ไพรส์ จุดที่ทำให้เกมของ PABO88 มีลูกเล่นมากกว่าที่คิด">
-    <p class="text-left text-base leading-relaxed">
-      นอกจากตัวเกมจะแตกง่ายแล้ว เกมใน PABO88 ยังสอดแทรกฟีเจอร์เด็ดและระบบเซอร์ไพรส์ไว้เพียบ ทั้งโหมดฟรีสปินที่ออกบ่อยเกินคาด สัญลักษณ์พิเศษที่พร้อมเปลี่ยนเป็นเงินรางวัลใหญ่ หรือระบบตัวคูณสะสมแบบทวีคูณ
-      ลูกเล่นเหล่านี้เข้ามาสร้างจังหวะความสนุกแปลกใหม่ ทำให้แต่ละสปินมีความน่าลุ้นและไม่น่าเบื่อแม้จะเล่นต่อเนื่องเป็นเวลานาน
+  <ContentBoxSevenThree as="h2" title="เว็บทุนหนาจ่ายจริง จุดแข็งของ UOK789 ที่พร้อมรับยอดแบบไม่เล่นแง่" titleleft="คืนยอดเสียทุกวัน 5%">
+    <Picture
+      slot="left"
+      src={imgCashback5}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นของ UOK789 พื้นเขียวมรกตเข้มมีเหรียญและริบบิ้นทองปลิว เขียนตัวทองใหญ่ว่า คืนยอดเสียทุกวัน 5% ถอนได้ทันที ไม่มีเทิร์น ด้านขวาเป็นหญิงสาวสวมแจ็คเก็ตหนังเงาสีเขียวเข้ม แถบล่างมีโลโก้ทอง UOK789 คำว่า คาสิโนออนไลน์จาก USA โลโก้ช่องทางชำระเงินกับค่ายเกม และป้าย TrueMoney Wallet"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#2fc44f]/40 shadow-[0_10px_30px_rgba(47,196,79,0.28)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ความน่าเชื่อถือที่เป็นเครื่องยืนยันความปังคือการเป็น เว็บทุนหนาจ่ายจริง จุดแข็งของ UOK789 ที่พร้อมรับยอดแบบไม่เล่นแง่ ไม่ว่าผู้เล่นจะทำกำไรถอนหลักร้อยหรือสปินแตกโบนัสใหญ่หลักแสน
+      ทางเว็บก็พร้อมอนุมัติและโอนเงินออกให้เต็มจำนวน ไร้ประวัติการเบี้ยว ยอดไม่ค้าง และไม่มีการอ้างเงื่อนไขจุกจิกมาประวิงเวลา ทำให้คุณมั่นใจได้เต็มร้อยว่าจะได้รับเงินรางวัลครบถ้วนทุกบาททุกสตางค์แน่นอน
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxSevenThree>
 
-  <ContentBox as="h2" title="ระบบออโต้คล่องแค่ไหน เมื่อทุกขั้นตอนถูกลดให้ไวและไม่ทำจังหวะขาด">
+  <ContentBoxSpecial as="h2" title="ไม่ล็อกยูส เปิดทางให้เล่นได้เต็มสไตล์โดยไม่เจอข้อจำกัดมาขัดจังหวะ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      อิสระของการเล่นที่ผู้เล่นทุกคนถวิลหาอยู่ที่นี่ เพราะระบบ ไม่ล็อกยูส เปิดทางให้เล่นได้เต็มสไตล์โดยไม่เจอข้อจำกัดมาขัดจังหวะ ไม่ว่าคุณจะเป็นสายปรับเบทขึ้นลง สายซื้อฟีเจอร์
+      หรือชอบสลับเล่นหลายๆ ค่ายในวันเดียว
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ระบบก็พร้อมรองรับการเล่นอย่างโปร่งใส ไร้การควบคุมอัตราแพ้ชนะ ยิ่งเล่นมากยิ่งมีสิทธิ์ได้มาก ปล่อยให้ทุกการทำกำไรเป็นไปตามกลยุทธ์และดวงของคุณอย่างแท้จริง
+    </p>
+  </ContentBoxSpecial>
+
+  <ContentBox as="h2" title="ฝากถอนออโต้พร้อมทำงาน UOK789 ลดเวลารอให้จัดการยอดได้คล่องตลอดวัน">
     <p class="text-left text-base leading-relaxed">
-      มอบประสบการณ์ความสะดวกสบายสูงสุดด้วยการพัฒนาระบบหลังบ้านของ PABO88 ให้เป็นระบบออโต้เต็มรูปแบบ ตัดขั้นตอนซับซ้อนน่ารำคาญออกทั้งหมด ผู้เล่นสามารถเข้าสู่ระบบ เลือกค่ายเกม
-      และทำรายการฝากเงินได้เองในไม่กี่คลิก หน้าเว็บโหลดฉับไว ตอบสนองทันใจ ช่วยรักษาจังหวะการเล่นของคุณให้ลื่นไหลและทำกำไรต่อได้แบบไม่ขาดช่วง
+      มอบความสะดวกสบายสูงสุดด้วยระบบการเงินออโต้ที่ ฝากถอนออโต้พร้อมทำงาน UOK789 ลดเวลารอให้จัดการยอดได้คล่องตลอดวัน ทุกรายการฝากและถอนดำเนินการเสร็จสรรพผ่านระบบอัตโนมัติภายในเวลาไม่กี่วินาที
+      ไม่ต้องส่งสลิปให้แอดมินตรวจสอบ และไม่ต้องเสียเวลานั่งคอยให้เสียอารมณ์ ช่วยให้คุณบริหารจัดการทุนและถอนกำไรไปใช้ได้อย่างฉับไวไร้รอยต่อตลอด 24 ชั่วโมง
     </p>
   </ContentBox>
 
-  <ContentBoxNeumorphism as="h2" title="ถอนไวไม่ค้างฟีลตลอดทั้งวัน อีกหนึ่งความคล่องที่ PABO88 จัดไว้ให้พร้อม">
-    <p class="text-left text-base leading-relaxed">
-      ปิดท้ายด้วยความมั่นใจด้านการเงินที่ PABO88 มอบความคล่องตัวให้ตลอด 24 ชั่วโมง ด้วยระบบถอนเงินออโต้ที่โอนไว ยอดเข้าตรงเป๊ะโดยไม่ต้องนั่งคอยแอดมินอนุมัติ
-      ไม่ว่าคุณจะเล่นได้กำไรหลักร้อยหรือหลักแสนก็กดถอนเงินออกมาใช้ได้ทันที จบรายการไวไม่ค้างฟีล สมกับเป็นเว็บสล็อตคัดของดีที่สายปั่นทุกคนไม่ควรพลาด
-    </p>
-  </ContentBoxNeumorphism>
-
-  <LatestWinners />
+  <LatestWinners2 />
 
   <LoginRtpSection />
 
@@ -217,18 +238,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a3] via-[#f5c518] to-[#8f6205] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0118] shadow-[0_10px_30px_rgba(245,197,24,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(245,197,24,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fdf3c9] via-[#f6c945] to-[#8a6a1c] px-4 py-3 text-sm font-black whitespace-nowrap text-[#04140a] shadow-[0_10px_30px_rgba(246,201,69,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(246,201,69,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#bf3cfa]/70 bg-[#0a0118]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ece0ff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#e3b8ff] hover:bg-[#20064a] hover:text-[#faf5ff] hover:shadow-[0_15px_40px_rgba(139,31,214,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#2fc44f]/70 bg-[#04140a]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e8f3e4] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#b6ecbd] hover:bg-[#0c3d18] hover:text-[#f4fdf3] hover:shadow-[0_15px_40px_rgba(18,146,58,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ PABO88" faqs={faqs} />
+  <Faq3 title="คำถามที่พบบ่อยเกี่ยวกับ UOK789" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

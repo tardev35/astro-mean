@@ -1,8 +1,8 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideCashback30 from "../assets/slide1.png";
-import slideFirstDeposit100 from "../assets/slide2.png";
+import slideFreeBonus500 from "../assets/slide1.png";
+import slideCashback5 from "../assets/slide2.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -18,30 +18,29 @@ import slideFirstDeposit100 from "../assets/slide2.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// PABO88: แถบนี้ถือสไลด์ของ asset drop รอบนี้ "สองใบ" — slide1 (คืนยอดเสีย
-// ทุกวัน 30%) และ slide2 (ฝากแรก รับโบนัส 100%) ส่วน slide3 กับ slide4 เป็นอาร์ต
-// ของแบรนด์ก่อนหน้า (ลงวันที่ 08-21 ก่อน drop รอบนี้ที่ 08-22) จึงถูกถอด import
-// ออกจากไฟล์นี้ — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม
-// เช่นเดียวกับ banner.png และ banner2/3/4 ที่ห้ามแตะ สีขอบ/เงาย้ายจากน้ำเงิน
-// รอยัลของ LUCKYBKK มาเป็นนีออนม่วง #bf3cfa ของแบรนด์นี้
+// UOK789: แถบนี้ถือสไลด์ของ asset drop รอบนี้สองใบ — slide1 (รับฟรีโบนัส สูงสุด
+// 500.-) และ slide2 (คืนยอดเสียทุกวัน 5%) ส่วน slide3 กับ slide4 เป็นอาร์ตของ
+// โปรโมชันอื่นที่หน้า /promotion ถือไว้แล้ว จึงไม่ import ซ้ำที่นี่ — รูปที่ import
+// คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม เช่นเดียวกับ banner.png และ
+// banner2/3/4 ที่ห้ามแตะ สีขอบ/เงาย้ายจากนีออนม่วงมาเป็นเขียวมรกต #2fc44f
 //
 // slide1 กับ slide2 ถูกใช้ในบล็อก ContentBoxSevenThree สองอันบนหน้าแรกด้วย แต่
 // แถบนี้ยังถือทั้งคู่ เพราะถ้าเหลือใบเดียวก็ไม่มีอะไรให้เลื่อน
 //
 // ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตามนามสกุลจริง
 //
-// สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน 2:1 ให้เห็นพร้อมกัน 1 ช่องบนมือถือ / 2 ช่องบน
+// สไลด์ชุดนี้เป็นแบนเนอร์จัตุรัส 1:1 ให้เห็นพร้อมกัน 1 ช่องบนมือถือ / 2 ช่องบน
 // เดสก์ท็อป แล้วบีบกล่องเป็น max-w-[820px] เพื่อให้แต่ละใบวาดราวๆ 386px ค่า
 // --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สองใบรอบนี้ ไม่ใช่สาม)
 // ถ้าเปลี่ยนจำนวนต้องคิด --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
 const images = [
   {
-    src: slideCashback30,
-    alt: "แบนเนอร์โปรโมชั่นของ PABO88 เขียนตัวใหญ่ว่า คืนยอดเสีย ทุกวัน 30% ภาพหญิงสาวใส่ที่คาดผมหูกระต่ายชุดสีม่วงยืนคู่ฉลามใส่แว่นกันแดดห้อยสร้อยทอง ด้านหลังเป็นตู้สล็อต 777 หีบสมบัติเปิดออก ชิปคาสิโนและเหรียญทองกระจายรอบ พร้อมป้ายโล่กำกับว่า เล่นสนุก มั่นใจ ปลอดภัย 100%",
+    src: slideFreeBonus500,
+    alt: "แบนเนอร์โปรโมชั่นของ UOK789 พื้นเขียวมรกตเข้มมีวงล้อรูเล็ตและริบบิ้นทองปลิว เขียนตัวทองใหญ่ว่า รับฟรีโบนัส สูงสุด 500.- เพียงทำการฝากในช่วงเวลา 20:00-22:00 ด้านขวาเป็นหญิงสาวสวมแจ็คเก็ตหนังเงาสีเขียวเข้ม แถบล่างมีโลโก้ทอง UOK789 คำว่า คาสิโนออนไลน์จาก USA โลโก้ช่องทางชำระเงินกับค่ายเกม และป้าย TrueMoney Wallet",
   },
   {
-    src: slideFirstDeposit100,
-    alt: "แบนเนอร์โปรโมชั่นของ PABO88 เขียนตัวใหญ่ว่า ฝากแรก รับโบนัส 100% ภาพหญิงสาวชุดสีม่วงถือไพ่เอซ ข้างกล่องของขวัญและหีบสมบัติที่มีเหรียญทองล้นออกมา ด้านล่างเป็นแถบโลโก้ค่ายเกมสล็อต PG, Pragmatic Play, Joker, Relax, Habanero และ Play'n GO",
+    src: slideCashback5,
+    alt: "แบนเนอร์โปรโมชั่นของ UOK789 พื้นเขียวมรกตเข้มมีเหรียญและริบบิ้นทองปลิว เขียนตัวทองใหญ่ว่า คืนยอดเสียทุกวัน 5% ถอนได้ทันที ไม่มีเทิร์น ด้านขวาเป็นหญิงสาวสวมแจ็คเก็ตหนังเงาสีเขียวเข้ม แถบล่างมีโลโก้ทอง UOK789 คำว่า คาสิโนออนไลน์จาก USA โลโก้ช่องทางชำระเงินกับค่ายเกม และป้าย TrueMoney Wallet",
   },
 ];
 
@@ -67,7 +66,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#bf3cfa]/60 peer-focus-visible:bg-[#20064a] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#e3b8ff]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#2fc44f]/60 peer-focus-visible:bg-[#0c3d18] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#b6ecbd]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -80,7 +79,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#bf3cfa]/35 object-cover shadow-[0_10px_30px_rgba(191,60,250,0.22)]"
+              class="block w-full rounded-xl border border-[#2fc44f]/35 object-cover shadow-[0_10px_30px_rgba(47,196,79,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

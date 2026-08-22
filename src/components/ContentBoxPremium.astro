@@ -6,14 +6,15 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// PABO88: ย้ายจากเขียวมิ้นต์คู่ทองของ AM88K (#8cdcad / #d6fbe8 / #4cb783 /
-// #1d6f47 คู่ทอง #e4b314 / #f3db6b / #a8790a บนผิวไล่เฉด #08200f → #04120a
-// เนื้อความ #e6f6ec) มาเป็นนีออนม่วงคู่ทองของแบรนด์นี้ — ม่วง #bf3cfa /
-// #e3b8ff / #8b1fd6 / #4a0b8f คู่ทอง #f5c518 / #ffe9a3 / #8f6205 บนผิวไล่เฉด
-// #20064a → #0a0118 เนื้อความ #ece0ff
+// UOK789: ย้ายจากนีออนม่วงคู่ทองของ PABO88 (#bf3cfa / #e3b8ff / #8b1fd6 /
+// #4a0b8f คู่ทอง #f5c518 / #ffe9a3 / #8f6205 บนผิวไล่เฉด #20064a → #0a0118
+// เนื้อความ #ece0ff) มาเป็นเขียวมรกตคู่ทองของแบรนด์นี้ — เขียว #2fc44f /
+// #b6ecbd / #12923a / #0a4d1c คู่ทอง #f6c945 / #fdf3c9 / #8a6a1c บนผิวไล่เฉด
+// #08290f → #04140a เนื้อความ #e8f3e4
 //
 // การ์ดใบนี้เป็นกล่องหลักของหน้าย่อยทุกหน้ารอบนี้ (about-us / contact-us /
-// promotion / ทดลองเล่น / ทางเข้า) และเป็นกล่อง H1 ของหน้าแรกด้วย
+// promotion / ทดลองเล่น / ทางเข้า) — หน้าแรกรอบนี้ไม่ได้ใช้ ใช้
+// ContentBoxFloatingBadge เป็นกล่อง H1 แทน
 //
 // การ์ด flatten แล้ว (isolate บนการ์ด + -z-10 บนเลเยอร์ตกแต่ง) ห้ามใส่ wrapper
 // <div class="relative z-10"> กลับเข้ามา
@@ -21,15 +22,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#bf3cfa]/35 bg-gradient-to-br from-[#20064a]/92 to-[#0a0118]/88 p-8 text-left text-base leading-relaxed text-[#ece0ff] shadow-[0_10px_30px_rgba(191,60,250,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#e3b8ff]/70 hover:shadow-[0_15px_40px_rgba(245,197,24,0.35)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#4a0b8f]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#bf3cfa]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#f5c518]/30 blur-[55px] transition-all duration-500 group-hover:bg-[#8f6205]/45"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#2fc44f]/35 bg-gradient-to-br from-[#08290f]/92 to-[#04140a]/88 p-8 text-left text-base leading-relaxed text-[#e8f3e4] shadow-[0_10px_30px_rgba(47,196,79,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#b6ecbd]/70 hover:shadow-[0_15px_40px_rgba(246,201,69,0.35)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#0a4d1c]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#2fc44f]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#f6c945]/30 blur-[55px] transition-all duration-500 group-hover:bg-[#8a6a1c]/45"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#bf3cfa]/35 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#e3b8ff] via-[#bf3cfa] to-[#f5c518] shadow-[0_0_10px_rgba(191,60,250,0.55)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#faf5ff] via-[#bf3cfa] to-[#f5c518] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#2fc44f]/35 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#b6ecbd] via-[#2fc44f] to-[#f6c945] shadow-[0_0_10px_rgba(47,196,79,0.55)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#f4fdf3] via-[#2fc44f] to-[#f6c945] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
             {title}
           </HeadingTag>
         </header>

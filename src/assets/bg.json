@@ -1,4 +1,3 @@
 {
-  "mode": "gradient",
-  "css": "linear-gradient(180deg, #0a0118, #4a0b8f)"
+  "mode": "image"
 }

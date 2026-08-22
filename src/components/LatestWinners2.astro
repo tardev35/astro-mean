@@ -6,12 +6,13 @@ import ktbLogo from "../assets/banks/ktb.png";
 import ttbLogo from "../assets/banks/ttb.png";
 import { brandFlag, brandPick } from "../lib/brandProfile";
 
-// BOOST168: ฟีดตัวนี้ยังค้างชุดชมพูกลอสคู่ทองของแบรนด์ก่อนหน้า และยังมีชื่อแบรนด์เก่า
-// อยู่ในหัวข้อกับชื่อ section (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็น
-// ข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย
-// ดูของเดิมได้จาก git history) แมปมาที่ทองบูสต์คู่น้ำเงินไฟฉายของแบรนด์นี้ — ทอง
-// #fff6dd / #ffe680 / #ffc233 / #b26a00 คู่น้ำเงิน #9ecbff / #3f8cff / #12306e
-// บนผิว #050818 / #0e1430 / #03060f เนื้อความ #e6ecfb ข้อความรอง #9ecbff
+// UOK789: ฟีดตัวนี้ค้างชุดทองบูสต์คู่น้ำเงินไฟฉายของแบรนด์ก่อนหน้า และยังมีชื่อ
+// แบรนด์เก่าอยู่ในหัวข้อกับชื่อ section (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind
+// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
+// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) แมปมาที่ทองเมทัลลิกคู่เขียวมรกต
+// ของแบรนด์นี้ — ทอง #fdfadb / #fdf3c9 / #f6c945 / #8a6a1c คู่เขียว #b6ecbd /
+// #2fc44f / #0a4d1c บนผิว #04140a / #08290f / #0c3d18 เนื้อความ #e8f3e4 ข้อความ
+// รอง #b6ecbd
 //
 // สีโลโก้ธนาคารเป็นสีของธนาคารเอง ไม่ใช่พาเลตต์ของเว็บ — คงไว้ทุกรอบรีแบรนด์
 const bankPool = [
@@ -37,23 +38,23 @@ const initialRows = Array.from({ length: 4 }, (_, i) => ({
 }));
 
 // สถานะสองแบบถูกส่งให้โมดูลฟีดเป็นสตริงใน data-* โมดูลจึงไม่ต้องรู้จักพาเลตต์ของ
-// แบรนด์นี้เลย ป้าย "ถอนสำเร็จ" ใช้หมึกดำน้ำเงิน #0a0f22 บนไล่สีทอง–น้ำเงิน — บน
-// #ffc233 ได้ราว 13:1 และบน #3f8cff ได้ราว 6:1 ส่วนสีขาวบนทองอยู่ต่ำกว่า 2:1
-// ป้าย "กำลังดำเนินการ" ใช้ #9ecbff บนน้ำเงินเข้ม #12306e ได้ราว 7:1
-const PENDING_CLASS = "text-[#9ecbff] bg-[#12306e] animate-pulse";
-const DONE_CLASS = "text-[#0a0f22] bg-gradient-to-r from-[#ffc233] via-[#3f8cff] to-[#ffc233] font-black shadow-md";
+// แบรนด์นี้เลย ป้าย "ถอนสำเร็จ" ใช้หมึกเขียวดำ #04140a บนไล่สีทอง–เขียว — บน
+// #f6c945 ได้ราว 13:1 และบน #2fc44f ได้ราว 8:1 ส่วนสีขาวบนทองอยู่ต่ำกว่า 2:1
+// ป้าย "กำลังดำเนินการ" ใช้ #b6ecbd บนเขียวเข้ม #0a4d1c ได้ราว 8:1
+const PENDING_CLASS = "text-[#b6ecbd] bg-[#0a4d1c] animate-pulse";
+const DONE_CLASS = "text-[#04140a] bg-gradient-to-r from-[#f6c945] via-[#2fc44f] to-[#f6c945] font-black shadow-md";
 ---
 
 <div class="mx-auto w-full max-w-[1300px] p-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก BOOST168"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#ffc233]/25 bg-[#050818]/92 px-4 py-8 shadow-[0_10px_30px_rgba(255,194,51,0.18)] backdrop-blur-md md:p-10">
-    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#3f8cff]/35 blur-[50px]"></div>
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก UOK789"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#f6c945]/25 bg-[#04140a]/92 px-4 py-8 shadow-[0_10px_30px_rgba(246,201,69,0.18)] backdrop-blur-md md:p-10">
+    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#2fc44f]/35 blur-[50px]"></div>
 
     <div class="relative z-10 mb-8 flex items-center justify-center gap-3">
       <span aria-hidden="true" class="text-2xl">🏆</span>
-      <p class="bg-gradient-to-r from-[#fff6dd] via-[#ffc233] to-[#3f8cff] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">
-        รายการถอนเงินล่าสุดของสมาชิก BOOST168
+      <p class="bg-gradient-to-r from-[#fdfadb] via-[#f6c945] to-[#2fc44f] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">
+        รายการถอนเงินล่าสุดของสมาชิก UOK789
       </p>
       <span aria-hidden="true" class="text-2xl">🏆</span>
     </div>
@@ -71,7 +72,7 @@ const DONE_CLASS = "text-[#0a0f22] bg-gradient-to-r from-[#ffc233] via-[#3f8cff]
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-card transition-all duration-500 ease-out">
-            <div class="flex flex-col rounded-[20px] border border-[#ffc233]/25 bg-[#0e1430]/95 p-5 shadow-sm transition-all hover:border-[#ffc233]/50 hover:bg-[#18204a]/90">
+            <div class="flex flex-col rounded-[20px] border border-[#f6c945]/25 bg-[#08290f]/95 p-5 shadow-sm transition-all hover:border-[#f6c945]/50 hover:bg-[#0c3d18]/90">
               <div class="mb-4 flex items-start justify-between">
                 <div data-winner-bank class={`flex h-10 w-10 items-center justify-center rounded-full border border-white/10 shadow-inner ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="24" height="24" loading="lazy" decoding="async" class="h-6 w-6 object-contain" />
@@ -87,14 +88,14 @@ const DONE_CLASS = "text-[#0a0f22] bg-gradient-to-r from-[#ffc233] via-[#3f8cff]
                 </div>
               </div>
               <div>
-                <div class="text-sm text-[#9ecbff]">
+                <div class="text-sm text-[#b6ecbd]">
                   ยูสเซอร์:{" "}
-                  <span data-winner-user class="font-bold text-[#e6ecfb]">
+                  <span data-winner-user class="font-bold text-[#e8f3e4]">
                     {row.user}
                   </span>
                 </div>
-                <div class="mt-1 text-2xl font-black text-[#ffc233]">
-                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#9ecbff]">THB</span>
+                <div class="mt-1 text-2xl font-black text-[#f6c945]">
+                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#b6ecbd]">THB</span>
                 </div>
               </div>
             </div>
@@ -103,7 +104,7 @@ const DONE_CLASS = "text-[#0a0f22] bg-gradient-to-r from-[#ffc233] via-[#3f8cff]
       }
     </div>
 
-    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#9ecbff]">
+    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#b6ecbd]">
       ก่อนฝากหรือถอนควรตรวจยอด ช่องทาง และชื่อบัญชีรับเงินให้ตรงกับข้อมูลสมาชิก หากรายการยังประมวลผลอยู่ไม่ควรกดซ้ำทันที
     </p>
 

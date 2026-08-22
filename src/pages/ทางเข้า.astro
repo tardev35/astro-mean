@@ -2,25 +2,27 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement6.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
 // <h1>) and the two-column login/register grid, nothing else. The docx never
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 //
-// PABO88: ContentBoxFloatingBadge → ContentBoxPremium และ Announcement5 →
-// Announcement6 ตามการหมุน variant รอบนี้ ปุ่มย้ายจากน้ำเงินรอยัลคู่ทองของ
-// LUCKYBKK มาเป็นนีออนม่วงคู่ทอง — ม่วง #bf3cfa / #8b1fd6 / #4a0b8f ไฮไลต์
-// #e3b8ff เนื้อความ #ece0ff คู่ทอง #ffe9a3 / #f5c518 / #8f6205 บนผิว #0a0118
+// UOK789: Announcement6 → AnnouncementPremium ตามการหมุน variant รอบนี้ (เรียก
+// แบบ bare เพราะ default message ของ variant นี้เป็นข้อความของแบรนด์นี้แล้ว)
+// ปุ่มย้ายจากนีออนม่วงคู่ทองของ PABO88 — ม่วง #bf3cfa / #8b1fd6 / #4a0b8f
+// ไฮไลต์ #e3b8ff เนื้อความ #ece0ff คู่ทอง #ffe9a3 / #f5c518 / #8f6205 บนผิว
+// #0a0118 — มาเป็นเขียวมรกตคู่ทอง เขียว #2fc44f / #12923a / #0a4d1c ไฮไลต์
+// #b6ecbd เนื้อความ #e8f3e4 คู่ทอง #fdf3c9 / #f6c945 / #8a6a1c บนผิว #04140a
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 157.
+// count reads about three times too long. This one measures 154.
 const pageDescription =
-  "ทางเข้า PABO88 เว็บหลัก อัปเดตลิงก์ล่าสุดสำหรับเข้าสู่ระบบและสมัครสมาชิก เชื่อมต่อตรงเซิร์ฟเวอร์ เข้าปั่นสล็อตค่ายดังได้ลื่นทุกอุปกรณ์ ฝากถอนออโต้ตลอด 24 ชม.";
+  "ทางเข้า UOK789 เว็บหลัก อัปเดตลิงก์ล่าสุดสำหรับเข้าสู่ระบบและสมัครสมาชิก เชื่อมเกมตรงผ่าน API เข้าปั่นสล็อตค่ายแท้ได้ลื่นทุกอุปกรณ์ ฝากถอนออโต้ตลอด 24 ชม.";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า PABO88 เว็บหลัก",
+  name: "ทางเข้า UOK789 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -29,40 +31,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า PABO88 เว็บหลัก | ลิงก์เข้าเล่นอัปเดตล่าสุด" description={pageDescription}>
+<MainLayout title="ทางเข้า UOK789 เว็บหลัก | ลิงก์เข้าเล่นอัปเดตล่าสุด" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า PABO88 เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า UOK789 เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ PABO88"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#bf3cfa]/60 bg-[#4a0b8f] px-6 py-4 shadow-[0_10px_30px_rgba(139,31,214,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#f5c518] hover:bg-[#8b1fd6] hover:shadow-[0_15px_40px_rgba(191,60,250,0.4)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#e3b8ff]/18 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ UOK789"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#2fc44f]/60 bg-[#0a4d1c] px-6 py-4 shadow-[0_10px_30px_rgba(18,146,58,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#f6c945] hover:bg-[#12923a] hover:shadow-[0_15px_40px_rgba(47,196,79,0.4)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#b6ecbd]/18 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#ece0ff]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#e8f3e4]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#ece0ff]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#e8f3e4]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก PABO88"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ffe9a3]/60 bg-gradient-to-r from-[#ffe9a3] via-[#f5c518] to-[#8f6205] px-6 py-4 shadow-[0_10px_30px_rgba(245,197,24,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,163,0.45)]">
+          aria-label="สมัครสมาชิก UOK789"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#fdf3c9]/60 bg-gradient-to-r from-[#fdf3c9] via-[#f6c945] to-[#8a6a1c] px-6 py-4 shadow-[0_10px_30px_rgba(246,201,69,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(253,243,201,0.45)]">
           <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#0a0118]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#04140a]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#0a0118]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#04140a]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

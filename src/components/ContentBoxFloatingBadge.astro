@@ -16,8 +16,8 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // สองตัวข้างหัวข้ออีก ~52px จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
 // *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ H1 ที่ยาวที่สุดใน docx ของ LUCKYBKK (56 ตัวอักษร) chrome ของป้าย
-// = py-2.5 (20px) + border-2 (4px) = 24px:
+// คำนวณกับหัวข้อ H1 ของ UOK789 (58 ตัวอักษร) chrome ของป้าย = py-2.5 (20px) +
+// border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-xl ≈ 9.5px ต่อตัวอักษร
 //   → ~24 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
@@ -29,28 +29,29 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// LUCKYBKK: ย้ายจากชมพูกลอสคู่ทองของ GALA89 (#d41c6b / #ff4d9c / #9e154a คู่ทอง
-// #ffe0a3 / #f0c274 / #b8801f บนผิว #3c0214 / #12010a เนื้อความ #f7dce8 และเพชร
-// ชมพูสองข้างป้าย) มาที่น้ำเงินรอยัลคู่ทอง — น้ำเงิน #3f9dfb / #cfe8ff / #1f5fd0 /
-// #0a2a86 กับทอง #ffdf7e / #f0b323 / #9a6c05 บนผิว #061442 / #030b28 เนื้อความ
-// #e4eeff โดยไอคอนสองข้างป้ายเปลี่ยนเป็นโพดำตามโลโก้ ไม่มีชมพูเหลืออยู่ในไฟล์นี้
+// UOK789: ย้ายจากน้ำเงินรอยัลคู่ทองของแบรนด์ก่อนหน้ามาเป็นเขียวมรกตคู่ทองเมทัลลิก
+// ของแบรนด์นี้ — เขียว #2fc44f / #b6ecbd / #12923a / #0a4d1c คู่ทอง #f6c945 /
+// #fdf3c9 / #8a6a1c บนผิว #08290f / #04140a เนื้อความ #e8f3e4 ไอคอนสองข้างป้าย
+// เปลี่ยนจากโพดำเป็นข้าวหลามตัดให้เข้ากับโลโก้ทองเมทัลลิก (ค่า hex ของแบรนด์เก่า
+// ไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง
+// gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f0b323]/30 bg-[#061442]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#e4eeff] shadow-[0_10px_30px_rgba(240,179,35,0.18)] backdrop-blur-md md:pt-36">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#3f9dfb]/45 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f0b323]/30 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#f6c945]/30 bg-[#08290f]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#e8f3e4] shadow-[0_10px_30px_rgba(246,201,69,0.18)] backdrop-blur-md md:pt-36">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#2fc44f]/45 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f6c945]/30 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffdf7e]/55 bg-[#030b28] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(240,179,35,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#3f9dfb]">
-            ♠
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#fdf3c9]/55 bg-[#04140a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(246,201,69,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#2fc44f]">
+            ◆
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffdf7e] via-[#f0b323] to-[#3f9dfb] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#3f9dfb]">
-            ♠
+          <HeadingTag class={`bg-gradient-to-r from-[#fdf3c9] via-[#f6c945] to-[#2fc44f] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#2fc44f]">
+            ◆
           </span>
         </div>
       )

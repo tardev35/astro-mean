@@ -5,30 +5,31 @@
 //
 // default ต้องเป็นคำโฆษณาของแบรนด์ปัจจุบันเสมอ — หน้าย่อยเรียก <Announcement />
 // เปล่าๆ ไม่ส่ง prop จึงตกมาใช้บรรทัดนี้ ถ้าปล่อยเป็นของแบรนด์ก่อนหน้าจะหลุด
-// ขึ้นทุกหน้าย่อยโดยที่หน้าแรกดูปกติดี
+// ขึ้นทุกหน้าย่อยโดยที่หน้าแรกดูปกติดี — ข้อความชุดนี้ตรงกับที่ index.astro
+// ส่งเข้ามาเป๊ะ ticker ทั้งเว็บจึงวิ่งข้อความเดียวกัน
 //
-// AURORA688: ย้ายจากม่วง PHANTOM569 (#8b5cf6 / #c4b5fd / #4c1d95 บนผิว #0f0226
-// เนื้อความ #ded4f5) มาที่ทองแบรนด์นี้ #e2c443 / #ffe9a3 / #c9a13a / #7d5714
-// บนผิว #0a0806 เนื้อความ #f2ead6
+// UOK789: ย้ายจากทองของ AURORA688 (#e2c443 / #ffe9a3 / #c9a13a / #7d5714 บนผิว
+// #0a0806 เนื้อความ #f2ead6) มาเป็นเขียวมรกตคู่ทองของแบรนด์นี้ — ทอง #f6c945 /
+// #fdf3c9 / #8a6a1c คู่เขียว #2fc44f / #b6ecbd บนผิว #04140a เนื้อความ #e8f3e4
 const {
-  message = "AURORA688 เว็บสล็อตฟีลดี รวมเกมฮิตติดแสง แจ็คพอตแตกทุกวัน • เปิดคลังเกมสล็อตชั้นนำกว่า 1,000+ เกมจากค่ายยักษ์ใหญ่ทั่วโลก ครบทั้งแนวแฟนตาซีตระการตา แอ็กชันสุดมันส์ และสตรีทสุดเท่ • ล็อบบี้จัดวางเป็นระเบียบ รวมเกมฮิตติดแสงระดับตำนานไว้ข้างเกมใหม่มาแรงนอกกระแสที่ซ่อนโบนัสเด็ดเอาไว้เพียบ • แจ็คพอตและรอบโบนัสไม่ได้อยู่แค่ในเกมยอดนิยม แต่กระจายอยู่ในทุกเกมในคลัง ทุกวันคือโอกาสใหม่ที่พร้อมสุ่มแจกโบนัส • โปรมีให้ตามหลายจังหวะ ทั้งสิทธิ์ต้อนรับสมาชิกใหม่ โบนัสเติมเงินประจำวัน และเครดิตพิเศษตามเทศกาล • ระบบออโต้พร้อมรับทุกช่วงเวลา ฝากถอนเองได้ในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ • จาก 1,000+ เกมถึงระบบออโต้ รวมทุกฟีลไว้ให้จบในที่เดียวตลอด 24 ชั่วโมง",
+  message = "UOK789 สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง • เชื่อมตรงกับเซิร์ฟเวอร์หลักของค่ายเกมผ่าน API ไม่ผ่านเอเย่นต์หรือคนกลาง ไม่ดัดแปลงโปรแกรมและไม่ล็อกผล • ล็อบบี้อัปเดตเกมสล็อตใหม่เข้ามาต่อเนื่อง ทั้งเกมฮิตติดลมบนและเกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก • โปรโมชันเติมเงินรายวัน เครดิตพิเศษต้อนรับสมาชิกใหม่ และกิจกรรมคืนยอดเสียที่แจกให้อย่างต่อเนื่อง • ถอนหลักร้อยหรือหลักแสนก็อนุมัติเต็มจำนวน ไร้ประวัติการเบี้ยว ยอดไม่ค้าง ไม่มีเงื่อนไขจุกจิกมาประวิงเวลา • ไม่ล็อกยูส ปรับเบทขึ้นลง ซื้อฟีเจอร์ หรือสลับหลายค่ายในวันเดียวได้เต็มสไตล์ • ฝากถอนออโต้เสร็จในไม่กี่วินาที ไม่ต้องส่งสลิปให้แอดมินตรวจสอบ ตลอด 24 ชั่วโมง",
 } = Astro.props;
 ---
 
 <div class="mx-auto w-full max-w-7xl px-4 py-4 font-sans">
   <div
-    class="relative flex overflow-hidden rounded-full border border-[#e2c443]/40 bg-[#0a0806]/90 shadow-[0_8px_20px_rgba(226,196,67,0.22)] backdrop-blur-lg transition-shadow duration-300 hover:shadow-[0_8px_25px_rgba(255,233,163,0.35)]">
+    class="relative flex overflow-hidden rounded-full border border-[#f6c945]/40 bg-[#04140a]/90 shadow-[0_8px_20px_rgba(246,201,69,0.22)] backdrop-blur-lg transition-shadow duration-300 hover:shadow-[0_8px_25px_rgba(47,196,79,0.35)]">
     <div
-      class="relative z-10 flex shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#7d5714] via-[#e2c443] to-[#ffe9a3] px-8 py-2.5 font-black text-[#0a0806] shadow-[4px_0_15px_rgba(226,196,67,0.35)]">
+      class="relative z-10 flex shrink-0 items-center justify-center rounded-full bg-gradient-to-r from-[#8a6a1c] via-[#f6c945] to-[#fdf3c9] px-8 py-2.5 font-black text-[#04140a] shadow-[4px_0_15px_rgba(246,201,69,0.35)]">
       <span aria-hidden="true" class="mr-2 text-lg">👑</span> ประกาศ
     </div>
 
     <div class="marquee-container relative flex-1 overflow-hidden py-2.5 pr-6">
-      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-12 bg-gradient-to-r from-[#0a0806] to-transparent"></div>
+      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-12 bg-gradient-to-r from-[#04140a] to-transparent"></div>
 
-      <div class="marquee-content inline-block pl-4 text-sm font-medium tracking-wide whitespace-nowrap text-[#f2ead6]">
-        <span class="mr-10 inline-flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#ffe9a3] shadow-[0_0_8px_rgba(255,233,163,0.8)]"></span>{message}</span>
-        <span class="mr-10 inline-flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#ffe9a3] shadow-[0_0_8px_rgba(255,233,163,0.8)]"></span>{message}</span>
+      <div class="marquee-content inline-block pl-4 text-sm font-medium tracking-wide whitespace-nowrap text-[#e8f3e4]">
+        <span class="mr-10 inline-flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#2fc44f] shadow-[0_0_8px_rgba(47,196,79,0.8)]"></span>{message}</span>
+        <span class="mr-10 inline-flex items-center gap-3"><span class="h-2 w-2 rounded-full bg-[#2fc44f] shadow-[0_0_8px_rgba(47,196,79,0.8)]"></span>{message}</span>
       </div>
     </div>
   </div>

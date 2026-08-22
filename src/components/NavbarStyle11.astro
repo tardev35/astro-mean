@@ -14,16 +14,30 @@ const mainLogo = targetPath ? images[targetPath].default : null;
 // {/* comment */} beside it makes the branch two expressions and fails the
 // build with "Expected ) but found $$render".)
 //
+// UOK789: ย้ายจากทอง-ส้มของ กงล้อ88 (#ffcc4b / #ffe974 / #ff6a13 / #eb9a1d /
+// #ffa34d / #8b4c0b บนผิว #0d0702 / #140a02 / #2c1808 / #3a2009 เนื้อความ
+// #f6e6c2) มาเป็นเขียวมรกตคู่ทองของแบรนด์นี้ — เขียว #2fc44f / #b6ecbd /
+// #12923a / #0a4d1c บนผิว #04140a / #08290f / #0c3d18 คู่ทอง #f6c945 /
+// #fdf3c9 / #8a6a1c เนื้อความ #e8f3e4 ให้ตรงกับโลโก้ที่เป็นตัวอักษรทอง
+// เมทัลลิกและแบนเนอร์พื้นเขียวมรกตแสงนีออนเขียว
+//
 // เมนูประกาศครั้งเดียวแล้วใช้ทั้งเดสก์ท็อปและ drawer มือถือ — เดิมไฟล์นี้เขียน
 // อาร์เรย์เดิมซ้ำสองรอบ ซึ่งแปลว่าคนถัดไปจะแก้ที่เดียวแล้วลืมอีกที่
 // ไอคอนเป็น <span aria-hidden="true"> ที่เป็น "พี่น้อง" ของข้อความ ไม่ใช่ตัวอักษร
 // ที่ฝังอยู่ในข้อความ — emoji ที่ปนอยู่ในข้อความจะถูกอ่านออกเสียงด้วย
+//
+// UOK789 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// src/pages-disabled/) ห้ามมีลิงก์ถึงทั้งสองหน้าในไฟล์นี้
+//
+// /login กับ /register ยังเป็นหน้า interstitial (noindex) ไม่ใช่หน้าปุ่ม จึงไม่มี
+// รายการเมนูของสองหน้านั้น กฎลำดับเมนู "สมัครสมาชิก/เข้าสู่ระบบ ต่อจากโปรโมชั่น"
+// จึงไม่มีผลรอบนี้ — ปุ่ม CTA มุมขวาเป็นคนละเรื่อง อยู่ต่อได้
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
-  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🐉" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "📜" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🛡️" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 
@@ -33,25 +47,25 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 
 <header class="sticky top-0 z-[100] w-full font-sans">
   <nav
-    class="relative mx-auto flex h-[80px] w-full items-center justify-between border-b border-[#ffcc4b]/40 bg-[#0d0702]/95 px-4 shadow-[0_5px_20px_rgba(0,0,0,0.8)] backdrop-blur-lg xl:px-6">
+    class="relative mx-auto flex h-[80px] w-full items-center justify-between border-b border-[#f6c945]/40 bg-[#04140a]/95 px-4 shadow-[0_5px_20px_rgba(0,0,0,0.8)] backdrop-blur-lg xl:px-6">
     <a href="/" class="z-[110] flex-shrink-0 transition-transform duration-300 hover:scale-105">
       {
         mainLogo ? (
           <Picture
             src={mainLogo}
-            alt="โลโก้ กงล้อ88 ตัวอักษรไทยคำว่า กงล้อ สีทองพร้อมเลข 88 อยู่กลางวงแหวนเปลวไฟ มีมังกรทองพันอยู่ด้านซ้ายและก้อนเมฆมงคลสีทองอยู่ด้านล่าง"
+            alt="โลโก้ UOK789 ตัวอักษร UOK สีทองเมทัลลิกขอบดำเงา ใต้ลงมาเป็นเลข 789 สีทองแบบเดียวกัน มีประกายแสงสีขาวพาดทับ"
             loading="eager"
             fetchpriority="high"
             widths={[110, 220, 330]}
             sizes="110px"
             height={50}
-            class="h-[40px] w-auto object-contain drop-shadow-[0_0_12px_rgba(255,204,75,0.55)] xl:h-[50px]"
+            class="h-[40px] w-auto object-contain drop-shadow-[0_0_12px_rgba(246,201,69,0.55)] xl:h-[50px]"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
           />
         ) : (
-          <p class="text-3xl font-black tracking-widest text-[#ffe974]">
-            กงล้อ<span class="text-[#ff6a13]">88</span>
+          <p class="text-3xl font-black tracking-widest text-[#fdf3c9]">
+            UOK<span class="text-[#2fc44f]">789</span>
           </p>
         )
       }
@@ -62,13 +76,13 @@ const isActive = (path: string) => isActivePath(currentPath, path);
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative flex h-full items-center gap-1.5 px-2 text-sm font-bold tracking-wide transition-colors ${isActive(item.path) ? "text-[#ffe974]" : "text-[#f6e6c2]/85 hover:text-[#ffe974]"}`}>
+            class={`group relative flex h-full items-center gap-1.5 px-2 text-sm font-bold tracking-wide transition-colors ${isActive(item.path) ? "text-[#fdf3c9]" : "text-[#e8f3e4]/85 hover:text-[#fdf3c9]"}`}>
             <span aria-hidden="true" class="text-base leading-none">
               {item.icon}
             </span>
             <span>{item.name}</span>
             <div
-              class={`absolute bottom-0 left-0 h-[4px] w-full rounded-t-md bg-gradient-to-r from-[#8b4c0b] via-[#ffcc4b] to-[#ffe974] shadow-[0_-2px_10px_rgba(255,204,75,0.8)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+              class={`absolute bottom-0 left-0 h-[4px] w-full rounded-t-md bg-gradient-to-r from-[#0a4d1c] via-[#2fc44f] to-[#f6c945] shadow-[0_-2px_10px_rgba(47,196,79,0.8)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
             />
           </a>
         ))
@@ -78,35 +92,35 @@ const isActive = (path: string) => isActivePath(currentPath, path);
     <div class="z-[110] flex items-center gap-3">
       <a
         href="/login"
-        class="hidden rounded-full border border-[#ff6a13]/55 bg-[#2c1808]/70 px-6 py-2.5 text-sm font-bold text-[#f6e6c2] shadow-inner transition-all hover:border-[#ffa34d] hover:bg-[#3a2009]/80 lg:flex">
+        class="hidden rounded-full border border-[#2fc44f]/55 bg-[#08290f]/70 px-6 py-2.5 text-sm font-bold text-[#e8f3e4] shadow-inner transition-all hover:border-[#b6ecbd] hover:bg-[#0c3d18]/80 lg:flex">
         เข้าสู่ระบบ
       </a>
       <a
         href="/register"
-        class="hidden rounded-full border border-[#ffe974]/50 bg-gradient-to-r from-[#ffcc4b] to-[#eb9a1d] px-6 py-2.5 text-sm font-black text-[#140a02] shadow-[0_4px_15px_rgba(255,204,75,0.4)] transition-all hover:scale-105 hover:shadow-[0_6px_20px_rgba(255,204,75,0.6)] lg:flex">
+        class="hidden rounded-full border border-[#fdf3c9]/50 bg-gradient-to-r from-[#f6c945] to-[#8a6a1c] px-6 py-2.5 text-sm font-black text-[#04140a] shadow-[0_4px_15px_rgba(246,201,69,0.4)] transition-all hover:scale-105 hover:shadow-[0_6px_20px_rgba(246,201,69,0.6)] lg:flex">
         สมัครสมาชิก
       </a>
 
       <button
         id="hamburger-btn"
-        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] rounded-full border border-[#ffcc4b]/50 bg-[#140a02] lg:hidden"
+        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] rounded-full border border-[#f6c945]/50 bg-[#04140a] lg:hidden"
         aria-label="เมนู">
-        <span class="line-1 h-[2px] w-5 origin-center rounded-full bg-[#ffe974] transition-all duration-300"></span>
-        <span class="line-2 h-[2px] w-5 origin-center rounded-full bg-[#ffe974] transition-all duration-300"></span>
-        <span class="line-3 h-[2px] w-5 origin-center rounded-full bg-[#ffe974] transition-all duration-300"></span>
+        <span class="line-1 h-[2px] w-5 origin-center rounded-full bg-[#fdf3c9] transition-all duration-300"></span>
+        <span class="line-2 h-[2px] w-5 origin-center rounded-full bg-[#fdf3c9] transition-all duration-300"></span>
+        <span class="line-3 h-[2px] w-5 origin-center rounded-full bg-[#fdf3c9] transition-all duration-300"></span>
       </button>
     </div>
   </nav>
 
   <div
     id="mobile-menu"
-    class="pointer-events-none absolute top-[80px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col border-b-2 border-[#ffcc4b] bg-[#0d0702]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-300 lg:hidden">
+    class="pointer-events-none absolute top-[80px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col border-b-2 border-[#f6c945] bg-[#04140a]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-300 lg:hidden">
     <div class="flex flex-col gap-2">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`flex items-center gap-3 rounded-xl px-4 py-3 text-base font-bold transition-colors ${isActive(item.path) ? "border-l-4 border-[#ffcc4b] bg-[#2c1808] text-[#ffe974]" : "text-[#f6e6c2]/80 hover:bg-white/5 hover:text-[#ffe974]"}`}>
+            class={`flex items-center gap-3 rounded-xl px-4 py-3 text-base font-bold transition-colors ${isActive(item.path) ? "border-l-4 border-[#f6c945] bg-[#08290f] text-[#fdf3c9]" : "text-[#e8f3e4]/80 hover:bg-white/5 hover:text-[#fdf3c9]"}`}>
             <span aria-hidden="true" class="text-lg leading-none">
               {item.icon}
             </span>
@@ -118,10 +132,10 @@ const isActive = (path: string) => isActivePath(currentPath, path);
     <div class="mt-6 flex flex-col gap-3">
       <a
         href="/register"
-        class="flex w-full justify-center rounded-full border border-[#ffe974]/50 bg-gradient-to-r from-[#ffcc4b] to-[#eb9a1d] py-3.5 text-lg font-black text-[#140a02] shadow-md">
+        class="flex w-full justify-center rounded-full border border-[#fdf3c9]/50 bg-gradient-to-r from-[#f6c945] to-[#8a6a1c] py-3.5 text-lg font-black text-[#04140a] shadow-md">
         สมัครสมาชิก
       </a>
-      <a href="/login" class="flex w-full justify-center rounded-full border border-[#ff6a13]/55 bg-[#2c1808]/70 py-3.5 text-lg font-bold text-[#f6e6c2]">เข้าสู่ระบบ</a>
+      <a href="/login" class="flex w-full justify-center rounded-full border border-[#2fc44f]/55 bg-[#08290f]/70 py-3.5 text-lg font-bold text-[#e8f3e4]">เข้าสู่ระบบ</a>
     </div>
   </div>
 </header>

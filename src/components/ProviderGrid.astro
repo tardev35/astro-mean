@@ -3,35 +3,36 @@
 // assistive tech ห้ามเลื่อน <p> ขึ้นเป็น <h2> เพื่อแก้เรื่องชื่อ section เพราะ
 // จำนวน h2 บนหน้าแรกถูก diff กับ checklist ของ docx
 //
-// เนื้อหาตาม brief ของ PABO88 — เว็บสล็อตคัดของดี คัดเฉพาะเกมสล็อตคุณภาพสูง
-// อัตราการจ่ายยุติธรรม ธีมน่าสนใจ ทั้งเกมฮิตติดเทรนด์ ค่ายใหญ่นอกกระแส และเกม
-// คลาสสิกโบนัสแตกหนัก มารวมไว้ครบจบในเว็บเดียว ไม่ต้องโยกเว็บไปมา
+// เนื้อหาตาม brief ของ UOK789 — สล็อตออนไลน์ค่ายแท้ที่เชื่อมตรงกับเซิร์ฟเวอร์หลัก
+// ของค่ายเกมผ่าน API ไม่ผ่านเอเย่นต์หรือคนกลาง ไม่ดัดแปลงโปรแกรม ไม่ปรับลด
+// เปอร์เซ็นต์ชนะ ไม่ล็อกผล ล็อบบี้อัปเดตเกมใหม่ต่อเนื่อง ทั้งเกมฮิตติดลมบนและ
+// เกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก
 //
-// PABO88: ย้ายจากน้ำเงินรอยัลคู่ทองของ LUCKYBKK มาที่นีออนม่วง/ไวโอเล็ตคู่ทอง —
-// ม่วง #e3b8ff / #bf3cfa / #8b1fd6 / #4a0b8f คู่ทอง #ffe9a3 / #f5c518 / #8f6205
-// บนผิว #160333 / #20064a / #0a0118 เนื้อความ #ece0ff หมึกบนปุ่มทอง #0a0118
+// UOK789: ย้ายจากนีออนม่วงคู่ทองของแบรนด์ก่อนหน้ามาที่เขียวมรกตคู่ทองเมทัลลิก —
+// เขียว #b6ecbd / #2fc44f / #12923a / #0a4d1c คู่ทอง #fdf3c9 / #f6c945 / #8a6a1c
+// บนผิว #08290f / #0c3d18 / #04140a เนื้อความ #e8f3e4 หมึกบนปุ่มทอง #04140a
 // (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
 // คอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
 // git history)
 //
-// ป้ายมุมการ์ดใช้ไล่สีทองล้วนกับหมึกเข้ม เพราะทองอ่อนบนม่วงเข้มอ่านไม่ออก
+// ป้ายมุมการ์ดใช้ไล่สีทองล้วนกับหมึกเข้ม เพราะทองอ่อนบนเขียวเข้มอ่านไม่ออก
 const providers = [
-  { name: "PG SOFT", desc: "เกมสล็อตกราฟิกระดับ HD ธีมแปลกใหม่ ฟรีสปินออกบ่อยเกินคาดตั้งแต่สปินแรก", tag: "ฟรีสปินออกบ่อย", icon: "🎰" },
-  { name: "Pragmatic Play", desc: "ค่ายใหญ่ไลน์อัปแน่น อัตราคูณโบนัสก้อนโตที่สุ่มแจกอย่างต่อเนื่องทั้งวัน", tag: "โบนัสก้อนโต", icon: "💥" },
-  { name: "Joker Gaming", desc: "เกมคลาสสิกโบนัสแตกหนัก อ่านเกมง่ายไม่ซับซ้อน เหมาะกับสายปั่นรอบสั้น", tag: "คลาสสิกแตกหนัก", icon: "🃏" },
-  { name: "Relax Gaming", desc: "ค่ายใหญ่นอกกระแสที่คัดมาให้ลอง ตัวคูณสะสมแบบทวีคูณลุ้นได้ยาวทุกสปิน", tag: "ตัวคูณทวีคูณ", icon: "🔥" },
-  { name: "Habanero", desc: "ธีมเกมหลากหลายสีสันสดใส เอฟเฟกต์อลังการ เล่นต่อเนื่องนานก็ไม่น่าเบื่อ", tag: "ธีมจัดเต็ม", icon: "🌶️" },
-  { name: "Play'n GO", desc: "อัตราการจ่ายยุติธรรมตรวจสอบได้ สัญลักษณ์พิเศษพร้อมเปลี่ยนเป็นรางวัลใหญ่", tag: "จ่ายยุติธรรม", icon: "🎯" },
-  { name: "JILI", desc: "เกมฮิตติดเทรนด์โหลดฉับไว เข้าเล่นได้ทันทีจากหน้าล็อบบี้เดียวไม่ต้องสลับยูส", tag: "ฮิตติดเทรนด์", icon: "⚡" },
+  { name: "PG SOFT", desc: "เชื่อมตรงกับเซิร์ฟเวอร์หลักของค่ายผ่าน API ทุกสปินลื่นไหลไร้ปัญหากระตุก", tag: "เชื่อมตรงผ่าน API", icon: "🎰" },
+  { name: "Pragmatic Play", desc: "ค่ายแท้ลิขสิทธิ์เต็มรูปแบบ อัตราการออกรางวัลแม่นยำตามมาตรฐานสากล 100%", tag: "ค่ายแท้ลิขสิทธิ์", icon: "💥" },
+  { name: "Joker Gaming", desc: "เกมฮิตติดลมบนที่ใครๆ ก็ปั่น เปิดเล่นได้ทันทีจากล็อบบี้เดียวไม่ต้องสลับยูส", tag: "ฮิตติดลมบน", icon: "🃏" },
+  { name: "Relax Gaming", desc: "เกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก เหมาะกับคนที่อยากลองตัวใหม่ทุกวัน", tag: "ฟีเจอร์แตกหนัก", icon: "🔥" },
+  { name: "Habanero", desc: "ล็อบบี้อัปเดตเกมสล็อตใหม่เข้ามาต่อเนื่อง สลับเปลี่ยนเล่นได้ไม่มีซ้ำทั้งวัน", tag: "อัปเดตต่อเนื่อง", icon: "🌶️" },
+  { name: "Play'n GO", desc: "ไม่ดัดแปลงโปรแกรม ไม่ปรับลดเปอร์เซ็นต์ชนะ และไม่ล็อกผลการออกรางวัลใดๆ", tag: "ไม่ล็อกผล", icon: "🎯" },
+  { name: "JILI", desc: "ไม่ล็อกยูส ปรับเบทขึ้นลง ซื้อฟีเจอร์ หรือสลับหลายค่ายในวันเดียวได้เต็มสไตล์", tag: "ไม่ล็อกยูส", icon: "⚡" },
 ];
 ---
 
-<section aria-label="ค่ายเกมสล็อตที่ PABO88 คัดของดีมารวมไว้ครบจบในเว็บเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายเกมสล็อตลิขสิทธิ์แท้ที่ UOK789 เชื่อมตรงผ่าน API" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#faf5ff] via-[#f5c518] to-[#bf3cfa] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมสล็อตที่ <span class="text-[#f5c518]">PABO88</span> คัดของดีมารวมไว้ครบจบในเว็บเดียว
+    <p class="bg-gradient-to-r from-[#f4fdf3] via-[#f6c945] to-[#2fc44f] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายเกมสล็อตลิขสิทธิ์แท้ที่ <span class="text-[#f6c945]">UOK789</span> เชื่อมตรงผ่าน API
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f5c518] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f6c945] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
@@ -39,20 +40,20 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#f5c518]/30 bg-[#160333]/92 p-5 shadow-[0_10px_30px_rgba(245,197,24,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#f5c518]/60 hover:bg-[#20064a]/95 hover:shadow-[0_15px_40px_rgba(191,60,250,0.35)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#4a0b8f]/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#f6c945]/30 bg-[#08290f]/92 p-5 shadow-[0_10px_30px_rgba(246,201,69,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#f6c945]/60 hover:bg-[#0c3d18]/95 hover:shadow-[0_15px_40px_rgba(47,196,79,0.35)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#0a4d1c]/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffe9a3] to-[#f5c518] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#0a0118] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#fdf3c9] to-[#f6c945] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#04140a] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
             {provider.icon}
           </div>
-          <p class="text-center text-sm font-black text-[#ece0ff] transition-colors group-hover:text-[#f5c518]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#ece0ff]/75">{provider.desc}</p>
+          <p class="text-center text-sm font-black text-[#e8f3e4] transition-colors group-hover:text-[#f6c945]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#e8f3e4]/75">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#f5c518]/30 bg-[#0a0118] py-1.5 text-center text-[11px] font-bold text-[#f5c518] shadow-inner transition-colors duration-300 group-hover:border-[#ffe9a3]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffe9a3] group-hover:to-[#f5c518] group-hover:text-[#0a0118]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#f6c945]/30 bg-[#04140a] py-1.5 text-center text-[11px] font-bold text-[#f6c945] shadow-inner transition-colors duration-300 group-hover:border-[#fdf3c9]/60 group-hover:bg-gradient-to-r group-hover:from-[#fdf3c9] group-hover:to-[#f6c945] group-hover:text-[#04140a]">
             เข้าดูเกมสล็อต
           </span>
         </a>

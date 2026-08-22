@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle10.astro";
-import Footer from "../components/Footer.astro";
+import Navbar from "../components/NavbarStyle11.astro";
+import Footer from "../components/FooterPremium.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "PABO88 | เว็บสล็อตคัดของดี เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ถอนไว",
-  description = "PABO88 เว็บสล็อตคัดของดี มาให้ครบในเว็บเดียว เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ฟีเจอร์พร้อมเซอร์ไพรส์ ระบบออโต้คล่อง ถอนไวแบบไม่ค้างฟีลตลอดทั้งวัน",
+  title = "UOK789 | สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง",
+  description = "UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมเกมตรงผ่าน API ตัวเด็ดเข้าไม่พัก โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง ไม่ล็อกยูส ฝากถอนออโต้ พร้อมระบบการเงินที่ทำงานเป็นขั้นตอน",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0a0118;
+        background-color: #04140a;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ PABO88 พื้นเมืองกลางคืนสีม่วงเข้มประดับแสงนีออนม่วงและเส้นแสงสีทอง กลางภาพเป็นอักษร PABO สีม่วงเมทัลลิกไล่เงาสามมิติ ต่อด้วยเลข 88 สีเงิน ใต้ลงมาเป็นข้อความสีขาวว่า เว็บสล็อตคัดของดี ตามด้วย เกมเด็ดเกินเรื่อง เป็นสีทอง และ โปรถึงโบนัสแรง ถอนไว ปิดท้ายด้วยปุ่มขอบนีออนม่วงเขียนว่า สมัครสมาชิก ด้านซ้ายเป็นหญิงสาวชุดสีม่วงเมทัลลิกถือเหรียญทองยืนคู่กองชิปคาสิโนและไพ่เอซ ด้านขวาเป็นโทรศัพท์แสดงหน้าจอสล็อตคำว่า BIG WIN 88,888 และวงล้อสล็อตเลข 777"
+          alt="แบนเนอร์ UOK789 พื้นคาสิโนสีเขียวมรกตเข้มประดับแสงเขียวนีออนและเหรียญทองปลิวว่อน ด้านซ้ายเป็นตู้สล็อตเลข 777 กองชิปคาสิโน ไพ่เอซโพดำ และลูกเต๋าสีเขียว กลางภาพเป็นอักษร UOK สีทองเมทัลลิกสวมมงกุฎทอง ใต้ลงมาเป็นเลข 789 สีทอง ด้านขวามีข้อความ สล็อตออนไลน์ค่ายแท้ ตามด้วย โบนัสจัดหนัก สีทอง และ เว็บทุนหนาจ่ายจริง สีขาว ปิดท้ายด้วยปุ่มสีเขียวขอบทองเขียนว่า สมัครสมาชิก ริมขวาสุดเป็นหญิงสาวชุดสีเขียวทองนั่งอยู่ข้างวงล้อสล็อตเลข 7"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

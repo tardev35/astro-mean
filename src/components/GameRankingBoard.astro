@@ -14,53 +14,53 @@ import img6 from "../assets/providers/game6.avif";
 // ชื่อค่ายเดินทางไปด้วยกันในอ็อบเจกต์เดียว ส่วน `name`/`type` เป็นชื่อโหมดเกม
 // ซึ่งไม่ได้ผูกกับรูป จึงเปลี่ยนได้อิสระ
 //
-// PABO88: ย้ายจากน้ำเงินรอยัลคู่ทองของ LUCKYBKK มาที่นีออนม่วง/ไวโอเล็ตคู่ทอง —
-// ม่วง #bf3cfa / #e3b8ff / #8b1fd6 / #4a0b8f คู่ทอง #f5c518 / #ffe9a3 / #8f6205
-// บนผิว #160333 / #0a0118 ขอบ/แถบยก #20064a เนื้อความ #ece0ff ม่วงเป็นสีหลักของ
-// กระดาน ส่วนแถวอันดับหนึ่งรับคู่ทองเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียวเป็น
-// สีเชิงความหมาย ไม่ถูกแตะ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็น
-// ข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS
-// ตาย ดูของเดิมได้จาก git history)
+// UOK789: ย้ายจากนีออนม่วงคู่ทองของแบรนด์ก่อนหน้ามาที่เขียวมรกตคู่ทองเมทัลลิก —
+// เขียว #2fc44f / #b6ecbd / #12923a / #0a4d1c คู่ทอง #f6c945 / #fdf3c9 / #8a6a1c
+// บนผิว #08290f / #04140a ขอบ/แถบยก #0c3d18 เนื้อความ #e8f3e4 เขียวเป็นสีหลักของ
+// กระดาน ส่วนแถวอันดับหนึ่งรับคู่ทองเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว
+// Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind
+// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
+// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
-// กระดานนี้เน้นเกมสล็อตที่คัดของดีมาให้ครบ ตั้งแต่เกมฮิตติดเทรนด์ ค่ายใหญ่นอก
-// กระแส ไปจนถึงเกมคลาสสิกโบนัสแตกหนัก ตามที่ brief ของแบรนด์นี้พูดไว้
+// กระดานนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 3 (ตัวเด็ดเข้าไม่พัก) จึงเน้นทั้งเกม
+// ฮิตติดลมบนและเกมนอกกระแสฟีเจอร์เด็ดที่ล็อบบี้อัปเดตเข้ามาต่อเนื่อง
 //
 // อันดับ 1–3 แสดงเหรียญ "แทน" ตัวเลข ถ้าซ่อนอิโมจิเฉยๆ สามแถวนั้นจะไม่เหลืออันดับ
 // ให้อ่านเลย ข้อความ sr-only จึงใส่กลับเข้าไปคู่กับ aria-hidden
 const games = [
   {
     rank: 1,
-    name: "สล็อตแตกง่ายมาแรงประจำวัน",
-    type: "งานภาพระดับ HD • ตัวคูณโบนัสก้อนโตสุ่มแจกต่อเนื่อง",
+    name: "สล็อตเกมกระแสที่คนปั่นเยอะสุดวันนี้",
+    type: "เกมฮิตติดลมบน • เชื่อมตรงกับเซิร์ฟเวอร์หลักของค่ายผ่าน API",
     brand: "PP SLOT (Pragmatic Play)",
-    menus: ["ฟรีสปินออกบ่อยเกินคาด", "เปิดปั่นได้ตลอด 24 ชั่วโมง"],
+    menus: ["ทุกสปินลื่นไหลไม่กระตุก", "เปิดปั่นได้ตลอด 24 ชั่วโมง"],
     players: 5124,
     img: img6,
   },
   {
     rank: 2,
-    name: "สล็อตคลาสสิกโบนัสแตกหนัก",
-    type: "วงล้อคุ้นมือ • อ่านเกมง่ายไม่ซับซ้อน",
+    name: "สล็อตตัวใหม่ที่เพิ่งเข้าล็อบบี้",
+    type: "อัปเดตเข้ามาต่อเนื่อง • ฟีเจอร์เด็ดพร้อมแตกหนัก",
     brand: "Joker",
-    menus: ["ดูประวัติการปั่นย้อนหลังได้", "จังหวะรอบสั้นรู้ผลไว"],
+    menus: ["สลับเปลี่ยนเล่นได้ไม่มีซ้ำ", "เก็บรอบสั้นรู้ผลไว"],
     players: 3842,
     img: img4,
   },
   {
     rank: 3,
-    name: "สล็อตฟีเจอร์เซอร์ไพรส์จัดเต็ม",
-    type: "สัญลักษณ์พิเศษเปลี่ยนเป็นเงินรางวัลใหญ่ • ตัวคูณสะสมทวีคูณ",
+    name: "สล็อตนอกกระแสฟีเจอร์เด็ด",
+    type: "ตัวเลือกสดใหม่ตลอดเวลา • ซื้อฟีเจอร์ได้ไม่ถูกจำกัด",
     brand: "JILI",
-    menus: ["สลับเกมได้แทบไม่ต้องรอ", "เหมาะกับสายล่ารางวัล"],
+    menus: ["ไม่ล็อกยูสไม่ล็อกผล", "เหมาะกับสายลองของใหม่"],
     players: 3517,
     img: img5,
   },
   {
     rank: 4,
     name: "สล็อตทุนน้อยสำหรับมือใหม่",
-    type: "เริ่มปั่นสบายๆ • ทำความคุ้นเคยกับวงล้อได้ไม่กดดัน",
+    type: "ปรับเบทขึ้นลงได้อิสระ • ทำความคุ้นเคยกับวงล้อได้ไม่กดดัน",
     brand: "SexySlot",
     menus: ["กติกาตรงไปตรงมา", "เลือกไลน์เดิมพันให้พอดีทุน"],
     players: 2905,
@@ -69,18 +69,18 @@ const games = [
   {
     rank: 5,
     name: "สล็อตแจ็คพอตใหญ่สำหรับสายลุยหนัก",
-    type: "เพดานรางวัลกว้าง • รอบแจ็คพอตลุ้นได้ทุกสปิน",
+    type: "เพดานรางวัลกว้าง • ถอนหลักแสนก็อนุมัติเต็มจำนวน",
     brand: "PG (Pocket Games Soft)",
-    menus: ["ดูแลระดับ VIP", "ถอนไวไม่ค้างฟีล"],
+    menus: ["ยอดไม่ค้างไม่มีเงื่อนไขจุกจิก", "ถอนออโต้เสร็จในไม่กี่วินาที"],
     players: 2431,
     img: img1,
   },
   {
     rank: 6,
-    name: "สล็อตค่ายใหญ่นอกกระแสน่าตาม",
-    type: "ธีมเกมแปลกใหม่ • สีสันสดใสเอฟเฟกต์อลังการ",
+    name: "สล็อตหลายค่ายรวมในยูสเดียว",
+    type: "สลับหลายค่ายในวันเดียวได้เต็มสไตล์ • ไม่ต้องโยกเงิน",
     brand: "SlotXO",
-    menus: ["คัดมาแล้วว่าน่าเล่น", "ระบบออโต้เข้าเล่นได้ทันที"],
+    menus: ["อัตราการออกรางวัลแม่นยำ", "ฝากถอนออโต้ไม่ต้องส่งสลิป"],
     players: 2108,
     img: img3,
   },
@@ -89,16 +89,16 @@ const games = [
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="เกมสล็อตมาแรงที่สมาชิก PABO88 กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="เกมสล็อตมาแรงที่สมาชิก UOK789 กำลังปั่นอยู่ตอนนี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#bf3cfa]/35 bg-[#160333]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(191,60,250,0.22)] backdrop-blur-md">
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#2fc44f]/35 bg-[#08290f]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(47,196,79,0.22)] backdrop-blur-md">
     <span aria-hidden="true" class="text-2xl">🎰</span>
-    <p class="bg-gradient-to-r from-[#faf5ff] via-[#e3b8ff] to-[#f5c518] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมสล็อตมาแรงที่สมาชิก PABO88 กำลังปั่นอยู่ตอนนี้</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#ece0ff]/80">
-      กระดานนี้จับเกมสล็อตที่คนเข้าเยอะที่สุดมาเรียงไว้ในหน้าเดียว กดสลับค่ายเกมได้ตลอดทั้งวันในยูสเซอร์เดียวโดยไม่ต้องโยกเงินหรือออกจากระบบ รายชื่อเกมมาแรงเปลี่ยนได้ตามช่วงเวลา
-      ควรเปิดดูอัตราการจ่ายและเงื่อนไขฟีเจอร์ของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
+    <p class="bg-gradient-to-r from-[#f4fdf3] via-[#b6ecbd] to-[#f6c945] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมสล็อตมาแรงที่สมาชิก UOK789 กำลังปั่นอยู่ตอนนี้</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#e8f3e4]/80">
+      กระดานนี้จับเกมสล็อตที่คนเข้าเยอะที่สุดมาเรียงไว้ในหน้าเดียว ทั้งเกมกระแสและตัวใหม่ที่เพิ่งเข้าล็อบบี้ กดสลับค่ายเกมได้ตลอดทั้งวันในยูสเซอร์เดียวโดยไม่ต้องโยกเงินหรือออกจากระบบ
+      รายชื่อเกมมาแรงเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราการจ่ายและเงื่อนไขฟีเจอร์ของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#bf3cfa] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#2fc44f] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -109,10 +109,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#f5c518]/60 bg-gradient-to-r from-[#20064a]/80 via-[#160333]/92 to-[#0a0118]/88 shadow-[0_15px_40px_rgba(245,197,24,0.28)]"
-                : "border-[#bf3cfa]/30 bg-[#160333]/88 shadow-[0_10px_30px_rgba(191,60,250,0.18)] hover:border-[#bf3cfa]/55 hover:shadow-[0_15px_40px_rgba(191,60,250,0.32)]"
+                ? "border-[#f6c945]/60 bg-gradient-to-r from-[#0c3d18]/80 via-[#08290f]/92 to-[#04140a]/88 shadow-[0_15px_40px_rgba(246,201,69,0.28)]"
+                : "border-[#2fc44f]/30 bg-[#08290f]/88 shadow-[0_10px_30px_rgba(47,196,79,0.18)] hover:border-[#2fc44f]/55 hover:shadow-[0_15px_40px_rgba(47,196,79,0.32)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#4a0b8f]/45 blur-[40px] transition-all duration-500 group-hover:bg-[#bf3cfa]/35" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#0a4d1c]/45 blur-[40px] transition-all duration-500 group-hover:bg-[#2fc44f]/35" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {medal(g.rank) ? (
@@ -121,14 +121,14 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#bf3cfa] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#2fc44f] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
-            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#f5c518]/60" : "border-[#bf3cfa]/35"}`}>
+            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#f6c945]/60" : "border-[#2fc44f]/35"}`}>
               <Picture
                 src={g.img}
-                alt={`โลโก้ค่ายเกมสล็อตพันธมิตร ${g.brand} ที่อยู่ในลิสต์ค่ายเกมของ PABO88`}
+                alt={`โลโก้ค่ายเกมสล็อตพันธมิตร ${g.brand} ที่อยู่ในลิสต์ค่ายเกมของ UOK789`}
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
                 loading="lazy"
@@ -142,24 +142,24 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#ece0ff] sm:text-lg">{g.name}</p>
+                <p class="truncate text-base font-black text-[#e8f3e4] sm:text-lg">{g.name}</p>
                 {top && (
-                  <span class="hidden shrink-0 rounded-full border border-[#ffe9a3]/70 bg-gradient-to-r from-[#ffe9a3] to-[#f5c518] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#0a0118] sm:inline">
+                  <span class="hidden shrink-0 rounded-full border border-[#fdf3c9]/70 bg-gradient-to-r from-[#fdf3c9] to-[#f6c945] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#04140a] sm:inline">
                     มาแรงสูงสุด
                   </span>
                 )}
               </div>
-              <p class="truncate text-[11px] text-[#ece0ff]/75 sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#e8f3e4]/75 sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#bf3cfa]/30 bg-[#0a0118] px-2.5 py-0.5 text-[10px] font-bold text-[#e3b8ff]">{m}</span>
+                  <span class="rounded-full border border-[#2fc44f]/30 bg-[#04140a] px-2.5 py-0.5 text-[10px] font-bold text-[#b6ecbd]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#ece0ff]/75">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#e8f3e4]/75">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -170,8 +170,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#ffe9a3] to-[#f5c518] text-[#0a0118] shadow-[0_10px_30px_rgba(245,197,24,0.35)]"
-                    : "border border-[#bf3cfa]/60 bg-[#0a0118] text-[#e3b8ff] hover:border-[#f5c518] hover:bg-[#20064a] hover:text-[#faf5ff]"
+                    ? "bg-gradient-to-r from-[#fdf3c9] to-[#f6c945] text-[#04140a] shadow-[0_10px_30px_rgba(246,201,69,0.35)]"
+                    : "border border-[#2fc44f]/60 bg-[#04140a] text-[#b6ecbd] hover:border-[#f6c945] hover:bg-[#0c3d18] hover:text-[#f4fdf3]"
                 }`}>
                 เข้าเล่นเกมสล็อต
               </a>

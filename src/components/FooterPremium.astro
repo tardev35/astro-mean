@@ -6,18 +6,22 @@ const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
-// AM88K: ย้ายจากส้มทองของ MONACO89 (#ef8f22 / #ffe9b8 / #ffd77a / #a44516 บนผิว
-// #160d05 เนื้อความ #f6e3c0) มาเป็นเขียวมิ้นต์คู่ทองของแบรนด์นี้ — มิ้นต์ #8cdcad /
-// #d6fbe8 / #4cb783 / #1d6f47 คู่ทอง #e4b314 / #f3db6b บนผิว #04120a / #08200f
-// เนื้อความ #e6f6ec
+// UOK789: ย้ายจากเขียวมิ้นต์คู่ทองของ AM88K (#8cdcad / #d6fbe8 / #4cb783 /
+// #1d6f47 คู่ทอง #e4b314 / #f3db6b / #a8790a บนผิว #04120a / #08200f เนื้อความ
+// #e6f6ec) มาเป็นเขียวมรกตคู่ทองของแบรนด์นี้ — เขียว #2fc44f / #b6ecbd /
+// #12923a / #0a4d1c คู่ทอง #f6c945 / #fdf3c9 / #8a6a1c บนผิว #04140a / #08290f
+// เนื้อความ #e8f3e4
+//
+// UOK789 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// src/pages-disabled/) ห้ามมีลิงก์ถึงทั้งสองหน้าในไฟล์นี้
 //
 // บล็อก <address> ด้านล่างคัดมาตามต้นฉบับใน SKILL.md แบบไม่แต่งสี — border-white/15
 // กับ bg-black/20 ลงตัวกับ footer ทุก variant ในคลัง (มืดหมด) การพิมพ์สีแบรนด์ทับ
 // ไม่ได้อะไรเพิ่ม และเป็นทางที่ทำให้ hex ของแบรนด์ก่อนค้างในรอบถัดไป
 ---
 
-<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#8cdcad]/40 bg-[#04120a] pt-16 pb-8 font-sans text-[#e6f6ec] shadow-[0_-15px_40px_rgba(140,220,173,0.26)]">
-  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#1d6f47]/45 blur-[100px]"></div>
+<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#2fc44f]/40 bg-[#04140a] pt-16 pb-8 font-sans text-[#e8f3e4] shadow-[0_-15px_40px_rgba(47,196,79,0.26)]">
+  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#0a4d1c]/45 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-12">
@@ -27,49 +31,49 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ AM88K อักษร Am สีเขียวมิ้นต์สามมิติ ต่อด้วยเลข 88 สีขาวเงินโครเมียมที่มีมงกุฎทองสวมอยู่ด้านบน ปิดท้ายด้วยตัว k สีทอง"
+                alt="โลโก้ UOK789 ตัวอักษร UOK สีทองเมทัลลิกขอบดำเงา ใต้ลงมาเป็นเลข 789 สีทองแบบเดียวกัน มีประกายแสงสีขาวพาดทับ"
                 widths={[130, 260, 390]}
                 sizes="130px"
-                class="h-[65px] w-auto drop-shadow-[0_5px_15px_rgba(140,220,173,0.45)]"
+                class="h-[65px] w-auto drop-shadow-[0_5px_15px_rgba(246,201,69,0.45)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="bg-gradient-to-r from-[#d6fbe8] to-[#4cb783] bg-clip-text text-4xl font-black tracking-widest text-transparent">
-                AM<span class="bg-gradient-to-r from-[#f3db6b] to-[#a8790a] bg-clip-text text-transparent">88K</span>
+              <span class="bg-gradient-to-r from-[#fdf3c9] to-[#8a6a1c] bg-clip-text text-4xl font-black tracking-widest text-transparent">
+                UOK<span class="bg-gradient-to-r from-[#b6ecbd] to-[#12923a] bg-clip-text text-transparent">789</span>
               </span>
             )
           }
         </a>
-        <p class="border-l-2 border-[#8cdcad]/50 pl-4 text-sm leading-relaxed text-[#e6f6ec]/75">
-          AM88K สล็อตของดีไม่ต้องพูดเยอะ เพราะคุณภาพระบบและตัวเกมมันฟ้องด้วยตัวเอง ล็อบบี้คัดเฉพาะเกมตัวเด็ดแตกง่ายจากค่ายชั้นนำระดับโลก
-          ไม่มีเกมเกรด B มาดึงเวลา ฟีเจอร์ในเกมมีลูกเล่นเยอะทั้งตัวคูณสะสม ฟรีสปินซ้อนโบนัส และฟีเจอร์สุ่มแจกรางวัลใหญ่
-          ระบบการเงินออโต้ทำงานตลอด 24 ชั่วโมง ฝากถอนไวทั้งคืนโดยไม่ต้องส่งสลิปและไม่ต้องนั่งรอแอดมิน
+        <p class="border-l-2 border-[#2fc44f]/50 pl-4 text-sm leading-relaxed text-[#e8f3e4]/75">
+          UOK789 สล็อตออนไลน์ค่ายแท้ที่เชื่อมตรงกับเซิร์ฟเวอร์หลักของค่ายเกมผ่าน API ไม่ผ่านเอเย่นต์หรือคนกลาง ทุกสปินจึงลื่นไหลและออกรางวัลตามมาตรฐานสากล
+          ล็อบบี้อัปเดตเกมใหม่เข้ามาต่อเนื่อง ทั้งเกมกระแสและตัวใหม่ฟีเจอร์เด็ดให้สลับเล่นได้ไม่มีซ้ำ
+          ระบบการเงินออโต้ทำงานตลอด 24 ชั่วโมง ฝากถอนเสร็จในไม่กี่วินาทีโดยไม่ต้องส่งสลิปและไม่ต้องรอแอดมิน
         </p>
         <div class="mt-4 flex gap-3">
-          <span class="rounded-full border border-[#8cdcad]/40 bg-[#08200f]/60 px-4 py-1 text-xs font-medium text-[#e6f6ec] backdrop-blur-sm">LICENSED 100%</span>
-          <span class="rounded-full border border-[#e4b314]/35 bg-[#e4b314]/10 px-4 py-1 text-xs font-medium text-[#f3db6b] backdrop-blur-sm">AUTO 24 HRS</span>
+          <span class="rounded-full border border-[#2fc44f]/40 bg-[#08290f]/60 px-4 py-1 text-xs font-medium text-[#e8f3e4] backdrop-blur-sm">API ค่ายแท้ 100%</span>
+          <span class="rounded-full border border-[#f6c945]/35 bg-[#f6c945]/10 px-4 py-1 text-xs font-medium text-[#fdf3c9] backdrop-blur-sm">AUTO 24 HRS</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#d6fbe8] uppercase drop-shadow-sm">QUICK LINKS</p>
-        <div class="h-[1px] w-12 bg-[#8cdcad]"></div>
-        <ul class="flex flex-col gap-3 text-sm font-medium text-[#e6f6ec]/70">
-          <li><a href="/" class="transition-colors hover:text-[#f3db6b]">หน้าหลัก (Home)</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#f3db6b]">โปรโมชั่น (Promotions)</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#f3db6b]">ทางเข้า (Access)</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#f3db6b]">ทดลองเล่น (Demo)</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#f3db6b]">เกี่ยวกับเรา (About Us)</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#f3db6b]">ติดต่อเรา (Contact)</a></li>
-          <li><a href="/register" class="transition-colors hover:text-[#f3db6b]">สมัครสมาชิก (Join Us)</a></li>
-          <li><a href="/login" class="transition-colors hover:text-[#f3db6b]">เข้าสู่ระบบ (Login)</a></li>
+        <p class="text-lg font-black tracking-widest text-[#b6ecbd] uppercase drop-shadow-sm">QUICK LINKS</p>
+        <div class="h-[1px] w-12 bg-[#2fc44f]"></div>
+        <ul class="flex flex-col gap-3 text-sm font-medium text-[#e8f3e4]/70">
+          <li><a href="/" class="transition-colors hover:text-[#f6c945]">หน้าหลัก (Home)</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#f6c945]">โปรโมชั่น (Promotions)</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#f6c945]">ทางเข้า (Access)</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#f6c945]">ทดลองเล่น (Demo)</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#f6c945]">เกี่ยวกับเรา (About Us)</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#f6c945]">ติดต่อเรา (Contact)</a></li>
+          <li><a href="/register" class="transition-colors hover:text-[#f6c945]">สมัครสมาชิก (Join Us)</a></li>
+          <li><a href="/login" class="transition-colors hover:text-[#f6c945]">เข้าสู่ระบบ (Login)</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#d6fbe8] uppercase drop-shadow-sm">CUSTOMER SUPPORT</p>
-        <div class="h-[1px] w-12 bg-[#8cdcad]"></div>
+        <p class="text-lg font-black tracking-widest text-[#b6ecbd] uppercase drop-shadow-sm">CUSTOMER SUPPORT</p>
+        <div class="h-[1px] w-12 bg-[#2fc44f]"></div>
 
         <a
           href="/line"
@@ -101,16 +105,16 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
           )
         }
 
-        <div class="mt-4 text-xs font-medium tracking-widest text-[#8cdcad]/80 uppercase">Supported Payments</div>
+        <div class="mt-4 text-xs font-medium tracking-widest text-[#2fc44f]/80 uppercase">Supported Payments</div>
         <BankStrip size={30} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#8cdcad]/30 pt-8 text-xs font-medium tracking-wide text-[#e6f6ec]/55 md:flex-row">
-      <p>COPYRIGHT &copy; {new Date().getFullYear()} AM88K. ALL RIGHTS RESERVED.</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#2fc44f]/30 pt-8 text-xs font-medium tracking-wide text-[#e8f3e4]/55 md:flex-row">
+      <p>COPYRIGHT &copy; {new Date().getFullYear()} UOK789. ALL RIGHTS RESERVED.</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="transition-colors hover:text-[#f3db6b]">TERMS &amp; CONDITIONS</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#f3db6b]">PRIVACY POLICY</a>
+        <a href="/terms/" class="transition-colors hover:text-[#f6c945]">TERMS &amp; CONDITIONS</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#f6c945]">PRIVACY POLICY</a>
       </div>
     </div>
   </div>

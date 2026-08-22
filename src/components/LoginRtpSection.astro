@@ -1,130 +1,129 @@
 ---
-import ContentBoxTwoCyberCut from "./ContentBoxTwoCyberCut.astro";
+import ContentBoxTwoPremium from "./ContentBoxTwoPremium.astro";
 
 // Widget ไม่ใช่ article — ทุกหัวข้อในนี้เป็น <p>/<span> และชื่อสำหรับ assistive
-// tech มาจาก prop `label` ที่ส่งให้ ContentBoxTwoCyberCut ไม่มีการส่ง `title`
+// tech มาจาก prop `label` ที่ส่งให้ ContentBoxTwoPremium ไม่มีการส่ง `title`
 // บล็อกนี้จึงไม่ปล่อยหัวข้อออกมาเลย
 //
-// PABO88: โครงสองคอลัมน์ย้ายจาก ContentBoxTwoPremium (ซึ่ง LUCKYBKK ใช้อยู่)
-// มาเป็น ContentBoxTwoCyberCut ตามการหมุน variant รอบนี้ และย้ายจากน้ำเงินรอยัล
-// คู่ทองของ LUCKYBKK มาที่นีออนม่วง/ไวโอเล็ตคู่ทอง — ม่วง #bf3cfa / #e3b8ff /
-// #8b1fd6 / #4a0b8f คู่ทอง #f5c518 / #ffe9a3 / #8f6205 บนผิว #160333 / #0a0118
-// ขอบ/แถบยก #20064a เนื้อความ #ece0ff หมึกบนปุ่มทอง #0a0118 เขียว LINE #00B900
-// กับจุด live สีเขียวเป็นสีเชิงความหมาย ไม่ถูกแตะ (ค่า hex ของแบรนด์เก่าไม่พิมพ์
-// ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้
-// จาก git history)
+// UOK789: โครงสองคอลัมน์ย้ายจาก ContentBoxTwoCyberCut (ซึ่งแบรนด์ก่อนหน้าใช้อยู่)
+// มาเป็น ContentBoxTwoPremium ตามการหมุน variant รอบนี้ และย้ายจากนีออนม่วงคู่ทอง
+// มาที่เขียวมรกตคู่ทองเมทัลลิก — เขียว #2fc44f / #b6ecbd / #12923a / #0a4d1c
+// คู่ทอง #f6c945 / #fdf3c9 / #8a6a1c บนผิว #08290f / #04140a ขอบ/แถบยก #0c3d18
+// เนื้อความ #e8f3e4 หมึกบนปุ่มทอง #04140a เขียว LINE #00B900 กับจุด live สีเขียว
+// Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ (ค่า hex ของแบรนด์เก่าไม่พิมพ์ไว้ตรงนี้ —
+// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 //
-// เนื้อหาตาม brief ของแบรนด์นี้: เว็บสล็อตคัดของดีที่จับเกมน่าเล่นมาครบจบในเว็บ
-// เดียว งานภาพระดับ HD กับเอฟเฟกต์อลังการ โปรถึงโบนัสแรงทั้งโบนัสต้อนรับ เพิ่มทุน
-// รายวัน และคืนยอดเสีย ฟีเจอร์ฟรีสปิน สัญลักษณ์พิเศษ ตัวคูณสะสมทวีคูณ ระบบออโต้
-// เต็มรูปแบบที่ตัดขั้นตอนซับซ้อนออก และถอนไวไม่ค้างฟีลตลอด 24 ชั่วโมง
+// เนื้อหาตาม brief ของแบรนด์นี้: สล็อตออนไลน์ค่ายแท้ที่เชื่อมตรงผ่าน API ไม่ผ่าน
+// เอเย่นต์ ล็อบบี้อัปเดตเกมใหม่ต่อเนื่อง โบนัสจัดหนักทั้งเติมเงินรายวัน เครดิต
+// ต้อนรับสมาชิกใหม่และคืนยอดเสีย เว็บทุนหนาจ่ายจริงถอนหลักแสนก็เต็มจำนวน ไม่ล็อกยูส
+// และฝากถอนออโต้เสร็จในไม่กี่วินาทีตลอด 24 ชั่วโมง
 const menus = [
   {
-    icon: "🎰",
-    name: "คัดเฉพาะเกมสล็อตของดีมาไว้ที่เดียว",
-    detail: "คัดกรองเฉพาะเกมที่คุณภาพสูง อัตราการจ่ายยุติธรรม และธีมน่าสนใจ ทั้งเกมฮิตติดเทรนด์ ค่ายใหญ่นอกกระแส และเกมคลาสสิกโบนัสแตกหนัก ไม่ต้องโยกเว็บไปมาเพื่อหาเกมโปรอีกต่อไป",
-    tag: "ครบจบในเว็บเดียว",
+    icon: "🔗",
+    name: "เชื่อมตรงกับเซิร์ฟเวอร์หลักของค่ายผ่าน API",
+    detail: "ระบบต่อตรงกับเซิร์ฟเวอร์หลักของค่ายเกมโดยไม่ผ่านเอเย่นต์หรือคนกลาง จึงไม่มีการดัดแปลงโปรแกรม ไม่ปรับลดเปอร์เซ็นต์ชนะ และไม่ล็อกผลใดๆ ทุกสปินลื่นไหลไร้ปัญหากระตุก",
+    tag: "ค่ายแท้ 100%",
   },
   {
-    icon: "✨",
-    name: "งานภาพระดับ HD เอฟเฟกต์อลังการ",
-    detail: "ทุกเกมอัดแน่นด้วยกราฟิกสีสันสดใสและเอฟเฟกต์สุดอลังการตั้งแต่เปิดหน้าล็อบบี้ ทำให้การหมุนวงล้อแต่ละรอบไม่ได้มีแค่ความเพลิดเพลิน แต่ตื่นเต้นตระการตาตลอดการเล่น",
-    tag: "ภาพคมชัด",
+    icon: "🎰",
+    name: "ล็อบบี้อัปเดตเกมใหม่เข้ามาไม่ขาดสาย",
+    detail: "มีทั้งเกมฮิตติดลมบนที่ใครๆ ก็ปั่น และเกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก เลือกสลับเปลี่ยนเล่นได้ไม่มีซ้ำ ทำให้มีตัวเลือกหลากหลายและสดใหม่อยู่ตลอดเวลา",
+    tag: "ตัวเด็ดเข้าไม่พัก",
   },
   {
     icon: "🎁",
-    name: "โปรถึงโบนัสแรงสำหรับผู้เล่นทุกระดับ",
-    detail: "ทั้งโบนัสต้อนรับสมาชิกใหม่ สิทธิพิเศษเพิ่มทุนรายวัน และเครดิตคืนยอดเสีย ทุกกิจกรรมช่วยเติมทุนให้ปั่นสล็อตได้ยาวขึ้น เพิ่มโอกาสเข้าถึงรอบแจ็คพอตใหญ่โดยไม่ต้องแบกความเสี่ยงสูง",
-    tag: "เติมทุนต่อเนื่อง",
+    name: "โบนัสจัดหนักซัพพอร์ตสมาชิกทุกระดับ",
+    detail: "ทั้งโปรโมชันเติมเงินรายวัน เครดิตพิเศษต้อนรับสมาชิกใหม่ และกิจกรรมคืนยอดเสียที่แจกให้อย่างต่อเนื่อง ช่วยเพิ่มทุนในการปั่นให้หมุนลุ้นรอบแจ็คพอตได้นานขึ้นโดยไม่ต้องใช้ทุนเยอะ",
+    tag: "เพิ่มทุนต่อเนื่อง",
   },
   {
-    icon: "🌀",
-    name: "ฟรีสปินและฟีเจอร์เซอร์ไพรส์เพียบ",
-    detail: "โหมดฟรีสปินที่ออกบ่อยเกินคาด สัญลักษณ์พิเศษที่พร้อมเปลี่ยนเป็นเงินรางวัลใหญ่ และระบบตัวคูณสะสมแบบทวีคูณ ลูกเล่นเหล่านี้ทำให้แต่ละสปินน่าลุ้นและไม่น่าเบื่อแม้เล่นต่อเนื่องนาน",
-    tag: "ลูกเล่นจัดเต็ม",
+    icon: "💰",
+    name: "เว็บทุนหนาจ่ายจริงรับยอดแบบไม่เล่นแง่",
+    detail: "ถอนหลักร้อยหรือสปินแตกโบนัสใหญ่หลักแสน ทางเว็บก็อนุมัติและโอนออกให้เต็มจำนวน ไร้ประวัติการเบี้ยว ยอดไม่ค้าง และไม่มีการอ้างเงื่อนไขจุกจิกมาประวิงเวลา",
+    tag: "จ่ายเต็มจำนวน",
   },
   {
-    icon: "🏆",
-    name: "อัตราคูณโบนัสก้อนโตสุ่มแจกต่อเนื่อง",
-    detail: "รูปแบบการจ่ายเงินมีให้เลือกหลากหลาย พร้อมอัตราคูณโบนัสก้อนโตที่สุ่มแจกอย่างต่อเนื่อง สายล่ารางวัลจึงมีจังหวะให้ลุ้นรางวัลใหญ่ได้ตลอดทั้งวันโดยไม่ต้องรอรอบพิเศษ",
-    tag: "ลุ้นรางวัลใหญ่",
+    icon: "🔓",
+    name: "ไม่ล็อกยูส เล่นได้เต็มสไตล์ทุกแนว",
+    detail: "จะเป็นสายปรับเบทขึ้นลง สายซื้อฟีเจอร์ หรือชอบสลับเล่นหลายค่ายในวันเดียว ระบบก็รองรับอย่างโปร่งใส ไร้การควบคุมอัตราแพ้ชนะ ปล่อยให้ทุกการทำกำไรเป็นไปตามกลยุทธ์และดวงจริงๆ",
+    tag: "ไร้ข้อจำกัด",
   },
   {
     icon: "⚙️",
-    name: "ระบบออโต้เต็มรูปแบบ ตัดขั้นตอนซับซ้อนออก",
-    detail: "เข้าสู่ระบบ เลือกค่ายเกม และทำรายการฝากเงินได้เองในไม่กี่คลิก หน้าเว็บโหลดฉับไวตอบสนองทันใจ ช่วยรักษาจังหวะการเล่นให้ลื่นไหลและทำกำไรต่อได้แบบไม่ขาดช่วง",
-    tag: "ไม่กี่คลิกจบ",
+    name: "ฝากถอนออโต้เสร็จในไม่กี่วินาที",
+    detail: "ทุกรายการฝากและถอนดำเนินการผ่านระบบอัตโนมัติ ไม่ต้องส่งสลิปให้แอดมินตรวจสอบ และไม่ต้องเสียเวลานั่งคอย บริหารจัดการทุนกับถอนกำไรไปใช้ได้อย่างฉับไวไร้รอยต่อ",
+    tag: "ไม่ต้องส่งสลิป",
   },
   {
-    icon: "💳",
-    name: "ถอนไวไม่ค้างฟีลตลอด 24 ชั่วโมง",
-    detail: "ระบบถอนเงินออโต้โอนไว ยอดเข้าตรงเป๊ะโดยไม่ต้องนั่งคอยแอดมินอนุมัติ จะได้กำไรหลักร้อยหรือหลักแสนก็กดถอนออกมาใช้ได้ทันที จบรายการไวพร้อมประวัติย้อนหลังที่เปิดดูได้ชัดเจน",
-    tag: "การเงินคล่อง",
+    icon: "🕐",
+    name: "จัดการยอดได้คล่องตลอดทั้งวัน",
+    detail: "ระบบการเงินทำงานเป็นขั้นตอนตลอด 24 ชั่วโมง ลดเวลารอในทุกรายการ จะเติมทุนกลางดึกหรือถอนกำไรตอนเช้าก็ทำได้จากยูสเซอร์เดียวโดยไม่ต้องรอรอบอนุมัติของใคร",
+    tag: "ทำรายการ 24 ชม.",
   },
 ];
 
-const chips = ["เว็บสล็อตคัดของดี", "เกมเด็ดเกินเรื่อง", "โปรถึงโบนัสแรง", "ฟรีสปินออกบ่อย", "ตัวคูณสะสมทวีคูณ", "ระบบออโต้คล่อง", "ถอนไวไม่ค้างฟีล"];
+const chips = ["สล็อตออนไลน์ค่ายแท้", "เชื่อมตรงผ่าน API", "ตัวเด็ดเข้าไม่พัก", "โบนัสจัดหนัก", "เว็บทุนหนาจ่ายจริง", "ไม่ล็อกยูส", "ฝากถอนออโต้"];
 ---
 
-<ContentBoxTwoCyberCut
-  titleleft="เข้าสู่ระบบ PABO88"
-  titleright="ระบบและสิทธิพิเศษของ PABO88 ที่รวมไว้ในบัญชีเดียว"
-  label="เข้าสู่ระบบ PABO88 และตารางอ้างอิงระบบกับสิทธิพิเศษภายในเว็บ">
+<ContentBoxTwoPremium
+  titleleft="เข้าสู่ระบบ UOK789"
+  titleright="ระบบและสิทธิพิเศษของ UOK789 ที่รวมไว้ในบัญชีเดียว"
+  label="เข้าสู่ระบบ UOK789 และตารางอ้างอิงระบบกับสิทธิพิเศษภายในเว็บ">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#bf3cfa]/30 bg-[#160333] p-6 shadow-[0_10px_30px_rgba(191,60,250,0.22)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#4a0b8f]/70 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#2fc44f]/30 bg-[#08290f] p-6 shadow-[0_10px_30px_rgba(47,196,79,0.22)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#0a4d1c]/70 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#f5c518]/45 bg-gradient-to-br from-[#ffe9a3] via-[#f5c518] to-[#8f6205] text-xl shadow-inner">
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#f6c945]/45 bg-gradient-to-br from-[#fdf3c9] via-[#f6c945] to-[#8a6a1c] text-xl shadow-inner">
           🎰
         </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#ffe9a3]">ยินดีต้อนรับกลับ</p>
-          <span class="text-[11px] text-[#ece0ff]/75">
-            กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าปั่นสล็อตทุกค่ายของ PABO88 ได้จากจุดเดียว พร้อมทำรายการฝากถอนผ่านระบบออโต้ได้ตลอด 24 ชั่วโมง
+          <p class="text-base font-black text-[#fdf3c9]">ยินดีต้อนรับกลับ</p>
+          <span class="text-[11px] text-[#e8f3e4]/75">
+            กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าปั่นสล็อตค่ายแท้ทุกค่ายของ UOK789 ได้จากจุดเดียว พร้อมทำรายการฝากถอนผ่านระบบออโต้ได้ตลอด 24 ชั่วโมง
           </span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#bf3cfa]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#2fc44f]">👤</span>
           <input
             type="text"
             aria-label="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#20064a] bg-[#0a0118] py-3 pr-4 pl-12 text-[#ece0ff] transition-all outline-none placeholder:text-[#ece0ff]/55 focus:border-[#bf3cfa] focus:ring-1 focus:ring-[#bf3cfa]/60"
+            class="w-full rounded-xl border border-[#0c3d18] bg-[#04140a] py-3 pr-4 pl-12 text-[#e8f3e4] transition-all outline-none placeholder:text-[#e8f3e4]/55 focus:border-[#2fc44f] focus:ring-1 focus:ring-[#2fc44f]/60"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#bf3cfa]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#2fc44f]">🔑</span>
           <input
             type="password"
             aria-label="รหัสผ่าน"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#20064a] bg-[#0a0118] py-3 pr-4 pl-12 text-[#ece0ff] transition-all outline-none placeholder:text-[#ece0ff]/55 focus:border-[#bf3cfa] focus:ring-1 focus:ring-[#bf3cfa]/60"
+            class="w-full rounded-xl border border-[#0c3d18] bg-[#04140a] py-3 pr-4 pl-12 text-[#e8f3e4] transition-all outline-none placeholder:text-[#e8f3e4]/55 focus:border-[#2fc44f] focus:ring-1 focus:ring-[#2fc44f]/60"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#ece0ff]/80">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#20064a] bg-[#0a0118] accent-[#bf3cfa]" />
+          <label class="flex items-center gap-2 text-[#e8f3e4]/80">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#0c3d18] bg-[#04140a] accent-[#2fc44f]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#ece0ff]/80 transition-colors hover:text-[#e3b8ff]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#e8f3e4]/80 transition-colors hover:text-[#b6ecbd]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#8f6205]/50 bg-gradient-to-r from-[#ffe9a3] via-[#f5c518] to-[#8f6205] p-3.5 font-black text-[#0a0118] shadow-[0_10px_30px_rgba(245,197,24,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(245,197,24,0.45)]">
+          class="mt-1 w-full rounded-xl border border-[#8a6a1c]/50 bg-gradient-to-r from-[#fdf3c9] via-[#f6c945] to-[#8a6a1c] p-3.5 font-black text-[#04140a] shadow-[0_10px_30px_rgba(246,201,69,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(246,201,69,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#ece0ff]/70">
-          <span class="h-px flex-1 bg-[#20064a]"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#e8f3e4]/70">
+          <span class="h-px flex-1 bg-[#0c3d18]"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#20064a]"></span>
+          <span class="h-px flex-1 bg-[#0c3d18]"></span>
         </div>
 
         <a
@@ -135,29 +134,29 @@ const chips = ["เว็บสล็อตคัดของดี", "เกม
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#bf3cfa]/30 bg-[#0a0118] px-2.5 py-1 text-[10px] font-bold text-[#e3b8ff]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#20064a] bg-[#0a0118] px-2.5 py-1 text-[10px] font-bold text-[#ece0ff]/80"><span aria-hidden="true">🕐</span> ทำรายการได้ 24 ชั่วโมง</span>
+            <span class="rounded-full border border-[#2fc44f]/30 bg-[#04140a] px-2.5 py-1 text-[10px] font-bold text-[#b6ecbd]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#0c3d18] bg-[#04140a] px-2.5 py-1 text-[10px] font-bold text-[#e8f3e4]/80"><span aria-hidden="true">🕐</span> ทำรายการได้ 24 ชั่วโมง</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#bf3cfa] transition-colors hover:text-[#f5c518]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#2fc44f] transition-colors hover:text-[#f6c945]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#bf3cfa]/30 bg-[#160333] p-5 shadow-[0_10px_30px_rgba(191,60,250,0.22)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#2fc44f]/30 bg-[#08290f] p-5 shadow-[0_10px_30px_rgba(47,196,79,0.22)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#ece0ff]/75">ตารางอ้างอิงระบบและสิทธิพิเศษที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#faf5ff] via-[#e3b8ff] to-[#f5c518] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">เว็บสล็อตคัดของดี โปรถึงโบนัสแรง</div>
+          <span class="text-xs font-bold tracking-wide text-[#e8f3e4]/75">ตารางอ้างอิงระบบและสิทธิพิเศษที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#f4fdf3] via-[#b6ecbd] to-[#f6c945] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">สล็อตค่ายแท้ โบนัสจัดหนัก</div>
         </div>
-        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#0a0118] px-2.5 py-1">
+        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#04140a] px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]"></span>
           <span class="text-[10px] font-bold tracking-widest text-green-300 uppercase">Live</span>
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#ece0ff]/75">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#e8f3e4]/75">
         <span>ระบบ / สิทธิพิเศษในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -165,29 +164,29 @@ const chips = ["เว็บสล็อตคัดของดี", "เกม
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#20064a] bg-[#0a0118] px-3.5 py-2.5 transition-colors hover:border-[#bf3cfa]/55 hover:bg-[#20064a]/80">
+            <div class="rounded-xl border border-[#0c3d18] bg-[#04140a] px-3.5 py-2.5 transition-colors hover:border-[#2fc44f]/55 hover:bg-[#0c3d18]/80">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#ece0ff]">
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#e8f3e4]">
                   <span aria-hidden="true" class="w-5 shrink-0 text-center">
                     {m.icon}
                   </span>{" "}
                   <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#ffe9a3]/60 bg-[#f5c518] px-2.5 py-0.5 text-[10px] font-bold text-[#0a0118]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#fdf3c9]/60 bg-[#f6c945] px-2.5 py-0.5 text-[10px] font-bold text-[#04140a]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#ece0ff]/75">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#e8f3e4]/75">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#bf3cfa]/30 bg-[#0a0118] px-3 py-1 text-[10px] font-bold text-[#e3b8ff]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#2fc44f]/30 bg-[#04140a] px-3 py-1 text-[10px] font-bold text-[#b6ecbd]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#ece0ff]/70">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจอัตราการจ่ายและเงื่อนไขฟีเจอร์ของแต่ละเกม เงื่อนไขการรับสิทธิ์ และเพดานถอนจากหน้าโปรโมชั่นจริงของ PABO88 ก่อนกดรับทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#e8f3e4]/70">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจอัตราการจ่ายและเงื่อนไขฟีเจอร์ของแต่ละเกม เงื่อนไขการรับสิทธิ์ และเพดานถอนจากหน้าโปรโมชั่นจริงของ UOK789 ก่อนกดรับทุกครั้ง
       </div>
     </div>
   </div>
-</ContentBoxTwoCyberCut>
+</ContentBoxTwoPremium>
