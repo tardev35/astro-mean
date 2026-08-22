@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle9.astro";
-import Footer from "../components/FooterStyle3.astro";
+import Navbar from "../components/NavbarStyle10.astro";
+import Footer from "../components/Footer.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "LUCKYBKK | คาสิโนอันดับต้น เกมสดคุณภาพ VIP ระบบตรงไว้ใจได้",
-  description = "LUCKYBKK คาสิโนอันดับต้น รวมเกมสดคุณภาพ VIP แบบเรียลไทม์ ระบบตรงไว้ใจได้ ชัดเจนทุกขั้นตอน หลังบ้านเสถียร การเงินคล่อง พร้อมทีมบริการตลอดวัน",
+  title = "PABO88 | เว็บสล็อตคัดของดี เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ถอนไว",
+  description = "PABO88 เว็บสล็อตคัดของดี มาให้ครบในเว็บเดียว เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ฟีเจอร์พร้อมเซอร์ไพรส์ ระบบออโต้คล่อง ถอนไวแบบไม่ค้างฟีลตลอดทั้งวัน",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #030b28;
+        background-color: #0a0118;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ LUCKYBKK พื้นคาสิโนกลางคืนสีน้ำเงินเข้มประดับแสงนีออนฟ้า ซ้ายมือเป็นโลโก้ขนาดใหญ่ อักษร LUCKYBKK สีฟ้าน้ำแข็งไล่เงาสามมิติขอบน้ำเงินเข้ม มีสัญลักษณ์โพดำเรืองแสงแทรกอยู่กลางคำ ใต้ลงมาเป็นข้อความสีขาวว่า คาสิโนอันดับต้น ตามด้วย เกมสดคุณภาพ VIP โดยคำว่า VIP เป็นสีทอง และ ระบบตรงไว้ใจได้ ปิดท้ายด้วยปุ่มน้ำเงินขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดสีน้ำเงินเมทัลลิกประดับโพดำถือไพ่เอซสองใบ รอบภาพมีเหรียญทอง ชิปคาสิโน ลูกเต๋าสีน้ำเงิน วงล้อรูเล็ต และไพ่เอซโพดำ"
+          alt="แบนเนอร์ PABO88 พื้นเมืองกลางคืนสีม่วงเข้มประดับแสงนีออนม่วงและเส้นแสงสีทอง กลางภาพเป็นอักษร PABO สีม่วงเมทัลลิกไล่เงาสามมิติ ต่อด้วยเลข 88 สีเงิน ใต้ลงมาเป็นข้อความสีขาวว่า เว็บสล็อตคัดของดี ตามด้วย เกมเด็ดเกินเรื่อง เป็นสีทอง และ โปรถึงโบนัสแรง ถอนไว ปิดท้ายด้วยปุ่มขอบนีออนม่วงเขียนว่า สมัครสมาชิก ด้านซ้ายเป็นหญิงสาวชุดสีม่วงเมทัลลิกถือเหรียญทองยืนคู่กองชิปคาสิโนและไพ่เอซ ด้านขวาเป็นโทรศัพท์แสดงหน้าจอสล็อตคำว่า BIG WIN 88,888 และวงล้อสล็อตเลข 777"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

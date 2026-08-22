@@ -6,14 +6,15 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
 
-// ORCA789: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (แผงสว่างของ LONGSAP168, แดง FUSIONNEW,
-// เขียวมังกร, ทองคาสิโนจีนของ MAHAHENG333, ม่วงนีออนของ GDK88 และรอบล่าสุดเป็น
-// ทองคู่เงินโครเมียมของ AURORA688 — #e2c443 / #ffe9a3 / #c9a13a คู่ #c3cddb /
-// #eef2f7 บนผิว #15120a เนื้อความ #f2ead6)
-// รอบนี้เป็นฟ้านีออนใต้ทะเลคู่ทอง — ฟ้าหลัก #00abfc / #84ccfb / #011dc4 เป็นสีเน้น
-// หลักและเส้นมุมฝั่งบนซ้าย ส่วนทอง #ffd54a / #ffe89a เป็นสีเน้นรองที่ถือเส้นมุม
-// ฝั่งล่างขวา บนผิว #041028 เนื้อความ #dbeafe เก็บไว้แค่ทรงมุมตัดสไตล์ cyber-cut
-// ซึ่งเป็นเอกลักษณ์เดียวของ variant นี้
+// PABO88: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (แผงสว่างของ LONGSAP168, แดง FUSIONNEW,
+// เขียวมังกร, ทองคาสิโนจีนของ MAHAHENG333, ม่วงนีออนของ GDK88, ทองคู่เงินโครเมียม
+// ของ AURORA688 และรอบล่าสุดเป็นฟ้านีออนใต้ทะเลของ ORCA789 — ค่า hex เดิมไม่พิมพ์
+// ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen
+// คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// รอบนี้เป็นนีออนม่วงคู่ทอง — ม่วง #bf3cfa / #e3b8ff / #8b1fd6 เป็นสีเน้นหลักและ
+// เส้นมุมฝั่งบนซ้าย ส่วนทอง #f5c518 เป็นสีเน้นรองที่ถือเส้นมุมฝั่งล่างขวา บนผิว
+// #0a0118 เนื้อความ #ece0ff เก็บไว้แค่ทรงมุมตัดสไตล์ cyber-cut ซึ่งเป็นเอกลักษณ์
+// เดียวของ variant นี้
 //
 // การ์ดเป็น `isolate` และเลเยอร์ตกแต่งทุกชิ้นเป็น `-z-10` เนื้อความจึงลอยอยู่เหนือ
 // เส้นมุมได้เองโดยไม่ต้องมี wrapper `relative z-10` ครอบ slot ห้ามใส่กลับเข้ามา
@@ -21,17 +22,17 @@ const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:t
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#00abfc]/35 bg-[#041028]/92 p-8 text-left text-base leading-relaxed text-[#dbeafe] shadow-[0_10px_30px_rgba(0,171,252,0.25)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#bf3cfa]/35 bg-[#0a0118]/92 p-8 text-left text-base leading-relaxed text-[#ece0ff] shadow-[0_10px_30px_rgba(191,60,250,0.25)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#00abfc] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#ffd54a] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#00abfc] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#ffd54a] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#bf3cfa] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#f5c518] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#bf3cfa] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#f5c518] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#00abfc] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#f0f9ff] via-[#84ccfb] to-[#011dc4] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#bf3cfa] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#faf5ff] via-[#e3b8ff] to-[#8b1fd6] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

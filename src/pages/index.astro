@@ -1,79 +1,82 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBox3ThreeFloatingBadge from "../components/ContentBox3ThreeFloatingBadge.astro";
-import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import Announcement from "../components/Announcement6.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
 import ContentBox from "../components/ContentBox.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners from "../components/LatestWinners3.astro";
+import LatestWinners from "../components/LatestWinners.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq4.astro";
+import Faq from "../components/Faq.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgCashback8 from "../assets/slide2.png";
-import imgDeposit200 from "../assets/slide1.png";
+import imgFirstDepositBonus from "../assets/slide2.png";
+import imgDailyCashback from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxFloatingBadge as="h1"
-//   2 → ContentBoxFloatingBadge as="h2" + GameRankingBoard + ProviderGrid ต่อท้าย
-//   3 → ContentBox3ThreeFloatingBadge as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
-//   4 → ContentBoxSevenThree as="h2" + slide2 (คืนยอดเสีย 8% / ค่าคอมมิชชั่น 5%)
-//   5 → ContentBox as="h2" (การ์ดกลางที่ terms/privacy ใช้ร่วม)
-//   6 → ContentBoxSevenThree as="h2" + slide1 (ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม)
-//   7 → ContentBoxSpecial as="h2" (แบ่งย่อหน้าเดียวลง left/right)
+//   1 → ContentBoxPremium as="h1"
+//   2 → ContentBoxSevenThreeCyberCut as="h2" + slide2 แล้วต่อด้วย GameRankingBoard
+//       และ ProviderGrid
+//   3 → ContentBox3ThreePremium as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
+//   4 → ContentBoxSevenThreeNeumorphism as="h2" + slide1
+//   5 → ContentBoxCyberCut as="h2"
+//   6 → ContentBox as="h2" (การ์ดกลางที่ terms/privacy ใช้ร่วม)
+//   7 → ContentBoxNeumorphism as="h2"
 //
-// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (AM88K ใช้ Premium ×3 + plain ×2 +
-// FloatingBadge ×1 + Special ×1) มาเป็น FloatingBadge ×3 + SevenThree ธรรมดา ×2 +
-// plain ×1 + Special ×1 ส่วน Navbar ย้ายจาก NavbarPremium มาเป็น NavbarStyle9,
-// Footer จาก FooterPremium มาเป็น FooterStyle3, Announcement จาก Announcement3
-// มาเป็น Announcement5, LatestWinners จาก LatestWinnersPremium มาเป็น
-// LatestWinners3, Faq จาก Faq3 มาเป็น Faq4 และโครงสองคอลัมน์ที่ LoginRtpSection
-// ใช้ย้ายจาก ContentBoxTwo มาเป็น ContentBoxTwoPremium
+// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (LUCKYBKK ใช้ FloatingBadge ×3 +
+// SevenThree ธรรมดา ×2 + plain ×1 + Special ×1) มาเป็น Premium + SevenThreeCyberCut
+// + 3ThreePremium + SevenThreeNeumorphism + CyberCut + plain + Neumorphism ส่วน
+// Navbar ย้ายจาก NavbarStyle9 มาเป็น NavbarStyle10, Footer จาก FooterStyle3 มาเป็น
+// Footer.astro, Announcement จาก Announcement5 มาเป็น Announcement6, LatestWinners
+// จาก LatestWinners3 มาเป็น LatestWinners.astro, Faq จาก Faq4 มาเป็น Faq.astro และ
+// โครงสองคอลัมน์ที่ LoginRtpSection ใช้ย้ายจาก ContentBoxTwoPremium มาเป็น
+// ContentBoxTwoCyberCut
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide2 (คืนยอดเสีย 8% ทุกวัน /
-// ค่าคอมมิชชั่น 5% ทุกวัน) คู่กับหัวข้อ "ระบบตรงไว้ใจได้ ทุกขั้นตอนชัดเจน" และ
-// slide1 (ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม) คู่กับหัวข้อ "เรื่องการเงินต้องไม่
-// ซับซ้อน" ส่วน slide3 (รายได้แนะนำเพื่อน รับสูงสุด 2.5%) ไม่ถูก import ในไฟล์นี้
-// แต่ยังขึ้นใน SmoothCarousel และหน้า /promotion ส่วน slide4 เป็นอาร์ตพื้นชมพูของ
-// แบรนด์ก่อนหน้า และ banner.png กับ banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด
-// จึงห้าม import ที่ไหนทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร
-// render ก็ตาม
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide2 (ฝากแรก รับโบนัส 100% พร้อม
+// แถบโลโก้ค่าย PG / Pragmatic Play / Joker / Relax / Habanero / Play'n GO) คู่กับ
+// หัวข้อข้อ 2 "จับทุกตัวน่าเล่นมาไว้ครบจบในเว็บเดียว" เพราะแถบค่ายบนรูปคือภาพของ
+// การคัดค่ายมาไว้ครบ และ slide1 (คืนยอดเสีย ทุกวัน 30%) คู่กับหัวข้อข้อ 4
+// "โปรถึงโบนัสแรง" ซึ่งเป็นเรื่องโปรโมชันคืนยอดเสียตรงๆ
 //
-// banner1 เป็น hero ที่ MainLayout จัดการเอง รอบนี้จึงไม่มีรูปประกอบใน ContentBox
-// เดี่ยว
+// slide3 กับ slide4 เป็นอาร์ตของแบรนด์ก่อนหน้า และ banner.png กับ banner2/3/4 เป็น
+// อาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด จึงห้าม import ที่ไหนทั้งสิ้น — รูปที่ import คือ
+// รูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 เป็น hero ที่ MainLayout
+// จัดการเอง รอบนี้จึงไม่มีรูปประกอบใน ContentBox เดี่ยว
 //
-// widget ที่ไม่ได้มาจาก docx (LatestWinners3, LoginRtpSection, ReviewCardSumo2,
-// SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น <p>/<span> +
-// aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้น
-// GameRankingBoard กับ ProviderGrid ที่เป็นภาพประกอบของหัวข้อ docx ข้อ 2 โดยตรง
-// (โต๊ะเกมสดและค่ายเกมที่คัดมา) จึงวางต่อท้ายบล็อกนั้น ไม่มีตัวไหนคั่นระหว่าง
-// หัวข้อ docx สองข้อ
+// widget ที่ไม่ได้มาจาก docx (LatestWinners, LoginRtpSection, ReviewCardSumo2,
+// SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น <p>/<span> + aria-label
+// บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้น GameRankingBoard
+// กับ ProviderGrid ที่เป็นภาพประกอบของหัวข้อ docx ข้อ 2 โดยตรง (เกมและค่ายที่คัดมา)
+// จึงวางต่อท้ายบล็อกนั้น ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อ
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx พอดี ไม่มีตัวที่เจ็ด — หัว FAQ ถูกลดเป็น <p>
-// ใน Faq4.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq4 เป็น <span> ใน
-// <summary> ไม่ใช่ h3 และป้ายคอลัมน์ของ ContentBox3ThreeFloatingBadge /
-// ContentBoxSevenThree / ContentBoxTwoPremium เป็น <p> — docx รอบนี้แบน H1 + H2
-// ล้วน หน้านี้จึงไม่มี h3 เลย
-const pageTitle = "LUCKYBKK | คาสิโนอันดับต้น เกมสดคุณภาพ VIP ระบบตรงไว้ใจได้";
-// บรรทัด Des ของ docx ยาว 139 ตัวอักษร ต่ำกว่าเกท 150–160 ของ verify-build จึงต่อ
-// ท้ายวรรคสุดท้ายให้เป็น "พร้อมทีมแอดมินมืออาชีพคอยดูแลตลอดวัน" ตามเนื้อหัวข้อ
-// ข้อ 7 ของ docx เอง ได้ 154 ตัวอักษร ทุกวรรคอื่นคงคำเดิมของ docx ไว้ทั้งหมด และ
+// ใน Faq.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน <summary>
+// ไม่ใช่ h3 บรรทัดหัวของ LatestWinners เป็น <p> และป้ายคอลัมน์ของ
+// ContentBox3ThreePremium / SevenThree ทั้งสองตัว / ContentBoxTwoCyberCut เป็น <p>
+// — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
+const pageTitle = "PABO88 | เว็บสล็อตคัดของดี เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ถอนไว";
+// บรรทัด Des ของ docx ยาว 145 ตัวอักษร ต่ำกว่าเกท 150–160 ของ verify-build จึงขยาย
+// วรรคที่สองจาก "มาให้ครบในเว็บเดียว" เป็น "รวมตัวเด็ดแตกง่ายไว้ครบในเว็บเดียว" ตาม
+// คำในย่อหน้าแรกของ docx เอง ได้ 157 ตัวอักษร ทุกวรรคอื่นคงคำเดิมของ docx ไว้ และ
 // เป็นสตริงเดียวกับที่ส่งเข้า pageGraph
-const pageDescription =
-  "LUCKYBKK คาสิโนอันดับต้น รวมเกมสดคุณภาพ VIP แบบเรียลไทม์ ระบบตรงไว้ใจได้ ชัดเจนทุกขั้นตอน หลังบ้านเสถียร การเงินคล่อง พร้อมทีมแอดมินมืออาชีพคอยดูแลตลอดวัน";
+const pageDescription = "PABO88 เว็บสล็อตคัดของดี รวมตัวเด็ดแตกง่ายไว้ครบในเว็บเดียว เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ฟีเจอร์พร้อมเซอร์ไพรส์ ระบบออโต้คล่อง ถอนไวไม่ค้างฟีลตลอดทั้งวัน";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji เพราะ marquee
-// render ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
+// render ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้ — ข้อความชุดนี้
+// ตรงกับ default ของ Announcement6 เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก
+// <Announcement /> เปล่าๆ วิ่งข้อความเดียวกับหน้าแรก
 const announcementMessage =
-  "LUCKYBKK คาสิโนอันดับต้น เกมสดคุณภาพ VIP ระบบตรงไว้ใจได้ • ศูนย์รวมความบันเทิงระดับพรีเมียมที่ยกระดับมาตรฐานคาสิโนออนไลน์ ด้วยเกมสดส่งตรงจากสตูดิโอชั้นนำ ระบบตรงไม่ผ่านคนกลาง เสถียร ปลอดภัย และโปร่งใสในทุกมิติ • ยิงตรงสัญญาณสดความละเอียดสูง คมชัดระดับ HD ทั้งภาพและเสียง ครบทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ดำเนินเกมโดยดีลเลอร์มืออาชีพตลอด 24 ชั่วโมง • คัดสรรโต๊ะเดิมพันและค่ายเกมชั้นนำมารวบรวมไว้ในที่เดียว มีห้องให้เลือกหลากหลายระดับ ตั้งแต่เบทเริ่มต้นสบายๆ ไปจนถึงห้องระดับ High Roller สำหรับสายลุยหนัก • หน้าต่างการใช้งานแสดงข้อมูลและสถิติย้อนหลังได้ชัดเจน ช่วยให้วางแผนเดิมพันได้ง่ายและแม่นยำยิ่งขึ้น • ระบบตรงไม่ผ่านเอเย่นต์ ทุกขั้นตอนโปร่งใสตรวจสอบได้จริง อัตราการจ่ายได้มาตรฐานสากล ผลการเดิมพันยุติธรรมตรงไปตรงมา ไร้การหมกเม็ด ไร้เงื่อนไขซับซ้อน • หลังบ้านเสถียร รองรับผู้เข้าใช้งานพร้อมกันจำนวนมากโดยไม่หน่วงหรือกระตุก สลับเปลี่ยนโต๊ะเดิมพันได้ฉับไว • ฝากถอนผ่านระบบออโต้ด้วยตัวเองในไม่กี่ขั้นตอน ยอดเงินอัปเดตไว โอนเข้าบัญชีโดยตรง พร้อมหน้าต่างเช็กประวัติย้อนหลังที่เปิดดูได้ชัดเจน • ทีมงานแอดมินมืออาชีพคอยดูแลและซัพพอร์ตสมาชิกทุกคนตลอด 24 ชั่วโมง สุภาพ รวดเร็ว และเป็นกันเอง";
+  "PABO88 เว็บสล็อตคัดของดี เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ถอนไว • คัดเฉพาะเกมสล็อตคุณภาพสูง อัตราการจ่ายยุติธรรม ธีมน่าสนใจ มารวมไว้ครบจบในเว็บเดียว • งานภาพระดับ HD กราฟิกสีสันสดใส เอฟเฟกต์อลังการ พร้อมอัตราคูณโบนัสก้อนโตที่สุ่มแจกต่อเนื่อง • โบนัสต้อนรับสมาชิกใหม่ สิทธิพิเศษเพิ่มทุนรายวัน และเครดิตคืนยอดเสีย • ฟรีสปินออกบ่อย สัญลักษณ์พิเศษ และตัวคูณสะสมแบบทวีคูณ • ระบบออโต้เต็มรูปแบบ เข้าสู่ระบบ เลือกค่ายเกม และฝากเงินเองได้ในไม่กี่คลิก • ถอนออโต้โอนไว ยอดเข้าตรงเป๊ะ ไม่ต้องรอแอดมินอนุมัติ ตลอด 24 ชั่วโมง";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
@@ -81,24 +84,24 @@ const announcementMessage =
 // <Faq> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "เกมสดของ LUCKYBKK มีเกมอะไรบ้าง และถ่ายทอดมาจากไหน",
-    a: "เกมสดถูกส่งตรงจากสตูดิโอชั้นนำ ยิงตรงสัญญาณสดด้วยความละเอียดสูง คมชัดระดับ HD ทั้งภาพและเสียง ครบทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ทุกเกมดำเนินการโดยดีลเลอร์มืออาชีพ ให้สัมผัสที่สมจริงเหมือนได้เข้าไปนั่งอยู่ในคาสิโนชั้นนำจริงๆ ตลอด 24 ชั่วโมง",
+    q: "PABO88 คัดเกมสล็อตเข้าเว็บด้วยเกณฑ์อะไรบ้าง",
+    a: "ทุกเกมถูกคัดกรองมาก่อนเข้าเว็บด้วยสามเกณฑ์ คือคุณภาพของตัวเกม อัตราการจ่ายที่ยุติธรรม และธีมเกมที่น่าสนใจพอจะเล่นได้ยาวๆ ในลิสต์จึงมีทั้งเกมฮิตติดเทรนด์ ค่ายใหญ่นอกกระแส และเกมคลาสสิกที่โบนัสแตกหนัก ผู้เล่นไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อหาเกมโปรดอีกต่อไป",
   },
   {
-    q: "มีห้องเดิมพันให้เลือกกี่ระดับ มือใหม่กับสายเบทหนักเล่นห้องเดียวกันไหม",
-    a: "มีห้องเดิมพันให้เลือกหลากหลายระดับ ตั้งแต่เบทเริ่มต้นสบายๆ สำหรับคนที่เพิ่งเริ่ม ไปจนถึงห้องระดับ High Roller สำหรับสายลุยหนัก โต๊ะเดิมพันและค่ายเกมชั้นนำถูกคัดสรรมารวบรวมไว้ในที่เดียว เลือกระดับเดิมพันให้พอดีกับทุนของตัวเองได้จากหน้าเดียว",
+    q: "โปรโมชันของ PABO88 มีแบบไหนให้เลือกบ้าง",
+    a: "โปรโมชันถูกคิดมาเพื่อผู้เล่นทุกระดับ ทั้งโบนัสต้อนรับสมาชิกใหม่ สิทธิพิเศษเพิ่มทุนรายวัน และเครดิตคืนยอดเสีย ทุกกิจกรรมช่วยเติมทุนให้นำไปปั่นสล็อตลุ้นรางวัลได้ยาวนานขึ้น เพิ่มโอกาสเข้าถึงรอบแจ็คพอตใหญ่โดยไม่ต้องแบกรับความเสี่ยงสูงกว่าที่ตั้งใจไว้",
   },
   {
-    q: "ระบบตรงไม่ผ่านเอเย่นต์ ต่างจากเว็บทั่วไปตรงไหน",
-    a: "การให้บริการผ่านระบบตรงที่ไม่ผ่านเอเย่นต์ทำให้ทุกขั้นตอนของการใช้งานโปร่งใสและตรวจสอบได้จริง ทั้งอัตราการจ่ายที่ได้มาตรฐานสากล ผลการเดิมพันที่ยุติธรรมตรงไปตรงมา ไปจนถึงขั้นตอนการทำรายการทางการเงิน ไร้การหมกเม็ดและไร้เงื่อนไขซับซ้อนให้ต้องตีความ",
+    q: "ในเกมมีฟีเจอร์อะไรที่ช่วยเพิ่มจังหวะทำเงินบ้าง",
+    a: "นอกจากตัวเกมที่แตกง่ายแล้ว ยังมีโหมดฟรีสปินที่ออกบ่อยเกินคาด สัญลักษณ์พิเศษที่พร้อมเปลี่ยนเป็นเงินรางวัลใหญ่ และระบบตัวคูณสะสมแบบทวีคูณ ลูกเล่นเหล่านี้ทำให้แต่ละสปินมีความน่าลุ้นและไม่น่าเบื่อ แม้จะนั่งเล่นต่อเนื่องเป็นเวลานานก็ยังมีเซอร์ไพรส์ให้เจอ",
   },
   {
-    q: "ช่วงที่คนเข้าเล่นพร้อมกันเยอะ ระบบจะหน่วงหรือหลุดไหม",
-    a: "ทีมพัฒนาได้ปรับแต่งโครงสร้างหลังบ้านให้รองรับจำนวนผู้เข้าใช้งานพร้อมกันได้จำนวนมากโดยไม่มีอาการหน่วงหรือกระตุก สลับเปลี่ยนโต๊ะเดิมพันได้ฉับไว เข้าถึงทุกโหมดบริการได้ทันใจ ความต่อเนื่องของระบบตรงนี้เองที่ช่วยให้ผู้เล่นไม่พลาดจังหวะสำคัญตลอดวัน",
+    q: "ฝากเงินกับ PABO88 ต้องแจ้งแอดมินหรือรอยืนยันไหม",
+    a: "ระบบหลังบ้านเป็นออโต้เต็มรูปแบบ ตัดขั้นตอนซับซ้อนออกทั้งหมด ผู้เล่นเข้าสู่ระบบ เลือกค่ายเกม และทำรายการฝากเงินได้เองภายในไม่กี่คลิก ไม่ต้องแจ้งสลิปหรือรอใครยืนยัน หน้าเว็บโหลดฉับไวและตอบสนองทันใจ จังหวะการเล่นจึงลื่นไหลต่อเนื่องโดยไม่ขาดช่วง",
   },
   {
-    q: "ฝากถอนต้องแจ้งแอดมินไหม และย้อนดูรายการเก่าได้หรือเปล่า",
-    a: "ทำรายการฝากและถอนเงินผ่านระบบออโต้ได้ด้วยตัวเองง่ายๆ ภายในไม่กี่ขั้นตอน ยอดเงินอัปเดตไว โอนเข้าบัญชีโดยตรงอย่างแม่นยำ พร้อมหน้าต่างเช็กประวัติย้อนหลังที่เปิดดูได้ชัดเจน และยังมีทีมงานแอดมินคอยซัพพอร์ตตลอด 24 ชั่วโมงหากติดขัดระหว่างทำรายการ",
+    q: "ถอนเงินใช้เวลานานไหม และถอนได้ช่วงไหนบ้าง",
+    a: "ระบบถอนเงินเป็นออโต้ที่โอนไว ยอดเข้าตรงเป๊ะโดยไม่ต้องนั่งคอยแอดมินอนุมัติ เปิดให้ทำรายการได้ตลอด 24 ชั่วโมง ไม่ว่าจะเล่นได้กำไรหลักร้อยหรือหลักแสนก็กดถอนออกมาใช้ได้ทันที จบรายการไวไม่ค้างฟีล และไม่มีเงื่อนไขซ่อนให้ต้องมานั่งตีความทีหลัง",
   },
 ];
 
@@ -116,45 +119,55 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxFloatingBadge as="h1" title="LUCKYBKK คาสิโนอันดับต้น เกมสดคุณภาพ VIP ระบบตรงไว้ใจได้">
+  <ContentBoxPremium as="h1" title="PABO88 เว็บสล็อตคัดของดี เกมเด็ดเกินเรื่อง โปรถึงโบนัสแรง ถอนไว">
     <p class="text-left text-base leading-relaxed">
-      หากคุณกำลังมองหาประสบการณ์เดิมพันสดที่ยกระดับความหรูหราและความน่าเชื่อถือขึ้นไปอีกขั้น LUCKYBKK คือจุดหมายปลายทางที่ไม่ควรมองข้าม
-      ที่นี่คือศูนย์รวมความบันเทิงระดับพรีเมียมที่ยกระดับมาตรฐานคาสิโนออนไลน์ ด้วยการนำเสนอเกมสดส่งตรงจากสตูดิโอชั้นนำ โดดเด่นด้วยระบบตรงที่ไม่ผ่านคนกลาง มีความเสถียร ปลอดภัย และโปร่งใสในทุกมิติ
-      ช่วยให้คุณเข้าถึงความสนุกได้อย่างมั่นใจ ลื่นไหล ไม่มีสะดุด พร้อมสัมผัสการดูแลและการบริการที่เหนือระดับในสไตล์ VIP อย่างแท้จริง
+      เปิดมิติใหม่ของการปั่นสล็อตที่เน้นคุณภาพเน้นๆ กับ PABO88 เว็บสล็อตที่คัดสรรเฉพาะตัวเด็ดแตกง่ายมาให้เล่นแบบไม่เสียเวลา ที่นี่ตอบโจทย์ความสนุกของสายล่ารางวัลด้วยไลน์อัปเกมระดับพรีเมียม
+      จัดเต็มโปรโมชันสุดคุ้มที่อัปดีกรีความแรงของโบนัสอย่างต่อเนื่อง พร้อมระบบฝากถอนออโต้สุดฉับไว ทำรายการได้อย่างลื่นไหลไร้สะดุด ถอนเงินออกได้จริงแบบทันใจในทุกช่วงเวลา
     </p>
-  </ContentBoxFloatingBadge>
+  </ContentBoxPremium>
 
-  <ContentBoxFloatingBadge as="h2" title="LUCKYBKK คาสิโนอันดับต้น เปิดประสบการณ์เกมสดคุณภาพ VIP แบบเรียลไทม์">
-    <p class="text-left text-base leading-relaxed">
-      สัมผัสบรรยากาศคาสิโนระดับโลกได้จากทุกที่ทุกเวลาเมื่อเข้ามาที่ LUCKYBKK ที่พร้อมเสิร์ฟความตื่นเต้นแบบเรียลไทม์ ยิงตรงสัญญาณสดด้วยความละเอียดสูง คมชัดระดับ HD ทั้งภาพและเสียง
-      ไม่ว่าจะเป็นบาคาร่า รูเล็ต เสือมังกร หรือไฮโล ทุกเกมดำเนินการโดยดีลเลอร์มืออาชีพ เพิ่มความหรูหราน่าเล่นให้ทุกโต๊ะเดิมพัน มอบสัมผัสที่สมจริงเหมือนคุณได้เข้าไปนั่งอยู่ในคาสิโนชั้นนำจริงๆ
-      ตลอด 24 ชั่วโมง
+  <ContentBoxSevenThreeCyberCut as="h2" title="PABO88 เว็บสล็อตคัดของดี จับทุกตัวน่าเล่นมาไว้ครบจบในเว็บเดียว" titleleft="ฝากแรก รับโบนัส 100%">
+    <Picture
+      slot="left"
+      src={imgFirstDepositBonus}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นพื้นม่วงนีออนของ PABO88 เขียนตัวใหญ่ว่า ฝากแรก รับโบนัส 100% ภาพหญิงสาวชุดม่วงติดหูแมวถือไพ่เอซโพดำ ข้างกล่องของขวัญและหีบสมบัติที่มีเหรียญทองล้นออกมา มีตู้สล็อตเลข 777 ติดมงกุฎอยู่ด้านหลัง และแถบโลโก้ค่ายเกม PG, Pragmatic Play, Joker, Relax Gaming, Habanero และ Play'n GO เรียงอยู่ตลอดขอบล่าง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#bf3cfa]/40 shadow-[0_10px_30px_rgba(191,60,250,0.3)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อหาเกมโปรด เพราะ PABO88 ได้ทำการคัดกรองเฉพาะเกมสล็อตที่มีคุณภาพสูง อัตราการจ่ายยุติธรรม และมีธีมเกมที่น่าสนใจมารวบรวมไว้ในที่เดียว ทั้งเกมฮิตติดเทรนด์
+      ค่ายใหญ่นอกกระแส หรือเกมคลาสสิกโบนัสแตกหนัก ทุกเกมผ่านการเลือกสรรมาแล้วอย่างดีเพื่อให้ผู้เล่นได้สัมผัสความสนุกและทำกำไรได้จริงตั้งแต่สปินแรก
     </p>
-  </ContentBoxFloatingBadge>
+  </ContentBoxSevenThreeCyberCut>
 
   <GameRankingBoard />
 
   <ProviderGrid />
 
-  <ContentBox3ThreeFloatingBadge
+  <ContentBox3ThreePremium
     as="h2"
-    title="เกมสดจะพรีเมียมแค่ไหน เมื่อ LUCKYBKK คัดทั้งโต๊ะและประสบการณ์มาให้ครบ"
-    titleleft="ห้องเบทเริ่มต้นสบายๆ"
-    titlecenter="ห้องระดับ High Roller"
-    titleright="หน้าต่างสถิติย้อนหลัง">
+    title="เกมเด็ดเกินเรื่องตรงไหน? เปิดลิสต์ PABO88 แล้วดูว่ามีอะไรน่าตามบ้าง"
+    titleleft="งานภาพระดับ HD"
+    titlecenter="อัตราคูณโบนัสก้อนโต"
+    titleright="ตื่นเต้นทุกรอบวงล้อ">
     <p slot="left" class="text-left text-base leading-relaxed">
-      คำว่าพรีเมียมที่ LUCKYBKK ไม่ใช่แค่เรื่องงานภาพ แต่คือความพิถีพิถันในการคัดสรรโต๊ะเดิมพันและค่ายเกมชั้นนำมารวบรวมไว้ในที่เดียว มีห้องเดิมพันให้เลือกหลากหลายระดับ ตั้งแต่เบทเริ่มต้นสบายๆ
+      คำว่าเกมเด็ดเกินเรื่องของ PABO88 สัมผัสได้ทันทีตั้งแต่เปิดหน้าล็อบบี้ เพราะแต่ละเกมอัดแน่นไปด้วยงานภาพระดับ HD กราฟิกสีสันสดใส และเอฟเฟกต์สุดอลังการ
     </p>
-    <p slot="center" class="text-left text-base leading-relaxed">ไปจนถึงห้องระดับ High Roller สำหรับสายลุยหนัก</p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      หน้าต่างการใช้งานถูกออกแบบมาให้แสดงผลข้อมูลและสถิติย้อนหลังได้อย่างชัดเจน ช่วยให้ผู้เล่นวางแผนเดิมพันได้ง่ายและแม่นยำยิ่งขึ้น เติมเต็มประสบการณ์การเล่นให้ครบถ้วนในทุกรายละเอียด
-    </p>
-  </ContentBox3ThreeFloatingBadge>
+    <p slot="center" class="text-left text-base leading-relaxed">ที่สำคัญคือมีรูปแบบการจ่ายเงินที่หลากหลาย พร้อมอัตราคูณโบนัสก้อนโตที่สุ่มแจกอย่างต่อเนื่อง</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ทำให้การหมุนวงล้อในแต่ละรอบไม่ได้มีแค่ความเพลิดเพลิน แต่ยังเต็มไปด้วยความตื่นเต้นตระการตาตลอดการเล่น</p>
+  </ContentBox3ThreePremium>
 
-  <ContentBoxSevenThree as="h2" title="ระบบตรงไว้ใจได้ ทุกขั้นตอนชัดเจนตั้งแต่เข้าเกมจนถึงการทำรายการ" titleleft="คืนยอดเสีย 8% ค่าคอมมิชชั่น 5% ทุกวัน">
+  <ContentBoxSevenThreeNeumorphism as="h2" title="โปรถึงโบนัสแรง เพิ่มจังหวะความคุ้มให้ทุกช่วงมีอะไรให้ลุ้นต่อ" titleleft="คืนยอดเสีย ทุกวัน 30%">
     <Picture
       slot="left"
-      src={imgCashback8}
+      src={imgDailyCashback}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -163,53 +176,35 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มของ LUCKYBKK.net เขียนว่า คืนยอดเสีย 8% ทุกวัน และ ค่าคอมมิชชั่น 5% ทุกวัน โดยมีบรรทัดล่างกำกับว่า ทุกยอดฝากเล่น ภาพหญิงสาวชุดจีนสีน้ำเงินยืนคู่หีบสมบัติที่มีเพชรน้ำเงินล้นออกมา มีเหรียญทองปลิวและโคมไฟจีนสีแดงประดับสองข้าง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#3f9dfb]/40 shadow-[0_10px_30px_rgba(63,157,251,0.3)]"
+      alt="แบนเนอร์โปรโมชั่นพื้นม่วงนีออนของ PABO88 เขียนตัวใหญ่ว่า คืนยอดเสีย ทุกวัน 30% ภาพหญิงสาวสวมหูกระต่ายชุดม่วงยืนคู่ตู้สล็อตเลข 777 ฝั่งขวาเป็นฉลามใส่แว่นกันแดดคล้องสร้อยทองข้างหีบสมบัติที่มีเหรียญทองและชิปคาสิโนล้นออกมา ด้านล่างมีป้ายโล่กำกับว่า เล่นสนุก มั่นใจ ปลอดภัย 100%"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f5c518]/40 shadow-[0_10px_30px_rgba(245,197,24,0.25)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ความสบายใจของผู้เล่นคือสิ่งที่ LUCKYBKK ให้ความสำคัญสูงสุด ด้วยการให้บริการผ่านระบบตรงที่ไม่ผ่านเอเย่นต์ ทำให้ทุกขั้นตอนของการใช้งานมีความโปร่งใส และสามารถตรวจสอบได้จริง
-      ไม่ว่าจะเป็นอัตราการจ่ายที่ได้มาตรฐานสากล ผลการเดิมพันที่ยุติธรรมตรงไปตรงมา ไปจนถึงขั้นตอนการทำรายการทางการเงิน ไร้การหมกเม็ด ไร้เงื่อนไขซับซ้อน ให้คุณมั่นใจได้เต็มร้อยในทุกๆ วินาทีที่ลงเดิมพัน
+      เรื่องความคุ้มค่า PABO88 จัดหนักจัดเต็มด้วยโปรโมชันที่คิดมาเพื่อผู้เล่นทุกระดับ ไม่ว่าจะเป็นโบนัสต้อนรับสมาชิกใหม่ สิทธิพิเศษเพิ่มทุนรายวัน หรือเครดิตคืนยอดเสีย
+      ทุกกิจกรรมช่วยเติมทุนให้คุณนำไปปั่นสล็อตลุ้นรางวัลได้ยาวนานยิ่งขึ้น เพิ่มโอกาสการเข้าถึงรอบแจ็คพอตใหญ่ได้โดยไม่ต้องแบกรับความเสี่ยงสูง ถือเป็นจุดเด่นที่เติมความคุ้มให้การเล่นมีสีสันอยู่ตลอดเวลา
     </p>
-  </ContentBoxSevenThree>
+  </ContentBoxSevenThreeNeumorphism>
 
-  <ContentBox as="h2" title="เบื้องหลังความคล่องของ LUCKYBKK คือระบบหลังบ้านเสถียรที่พร้อมทำงานตลอดวัน">
+  <ContentBoxCyberCut as="h2" title="ฟีเจอร์พร้อมเซอร์ไพรส์ จุดที่ทำให้เกมของ PABO88 มีลูกเล่นมากกว่าที่คิด">
     <p class="text-left text-base leading-relaxed">
-      ความเสถียรของระบบเบื้องหลังคือหัวใจสำคัญที่ทำให้ LUCKYBKK ทำงานได้อย่างลื่นไหลไร้รอยต่อ
-      ทีมพัฒนาได้ปรับแต่งโครงสร้างหลังบ้านให้สามารถรองรับจำนวนผู้เข้าใช้งานพร้อมกันได้จำนวนมากโดยไม่มีอาการหน่วงหรือกระตุก สลับเปลี่ยนโต๊ะเดิมพันได้ฉับไว เข้าถึงทุกโหมดบริการได้อย่างทันใจ
-      ความต่อเนื่องของระบบตรงนี้เองที่ช่วยให้ผู้เล่นไม่พลาดจังหวะสำคัญ และรักษาอารมณ์การทำกำไรได้อย่างดีเยี่ยมตลอดวัน
+      นอกจากตัวเกมจะแตกง่ายแล้ว เกมใน PABO88 ยังสอดแทรกฟีเจอร์เด็ดและระบบเซอร์ไพรส์ไว้เพียบ ทั้งโหมดฟรีสปินที่ออกบ่อยเกินคาด สัญลักษณ์พิเศษที่พร้อมเปลี่ยนเป็นเงินรางวัลใหญ่ หรือระบบตัวคูณสะสมแบบทวีคูณ
+      ลูกเล่นเหล่านี้เข้ามาสร้างจังหวะความสนุกแปลกใหม่ ทำให้แต่ละสปินมีความน่าลุ้นและไม่น่าเบื่อแม้จะเล่นต่อเนื่องเป็นเวลานาน
+    </p>
+  </ContentBoxCyberCut>
+
+  <ContentBox as="h2" title="ระบบออโต้คล่องแค่ไหน เมื่อทุกขั้นตอนถูกลดให้ไวและไม่ทำจังหวะขาด">
+    <p class="text-left text-base leading-relaxed">
+      มอบประสบการณ์ความสะดวกสบายสูงสุดด้วยการพัฒนาระบบหลังบ้านของ PABO88 ให้เป็นระบบออโต้เต็มรูปแบบ ตัดขั้นตอนซับซ้อนน่ารำคาญออกทั้งหมด ผู้เล่นสามารถเข้าสู่ระบบ เลือกค่ายเกม
+      และทำรายการฝากเงินได้เองในไม่กี่คลิก หน้าเว็บโหลดฉับไว ตอบสนองทันใจ ช่วยรักษาจังหวะการเล่นของคุณให้ลื่นไหลและทำกำไรต่อได้แบบไม่ขาดช่วง
     </p>
   </ContentBox>
 
-  <ContentBoxSevenThree as="h2" title="เรื่องการเงินต้องไม่ซับซ้อน ระบบจัดการคล่องและตรวจสอบรายการได้ตรงจุด" titleleft="ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม">
-    <Picture
-      slot="left"
-      src={imgDeposit200}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นน้ำเงินเข้มของ LUCKYBKK.net เขียนว่า ฝากเพียง 200 บาท รับสิทธิ์สุดคุ้ม! พร้อมป้ายกำกับ รับเลย 30 เพชร เปิดกล่องสมบัติลุ้นรับสูงสุด 500 เพชร ฝากครั้งเดียวรับสิทธิ์ร่วมสนุกหลายกิจกรรม และฝากครบ 200 บาท รับสิทธิ์ทันที ภาพหญิงสาวชุดจีนสีน้ำเงินยืนคู่หีบสมบัติที่มีเพชรน้ำเงินล้น มีเหรียญทอง ชิปคาสิโน และโคมไฟจีนสีแดงประดับรอบ"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#f0b323]/40 shadow-[0_10px_30px_rgba(240,179,35,0.25)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      หมดกังวลเรื่องขั้นตอนการเงินที่ยุ่งยากน่ารำคาญ เพราะระบบการเงินของ LUCKYBKK ถูกออกแบบมาให้เน้นความกระชับและแม่นยำ สามารถทำรายการฝากและถอนเงินผ่านระบบออโต้ได้ด้วยตัวเองง่ายๆ
-      ภายในไม่กี่ขั้นตอน ยอดเงินอัปเดตไว โอนเข้าบัญชีโดยตรงอย่างแม่นยำ พร้อมหน้าต่างเช็กประวัติย้อนหลังที่เปิดชัดเจน ให้ผู้เล่นบริหารจัดการทุนและกำไรได้อย่างคล่องตัวและสบายใจที่สุด
+  <ContentBoxNeumorphism as="h2" title="ถอนไวไม่ค้างฟีลตลอดทั้งวัน อีกหนึ่งความคล่องที่ PABO88 จัดไว้ให้พร้อม">
+    <p class="text-left text-base leading-relaxed">
+      ปิดท้ายด้วยความมั่นใจด้านการเงินที่ PABO88 มอบความคล่องตัวให้ตลอด 24 ชั่วโมง ด้วยระบบถอนเงินออโต้ที่โอนไว ยอดเข้าตรงเป๊ะโดยไม่ต้องนั่งคอยแอดมินอนุมัติ
+      ไม่ว่าคุณจะเล่นได้กำไรหลักร้อยหรือหลักแสนก็กดถอนเงินออกมาใช้ได้ทันที จบรายการไวไม่ค้างฟีล สมกับเป็นเว็บสล็อตคัดของดีที่สายปั่นทุกคนไม่ควรพลาด
     </p>
-  </ContentBoxSevenThree>
-
-  <ContentBoxSpecial as="h2" title="เกมดีอย่างเดียวไม่พอ LUCKYBKK เติมทีมบริการที่พร้อมดูแลตลอดทั้งวัน">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      นอกจากตัวเกมสดคุณภาพ VIP และระบบหลังบ้านที่แน่นหนาแล้ว LUCKYBKK ยังให้ความสำคัญกับงานบริการอย่างใกล้ชิด ด้วยทีมงานแอดมินมืออาชีพที่คอยดูแลและซัพพอร์ตสมาชิกทุกคนตลอด 24 ชั่วโมง
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะติดขัดปัญหาการใช้งาน ต้องการสอบถามรายละเอียดโปรโมชัน หรือขอคำแนะนำในด้านใด ก็สามารถติดต่อได้ทันที บริการด้วยความสุภาพ รวดเร็ว และเป็นกันเอง
-      มอบดูแลให้คุณใช้งานได้อย่างอุ่นใจสมกับเป็นคาสิโนอันดับต้นๆ อย่างแท้จริง
-    </p>
-  </ContentBoxSpecial>
+  </ContentBoxNeumorphism>
 
   <LatestWinners />
 
@@ -222,18 +217,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffdf7e] via-[#f0b323] to-[#9a6c05] px-4 py-3 text-sm font-black whitespace-nowrap text-[#030b28] shadow-[0_10px_30px_rgba(240,179,35,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(240,179,35,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a3] via-[#f5c518] to-[#8f6205] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0118] shadow-[0_10px_30px_rgba(245,197,24,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(245,197,24,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
 
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#3f9dfb]/70 bg-[#030b28]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e4eeff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#cfe8ff] hover:bg-[#0d2160] hover:text-[#f5f9ff] hover:shadow-[0_15px_40px_rgba(31,95,208,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#bf3cfa]/70 bg-[#0a0118]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ece0ff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#e3b8ff] hover:bg-[#20064a] hover:text-[#faf5ff] hover:shadow-[0_15px_40px_rgba(139,31,214,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ LUCKYBKK" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ PABO88" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>
