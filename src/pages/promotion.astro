@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
@@ -14,35 +14,40 @@ import { Picture } from "astro:assets";
 // Meta and never a body.
 //
 // Named for what each banner ACTUALLY prints, not for its file number.
-// The PROFIT55 drop (2026-08-25) is two 600x143 slides, one offer each:
-//   slide1 = คืนยอดเสีย 5% ทุกสัปดาห์
-//   slide2 = หารายได้เสริมง่ายๆ ผ่าน ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์
+// The VIREL168 drop (2026-08-26) is three 600x300 slides:
+//   slide1 = คืนยอดเสีย / 5% / ทุกสัปดาห์ + ปุ่มสมัครสมาชิก
+//            (หญิงสาวผมเปียทำมือรูปหัวใจข้างกระปุกออมสินหมูทอง เหรียญทองร่วง
+//            โลโก้ VIREL168 มุมซ้ายบน โทนดำ-ทอง)
+//   slide2 = เว็บเดิมพันออนไลน์ / ที่ดีที่สุด + ปุ่มสมัครสมาชิก
+//            (หญิงสาวชุดดำถือธนบัตรดอลลาร์คลี่เป็นพัด ท่ามกลางเหรียญทองและชิป)
+//   slide3 = รวมทุกค่ายเดิมพัน / ไม่มีขั้นต่ำ / ครบจบในที่เดียว + ปุ่มสมัครสมาชิก
+//            (หญิงสาวชุดส้มแดงถือไพ่เอซสี่ใบ มาสคอตเพนกวินน้ำเงิน ตัวละครชุดทอง)
 // The mapping between file number and artwork changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after what is printed instead of after the file.
 //
-// slide3.png and slide4.png are deliberately NOT imported: both are left over
-// from previous brands (slide3 is a red Fortune Tiger banner, slide4 has the
-// UOK789 wordmark printed inside the artwork itself) and an imported image is
-// an emitted image even when nothing renders it — importing either would put
-// another brand's logo on this client's CDN. Same for banner.png and
-// banner2/3/4.png. banner1.png / banner1-mobile.png belong to MainLayout's
+// slide4.png is deliberately NOT imported: it is left over from a previous
+// brand (dated Aug 22, it does not belong to this drop) and an imported image
+// is an emitted image even when nothing renders it — importing it would put
+// another brand's artwork on this client's CDN. Same for banner.png and
+// banner2/3/4.png. banner1.png and banner1-mobile.png belong to MainLayout's
 // hero <picture> alone.
-// Two images in the grid is the correct result this round; nothing is missing.
 // Only what is printed on each banner may be stated on this page.
 import promoCashback from "../assets/slide1.png";
-import promoAffiliate from "../assets/slide2.png";
+import promoBest from "../assets/slide2.png";
+import promoAllCamps from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 160.
-const pageDescription = "โปรโมชั่น PROFIT55 รวมไว้ครบในหน้าเดียว คืนยอดเสีย 5% ทุกสัปดาห์ และหารายได้เสริมผ่านลิงค์รับทรัพย์สูงสุด 2.5 เปอร์เซนต์ กดรับเองผ่านระบบออโต้ได้ตลอด 24 ชั่วโมง";
+// byte count reads ~3x too long). This one measures 153. It states what the
+// page holds — the three offers the slides themselves print — and stops.
+const pageDescription = "รวมโปรโมชั่น VIREL168 สล็อตเว็บตรง ทั้งคืนยอดเสีย 5% ทุกสัปดาห์ โบนัสสมาชิกใหม่ และสิทธิ์รวมทุกค่ายไม่มีขั้นต่ำ กดรับเองได้ที่หน้าเว็บ ฝากถอนออโต้ 24 ชม.";
 
-const pageTitle = "โปรโมชั่น PROFIT55 | คืนยอดเสีย 5% ทุกสัปดาห์ และลิงค์รับทรัพย์ 2.5%";
+const pageTitle = "โปรโมชั่น VIREL168 | คืนยอดเสียทุกสัปดาห์ โบนัสพร้อมรับทุกวัน";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น PROFIT55 รวมสิทธิ์ที่เปิดให้สมาชิกกดรับในรอบนี้";
+const pageHeading = "โปรโมชั่น VIREL168 รวมสิทธิ์ที่เปิดให้สมาชิกกดรับในรอบนี้";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -55,15 +60,15 @@ const graph = pageGraph(Astro, {
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem), then
-// two-up from sm: inside that same padding plus one 2rem grid gap. Unlike the
-// CyberCut box the Premium box steps its padding up at md: (p-8 → p-10), so
-// there is a third stop. The card caps at max-w-[1400px], so once the viewport
-// passes 1432px it stops growing and the column settles at 644px.
+// two-up from sm: inside that same padding plus one 2rem grid gap. The Premium
+// box steps its padding up at md: (p-8 → p-10), so the padding total becomes
+// 7rem there. The card caps at max-w-[1400px], so once the viewport passes
+// 1432px the column settles at 644px.
 const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
 
-// ขอบทองแบรนด์ล้อกับงานอาร์ตพื้นทองของสไลด์ แล้วเรืองเงินโครเมียมขึ้นตอน hover
+// ขอบทองแบรนด์ล้อกับพื้นดำอมน้ำตาลของสไลด์ แล้วเรืองทองอ่อนขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#e3ac22]/35 object-contain shadow-[0_10px_30px_rgba(227,172,34,0.35)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe9a8]/70 hover:shadow-[0_15px_40px_rgba(207,216,226,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#e2a52d]/35 object-contain shadow-[0_10px_30px_rgba(250,202,76,0.35)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffeec2]/70 hover:shadow-[0_15px_40px_rgba(226,165,45,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
 // drop — the column is drawn up to 644px, so nothing above 600 buys detail.
@@ -78,14 +83,14 @@ const imageWidths = [320, 440, 600];
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffe9a8]">PROFIT55</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ทั้งหมด เปอร์เซ็นต์ที่ได้รับและรอบการคิดยอดของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองแล้ว
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffeec2]">VIREL168</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งเปอร์เซ็นต์ที่ได้คืนและรอบที่คืนของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองแล้ว
         แต่ละรายการคิดจากยอดคนละชุดและมีเงื่อนไขของตัวเอง จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์กดรับเองได้ผ่านระบบฝากถอนออโต้บนหน้าเว็บตลอด 24 ชั่วโมง จบได้ในไม่กี่ขั้นตอนโดยไม่ต้องส่งสลิปยืนยันและไม่ต้องรอคิวแอดมินอนุมัติ
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
           src={promoCashback}
-          alt="แบนเนอร์โปรโมชั่นพื้นทอง มีตัวละครคาวบอยถือมือถือที่เปิดโลโก้ PG SLOT ยืนข้างวงล้อรูเล็ต ไพ่โพดำ และกองเหรียญทอง ข้อความเขียนว่า คืนยอดเสีย 5% ทุกสัปดาห์ พร้อมโลโก้ PROFIT55 สีโครเมียมและทอง"
+          alt="แบนเนอร์โปรโมชั่นพื้นดำอมน้ำตาลตัวอักษรทอง พิมพ์ข้อความ คืนยอดเสีย 5% ทุกสัปดาห์ พร้อมปุ่ม สมัครสมาชิก มุมซ้ายบนเป็นโลโก้ VIREL168 ด้านซ้ายเป็นหญิงสาวผมเปียยิ้มทำมือรูปหัวใจข้างกระปุกออมสินรูปหมูสีทอง มีเหรียญทองร่วงเป็นสายทั่วภาพ"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -98,8 +103,22 @@ const imageWidths = [320, 440, 600];
         />
 
         <Picture
-          src={promoAffiliate}
-          alt="แบนเนอร์โปรโมชั่นพื้นทอง มีฟาโรห์อียิปต์ยืนข้างตู้สล็อตลายพีระมิด ไพ่โพดำ และกองเหรียญทอง ข้อความเขียนว่า หารายได้เสริมง่ายๆ ผ่าน ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์ พร้อมโลโก้ PROFIT55 สีโครเมียมและทอง"
+          src={promoBest}
+          alt="แบนเนอร์โปรโมชั่นพื้นดำอมน้ำตาลตัวอักษรทอง พิมพ์ข้อความ เว็บเดิมพันออนไลน์ ที่ดีที่สุด พร้อมปุ่ม สมัครสมาชิก มุมซ้ายบนเป็นโลโก้ VIREL168 ด้านขวาเป็นหญิงสาวชุดดำถือธนบัตรดอลลาร์คลี่เป็นพัด ท่ามกลางเหรียญทองและชิปคาสิโน"
+          loading="lazy"
+          fetchpriority="low"
+          widths={imageWidths}
+          sizes={imageSizes}
+          class={imageClass}
+          decoding="async"
+          formats={["avif", "webp"]}
+          fallbackFormat="webp"
+          quality={80}
+        />
+
+        <Picture
+          src={promoAllCamps}
+          alt="แบนเนอร์โปรโมชั่นพื้นดำอมน้ำตาลตัวอักษรทอง พิมพ์ข้อความ รวมทุกค่ายเดิมพัน ไม่มีขั้นต่ำ ครบจบในที่เดียว พร้อมปุ่ม สมัครสมาชิก ด้านขวาเป็นหญิงสาวชุดสีส้มแดงถือไพ่เอซสี่ใบ คู่กับมาสคอตเพนกวินสีน้ำเงินและตัวละครตัวเล็กในชุดทอง รายล้อมด้วยกองเหรียญทอง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -115,8 +134,8 @@ const imageWidths = [320, 440, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#eef3f8]/60 bg-gradient-to-r from-[#eef3f8] via-[#cfd8e2] to-[#8b96a4] px-10 py-3.5 text-lg font-black text-[#0a0702] shadow-[0_10px_30px_rgba(207,216,226,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(227,172,34,0.45)]">
-          สมัครสมาชิก PROFIT55
+          class="flex items-center justify-center rounded-lg border border-[#ffeec2]/60 bg-gradient-to-r from-[#ffeec2] via-[#faca4c] to-[#855a14] px-10 py-3.5 text-lg font-black text-[#0a0501] shadow-[0_10px_30px_rgba(250,202,76,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,165,45,0.45)]">
+          สมัครสมาชิก VIREL168
         </a>
       </div>
     </div>

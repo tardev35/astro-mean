@@ -6,16 +6,20 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
 
-// MONEY777: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (แผงสว่างของ LONGSAP168, แดง FUSIONNEW,
+// GGPLUS88: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (แผงสว่างของ LONGSAP168, แดง FUSIONNEW,
 // เขียวมังกร, ทองคาสิโนจีนของ MAHAHENG333, ม่วงนีออนของ GDK88, ทองคู่เงินโครเมียม
-// ของ AURORA688, ฟ้านีออนใต้ทะเลของ ORCA789 และรอบล่าสุดเป็นม่วงนีออนของ PABO88 —
-// ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
-// เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
-// git history)
-// รอบนี้เป็นแดงส้มคู่ทอง — แดง #e0330a / #ffa46b / #8b1406 เป็นสีเน้นหลักและเส้น
-// มุมฝั่งบนซ้าย ส่วนทอง #f6c945 เป็นสีเน้นรองที่ถือเส้นมุมฝั่งล่างขวา บนผิว
-// #0b0101 เนื้อความ #ffe6d8 เก็บไว้แค่ทรงมุมตัดสไตล์ cyber-cut ซึ่งเป็นเอกลักษณ์
-// เดียวของ variant นี้
+// ของ AURORA688, ฟ้านีออนใต้ทะเลของ ORCA789, ม่วงนีออนของ PABO88 และรอบล่าสุด
+// เป็นแดงส้มคู่ทองของ MONEY777 — ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind
+// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
+// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// รอบนี้เป็นม่วงลึกคู่มาเจนต้า — ม่วง #9b2fe0 / #d9a5ff / #5a1290 เป็นสีเน้นหลัก
+// และถือเส้นมุมฝั่งบนซ้าย ส่วนมาเจนต้า #d81b7e กับทอง #f0c14b เป็นสีเน้นรองที่
+// ถือเส้นมุมฝั่งล่างขวา บนผิว #0b0212 เนื้อความ #ece0f7 เก็บไว้แค่ทรงมุมตัด
+// สไตล์ cyber-cut ซึ่งเป็นเอกลักษณ์เดียวของ variant นี้
+//
+// รอบนี้ไฟล์นี้เป็นการ์ดหลักของหน้าย่อยด้วย (about-us / contact-us / promotion /
+// ทางเข้า / ทดลองเล่น import มันในชื่อ ContentBox) — terms/privacy ยังใช้
+// ContentBox.astro ตัวจริงต่อไปตามกติกาของ playbook
 //
 // การ์ดเป็น `isolate` และเลเยอร์ตกแต่งทุกชิ้นเป็น `-z-10` เนื้อความจึงลอยอยู่เหนือ
 // เส้นมุมได้เองโดยไม่ต้องมี wrapper `relative z-10` ครอบ slot ห้ามใส่กลับเข้ามา
@@ -23,17 +27,17 @@ const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:t
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#e0330a]/35 bg-[#0b0101]/92 p-8 text-left text-base leading-relaxed text-[#ffe6d8] shadow-[0_10px_30px_rgba(224,51,10,0.25)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#9b2fe0]/35 bg-[#0b0212]/92 p-8 text-left text-base leading-relaxed text-[#ece0f7] shadow-[0_10px_30px_rgba(155,47,224,0.25)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#e0330a] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#f6c945] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#e0330a] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#f6c945] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#9b2fe0] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#d81b7e] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#9b2fe0] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#f0c14b] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#e0330a] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#fff4ec] via-[#ffa46b] to-[#8b1406] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#d81b7e] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#f6ecff] via-[#d9a5ff] to-[#5a1290] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

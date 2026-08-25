@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 import imgLine from "../assets/contact-line.webp";
@@ -21,14 +21,15 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // the inherited text colour): that is what stops the previous brand's colour
 // being left behind here on the next launch.
 //
-// PROFIT55: ContentBoxCyberCut → ContentBoxPremium และ Announcement5 →
-// AnnouncementPremium ตามการหมุน variant รอบนี้ (เรียก Announcement แบบ bare
-// เพราะ default message ของ variant นี้เป็นข้อความของแบรนด์นี้แล้ว)
-// ปุ่มย้ายจากแดงส้มคู่ทองของ MONEY777 มาเป็นทองคู่เงินโครเมียมของรอบนี้ —
-// แดงเดิมกลายเป็นทอง #e3ac22 / #8a6410 / #2a1d05 ส่วนทองเดิมกลายเป็นเงิน
-// #eef3f8 / #cfd8e2 / #8b96a4 บนผิว #0a0702 เนื้อความ #f3e6c4 — ป้ายบนปุ่มทอง
-// ใช้ตัวอักษรสีเข้ม #0a0702 แทนครีม เพราะครีมบนพื้นทองคอนทราสต์ไม่ผ่าน
+// VIREL168: ContentBoxCyberCut → ContentBoxPremium และ Announcement3 →
+// Announcement5 ตามการหมุน variant รอบนี้ (เรียก Announcement แบบ bare เพราะ
+// default message ของ variant นี้เป็นข้อความของแบรนด์นี้แล้ว)
+// ปุ่มย้ายจากม่วงคู่มาเจนต้าของแบรนด์ก่อนมาเป็นทองคู่เงินโครเมียมของรอบนี้ —
+// ปุ่มหลักเป็นทอง #ffeec2 / #faca4c / #855a14 ตัวอักษรเข้ม #0a0501 ปุ่มรองเป็น
+// ผิวเข้ม #1b0d02 / #2e1a04 ขอบ #e2a52d เนื้อความ #f4e7cd / #ffeec2
 // เขียว LINE คงเดิมเพราะเป็นสีแบรนด์ของ LINE ไม่ใช่สีของเว็บนี้
+//
+// ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. Keeping it in a const is what stops the meta tag
@@ -36,19 +37,19 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // variants of the same sentence, and the JSON-LD copy was the one nobody
 // reread. 150–160 CHARACTERS (Thai is 3 bytes/char, so a byte count reads ~3x
 // too long and will send you rewriting a description that was fine). This one
-// measures 154.
-const pageDescription = "ติดต่อทีมงาน PROFIT55 ผ่าน LINE Official ตลอด 24 ชั่วโมง สอบถามโปรโมชั่นและสิทธิ์คืนยอดเสีย แจ้งปัญหาการเข้าเกม ขอคำแนะนำเรื่องค่ายเกม หรือแจ้งฝากถอนออโต้";
+// measures 159.
+const pageDescription = "ช่องทางติดต่อ VIREL168 แอดมินดูแลตลอด 24 ชม. สอบถามการใช้งาน แจ้งปัญหาฝากถอน หรือขอรับสิทธิ์โปรโมชั่น ทักผ่าน LINE Official ตอบไว ไม่ต้องรอคิว แก้ปัญหาให้ทันที";
 
 const graph = pageGraph(Astro, {
   type: "ContactPage",
-  name: "ติดต่อทีมงาน PROFIT55",
+  name: "ติดต่อทีมงาน VIREL168",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "ติดต่อเรา", path: "/contact-us" },
   ],
   org: {
-    alternateName: "PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล ตั้งแต่บาคาร่าไปจนถึงฟุตบอล เลือกเกมง่าย สลับโหมดคล่อง ระบบพร้อมตลอดวัน",
+    alternateName: "VIREL168 สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง รวมเกมแตกง่ายติดเทรนด์จากทุกค่ายชั้นนำไว้ในล็อบบี้เดียว โบนัสพร้อมทุกวัน ฝากถอนออโต้ โอนเข้าบัญชีไวในไม่กี่วินาที",
     contactPoints: [
       {
         contactType: "customer service",
@@ -70,21 +71,21 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ติดต่อทีมงาน PROFIT55 | แอดมินดูแลตลอด 24 ชั่วโมง" description={pageDescription}>
+<MainLayout title="ติดต่อ VIREL168 | ศูนย์บริการลูกค้า สอบถาม-แจ้งปัญหาได้ 24 ชั่วโมง" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ติดต่อทีมงาน PROFIT55" as="h1">
+  <ContentBox title="ติดต่อทีมงาน VIREL168" as="h1">
     <div>
       <Picture
         src={imgLine}
-        alt="พนักงานหญิงยิ้มในชุดเลื่อมสีชมพู ยืนอยู่เหนือปุ่ม LINE Support สีเขียว ช่องทางแชตกับทีมงาน PROFIT55"
+        alt="พนักงานหญิงยิ้มในชุดเลื่อมสีชมพู ยืนอยู่เหนือปุ่ม LINE Support สีเขียว ช่องทางแชตกับทีมงาน VIREL168"
         loading="lazy"
         fetchpriority="low"
         widths={[200, 400, 600]}
         sizes="(max-width: 495px) calc(100vw - 6rem), 400px"
-        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(227,172,34,0.4)]"
+        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(250,202,76,0.4)]"
         decoding="async"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
@@ -119,15 +120,15 @@ const graph = pageGraph(Astro, {
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก PROFIT55"
-          class="flex items-center justify-center rounded-lg border border-[#ffe9a8]/60 bg-gradient-to-r from-[#ffe9a8] via-[#e3ac22] to-[#a97d12] px-8 py-3 font-extrabold text-[#0a0702] shadow-[0_10px_30px_rgba(227,172,34,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,168,0.45)]">
+          aria-label="สมัครสมาชิก VIREL168"
+          class="flex items-center justify-center rounded-lg border border-[#ffeec2]/60 bg-gradient-to-r from-[#ffeec2] via-[#faca4c] to-[#855a14] px-8 py-3 font-extrabold text-[#0a0501] shadow-[0_10px_30px_rgba(250,202,76,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,165,45,0.45)]">
           สมัครสมาชิก
         </a>
 
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ PROFIT55"
-          class="flex items-center justify-center rounded-lg border border-[#cfd8e2]/60 bg-[#161004] px-8 py-3 font-bold text-[#f3e6c4] shadow-[0_4px_14px_rgba(207,216,226,0.3)] transition-transform hover:scale-105 hover:bg-[#2a1d05] hover:text-[#fffaf0] hover:shadow-[0_10px_30px_rgba(238,243,248,0.4)]">
+          aria-label="เข้าสู่ระบบ VIREL168"
+          class="flex items-center justify-center rounded-lg border border-[#e2a52d]/60 bg-[#1b0d02] px-8 py-3 font-bold text-[#f4e7cd] shadow-[0_4px_14px_rgba(250,202,76,0.35)] transition-transform hover:scale-105 hover:bg-[#2e1a04] hover:text-[#ffeec2] hover:shadow-[0_10px_30px_rgba(226,165,45,0.4)]">
           เข้าสู่ระบบ
         </a>
 

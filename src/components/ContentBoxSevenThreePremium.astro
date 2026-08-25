@@ -8,12 +8,11 @@ export interface Props {
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 const rightHeading = titleright ?? title;
 
-// MONEY777: ย้ายจากเขียวมรกตคู่ทองของ UOK789 มาเป็นแดงส้มคู่ทองของแบรนด์นี้ —
-// แดง #ff6a2b / #e0330a / #8b1406 คู่ทอง #ffe08a / #f6c945 / #a3760a บนผิว
-// #1a0503 / #0b0101 / #3c0c03 / #2a0301 เนื้อความ #ffe6d8 ตัวอักษรสว่าง #fff4ec
-// (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
-// เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
-// git history)
+// GGPLUS88: ม่วงลึกคู่มาเจนต้า ตัดทองเฉพาะจุด — ม่วง #9b2fe0 / #d9a5ff / #5a1290
+// คู่มาเจนต้า #d81b7e / #ff6fb5 คู่ทอง #f0c14b / #ffe9a8 / #a97d12 บนผิว #0b0212 /
+// #1b0630 / #2d0a50 เนื้อความ #ece0f7 ตัวอักษรสว่าง #f6ecff (ค่า hex ของแบรนด์ก่อน
+// ไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง
+// gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
 // titleleft เป็น <p> ป้ายคอลัมน์ ไม่ใช่หัวข้อ docx ส่วนหัวข้อจริงรับผ่าน `title`
 // + `as` แบบเดียวกับ ContentBox / ContentBoxTwo / ContentBoxSevenThree
@@ -23,21 +22,21 @@ const rightHeading = titleright ?? title;
 //
 // คอลัมน์ซ้าย 3fr คือช่องรูป คอลัมน์ขวา 7fr คือเนื้อความ — ส่งรูปหนึ่งใบเข้า
 // slot="left" และย่อหน้าเดียวเข้า slot="right" รอบนี้บล็อกนี้เป็น SevenThree ใบ
-// แรกในสองใบของเพดาน playbook คู่กับ slide1 (CASHBACK คืนยอดเสีย 10%) และหัวข้อ
-// docx ข้อ 5 เรื่องโบนัสแตกแจกทุกวัน
+// แรกในสองใบของเพดาน playbook คู่กับ slide2 (ใบอนุญาตมาตรฐานระดับโลก) และหัวข้อ
+// docx ข้อ 1 เรื่องเว็บตรงแท้ไม่ผ่านเอเย่นต์
 ---
 
 <section class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#f6c945]/30 bg-gradient-to-br from-[#1a0503]/92 to-[#0b0101]/88 p-8 text-[#ffe6d8] shadow-[0_10px_30px_rgba(246,201,69,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe08a]/65 hover:shadow-[0_15px_40px_rgba(224,51,10,0.38)] md:p-10">
-    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#3c0c03]/55 blur-[60px] transition-all duration-500 group-hover:bg-[#f6c945]/35"></div>
-    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#2a0301]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#a3760a]/45"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#9b2fe0]/30 bg-gradient-to-br from-[#1b0630]/92 to-[#0b0212]/88 p-8 text-[#ece0f7] shadow-[0_10px_30px_rgba(155,47,224,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#d9a5ff]/65 hover:shadow-[0_15px_40px_rgba(216,27,126,0.35)] md:p-10">
+    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#2d0a50]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#9b2fe0]/35"></div>
+    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#5a1290]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#d81b7e]/40"></div>
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ffe6d8]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0f7]">
         {
           titleleft && (
-            <p class="bg-gradient-to-r from-[#fff4ec] via-[#f6c945] to-[#e0330a] bg-clip-text text-center text-xl leading-normal font-black tracking-widest text-transparent uppercase md:text-left">
+            <p class="bg-gradient-to-r from-[#f6ecff] via-[#ff6fb5] to-[#d81b7e] bg-clip-text text-center text-xl leading-normal font-black tracking-widest text-transparent uppercase md:text-left">
               {titleleft}
             </p>
           )
@@ -45,10 +44,10 @@ const rightHeading = titleright ?? title;
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ffe6d8] md:border-l md:border-[#e0330a]/60 md:pl-10">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0f7] md:border-l md:border-[#9b2fe0]/55 md:pl-10">
         {
           rightHeading && (
-            <HeadingTag class="mb-2 bg-gradient-to-r from-[#fff4ec] via-[#f6c945] to-[#e0330a] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase">
+            <HeadingTag class="mb-2 bg-gradient-to-r from-[#f6ecff] via-[#d9a5ff] to-[#9b2fe0] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase">
               {rightHeading}
             </HeadingTag>
           )

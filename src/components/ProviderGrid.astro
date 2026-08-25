@@ -3,37 +3,35 @@
 // assistive tech ห้ามเลื่อน <p> ขึ้นเป็น <h2> เพื่อแก้เรื่องชื่อ section เพราะ
 // จำนวน h2 บนหน้าแรกถูก diff กับ checklist ของ docx
 //
-// เนื้อหาตาม brief ของ PROFIT55 — คาสิโนออนไลน์ระดับโปรที่รวมค่ายเกมชั้นนำทั่วโลก
-// ไว้ในแพลตฟอร์มเดียว ครบทั้งสายไพ่ สายสล็อต และสายแทงบอล ตั้งแต่บาคาร่าสดและ
-// คาสิโนสดสตรีมมิ่ง HD ไปจนถึงสล็อตหลายค่ายและกีฬา ลิสต์นี้จึงไม่ได้มีแต่ค่ายสล็อต
-// อย่างรอบก่อน แต่คลุมทั้งสามสายตามที่ brief บอก กระดานนี้เป็นภาพประกอบของหัวข้อ
-// docx ข้อ 3 (รวมค่ายชั้นนำไว้แค่ไหน) โดยตรง จึงวางต่อท้ายบล็อกนั้น
+// เนื้อหาตาม brief ของ VIREL168 — ค่ายเกมยักษ์ใหญ่ระดับโลกถูกรวมไว้ในล็อบบี้เดียว
+// ทั้งค่ายที่ขึ้นชื่อเรื่องภาพสวยสมจริงและค่ายที่เน้นจังหวะโบนัสระเบิดไว เปิดเข้ามา
+// ครั้งเดียวก็เลือกเล่นได้ตามความชอบโดยไม่ต้องโยกเว็บไปมา กริดนี้เป็นภาพประกอบของ
+// หัวข้อ docx ข้อ 2 (ค่ายดังครบเครื่อง เปิดครั้งเดียวเจอเกมได้หลายสไตล์) โดยตรง
+// จึงวางต่อท้ายบล็อกนั้น
 //
-// PROFIT55: กลับด้านชุดสีจากแดงส้มคู่ทองของแบรนด์ก่อนหน้า มาเป็นทองคู่เงินโครเมียม —
-// ทอง #e3ac22 / #f6d24a / #ffe9a8 / #8a6410 คู่เงิน #cfd8e2 / #eef3f8 / #8b96a4
-// บนผิว #161004 / #2a1d05 / #0a0702 เนื้อความ #f3e6c4 หมึกบนป้ายเงิน #0a0702
-// (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
-// คอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
+// VIREL168: ย้ายชุดสีมาที่ทองของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง #faca4c /
+// #ebb134 / #e2a52d / #ffeec2 / #855a14 คู่เงินโครเมียม #e1e1e1 / #949494 บนผิว
+// #0a0501 / #1b0d02 / #2e1a04 ขอบ #442503 เนื้อความ #f4e7cd หมึกบนป้ายทอง #0a0501
+// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
+// เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
 // git history)
-//
-// ป้ายมุมการ์ดใช้ไล่สีเงินล้วนกับหมึกเข้ม เพราะเงินอ่อนบนพื้นทองเข้มอ่านไม่ออก
 const providers = [
-  { name: "Evolution", desc: "คาสิโนสดสตรีมมิ่ง HD ที่เห็นดีลเลอร์แจกไพ่ทุกจังหวะแบบเรียลไทม์ ไม่ต้องเดา", tag: "คาสิโนสด HD", icon: "🎥" },
-  { name: "SA Gaming", desc: "โต๊ะบาคาร่าสดหลายห้องให้เลือกตามสไตล์ จะนั่งยาวหรือเข้าเร็วออกเร็วก็ได้", tag: "สายไพ่", icon: "🃏" },
-  { name: "PG SOFT", desc: "ค่ายสล็อตชั้นนำระดับโลกที่ส่งเกมใหม่เข้าล็อบบี้ต่อเนื่องตลอดทั้งปี", tag: "ค่ายชั้นนำ", icon: "🎰" },
-  { name: "Pragmatic Play", desc: "ครบทั้งสล็อตและคาสิโนสดในค่ายเดียว สลับหมวดได้โดยไม่ต้องออกจากยูสเซอร์", tag: "ครบสองสาย", icon: "💠" },
-  { name: "JILI", desc: "เกมสล็อตและเกมโต๊ะแนวสนุกเร็ว เหมาะกับคนที่ชอบเปลี่ยนธีมบ่อยๆ ไม่จำเจ", tag: "เปลี่ยนฟีลไว", icon: "🕹️" },
-  { name: "Joker Gaming", desc: "ตัวเลือกยอดนิยมที่ถูกจัดไว้ในหมวดเกมฮิตของล็อบบี้ หาเจอได้ในไม่กี่คลิก", tag: "หมวดเกมยอดนิยม", icon: "🎭" },
-  { name: "SBOBET", desc: "ฝั่งกีฬาและฟุตบอลที่ข้ามมาจากโต๊ะคาสิโนได้ทันทีด้วยบัญชีเดียวกัน", tag: "สายแทงบอล", icon: "⚽" },
+  { name: "PG SOFT", desc: "ค่ายที่ส่งเกมแตกง่ายติดเทรนด์เข้าล็อบบี้ใหม่ต่อเนื่องตลอดทั้งปี", tag: "เกมฮิตมาแรง", icon: "🎰" },
+  { name: "JOKER", desc: "ตัวเลือกยอดฮิตของสายปั่น จังหวะโบนัสระเบิดไวและกดเข้าเล่นได้ทันที", tag: "โบนัสระเบิดไว", icon: "🃏" },
+  { name: "JILI", desc: "เกมสล็อตและเกมยิงปลาแนวสนุกเร็ว เหมาะกับคนที่ชอบเปลี่ยนสไตล์บ่อย", tag: "เปลี่ยนฟีลไว", icon: "🐟" },
+  { name: "Microgaming", desc: "ค่ายระดับโลกที่งานภาพและกลไกเกมหลากหลายให้เลือกได้อย่างอิสระ", tag: "หลายสไตล์", icon: "🌐" },
+  { name: "Pragmatic Play", desc: "อัตราการจ่ายเงินรางวัลดีเยี่ยม ลุ้นรอบแจ็คพอตได้ง่ายในทุกระดับเบท", tag: "ลุ้นแจ็คพอตง่าย", icon: "💥" },
+  { name: "Habanero", desc: "สล็อตภาพสวยสมจริงระดับ HD สำหรับคนที่ให้ความสำคัญกับงานภาพ", tag: "ภาพสวยสมจริง", icon: "💠" },
+  { name: "Red Tiger", desc: "เกมแนวแอ็กชันที่มีฟีเจอร์ตัวคูณสะสมแบบทวีคูณให้ลุ้นคูณก้อนใหญ่", tag: "ตัวคูณสะสม", icon: "🐯" },
 ];
 ---
 
-<section aria-label="ค่ายเกมชั้นนำทั่วโลกที่ PROFIT55 รวมไว้ในแพลตฟอร์มเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายดังครบเครื่องที่ VIREL168 รวมไว้ในล็อบบี้เดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#fffaf0] via-[#cfd8e2] to-[#e3ac22] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมชั้นนำทั่วโลกที่ <span class="text-[#cfd8e2]">PROFIT55</span> รวมไว้ในแพลตฟอร์มเดียว
+    <p class="bg-gradient-to-r from-[#fff8e4] via-[#ffeec2] to-[#e2a52d] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายดังครบเครื่องที่ <span class="text-[#faca4c]">VIREL168</span> รวมไว้ในล็อบบี้เดียว
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#cfd8e2] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e2a52d] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
@@ -41,20 +39,20 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#cfd8e2]/30 bg-[#161004]/92 p-5 shadow-[0_10px_30px_rgba(207,216,226,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#cfd8e2]/60 hover:bg-[#2a1d05]/95 hover:shadow-[0_15px_40px_rgba(227,172,34,0.35)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#8a6410]/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#e2a52d]/30 bg-[#1b0d02]/92 p-5 shadow-[0_10px_30px_rgba(226,165,45,0.22)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#ffeec2]/60 hover:bg-[#2e1a04]/95 hover:shadow-[0_15px_40px_rgba(250,202,76,0.35)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#855a14]/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#eef3f8] to-[#cfd8e2] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#0a0702] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffeec2] to-[#faca4c] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#0a0501] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
             {provider.icon}
           </div>
-          <p class="text-center text-sm font-black text-[#f3e6c4] transition-colors group-hover:text-[#cfd8e2]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#f3e6c4]/75">{provider.desc}</p>
+          <p class="text-center text-sm font-black text-[#f4e7cd] transition-colors group-hover:text-[#ffeec2]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#c4ab7d]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#cfd8e2]/30 bg-[#0a0702] py-1.5 text-center text-[11px] font-bold text-[#cfd8e2] shadow-inner transition-colors duration-300 group-hover:border-[#eef3f8]/60 group-hover:bg-gradient-to-r group-hover:from-[#eef3f8] group-hover:to-[#cfd8e2] group-hover:text-[#0a0702]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#e2a52d]/40 bg-[#0a0501] py-1.5 text-center text-[11px] font-bold text-[#ffeec2] shadow-inner transition-colors duration-300 group-hover:border-[#ffeec2]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffeec2] group-hover:to-[#faca4c] group-hover:text-[#0a0501]">
             เข้าดูเกมทั้งหมด
           </span>
         </a>

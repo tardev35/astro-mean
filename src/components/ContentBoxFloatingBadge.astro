@@ -16,8 +16,8 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // สองตัวข้างหัวข้ออีก ~52px จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
 // *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ H2 ของ PROFIT55 (69 ตัวอักษร) chrome ของป้าย = py-2.5 (20px) +
-// border-2 (4px) = 24px:
+// คำนวณกับหัวข้อ H2 ข้อสุดท้ายของ VIREL168 (68 ตัวอักษร) chrome ของป้าย =
+// py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 9px ต่อตัวอักษร
 //   → ~25 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
@@ -29,28 +29,28 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// PROFIT55: ย้ายจากเขียวมรกตคู่ทองของ UOK789 มาเป็นทองคู่เงินโครเมียมของแบรนด์นี้
-// — ทอง #e3ac22 / #ffe9a8 / #a97d12 คู่เงิน #cfd8e2 / #eef3f8 บนผิว #161004 /
-// #0a0702 เนื้อความ #f3e6c4 ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามโลโก้เมทัลลิก
-// (ค่า hex ของแบรนด์เก่าไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// VIREL168: ย้ายชุดสีมาที่ทองของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง #faca4c /
+// #ebb134 / #e2a52d / #ffeec2 / #855a14 คู่เงินโครเมียม #e1e1e1 บนผิว #1b0d02 /
+// #0a0501 เนื้อความ #f4e7cd ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามโลโก้เมทัลลิก
+// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย
 // ดูของเดิมได้จาก git history)
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#e3ac22]/30 bg-[#161004]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#f3e6c4] shadow-[0_10px_30px_rgba(227,172,34,0.18)] backdrop-blur-md md:pt-36">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#e3ac22]/40 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#cfd8e2]/25 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#e2a52d]/30 bg-[#1b0d02]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#f4e7cd] shadow-[0_10px_30px_rgba(226,165,45,0.18)] backdrop-blur-md md:pt-36">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#e2a52d]/40 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#e1e1e1]/25 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffe9a8]/55 bg-[#0a0702] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(227,172,34,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#e3ac22]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffeec2]/55 bg-[#0a0501] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(226,165,45,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#e2a52d]">
             ◆
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#fffaf0] via-[#e3ac22] to-[#cfd8e2] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#e3ac22]">
+          <HeadingTag class={`bg-gradient-to-r from-[#fff8e4] via-[#faca4c] to-[#e1e1e1] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#e2a52d]">
             ◆
           </span>
         </div>

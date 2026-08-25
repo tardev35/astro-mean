@@ -1,110 +1,107 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
 import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
-import ContentBox3ThreeNeumorphism from "../components/ContentBox3ThreeNeumorphism.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
 import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
 import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
+import LatestWinners4 from "../components/LatestWinners4.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq2 from "../components/Faq2.astro";
+import Faq4 from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
+import imgProviders from "../assets/slide3.png";
 import imgCashback from "../assets/slide1.png";
-import imgAffiliate from "../assets/slide2.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1"
-//   2 → ContentBoxFloatingBadge as="h2"
-//   3 → ContentBoxSevenThreeCyberCut as="h2" + slide1 แล้วต่อด้วย ProviderGrid
-//       ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (รวมค่ายชั้นนำไว้แค่ไหน)
-//   4 → ContentBoxTwoCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/right)
-//   5 → ContentBox3ThreeNeumorphism as="h2" (แบ่งลง left/center/right) แล้วต่อด้วย
-//       GameRankingBoard ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (หมวดเกมยอดนิยม)
-//   6 → ContentBoxNeumorphism as="h2"
-//   7 → ContentBoxSevenThreeNeumorphism as="h2" + slide2
+//   0 → ContentBoxPremium as="h1"
+//   1 → ContentBoxTwoCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/right) แล้วต่อด้วย
+//       GameRankingBoard ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (เกมฮิตตัวตึงมาแรง)
+//   2 → ContentBoxSevenThreeCyberCut as="h2" + slide3 แล้วต่อด้วย ProviderGrid
+//       ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (ค่ายดังที่รวมไว้ในล็อบบี้เดียว)
+//   3 → ContentBoxNeumorphism as="h2"
+//   4 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (คืนยอดเสีย 5% ทุกสัปดาห์)
+//   5 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
+//   6 → ContentBoxFloatingBadge as="h2"
 //
-// variant รอบนี้หมุนทั้งตระกูลจาก MONEY777 (CyberCut + TwoPremium + 3ThreePremium +
-// Special + SevenThreePremium + TwoFloatingBadge + SevenThree) มาเป็น Premium +
-// FloatingBadge + SevenThreeCyberCut + TwoCyberCut + 3ThreeNeumorphism +
-// Neumorphism + SevenThreeNeumorphism ส่วน Navbar ย้ายจาก NavbarStyle9 มาเป็น
-// NavbarPremium, Footer จาก FooterStyle2 มาเป็น FooterPremiumSumo, Announcement
-// จาก Announcement5 มาเป็น AnnouncementPremium, LatestWinners จาก LatestWinners3
-// มาเป็น LatestWinnersPremium และ Faq จาก Faq4 มาเป็น Faq2
+// variant รอบนี้หมุนทั้งตระกูลจาก GGPLUS88 (CyberCut + SevenThreePremium + Special
+// + TwoPremium + SevenThree + 3ThreePremium + ContentBox) มาเป็น Premium +
+// TwoCyberCut + SevenThreeCyberCut + Neumorphism + SevenThreeNeumorphism +
+// 3ThreeCyberCut + FloatingBadge ส่วน Navbar ย้ายจาก NavbarStyle10 มาเป็น
+// NavbarStyle6, Footer จาก FooterStyle3 มาเป็น FooterStyle2, Announcement จาก
+// Announcement3 มาเป็น Announcement5, LatestWinners จาก LatestWinners2 มาเป็น
+// LatestWinners4 และ Faq จาก Faq3 มาเป็น Faq4
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide1 (คืนยอดเสีย 5% ทุกสัปดาห์
-// มือถือโชว์โลโก้ PG SLOT ไพ่ ชิป เหรียญทอง) คู่กับหัวข้อข้อ 3 เรื่องค่ายเกมดังใน
-// ล็อบบี้ และ slide2 (ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์ ฟาโรห์อียิปต์กับตู้สล็อต)
-// คู่กับหัวข้อข้อ 7 เรื่องระบบพร้อมให้เข้ามาทำกำไรได้ตลอด 24 ชั่วโมง
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide3 (หญิงสาวชุดส้มถือไพ่เอซคู่
+// ข้อความ รวมทุกค่ายเดิมพัน ไม่มีขั้นต่ำ) คู่กับหัวข้อข้อ 2 เรื่องค่ายดังครบเครื่อง
+// และ slide1 (คืนยอดเสีย 5% ทุกสัปดาห์ พร้อมกระปุกออมสินทอง) คู่กับหัวข้อข้อ 4
+// เรื่องโบนัสพร้อมทุกวัน ส่วน slide2 ถูกใช้ในกริดของหน้า /promotion เท่านั้น
 //
-// slide3 (เสือแดง Fortune Tiger) กับ slide4 (มีโลโก้ UOK789 อยู่ในรูป) รวมถึง
-// banner.png และ banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด จึงห้าม import
-// ที่นี่ทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน
-// banner1 กับ banner1-mobile เป็น hero ที่ MainLayout จัดการเอง
+// slide4 (22 ส.ค.) กับ banner.png และ banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด
+// จึงห้าม import ที่นี่ทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render
+// ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ MainLayout จัดการเอง
 //
-// widget ที่ไม่ได้มาจาก docx (LatestWinnersPremium, LoginRtpSection,
-// ReviewCardSumo2, SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น
-// <p>/<span> + aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้าย
-// ทั้งชุด ยกเว้น ProviderGrid กับ GameRankingBoard ที่เป็นภาพประกอบของหัวข้อ docx
-// ข้อ 3 และ 5 โดยตรง จึงวางต่อท้ายบล็อกนั้นๆ ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx
-// สองข้อโดยไม่มีเหตุผล
+// widget ที่ไม่ได้มาจาก docx (LatestWinners4, LoginRtpSection, ReviewCardSumo2,
+// SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น <p>/<span> + aria-label
+// บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้น GameRankingBoard
+// กับ ProviderGrid ที่เป็นภาพประกอบของหัวข้อ docx ข้อ 1 และ 2 โดยตรง จึงวางต่อท้าย
+// บล็อกนั้นๆ ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อโดยไม่มีเหตุผล
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx พอดี ไม่มีตัวที่เจ็ด — หัว FAQ เป็น <p> ใน
-// Faq2.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน <summary>
-// ไม่ใช่ h3 และป้ายคอลัมน์ของ SevenThreeCyberCut / TwoCyberCut /
-// 3ThreeNeumorphism / SevenThreeNeumorphism เป็น <p> — docx รอบนี้แบน H1 + H2
-// ล้วน หน้านี้จึงไม่มี h3 เลย
+// Faq4.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน <summary>
+// ไม่ใช่ h3 และป้ายคอลัมน์ของ TwoCyberCut / SevenThreeCyberCut /
+// SevenThreeNeumorphism / 3ThreeCyberCut เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน
+// หน้านี้จึงไม่มี h3 เลย
 //
-// title ใช้บรรทัด Title ของ docx ตรงๆ (65 ตัวอักษร) ส่วน description ใช้บรรทัด Des
-// ของ docx โดยต่อหางประโยคสุดท้ายเป็น "ฝากถอนออโต้ไวทุกจังหวะ" ให้ยาว 158 ตัวอักษร
-// — ข้อความดิบของ docx ต่ำกว่าเกท 150–160 ของ tools/verify-build.mjs ซึ่งจะทำให้
-// build แดง ค่าที่ใช้ตรงกับ default ของ MainLayout เป๊ะ และเป็นสตริงเดียวกับที่
-// ส่งเข้า pageGraph
-const pageTitle = "PROFIT55 | คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล";
+// title ใช้บรรทัด Title ของ docx ตรงๆ (64 ตัวอักษร) ส่วน description ใช้บรรทัด Des
+// ของ docx โดยต่อหางเป็น "ถอนได้จริง" ให้ยาว 155 ตัวอักษร — ข้อความดิบของ docx อยู่ที่
+// 149 ตัวอักษร ต่ำกว่าเกท 150–160 ของ tools/verify-build.mjs ซึ่งจะทำให้ build แดง
+// ค่าที่ใช้เป็นสตริงเดียวกับที่ส่งเข้า pageGraph และตรงกับ default ของ MainLayout
+const pageTitle = "VIREL168 | สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง โบนัสพร้อมทุกวัน";
 const pageDescription =
-  "PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล ตั้งแต่บาคาร่าไปจนถึงฟุตบอล เลือกเกมง่าย สลับโหมดคล่อง ระบบพร้อมตลอดวัน ฝากถอนออโต้ไวทุกจังหวะ";
+  "VIREL168 สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง เปิดมาเจอทั้งตัวท็อปและเกมน่าค้น โบนัสพร้อมทุกวัน จัดหมวดเลือกง่าย สลับค่ายคล่อง โอนไวเข้าบัญชีเลย ถอนได้จริง";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji เพราะ marquee
 // render ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้ — ข้อความชุดนี้
-// ตรงกับ default ของ AnnouncementPremium เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก
+// ตรงกับ default ของ Announcement5 เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก
 // <Announcement /> เปล่าๆ วิ่งข้อความเดียวกับหน้าแรก
 const announcementMessage =
-  "PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล • รวบรวมค่ายเกมชั้นนำทั่วโลกไว้ในแพลตฟอร์มเดียว ครบทั้งสายไพ่ สายปั่นสล็อต และสายแทงบอลจบในที่เดียว • เกมลิขสิทธิ์แท้ อัตราการจ่ายเงินรางวัลเป็นธรรม พร้อมโครงสร้างระบบหลังบ้านที่แน่นหนาและปลอดภัยในทุกมิติ • ล็อบบี้จัดหมวดหมู่ไว้เป็นระเบียบ ทั้งแยกตามค่ายเกม หมวดเกมยอดนิยม และคาสิโนสด หาเกมที่อยากเล่นเจอในไม่กี่คลิก • จบเกมบาคาร่าสดแล้วสลับไปเช็กราคาค่าน้ำและวางเดิมพันฟุตบอลคู่โปรดได้ทันทีภายในยูสเซอร์เดียว • ระบบกระเป๋าเงินเดียวใช้ได้ทุกหมวดเดิมพัน ไม่ต้องกดโยกเงินไปมาให้เสียเวลาหรือเสี่ยงยอดตกค้าง • เซิร์ฟเวอร์รองรับสมาชิกเข้าใช้งานพร้อมกันจำนวนมาก ฝากถอนออโต้ประมวลผลไวในไม่กี่วินาที เปิดให้เข้ามาทำกำไรได้ตลอด 24 ชั่วโมง";
+  "VIREL168 สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง โบนัสพร้อมทุกวัน • เว็บตรงที่รวมเกมสล็อตแตกง่ายติดเทรนด์จากทุกค่ายชั้นนำมาไว้ในที่เดียว พร้อมระบบที่ลื่นไหลไร้ปัญหากระตุก ทำกำไรได้โปร่งใส ถอนเงินได้จริงทุกยอด • ไลน์อัปเกมฮิตระดับตัวตึงที่กำลังเป็นกระแสในหมู่สายปั่น ทั้งธีมผจญภัยสุดอลังการและแนวแอ็กชันที่มีฟีเจอร์ตัวคูณสะสมแบบทวีคูณ • รวมค่ายเกมยักษ์ใหญ่ระดับโลกไว้ในล็อบบี้เดียว เปิดเข้ามาครั้งเดียวเลือกเล่นได้ตามความชอบ ไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อตามหาเกมค่ายโปรด • เกมนอกกระแสหลายตัวซ่อนลูกเล่นไว้ ทั้งฟรีสปินที่ออกง่ายเกินคาดและสัญลักษณ์พิเศษที่เปลี่ยนรางวัลธรรมดาให้กลายเป็นแจ็คพอตก้อนโต • โปรโมชันต้อนรับ โบนัสเติมเงินรายวัน และกิจกรรมพิเศษตามเทศกาล เพิ่มทุนให้ปั่นสล็อตได้นานขึ้นและลุ้นรางวัลใหญ่บ่อยขึ้น • จัดวางหมวดหมู่เกมเป็นระเบียบ แบ่งตามค่ายและสไตล์การเล่นชัดเจน สลับค่ายได้ทันทีเพียงไม่กี่คลิก ระบบตอบสนองไวไม่ต้องรอโหลดนาน • ระบบการเงินออโต้กดถอนเองได้ทันทีผ่านหน้าเว็บ ยอดเงินเข้าบัญชีแม่นยำภายในไม่กี่วินาที ไม่ต้องส่งสลิปยืนยันหรือรอแอดมินอนุมัติ";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
 // ที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq2> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "PROFIT55 เหมาะกับสายเดิมพันแนวไหนบ้าง",
-    a: "เหมาะกับทุกแนว เพราะที่นี่รวบรวมค่ายเกมชั้นนำทั่วโลกมาไว้ในแพลตฟอร์มเดียว ครบทั้งสายไพ่ที่ชอบบาคาร่าสดและคาสิโนสดสตรีมมิ่งความคมชัดสูง สายปั่นสล็อตที่มองหาเกมภาพสวยโบนัสแตกง่าย ไปจนถึงสายแทงบอลที่ต้องการเช็กราคาค่าน้ำก่อนวางเดิมพัน",
+    q: "VIREL168 เป็นสล็อตเว็บตรงจริงไหม เล่นแล้วถอนได้ทุกยอดหรือเปล่า",
+    a: "เป็นเว็บตรงที่รวบรวมเกมสล็อตแตกง่ายติดเทรนด์จากทุกค่ายชั้นนำมาไว้ในที่เดียว ระบบทำงานลื่นไหลไร้ปัญหากระตุก บรรยากาศการทำกำไรโปร่งใสตรวจสอบได้ และถอนเงินได้จริงทุกยอด ไม่ว่าจะทำกำไรก้อนเล็กหรือก้อนใหญ่ก็กดถอนผ่านหน้าเว็บได้ด้วยตัวเองตั้งแต่ครั้งแรกที่เข้ามาใช้งาน",
   },
   {
-    q: "ต้องเปิดหลายยูสเซอร์หรือโยกเงินข้ามหมวดไหมถ้าอยากเล่นหลายแบบ",
-    a: "ไม่ต้องเลย ทุกหมวดเดิมพันใช้ยูสเซอร์เดียวและกระเป๋าเงินเดียวร่วมกัน เงินทุนของคุณจึงพร้อมใช้งานได้ทุกหมวดทันที จบเกมบาคาร่าสดแล้วสลับไปวางเดิมพันฟุตบอลคู่โปรดได้เลย ไม่ต้องกดโยกเงินไปมาให้เสียเวลาหรือเสี่ยงต่อยอดเงินตกค้าง",
+    q: "เกมฮิตที่กำลังมาแรงในตอนนี้มีแนวไหนบ้าง ควรเก็บเข้าลิสต์ตัวไหนดี",
+    a: "ไลน์อัปเกมฮิตระดับตัวตึงที่กำลังเป็นกระแสในหมู่สายปั่นมีทั้งเกมสล็อตธีมผจญภัยสุดอลังการและเกมแนวแอ็กชันที่มีฟีเจอร์ตัวคูณสะสมแบบทวีคูณ ทุกเกมล้วนผ่านการคัดสรรมาแล้วว่ามีอัตราการจ่ายเงินรางวัลที่ดีเยี่ยม ลุ้นรอบแจ็คพอตง่าย และให้ความสนุกแบบไม่มีเบื่อ",
   },
   {
-    q: "ล็อบบี้ของ PROFIT55 หาเกมที่อยากเล่นยากไหม",
-    a: "หน้าการใช้งานถูกจัดหมวดหมู่ไว้อย่างเป็นระเบียบและสบายตา มีทั้งการแยกประเภทตามค่ายเกม หมวดเกมยอดนิยม และคาสิโนสด ช่วยลดเวลาในการไล่หาเกมลงไปมาก ผู้เล่นจึงเข้าถึงตัวเกมที่ต้องการได้อย่างรวดเร็วเพียงไม่กี่คลิก",
+    q: "รวมค่ายเกมไว้กี่ค่าย ต้องสมัครหลายเว็บเพื่อเล่นค่ายโปรดไหม",
+    a: "ไม่ต้องเลย จุดเด่นคือการรวมค่ายเกมยักษ์ใหญ่ระดับโลกมาไว้ในล็อบบี้เดียว ทั้งค่ายที่ขึ้นชื่อเรื่องภาพสวยสมจริงและค่ายที่เน้นจังหวะโบนัสระเบิดไว เปิดเข้ามาเพียงครั้งเดียวก็เลือกเล่นได้ตามความชอบ ไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อตามหาเกมค่ายโปรดอีกต่อไป",
   },
   {
-    q: "สลับจากคาสิโนไปหน้ากีฬาแล้วระบบค้างหรือกระตุกหรือเปล่า",
-    a: "ระบบประมวลผลถูกปรับจูนให้มีความเสถียรสูง เมื่อกดสลับหน้าต่างจากคาสิโนสดไปยังตารางแข่งขันกีฬา ตัวเว็บจะตอบสนองและโหลดข้อมูลขึ้นมาอย่างฉับไว ไร้รอยต่อ ไม่มีอาการค้างหรือกระตุกมาตัดจังหวะการเล่น",
+    q: "โบนัสและโปรโมชันมีให้รับบ่อยแค่ไหน แต่ละช่วงมีอะไรใหม่บ้าง",
+    a: "มีโบนัสและสิทธิประโยชน์สุดคุ้มเตรียมไว้ต้อนรับอยู่เสมอ ทั้งโปรโมชันต้อนรับ โบนัสเติมเงินรายวัน และกิจกรรมพิเศษตามเทศกาล ทั้งหมดออกแบบมาเพื่อช่วยเพิ่มทุนให้นำไปปั่นสล็อตได้นานขึ้น เพิ่มโอกาสพิชิตรางวัลใหญ่ และทำให้การเข้าเล่นแต่ละวันมีสีสันน่าติดตามอยู่ตลอด",
   },
   {
-    q: "ช่วงบอลคู่ใหญ่หรือคนเข้าปั่นสล็อตพร้อมกันเยอะ ระบบยังไหวไหม และฝากถอนนานหรือเปล่า",
-    a: "เซิร์ฟเวอร์ถูกออกแบบมาให้รองรับการเข้าใช้งานพร้อมกันของสมาชิกจำนวนมากได้สบาย ไม่ว่าจะเป็นช่วงบอลคู่ใหญ่หรือช่วงที่มีคนเข้าปั่นสล็อตสูงสุด ระบบก็ยังทำงานได้ราบรื่น ส่วนฝากถอนเป็นออโต้ประมวลผลไวในไม่กี่วินาที เปิดให้เข้ามาทำกำไรได้ตลอด 24 ชั่วโมง",
+    q: "ถอนเงินต้องส่งสลิปยืนยันหรือรอแอดมินอนุมัติไหม ใช้เวลานานแค่ไหน",
+    a: "ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ ระบบการเงินเป็นออโต้ที่เชื่อมโยงตั้งแต่ขั้นตอนการเข้าเล่นจนถึงขั้นตอนการถอนเงิน เมื่อทำกำไรได้ตามเป้าก็กดถอนผ่านหน้าเว็บได้ด้วยตัวเองทันที ยอดเงินจะถูกโอนเข้าบัญชีอย่างแม่นยำและรวดเร็วภายในไม่กี่วินาที",
   },
 ];
 
@@ -122,22 +119,69 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล">
+  <ContentBoxPremium as="h1" title="VIREL168 สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง โบนัสพร้อมทุกวัน">
     <p class="text-left text-base leading-relaxed">
-      หากคุณกำลังมองหาศูนย์รวมความบันเทิงที่ตอบโจทย์ความต้องการของสายเดิมพันทุกรูปแบบ PROFIT55 คือคำตอบที่ใช่ที่สุดในตอนนี้ ยกระดับการเล่นคาสิโนออนไลน์สู่มาตรฐานระดับโปรด้วยการรวบรวมค่ายเกมชั้นนำทั่วโลกมาไว้ในแพลตฟอร์มเดียว
-      ไม่ว่าจะเป็นสายไพ่ สายปั่นสล็อต หรือสายแทงบอล ที่นี่พร้อมมอบสัมผัสการใช้งานที่ลื่นไหล เสถียร และปลอดภัยในทุกมิติ เปลี่ยนการเล่นคาสิโนแบบเดิมให้กลายเป็นความบันเทิงระดับพรีเมียมที่ทำกำไรได้จริงตลอดเวลา
+      ถ้าคุณกำลังมองหาเว็บสล็อตที่รวมความบันเทิงไว้อย่างลงตัว VIREL168 คือเว็บตรงที่ไม่ควรพลาด ที่นี่รวบรวมเกมสล็อตแตกง่ายติดเทรนด์จากทุกค่ายชั้นนำมาไว้ในที่เดียว
+      พร้อมอัปเดตระบบการทำงานให้ลื่นไหล ไร้ปัญหากระตุก และการันตีจังหวะการแจกโบนัสแบบจัดเต็มทุกวัน ให้ผู้เล่นได้สัมผัสบรรยากาศการทำกำไรที่โปร่งใส ถอนเงินได้จริงทุกยอด
+      และสร้างความมั่นใจในทุกสปินตั้งแต่ครั้งแรกที่เข้ามาใช้งาน
     </p>
   </ContentBoxPremium>
 
-  <ContentBoxFloatingBadge as="h2" title="PROFIT55 คาสิโนออนไลน์ระดับโปร มีอะไรครบจนสายเดิมพันหลายแนวมารวมกันได้">
-    <p class="text-left text-base leading-relaxed">
-      ปัจจัยหลักที่ทำให้เหล่านักเดิมพันตัวจริงต่างพากันปักหลักใช้งานที่ PROFIT55 คือความอุดมสมบูรณ์ของตัวเกมและระบบบริการที่ไม่เคยตัดทอนคุณภาพ ตัวเว็บถูกออกแบบมาเพื่อรองรับผู้เล่นหลากหลายกลุ่ม
-      ไม่ว่าจะเป็นผู้เล่นสายเน้นจังหวะความเร็ว หรือผู้เล่นสายวิเคราะห์เชิงกลยุทธ์ ทุกคนจะได้สัมผัสกับเกมลิขสิทธิ์แท้ที่มีอัตราการจ่ายเงินรางวัลเป็นธรรม พร้อมโครงสร้างระบบหลังบ้านที่แน่นหนา
-      ทำให้ที่นี่กลายเป็นจุดหมายปลายทางที่รวมสายเดิมพันทุกแนวไว้ได้อย่างลงตัว
+  <ContentBoxTwoCyberCut
+    as="h2"
+    title="VIREL168 สล็อตเว็บตรงเกมฮิต มีตัวไหนมาแรงจนควรเก็บเข้าลิสต์บ้าง?"
+    titleleft="ไลน์อัปเกมฮิตระดับตัวตึง"
+    titleright="คัดมาแล้วว่าจ่ายดี ลุ้นแจ็คพอตง่าย">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      เมื่อก้าวเข้ามาที่ VIREL168 คุณจะได้พบกับไลน์อัปเกมฮิตระดับตัวตึงที่กำลังเป็นกระแสในหมู่สายปั่น ไม่ว่าจะเป็นเกมสล็อตธีมผจญภัยสุดอลังการ
+      หรือเกมแนวแอ็กชันที่มีฟีเจอร์ตัวคูณสะสมแบบทวีคูณ
     </p>
-  </ContentBoxFloatingBadge>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ทุกเกมล้วนผ่านการคัดสรรมาแล้วว่ามีอัตราการจ่ายเงินรางวัลที่ดีเยี่ยม ลุ้นรอบแจ็คพอตง่าย และให้ความสนุกแบบไม่มีเบื่อ เป็นลิสต์เกมเด็ดที่สายปั่นตัวจริงควรเซฟไว้ในใจ
+    </p>
+  </ContentBoxTwoCyberCut>
 
-  <ContentBoxSevenThreeCyberCut as="h2" title="รวมค่ายชั้นนำไว้แค่ไหน? เปิด PROFIT55 แล้วเจอเกมดังหลายสไตล์ในที่เดียว" titleleft="คืนยอดเสีย 5% ทุกสัปดาห์">
+  <GameRankingBoard />
+
+  <ContentBoxSevenThreeCyberCut
+    as="h2"
+    title="ค่ายดังครบเครื่องที่ VIREL168 รวมไว้ เปิดครั้งเดียวเจอเกมได้หลายสไตล์"
+    titleleft="รวมทุกค่ายไว้ในล็อบบี้เดียว">
+    <Picture
+      slot="left"
+      src={imgProviders}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นของ VIREL168 พื้นดำมีเหรียญทองและชิปทองปลิวทั่วภาพ มุมซ้ายบนเป็นโลโก้ตัว V สีทองคู่คำว่า VIREL168 ตรงกลางเขียนตัวหนังสือขาวว่า รวมทุกค่ายเดิมพัน ถัดลงมาเป็นตัวอักษรทองขนาดใหญ่ว่า ไม่มีขั้นต่ำ และข้อความว่า ครบจบในที่เดียว ใต้ลงมาเป็นปุ่มขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวสวมชุดจีนสีส้มถือไพ่เอซสี่ใบ มุมล่างขวามีตุ๊กตาเพนกวินสีน้ำเงินยืนอยู่บนกองเหรียญทอง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e2a52d]/40 shadow-[0_10px_30px_rgba(226,165,45,0.3)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ความโดดเด่นของ VIREL168 คือการรวมเอาค่ายเกมยักษ์ใหญ่ระดับโลกมาไว้ในล็อบบี้เดียว ทำให้ผู้เล่นสามารถสัมผัสงานภาพและกลไกเกมที่หลากหลายได้อย่างอิสระ
+      ไม่ว่าจะเป็นค่ายที่ขึ้นชื่อเรื่องภาพสวยสมจริง หรือค่ายที่เน้นจังหวะโบนัสระเบิดไว เปิดเข้ามาเพียงครั้งเดียวก็พร้อมให้คุณเลือกเล่นได้ตามความชอบ
+      ไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อตามหาเกมค่ายโปรดอีกต่อไป
+    </p>
+  </ContentBoxSevenThreeCyberCut>
+
+  <ProviderGrid />
+
+  <ContentBoxNeumorphism as="h2" title="อย่ามองแค่ตัวท็อป เกมน่าค้นบางตัวอาจมีฟีเจอร์เด็ดกว่าที่คิด">
+    <p class="text-left text-base leading-relaxed">
+      นอกจากเกมยอดฮิตติดลมบนแล้ว ในหน้าล็อบบี้ของ VIREL168 ยังมีเกมสล็อตนอกกระแสอีกหลายตัวที่ซ่อนลูกเล่นและฟีเจอร์เด็ดเอาไว้อย่างน่าสนใจ
+      ไม่ว่าจะเป็นระบบฟรีสปินที่ออกง่ายเกินคาด หรือสัญลักษณ์พิเศษที่ช่วยเปลี่ยนรางวัลธรรมดาให้กลายเป็นแจ็คพอตก้อนโต
+      การลองเปิดใจค้นหาเกมใหม่ๆ ที่นี่อาจทำให้คุณได้เจอเกมทำเงินตัวใหม่ที่ถูกจริตและแตกหนักกว่าที่คิด
+    </p>
+  </ContentBoxNeumorphism>
+
+  <ContentBoxSevenThreeNeumorphism
+    as="h2"
+    title="โบนัสพร้อมทุกวัน จุดที่ VIREL168 เติมความน่าตามให้แต่ละช่วงมีอะไรใหม่"
+    titleleft="คืนยอดเสีย 5% ทุกสัปดาห์">
     <Picture
       slot="left"
       src={imgCashback}
@@ -149,77 +193,40 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ PROFIT55 พื้นทองไล่เฉด ด้านซ้ายเป็นมือถือที่เปิดหน้าจอโลโก้ PG SLOT สีแดง ถัดมาเป็นตัวการ์ตูนคาวบอยสวมหมวกปีกกว้างและผ้าพันคอแดง ตรงกลางเป็นวงล้อสีดำทองพร้อมไพ่โพดำและดอกจิก ล้อมด้วยกองเหรียญทอง ด้านบนมีโลโก้ PROFIT55 และด้านขวาเขียนตัวหนังสือขาวขอบทองว่า คืนยอดเสีย 5% ทุกสัปดาห์"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e3ac22]/40 shadow-[0_10px_30px_rgba(227,172,34,0.25)]"
+      alt="แบนเนอร์โปรโมชั่นของ VIREL168 พื้นดำมีเหรียญทองร่วงลงมาทั่วภาพ มุมซ้ายบนเป็นโลโก้ตัว V สีทองคู่คำว่า VIREL168 ด้านซ้ายเป็นหญิงสาวผมเปียสองข้างทำมือเป็นรูปหัวใจ ยืนอยู่หลังกระปุกออมสินรูปหมูสีทองที่วางบนกองเหรียญทอง ด้านขวาเขียนตัวอักษรทองว่า คืนยอดเสีย ตามด้วยเลข 5% ขนาดใหญ่ และคำว่า ทุกสัปดาห์ ใต้ลงมาเป็นปุ่มขอบทองเขียนว่า สมัครสมาชิก"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e2a52d]/40 shadow-[0_10px_30px_rgba(226,165,45,0.3)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      พอก้าวเข้าสู่ล็อบบี้ของ PROFIT55 คุณจะได้พบกับอาณาจักรความบันเทิงที่ไร้ขีดจำกัด ตัวเว็บจับมือกับค่ายเกมยักษ์ใหญ่ระดับโลกเพื่อนำเสนอเกมตัวตึงแบบจัดเต็ม ตั้งแต่สล็อตภาพสวยโบนัสแตกง่าย
-      คาสิโนสดสตรีมมิ่งความคมชัดสูง ไปจนถึงเกมสไตล์ใหม่ๆ ที่กำลังเป็นกระแส คุณสามารถค้นหาและเลือกเล่นเกมฮิตจากทุกค่ายดังได้ทันทีโดยไม่ต้องเสียเวลาตามหาจากหลายๆ เว็บให้ยุ่งยาก
-    </p>
-  </ContentBoxSevenThreeCyberCut>
-
-  <ProviderGrid />
-
-  <ContentBoxTwoCyberCut
-    as="h2"
-    title="จากโต๊ะบาคาร่าไปถึงฟุตบอล เปลี่ยนอารมณ์ได้หลายฟีลโดยไม่ต้องย้ายเว็บ"
-    titleleft="สลับฟีลลิ่งได้ในยูสเซอร์เดียว"
-    titleright="กระเป๋าเงินเดียวใช้ได้ทุกหมวด">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      หมดปัญหาเรื่องความซ้ำซากจำเจเพราะ PROFIT55 ช่วยให้คุณสลับสับเปลี่ยนฟีลลิ่งการเล่นได้อย่างอิสระ จบเกมบาคาร่าสดที่กำลังลุ้นสนุก ก็สามารถสลับไปเช็กราคาค่าน้ำและวางเดิมพันฟุตบอลคู่โปรดได้ทันทีภายในยูสเซอร์เดียว
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ระบบกระเป๋าเงินเดียวช่วยให้เงินทุนของคุณพร้อมใช้งานในทุกหมวดหมู่เดิมพัน โดยไม่ต้องกดโยกเงินไปมาให้เสียเวลาหรือเสี่ยงต่อยอดเงินตกค้าง
-    </p>
-  </ContentBoxTwoCyberCut>
-
-  <ContentBox3ThreeNeumorphism
-    as="h2"
-    title="เลือกเกมไม่ต้องไล่หานาน PROFIT55 จัดหมวดให้ตัวน่าเล่นเข้าถึงง่ายขึ้น"
-    titleleft="จัดหน้าเป็นระเบียบสบายตา"
-    titlecenter="แยกตามค่าย เกมฮิต คาสิโนสด"
-    titleright="เริ่มจังหวะทำกำไรได้ทันที">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ความใส่ใจในประสบการณ์ผู้ใช้เป็นสิ่งที่ PROFIT55 ให้ความสำคัญอย่างมาก หน้าการใช้งานถูกจัดหมวดหมู่ไว้อย่างเป็นระเบียบและสบายตา
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะเป็นการแยกประเภทตามค่ายเกม หมวดเกมยอดนิยม หรือคาสิโนสด ช่วยลดเวลาในการไล่หาเกม และทำให้ผู้เล่นเข้าถึงตัวเกมที่ต้องการได้อย่างรวดเร็วเพียงไม่กี่คลิก
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">ช่วยให้จังหวะการทำกำไรของคุณเริ่มขึ้นได้ทันทีโดยไม่เสียเวลาไปกับเรื่องไม่เป็นเรื่อง</p>
-  </ContentBox3ThreeNeumorphism>
-
-  <GameRankingBoard />
-
-  <ContentBoxNeumorphism as="h2" title="สลับโหมดคล่อง จุดเล็ก ๆ ที่ช่วยให้การข้ามจากคาสิโนไปกีฬาไม่เสียจังหวะ">
-    <p class="text-left text-base leading-relaxed">
-      รายละเอียดเล็กๆ อย่างความคล่องตัวในการเปลี่ยนโหมดเกมคือสิ่งที่ PROFIT55 ทำออกมาได้ดีเยี่ยม ระบบประมวลผลถูกปรับจูนให้มีความเสถียรสูง เมื่อคุณกดสลับหน้าต่างจากคาสิโนสดไปยังตารางแข่งขันกีฬา
-      ตัวเว็บจะตอบสนองและโหลดข้อมูลขึ้นมาอย่างฉับไว ไร้รอยต่อ และไม่มีปัญหาระบบค้างหรือกระตุก ช่วยรักษาความต่อเนื่องและอารมณ์การเล่นของคุณให้สมูธตลอดการใช้งาน
-    </p>
-  </ContentBoxNeumorphism>
-
-  <ContentBoxSevenThreeNeumorphism as="h2" title="เล่นช่วงไหนก็พร้อม PROFIT55 วางระบบให้รองรับการใช้งานได้ตลอดทั้งวัน" titleleft="ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์">
-    <Picture
-      slot="left"
-      src={imgAffiliate}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ PROFIT55 พื้นทองไล่เฉด ด้านซ้ายเขียนตัวหนังสือขาวขอบทองว่า หารายได้เสริมง่ายๆ ผ่าน ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์ ด้านบนมีโลโก้ PROFIT55 ส่วนด้านขวาเป็นตัวการ์ตูนฟาโรห์อียิปต์ยืนขนาบข้างด้วยตู้สล็อตสองตู้ พร้อมไพ่โพดำ พีระมิด และกองเหรียญทอง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e3ac22]/40 shadow-[0_10px_30px_rgba(227,172,34,0.25)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ปิดท้ายด้วยความมั่นใจในศักยภาพของระบบที่ PROFIT55 วางโครงสร้างไว้อย่างรัดกุม ตัวเซิร์ฟเวอร์ถูกออกแบบมาให้รองรับการเข้าใช้งานพร้อมกันของสมาชิกจำนวนมากได้สบายๆ
-      ไม่ว่าจะเป็นช่วงเวลาที่มีการแข่งขันบอลคู่ใหญ่ หรือช่วงเวลาที่มีผู้เล่นเข้าปั่นสล็อตพร้อมกันสูงสุด ระบบก็ยังคงทำงานได้อย่างราบรื่น ฝากถอนออโต้ประมวลผลไวในไม่กี่วินาที
-      พร้อมเปิดประตูต้อนรับให้คุณเข้ามาทำกำไรได้ตลอด 24 ชั่วโมง
+      อีกหนึ่งเหตุผลที่ทำให้สมาชิกหลงรัก VIREL168 คือการจัดเตรียมโบนัสและสิทธิประโยชน์สุดคุ้มไว้ต้อนรับอยู่เสมอ ไม่ว่าจะเป็นโปรโมชันต้อนรับ โบนัสเติมเงินรายวัน
+      หรือกิจกรรมพิเศษตามเทศกาล ทั้งหมดนี้ถูกดีไซน์มาเพื่อช่วยเพิ่มทุนให้ผู้เล่นนำไปปั่นสล็อตได้นานขึ้น เพิ่มโอกาสพิชิตรางวัลใหญ่
+      และสร้างความแปลกใหม่ให้การเข้าเล่นในแต่ละวันมีสีสันน่าติดตามอยู่ตลอดเวลา
     </p>
   </ContentBoxSevenThreeNeumorphism>
 
-  <LatestWinnersPremium />
+  <ContentBox3ThreeCyberCut
+    as="h2"
+    title="จัดหมวดเลือกง่าย สลับค่ายคล่อง อยากเปลี่ยนฟีลก็ไม่ต้องไล่หาเกมให้วุ่น"
+    titleleft="จัดหมวดหมู่ไว้เป็นระเบียบ"
+    titlecenter="สลับค่ายได้ในไม่กี่คลิก"
+    titleright="ทำกำไรต่อเนื่องไม่มีสะดุด">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ความใส่ใจในมิติของการใช้งานสะท้อนผ่านการดีไซน์หน้าเว็บของ VIREL168 ที่จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ แบ่งประเภทตามค่ายเกมและสไตล์การเล่นได้อย่างชัดเจน
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">
+      เมื่อไหร่ที่ต้องการเปลี่ยนบรรยากาศ ก็สามารถสลับค่ายเกมได้ทันทีเพียงไม่กี่คลิก ระบบตอบสนองไวโดยไม่ต้องนั่งรอโหลดนาน
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ช่วยรักษาอารมณ์การทำกำไรของคุณให้ต่อเนื่องแบบไม่มีสะดุด</p>
+  </ContentBox3ThreeCyberCut>
+
+  <ContentBoxFloatingBadge as="h2" title="จากหน้าเกมถึงยอดถอน VIREL168 วางระบบให้โอนไวเข้าบัญชีแบบไม่เสียจังหวะ">
+    <p class="text-left text-base leading-relaxed">
+      ปิดท้ายความประทับใจด้วยระบบการเงินออโต้สุดฉับไวของ VIREL168 ที่เชื่อมโยงตั้งแต่ขั้นตอนการเข้าเล่นจนถึงขั้นตอนการถอนเงิน เมื่อทำกำไรได้ตามเป้า
+      คุณสามารถกดถอนเงินผ่านหน้าเว็บได้ด้วยตัวเองทันที ยอดเงินจะถูกโอนเข้าบัญชีอย่างแม่นยำและรวดเร็วภายในไม่กี่วินาที โดยไม่ต้องส่งสลิปยืนยันหรือคอยแอดมินอนุมัติ
+      ให้คุณบริหารจัดการยอดเงินได้อย่างคล่องตัวทุกช่วงเวลา
+    </p>
+  </ContentBoxFloatingBadge>
+
+  <LatestWinners4 />
 
   <LoginRtpSection />
 
@@ -230,18 +237,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a8] via-[#e3ac22] to-[#a97d12] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0702] shadow-[0_10px_30px_rgba(227,172,34,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(227,172,34,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffeec2] via-[#faca4c] to-[#855a14] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0501] shadow-[0_10px_30px_rgba(250,202,76,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(250,202,76,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#cfd8e2]/70 bg-[#0a0702]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f3e6c4] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#eef3f8] hover:bg-[#2a1d05] hover:text-[#fffaf0] hover:shadow-[0_15px_40px_rgba(207,216,226,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e2a52d]/70 bg-[#0a0501]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ffeec2] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#faca4c] hover:bg-[#2e1a04] hover:text-[#fff8e4] hover:shadow-[0_15px_40px_rgba(226,165,45,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq2 title="คำถามที่พบบ่อยเกี่ยวกับ PROFIT55" faqs={faqs} />
+  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ VIREL168" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

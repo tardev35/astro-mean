@@ -5,16 +5,16 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2" } = Astro.props;
 
-// MONEY777: ย้ายจากเขียวมรกตคู่ทองของ UOK789 มาเป็นแดงส้มคู่ทองของแบรนด์นี้ —
-// แดง #ff6a2b / #e0330a / #8b1406 คู่ทอง #ffe08a / #f6c945 / #a3760a บนผิว
-// #1a0503 / #0b0101 / #2a0301 เนื้อความ #ffe6d8 (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้
-// เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่า
-// ที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// GGPLUS88: ม่วงลึกคู่มาเจนต้า ตัดทองเฉพาะจุด — ม่วง #9b2fe0 / #d9a5ff / #5a1290
+// คู่มาเจนต้า #d81b7e / #ff6fb5 คู่ทอง #f0c14b / #ffe9a8 / #a97d12 บนผิว #0b0212 /
+// #1b0630 / #2d0a50 เนื้อความ #ece0f7 หมึกบนป้ายทอง #1a0430 (ค่า hex เดิมไม่พิมพ์
+// ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen
+// คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
-// ไอคอนใบแรกเป็นทอง ใบที่สองเป็นแดงส้ม ทั้งคู่จึงอ่านเป็นคู่สีของแบรนด์ ไม่ใช่
-// สี่เหลี่ยมสีเดียวกันสองใบ — รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 4 (ค่ายดังส่งเกม
-// ตัวไหนมาบ้าง) ไอคอนจึงเป็นถ้วยรางวัลของค่ายระดับตำนานกับจอยเกมของเกมมาใหม่
-// แล้วต่อด้วย ProviderGrid ที่เป็นภาพประกอบของหัวข้อนี้โดยตรง
+// ไอคอนใบแรกเป็นทอง ใบที่สองเป็นมาเจนต้า ทั้งคู่จึงอ่านเป็นคู่สีของแบรนด์ ไม่ใช่
+// สี่เหลี่ยมสีเดียวกันสองใบ — รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 2 (คัดเฉพาะเกม
+// แตกหนัก แจ็กพอตออกบ่อย ไม่ล็อคยูส) ไอคอนจึงเป็นตู้สล็อตกับระเบิดแจ็กพอต แล้ว
+// ต่อด้วย GameRankingBoard ที่เป็นภาพประกอบของหัวข้อนี้โดยตรง
 //
 // แต่ละครึ่งเป็น flex row ของ [ไอคอน, slot] ผู้เรียกจึงต้องส่ง "หนึ่ง element
 // ต่อหนึ่ง slot" เท่านั้น ไม่งั้นแต่ละ <p> จะกลายเป็น flex item แยกข้างไอคอน
@@ -22,38 +22,38 @@ const { title, as: HeadingTag = "h2" } = Astro.props;
 
 <section class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#f6c945]/25 bg-[#1a0503]/90 p-6 text-[#ffe6d8] shadow-[0_10px_30px_rgba(246,201,69,0.16)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe08a]/55 md:p-10">
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#9b2fe0]/25 bg-[#1b0630]/90 p-6 text-[#ece0f7] shadow-[0_10px_30px_rgba(155,47,224,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#d9a5ff]/55 md:p-10">
     <div
       aria-hidden="true"
-      class="pointer-events-none absolute top-0 left-1/2 -z-10 h-[2px] w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#f6c945] to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100">
+      class="pointer-events-none absolute top-0 left-1/2 -z-10 h-[2px] w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#d81b7e] to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100">
     </div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#f6c945]/25 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe08a] to-[#8b1406] shadow-[0_0_10px_rgba(246,201,69,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fff4ec] via-[#f6c945] to-[#e0330a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#9b2fe0]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f0c14b] to-[#d81b7e] shadow-[0_0_10px_rgba(240,193,75,0.4)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#f6ecff] via-[#d9a5ff] to-[#9b2fe0] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
       <article
-        class="relative flex gap-4 rounded-2xl border border-[#f6c945]/20 bg-[#0b0101] p-6 text-left text-base leading-relaxed text-[#ffe6d8] transition-all duration-300 hover:-translate-y-2 hover:border-[#ffe08a]/55 hover:bg-[#2a0301] hover:shadow-[0_15px_40px_rgba(246,201,69,0.22)]">
+        class="relative flex gap-4 rounded-2xl border border-[#9b2fe0]/20 bg-[#0b0212] p-6 text-left text-base leading-relaxed text-[#ece0f7] transition-all duration-300 hover:-translate-y-2 hover:border-[#f0c14b]/55 hover:bg-[#2d0a50] hover:shadow-[0_15px_40px_rgba(240,193,75,0.22)]">
         <div
           aria-hidden="true"
-          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#a3760a]/45 bg-gradient-to-br from-[#ffe08a] via-[#f6c945] to-[#a3760a] text-2xl shadow-[0_5px_15px_rgba(246,201,69,0.35)]">
-          🏆
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#a97d12]/45 bg-gradient-to-br from-[#ffe9a8] via-[#f0c14b] to-[#a97d12] text-2xl shadow-[0_5px_15px_rgba(240,193,75,0.35)]">
+          🎰
         </div>
         <slot name="left" />
       </article>
 
       <article
-        class="relative flex gap-4 rounded-2xl border border-[#f6c945]/20 bg-[#0b0101] p-6 text-left text-base leading-relaxed text-[#ffe6d8] transition-all duration-300 hover:-translate-y-2 hover:border-[#ffe08a]/55 hover:bg-[#2a0301] hover:shadow-[0_15px_40px_rgba(246,201,69,0.22)]">
+        class="relative flex gap-4 rounded-2xl border border-[#9b2fe0]/20 bg-[#0b0212] p-6 text-left text-base leading-relaxed text-[#ece0f7] transition-all duration-300 hover:-translate-y-2 hover:border-[#ff6fb5]/55 hover:bg-[#2d0a50] hover:shadow-[0_15px_40px_rgba(216,27,126,0.28)]">
         <div
           aria-hidden="true"
-          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#ffa46b]/60 bg-gradient-to-br from-[#ff6a2b] via-[#e0330a] to-[#8b1406] text-2xl shadow-[0_5px_15px_rgba(224,51,10,0.45)]">
-          🎮
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#ff6fb5]/60 bg-gradient-to-br from-[#ff6fb5] via-[#d81b7e] to-[#5a1290] text-2xl shadow-[0_5px_15px_rgba(216,27,126,0.45)]">
+          💥
         </div>
         <slot name="right" />
       </article>

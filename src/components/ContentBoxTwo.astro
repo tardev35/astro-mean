@@ -8,13 +8,12 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// PROFIT55: รอบก่อนเป็นแดงส้มคู่ทอง รอบนี้กลับด้านเป็น "ทองหลัก คู่
-// เงินโครเมียม" ตามโลโก้ (ตัวอักษร PROFIT โครเมียม + เลข 55 ทอง) — ทอง #e3ac22 /
-// #f6d24a / #ffe9a8 / #8a6410 คู่เงิน #cfd8e2 / #eef3f8 / #8b96a4 บนผิว #161004 /
-// #0a0702 ขอบ/แถบยก #2a1d05 เนื้อความ #f3e6c4 ตัวอักษรสว่าง #fffaf0 (ค่า hex ของ
-// แบรนด์เก่าไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
-// คอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
-// git history)
+// VIREL168: ย้ายชุดสีมาที่ทองของแบรนด์นี้ที่วัดจากอาร์ตจริง (โมโนแกรม V ทองสามมิติ
+// คู่ตัวอักษร VIREL สีเงินโครเมียม) — ทอง #faca4c / #ebb134 / #e2a52d / #ffeec2 /
+// #855a14 คู่เงิน #e1e1e1 / #949494 บนผิว #0a0501 / #1b0d02 ขอบ/แถบยก #2e1a04 /
+// #442503 เนื้อความ #f4e7cd ข้อความรอง #c4ab7d (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้
+// ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจาก
+// ค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
 // `title` เป็นหัวข้อเดียวที่ component นี้ปล่อยออกมาได้ และมีไว้ให้บล็อกนี้แบก
 // section ของ docx ได้ ส่วนหัวคอลัมน์ทั้งสองยังเป็น <p>: มันตั้งชื่อแผง UI (ฟอร์ม
@@ -29,18 +28,18 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 // ใส่ chrome ของการ์ดเฉพาะตอนบล็อกนี้แบก section ของ docx (`title`) เท่านั้น เวลา
 // ถูกใช้เป็นโครงสองคอลัมน์เปล่าๆ — LoginRtpSection ส่งแผงของตัวเองเข้า slot —
 // คอลัมน์จะแบนราบไว้ ไม่งั้นหน้าเว็บจะได้การ์ดซ้อนการ์ด
-const columnBase = "flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e6c4]";
+const columnBase = "flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7cd]";
 const columnCard =
-  "rounded-3xl border border-[#e3ac22]/25 bg-[#161004]/88 p-6 shadow-[0_10px_30px_rgba(227,172,34,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe9a8]/50 hover:shadow-[0_15px_40px_rgba(227,172,34,0.32)] md:p-8";
+  "rounded-3xl border border-[#e2a52d]/25 bg-[#1b0d02]/88 p-6 shadow-[0_10px_30px_rgba(226,165,45,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffeec2]/50 hover:shadow-[0_15px_40px_rgba(250,202,76,0.32)] md:p-8";
 const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   {
     title && (
-      <header class="mb-6 flex items-center gap-4 border-b border-[#e3ac22]/30 pb-4">
-        <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#eef3f8] via-[#cfd8e2] to-[#e3ac22] shadow-[0_0_10px_rgba(207,216,226,0.55)]" />
-        <HeadingTag class="bg-gradient-to-r from-[#fffaf0] via-[#ffe9a8] to-[#e3ac22] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+      <header class="mb-6 flex items-center gap-4 border-b border-[#e2a52d]/30 pb-4">
+        <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffeec2] via-[#faca4c] to-[#855a14] shadow-[0_0_10px_rgba(250,202,76,0.55)]" />
+        <HeadingTag class="bg-gradient-to-r from-[#fff8e4] via-[#ffeec2] to-[#e2a52d] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
       </header>
     )
   }
@@ -49,10 +48,10 @@ const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
     <article class={columnClass}>
       {
         titleleft && (
-          <p class="flex items-center gap-3 border-b border-[#cfd8e2]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#eef3f8] uppercase">
+          <p class="flex items-center gap-3 border-b border-[#e2a52d]/25 pb-3 text-xl leading-normal font-black tracking-widest text-[#ffeec2] uppercase">
             <span
               aria-hidden="true"
-              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#cfd8e2]/55 bg-gradient-to-br from-[#eef3f8] via-[#8b96a4] to-[#2a1d05] text-sm text-[#161004] shadow-[0_5px_15px_rgba(207,216,226,0.4)]">
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#e2a52d]/55 bg-gradient-to-br from-[#ffeec2] via-[#faca4c] to-[#855a14] text-sm text-[#0a0501] shadow-[0_5px_15px_rgba(250,202,76,0.4)]">
               🔐
             </span>
             {titleleft}
@@ -65,10 +64,10 @@ const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
     <article class={columnClass}>
       {
         titleright && (
-          <p class="flex items-center gap-3 border-b border-[#e3ac22]/35 pb-3 text-xl leading-normal font-black tracking-widest text-[#ffe9a8] uppercase">
+          <p class="flex items-center gap-3 border-b border-[#949494]/35 pb-3 text-xl leading-normal font-black tracking-widest text-[#e1e1e1] uppercase">
             <span
               aria-hidden="true"
-              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#ffe9a8]/60 bg-gradient-to-br from-[#f6d24a] via-[#e3ac22] to-[#8a6410] text-sm text-[#161004] shadow-[0_5px_15px_rgba(227,172,34,0.4)]">
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#e1e1e1]/60 bg-gradient-to-br from-[#e1e1e1] via-[#949494] to-[#442503] text-sm text-[#0a0501] shadow-[0_5px_15px_rgba(225,225,225,0.4)]">
               💎
             </span>
             {titleright}

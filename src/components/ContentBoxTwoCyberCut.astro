@@ -20,44 +20,45 @@ const intro = Astro.slots.has("default") ? (await Astro.slots.render("default"))
 // <div> ครอบ intro ข้างล่างเป็นหนึ่งในสามตัวของทั้งตระกูล ContentBox* ที่ต้องอยู่
 // ต่อไป: มันถือ mb-8 จริงและวางอยู่ข้างกริด จึง hoist ขึ้นการ์ดไม่ได้ ห้ามแบนทิ้ง
 //
-// PROFIT55: ย้ายจากหยกเขียวคู่ทองของ KANGFU1688 (ก่อนหน้านั้นเป็นนีออนม่วงคู่ทอง
-// ของ PABO88) มาเป็นทองคู่เงินโครเมียม — ทอง #e3ac22 / #f6d24a / #ffe9a8 บนผิว
-// #161004 เนื้อความ #f3e6c4 ส่วนเงินโครเมียม #cfd8e2 / #e3eaf2 เป็นสีเน้นรองที่ถือ
-// เส้นมุมฝั่งล่างขวากับป้ายหัวคอลัมน์ขวา (ค่า hex ของแบรนด์เก่าไม่พิมพ์ไว้ตรงนี้ —
-// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+// VIREL168: ย้ายชุดสีของไฟล์นี้มาเป็นทองของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง
+// #faca4c / #ebb134 / #e2a52d / #ffeec2 / #855a14 คู่เงินโครเมียม #e1e1e1 /
+// #949494 บนผิว #1b0d02 / #0a0501 ขอบ #442503 เนื้อความ #f4e7cd
+// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย
+// ดูของเดิมได้จาก git history)
 const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="mx-auto mb-6 w-full max-w-7xl px-4 font-sans">
   <div
-    class="relative isolate w-full border border-[#e3ac22]/30 bg-[#161004]/92 p-8 text-[#f3e6c4] shadow-[0_10px_30px_rgba(227,172,34,0.2)] backdrop-blur-md transition-all duration-300 hover:border-[#f6d24a]/60 hover:shadow-[0_15px_40px_rgba(207,216,226,0.28)]"
+    class="relative isolate w-full border border-[#e2a52d]/30 bg-[#1b0d02]/92 p-8 text-[#f4e7cd] shadow-[0_10px_30px_rgba(226,165,45,0.2)] backdrop-blur-md transition-all duration-300 hover:border-[#faca4c]/60 hover:shadow-[0_15px_40px_rgba(225,225,225,0.28)]"
     style="clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);">
-    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#e3ac22] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#cfd8e2] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#e3ac22] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#cfd8e2] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#e2a52d] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#e1e1e1] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#e2a52d] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#e1e1e1] to-transparent"></div>
 
-    {title && <HeadingTag class="mb-4 bg-gradient-to-r from-[#fffaf0] via-[#e3ac22] to-[#cfd8e2] bg-clip-text text-center text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
+    {title && <HeadingTag class="mb-4 bg-gradient-to-r from-[#fff8e4] via-[#faca4c] to-[#e1e1e1] bg-clip-text text-center text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
 
-    {intro && <div class="mb-8 text-left text-base leading-relaxed text-[#f3e6c4]" set:html={intro} />}
+    {intro && <div class="mb-8 text-left text-base leading-relaxed text-[#f4e7cd]" set:html={intro} />}
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e6c4]">
+      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7cd]">
         {
           titleleft && (
-            <p class="flex items-center gap-2 border-b border-[#e3ac22]/30 pb-2 text-xl leading-normal font-black text-[#ffe9a8]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#e3ac22] shadow-[0_0_5px_rgba(227,172,34,0.8)]" /> {titleleft}
+            <p class="flex items-center gap-2 border-b border-[#e2a52d]/30 pb-2 text-xl leading-normal font-black text-[#ffeec2]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#e2a52d] shadow-[0_0_5px_rgba(226,165,45,0.8)]" /> {titleleft}
             </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e6c4] md:border-l md:border-[#e3ac22]/30 md:pl-8">
+      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7cd] md:border-l md:border-[#e2a52d]/30 md:pl-8">
         {
           titleright && (
-            <p class="flex items-center gap-2 border-b border-[#cfd8e2]/30 pb-2 text-xl leading-normal font-black text-[#e3eaf2]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#cfd8e2] shadow-[0_0_5px_rgba(207,216,226,0.8)]" /> {titleright}
+            <p class="flex items-center gap-2 border-b border-[#e1e1e1]/30 pb-2 text-xl leading-normal font-black text-[#e1e1e1]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#e1e1e1] shadow-[0_0_5px_rgba(225,225,225,0.8)]" /> {titleright}
             </p>
           )
         }

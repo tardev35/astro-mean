@@ -6,13 +6,13 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// PROFIT55: ย้ายจากหยกเขียวคู่ทองของ KANGFU1688 (#24ac6c / #7fe6b4 / #16945d /
-// #0b4b2f คู่ทอง #e8b530 / #ffe6a6 / #8a6410 บนผิวไล่เฉด #072216 → #02120a
-// เนื้อความ #dff3e6) มาเป็นทองคู่เงินโครเมียมของแบรนด์นี้ — ทอง #e3ac22 /
-// #f6d24a / #ffe9a8 / #a97d12 / #6d4e08 คู่เงิน #cfd8e2 / #eef3f8 / #8b96a4
-// บนผิวไล่เฉด #2a1d05 → #0a0702 เนื้อความ #f3e6c4 (วัดจาก palette.json: vivid
-// ของโลโก้เป็นทอง #d5a921 / #d1a624 / #dcb329 ส่วน dominant ของแบนเนอร์เป็น
-// ดำอมน้ำตาล #130b02 / #1d1203 / #0b0501)
+// VIREL168: ย้ายจากทองคู่เงินโครเมียมของ PROFIT55 มาเป็นชุดทองที่วัดจากอาร์ตของ
+// แบรนด์นี้เอง — ทอง #faca4c / #ebb134 / #e2a52d / #ffeec2 / #855a14 คู่เงิน
+// #e1e1e1 / #949494 บนผิวไล่เฉด #2e1a04 → #0a0501 ขอบ #442503 เนื้อความ #f4e7cd
+// (palette.json: vivid ของโลโก้เป็นทอง #faca4c / #f8c442 / #e2a52d / #ebb134 /
+// #855a14 ส่วน dominant ของแบนเนอร์เป็นดำอมน้ำตาล #020101 / #0b0501 / #241403)
+//
+// ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // การ์ดใบนี้เป็นกล่องหลักของหน้าย่อยทุกหน้ารอบนี้ (about-us / contact-us /
 // promotion / ทดลองเล่น / ทางเข้า) และหน้าแรกใช้เป็นกล่อง H1 ด้วย
@@ -23,15 +23,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#e3ac22]/35 bg-gradient-to-br from-[#2a1d05]/92 to-[#0a0702]/88 p-8 text-left text-base leading-relaxed text-[#f3e6c4] shadow-[0_10px_30px_rgba(227,172,34,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe9a8]/70 hover:shadow-[0_15px_40px_rgba(207,216,226,0.35)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#6d4e08]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#e3ac22]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#cfd8e2]/25 blur-[55px] transition-all duration-500 group-hover:bg-[#8b96a4]/45"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#e2a52d]/35 bg-gradient-to-br from-[#2e1a04]/92 to-[#0a0501]/88 p-8 text-left text-base leading-relaxed text-[#f4e7cd] shadow-[0_10px_30px_rgba(250,202,76,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffeec2]/70 hover:shadow-[0_15px_40px_rgba(225,225,225,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#855a14]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#faca4c]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#e1e1e1]/22 blur-[55px] transition-all duration-500 group-hover:bg-[#949494]/40"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#e3ac22]/35 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a8] via-[#e3ac22] to-[#cfd8e2] shadow-[0_0_10px_rgba(227,172,34,0.55)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#fffaf0] via-[#e3ac22] to-[#cfd8e2] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#e2a52d]/35 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffeec2] via-[#faca4c] to-[#e1e1e1] shadow-[0_0_10px_rgba(250,202,76,0.55)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#fff8e4] via-[#faca4c] to-[#e1e1e1] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
             {title}
           </HeadingTag>
         </header>
