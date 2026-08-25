@@ -21,13 +21,14 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // the inherited text colour): that is what stops the previous brand's colour
 // being left behind here on the next launch.
 //
-// UOK789: Announcement6 → AnnouncementPremium ตามการหมุน variant รอบนี้ (เรียก
-// แบบ bare เพราะ default message ของ variant นี้เป็นข้อความของแบรนด์นี้แล้ว)
-// ปุ่มย้ายจากนีออนม่วงคู่ทองของ PABO88 — ม่วง #bf3cfa / #8b1fd6 / #4a0b8f
-// เนื้อความ #ece0ff คู่ทอง #ffe9a3 / #f5c518 / #8f6205 บนผิว #0a0118 — มาเป็น
-// เขียวมรกตคู่ทอง เขียว #2fc44f / #12923a / #0a4d1c เนื้อความ #e8f3e4 คู่ทอง
-// #fdf3c9 / #f6c945 / #8a6a1c บนผิว #04140a — เขียว LINE คงเดิมเพราะเป็นสี
-// แบรนด์ของ LINE ไม่ใช่สีของเว็บนี้
+// PROFIT55: ContentBoxCyberCut → ContentBoxPremium และ Announcement5 →
+// AnnouncementPremium ตามการหมุน variant รอบนี้ (เรียก Announcement แบบ bare
+// เพราะ default message ของ variant นี้เป็นข้อความของแบรนด์นี้แล้ว)
+// ปุ่มย้ายจากแดงส้มคู่ทองของ MONEY777 มาเป็นทองคู่เงินโครเมียมของรอบนี้ —
+// แดงเดิมกลายเป็นทอง #e3ac22 / #8a6410 / #2a1d05 ส่วนทองเดิมกลายเป็นเงิน
+// #eef3f8 / #cfd8e2 / #8b96a4 บนผิว #0a0702 เนื้อความ #f3e6c4 — ป้ายบนปุ่มทอง
+// ใช้ตัวอักษรสีเข้ม #0a0702 แทนครีม เพราะครีมบนพื้นทองคอนทราสต์ไม่ผ่าน
+// เขียว LINE คงเดิมเพราะเป็นสีแบรนด์ของ LINE ไม่ใช่สีของเว็บนี้
 //
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. Keeping it in a const is what stops the meta tag
@@ -35,20 +36,19 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // variants of the same sentence, and the JSON-LD copy was the one nobody
 // reread. 150–160 CHARACTERS (Thai is 3 bytes/char, so a byte count reads ~3x
 // too long and will send you rewriting a description that was fine). This one
-// measures 156.
-const pageDescription =
-  "ติดต่อทีมงาน UOK789 ผ่าน LINE Official ตลอด 24 ชั่วโมง สอบถามโปรโมชั่นและโบนัส แจ้งปัญหาการเข้าเกมสล็อตค่ายแท้ ขอคำแนะนำเรื่องค่ายเกม แจ้งฝากถอนออโต้ไม่เข้า";
+// measures 154.
+const pageDescription = "ติดต่อทีมงาน PROFIT55 ผ่าน LINE Official ตลอด 24 ชั่วโมง สอบถามโปรโมชั่นและสิทธิ์คืนยอดเสีย แจ้งปัญหาการเข้าเกม ขอคำแนะนำเรื่องค่ายเกม หรือแจ้งฝากถอนออโต้";
 
 const graph = pageGraph(Astro, {
   type: "ContactPage",
-  name: "ติดต่อทีมงาน UOK789",
+  name: "ติดต่อทีมงาน PROFIT55",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
     { name: "ติดต่อเรา", path: "/contact-us" },
   ],
   org: {
-    alternateName: "UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมตรงผ่าน API โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง ไม่ล็อกยูส ฝากถอนออโต้ตลอด 24 ชั่วโมง",
+    alternateName: "PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล ตั้งแต่บาคาร่าไปจนถึงฟุตบอล เลือกเกมง่าย สลับโหมดคล่อง ระบบพร้อมตลอดวัน",
     contactPoints: [
       {
         contactType: "customer service",
@@ -70,21 +70,21 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ติดต่อทีมงาน UOK789 | แอดมินดูแลตลอด 24 ชั่วโมง" description={pageDescription}>
+<MainLayout title="ติดต่อทีมงาน PROFIT55 | แอดมินดูแลตลอด 24 ชั่วโมง" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ติดต่อทีมงาน UOK789" as="h1">
+  <ContentBox title="ติดต่อทีมงาน PROFIT55" as="h1">
     <div>
       <Picture
         src={imgLine}
-        alt="พนักงานหญิงยิ้มในชุดเลื่อมสีชมพู ยืนอยู่เหนือปุ่ม LINE Support สีเขียว ช่องทางแชตกับทีมงาน UOK789"
+        alt="พนักงานหญิงยิ้มในชุดเลื่อมสีชมพู ยืนอยู่เหนือปุ่ม LINE Support สีเขียว ช่องทางแชตกับทีมงาน PROFIT55"
         loading="lazy"
         fetchpriority="low"
         widths={[200, 400, 600]}
         sizes="(max-width: 495px) calc(100vw - 6rem), 400px"
-        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(47,196,79,0.4)]"
+        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(227,172,34,0.4)]"
         decoding="async"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
@@ -92,9 +92,7 @@ const graph = pageGraph(Astro, {
       />
       {
         BRAND_ADDRESS.lines.length > 0 && (
-          <address
-            aria-label={BRAND_ADDRESS.label}
-            class="mt-8 mb-8 rounded-xl border border-white/15 bg-black/20 p-4 text-left text-sm leading-relaxed not-italic opacity-90">
+          <address aria-label={BRAND_ADDRESS.label} class="mt-8 mb-8 rounded-xl border border-white/15 bg-black/20 p-4 text-left text-sm leading-relaxed not-italic opacity-90">
             <p class="mb-2 flex items-center gap-2 text-[11px] font-bold tracking-wider uppercase opacity-80">
               <span aria-hidden="true" class="text-sm">
                 📍
@@ -121,15 +119,15 @@ const graph = pageGraph(Astro, {
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก UOK789"
-          class="flex items-center justify-center rounded-lg border border-[#fdf3c9]/60 bg-gradient-to-r from-[#fdf3c9] via-[#f6c945] to-[#8a6a1c] px-8 py-3 font-bold text-[#04140a] shadow-[0_10px_30px_rgba(246,201,69,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(253,243,201,0.45)]">
+          aria-label="สมัครสมาชิก PROFIT55"
+          class="flex items-center justify-center rounded-lg border border-[#ffe9a8]/60 bg-gradient-to-r from-[#ffe9a8] via-[#e3ac22] to-[#a97d12] px-8 py-3 font-extrabold text-[#0a0702] shadow-[0_10px_30px_rgba(227,172,34,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,168,0.45)]">
           สมัครสมาชิก
         </a>
 
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ UOK789"
-          class="flex items-center justify-center rounded-lg border border-[#2fc44f]/60 bg-gradient-to-r from-[#12923a] to-[#0a4d1c] px-8 py-3 font-extrabold text-[#e8f3e4] shadow-[0_4px_14px_rgba(18,146,58,0.35)] transition-transform hover:scale-105 hover:shadow-[0_10px_30px_rgba(47,196,79,0.45)]">
+          aria-label="เข้าสู่ระบบ PROFIT55"
+          class="flex items-center justify-center rounded-lg border border-[#cfd8e2]/60 bg-[#161004] px-8 py-3 font-bold text-[#f3e6c4] shadow-[0_4px_14px_rgba(207,216,226,0.3)] transition-transform hover:scale-105 hover:bg-[#2a1d05] hover:text-[#fffaf0] hover:shadow-[0_10px_30px_rgba(238,243,248,0.4)]">
           เข้าสู่ระบบ
         </a>
 

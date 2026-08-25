@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle11.astro";
-import Footer from "../components/FooterPremium.astro";
+import Navbar from "../components/NavbarPremium.astro";
+import Footer from "../components/FooterPremiumSumo.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "UOK789 | สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง",
-  description = "UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมเกมตรงผ่าน API ตัวเด็ดเข้าไม่พัก โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง ไม่ล็อกยูส ฝากถอนออโต้ พร้อมระบบการเงินที่ทำงานเป็นขั้นตอน",
+  title = "PROFIT55 | คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล",
+  description = "PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล ตั้งแต่บาคาร่าไปจนถึงฟุตบอล เลือกเกมง่าย สลับโหมดคล่อง ระบบพร้อมตลอดวัน ฝากถอนออโต้ไวทุกจังหวะ",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #04140a;
+        background-color: #0a0702;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ UOK789 พื้นคาสิโนสีเขียวมรกตเข้มประดับแสงเขียวนีออนและเหรียญทองปลิวว่อน ด้านซ้ายเป็นตู้สล็อตเลข 777 กองชิปคาสิโน ไพ่เอซโพดำ และลูกเต๋าสีเขียว กลางภาพเป็นอักษร UOK สีทองเมทัลลิกสวมมงกุฎทอง ใต้ลงมาเป็นเลข 789 สีทอง ด้านขวามีข้อความ สล็อตออนไลน์ค่ายแท้ ตามด้วย โบนัสจัดหนัก สีทอง และ เว็บทุนหนาจ่ายจริง สีขาว ปิดท้ายด้วยปุ่มสีเขียวขอบทองเขียนว่า สมัครสมาชิก ริมขวาสุดเป็นหญิงสาวชุดสีเขียวทองนั่งอยู่ข้างวงล้อสล็อตเลข 7"
+          alt="แบนเนอร์ PROFIT55 ฉากคาสิโนสีทองบนพื้นดำ ด้านซ้ายเป็นโลโก้ตัวอักษร PROFIT สีเงินโครเมียมต่อด้วยเลข 55 สีทอง วางอยู่บนแผ่นป้ายทองทรงแคปซูล ใต้ลงมาเป็นข้อความ คาสิโนออนไลน์ระดับโปร และป้ายดำขอบทองเขียนว่า รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล มุมซ้ายล่างเป็นวงล้อรูเล็ต ไพ่เอซสี่ใบ ลูกเต๋า และชิป VIP กองอยู่บนเหรียญทอง แถบล่างเป็นไอคอนห้าช่อง คาสิโนสดคุณภาพ HD สล็อตครบทุกค่ายดัง โบนัสจัดเต็มทุกวัน ระบบปลอดภัยมั่นคง 100% และฝาก-ถอนรวดเร็ว 30 วินาที ด้านขวาเป็นหญิงสาวสวมชุดสีทองถือบัตรสมาชิก PROFIT55 ยืนอยู่หน้าจอโทรศัพท์ที่ขึ้นข้อความ JACKPOT 3,286,888.9 และ BIG WIN 28,500 ข้างชิปทองเลข 55 ด้านล่างเป็นปุ่มทองเขียนว่า สมัครสมาชิก"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

@@ -6,13 +6,19 @@ const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
-// AURORA688: ย้ายจากเขียว BETKUB77 (#7ee356 / #1f7a35 / #dcecd6 บนผิว #050a06)
-// มาที่ทองแบรนด์นี้ #e2c443 / #ffe9a3 / #c9a13a / #7d5714 คู่เงินโครเมียม
-// #c3cddb บนผิว #0a0806 / #15120a เนื้อความ #f2ead6 รอง #c8bda1
+// PROFIT55: ย้ายจากทองของ AURORA688 (#e2c443 / #ffe9a3 / #c9a13a / #7d5714 คู่เงิน
+// #c3cddb บนผิว #0a0806 / #15120a เนื้อความ #f2ead6 รอง #c8bda1) มาเป็นทองคู่เงิน
+// โครเมียมของแบรนด์นี้ — ทอง #e3ac22 / #f6d24a / #ffe9a8 / #a97d12 คู่เงิน
+// #cfd8e2 / #eef3f8 / #8b96a4 บนผิว #0a0702 / #161004 เนื้อความ #f3e6c4
+// รอง #cbbb92
 //
 // เขียว LINE (#00B900 / #009900) บนปุ่มติดต่อแอดมินไม่ใช่สีแบรนด์ — คงไว้
 //
-// AURORA688 ไม่ใช่เว็บหวย จึงไม่มีลิงก์ /ตรวจหวย และ /แนวทาง ใน shortcuts
+// PROFIT55 เป็นคาสิโน ไม่ใช่เว็บหวย จึงไม่มีลิงก์ /ตรวจหวย และ /แนวทาง ใน shortcuts
+//
+// บล็อก <address> มาจาก BRAND_ADDRESS — ไม่ทาสีแบรนด์โดยตั้งใจ (border-white/15,
+// bg-black/20 + opacity ลงตัวกับทุก footer variant ซึ่งพื้นเข้มหมด) ห้าม retype
+// ข้อความข้างในเอง และห้ามใส่ hex ลงไป
 const shortcuts = [
   { name: "หน้าหลัก", path: "/" },
   { name: "โปรโมชั่น", path: "/promotion" },
@@ -23,19 +29,19 @@ const shortcuts = [
 ];
 ---
 
-<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#e2c443]/60 bg-[#0a0806] pt-16 pb-8 font-sans text-[#f2ead6] shadow-[0_-15px_40px_rgba(226,196,67,0.25)]">
-  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#e2c443]/20 blur-[100px]"></div>
-  <div class="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-[220px] w-full max-w-2xl rounded-full bg-[#7d5714]/30 blur-[100px]"></div>
+<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#e3ac22]/60 bg-[#0a0702] pt-16 pb-8 font-sans text-[#f3e6c4] shadow-[0_-15px_40px_rgba(227,172,34,0.25)]">
+  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#e3ac22]/20 blur-[100px]"></div>
+  <div class="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-[220px] w-full max-w-2xl rounded-full bg-[#6d4e08]/30 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-12">
       <div class="flex flex-col gap-5 md:col-span-5">
-        <a href="/" class="inline-block max-w-max rounded-xl border border-[#e2c443]/30 bg-[#15120a] px-4 py-2 transition-transform duration-300 hover:scale-105">
+        <a href="/" class="inline-block max-w-max rounded-xl border border-[#e3ac22]/30 bg-[#161004] px-4 py-2 transition-transform duration-300 hover:scale-105">
           {
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ AURORA688 เหรียญกลมขอบทองนูน กลางเหรียญเป็นอักษร A ทองประดับลายไทยและมงกุฎ ใต้ลงมาเขียนว่า AURORA สีทองต่อด้วยเลข 688 สีเงินโครเมียม"
+                alt="โลโก้ PROFIT55 ตัวอักษร PROFIT สีเงินโครเมียมสามมิติ ต่อด้วยเลข 55 สีทองเงาวาว มีแสงทองเรืองอยู่รอบตัวอักษร"
                 widths={[140, 280, 420]}
                 sizes="140px"
                 loading="lazy"
@@ -45,30 +51,30 @@ const shortcuts = [
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="text-3xl font-black tracking-widest text-[#ffe9a3]">
-                AURORA<span class="text-[#c3cddb]">688</span>
+              <span class="text-3xl font-black tracking-widest text-[#eef3f8]">
+                PROFIT<span class="text-[#f6d24a]">55</span>
               </span>
             )
           }
         </a>
-        <p class="border-l-2 border-[#e2c443]/50 pl-4 text-sm leading-relaxed text-[#c8bda1]">
-          AURORA688 เว็บสล็อตฟีลดีที่เปิดคลังเกมกว่า 1,000+ ตัวเลือกจากค่ายยักษ์ใหญ่ทั่วโลก รวมเกมฮิตติดแสงกับเกมใหม่มาแรงไว้ในล็อบบี้เดียว แจ็คพอตและรอบโบนัสกระจายอยู่ในทุกเกม
-          พร้อมระบบออโต้ฝากถอนที่ทำรายการเองได้ตลอด 24 ชั่วโมง
+        <p class="border-l-2 border-[#e3ac22]/50 pl-4 text-sm leading-relaxed text-[#cbbb92]">
+          PROFIT55 คาสิโนออนไลน์ระดับโปรที่รวมค่ายเกมชั้นนำทั่วโลกไว้ในแพลตฟอร์มเดียว ครบทั้งบาคาร่าสด สล็อต คาสิโนสดสตรีมมิ่งความคมชัดสูง และแทงบอล ใช้ยูสเซอร์เดียวกระเป๋าเงินเดียว
+          สลับโหมดได้อิสระ พร้อมระบบฝากถอนออโต้ที่ทำรายการเองได้ตลอด 24 ชั่วโมง
         </p>
         <div class="mt-4 flex flex-wrap gap-3">
-          <span class="rounded-full border border-[#e2c443]/40 bg-[#15120a] px-4 py-1 text-xs font-medium text-[#ffe9a3] backdrop-blur-sm">สมาชิกใหม่ ฝากรับเพิ่มทันที 100%</span>
-          <span class="rounded-full border border-[#c3cddb]/40 bg-[#15120a] px-4 py-1 text-xs font-medium text-[#eef2f7] backdrop-blur-sm">คืนยอดเสีย 5% ทุกวัน</span>
+          <span class="rounded-full border border-[#e3ac22]/40 bg-[#161004] px-4 py-1 text-xs font-medium text-[#ffe9a8] backdrop-blur-sm">คืนยอดเสีย 5% ทุกสัปดาห์</span>
+          <span class="rounded-full border border-[#cfd8e2]/40 bg-[#161004] px-4 py-1 text-xs font-medium text-[#eef3f8] backdrop-blur-sm">ลิงก์รับทรัพย์ สูงสุด 2.5%</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#ffe9a3] uppercase drop-shadow-sm">ทางลัด</p>
-        <div class="h-[1px] w-12 bg-[#e2c443]"></div>
-        <ul class="flex flex-col gap-3 text-sm font-medium text-[#c8bda1]">
+        <p class="text-lg font-black tracking-widest text-[#ffe9a8] uppercase drop-shadow-sm">ทางลัด</p>
+        <div class="h-[1px] w-12 bg-[#e3ac22]"></div>
+        <ul class="flex flex-col gap-3 text-sm font-medium text-[#cbbb92]">
           {
             shortcuts.map((item) => (
               <li>
-                <a href={item.path} class="transition-colors hover:text-[#e2c443]">
+                <a href={item.path} class="transition-colors hover:text-[#e3ac22]">
                   {item.name}
                 </a>
               </li>
@@ -78,8 +84,8 @@ const shortcuts = [
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#ffe9a3] uppercase drop-shadow-sm">บริการลูกค้า 24 ชม.</p>
-        <div class="h-[1px] w-12 bg-[#e2c443]"></div>
+        <p class="text-lg font-black tracking-widest text-[#ffe9a8] uppercase drop-shadow-sm">บริการลูกค้า 24 ชม.</p>
+        <div class="h-[1px] w-12 bg-[#e3ac22]"></div>
 
         <a
           href="/line"
@@ -113,17 +119,17 @@ const shortcuts = [
           )
         }
 
-        <div class="mt-4 text-xs font-medium tracking-widest text-[#c8bda1] uppercase">Supported Payments</div>
+        <div class="mt-4 text-xs font-medium tracking-widest text-[#cbbb92] uppercase">Supported Payments</div>
         <BankStrip size={30} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#3a3116] pt-8 text-xs font-medium tracking-wide text-[#c8bda1] md:flex-row">
-      <p>COPYRIGHT &copy; {new Date().getFullYear()} AURORA688-TH.COM. ALL RIGHTS RESERVED.</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#3a2705] pt-8 text-xs font-medium tracking-wide text-[#cbbb92] md:flex-row">
+      <p>COPYRIGHT &copy; {new Date().getFullYear()} PROFIT55PLUS.COM. ALL RIGHTS RESERVED.</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="transition-colors hover:text-[#e2c443]">เงื่อนไขข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#e2c443]">นโยบายความเป็นส่วนตัว</a>
-        <a href="#top" class="transition-colors hover:text-[#e2c443]">กลับขึ้นบน</a>
+        <a href="/terms/" class="transition-colors hover:text-[#e3ac22]">เงื่อนไขข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#e3ac22]">นโยบายความเป็นส่วนตัว</a>
+        <a href="#top" class="transition-colors hover:text-[#e3ac22]">กลับขึ้นบน</a>
       </div>
     </div>
   </div>

@@ -27,18 +27,17 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ UOK789 | ทางเข้าเว็บสล็อตค่ายแท้ ถอนไวจ่ายจริง</title>
-    <meta
-      name="description"
-      content="เข้าสู่ระบบ UOK789 สำหรับสมาชิกเดิม ระบบจะพาไปหน้าล็อกอินของเว็บหลักให้อัตโนมัติ เข้าปั่นสล็อตค่ายแท้เชื่อมตรงผ่าน API โบนัสจัดหนัก ฝากถอนออโต้ ถอนได้เต็มจำนวน"
-    />
+    <title>เข้าสู่ระบบ PROFIT55 | ทางเข้าคาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ</title>
+    <meta name="description" content="เข้าสู่ระบบ PROFIT55 สำหรับสมาชิกเดิม ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นคาสิโนสด สล็อต และกีฬาจากค่ายชั้นนำ ยูสเซอร์เดียว ฝากถอนออโต้ตลอดวัน" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    {/* This page exists only to forward; there is nothing here worth ranking,
+    {
+      /* This page exists only to forward; there is nothing here worth ranking,
         and its source carries the affiliate URL — the one host every brand in
         the group has in common. Keeping it out of the index means that link is
         not sitting in a page Google has stored. Astro's own /line redirect page
-        ships noindex for the same reason. */}
+        ships noindex for the same reason. */
+    }
     <meta name="robots" content="noindex, follow" />
 
     <meta http-equiv="refresh" content={`1.5;url=${targetUrl}`} />
@@ -51,9 +50,10 @@ const fontHref = usesGoogleFonts
       /* Self-hosted Kanit. This page has its own <head> and does not import
          global.css, so the @font-face rules there never reach it — which is why
          it used to pull Kanit from Google instead. Only the weights this page
-         actually draws are declared. UOK789 runs BRAND_FONT = "kanit", so these
-         two rules ARE the face the page draws with this round — leave them in
-         place either way, the flag flips every rebrand. */
+         actually draws are declared. PROFIT55 runs BRAND_FONT = "kanit", so
+         this round these rules are the body face itself and Oswald is the only
+         thing still coming from the CDN — leave them in place either way, the
+         flag flips every rebrand. */
       @font-face {
         font-family: "Kanit";
         font-style: normal;
@@ -71,27 +71,27 @@ const fontHref = usesGoogleFonts
     </style>
 
     <style>
-      /* UOK789 is an emerald-green / gold brand: GREEN is the identity hue (the
-         neon glow on the banner and the slide artwork) with GOLD as the second
-         accent (the wordmark, the coins, the ribbons), on a near-black emerald
-         background. The outgoing brand here was neon violet primary with gold
-         second on a near-black purple — the purple is gone entirely and the
-         gold moved a shade warmer.
+      /* PROFIT55 is a gold / chrome-silver brand: GOLD is the identity hue (the
+         55 in the wordmark, the coins, the banner field) with CHROME SILVER as
+         the second accent (the PROFIT letters, the roulette rim), on a
+         near-black warm-brown background. The outgoing brand was red-orange
+         with gold as its second accent — the two roles rotated one step: what
+         was red is now gold, and what was gold is now chrome.
 
          Every variable below is NAMED FOR THE COLOUR IT HOLDS, which previous
          brands stopped doing: this block once declared `--brand-gold` on brands
          with no gold in them and `--brand-red` on a gold one, so the next editor
          reused it by name and shipped the wrong hue. Rename with the value. */
       :root {
-        --page-bg: #04140a;
-        --panel-bg: rgba(12, 61, 24, 0.92);
-        --brand-green: #2fc44f;
-        --brand-green-pale: #b6ecbd;
-        --brand-green-deep: #0a4d1c;
-        --brand-gold: #f6c945;
-        --edge-dark: #08290f;
-        --text-body: #e8f3e4;
-        --text-muted: #9dbfa4;
+        --page-bg: #0a0702;
+        --panel-bg: rgba(22, 16, 4, 0.92);
+        --brand-gold: #e3ac22;
+        --brand-gold-pale: #ffe9a8;
+        --brand-gold-deep: #8a6410;
+        --brand-chrome: #cfd8e2;
+        --edge-dark: #1c1304;
+        --text-body: #f3e6c4;
+        --text-muted: #cbbb92;
       }
 
       body {
@@ -99,9 +99,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background:
-          radial-gradient(circle at 50% 10%, rgba(47, 196, 79, 0.28) 0%, transparent 55%),
-          radial-gradient(circle at 50% 92%, rgba(246, 201, 69, 0.22) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(227, 172, 34, 0.28) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(207, 216, 226, 0.22) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -115,11 +113,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(47, 196, 79, 0.38);
+        border: 1px solid rgba(227, 172, 34, 0.38);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(4, 20, 10, 0.6),
-          0 0 2rem rgba(47, 196, 79, 0.25);
+          0 1rem 3rem rgba(10, 7, 2, 0.6),
+          0 0 2rem rgba(227, 172, 34, 0.25);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -128,13 +126,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--brand-green-pale) 0%, var(--brand-green) 40%, var(--brand-green-deep) 100%);
+        background: linear-gradient(180deg, var(--brand-gold-pale) 0%, var(--brand-gold) 40%, var(--brand-gold-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(47, 196, 79, 0.45));
+        filter: drop-shadow(0 1px 2px rgba(227, 172, 34, 0.45));
       }
 
       .sophisticated-loader {
@@ -150,30 +148,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--brand-green-pale) 0%, var(--brand-green) 45%, var(--brand-green-deep) 100%);
+        background: radial-gradient(circle, var(--brand-gold-pale) 0%, var(--brand-gold) 45%, var(--brand-gold-deep) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(47, 196, 79, 0.45);
+        box-shadow: 0 0 2rem rgba(227, 172, 34, 0.45);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(47, 196, 79, 0.22);
+        border: 3px solid rgba(227, 172, 34, 0.22);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--brand-green-pale);
+        border-top-color: var(--brand-gold-pale);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--brand-gold);
+        border-bottom-color: var(--brand-chrome);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -190,11 +188,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(47, 196, 79, 0.45);
+          box-shadow: 0 0 2rem rgba(227, 172, 34, 0.45);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(182, 236, 189, 0.45);
+          box-shadow: 0 0 3rem rgba(255, 233, 168, 0.45);
         }
       }
 
@@ -218,7 +216,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">UOK789</div>
+      <div class="brand-identity">PROFIT55</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -228,7 +226,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ UOK789 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ PROFIT55 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

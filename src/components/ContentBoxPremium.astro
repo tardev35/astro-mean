@@ -6,15 +6,16 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// UOK789: ย้ายจากนีออนม่วงคู่ทองของ PABO88 (#bf3cfa / #e3b8ff / #8b1fd6 /
-// #4a0b8f คู่ทอง #f5c518 / #ffe9a3 / #8f6205 บนผิวไล่เฉด #20064a → #0a0118
-// เนื้อความ #ece0ff) มาเป็นเขียวมรกตคู่ทองของแบรนด์นี้ — เขียว #2fc44f /
-// #b6ecbd / #12923a / #0a4d1c คู่ทอง #f6c945 / #fdf3c9 / #8a6a1c บนผิวไล่เฉด
-// #08290f → #04140a เนื้อความ #e8f3e4
+// PROFIT55: ย้ายจากหยกเขียวคู่ทองของ KANGFU1688 (#24ac6c / #7fe6b4 / #16945d /
+// #0b4b2f คู่ทอง #e8b530 / #ffe6a6 / #8a6410 บนผิวไล่เฉด #072216 → #02120a
+// เนื้อความ #dff3e6) มาเป็นทองคู่เงินโครเมียมของแบรนด์นี้ — ทอง #e3ac22 /
+// #f6d24a / #ffe9a8 / #a97d12 / #6d4e08 คู่เงิน #cfd8e2 / #eef3f8 / #8b96a4
+// บนผิวไล่เฉด #2a1d05 → #0a0702 เนื้อความ #f3e6c4 (วัดจาก palette.json: vivid
+// ของโลโก้เป็นทอง #d5a921 / #d1a624 / #dcb329 ส่วน dominant ของแบนเนอร์เป็น
+// ดำอมน้ำตาล #130b02 / #1d1203 / #0b0501)
 //
 // การ์ดใบนี้เป็นกล่องหลักของหน้าย่อยทุกหน้ารอบนี้ (about-us / contact-us /
-// promotion / ทดลองเล่น / ทางเข้า) — หน้าแรกรอบนี้ไม่ได้ใช้ ใช้
-// ContentBoxFloatingBadge เป็นกล่อง H1 แทน
+// promotion / ทดลองเล่น / ทางเข้า) และหน้าแรกใช้เป็นกล่อง H1 ด้วย
 //
 // การ์ด flatten แล้ว (isolate บนการ์ด + -z-10 บนเลเยอร์ตกแต่ง) ห้ามใส่ wrapper
 // <div class="relative z-10"> กลับเข้ามา
@@ -22,15 +23,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#2fc44f]/35 bg-gradient-to-br from-[#08290f]/92 to-[#04140a]/88 p-8 text-left text-base leading-relaxed text-[#e8f3e4] shadow-[0_10px_30px_rgba(47,196,79,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#b6ecbd]/70 hover:shadow-[0_15px_40px_rgba(246,201,69,0.35)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#0a4d1c]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#2fc44f]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#f6c945]/30 blur-[55px] transition-all duration-500 group-hover:bg-[#8a6a1c]/45"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#e3ac22]/35 bg-gradient-to-br from-[#2a1d05]/92 to-[#0a0702]/88 p-8 text-left text-base leading-relaxed text-[#f3e6c4] shadow-[0_10px_30px_rgba(227,172,34,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffe9a8]/70 hover:shadow-[0_15px_40px_rgba(207,216,226,0.35)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#6d4e08]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#e3ac22]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#cfd8e2]/25 blur-[55px] transition-all duration-500 group-hover:bg-[#8b96a4]/45"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#2fc44f]/35 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#b6ecbd] via-[#2fc44f] to-[#f6c945] shadow-[0_0_10px_rgba(47,196,79,0.55)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#f4fdf3] via-[#2fc44f] to-[#f6c945] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#e3ac22]/35 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a8] via-[#e3ac22] to-[#cfd8e2] shadow-[0_0_10px_rgba(227,172,34,0.55)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#fffaf0] via-[#e3ac22] to-[#cfd8e2] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
             {title}
           </HeadingTag>
         </header>

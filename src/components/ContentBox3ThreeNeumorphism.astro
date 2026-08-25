@@ -9,15 +9,16 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright, label } = Astro.props;
 
-// AURORA688: ไฟล์นี้เป็นม่วงมาสองแบรนด์ติด (PHANTOM569 #ede9fe / #b794ff / #8b5cf6
-// แล้ว GDK88 #a855f7 / #d8b4fe / #f3e8ff คู่ทองโลโก้ #f0b429 / #ffd85e บนผิว
-// #1b0733 เนื้อความ #ece0ff ข้อความรอง #a99ac9) รอบนี้ย้ายมาทองหรูคู่เงินโครเมียม —
-// สีเน้นหลัก #e2c443 / #ffe9a3 / #c9a13a บนผิว #15120a เนื้อความ #f2ead6 และเงิน
-// #c3cddb / #eef2f7 เป็นสีเน้นรองให้ตรงกับโลโก้ (ตัวอักษร AURORA ทอง / 688 เงิน)
+// PROFIT55: ไฟล์นี้ผ่านม่วงมาสองแบรนด์ แล้วเป็นทองหรูคู่เงินโครเมียมของ AURORA688
+// ต่อด้วยหยกเขียวคู่ทองของ KANGFU1688 รอบนี้ย้ายมาเป็นทองคู่เงินโครเมียมของแบรนด์นี้
+// — ทอง #e3ac22 / #f6d24a / #ffe9a8 / #a97d12 คู่เงิน #cfd8e2 / #eef3f8 / #8b96a4
+// บนผิว #161004 เนื้อความ #f3e6c4 ตัวอักษรสว่าง #fffaf0 (ค่า hex ของแบรนด์เก่า
+// ไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen
+// คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
 // Neumorphism แปลว่าเงาสองด้านต้องเป็นเฉดเข้ม/อ่อนของสีการ์ดเอง ไม่ใช่สีแบรนด์:
-// #050403 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #262010 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
-// ไฮไลต์ ถ้าเอา #e2c443 ไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
+// #050300 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #2a1d05 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
+// ไฮไลต์ ถ้าเอา #e3ac22 ไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
 //
 // `title` คือหัวข้อเดียวที่ปล่อยออกมาได้ (แบก section ของ docx) ส่วน
 // titleleft/titlecenter/titleright เป็น <p> เพราะมันตั้งชื่อคอลัมน์ ไม่ใช่ section
@@ -29,28 +30,28 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titlecenter ?? t
 
 <section aria-label={sectionLabel} class="mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#e2c443]/30 bg-[#15120a] p-8 shadow-[10px_10px_20px_#050403,-10px_-10px_20px_#262010] transition-all duration-300 hover:shadow-[15px_15px_30px_#050403,-15px_-15px_30px_#332b16]">
+    class="w-full rounded-[25px] border border-[#e3ac22]/30 bg-[#161004] p-8 shadow-[10px_10px_20px_#050300,-10px_-10px_20px_#2a1d05] transition-all duration-300 hover:shadow-[15px_15px_30px_#050300,-15px_-15px_30px_#3a2705]">
     {
       title && (
-        <header class="mb-8 border-b border-[#c3cddb]/25 pb-4 text-center">
-          <HeadingTag class="bg-gradient-to-r from-[#eef2f7] via-[#e2c443] to-[#c9a13a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#cfd8e2]/25 pb-4 text-center">
+          <HeadingTag class="bg-gradient-to-r from-[#fffaf0] via-[#e3ac22] to-[#cfd8e2] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      <article class="flex flex-col gap-4 border-b border-[#e2c443]/20 pb-6 text-left text-base leading-relaxed text-[#f2ead6] md:border-r md:border-b-0 md:pr-6 md:pb-0">
-        {titleleft && <p class="text-xl leading-normal font-bold text-[#ffe9a3]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 border-b border-[#e3ac22]/20 pb-6 text-left text-base leading-relaxed text-[#f3e6c4] md:border-r md:border-b-0 md:pr-6 md:pb-0">
+        {titleleft && <p class="text-xl leading-normal font-bold text-[#ffe9a8]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 border-b border-[#e2c443]/20 pb-6 text-left text-base leading-relaxed text-[#f2ead6] md:border-r md:border-b-0 md:px-4 md:pb-0">
-        {titlecenter && <p class="text-xl leading-normal font-bold text-[#c3cddb]">{titlecenter}</p>}
+      <article class="flex flex-col gap-4 border-b border-[#e3ac22]/20 pb-6 text-left text-base leading-relaxed text-[#f3e6c4] md:border-r md:border-b-0 md:px-4 md:pb-0">
+        {titlecenter && <p class="text-xl leading-normal font-bold text-[#cfd8e2]">{titlecenter}</p>}
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ead6] md:pl-6">
-        {titleright && <p class="text-xl leading-normal font-bold text-[#ffe9a3]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e6c4] md:pl-6">
+        {titleright && <p class="text-xl leading-normal font-bold text-[#ffe9a8]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

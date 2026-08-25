@@ -9,7 +9,7 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // ลิงก์ด่วนชุดเดียว ใช้ .map ด้านล่าง — เดิมเขียน <a> ซ้ำหกก้อน ทำให้เพิ่ม/ลบหน้า
 // ต้องไล่แก้ทีละอัน (และเป็นที่ที่ลิงก์หน้าหวยของแบรนด์ก่อนเคยค้างอยู่)
-// LUCKYBKK เป็นคาสิโนสด หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
+// KANGFU1688 เป็นสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
   { name: "ทดลองเล่นเกมฟรี", path: "/ทดลองเล่น" },
@@ -21,32 +21,36 @@ const quickLinks = [
 ];
 
 const LOGO_ALT =
-  "โลโก้ LUCKYBKK ตัวอักษร LUCKYBKK สีฟ้าน้ำแข็งไล่เงาสามมิติ ขอบน้ำเงินเข้มเรืองแสง มีสัญลักษณ์โพดำแทรกอยู่ในตัวอักษร ด้านบนเป็นโพดำสีฟ้าใส ล้อมด้วยไพ่เอซโพดำและโพแดง กับเหรียญทองกองอยู่สองข้าง";
+  "โลโก้ KANGFU1688 เป็นตัวอักษรโลหะสีเงินคำว่า KANGFU วางเฉียง มีเลข 1688 สีเงินซ้อนอยู่ใต้ตัวอักษร ด้านซ้ายบนเป็นหัวมังกรจีนสีเขียวมรกตเรืองแสงพ่นควันขาว มุมขวาบนมีตราสี่เหลี่ยมสีแดงอักษรจีน";
 
-// LUCKYBKK: ย้ายจากน้ำเงินคู่ส้มทองของ BOOST168 (#3f8cff / #9ecbff / #12306e /
-// #0e1430 / #03060f คู่ทอง #ffc233 / #ffe680 / #b26a00 เนื้อความ #e6ecfb /
-// #7d93c4) มาเป็นน้ำเงินรอยัลคู่ทองของแบรนด์นี้ — น้ำเงิน #3f9dfb / #cfe8ff /
-// #1f5fd0 / #0a2a86 คู่ทอง #f0b323 / #ffdf7e / #9a6c05 บนผิว #030b28 / #061442 /
-// #0d2160 เนื้อความ #e4eeff รองด้วย #93b4e8
+// KANGFU1688: ย้ายจากน้ำเงินรอยัลคู่ทองของ LUCKYBKK (#3f9dfb / #cfe8ff / #1f5fd0 /
+// #0a2a86 คู่ทอง #f0b323 / #ffdf7e / #9a6c05 บนผิว #030b28 / #061442 / #0d2160
+// เนื้อความ #e4eeff รองด้วย #93b4e8 / #6f8dc4) มาเป็นหยกเขียวคู่ทองของแบรนด์นี้ —
+// เขียว #24ac6c / #7fe6b4 / #16945d / #0b4b2f คู่ทอง #e8b530 / #ffe6a6 / #8a6410
+// บนผิว #02120a / #072216 / #0d3d28 เนื้อความ #dff3e6 รองด้วย #86b39c / #5f8672
+//
+// บล็อก <address> ด้านล่างวางตามที่ playbook กำหนดแบบคำต่อคำ — ไม่ใส่สีของแบรนด์
+// ลงไป (border-white/15 + bg-black/20 + opacity ทำงานได้กับ footer ทุก variant
+// ซึ่งเป็นพื้นเข้มทั้งหมด) ห้าม retype ข้อความข้างในเอง มาจาก BRAND_ADDRESS
 ---
 
-<footer class="relative mt-32 w-full border-t border-[#f0b323]/30 bg-[#030b28] pt-64 pb-6 font-sans text-[#e4eeff] shadow-[0_-10px_30px_rgba(63,157,251,0.18)] md:pt-40">
+<footer class="relative mt-32 w-full border-t border-[#e8b530]/30 bg-[#02120a] pt-64 pb-6 font-sans text-[#dff3e6] shadow-[0_-10px_30px_rgba(36,172,108,0.18)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#f0b323]/35 bg-gradient-to-r from-[#061442] via-[#1f5fd0] to-[#030b28] p-6 shadow-[0_15px_40px_rgba(63,157,251,0.35)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#e8b530]/35 bg-gradient-to-r from-[#072216] via-[#16945d] to-[#02120a] p-6 shadow-[0_15px_40px_rgba(36,172,108,0.35)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#f0b323] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
-        <span aria-hidden="true">🃏</span> พร้อมนั่งโต๊ะเกมสด VIP กับ LUCKYBKK หรือยัง?
+      <p class="text-xl font-black tracking-wide text-[#e8b530] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
+        <span aria-hidden="true">🐉</span> พร้อมออกหมัดหนักกับ KANGFU1688 หรือยัง?
       </p>
-      <p class="mt-2 text-sm font-medium text-[#93b4e8] md:text-base">
-        สมัคร LUCKYBKK แล้วเข้าโต๊ะได้ทันที คาสิโนสดยิงตรงสัญญาณจากสตูดิโอชั้นนำ คมชัดระดับ HD ทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ดำเนินเกมโดยดีลเลอร์มืออาชีพ ระบบตรงไม่ผ่านเอเย่นต์ ฝากถอนออโต้ตรวจสอบย้อนหลังได้ทุกรายการ
+      <p class="mt-2 text-sm font-medium text-[#86b39c] md:text-base">
+        สมัคร KANGFU1688 แล้วเข้าล็อบบี้ได้ทันที รวมเกมสล็อตลิขสิทธิ์แท้จากค่ายใหญ่ระดับโลก เชื่อมตรงผ่าน API ไม่ผ่านเอเย่นต์ จ่ายไวทุกจังหวะ ฝากถอนออโต้ไม่ต้องส่งสลิป พร้อมแอดมินดูแลตลอด 24 ชั่วโมง
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#f0b323] bg-gradient-to-b from-[#ffdf7e] to-[#f0b323] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#030b28] shadow-[0_0_15px_rgba(240,179,35,0.45)] transition-all hover:scale-105 md:text-base">
-      <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🎲</span></span>
-      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffdf7e] transition-transform duration-300 group-hover:translate-y-0"></div>
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#e8b530] bg-gradient-to-b from-[#ffe6a6] to-[#e8b530] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#02120a] shadow-[0_0_15px_rgba(232,181,48,0.45)] transition-all hover:scale-105 md:text-base">
+      <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🧧</span></span>
+      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffe6a6] transition-transform duration-300 group-hover:translate-y-0"></div>
     </a>
   </div>
 
@@ -64,18 +68,19 @@ const LOGO_ALT =
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(63,157,251,0.6)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(36,172,108,0.6)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#cfe8ff] to-[#0a2a86] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(63,157,251,0.55)]">LUCKYBKK</p>
+              <p class="bg-gradient-to-b from-[#7fe6b4] to-[#0b4b2f] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(36,172,108,0.55)]">KANGFU1688</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#93b4e8]">
-          LUCKYBKK คาสิโนอันดับต้นที่รวบรวมเกมสดคุณภาพ VIP จากสตูดิโอชั้นนำมาไว้ในที่เดียว ทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ยิงตรงสัญญาณสดคมชัดระดับ HD ทั้งภาพและเสียง มีห้องเดิมพันให้เลือกตั้งแต่เบทเริ่มต้นสบายๆ
-          ไปจนถึงห้องระดับ High Roller หน้าต่างการใช้งานแสดงสถิติย้อนหลังชัดเจน บนระบบตรงที่ไม่ผ่านเอเย่นต์ หลังบ้านเสถียรรองรับผู้ใช้งานพร้อมกันจำนวนมากโดยไม่หน่วง พร้อมทีมแอดมินดูแลตลอด 24 ชั่วโมง
+        <p class="text-sm leading-relaxed text-[#86b39c]">
+          KANGFU1688 เว็บสล็อตสายลุยที่แจกหนักจัดเต็มแบบไม่กั๊ก รวบรวมค่ายเกมยักษ์ใหญ่ระดับโลกไว้ครบในล็อบบี้เดียว คัดเฉพาะเกมตัวเด็ดที่อัตราการจ่ายรางวัลสูง งานภาพคมชัด และมีจังหวะโบนัสแตกบ่อย
+          ทั้งหมดเชื่อมสัญญาณตรงจากเซิร์ฟเวอร์หลักของค่ายเกมผ่านระบบตรง API แท้ ไม่ผ่านเอเย่นต์ ไม่มีการปรับแก้เปอร์เซ็นต์แพ้ชนะ ระบบการเงินรองรับทุกกระบวนท่า ถอนหลักสิบหรือหลักแสนก็จ่ายจริงไม่ดึงเช็ง
+          พร้อมทีมแอดมินมืออาชีพสแตนด์บายดูแลตลอด 24 ชั่วโมง
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -108,16 +113,16 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#e4eeff] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#dff3e6] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#f0b323] to-[#3f9dfb] shadow-[0_0_8px_rgba(240,179,35,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#e8b530] to-[#24ac6c] shadow-[0_0_8px_rgba(232,181,48,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#93b4e8] transition-colors hover:text-[#f0b323]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#f0b323] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#86b39c] transition-colors hover:text-[#e8b530]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#e8b530] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -126,39 +131,40 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#e4eeff] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#dff3e6] uppercase">
           ระบบการเงิน
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#f0b323] to-[#3f9dfb] shadow-[0_0_8px_rgba(240,179,35,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#e8b530] to-[#24ac6c] shadow-[0_0_8px_rgba(232,181,48,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#93b4e8]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#86b39c]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#061442] transition-colors hover:border-[#f0b323]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#e4eeff]"><span aria-hidden="true" class="text-lg text-[#f0b323]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#072216] transition-colors hover:border-[#e8b530]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#dff3e6]"><span aria-hidden="true" class="text-lg text-[#e8b530]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#f0b323]/25" />
+    <hr class="mb-6 border-[#e8b530]/25" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#6f8dc4] md:block">
-      คาสิโนอันดับต้นที่ยกระดับมาตรฐานเกมสดออนไลน์ ส่งตรงสัญญาณจากสตูดิโอชั้นนำแบบเรียลไทม์ คมชัดระดับ HD ทั้งภาพและเสียง ครบทั้งบาคาร่า รูเล็ต เสือมังกร และไฮโล ดำเนินเกมโดยดีลเลอร์มืออาชีพตลอด 24 ชั่วโมง
-      คัดสรรโต๊ะเดิมพันและค่ายเกมชั้นนำมารวมไว้ในที่เดียว มีห้องให้เลือกหลากหลายระดับตั้งแต่เบทเริ่มต้นไปจนถึงห้อง High Roller พร้อมหน้าต่างแสดงสถิติย้อนหลังที่อ่านง่าย ให้วางแผนเดิมพันได้แม่นยำ ระบบตรงไม่ผ่านเอเย่นต์
-      ทุกขั้นตอนโปร่งใสตรวจสอบได้จริง อัตราการจ่ายได้มาตรฐานสากล ระบบหลังบ้านเสถียรรองรับผู้ใช้งานพร้อมกันจำนวนมากโดยไม่หน่วง ฝากถอนออโต้ด้วยตัวเองในไม่กี่ขั้นตอน ทางเข้าเว็บล่าสุด ทดลองเล่นฟรี สมัครสมาชิกใหม่ LUCKYBKK
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#5f8672] md:block">
+      เว็บสล็อตสายลุยที่แจกหนักจัดเต็มแบบไม่กั๊ก มาพร้อมคอนเซปต์สล็อตหมัดหนัก รวบรวมเกมสล็อตแตกง่ายลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ระดับโลกไว้ครบครันในล็อบบี้เดียว คัดเฉพาะเกมตัวเด็ดที่อัตราการจ่ายรางวัลสูง
+      งานภาพสวยงามคมชัด และมีจังหวะโบนัสแตกบ่อย ทั้งเกมยอดฮิตติดกระแสและเกมปล่อยใหม่ล่าสุด เบื้องหลังคือระบบตรง API แท้ที่เชื่อมสัญญาณโดยตรงจากเซิร์ฟเวอร์หลักของค่ายเกม ตัดขั้นตอนของการผ่านคนกลางออกทั้งหมด
+      ทุกการกดสปินจึงลื่นไหล ประมวลผลแม่นยำ ไร้การปรับแก้เปอร์เซ็นต์แพ้ชนะ ด้านการเงินวางโครงสร้างไว้พร้อมรับทุกกระบวนท่า ถอนยอดหลักสิบหรือแจ็คพอตหลักแสนก็โอนเข้าบัญชีรวดเร็ว ไม่ดึงเช็ง ไม่มีเงื่อนไขจุกจิก
+      ระบบฝากถอนออโต้ไฮสปีดทำรายการเองได้ในไม่กี่ขั้นตอน ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอคิวแอดมินอนุมัติ ทางเข้าเว็บล่าสุด ทดลองเล่นฟรี สมัครสมาชิกใหม่ KANGFU1688
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#6f8dc4] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#f0b323] uppercase">LUCKYBKK</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#5f8672] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#e8b530] uppercase">KANGFU1688</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#e4eeff]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#e4eeff]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#dff3e6]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#dff3e6]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#e4eeff] transition-all hover:border-[#f0b323] hover:bg-[#061442] hover:shadow-[0_0_15px_rgba(240,179,35,0.5)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#dff3e6] transition-all hover:border-[#e8b530] hover:bg-[#072216] hover:shadow-[0_0_15px_rgba(232,181,48,0.5)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

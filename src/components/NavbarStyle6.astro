@@ -11,8 +11,13 @@ const currentPath = Astro.url.pathname;
 const isActive = (path: string) => isActivePath(currentPath, path);
 
 const logoAlt =
-  "โลโก้ DEKDDD ด้านซ้ายเป็นโล่ทองรูปเด็กสวมแว่น VR และหูฟัง ใส่ชุดแดงลายจีน คาบจุกนม ถือจอยเกมสีทอง มีปีกทองกางออกสองข้าง ด้านขวาเป็นตัวอักษร DEK สีขาวต่อด้วย DDD สีทอง ใต้ลงมาเป็นป้ายทองเขียนว่า เว็บเกมสร้างรายได้";
+  "โลโก้ KANGFU1688 เป็นตัวอักษรโลหะสีเงินคำว่า KANGFU วางเฉียง มีเลข 1688 สีเงินซ้อนอยู่ใต้ตัวอักษร ด้านซ้ายบนเป็นหัวมังกรจีนสีเขียวมรกตเรืองแสงพ่นควันขาว มุมขวาบนมีตราสี่เหลี่ยมสีแดงอักษรจีน";
 
+// KANGFU1688: ย้ายจากแดงเลือดหมูคู่ทองของ DEKDDD (#5c0201 / #1a0503 / #0b0100
+// คู่ทอง #eebb1a / #ffe08a / #f7e7c8 / #c9a98a) มาเป็นหยกเขียวคู่ทองของแบรนด์นี้
+// — เขียว #24ac6c / #16945d / #7fe6b4 บนผิว #0b4b2f / #072216 / #02120a คู่ทอง
+// #e8b530 / #ffe6a6 เนื้อความ #dff3e6 รองด้วย #86b39c
+//
 // เมนูชุดเดียวใช้ทั้งแถบข้างเดสก์ท็อปและลิ้นชักมือถือ — ไอคอนอยู่ใน array แล้ว
 // render เป็น <span aria-hidden> ที่เป็นพี่น้องกับ label ไม่ใช่แทรกในข้อความ
 //
@@ -20,12 +25,14 @@ const logoAlt =
 // /login กับ /register เป็นหน้า interstitial (noindex) ไม่ใช่หน้าเมนู จึงไม่มี
 // รายการเมนูของสองหน้านั้น กฎลำดับ "สมัครสมาชิก/เข้าสู่ระบบ ต่อจากโปรโมชั่น"
 // จึงไม่มีผลกับแบรนด์นี้ และ /ทางเข้า ยังอยู่ในเมนูตามปกติ
+//
+// ไอคอนเลือกให้เข้าธีมกังฟู–มังกรจีนของแบรนด์ ไม่ใช่ชุดสล็อตกลางๆ
 const links = [
-  { name: "หน้าแรก", path: "/", icon: "🏠" },
-  { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
-  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🎮" },
+  { name: "หน้าแรก", path: "/", icon: "🏮" },
+  { name: "โปรโมชั่น", path: "/promotion", icon: "🧧" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "⛩️" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🛡️" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🐉" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 ---
@@ -33,28 +40,28 @@ const links = [
 <header class="sticky top-0 z-50 w-full font-sans shadow-lg">
   <div class="pointer-events-none absolute top-0 left-0 z-50 hidden h-0 w-full items-start justify-center lg:flex">
     <div
-      class="pointer-events-auto flex h-[65px] w-[120px] items-center justify-center rounded-b-3xl border-x border-b border-[#eebb1a] bg-gradient-to-b from-[#5c0201] to-[#0b0100] shadow-[0_5px_15px_rgba(238,187,26,0.4)]">
-      <a href="/" class="drop-shadow-[0_0_8px_rgba(255,224,138,0.45)] transition-transform hover:scale-110">
+      class="pointer-events-auto flex h-[65px] w-[120px] items-center justify-center rounded-b-3xl border-x border-b border-[#e8b530] bg-gradient-to-b from-[#0b4b2f] to-[#02120a] shadow-[0_5px_15px_rgba(232,181,48,0.4)]">
+      <a href="/" class="drop-shadow-[0_0_8px_rgba(127,230,180,0.45)] transition-transform hover:scale-110">
         <Picture src={mainLogo!} alt={logoAlt} loading="eager" widths={[110, 220, 330]} sizes="110px" class="h-[35px] w-auto" formats={["avif", "webp"]} fallbackFormat="webp" />
       </a>
     </div>
   </div>
 
   <aside
-    class="fixed top-1/2 left-3 z-40 hidden h-[450px] w-[90px] -translate-y-1/2 flex-col items-center justify-center rounded-2xl border border-[#5c0201]/80 bg-[#0b0100]/95 p-2 shadow-[5px_0_20px_rgba(11,1,0,0.7)] backdrop-blur-md lg:flex">
+    class="fixed top-1/2 left-3 z-40 hidden h-[450px] w-[90px] -translate-y-1/2 flex-col items-center justify-center rounded-2xl border border-[#0b4b2f]/80 bg-[#02120a]/95 p-2 shadow-[5px_0_20px_rgba(2,18,10,0.7)] backdrop-blur-md lg:flex">
     <div class="relative flex h-full w-full flex-col gap-2 overflow-hidden rounded-xl">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative w-full h-full flex flex-col items-center justify-center rounded-lg transition-all ${isActive(item.path) ? "bg-[#5c0201]" : "hover:bg-[#5c0201]/70"}`}>
+            class={`group relative w-full h-full flex flex-col items-center justify-center rounded-lg transition-all ${isActive(item.path) ? "bg-[#0b4b2f]" : "hover:bg-[#0b4b2f]/70"}`}>
             <span aria-hidden="true" class="mb-1 text-3xl drop-shadow-md transition-transform group-hover:scale-110">
               {item.icon}
             </span>
-            <span class={`text-xs font-bold transition-colors ${isActive(item.path) ? "text-[#ffe08a]" : "text-[#c9a98a] group-hover:text-[#ffe08a]"}`}>{item.name}</span>
+            <span class={`text-xs font-bold transition-colors ${isActive(item.path) ? "text-[#ffe6a6]" : "text-[#86b39c] group-hover:text-[#ffe6a6]"}`}>{item.name}</span>
             <span
               aria-hidden="true"
-              class={`absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#ffe08a] to-[#eebb1a] transition-transform duration-300 origin-top ${isActive(item.path) ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`}
+              class={`absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#7fe6b4] to-[#e8b530] transition-transform duration-300 origin-top ${isActive(item.path) ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`}
             />
           </a>
         ))
@@ -62,11 +69,11 @@ const links = [
     </div>
   </aside>
 
-  <nav class="relative z-40 flex h-[60px] items-center justify-between border-b border-[#eebb1a]/40 bg-[#1a0503] px-3 shadow-xl lg:hidden">
+  <nav class="relative z-40 flex h-[60px] items-center justify-between border-b border-[#e8b530]/40 bg-[#072216] px-3 shadow-xl lg:hidden">
     <button id="hamburger-btn" class="flex flex-col items-center justify-center space-y-1.5 p-2" aria-label="เปิด-ปิดเมนู">
-      <span class="hamburger-line h-0.5 w-6 origin-center bg-[#f7e7c8] transition-all duration-300"></span>
-      <span class="hamburger-line h-0.5 w-6 bg-[#f7e7c8] transition-all duration-300"></span>
-      <span class="hamburger-line h-0.5 w-6 origin-center bg-[#f7e7c8] transition-all duration-300"></span>
+      <span class="hamburger-line h-0.5 w-6 origin-center bg-[#dff3e6] transition-all duration-300"></span>
+      <span class="hamburger-line h-0.5 w-6 bg-[#dff3e6] transition-all duration-300"></span>
+      <span class="hamburger-line h-0.5 w-6 origin-center bg-[#dff3e6] transition-all duration-300"></span>
     </button>
 
     <a href="/" class="flex-shrink-0 transition-transform hover:scale-105">
@@ -75,7 +82,7 @@ const links = [
 
     <a
       href="/login"
-      class="flex h-[32px] items-center justify-center rounded border border-[#eebb1a]/60 bg-gradient-to-r from-[#ffe08a] to-[#eebb1a] px-4 text-xs font-bold text-[#1a0503] shadow-[0_0_12px_rgba(238,187,26,0.35)] transition-transform active:scale-95">
+      class="flex h-[32px] items-center justify-center rounded border border-[#e8b530]/60 bg-gradient-to-r from-[#ffe6a6] to-[#e8b530] px-4 text-xs font-bold text-[#072216] shadow-[0_0_12px_rgba(232,181,48,0.35)] transition-transform active:scale-95">
       เข้าสู่ระบบ
     </a>
   </nav>
@@ -84,13 +91,13 @@ const links = [
 
   <div
     id="mobile-sidebar"
-    class="fixed top-0 left-0 z-50 h-screen w-[260px] -translate-x-full transform overflow-y-auto border-r border-[#eebb1a]/30 bg-[#1a0503] shadow-[10px_0_30px_rgba(11,1,0,0.85)] transition-transform duration-300 ease-out lg:hidden">
+    class="fixed top-0 left-0 z-50 h-screen w-[260px] -translate-x-full transform overflow-y-auto border-r border-[#e8b530]/30 bg-[#072216] shadow-[10px_0_30px_rgba(2,18,10,0.85)] transition-transform duration-300 ease-out lg:hidden">
     <div class="flex flex-col space-y-2.5 px-4 pt-16 pb-8">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`sidebar-item flex items-center px-4 py-3 rounded-lg border transition-all ${isActive(item.path) ? "bg-[#5c0201] border-[#eebb1a] text-[#ffe08a] shadow-inner" : "bg-white/5 border-transparent text-[#c9a98a] hover:bg-white/10 hover:text-[#ffe08a]"}`}>
+            class={`sidebar-item flex items-center px-4 py-3 rounded-lg border transition-all ${isActive(item.path) ? "bg-[#0b4b2f] border-[#e8b530] text-[#ffe6a6] shadow-inner" : "bg-white/5 border-transparent text-[#86b39c] hover:bg-white/10 hover:text-[#ffe6a6]"}`}>
             <span aria-hidden="true" class="mr-3 text-xl">
               {item.icon}
             </span>
@@ -99,10 +106,10 @@ const links = [
         ))
       }
 
-      <div class="mt-5 flex flex-col gap-2 border-t border-[#5c0201]/80 pt-5">
+      <div class="mt-5 flex flex-col gap-2 border-t border-[#0b4b2f]/80 pt-5">
         <a
           href="/register"
-          class="sidebar-item flex justify-center gap-1.5 rounded border border-[#eebb1a]/60 bg-gradient-to-r from-[#fff6dd] via-[#ffe08a] to-[#eebb1a] py-3 text-sm font-bold text-[#1a0503] shadow-md transition-transform active:scale-95">
+          class="sidebar-item flex justify-center gap-1.5 rounded border border-[#e8b530]/60 bg-gradient-to-r from-[#fff7dd] via-[#ffe6a6] to-[#e8b530] py-3 text-sm font-bold text-[#072216] shadow-md transition-transform active:scale-95">
           <span aria-hidden="true">⚡</span> สมัครสมาชิกใหม่
         </a>
       </div>
@@ -112,12 +119,12 @@ const links = [
   <div class="fixed top-4 right-6 z-50 hidden items-center gap-3 lg:flex">
     <a
       href="/login"
-      class="group flex items-center gap-1.5 rounded border border-[#eebb1a]/60 bg-[#1a0503]/90 px-6 py-2 text-sm font-bold text-[#f7e7c8] shadow-md backdrop-blur-sm transition-all hover:border-[#ffe08a] hover:bg-[#2a0806]/90">
+      class="group flex items-center gap-1.5 rounded border border-[#e8b530]/60 bg-[#072216]/90 px-6 py-2 text-sm font-bold text-[#dff3e6] shadow-md backdrop-blur-sm transition-all hover:border-[#ffe6a6] hover:bg-[#0d3d28]/90">
       <span aria-hidden="true">🔒</span> เข้าสู่ระบบ
     </a>
     <a
       href="/register"
-      class="group flex items-center gap-1.5 rounded border border-[#eebb1a]/60 bg-gradient-to-r from-[#fff6dd] via-[#ffe08a] to-[#eebb1a] px-6 py-2 text-sm font-bold text-[#1a0503] shadow-[0_0_15px_rgba(238,187,26,0.35)] transition-all hover:scale-105">
+      class="group flex items-center gap-1.5 rounded border border-[#e8b530]/60 bg-gradient-to-r from-[#fff7dd] via-[#ffe6a6] to-[#e8b530] px-6 py-2 text-sm font-bold text-[#072216] shadow-[0_0_15px_rgba(232,181,48,0.35)] transition-all hover:scale-105">
       <span aria-hidden="true">⚡</span> สมัครสมาชิก
     </a>
   </div>

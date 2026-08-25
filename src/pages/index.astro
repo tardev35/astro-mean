@@ -1,80 +1,77 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Announcement from "../components/AnnouncementPremium.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
 import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
-import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBox from "../components/ContentBox.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
+import ContentBox3ThreeNeumorphism from "../components/ContentBox3ThreeNeumorphism.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners2 from "../components/LatestWinners2.astro";
+import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq3 from "../components/Faq3.astro";
+import Faq2 from "../components/Faq2.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgFreeBonus500 from "../assets/slide1.png";
-import imgCashback5 from "../assets/slide2.png";
+import imgCashback from "../assets/slide1.png";
+import imgAffiliate from "../assets/slide2.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxFloatingBadge as="h1"
-//   2 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
-//   3 → ContentBoxTwoNeumorphism as="h2" แล้วต่อด้วย GameRankingBoard และ
-//       ProviderGrid ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (ไลน์อัปเกมและค่าย)
-//   4 → ContentBoxSevenThreePremium as="h2" + slide1
-//   5 → ContentBoxSevenThree as="h2" + slide2
-//   6 → ContentBoxSpecial as="h2"
-//   7 → ContentBox as="h2" (การ์ดกลางที่ terms/privacy ใช้ร่วม)
+//   1 → ContentBoxPremium as="h1"
+//   2 → ContentBoxFloatingBadge as="h2"
+//   3 → ContentBoxSevenThreeCyberCut as="h2" + slide1 แล้วต่อด้วย ProviderGrid
+//       ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (รวมค่ายชั้นนำไว้แค่ไหน)
+//   4 → ContentBoxTwoCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/right)
+//   5 → ContentBox3ThreeNeumorphism as="h2" (แบ่งลง left/center/right) แล้วต่อด้วย
+//       GameRankingBoard ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (หมวดเกมยอดนิยม)
+//   6 → ContentBoxNeumorphism as="h2"
+//   7 → ContentBoxSevenThreeNeumorphism as="h2" + slide2
 //
-// variant รอบนี้หมุนทั้งตระกูลจากแบรนด์ก่อนหน้า (PABO88 ใช้ Premium +
-// SevenThreeCyberCut + 3ThreePremium + SevenThreeNeumorphism + CyberCut + plain +
-// Neumorphism) มาเป็น FloatingBadge + 3ThreeCyberCut + TwoNeumorphism +
-// SevenThreePremium + SevenThree + Special + plain ส่วน Navbar ย้ายจาก
-// NavbarStyle10 มาเป็น NavbarStyle11, Footer จาก Footer.astro มาเป็น
-// FooterPremium, Announcement จาก Announcement6 มาเป็น AnnouncementPremium,
-// LatestWinners จาก LatestWinners.astro มาเป็น LatestWinners2, Faq จาก Faq.astro
-// มาเป็น Faq3 และโครงสองคอลัมน์ที่ LoginRtpSection ใช้ย้ายจาก
-// ContentBoxTwoCyberCut มาเป็น ContentBoxTwoPremium
+// variant รอบนี้หมุนทั้งตระกูลจาก MONEY777 (CyberCut + TwoPremium + 3ThreePremium +
+// Special + SevenThreePremium + TwoFloatingBadge + SevenThree) มาเป็น Premium +
+// FloatingBadge + SevenThreeCyberCut + TwoCyberCut + 3ThreeNeumorphism +
+// Neumorphism + SevenThreeNeumorphism ส่วน Navbar ย้ายจาก NavbarStyle9 มาเป็น
+// NavbarPremium, Footer จาก FooterStyle2 มาเป็น FooterPremiumSumo, Announcement
+// จาก Announcement5 มาเป็น AnnouncementPremium, LatestWinners จาก LatestWinners3
+// มาเป็น LatestWinnersPremium และ Faq จาก Faq4 มาเป็น Faq2
 //
-// plain ContentBox ซ้ำจากรอบก่อนโดยบังคับ — terms.astro กับ privacy.astro ตรึงไว้
-// ที่ไฟล์นี้ถาวร มันจึงเป็น always-live ไม่ว่าจะหมุน variant อย่างไร
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide1 (คืนยอดเสีย 5% ทุกสัปดาห์
+// มือถือโชว์โลโก้ PG SLOT ไพ่ ชิป เหรียญทอง) คู่กับหัวข้อข้อ 3 เรื่องค่ายเกมดังใน
+// ล็อบบี้ และ slide2 (ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์ ฟาโรห์อียิปต์กับตู้สล็อต)
+// คู่กับหัวข้อข้อ 7 เรื่องระบบพร้อมให้เข้ามาทำกำไรได้ตลอด 24 ชั่วโมง
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide1 (รับฟรีโบนัส สูงสุด 500.-
-// เพียงทำการฝากในช่วงเวลา 20:00-22:00) คู่กับหัวข้อข้อ 4 ซึ่งเป็นเรื่องโบนัสและ
-// สิทธิพิเศษตรงๆ และ slide2 (คืนยอดเสียทุกวัน 5% ถอนได้ทันที ไม่มีเทิร์น) คู่กับ
-// หัวข้อข้อ 5 เรื่องเว็บทุนหนาจ่ายจริง เพราะ "ถอนได้ทันที ไม่มีเทิร์น" บนรูปคือ
-// ภาพของการรับยอดแบบไม่เล่นแง่
+// slide3 (เสือแดง Fortune Tiger) กับ slide4 (มีโลโก้ UOK789 อยู่ในรูป) รวมถึง
+// banner.png และ banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด จึงห้าม import
+// ที่นี่ทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน
+// banner1 กับ banner1-mobile เป็น hero ที่ MainLayout จัดการเอง
 //
-// slide3 กับ slide4 เป็นอาร์ตของโปรโมชันอื่นที่หน้า /promotion ถือไว้ ส่วน
-// banner.png กับ banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด จึงห้าม import
-// ที่นี่ทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม
-// ส่วน banner1 กับ banner1-mobile เป็น hero ที่ MainLayout จัดการเอง รอบนี้จึง
-// ไม่มีรูปประกอบใน ContentBox เดี่ยว
+// widget ที่ไม่ได้มาจาก docx (LatestWinnersPremium, LoginRtpSection,
+// ReviewCardSumo2, SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น
+// <p>/<span> + aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้าย
+// ทั้งชุด ยกเว้น ProviderGrid กับ GameRankingBoard ที่เป็นภาพประกอบของหัวข้อ docx
+// ข้อ 3 และ 5 โดยตรง จึงวางต่อท้ายบล็อกนั้นๆ ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx
+// สองข้อโดยไม่มีเหตุผล
 //
-// widget ที่ไม่ได้มาจาก docx (LatestWinners2, LoginRtpSection, ReviewCardSumo2,
-// SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น <p>/<span> + aria-label
-// บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้น GameRankingBoard
-// กับ ProviderGrid ที่เป็นภาพประกอบของหัวข้อ docx ข้อ 3 โดยตรง จึงวางต่อท้ายบล็อก
-// นั้น ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อ
+// h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx พอดี ไม่มีตัวที่เจ็ด — หัว FAQ เป็น <p> ใน
+// Faq2.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน <summary>
+// ไม่ใช่ h3 และป้ายคอลัมน์ของ SevenThreeCyberCut / TwoCyberCut /
+// 3ThreeNeumorphism / SevenThreeNeumorphism เป็น <p> — docx รอบนี้แบน H1 + H2
+// ล้วน หน้านี้จึงไม่มี h3 เลย
 //
-// h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx พอดี ไม่มีตัวที่เจ็ด — หัว FAQ ถูกลดเป็น <p>
-// ใน Faq3.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน
-// <summary> ไม่ใช่ h3 บรรทัดหัวของ LatestWinners2 เป็น <p> และป้ายคอลัมน์ของ
-// ContentBox3ThreeCyberCut / ContentBoxTwoNeumorphism / SevenThree ทั้งสองตัว /
-// ContentBoxTwoPremium เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
-//
-// title กับ description ใช้บรรทัด Title/Des ของ docx ตรงๆ (60 / 156 ตัวอักษร
-// อยู่ในเกท 150–160 ของ verify-build แล้ว) และ description เป็นสตริงเดียวกับที่
+// title ใช้บรรทัด Title ของ docx ตรงๆ (65 ตัวอักษร) ส่วน description ใช้บรรทัด Des
+// ของ docx โดยต่อหางประโยคสุดท้ายเป็น "ฝากถอนออโต้ไวทุกจังหวะ" ให้ยาว 158 ตัวอักษร
+// — ข้อความดิบของ docx ต่ำกว่าเกท 150–160 ของ tools/verify-build.mjs ซึ่งจะทำให้
+// build แดง ค่าที่ใช้ตรงกับ default ของ MainLayout เป๊ะ และเป็นสตริงเดียวกับที่
 // ส่งเข้า pageGraph
-const pageTitle = "UOK789 | สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง";
+const pageTitle = "PROFIT55 | คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล";
 const pageDescription =
-  "UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมเกมตรงผ่าน API ตัวเด็ดเข้าไม่พัก โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง ไม่ล็อกยูส ฝากถอนออโต้ พร้อมระบบการเงินที่ทำงานเป็นขั้นตอน";
+  "PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล ตั้งแต่บาคาร่าไปจนถึงฟุตบอล เลือกเกมง่าย สลับโหมดคล่อง ระบบพร้อมตลอดวัน ฝากถอนออโต้ไวทุกจังหวะ";
 
 // default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
 // จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji เพราะ marquee
@@ -82,32 +79,32 @@ const pageDescription =
 // ตรงกับ default ของ AnnouncementPremium เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก
 // <Announcement /> เปล่าๆ วิ่งข้อความเดียวกับหน้าแรก
 const announcementMessage =
-  "UOK789 สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง • เชื่อมตรงกับเซิร์ฟเวอร์หลักของค่ายเกมผ่าน API ไม่ผ่านเอเย่นต์หรือคนกลาง ไม่ดัดแปลงโปรแกรมและไม่ล็อกผล • ล็อบบี้อัปเดตเกมสล็อตใหม่เข้ามาต่อเนื่อง ทั้งเกมฮิตติดลมบนและเกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก • โปรโมชันเติมเงินรายวัน เครดิตพิเศษต้อนรับสมาชิกใหม่ และกิจกรรมคืนยอดเสียที่แจกให้อย่างต่อเนื่อง • ถอนหลักร้อยหรือหลักแสนก็อนุมัติเต็มจำนวน ไร้ประวัติการเบี้ยว ยอดไม่ค้าง ไม่มีเงื่อนไขจุกจิกมาประวิงเวลา • ไม่ล็อกยูส ปรับเบทขึ้นลง ซื้อฟีเจอร์ หรือสลับหลายค่ายในวันเดียวได้เต็มสไตล์ • ฝากถอนออโต้เสร็จในไม่กี่วินาที ไม่ต้องส่งสลิปให้แอดมินตรวจสอบ ตลอด 24 ชั่วโมง";
+  "PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล • รวบรวมค่ายเกมชั้นนำทั่วโลกไว้ในแพลตฟอร์มเดียว ครบทั้งสายไพ่ สายปั่นสล็อต และสายแทงบอลจบในที่เดียว • เกมลิขสิทธิ์แท้ อัตราการจ่ายเงินรางวัลเป็นธรรม พร้อมโครงสร้างระบบหลังบ้านที่แน่นหนาและปลอดภัยในทุกมิติ • ล็อบบี้จัดหมวดหมู่ไว้เป็นระเบียบ ทั้งแยกตามค่ายเกม หมวดเกมยอดนิยม และคาสิโนสด หาเกมที่อยากเล่นเจอในไม่กี่คลิก • จบเกมบาคาร่าสดแล้วสลับไปเช็กราคาค่าน้ำและวางเดิมพันฟุตบอลคู่โปรดได้ทันทีภายในยูสเซอร์เดียว • ระบบกระเป๋าเงินเดียวใช้ได้ทุกหมวดเดิมพัน ไม่ต้องกดโยกเงินไปมาให้เสียเวลาหรือเสี่ยงยอดตกค้าง • เซิร์ฟเวอร์รองรับสมาชิกเข้าใช้งานพร้อมกันจำนวนมาก ฝากถอนออโต้ประมวลผลไวในไม่กี่วินาที เปิดให้เข้ามาทำกำไรได้ตลอด 24 ชั่วโมง";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
 // ที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq3> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+// <Faq2> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "UOK789 เชื่อมเกมกับค่ายอย่างไร ต่างจากเว็บที่ผ่านเอเย่นต์ตรงไหน",
-    a: "ตัวระบบเชื่อมต่อตรงกับเซิร์ฟเวอร์หลักของค่ายเกมผ่าน API โดยไม่ผ่านเอเย่นต์หรือคนกลาง จึงไม่มีการดัดแปลงโปรแกรม ไม่มีการปรับลดเปอร์เซ็นต์ชนะ และไม่มีการล็อกผลใดๆ ทุกสปินลื่นไหลไร้ปัญหากระตุก และให้ผลการออกรางวัลที่แม่นยำตามมาตรฐานสากล",
+    q: "PROFIT55 เหมาะกับสายเดิมพันแนวไหนบ้าง",
+    a: "เหมาะกับทุกแนว เพราะที่นี่รวบรวมค่ายเกมชั้นนำทั่วโลกมาไว้ในแพลตฟอร์มเดียว ครบทั้งสายไพ่ที่ชอบบาคาร่าสดและคาสิโนสดสตรีมมิ่งความคมชัดสูง สายปั่นสล็อตที่มองหาเกมภาพสวยโบนัสแตกง่าย ไปจนถึงสายแทงบอลที่ต้องการเช็กราคาค่าน้ำก่อนวางเดิมพัน",
   },
   {
-    q: "ล็อบบี้เกมสล็อตของ UOK789 อัปเดตเกมใหม่บ่อยแค่ไหน",
-    a: "ล็อบบี้มีการอัปเดตเกมสล็อตใหม่เข้ามาอย่างต่อเนื่องไม่ขาดสาย ทั้งเกมฮิตติดลมบนที่ใครๆ ก็ปั่น และเกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก เลือกสลับเปลี่ยนเล่นได้ไม่มีซ้ำ ทำให้การทำกำไรมีตัวเลือกหลากหลายและสดใหม่อยู่ตลอดเวลา",
+    q: "ต้องเปิดหลายยูสเซอร์หรือโยกเงินข้ามหมวดไหมถ้าอยากเล่นหลายแบบ",
+    a: "ไม่ต้องเลย ทุกหมวดเดิมพันใช้ยูสเซอร์เดียวและกระเป๋าเงินเดียวร่วมกัน เงินทุนของคุณจึงพร้อมใช้งานได้ทุกหมวดทันที จบเกมบาคาร่าสดแล้วสลับไปวางเดิมพันฟุตบอลคู่โปรดได้เลย ไม่ต้องกดโยกเงินไปมาให้เสียเวลาหรือเสี่ยงต่อยอดเงินตกค้าง",
   },
   {
-    q: "โบนัสและสิทธิพิเศษของ UOK789 มีแบบไหนให้เลือกบ้าง",
-    a: "สิทธิพิเศษถูกคิดมาเพื่อซัพพอร์ตสมาชิกทุกระดับ ทั้งโปรโมชันเติมเงินรายวัน เครดิตพิเศษต้อนรับสมาชิกใหม่ และกิจกรรมคืนยอดเสียที่แจกให้อย่างต่อเนื่อง ทั้งหมดช่วยเพิ่มทุนในการปั่นให้หมุนลุ้นรอบแจ็คพอตได้นานยิ่งขึ้นโดยไม่ต้องใช้ทุนเยอะ",
+    q: "ล็อบบี้ของ PROFIT55 หาเกมที่อยากเล่นยากไหม",
+    a: "หน้าการใช้งานถูกจัดหมวดหมู่ไว้อย่างเป็นระเบียบและสบายตา มีทั้งการแยกประเภทตามค่ายเกม หมวดเกมยอดนิยม และคาสิโนสด ช่วยลดเวลาในการไล่หาเกมลงไปมาก ผู้เล่นจึงเข้าถึงตัวเกมที่ต้องการได้อย่างรวดเร็วเพียงไม่กี่คลิก",
   },
   {
-    q: "ถอนยอดใหญ่หลักแสนกับ UOK789 ได้เต็มจำนวนจริงไหม",
-    a: "ไม่ว่าจะทำกำไรถอนหลักร้อยหรือสปินแตกโบนัสใหญ่หลักแสน ทางเว็บก็พร้อมอนุมัติและโอนเงินออกให้เต็มจำนวน ไร้ประวัติการเบี้ยว ยอดไม่ค้าง และไม่มีการอ้างเงื่อนไขจุกจิกมาประวิงเวลา จึงมั่นใจได้ว่าจะได้รับเงินรางวัลครบถ้วนทุกบาททุกสตางค์",
+    q: "สลับจากคาสิโนไปหน้ากีฬาแล้วระบบค้างหรือกระตุกหรือเปล่า",
+    a: "ระบบประมวลผลถูกปรับจูนให้มีความเสถียรสูง เมื่อกดสลับหน้าต่างจากคาสิโนสดไปยังตารางแข่งขันกีฬา ตัวเว็บจะตอบสนองและโหลดข้อมูลขึ้นมาอย่างฉับไว ไร้รอยต่อ ไม่มีอาการค้างหรือกระตุกมาตัดจังหวะการเล่น",
   },
   {
-    q: "ฝากถอนกับ UOK789 ต้องส่งสลิปให้แอดมินไหม และมีการล็อกยูสหรือเปล่า",
-    a: "ทุกรายการฝากและถอนดำเนินการผ่านระบบอัตโนมัติภายในเวลาไม่กี่วินาที ไม่ต้องส่งสลิปให้แอดมินตรวจสอบและไม่ต้องนั่งรอ ทำรายการได้ตลอด 24 ชั่วโมง ส่วนการเล่นก็ไม่ล็อกยูส จะปรับเบทขึ้นลง ซื้อฟีเจอร์ หรือสลับหลายค่ายในวันเดียวก็ทำได้เต็มสไตล์",
+    q: "ช่วงบอลคู่ใหญ่หรือคนเข้าปั่นสล็อตพร้อมกันเยอะ ระบบยังไหวไหม และฝากถอนนานหรือเปล่า",
+    a: "เซิร์ฟเวอร์ถูกออกแบบมาให้รองรับการเข้าใช้งานพร้อมกันของสมาชิกจำนวนมากได้สบาย ไม่ว่าจะเป็นช่วงบอลคู่ใหญ่หรือช่วงที่มีคนเข้าปั่นสล็อตสูงสุด ระบบก็ยังทำงานได้ราบรื่น ส่วนฝากถอนเป็นออโต้ประมวลผลไวในไม่กี่วินาที เปิดให้เข้ามาทำกำไรได้ตลอด 24 ชั่วโมง",
   },
 ];
 
@@ -125,109 +122,104 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxFloatingBadge as="h1" title="UOK789 สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง">
+  <ContentBoxPremium as="h1" title="PROFIT55 คาสิโนออนไลน์ระดับโปร รวมค่ายชั้นนำ เว็บเดียวครบทุกฟีล">
     <p class="text-left text-base leading-relaxed">
-      ถ้าคุณกำลังมองหาความชัวร์ในการเล่นสล็อตออนไลน์ บอกเลยว่า UOK789 สล็อตออนไลน์ค่ายแท้ โบนัสจัดหนัก เว็บทุนหนาจ่ายจริง คือตัวเลือกที่ตอบโจทย์สายปั่นได้ตรงจุดที่สุด
-      ที่นี่โดดเด่นด้วยการเป็นศูนย์รวมเกมลิขสิทธิ์แท้ที่พร้อมแจกแจ็คพอตก้อนโตตลอดวัน ประกอบกับฐานการเงินที่มั่นคงปลอดภัยระดับสากล ไม่ว่าจะเล่นได้ยอดเล็กหรือโบนัสแตกหลักแสน
-      ก็ถอนเงินออกไปใช้ได้จริงแบบไม่ต้องนั่งลุ้น ให้คุณได้สัมผัสความสนุกของการสปินแบบไร้กังวลตั้งแต่วินาทีแรก
+      หากคุณกำลังมองหาศูนย์รวมความบันเทิงที่ตอบโจทย์ความต้องการของสายเดิมพันทุกรูปแบบ PROFIT55 คือคำตอบที่ใช่ที่สุดในตอนนี้ ยกระดับการเล่นคาสิโนออนไลน์สู่มาตรฐานระดับโปรด้วยการรวบรวมค่ายเกมชั้นนำทั่วโลกมาไว้ในแพลตฟอร์มเดียว
+      ไม่ว่าจะเป็นสายไพ่ สายปั่นสล็อต หรือสายแทงบอล ที่นี่พร้อมมอบสัมผัสการใช้งานที่ลื่นไหล เสถียร และปลอดภัยในทุกมิติ เปลี่ยนการเล่นคาสิโนแบบเดิมให้กลายเป็นความบันเทิงระดับพรีเมียมที่ทำกำไรได้จริงตลอดเวลา
+    </p>
+  </ContentBoxPremium>
+
+  <ContentBoxFloatingBadge as="h2" title="PROFIT55 คาสิโนออนไลน์ระดับโปร มีอะไรครบจนสายเดิมพันหลายแนวมารวมกันได้">
+    <p class="text-left text-base leading-relaxed">
+      ปัจจัยหลักที่ทำให้เหล่านักเดิมพันตัวจริงต่างพากันปักหลักใช้งานที่ PROFIT55 คือความอุดมสมบูรณ์ของตัวเกมและระบบบริการที่ไม่เคยตัดทอนคุณภาพ ตัวเว็บถูกออกแบบมาเพื่อรองรับผู้เล่นหลากหลายกลุ่ม
+      ไม่ว่าจะเป็นผู้เล่นสายเน้นจังหวะความเร็ว หรือผู้เล่นสายวิเคราะห์เชิงกลยุทธ์ ทุกคนจะได้สัมผัสกับเกมลิขสิทธิ์แท้ที่มีอัตราการจ่ายเงินรางวัลเป็นธรรม พร้อมโครงสร้างระบบหลังบ้านที่แน่นหนา
+      ทำให้ที่นี่กลายเป็นจุดหมายปลายทางที่รวมสายเดิมพันทุกแนวไว้ได้อย่างลงตัว
     </p>
   </ContentBoxFloatingBadge>
 
-  <ContentBox3ThreeCyberCut
-    as="h2"
-    title="UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมตรงผ่าน API ต่างจากเกมทั่วไปตรงไหน?"
-    titleleft="เสถียรและจ่ายเป็นธรรม"
-    titlecenter="เชื่อมตรงไม่ผ่านคนกลาง"
-    titleright="ทุกสปินลื่นไหล">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      เหตุผลที่ทำให้ UOK789 สล็อตออนไลน์ค่ายแท้ เชื่อมตรงผ่าน API ต่างจากเกมทั่วไปตรงไหน? คำตอบอยู่ที่ความเสถียรและอัตราการจ่ายที่เป็นธรรมขั้นสุด
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">
-      เนื่องจากตัวระบบเชื่อมต่อตรงกับเซิร์ฟเวอร์หลักของค่ายเกมโดยไม่ผ่านเอเย่นต์หรือคนกลาง ทำให้ไม่มีการดัดแปลงโปรแกรม การปรับลดเปอร์เซ็นต์ชนะ หรือการล็อกผลใดๆ
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">ทุกสปินจึงลื่นไหล ไร้ปัญหากระตุก และให้ผลการออกรางวัลที่แม่นยำตามมาตรฐานสากล 100%</p>
-  </ContentBox3ThreeCyberCut>
-
-  <ContentBoxTwoNeumorphism
-    as="h2"
-    title="ตัวเด็ดเข้าไม่พัก เปิดลิสต์ UOK789 เจอทั้งเกมกระแสและตัวใหม่ให้น่าตาม"
-    titleleft="ล็อบบี้อัปเดตไม่ขาดสาย"
-    titleright="ทั้งเกมกระแสและตัวใหม่">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ความน่าตื่นเต้นอีกอย่างคือไลน์อัปเกมที่จัดมาให้แบบ ตัวเด็ดเข้าไม่พัก เปิดลิสต์ UOK789 เจอทั้งเกมกระแสและตัวใหม่ให้น่าตาม กันแบบไม่ขาดสาย
-      ล็อบบี้ของที่นี่มีการอัปเดตเกมสล็อตใหม่ๆ เข้ามาอย่างต่อเนื่อง
-    </p>
+  <ContentBoxSevenThreeCyberCut as="h2" title="รวมค่ายชั้นนำไว้แค่ไหน? เปิด PROFIT55 แล้วเจอเกมดังหลายสไตล์ในที่เดียว" titleleft="คืนยอดเสีย 5% ทุกสัปดาห์">
+    <Picture
+      slot="left"
+      src={imgCashback}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นของ PROFIT55 พื้นทองไล่เฉด ด้านซ้ายเป็นมือถือที่เปิดหน้าจอโลโก้ PG SLOT สีแดง ถัดมาเป็นตัวการ์ตูนคาวบอยสวมหมวกปีกกว้างและผ้าพันคอแดง ตรงกลางเป็นวงล้อสีดำทองพร้อมไพ่โพดำและดอกจิก ล้อมด้วยกองเหรียญทอง ด้านบนมีโลโก้ PROFIT55 และด้านขวาเขียนตัวหนังสือขาวขอบทองว่า คืนยอดเสีย 5% ทุกสัปดาห์"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e3ac22]/40 shadow-[0_10px_30px_rgba(227,172,34,0.25)]"
+    />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะเป็นเกมฮิตติดลมบนที่ใครๆ ก็ปั่น หรือเกมนอกกระแสฟีเจอร์เด็ดที่พร้อมแตกหนัก ก็มีให้เลือกสลับเปลี่ยนเล่นได้ไม่มีซ้ำ
-      ช่วยให้การทำกำไรของคุณมีตัวเลือกหลากหลายและสดใหม่อยู่ตลอดเวลา
+      พอก้าวเข้าสู่ล็อบบี้ของ PROFIT55 คุณจะได้พบกับอาณาจักรความบันเทิงที่ไร้ขีดจำกัด ตัวเว็บจับมือกับค่ายเกมยักษ์ใหญ่ระดับโลกเพื่อนำเสนอเกมตัวตึงแบบจัดเต็ม ตั้งแต่สล็อตภาพสวยโบนัสแตกง่าย
+      คาสิโนสดสตรีมมิ่งความคมชัดสูง ไปจนถึงเกมสไตล์ใหม่ๆ ที่กำลังเป็นกระแส คุณสามารถค้นหาและเลือกเล่นเกมฮิตจากทุกค่ายดังได้ทันทีโดยไม่ต้องเสียเวลาตามหาจากหลายๆ เว็บให้ยุ่งยาก
     </p>
-  </ContentBoxTwoNeumorphism>
-
-  <GameRankingBoard />
+  </ContentBoxSevenThreeCyberCut>
 
   <ProviderGrid />
 
-  <ContentBoxSevenThreePremium as="h2" title="โบนัสจัดหนักมีจังหวะไหนน่าสนใจ สิทธิพิเศษที่เพิ่มความคุ้มให้มากกว่าเดิม" titleleft="รับฟรีโบนัส สูงสุด 500.-">
-    <Picture
-      slot="left"
-      src={imgFreeBonus500}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ UOK789 พื้นเขียวมรกตเข้มมีวงล้อรูเล็ตและริบบิ้นทองปลิว เขียนตัวทองใหญ่ว่า รับฟรีโบนัส สูงสุด 500.- เพียงทำการฝากในช่วงเวลา 20:00-22:00 ด้านขวาเป็นหญิงสาวสวมแจ็คเก็ตหนังเงาสีเขียวเข้ม แถบล่างมีโลโก้ทอง UOK789 คำว่า คาสิโนออนไลน์จาก USA โลโก้ช่องทางชำระเงินกับค่ายเกม และป้าย TrueMoney Wallet"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#f6c945]/40 shadow-[0_10px_30px_rgba(246,201,69,0.25)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เรื่องความคุ้มค่าต้องยอมรับว่า โบนัสจัดหนักมีจังหวะไหนน่าสนใจ สิทธิพิเศษที่เพิ่มความคุ้มให้มากกว่าเดิม ถูกคิดมาเพื่อซัพพอร์ตสมาชิกทุกระดับอย่างแท้จริง
-      ไม่ว่าจะเป็นโปรโมชันเติมเงินรายวัน เครดิตพิเศษต้อนรับสมาชิกใหม่ หรือกิจกรรมคืนยอดเสียที่แจกให้อย่างต่อเนื่อง สิทธิประโยชน์เหล่านี้เข้ามาช่วยเพิ่มทุนในการปั่น
-      ทำให้คุณมีโอกาสหมุนลุ้นรอบแจ็คพอตได้นานยิ่งขึ้นโดยไม่ต้องใช้ทุนเยอะ
-    </p>
-  </ContentBoxSevenThreePremium>
-
-  <ContentBoxSevenThree as="h2" title="เว็บทุนหนาจ่ายจริง จุดแข็งของ UOK789 ที่พร้อมรับยอดแบบไม่เล่นแง่" titleleft="คืนยอดเสียทุกวัน 5%">
-    <Picture
-      slot="left"
-      src={imgCashback5}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ UOK789 พื้นเขียวมรกตเข้มมีเหรียญและริบบิ้นทองปลิว เขียนตัวทองใหญ่ว่า คืนยอดเสียทุกวัน 5% ถอนได้ทันที ไม่มีเทิร์น ด้านขวาเป็นหญิงสาวสวมแจ็คเก็ตหนังเงาสีเขียวเข้ม แถบล่างมีโลโก้ทอง UOK789 คำว่า คาสิโนออนไลน์จาก USA โลโก้ช่องทางชำระเงินกับค่ายเกม และป้าย TrueMoney Wallet"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#2fc44f]/40 shadow-[0_10px_30px_rgba(47,196,79,0.28)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ความน่าเชื่อถือที่เป็นเครื่องยืนยันความปังคือการเป็น เว็บทุนหนาจ่ายจริง จุดแข็งของ UOK789 ที่พร้อมรับยอดแบบไม่เล่นแง่ ไม่ว่าผู้เล่นจะทำกำไรถอนหลักร้อยหรือสปินแตกโบนัสใหญ่หลักแสน
-      ทางเว็บก็พร้อมอนุมัติและโอนเงินออกให้เต็มจำนวน ไร้ประวัติการเบี้ยว ยอดไม่ค้าง และไม่มีการอ้างเงื่อนไขจุกจิกมาประวิงเวลา ทำให้คุณมั่นใจได้เต็มร้อยว่าจะได้รับเงินรางวัลครบถ้วนทุกบาททุกสตางค์แน่นอน
-    </p>
-  </ContentBoxSevenThree>
-
-  <ContentBoxSpecial as="h2" title="ไม่ล็อกยูส เปิดทางให้เล่นได้เต็มสไตล์โดยไม่เจอข้อจำกัดมาขัดจังหวะ">
+  <ContentBoxTwoCyberCut
+    as="h2"
+    title="จากโต๊ะบาคาร่าไปถึงฟุตบอล เปลี่ยนอารมณ์ได้หลายฟีลโดยไม่ต้องย้ายเว็บ"
+    titleleft="สลับฟีลลิ่งได้ในยูสเซอร์เดียว"
+    titleright="กระเป๋าเงินเดียวใช้ได้ทุกหมวด">
     <p slot="left" class="text-left text-base leading-relaxed">
-      อิสระของการเล่นที่ผู้เล่นทุกคนถวิลหาอยู่ที่นี่ เพราะระบบ ไม่ล็อกยูส เปิดทางให้เล่นได้เต็มสไตล์โดยไม่เจอข้อจำกัดมาขัดจังหวะ ไม่ว่าคุณจะเป็นสายปรับเบทขึ้นลง สายซื้อฟีเจอร์
-      หรือชอบสลับเล่นหลายๆ ค่ายในวันเดียว
+      หมดปัญหาเรื่องความซ้ำซากจำเจเพราะ PROFIT55 ช่วยให้คุณสลับสับเปลี่ยนฟีลลิ่งการเล่นได้อย่างอิสระ จบเกมบาคาร่าสดที่กำลังลุ้นสนุก ก็สามารถสลับไปเช็กราคาค่าน้ำและวางเดิมพันฟุตบอลคู่โปรดได้ทันทีภายในยูสเซอร์เดียว
     </p>
     <p slot="right" class="text-left text-base leading-relaxed">
-      ระบบก็พร้อมรองรับการเล่นอย่างโปร่งใส ไร้การควบคุมอัตราแพ้ชนะ ยิ่งเล่นมากยิ่งมีสิทธิ์ได้มาก ปล่อยให้ทุกการทำกำไรเป็นไปตามกลยุทธ์และดวงของคุณอย่างแท้จริง
+      ระบบกระเป๋าเงินเดียวช่วยให้เงินทุนของคุณพร้อมใช้งานในทุกหมวดหมู่เดิมพัน โดยไม่ต้องกดโยกเงินไปมาให้เสียเวลาหรือเสี่ยงต่อยอดเงินตกค้าง
     </p>
-  </ContentBoxSpecial>
+  </ContentBoxTwoCyberCut>
 
-  <ContentBox as="h2" title="ฝากถอนออโต้พร้อมทำงาน UOK789 ลดเวลารอให้จัดการยอดได้คล่องตลอดวัน">
+  <ContentBox3ThreeNeumorphism
+    as="h2"
+    title="เลือกเกมไม่ต้องไล่หานาน PROFIT55 จัดหมวดให้ตัวน่าเล่นเข้าถึงง่ายขึ้น"
+    titleleft="จัดหน้าเป็นระเบียบสบายตา"
+    titlecenter="แยกตามค่าย เกมฮิต คาสิโนสด"
+    titleright="เริ่มจังหวะทำกำไรได้ทันที">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ความใส่ใจในประสบการณ์ผู้ใช้เป็นสิ่งที่ PROFIT55 ให้ความสำคัญอย่างมาก หน้าการใช้งานถูกจัดหมวดหมู่ไว้อย่างเป็นระเบียบและสบายตา
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">
+      ไม่ว่าจะเป็นการแยกประเภทตามค่ายเกม หมวดเกมยอดนิยม หรือคาสิโนสด ช่วยลดเวลาในการไล่หาเกม และทำให้ผู้เล่นเข้าถึงตัวเกมที่ต้องการได้อย่างรวดเร็วเพียงไม่กี่คลิก
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ช่วยให้จังหวะการทำกำไรของคุณเริ่มขึ้นได้ทันทีโดยไม่เสียเวลาไปกับเรื่องไม่เป็นเรื่อง</p>
+  </ContentBox3ThreeNeumorphism>
+
+  <GameRankingBoard />
+
+  <ContentBoxNeumorphism as="h2" title="สลับโหมดคล่อง จุดเล็ก ๆ ที่ช่วยให้การข้ามจากคาสิโนไปกีฬาไม่เสียจังหวะ">
     <p class="text-left text-base leading-relaxed">
-      มอบความสะดวกสบายสูงสุดด้วยระบบการเงินออโต้ที่ ฝากถอนออโต้พร้อมทำงาน UOK789 ลดเวลารอให้จัดการยอดได้คล่องตลอดวัน ทุกรายการฝากและถอนดำเนินการเสร็จสรรพผ่านระบบอัตโนมัติภายในเวลาไม่กี่วินาที
-      ไม่ต้องส่งสลิปให้แอดมินตรวจสอบ และไม่ต้องเสียเวลานั่งคอยให้เสียอารมณ์ ช่วยให้คุณบริหารจัดการทุนและถอนกำไรไปใช้ได้อย่างฉับไวไร้รอยต่อตลอด 24 ชั่วโมง
+      รายละเอียดเล็กๆ อย่างความคล่องตัวในการเปลี่ยนโหมดเกมคือสิ่งที่ PROFIT55 ทำออกมาได้ดีเยี่ยม ระบบประมวลผลถูกปรับจูนให้มีความเสถียรสูง เมื่อคุณกดสลับหน้าต่างจากคาสิโนสดไปยังตารางแข่งขันกีฬา
+      ตัวเว็บจะตอบสนองและโหลดข้อมูลขึ้นมาอย่างฉับไว ไร้รอยต่อ และไม่มีปัญหาระบบค้างหรือกระตุก ช่วยรักษาความต่อเนื่องและอารมณ์การเล่นของคุณให้สมูธตลอดการใช้งาน
     </p>
-  </ContentBox>
+  </ContentBoxNeumorphism>
 
-  <LatestWinners2 />
+  <ContentBoxSevenThreeNeumorphism as="h2" title="เล่นช่วงไหนก็พร้อม PROFIT55 วางระบบให้รองรับการใช้งานได้ตลอดทั้งวัน" titleleft="ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์">
+    <Picture
+      slot="left"
+      src={imgAffiliate}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นของ PROFIT55 พื้นทองไล่เฉด ด้านซ้ายเขียนตัวหนังสือขาวขอบทองว่า หารายได้เสริมง่ายๆ ผ่าน ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์ ด้านบนมีโลโก้ PROFIT55 ส่วนด้านขวาเป็นตัวการ์ตูนฟาโรห์อียิปต์ยืนขนาบข้างด้วยตู้สล็อตสองตู้ พร้อมไพ่โพดำ พีระมิด และกองเหรียญทอง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e3ac22]/40 shadow-[0_10px_30px_rgba(227,172,34,0.25)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ปิดท้ายด้วยความมั่นใจในศักยภาพของระบบที่ PROFIT55 วางโครงสร้างไว้อย่างรัดกุม ตัวเซิร์ฟเวอร์ถูกออกแบบมาให้รองรับการเข้าใช้งานพร้อมกันของสมาชิกจำนวนมากได้สบายๆ
+      ไม่ว่าจะเป็นช่วงเวลาที่มีการแข่งขันบอลคู่ใหญ่ หรือช่วงเวลาที่มีผู้เล่นเข้าปั่นสล็อตพร้อมกันสูงสุด ระบบก็ยังคงทำงานได้อย่างราบรื่น ฝากถอนออโต้ประมวลผลไวในไม่กี่วินาที
+      พร้อมเปิดประตูต้อนรับให้คุณเข้ามาทำกำไรได้ตลอด 24 ชั่วโมง
+    </p>
+  </ContentBoxSevenThreeNeumorphism>
+
+  <LatestWinnersPremium />
 
   <LoginRtpSection />
 
@@ -237,19 +229,19 @@ const graph = pageGraph(Astro, {
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
-      href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fdf3c9] via-[#f6c945] to-[#8a6a1c] px-4 py-3 text-sm font-black whitespace-nowrap text-[#04140a] shadow-[0_10px_30px_rgba(246,201,69,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(246,201,69,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
-      เข้าสู่ระบบ
+      href="/register"
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a8] via-[#e3ac22] to-[#a97d12] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0702] shadow-[0_10px_30px_rgba(227,172,34,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(227,172,34,0.5)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      สมัครสมาชิก
     </a>
 
     <a
-      href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#2fc44f]/70 bg-[#04140a]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e8f3e4] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#b6ecbd] hover:bg-[#0c3d18] hover:text-[#f4fdf3] hover:shadow-[0_15px_40px_rgba(18,146,58,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
-      สมัครสมาชิก
+      href="/login"
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#cfd8e2]/70 bg-[#0a0702]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f3e6c4] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#eef3f8] hover:bg-[#2a1d05] hover:text-[#fffaf0] hover:shadow-[0_15px_40px_rgba(207,216,226,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq3 title="คำถามที่พบบ่อยเกี่ยวกับ UOK789" faqs={faqs} />
+  <Faq2 title="คำถามที่พบบ่อยเกี่ยวกับ PROFIT55" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

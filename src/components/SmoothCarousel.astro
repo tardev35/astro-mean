@@ -1,8 +1,8 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideFreeBonus500 from "../assets/slide1.png";
-import slideCashback5 from "../assets/slide2.png";
+import slideCashback from "../assets/slide1.png";
+import slideAffiliate from "../assets/slide2.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -14,33 +14,37 @@ import slideCashback5 from "../assets/slide2.png";
 //     ผู้เข้าชมทำอะไรก็ไม่หยุด
 //   * มันเคารพ prefers-reduced-motion ซึ่ง transform ที่ JS ขับของ Swiper ทำไม่ได้
 //   * สไลด์เป็น markup ธรรมดา crawler และ screen reader จึงเห็นครบทุกใบ
-// แต่ละแบนเนอร์บรรยายด้วยสิ่งที่มันเขียนไว้จริง ไม่ใช่ลำดับที่มันอยู่ในลิสต์
+// แต่ละใบบรรยายด้วยสิ่งที่มันเขียนไว้จริง ไม่ใช่ลำดับที่มันอยู่ในลิสต์
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
-// เนื้อหาทั้งใบของแบนเนอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
+// เนื้อหาทั้งใบของโปสเตอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// UOK789: แถบนี้ถือสไลด์ของ asset drop รอบนี้สองใบ — slide1 (รับฟรีโบนัส สูงสุด
-// 500.-) และ slide2 (คืนยอดเสียทุกวัน 5%) ส่วน slide3 กับ slide4 เป็นอาร์ตของ
-// โปรโมชันอื่นที่หน้า /promotion ถือไว้แล้ว จึงไม่ import ซ้ำที่นี่ — รูปที่ import
-// คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม เช่นเดียวกับ banner.png และ
-// banner2/3/4 ที่ห้ามแตะ สีขอบ/เงาย้ายจากนีออนม่วงมาเป็นเขียวมรกต #2fc44f
+// PROFIT55: asset drop รอบนี้มีสไลด์ที่เป็นของแบรนด์นี้จริงแค่สองใบ — slide1
+// (คืนยอดเสีย 5% ทุกสัปดาห์) และ slide2 (ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์)
+// ทั้งคู่มีโลโก้ PROFIT55 พิมพ์อยู่ในรูป ส่วนสไลด์ใบที่สาม (เสือแดง Fortune Tiger)
+// และใบที่สี่ (มีโลโก้ของอีกแบรนด์พิมพ์อยู่ในรูป) รวมถึงไฟล์ banner ที่ไม่ใช่
+// banner1 เป็นอาร์ตค้างจากแบรนด์ก่อนๆ ห้าม import — การ import คือการ emit ลง
+// dist/ ถึงจะไม่มีใคร render ก็ตาม รอบก่อนไฟล์นี้ถืออาร์ตค้างใบที่สามไว้ จึงถอด
+// ออกแล้วใส่ slide2 แทน สีขอบ/เงาย้ายจากแดงส้มมาเป็นทอง #e3ac22
 //
-// slide1 กับ slide2 ถูกใช้ในบล็อก ContentBoxSevenThree สองอันบนหน้าแรกด้วย แต่
-// แถบนี้ยังถือทั้งคู่ เพราะถ้าเหลือใบเดียวก็ไม่มีอะไรให้เลื่อน
+// แถบนี้ยังถือสไลด์ทั้งสองใบทั้งที่หน้าแรกใช้ไปแล้วในบล็อก ContentBoxSevenThree*
+// เพราะถ้าเหลือใบเดียวก็ไม่มีอะไรให้เลื่อน สองใบคือจำนวนที่ถูกต้องแล้ว ไม่ต้องหา
+// อะไรมาเติมให้ครบสี่
 //
 // ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตามนามสกุลจริง
 //
-// สไลด์ชุดนี้เป็นแบนเนอร์จัตุรัส 1:1 ให้เห็นพร้อมกัน 1 ช่องบนมือถือ / 2 ช่องบน
-// เดสก์ท็อป แล้วบีบกล่องเป็น max-w-[820px] เพื่อให้แต่ละใบวาดราวๆ 386px ค่า
-// --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สองใบรอบนี้ ไม่ใช่สาม)
-// ถ้าเปลี่ยนจำนวนต้องคิด --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
+// สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน 600×143 (ราวๆ 4.2:1 แบนกว่าชุดของรอบก่อน) ให้เห็น
+// พร้อมกัน 1 ช่องบนมือถือ / 2 ช่องบนเดสก์ท็อป แล้วบีบกล่องเป็น max-w-[820px] เพื่อ
+// ให้แต่ละใบวาดราวๆ 386px ซึ่งยังไม่เกินความกว้างจริงของไฟล์ ค่า --shift ใน
+// stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สองใบรอบนี้) ถ้าเปลี่ยนจำนวนต้องคิด
+// --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
 const images = [
   {
-    src: slideFreeBonus500,
-    alt: "แบนเนอร์โปรโมชั่นของ UOK789 พื้นเขียวมรกตเข้มมีวงล้อรูเล็ตและริบบิ้นทองปลิว เขียนตัวทองใหญ่ว่า รับฟรีโบนัส สูงสุด 500.- เพียงทำการฝากในช่วงเวลา 20:00-22:00 ด้านขวาเป็นหญิงสาวสวมแจ็คเก็ตหนังเงาสีเขียวเข้ม แถบล่างมีโลโก้ทอง UOK789 คำว่า คาสิโนออนไลน์จาก USA โลโก้ช่องทางชำระเงินกับค่ายเกม และป้าย TrueMoney Wallet",
+    src: slideCashback,
+    alt: "โปสเตอร์โปรโมชั่นของ PROFIT55 พื้นทองไล่เฉด ด้านซ้ายเป็นโทรศัพท์มือถือที่เปิดโลโก้ค่ายเกม PG SLOT วางอยู่ท่ามกลางเหรียญทองกองโต ถัดมาเป็นชายแต่งกายแบบคาวบอยสวมหมวกปีกกว้าง ตรงกลางมีวงล้อรูเล็ตสีดำทอง ไพ่โพดำ และชิปคาสิโน ด้านบนมีโลโก้ PROFIT55 ด้านขวาเขียนตัวหนังสือขาวขอบดำว่า คืนยอดเสีย 5% ทุกสัปดาห์",
   },
   {
-    src: slideCashback5,
-    alt: "แบนเนอร์โปรโมชั่นของ UOK789 พื้นเขียวมรกตเข้มมีเหรียญและริบบิ้นทองปลิว เขียนตัวทองใหญ่ว่า คืนยอดเสียทุกวัน 5% ถอนได้ทันที ไม่มีเทิร์น ด้านขวาเป็นหญิงสาวสวมแจ็คเก็ตหนังเงาสีเขียวเข้ม แถบล่างมีโลโก้ทอง UOK789 คำว่า คาสิโนออนไลน์จาก USA โลโก้ช่องทางชำระเงินกับค่ายเกม และป้าย TrueMoney Wallet",
+    src: slideAffiliate,
+    alt: "โปสเตอร์โปรโมชั่นของ PROFIT55 พื้นทองไล่เฉด ด้านซ้ายเขียนตัวหนังสือขาวขอบดำว่า หารายได้เสริมง่ายๆ ผ่าน ลิงค์รับทรัพย์ สูงสุด 2.5 เปอร์เซนต์ ตรงกลางมีไพ่โพดำและกองเหรียญทอง ด้านขวาเป็นตัวละครฟาโรห์อียิปต์ยืนขนาบข้างด้วยตู้สล็อตสองตู้ที่หน้าจอมีสัญลักษณ์ปิรามิดและเลข 77 ด้านบนมีโลโก้ PROFIT55",
   },
 ];
 
@@ -66,7 +70,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#2fc44f]/60 peer-focus-visible:bg-[#0c3d18] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#b6ecbd]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e3ac22]/60 peer-focus-visible:bg-[#2a1d05] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffe9a8]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -79,7 +83,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#2fc44f]/35 object-cover shadow-[0_10px_30px_rgba(47,196,79,0.22)]"
+              class="block w-full rounded-xl border border-[#e3ac22]/35 object-cover shadow-[0_10px_30px_rgba(227,172,34,0.22)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

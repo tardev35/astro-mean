@@ -11,32 +11,32 @@ export interface Props {
 
 const { title, faqs = [] } = Astro.props;
 
-// LUCKYBKK: variant นี้ผ่านมาแล้วหลายชุดสี ล่าสุดเป็นทองคู่แดงของแบรนด์ก่อน
-// รอบนี้ย้ายมาน้ำเงินรอยัลคู่ทองของแบรนด์นี้ — ทอง #f5f9ff / #ffdf7e / #f0b323 /
-// #9a6c05 คู่น้ำเงิน #3f9dfb / #1f5fd0 / #0a2a86 บนผิว #0d2160 / #061442 /
-// #030b28 เนื้อความ #e4eeff ไม่มีแดงเหลืออยู่ในไฟล์นี้ (ค่า hex เดิมไม่พิมพ์ไว้
-// ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจาก
-// ค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// MONEY777: variant นี้ผ่านมาแล้วหลายชุดสี ล่าสุดเป็นน้ำเงินรอยัลคู่ทองของ
+// LUCKYBKK รอบนี้ย้ายมาแดงส้มคู่ทองของแบรนด์นี้ — ทอง #fff4ec / #ffe08a /
+// #f6c945 / #a3760a คู่แดง #ff6a2b / #e0330a / #8b1406 บนผิว #1a0503 / #3c0c03 /
+// #0b0101 เนื้อความ #ffe6d8 ไม่มีน้ำเงินเหลืออยู่ในไฟล์นี้ (ค่า hex เดิมไม่พิมพ์
+// ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาส
+// จากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 // accordion เป็น <details>/<summary> ไม่มี <script> และให้เป็นแบบนี้ต่อไป
 //
 // คำถามเป็น <span> ไม่ใช่ <h3> — เป็นระดับเดิมที่ variant นี้ ship มา และห้าม
 // เลื่อนขึ้นเป็นหัวข้อ docx ของแบรนด์นี้แบนราบ (H1 + H2 ล้วน ไม่มี H3 ซ้อน)
 // ตัว <summary> เองเป็น disclosure control ที่มีชื่อให้ assistive tech อยู่แล้ว
 //
-// บรรทัดหัวของบล็อกถูกลดจาก <h2> มาเป็น <p> ในรอบ LUCKYBKK: docx มี H2 หกข้อพอดี
-// และหกข้อนั้นถูกใช้ครบไปแล้วกับหกบล็อกเนื้อหาบนหน้าแรก หัว FAQ จึงจะกลายเป็น h2
-// ตัวที่เจ็ดที่ไม่มีต้นทางใน docx ทำให้ inventory หัวข้อที่ Phase 5 diff กับ
-// checklist เพี้ยนทุกรอบต่อจากนี้ คลาสเดิมอยู่ครบบน <p> หน้าตาจึงไม่เปลี่ยน และ
-// ชื่อสำหรับ assistive tech ย้ายไปอยู่ที่ aria-label บน <section> แทน
+// บรรทัดหัวของบล็อกเป็น <p> ไม่ใช่ <h2>: docx มี H2 หกข้อพอดี และหกข้อนั้นถูกใช้
+// ครบไปแล้วกับหกบล็อกเนื้อหาบนหน้าแรก หัว FAQ จึงจะกลายเป็น h2 ตัวที่เจ็ดที่ไม่มี
+// ต้นทางใน docx ทำให้ inventory หัวข้อที่ Phase 5 diff กับ checklist เพี้ยนทุกรอบ
+// ต่อจากนี้ คลาสเดิมอยู่ครบบน <p> หน้าตาจึงไม่เปลี่ยน และชื่อสำหรับ assistive
+// tech ย้ายไปอยู่ที่ aria-label บน <section> แทน
 ---
 
 <section aria-label={title ?? "คำถามที่พบบ่อย"} class="mx-auto max-w-[1000px] px-4 py-10 font-sans">
   {
     title && (
       <div
-        class="mb-8 flex items-center gap-3 border-l-4 border-[#f0b323] bg-gradient-to-r from-[#1f5fd0] via-[#0a2a86]/70 to-transparent px-4 py-2.5"
+        class="mb-8 flex items-center gap-3 border-l-4 border-[#f6c945] bg-gradient-to-r from-[#8b1406] via-[#3c0c03]/70 to-transparent px-4 py-2.5"
         style="clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 100%, 0 100%);">
-        <p class="text-xl leading-normal font-black tracking-widest text-[#f5f9ff] uppercase md:text-2xl">{title}</p>
+        <p class="text-xl leading-normal font-black tracking-widest text-[#fff4ec] uppercase md:text-2xl">{title}</p>
       </div>
     )
   }
@@ -46,13 +46,13 @@ const { title, faqs = [] } = Astro.props;
       faqs.map((faq) => (
         <details
           name="faq-terminal"
-          class="faq-item group relative overflow-hidden border border-[#f0b323]/30 bg-[#061442]/92 backdrop-blur-sm transition-all duration-300 hover:border-[#f0b323]/55 hover:shadow-[0_15px_40px_rgba(240,179,35,0.28)]"
+          class="faq-item group relative overflow-hidden border border-[#f6c945]/30 bg-[#1a0503]/92 backdrop-blur-sm transition-all duration-300 hover:border-[#f6c945]/55 hover:shadow-[0_15px_40px_rgba(246,201,69,0.28)]"
           style="clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);">
-          <div aria-hidden="true" class="absolute top-0 left-0 h-[2px] w-16 bg-gradient-to-r from-[#ffdf7e] to-transparent" />
+          <div aria-hidden="true" class="absolute top-0 left-0 h-[2px] w-16 bg-gradient-to-r from-[#ffe08a] to-transparent" />
 
           <summary class="flex w-full cursor-pointer items-center justify-between p-5 text-left transition-all">
-            <span class="flex items-center gap-2 text-base leading-normal font-bold text-[#e4eeff] transition-colors group-hover:text-[#f5f9ff] md:text-lg">
-              <span aria-hidden="true" class="text-[#3f9dfb]">
+            <span class="flex items-center gap-2 text-base leading-normal font-bold text-[#ffe6d8] transition-colors group-hover:text-[#fff4ec] md:text-lg">
+              <span aria-hidden="true" class="text-[#ff6a2b]">
                 ♠
               </span>
               {faq.q}
@@ -60,13 +60,13 @@ const { title, faqs = [] } = Astro.props;
 
             <span
               aria-hidden="true"
-              class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center border border-[#f0b323]/40 bg-[#030b28] text-lg font-black text-[#f0b323] transition-all duration-300 group-hover:border-[#ffdf7e]/60 group-hover:text-[#ffdf7e]"
+              class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center border border-[#f6c945]/40 bg-[#0b0101] text-lg font-black text-[#f6c945] transition-all duration-300 group-hover:border-[#ffe08a]/60 group-hover:text-[#ffe08a]"
               style="clip-path: polygon(25% 0, 100% 0, 100% 75%, 75% 100%, 0 100%, 0 25%);">
               +
             </span>
           </summary>
 
-          <div class="faq-answer border-t border-[#0a2a86] p-5 pt-4 text-left text-base leading-relaxed text-[#e4eeff]">{faq.a}</div>
+          <div class="faq-answer border-t border-[#3c0c03] p-5 pt-4 text-left text-base leading-relaxed text-[#ffe6d8]">{faq.a}</div>
         </details>
       ))
     }
@@ -86,13 +86,13 @@ const { title, faqs = [] } = Astro.props;
     display: none;
   }
   .faq-item[open] {
-    border-color: rgba(240, 179, 35, 0.6);
-    box-shadow: 0 15px 40px rgba(31, 95, 208, 0.35);
+    border-color: rgba(246, 201, 69, 0.6);
+    box-shadow: 0 15px 40px rgba(224, 51, 10, 0.35);
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    border-color: #f0b323;
-    color: #ffdf7e;
+    border-color: #f6c945;
+    color: #ffe08a;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;

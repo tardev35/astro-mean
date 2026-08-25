@@ -9,20 +9,19 @@ import { pageGraph } from "../lib/schema";
 // <h1>) and the two-column login/register grid, nothing else. The docx never
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 //
-// UOK789: Announcement6 → AnnouncementPremium ตามการหมุน variant รอบนี้ (เรียก
-// แบบ bare เพราะ default message ของ variant นี้เป็นข้อความของแบรนด์นี้แล้ว)
-// ปุ่มย้ายจากนีออนม่วงคู่ทองของ PABO88 — ม่วง #bf3cfa / #8b1fd6 / #4a0b8f
-// ไฮไลต์ #e3b8ff เนื้อความ #ece0ff คู่ทอง #ffe9a3 / #f5c518 / #8f6205 บนผิว
-// #0a0118 — มาเป็นเขียวมรกตคู่ทอง เขียว #2fc44f / #12923a / #0a4d1c ไฮไลต์
-// #b6ecbd เนื้อความ #e8f3e4 คู่ทอง #fdf3c9 / #f6c945 / #8a6a1c บนผิว #04140a
+// PROFIT55: ContentBoxCyberCut → ContentBoxPremium และ Announcement5 →
+// AnnouncementPremium ตามการหมุน variant รอบนี้ (เรียก Announcement แบบ bare
+// เพราะ default message ของ variant นี้เป็นข้อความของแบรนด์นี้แล้ว)
+// ปุ่มย้ายจากแดงส้มคู่ทองของ MONEY777 มาเป็นทองคู่เงินโครเมียมของรอบนี้ —
+// แดงเดิมกลายเป็นทอง #e3ac22 / #8a6410 / #2a1d05 ไฮไลต์ #ffe9a8 เนื้อความ
+// #f3e6c4 ส่วนทองเดิมกลายเป็นเงิน #eef3f8 / #cfd8e2 / #8b96a4 บนผิว #0a0702
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 154.
-const pageDescription =
-  "ทางเข้า UOK789 เว็บหลัก อัปเดตลิงก์ล่าสุดสำหรับเข้าสู่ระบบและสมัครสมาชิก เชื่อมเกมตรงผ่าน API เข้าปั่นสล็อตค่ายแท้ได้ลื่นทุกอุปกรณ์ ฝากถอนออโต้ตลอด 24 ชม.";
+// count reads about three times too long. This one measures 157.
+const pageDescription = "ทางเข้า PROFIT55 เว็บหลัก อัปเดตลิงก์ล่าสุดสำหรับเข้าสู่ระบบและสมัครสมาชิก เข้าเล่นคาสิโนสด สล็อต และกีฬาได้ลื่นทุกอุปกรณ์ ยูสเซอร์เดียวจบ ฝากถอนออโต้ 24 ชม.";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า UOK789 เว็บหลัก",
+  name: "ทางเข้า PROFIT55 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -31,40 +30,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า UOK789 เว็บหลัก | ลิงก์เข้าเล่นอัปเดตล่าสุด" description={pageDescription}>
+<MainLayout title="ทางเข้า PROFIT55 เว็บหลัก | ลิงก์เข้าเล่นอัปเดตล่าสุด" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า UOK789 เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า PROFIT55 เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ UOK789"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#2fc44f]/60 bg-[#0a4d1c] px-6 py-4 shadow-[0_10px_30px_rgba(18,146,58,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#f6c945] hover:bg-[#12923a] hover:shadow-[0_15px_40px_rgba(47,196,79,0.4)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#b6ecbd]/18 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ PROFIT55"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#cfd8e2]/60 bg-[#161004] px-6 py-4 shadow-[0_10px_30px_rgba(207,216,226,0.3)] transition-all duration-300 hover:scale-105 hover:border-[#eef3f8] hover:bg-[#2a1d05] hover:shadow-[0_15px_40px_rgba(238,243,248,0.4)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#cfd8e2]/18 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#e8f3e4]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#f3e6c4]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#e8f3e4]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#f3e6c4]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก UOK789"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#fdf3c9]/60 bg-gradient-to-r from-[#fdf3c9] via-[#f6c945] to-[#8a6a1c] px-6 py-4 shadow-[0_10px_30px_rgba(246,201,69,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(253,243,201,0.45)]">
+          aria-label="สมัครสมาชิก PROFIT55"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ffe9a8]/60 bg-gradient-to-r from-[#ffe9a8] via-[#e3ac22] to-[#a97d12] px-6 py-4 shadow-[0_10px_30px_rgba(227,172,34,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,233,168,0.45)]">
           <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#04140a]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#0a0702]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#04140a]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#0a0702]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

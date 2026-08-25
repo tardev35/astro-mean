@@ -6,15 +6,16 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// PABO88: ย้ายจากฟ้านีออนใต้ทะเลของ ORCA789 (ซึ่งก่อนหน้านั้นเป็นทองคู่เงินโครเมียม
-// ของ AURORA688 และนีออนม่วงของ GDK88 — ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind
-// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history) มาที่
-// นีออนม่วงคู่ทองของแบรนด์นี้ — ม่วง #bf3cfa / #e3b8ff / #8b1fd6 คู่ทอง #f5c518
-// บนผิว #0a0118 เนื้อความ #ece0ff
+// PROFIT55: ย้ายจากหยกเขียวคู่ทองของ KANGFU1688 (ซึ่งก่อนหน้านั้นเป็นนีออนม่วงคู่ทอง
+// ของ PABO88 ฟ้านีออนใต้ทะเลของ ORCA789 ทองคู่เงินโครเมียมของ AURORA688 และนีออนม่วง
+// ของ GDK88 — ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history) มาที่ทองคู่เงินโครเมียมของ
+// แบรนด์นี้ — ทอง #e3ac22 / #f6d24a คู่เงิน #cfd8e2 / #eef3f8 บนผิว #0a0702
+// เนื้อความ #f3e6c4
 //
 // คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
-// #04000c (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #20064a (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
-// ไปใช้ #bf3cfa การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่ variant
+// #030100 (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #2a1d05 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
+// ไปใช้ #e3ac22 การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่ variant
 // นี้มีไว้ทำ
 //
 // text-center อยู่บน <header> เท่านั้น ไม่ได้อยู่บนการ์ดหรือ <section> ถ้าย้ายขึ้นไป
@@ -23,11 +24,11 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="w-full max-w-[1400px] rounded-[25px] border border-[#bf3cfa]/30 bg-[#0a0118] p-8 text-left text-base leading-relaxed text-[#ece0ff] shadow-[10px_10px_20px_#04000c,-10px_-10px_20px_#20064a]">
+    class="w-full max-w-[1400px] rounded-[25px] border border-[#e3ac22]/30 bg-[#0a0702] p-8 text-left text-base leading-relaxed text-[#f3e6c4] shadow-[10px_10px_20px_#030100,-10px_-10px_20px_#2a1d05]">
     {
       title && (
-        <header class="mb-8 border-b border-[#f5c518]/25 pb-4 text-center">
-          <HeadingTag class={`bg-gradient-to-r from-[#faf5ff] via-[#e3b8ff] to-[#bf3cfa] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#cfd8e2]/25 pb-4 text-center">
+          <HeadingTag class={`bg-gradient-to-r from-[#fffaf0] via-[#cfd8e2] to-[#e3ac22] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }
