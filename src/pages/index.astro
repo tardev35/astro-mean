@@ -1,107 +1,111 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
+import ContentBox3ThreeNeumorphism from "../components/ContentBox3ThreeNeumorphism.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBox3ThreeFloatingBadge from "../components/ContentBox3ThreeFloatingBadge.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
 import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners4 from "../components/LatestWinners4.astro";
+import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq4 from "../components/Faq4.astro";
+import Faq from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgProviders from "../assets/slide3.png";
-import imgCashback from "../assets/slide1.png";
+import imgNextGen from "../assets/slide1.png";
+import imgPayment from "../assets/slide4.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   0 → ContentBoxPremium as="h1"
-//   1 → ContentBoxTwoCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/right) แล้วต่อด้วย
-//       GameRankingBoard ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (เกมฮิตตัวตึงมาแรง)
-//   2 → ContentBoxSevenThreeCyberCut as="h2" + slide3 แล้วต่อด้วย ProviderGrid
-//       ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (ค่ายดังที่รวมไว้ในล็อบบี้เดียว)
-//   3 → ContentBoxNeumorphism as="h2"
-//   4 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (คืนยอดเสีย 5% ทุกสัปดาห์)
-//   5 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
-//   6 → ContentBoxFloatingBadge as="h2"
+//   1 → ContentBoxFloatingBadge as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxTwoCyberCut as="h2" (แบ่งย่อหน้าเดียวลง intro/left/right)
+//   3 → ContentBox3ThreeNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
+//       แล้วต่อด้วย ProviderGrid ซึ่งเป็นภาพประกอบของหัวข้อนี้โดยตรง (เกมลิขสิทธิ์
+//       แท้หลายค่าย ทั้งตัวฮิตและตัวน่าลอง)
+//   4 → ContentBoxNeumorphism as="h2" แล้วต่อด้วย GameRankingBoard ซึ่งเป็นภาพ
+//       ประกอบของหัวข้อนี้โดยตรง (ตัวฮิตไม่ตกเจน เกมใหม่ไม่หลุดลิสต์)
+//   5 → ContentBoxSevenThreeCyberCut as="h2" + slide1 (ก้าวสู่มิติใหม่ สล็อตยุค 5G
+//       สัมผัสความเร็ว แรง — ตรงกับหัวข้อเรื่องระบบอัปเดตใหม่ที่เข้าไวกว่าเดิม)
+//   6 → ContentBox3ThreeFloatingBadge as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
+//   7 → ContentBoxSevenThreeNeumorphism as="h2" + slide4 (ฝาก-ถอน แบบ PAYMENT
+//       ไม่ใช้บัญชีม้า — ตรงกับหัวข้อเรื่องฝากถอนออโต้พอดี) แล้วต่อด้วย
+//       LatestWinnersPremium ซึ่งเป็นฟีดถอนเงินจริงของหัวข้อเดียวกัน
 //
-// variant รอบนี้หมุนทั้งตระกูลจาก GGPLUS88 (CyberCut + SevenThreePremium + Special
-// + TwoPremium + SevenThree + 3ThreePremium + ContentBox) มาเป็น Premium +
-// TwoCyberCut + SevenThreeCyberCut + Neumorphism + SevenThreeNeumorphism +
-// 3ThreeCyberCut + FloatingBadge ส่วน Navbar ย้ายจาก NavbarStyle10 มาเป็น
-// NavbarStyle6, Footer จาก FooterStyle3 มาเป็น FooterStyle2, Announcement จาก
-// Announcement3 มาเป็น Announcement5, LatestWinners จาก LatestWinners2 มาเป็น
-// LatestWinners4 และ Faq จาก Faq3 มาเป็น Faq4
+// variant รอบนี้หมุนทั้งตระกูลจากรอบก่อน: ทรง ContentBox เปลี่ยนเป็น FloatingBadge
+// + TwoCyberCut + 3ThreeNeumorphism + Neumorphism + SevenThreeCyberCut +
+// 3ThreeFloatingBadge + SevenThreeNeumorphism ส่วน Navbar เป็น NavbarCyber,
+// Footer เป็น FooterCyber, Announcement เป็น AnnouncementCyber,
+// LatestWinners เป็น LatestWinnersPremium และ Faq เป็น Faq3
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide3 (หญิงสาวชุดส้มถือไพ่เอซคู่
-// ข้อความ รวมทุกค่ายเดิมพัน ไม่มีขั้นต่ำ) คู่กับหัวข้อข้อ 2 เรื่องค่ายดังครบเครื่อง
-// และ slide1 (คืนยอดเสีย 5% ทุกสัปดาห์ พร้อมกระปุกออมสินทอง) คู่กับหัวข้อข้อ 4
-// เรื่องโบนัสพร้อมทุกวัน ส่วน slide2 ถูกใช้ในกริดของหน้า /promotion เท่านั้น
+// Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
+// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ AnnouncementCyber
+// เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความ
+// เดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ
+// emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// slide4 (22 ส.ค.) กับ banner.png และ banner2/3/4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ทั้งชุด
-// จึงห้าม import ที่นี่ทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render
-// ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ MainLayout จัดการเอง
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide1 คู่กับหัวข้อข้อ 5 และ
+// slide4 คู่กับหัวข้อข้อ 7 ส่วน slide2 (คืนยอดเสีย 5%) กับ slide3 (โปรขาประจำ
+// ฝากครบ 3 วัน) ไม่ถูกวางบนหน้าแรกโดยตั้งใจ — มันอยู่ใน SmoothCarousel กับกริดของ
+// หน้า /promotion ซึ่งเป็นที่ของมัน
 //
-// widget ที่ไม่ได้มาจาก docx (LatestWinners4, LoginRtpSection, ReviewCardSumo2,
-// SmoothCarousel, แถวปุ่ม login/register, FAQ) ใช้ป้ายเป็น <p>/<span> + aria-label
-// บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้น GameRankingBoard
-// กับ ProviderGrid ที่เป็นภาพประกอบของหัวข้อ docx ข้อ 1 และ 2 โดยตรง จึงวางต่อท้าย
-// บล็อกนั้นๆ ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อโดยไม่มีเหตุผล
+// banner.png / banner2 / banner3 / banner4 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ห้าม import
+// ที่นี่ทั้งสิ้น — รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน
+// banner1 เป็นของ MainLayout จัดการเอง และ banner1-mobile ไม่มีอยู่แล้วในรอบนี้
+//
+// widget ที่ไม่ได้มาจาก docx (LoginRtpSection, ReviewCardSumo2, SmoothCarousel,
+// แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้ายเป็น <p>/<span> + aria-label บน
+// <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสามตัวที่เป็น
+// ภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 3,
+// GameRankingBoard → ข้อ 4, LatestWinnersPremium → ข้อ 7) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// ไม่มีตัวไหนคั่นระหว่างหัวข้อ docx สองข้อโดยไม่มีเหตุผล
 //
 // h2 ที่ขึ้นหน้าเว็บ = 6 หัวข้อ docx พอดี ไม่มีตัวที่เจ็ด — หัว FAQ เป็น <p> ใน
-// Faq4.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน <summary>
-// ไม่ใช่ h3 และป้ายคอลัมน์ของ TwoCyberCut / SevenThreeCyberCut /
-// SevenThreeNeumorphism / 3ThreeCyberCut เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน
-// หน้านี้จึงไม่มี h3 เลย
+// Faq3.astro (ชื่อ section ย้ายไป aria-label) คำถามใน Faq เป็น <span> ใน <summary>
+// ไม่ใช่ h3 และป้ายคอลัมน์ของ TwoCyberCut / 3ThreeNeumorphism /
+// SevenThreeCyberCut / 3ThreeFloatingBadge / SevenThreeNeumorphism เป็น <p> —
+// docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
 //
-// title ใช้บรรทัด Title ของ docx ตรงๆ (64 ตัวอักษร) ส่วน description ใช้บรรทัด Des
-// ของ docx โดยต่อหางเป็น "ถอนได้จริง" ให้ยาว 155 ตัวอักษร — ข้อความดิบของ docx อยู่ที่
-// 149 ตัวอักษร ต่ำกว่าเกท 150–160 ของ tools/verify-build.mjs ซึ่งจะทำให้ build แดง
-// ค่าที่ใช้เป็นสตริงเดียวกับที่ส่งเข้า pageGraph และตรงกับ default ของ MainLayout
-const pageTitle = "VIREL168 | สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง โบนัสพร้อมทุกวัน";
+// title ใช้บรรทัด Title ของ docx ตรงๆ (61 ตัวอักษร) ส่วน description ใช้บรรทัด Des
+// ของ docx (141 ตัวอักษร ต่ำกว่าเกท 150–160 ของ tools/verify-build.mjs ซึ่งจะทำให้
+// build แดง) โดยต่อหางเป็น "เล่นลื่นไม่สะดุด" ให้ยาว 158 ตัวอักษร ค่าที่ใช้เป็น
+// สตริงเดียวกับที่ส่งเข้า pageGraph และตรงกับที่ส่งให้ MainLayout
+const pageTitle = "GEN4 | สล็อตเจนใหม่มีของ เกมลิขสิทธิ์แท้มาเต็ม ระบบอัปเดตใหม่";
 const pageDescription =
-  "VIREL168 สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง เปิดมาเจอทั้งตัวท็อปและเกมน่าค้น โบนัสพร้อมทุกวัน จัดหมวดเลือกง่าย สลับค่ายคล่อง โอนไวเข้าบัญชีเลย ถอนได้จริง";
+  "GEN4 สล็อตเจนใหม่มีของ เกมลิขสิทธิ์แท้มาเต็มหลายค่าย ตัวฮิตไม่ตกเจน เกมใหม่ไม่หลุดลิสต์ ระบบอัปเดตใหม่ เข้าไวกว่าเดิม ฝากถอนออโต้ไม่ต้องรอนาน เล่นลื่นไม่สะดุด";
 
-// default message ของ Announcement ทุก variant คือสโลแกนของแบรนด์เก่าคนละเจ้ากัน
-// จึงส่ง message ตรงๆ เสมอ ไม่พึ่ง default และห้ามขึ้นต้นด้วย emoji เพราะ marquee
-// render ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้ — ข้อความชุดนี้
-// ตรงกับ default ของ Announcement5 เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก
-// <Announcement /> เปล่าๆ วิ่งข้อความเดียวกับหน้าแรก
 const announcementMessage =
-  "VIREL168 สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง โบนัสพร้อมทุกวัน • เว็บตรงที่รวมเกมสล็อตแตกง่ายติดเทรนด์จากทุกค่ายชั้นนำมาไว้ในที่เดียว พร้อมระบบที่ลื่นไหลไร้ปัญหากระตุก ทำกำไรได้โปร่งใส ถอนเงินได้จริงทุกยอด • ไลน์อัปเกมฮิตระดับตัวตึงที่กำลังเป็นกระแสในหมู่สายปั่น ทั้งธีมผจญภัยสุดอลังการและแนวแอ็กชันที่มีฟีเจอร์ตัวคูณสะสมแบบทวีคูณ • รวมค่ายเกมยักษ์ใหญ่ระดับโลกไว้ในล็อบบี้เดียว เปิดเข้ามาครั้งเดียวเลือกเล่นได้ตามความชอบ ไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อตามหาเกมค่ายโปรด • เกมนอกกระแสหลายตัวซ่อนลูกเล่นไว้ ทั้งฟรีสปินที่ออกง่ายเกินคาดและสัญลักษณ์พิเศษที่เปลี่ยนรางวัลธรรมดาให้กลายเป็นแจ็คพอตก้อนโต • โปรโมชันต้อนรับ โบนัสเติมเงินรายวัน และกิจกรรมพิเศษตามเทศกาล เพิ่มทุนให้ปั่นสล็อตได้นานขึ้นและลุ้นรางวัลใหญ่บ่อยขึ้น • จัดวางหมวดหมู่เกมเป็นระเบียบ แบ่งตามค่ายและสไตล์การเล่นชัดเจน สลับค่ายได้ทันทีเพียงไม่กี่คลิก ระบบตอบสนองไวไม่ต้องรอโหลดนาน • ระบบการเงินออโต้กดถอนเองได้ทันทีผ่านหน้าเว็บ ยอดเงินเข้าบัญชีแม่นยำภายในไม่กี่วินาที ไม่ต้องส่งสลิปยืนยันหรือรอแอดมินอนุมัติ";
+  "GEN4 สล็อตเจนใหม่มีของ เกมลิขสิทธิ์แท้มาเต็ม ระบบอัปเดตใหม่ • แพลตฟอร์มสล็อตระดับเนกซ์เจนที่ขนความบันเทิงมาแบบจัดเต็ม ศูนย์รวมเกมลิขสิทธิ์แท้ส่งตรงจากค่ายชั้นนำระดับโลก • คลังเกมขนาดใหญ่ออกแบบมาเพื่อนักเดิมพันยุคปัจจุบันโดยเฉพาะ ทั้งสายกราฟิก 3D สุดอลังการ และสายกลไกเกมแปลกใหม่ที่มีอัตราคูณโบนัสสูง • ล็อบบี้รวมทั้งเกมฮิตระดับตำนานที่แจ็คพอตแตกง่าย และเกมตัวน่าลองนอกกระแสที่มีฟีเจอร์เด็ดซ่อนอยู่ • ทีมงานอัปเดตไลน์อัปเกมใหม่เข้าระบบต่อเนื่อง ค่ายดังเปิดตัวเกมไหนคุณจะได้ทดลองเล่นเป็นกลุ่มแรกๆ เสมอ • อัปเกรดเซิร์ฟเวอร์และซอฟต์แวร์หลังบ้านใหม่ทั้งหมด โหลดหน้าเว็บและหน้าเกมฉับไวขึ้นชัดเจน ไม่หน่วง ไม่กระตุก • คลิกเลือกเกมในล็อบบี้แล้วพุ่งตรงเข้าหน้าสปินได้ในไม่กี่วินาที ตัดขั้นตอนเปลี่ยนผ่านที่ยุ่งยากออกทั้งหมด • ฝากถอนออโต้ตลอด 24 ชั่วโมง เสร็จในไม่กี่วินาที ยอดเข้าบัญชีทันที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
 // ที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+// <Faq> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "VIREL168 เป็นสล็อตเว็บตรงจริงไหม เล่นแล้วถอนได้ทุกยอดหรือเปล่า",
-    a: "เป็นเว็บตรงที่รวบรวมเกมสล็อตแตกง่ายติดเทรนด์จากทุกค่ายชั้นนำมาไว้ในที่เดียว ระบบทำงานลื่นไหลไร้ปัญหากระตุก บรรยากาศการทำกำไรโปร่งใสตรวจสอบได้ และถอนเงินได้จริงทุกยอด ไม่ว่าจะทำกำไรก้อนเล็กหรือก้อนใหญ่ก็กดถอนผ่านหน้าเว็บได้ด้วยตัวเองตั้งแต่ครั้งแรกที่เข้ามาใช้งาน",
+    q: "GEN4 เป็นสล็อตเจนใหม่ตรงไหน ต่างจากเว็บทั่วไปอย่างไร",
+    a: "ที่นี่เป็นแพลตฟอร์มสล็อตระดับเนกซ์เจนที่รวมสามอย่างเข้าด้วยกัน คือคลังเกมลิขสิทธิ์แท้จากค่ายชั้นนำระดับโลก โครงสร้างระบบอัปเดตใหม่ล่าสุดที่ประมวลผลได้รวดเร็ว เสถียร และปลอดภัยในทุกการใช้งาน และอัตราการจ่ายเงินรางวัลที่ได้มาตรฐานยุติธรรม 100% คลังเกมยังถูกออกแบบมาเพื่อรองรับความต้องการของนักเดิมพันยุคปัจจุบันโดยเฉพาะ จึงเลือกเล่นได้แบบไม่ตกเทรนด์",
   },
   {
-    q: "เกมฮิตที่กำลังมาแรงในตอนนี้มีแนวไหนบ้าง ควรเก็บเข้าลิสต์ตัวไหนดี",
-    a: "ไลน์อัปเกมฮิตระดับตัวตึงที่กำลังเป็นกระแสในหมู่สายปั่นมีทั้งเกมสล็อตธีมผจญภัยสุดอลังการและเกมแนวแอ็กชันที่มีฟีเจอร์ตัวคูณสะสมแบบทวีคูณ ทุกเกมล้วนผ่านการคัดสรรมาแล้วว่ามีอัตราการจ่ายเงินรางวัลที่ดีเยี่ยม ลุ้นรอบแจ็คพอตง่าย และให้ความสนุกแบบไม่มีเบื่อ",
+    q: "เกมในเว็บเป็นลิขสิทธิ์แท้จริงไหม มีค่ายอะไรบ้าง",
+    a: "GEN4 จับมือกับค่ายเกมสล็อตยักษ์ใหญ่ทั่วโลกเพื่อนำเสนอลิขสิทธิ์แท้ที่ไม่ผ่านการดัดแปลงโปรแกรมใดๆ ล็อบบี้ถูกจัดให้รวบรวมทั้งเกมฮิตระดับตำนานที่ขึ้นชื่อเรื่องแจ็คพอตแตกง่าย และเกมตัวน่าลองนอกกระแสที่มีฟีเจอร์เด็ดซ่อนอยู่ ผู้เล่นจึงกระจายความเสี่ยงและสลับเปลี่ยนบรรยากาศการทำกำไรได้อย่างอิสระในที่เดียว",
   },
   {
-    q: "รวมค่ายเกมไว้กี่ค่าย ต้องสมัครหลายเว็บเพื่อเล่นค่ายโปรดไหม",
-    a: "ไม่ต้องเลย จุดเด่นคือการรวมค่ายเกมยักษ์ใหญ่ระดับโลกมาไว้ในล็อบบี้เดียว ทั้งค่ายที่ขึ้นชื่อเรื่องภาพสวยสมจริงและค่ายที่เน้นจังหวะโบนัสระเบิดไว เปิดเข้ามาเพียงครั้งเดียวก็เลือกเล่นได้ตามความชอบ ไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อตามหาเกมค่ายโปรดอีกต่อไป",
+    q: "เกมใหม่เข้าระบบบ่อยแค่ไหน จะได้เล่นก่อนคนอื่นหรือเปล่า",
+    a: "มีทีมงานคอยอัปเดตไลน์อัปเกมสล็อตใหม่เข้าสู่ระบบอย่างต่อเนื่อง ค่ายดังเปิดตัวเกมไหน หรือมีกระแสเกมสล็อตตัวไหนกำลังมาแรง สมาชิกจะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ หน้าเกมจึงมีความสดใหม่อยู่ตลอดเวลา และเพิ่มตัวเลือกทำเงินใหม่ๆ ให้ตามต่อได้แบบไม่มีคำว่าหลุดลิสต์",
   },
   {
-    q: "โบนัสและโปรโมชันมีให้รับบ่อยแค่ไหน แต่ละช่วงมีอะไรใหม่บ้าง",
-    a: "มีโบนัสและสิทธิประโยชน์สุดคุ้มเตรียมไว้ต้อนรับอยู่เสมอ ทั้งโปรโมชันต้อนรับ โบนัสเติมเงินรายวัน และกิจกรรมพิเศษตามเทศกาล ทั้งหมดออกแบบมาเพื่อช่วยเพิ่มทุนให้นำไปปั่นสล็อตได้นานขึ้น เพิ่มโอกาสพิชิตรางวัลใหญ่ และทำให้การเข้าเล่นแต่ละวันมีสีสันน่าติดตามอยู่ตลอด",
+    q: "ระบบอัปเดตใหม่ช่วยให้เข้าเล่นไวขึ้นอย่างไร",
+    a: "จุดเปลี่ยนสำคัญคือการอัปเกรดเซิร์ฟเวอร์และซอฟต์แวร์หลังบ้านใหม่ทั้งหมด ช่วยลดระยะเวลาโหลดหน้าเว็บและหน้าเกมให้ฉับไวขึ้นอย่างเห็นได้ชัด การเปลี่ยนค่ายเกม สลับเมนู หรือกดเลือกโหมดต่างๆ ทำได้ลื่นไหล รองรับการใช้งานพร้อมกันของสมาชิกจำนวนมากได้สบายๆ โดยไม่มีอาการหน่วงหรือกระตุกมาทำลายจังหวะสำคัญ",
   },
   {
-    q: "ถอนเงินต้องส่งสลิปยืนยันหรือรอแอดมินอนุมัติไหม ใช้เวลานานแค่ไหน",
-    a: "ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ ระบบการเงินเป็นออโต้ที่เชื่อมโยงตั้งแต่ขั้นตอนการเข้าเล่นจนถึงขั้นตอนการถอนเงิน เมื่อทำกำไรได้ตามเป้าก็กดถอนผ่านหน้าเว็บได้ด้วยตัวเองทันที ยอดเงินจะถูกโอนเข้าบัญชีอย่างแม่นยำและรวดเร็วภายในไม่กี่วินาที",
+    q: "ฝากถอนใช้เวลานานไหม ต้องส่งสลิปหรือรอแอดมินอนุมัติหรือเปล่า",
+    a: "ระบบฝากถอนออโต้สุดไฮสปีดพร้อมจัดการธุรกรรมทางการเงินให้ตลอด 24 ชั่วโมง ดำเนินการเสร็จสรรพผ่านหน้าเว็บในไม่กี่วินาที ยอดเงินอัปเดตตรงเป๊ะเข้าสู่บัญชีทันทีโดยไม่ต้องส่งสลิปยืนยัน และไม่ต้องเสียเวลานั่งรอแอดมินกดอนุมัติ จึงบริหารจัดการเงินทุนและถอนกำไรออกไปใช้ได้อย่างสบายใจตั้งแต่ต้นจนจบ",
   },
 ];
 
@@ -119,114 +123,116 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="VIREL168 สล็อตเว็บตรงเกมฮิต ค่ายดังครบเครื่อง โบนัสพร้อมทุกวัน">
+  <ContentBoxFloatingBadge as="h1" title="GEN4 สล็อตเจนใหม่มีของ เกมลิขสิทธิ์แท้มาเต็ม ระบบอัปเดตใหม่">
     <p class="text-left text-base leading-relaxed">
-      ถ้าคุณกำลังมองหาเว็บสล็อตที่รวมความบันเทิงไว้อย่างลงตัว VIREL168 คือเว็บตรงที่ไม่ควรพลาด ที่นี่รวบรวมเกมสล็อตแตกง่ายติดเทรนด์จากทุกค่ายชั้นนำมาไว้ในที่เดียว
-      พร้อมอัปเดตระบบการทำงานให้ลื่นไหล ไร้ปัญหากระตุก และการันตีจังหวะการแจกโบนัสแบบจัดเต็มทุกวัน ให้ผู้เล่นได้สัมผัสบรรยากาศการทำกำไรที่โปร่งใส ถอนเงินได้จริงทุกยอด
-      และสร้างความมั่นใจในทุกสปินตั้งแต่ครั้งแรกที่เข้ามาใช้งาน
-    </p>
-  </ContentBoxPremium>
-
-  <ContentBoxTwoCyberCut
-    as="h2"
-    title="VIREL168 สล็อตเว็บตรงเกมฮิต มีตัวไหนมาแรงจนควรเก็บเข้าลิสต์บ้าง?"
-    titleleft="ไลน์อัปเกมฮิตระดับตัวตึง"
-    titleright="คัดมาแล้วว่าจ่ายดี ลุ้นแจ็คพอตง่าย">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      เมื่อก้าวเข้ามาที่ VIREL168 คุณจะได้พบกับไลน์อัปเกมฮิตระดับตัวตึงที่กำลังเป็นกระแสในหมู่สายปั่น ไม่ว่าจะเป็นเกมสล็อตธีมผจญภัยสุดอลังการ
-      หรือเกมแนวแอ็กชันที่มีฟีเจอร์ตัวคูณสะสมแบบทวีคูณ
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ทุกเกมล้วนผ่านการคัดสรรมาแล้วว่ามีอัตราการจ่ายเงินรางวัลที่ดีเยี่ยม ลุ้นรอบแจ็คพอตง่าย และให้ความสนุกแบบไม่มีเบื่อ เป็นลิสต์เกมเด็ดที่สายปั่นตัวจริงควรเซฟไว้ในใจ
-    </p>
-  </ContentBoxTwoCyberCut>
-
-  <GameRankingBoard />
-
-  <ContentBoxSevenThreeCyberCut
-    as="h2"
-    title="ค่ายดังครบเครื่องที่ VIREL168 รวมไว้ เปิดครั้งเดียวเจอเกมได้หลายสไตล์"
-    titleleft="รวมทุกค่ายไว้ในล็อบบี้เดียว">
-    <Picture
-      slot="left"
-      src={imgProviders}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ VIREL168 พื้นดำมีเหรียญทองและชิปทองปลิวทั่วภาพ มุมซ้ายบนเป็นโลโก้ตัว V สีทองคู่คำว่า VIREL168 ตรงกลางเขียนตัวหนังสือขาวว่า รวมทุกค่ายเดิมพัน ถัดลงมาเป็นตัวอักษรทองขนาดใหญ่ว่า ไม่มีขั้นต่ำ และข้อความว่า ครบจบในที่เดียว ใต้ลงมาเป็นปุ่มขอบทองเขียนว่า สมัครสมาชิก ด้านขวาเป็นหญิงสาวสวมชุดจีนสีส้มถือไพ่เอซสี่ใบ มุมล่างขวามีตุ๊กตาเพนกวินสีน้ำเงินยืนอยู่บนกองเหรียญทอง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e2a52d]/40 shadow-[0_10px_30px_rgba(226,165,45,0.3)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ความโดดเด่นของ VIREL168 คือการรวมเอาค่ายเกมยักษ์ใหญ่ระดับโลกมาไว้ในล็อบบี้เดียว ทำให้ผู้เล่นสามารถสัมผัสงานภาพและกลไกเกมที่หลากหลายได้อย่างอิสระ
-      ไม่ว่าจะเป็นค่ายที่ขึ้นชื่อเรื่องภาพสวยสมจริง หรือค่ายที่เน้นจังหวะโบนัสระเบิดไว เปิดเข้ามาเพียงครั้งเดียวก็พร้อมให้คุณเลือกเล่นได้ตามความชอบ
-      ไม่ต้องเสียเวลาโยกเว็บไปมาเพื่อตามหาเกมค่ายโปรดอีกต่อไป
-    </p>
-  </ContentBoxSevenThreeCyberCut>
-
-  <ProviderGrid />
-
-  <ContentBoxNeumorphism as="h2" title="อย่ามองแค่ตัวท็อป เกมน่าค้นบางตัวอาจมีฟีเจอร์เด็ดกว่าที่คิด">
-    <p class="text-left text-base leading-relaxed">
-      นอกจากเกมยอดฮิตติดลมบนแล้ว ในหน้าล็อบบี้ของ VIREL168 ยังมีเกมสล็อตนอกกระแสอีกหลายตัวที่ซ่อนลูกเล่นและฟีเจอร์เด็ดเอาไว้อย่างน่าสนใจ
-      ไม่ว่าจะเป็นระบบฟรีสปินที่ออกง่ายเกินคาด หรือสัญลักษณ์พิเศษที่ช่วยเปลี่ยนรางวัลธรรมดาให้กลายเป็นแจ็คพอตก้อนโต
-      การลองเปิดใจค้นหาเกมใหม่ๆ ที่นี่อาจทำให้คุณได้เจอเกมทำเงินตัวใหม่ที่ถูกจริตและแตกหนักกว่าที่คิด
-    </p>
-  </ContentBoxNeumorphism>
-
-  <ContentBoxSevenThreeNeumorphism
-    as="h2"
-    title="โบนัสพร้อมทุกวัน จุดที่ VIREL168 เติมความน่าตามให้แต่ละช่วงมีอะไรใหม่"
-    titleleft="คืนยอดเสีย 5% ทุกสัปดาห์">
-    <Picture
-      slot="left"
-      src={imgCashback}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ VIREL168 พื้นดำมีเหรียญทองร่วงลงมาทั่วภาพ มุมซ้ายบนเป็นโลโก้ตัว V สีทองคู่คำว่า VIREL168 ด้านซ้ายเป็นหญิงสาวผมเปียสองข้างทำมือเป็นรูปหัวใจ ยืนอยู่หลังกระปุกออมสินรูปหมูสีทองที่วางบนกองเหรียญทอง ด้านขวาเขียนตัวอักษรทองว่า คืนยอดเสีย ตามด้วยเลข 5% ขนาดใหญ่ และคำว่า ทุกสัปดาห์ ใต้ลงมาเป็นปุ่มขอบทองเขียนว่า สมัครสมาชิก"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e2a52d]/40 shadow-[0_10px_30px_rgba(226,165,45,0.3)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      อีกหนึ่งเหตุผลที่ทำให้สมาชิกหลงรัก VIREL168 คือการจัดเตรียมโบนัสและสิทธิประโยชน์สุดคุ้มไว้ต้อนรับอยู่เสมอ ไม่ว่าจะเป็นโปรโมชันต้อนรับ โบนัสเติมเงินรายวัน
-      หรือกิจกรรมพิเศษตามเทศกาล ทั้งหมดนี้ถูกดีไซน์มาเพื่อช่วยเพิ่มทุนให้ผู้เล่นนำไปปั่นสล็อตได้นานขึ้น เพิ่มโอกาสพิชิตรางวัลใหญ่
-      และสร้างความแปลกใหม่ให้การเข้าเล่นในแต่ละวันมีสีสันน่าติดตามอยู่ตลอดเวลา
-    </p>
-  </ContentBoxSevenThreeNeumorphism>
-
-  <ContentBox3ThreeCyberCut
-    as="h2"
-    title="จัดหมวดเลือกง่าย สลับค่ายคล่อง อยากเปลี่ยนฟีลก็ไม่ต้องไล่หาเกมให้วุ่น"
-    titleleft="จัดหมวดหมู่ไว้เป็นระเบียบ"
-    titlecenter="สลับค่ายได้ในไม่กี่คลิก"
-    titleright="ทำกำไรต่อเนื่องไม่มีสะดุด">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ความใส่ใจในมิติของการใช้งานสะท้อนผ่านการดีไซน์หน้าเว็บของ VIREL168 ที่จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ แบ่งประเภทตามค่ายเกมและสไตล์การเล่นได้อย่างชัดเจน
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">
-      เมื่อไหร่ที่ต้องการเปลี่ยนบรรยากาศ ก็สามารถสลับค่ายเกมได้ทันทีเพียงไม่กี่คลิก ระบบตอบสนองไวโดยไม่ต้องนั่งรอโหลดนาน
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">ช่วยรักษาอารมณ์การทำกำไรของคุณให้ต่อเนื่องแบบไม่มีสะดุด</p>
-  </ContentBox3ThreeCyberCut>
-
-  <ContentBoxFloatingBadge as="h2" title="จากหน้าเกมถึงยอดถอน VIREL168 วางระบบให้โอนไวเข้าบัญชีแบบไม่เสียจังหวะ">
-    <p class="text-left text-base leading-relaxed">
-      ปิดท้ายความประทับใจด้วยระบบการเงินออโต้สุดฉับไวของ VIREL168 ที่เชื่อมโยงตั้งแต่ขั้นตอนการเข้าเล่นจนถึงขั้นตอนการถอนเงิน เมื่อทำกำไรได้ตามเป้า
-      คุณสามารถกดถอนเงินผ่านหน้าเว็บได้ด้วยตัวเองทันที ยอดเงินจะถูกโอนเข้าบัญชีอย่างแม่นยำและรวดเร็วภายในไม่กี่วินาที โดยไม่ต้องส่งสลิปยืนยันหรือคอยแอดมินอนุมัติ
-      ให้คุณบริหารจัดการยอดเงินได้อย่างคล่องตัวทุกช่วงเวลา
+      เปิดมิติใหม่ของการเล่นสล็อตออนไลน์ยุคใหม่ไปกับ GEN4 แพลตฟอร์มสล็อตระดับเนกซ์เจนที่ขนความบันเทิงมาแบบจัดเต็ม ที่นี่โดดเด่นด้วยการเป็นศูนย์รวมเกมลิขสิทธิ์แท้ส่งตรงจากค่ายชั้นนำระดับโลก
+      มาพร้อมโครงสร้างระบบอัปเดตใหม่ล่าสุดที่ประมวลผลได้อย่างรวดเร็ว เสถียร และปลอดภัยในทุกการใช้งาน ให้สายปั่นได้สัมผัสการทำกำไรที่ลื่นไหล ไม่มีสะดุด
+      ควบคู่ไปกับอัตราการจ่ายเงินรางวัลที่ได้มาตรฐานยุติธรรม 100%
     </p>
   </ContentBoxFloatingBadge>
 
-  <LatestWinners4 />
+  <ContentBoxTwoCyberCut
+    as="h2"
+    title="GEN4 สล็อตเจนใหม่มีของ เปิดคลังเกมให้เลือกแบบไม่ตกยุค"
+    titleleft="เลือกได้ทั้งสาย 3D และสายตัวคูณ"
+    titleright="ปั่นแล้วตื่นตาตื่นใจอยู่เสมอ">
+    <p class="text-left text-base leading-relaxed">
+      ความสมกับเป็นสล็อตเจนใหม่ของ GEN4 เริ่มต้นที่คลังเกมสล็อตขนาดใหญ่ซึ่งถูกออกแบบมาเพื่อรองรับความต้องการของนักเดิมพันยุคปัจจุบันโดยเฉพาะ
+    </p>
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ไม่ว่าคุณจะเป็นสายชอบงานภาพกราฟิก 3D สุดอลังการ หรือชอบกลไกเกมแปลกใหม่ที่มีอัตราคูณโบนัสสูง ที่นี่ก็มีตัวเลือกให้ค้นหาและเข้าเล่นได้แบบไม่มีตกเทรนด์
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ช่วยเปิดโลกการปั่นสล็อตให้ตื่นตาตื่นใจและน่าติดตามอยู่เสมอ</p>
+  </ContentBoxTwoCyberCut>
+
+  <ContentBox3ThreeNeumorphism
+    as="h2"
+    title="เกมลิขสิทธิ์แท้หลายค่ายใน GEN4 รวมทั้งตัวฮิตและตัวน่าลอง"
+    titleleft="จับมือค่ายยักษ์ใหญ่ทั่วโลก"
+    titlecenter="ตัวฮิตกับตัวน่าลองอยู่ล็อบบี้เดียวกัน"
+    titleright="กระจายความเสี่ยงได้อิสระ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      เรื่องความอุดมสมบูรณ์ของตัวเกม GEN4 ได้จับมือกับค่ายเกมสล็อตยักษ์ใหญ่ทั่วโลก เพื่อนำเสนอลิขสิทธิ์แท้ที่ไม่ผ่านการดัดแปลงโปรแกรมใดๆ
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">
+      ล็อบบี้ถูกออกแบบให้รวบรวมทั้งเกมฮิตระดับตำนานที่ขึ้นชื่อเรื่องแจ็คพอตแตกง่าย และเกมตัวน่าลองนอกกระแสที่มีฟีเจอร์เด็ดซ่อนอยู่
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ช่วยให้ผู้เล่นกระจายความเสี่ยงและเลือกสลับเปลี่ยนบรรยากาศการทำกำไรได้อย่างอิสระในที่เดียว</p>
+  </ContentBox3ThreeNeumorphism>
+
+  <ProviderGrid />
+
+  <ContentBoxNeumorphism as="h2" title="ตัวฮิตไม่ตกเจน เกมใหม่ไม่หลุดลิสต์ มีของสดให้ตามต่อเรื่อย ๆ">
+    <p class="text-left text-base leading-relaxed">
+      หมดกังวลเรื่องการเล่นเกมเดิมๆ จนจำเจ เพราะ GEN4 มีทีมงานคอยอัปเดตไลน์อัปเกมสล็อตใหม่ๆ เข้าสู่ระบบอย่างต่อเนื่อง ค่ายดังเปิดตัวเกมไหน หรือมีกระแสเกมสล็อตตัวไหนกำลังมาแรง
+      คุณจะได้สัมผัสและทดลองเล่นเป็นกลุ่มแรกๆ เสมอ หน้าเกมจึงมีความสดใหม่อยู่ตลอดเวลา เพิ่มตัวเลือกทำเงินใหม่ๆ ให้คุณได้ตามต่อแบบไม่มีคำว่าหลุดลิสต์
+    </p>
+  </ContentBoxNeumorphism>
+
+  <GameRankingBoard />
+
+  <ContentBoxSevenThreeCyberCut as="h2" title="ระบบอัปเดตใหม่ของ GEN4 เข้าไวกว่าเดิมตรงไหน ใช้งานคล่องแค่ไหน" titleleft="ก้าวสู่มิติใหม่ สล็อตยุค 5G">
+    <Picture
+      slot="left"
+      src={imgNextGen}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นของ GEN4 พื้นไล่สีชมพูอมม่วงมีเงาเส้นขอบฟ้าตึกสูงอยู่ด้านหลัง มุมบนซ้ายเป็นโลโก้ GEN4 ตัวอักษร GEN สีน้ำเงินคู่กับเลข 4 สีแดง ถัดลงมาเป็นข้อความสีม่วงตัวใหญ่ว่า ก้าวสู่มิติใหม่ แล้วต่อด้วยคำว่า GEN4 ในกรอบสีน้ำเงินคู่กับข้อความสีแดงว่า สล็อตยุค 5G ใต้ลงมามีปุ่มสีชมพูเขียนว่า สมัครเลย และบรรทัดว่า สัมผัสความเร็ว แรง บนแพลตฟอร์มสล็อตออนไลน์ที่เหนือระดับ แถวล่างสุดเป็นป้าย PLAY NOW ป้ายร้านแอป และป้ายคำว่า GEN 4 ด้านขวาเป็นผู้หญิงผมยาวสวมแจ็คเก็ตสีแดงยิ้มอยู่ ข้างกันเป็นตัวละครในเกมสามตัว ทั้งนักรบหญิงสวมเครื่องประดับศีรษะขนนก เทพเจ้าแห่งโชคลาภชุดเขียวทอง และนักฟุตบอลชุดแข่งหมายเลข 8"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#0071d5]/45 shadow-[0_10px_30px_rgba(0,113,213,0.3)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      จุดเปลี่ยนสำคัญที่ทำให้ GEN4 เหนือกว่าระบบทั่วไปคือการอัปเกรดเซิร์ฟเวอร์และซอฟต์แวร์หลังบ้านใหม่ทั้งหมด ช่วยลดระยะเวลาในการโหลดหน้าเว็บและหน้าเกมให้ฉับไวขึ้นอย่างเห็นได้ชัด
+      การเปลี่ยนค่ายเกม การสลับเมนู หรือการกดเลือกโหมดต่างๆ ทำได้อย่างลื่นไหล รองรับการใช้งานพร้อมกันของสมาชิกจำนวนมากได้สบายๆ โดยไม่มีอาการหน่วง หรือปัญหากระตุกมาทำลายจังหวะสำคัญ
+    </p>
+  </ContentBoxSevenThreeCyberCut>
+
+  <ContentBox3ThreeFloatingBadge
+    as="h2"
+    title="จากเลือกเกมถึงหน้าสปิน GEN4 ลดจังหวะรอให้เข้าเล่นได้ต่อเนื่อง"
+    titleleft="ตัดขั้นตอนเปลี่ยนผ่านออกหมด"
+    titlecenter="กดเลือกเกมแล้วพร้อมหมุนวงล้อ"
+    titleright="โฟกัสทำกำไรได้ไม่ขาดช่วง">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ประสบการณ์การใช้งานที่ GEN4 มอบให้ถูกดีไซน์มาเพื่อเน้นความคล่องตัวสูงสุด ระบบตัดขั้นตอนเปลี่ยนผ่านที่ยุ่งยากออกไปทั้งหมด
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">
+      ตั้งแต่การคลิกเลือกเกมในล็อบบี้ ตัวระบบจะพาคุณพุ่งตรงเข้าสู่หน้าสปินและพร้อมให้เริ่มหมุนวงล้อได้ในไม่กี่วินาที
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ช่วยรักษาอารมณ์ความสนุกและโฟกัสการทำกำไรให้เป็นไปอย่างต่อเนื่องไม่มีขาดช่วง</p>
+  </ContentBox3ThreeFloatingBadge>
+
+  <ContentBoxSevenThreeNeumorphism
+    as="h2"
+    title="ฝากถอนออโต้ไม่ต้องรอนาน ปิดงานการเงินให้คล่องตั้งแต่ต้นจนจบ"
+    titleleft="ฝาก-ถอน แบบ PAYMENT ไม่ใช้บัญชีม้า"
+    titleright="ทำรายการเองได้ตลอด 24 ชั่วโมง">
+    <Picture
+      slot="left"
+      src={imgPayment}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์ประกาศของ GEN4 พื้นไล่สีชมพูมีรูปหัวใจโครงร่างและแคปซูลสีชมพูลอยประดับอยู่ มุมบนซ้ายเป็นโลโก้ GEN4 ตัวอักษร GEN สีน้ำเงินคู่กับเลข 4 สีแดง ด้านซ้ายเป็นโทรโข่งสีแดงชมพูขนาดใหญ่ กลางภาพเป็นข้อความสีขาวว่า ประกาศแจ้งลูกค้าทุกท่าน และ เราใช้บัญชีสถาบันการเงินชั้นนำ ตามด้วยข้อความสีแดงตัวใหญ่ว่า ไม่ใช้บัญชีม้า ใต้ลงมาเป็นบรรทัดเล็กยืนยันว่าบัญชีเงินฝากปลอดภัยและได้เงินจริง 100% ปิดท้ายด้วยข้อความว่า ทางเว็บไซต์ใช้ระบบ ฝาก-ถอน แบบ PAYMENT ด้านขวาเป็นผู้หญิงผมยาวสวมชุดสีชมพูประดับเลื่อมกำลังยิ้มและชี้นิ้วขึ้น"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e8241c]/45 shadow-[0_10px_30px_rgba(232,36,28,0.3)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เติมเต็มความสมบูรณ์แบบด้วยระบบฝากถอนออโต้สุดไฮสปีดของ GEN4 ที่พร้อมจัดการธุรกรรมทางการเงินให้คุณตลอด 24 ชั่วโมง ดำเนินการเสร็จสรรพผ่านหน้าเว็บในไม่กี่วินาที
+      ยอดเงินอัปเดตตรงเป๊ะเข้าสู่บัญชีทันทีโดยไม่ต้องส่งสลิปยืนยัน และไม่ต้องเสียเวลานั่งรอแอดมินกดอนุมัติ ให้คุณบริหารจัดการเงินทุนและถอนกำไรออกไปใช้ได้อย่างสบายใจตั้งแต่ต้นจนจบ
+    </p>
+  </ContentBoxSevenThreeNeumorphism>
+
+  <LatestWinnersPremium />
 
   <LoginRtpSection />
 
@@ -237,18 +243,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffeec2] via-[#faca4c] to-[#855a14] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0501] shadow-[0_10px_30px_rgba(250,202,76,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(250,202,76,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#6fd2ff] via-[#01a3f3] to-[#00408a] px-4 py-3 text-sm font-black whitespace-nowrap text-[#050b1a] shadow-[0_10px_30px_rgba(1,163,243,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(1,163,243,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e2a52d]/70 bg-[#0a0501]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ffeec2] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#faca4c] hover:bg-[#2e1a04] hover:text-[#fff8e4] hover:shadow-[0_15px_40px_rgba(226,165,45,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#0071d5]/70 bg-[#050b1a]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#6fd2ff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#01a3f3] hover:bg-[#102a5c] hover:text-[#eaf4ff] hover:shadow-[0_15px_40px_rgba(1,163,243,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ VIREL168" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ GEN4" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

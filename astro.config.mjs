@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.virel168-main.com",
+  site: "https://www.gen4-new.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

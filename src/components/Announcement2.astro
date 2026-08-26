@@ -1,32 +1,42 @@
 ---
+// default message ของทุก variant ในตระกูลนี้เป็นสโลแกนของแบรนด์เก่าคนละเจ้ากัน
+// ค่านี้จึงต้องถูกเขียนใหม่ทุกรีแบรนด์ — หน้าย่อยเรียก <Announcement /> เปล่าๆ
+// จึงวิ่งข้อความชุดนี้ ต้องตรงกับที่ index.astro ส่งเข้ามาเป๊ะ
+//
+// ห้ามขึ้นต้นด้วย emoji: marquee render ข้อความซ้ำสามรอบ และ emoji ที่ฝังอยู่ใน
+// สตริง prop mark aria-hidden ไม่ได้ จึงถูกอ่านออกเสียงสามครั้ง
+//
+// XTOP666: ย้ายจากทองของ กงล้อ88 (#eb9a1d / #ffcc4b / #f6e6c2 บนผิว #140a02)
+// มาเป็นส้มไฟคู่ทองของแบรนด์นี้ — ส้ม #fc5b02 / #ff8c3a / #ffd9bd คู่ทอง
+// #ffb020 / #ffd76e บนผิว #0a0503 เนื้อความ #ffe8d8
 const {
-  message = "กงล้อ88 สล็อตเว็บตรงแตกหนัก จัดเต็มทุกค่าย หมุนกงล้อพารวยลุ้นแจ็คพอตแตกทุกวัน • เว็บแท้ไม่ผ่านเอเย่นต์ ไม่ล็อคยูส ไม่ปรับลดอัตราการชนะ ทุกการหมุนโปร่งใส 100% • ฟีเจอร์แจกโบนัสไม่อั้น ล็อกอินร่วมสนุกลุ้นรางวัลใหญ่จากกิจกรรมเสี่ยงทายได้ทุกวัน • ฝากถอนออโต้เต็มรูปแบบ ทำรายการเองได้ไม่ต้องส่งสลิป เงินเข้าไวในไม่กี่วินาที รองรับทุกธนาคารชั้นนำและทรูวอลเล็ท • รวมค่ายดังครบจบในที่เดียว ทั้ง PG Slot, Joker Gaming และ Pragmatic Play คัดเฉพาะเกมโบนัสเข้าลึกฟรีสปินออกบ่อย • ฐานการเงินมั่นคง จ่ายจริงทุกบิล ไม่มีอั้นถอนไม่มีแบ่งจ่าย ถอนได้เต็มทุกยอดการชนะ",
+  message = "XTOP666 สล็อตสปีดท็อป โหลดเกมไว ระบบพร้อมบวก โบนัสรับได้เลย • เว็บตรงสายสปีดที่ถูกออกแบบมาเพื่อตัดทุกความล่าช้าออกไป โหลดเกมรวดเร็วฉับไว ระบบหลังบ้านเสถียรพร้อมบวกทุกสถานการณ์ • คลิกเข้าหน้าเว็บแล้วระบบดึงข้อมูลขึ้นมาแสดงผลทันที ไม่ต้องนั่งรอหน้าจอโหมดหมุนติ้ว เข้าสู่หน้าเลือกเกมได้ไวกว่าระบบทั่วไปหลายเท่า • ลิงก์ตรงทางเข้าไม่ผ่านหน้าเอเย่นต์ ตัดการกรอกข้อมูลซ้ำซ้อนและการยืนยันตัวตนหลายชั้นออก พุ่งเข้าล็อบบี้เกมค่ายดังได้ในคลิกเดียว • คัดเกมค่ายชั้นนำมาหลากสไตล์ ทั้งสล็อตแฟนตาซีภาพ 3D อลังการ สายคลาสสิกโบนัสแตกไว และสายสะสมตัวคูณสุดมันส์ • วางปุ่มฝากถอน คลังเกม ค่ายเกม และหน้ากิจกรรมไว้เป็นระเบียบ กดหยิบใช้ได้ทันทีไม่ต้องคลิกวนหาหลายชั้น • เลือกกดรับโบนัสได้เองก่อนเข้าเกม ทั้งเครดิตเพิ่มทุนรายวันและสิทธิประโยชน์จากการเติมเงิน • ปรับสเกลตามหน้าจอโดยอัตโนมัติ มือถือก็ไว คอมก็เต็มจอ ลื่นไหลระดับเดียวกันในทุกช่องทาง",
 } = Astro.props;
 ---
 
-<div class="relative mx-auto flex h-[42px] max-w-[900px] items-center overflow-hidden rounded-sm bg-[#140a02] shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
-  <div class="relative z-10 flex h-full items-center bg-gradient-to-r from-[#eb9a1d] to-[#ffcc4b] px-6 pl-4 [clip-path:polygon(0_0,100%_0,85%_100%,0_100%)] md:px-8">
+<div class="relative mx-auto flex h-[42px] max-w-[900px] items-center overflow-hidden rounded-sm bg-[#0a0503] shadow-[0_4px_15px_rgba(0,0,0,0.5)]">
+  <div class="relative z-10 flex h-full items-center bg-gradient-to-r from-[#fc5b02] to-[#ffb020] px-6 pl-4 [clip-path:polygon(0_0,100%_0,85%_100%,0_100%)] md:px-8">
     <div class="flex items-center gap-2">
       <span class="relative flex h-2.5 w-2.5">
-        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#140a02] opacity-75"></span>
-        <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#140a02]"></span>
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#0a0503] opacity-75"></span>
+        <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#0a0503]"></span>
       </span>
-      <span class="font-black tracking-widest text-[#140a02] italic drop-shadow-md">HOT</span>
+      <span class="font-black tracking-widest text-[#0a0503] italic drop-shadow-md">HOT</span>
     </div>
   </div>
 
   <div class="relative flex-1 overflow-hidden">
-    <div class="absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-[#140a02] to-transparent"></div>
-    <div class="absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-[#140a02] to-transparent"></div>
+    <div class="absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-[#0a0503] to-transparent"></div>
+    <div class="absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-[#0a0503] to-transparent"></div>
 
-    <div class="marquee flex w-max animate-[scroll_20s_linear_infinite] items-center gap-10 pl-4 text-sm font-bold whitespace-nowrap text-[#f6e6c2]/90 md:text-base">
+    <div class="marquee flex w-max animate-[scroll_20s_linear_infinite] items-center gap-10 pl-4 text-sm font-bold whitespace-nowrap text-[#ffe8d8]/90 md:text-base">
       <span>{message}</span>
       <span aria-hidden="true">{message}</span>
       <span aria-hidden="true">{message}</span>
     </div>
   </div>
 
-  <div class="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-[#ffcc4b] via-[#ff6a13] to-transparent"></div>
+  <div class="absolute bottom-0 left-0 h-[2px] w-full bg-gradient-to-r from-[#ffb020] via-[#fc5b02] to-transparent"></div>
 </div>
 
 <style>

@@ -22,21 +22,22 @@ const { title, faqs = [] } = Astro.props;
 // ป้ายของ widget ไม่ใช่ section ของ docx ชื่อสำหรับ assistive tech ย้ายไปอยู่ที่
 // aria-label บน <section> แทน หน้าตายังเหมือนเดิมเพราะขนาดกับน้ำหนักอยู่ในคลาส
 //
-// GGPLUS88: ย้ายจากเขียวมรกตคู่ทองเมทัลลิกของแบรนด์ก่อนหน้ามาที่ม่วงลึกคู่มาเจนต้า
-// ของแบรนด์นี้ — ม่วง #9b2fe0 / #d9a5ff / #5a1290 คู่มาเจนต้า #d81b7e / #ff6fb5
-// คู่ทอง #f0c14b บนผิว #0b0212 / #1b0630 / #2d0a50 เนื้อความ #ece0f7 (ค่า hex ของ
-// แบรนด์เก่าไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
-// คอมเมนต์ ดูของเดิมได้จาก git history)
+// GEN4: ย้ายจากม่วงลึกคู่มาเจนต้าของแบรนด์ก่อนหน้ามาที่น้ำเงินอิเล็กทริกคู่แดงของ
+// แบรนด์นี้ — น้ำเงิน #0071d5 / #01a3f3 / #6fd2ff / #00408a คู่แดง #e8241c
+// (สีของเลข 4 ในโลโก้ ใช้กับไอคอนตอนกางคำตอบเท่านั้น) บนผิว #050b1a / #0b1b3a /
+// #102a5c เนื้อความ #d7e7ff หัวข้อ #eaf4ff (ค่า hex ของแบรนด์เก่าไม่พิมพ์ไว้ตรงนี้
+// — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก
+// git history)
 ---
 
 <section aria-label={title} class="relative z-10 mx-auto mb-10 w-full max-w-[950px] px-4 font-sans">
   {
     title && (
       <header class="mb-8 text-center">
-        <p class="bg-gradient-to-r from-[#f6ecff] via-[#d9a5ff] to-[#d81b7e] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <p class="bg-gradient-to-r from-[#eaf4ff] via-[#6fd2ff] to-[#0071d5] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </p>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#9b2fe0] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#01a3f3] to-transparent" />
       </header>
     )
   }
@@ -44,8 +45,8 @@ const { title, faqs = [] } = Astro.props;
   <div class="space-y-3">
     {
       faqs.map((faq) => (
-        <details class="faq-item rounded-3xl border border-[#9b2fe0]/30 bg-[#1b0630]/85 p-2 shadow-[0_10px_30px_rgba(11,2,18,0.8)] backdrop-blur-xl transition-all hover:border-[#9b2fe0]/60 hover:bg-[#2d0a50]/85">
-          <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left text-[#ece0f7] transition-colors hover:text-[#d9a5ff]">
+        <details class="faq-item rounded-3xl border border-[#0071d5]/30 bg-[#0b1b3a]/85 p-2 shadow-[0_10px_30px_rgba(5,11,26,0.8)] backdrop-blur-xl transition-all hover:border-[#01a3f3]/60 hover:bg-[#102a5c]/85">
+          <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left text-[#d7e7ff] transition-colors hover:text-[#6fd2ff]">
             <span class="flex-1 text-left text-sm leading-normal font-bold md:text-base">{faq.q}</span>
             <span aria-hidden="true" class="faq-icon ml-4 flex h-6 w-6 shrink-0 items-center justify-center text-2xl transition-transform duration-300 ease-in-out">
               +
@@ -53,7 +54,7 @@ const { title, faqs = [] } = Astro.props;
           </summary>
 
           <div class="faq-answer overflow-hidden">
-            <p class="px-4 pb-4 text-left text-base leading-relaxed text-[#ece0f7]">{faq.a}</p>
+            <p class="px-4 pb-4 text-left text-base leading-relaxed text-[#d7e7ff]">{faq.a}</p>
           </div>
         </details>
       ))
@@ -72,7 +73,7 @@ const { title, faqs = [] } = Astro.props;
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    color: #f0c14b;
+    color: #e8241c;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;

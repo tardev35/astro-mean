@@ -6,9 +6,8 @@ import ktbLogo from "../assets/banks/ktb.png";
 import { brandPick } from "../lib/brandProfile";
 
 // Real bank brand colours — deliberately NOT rethemed to the brand palette.
-// Krungsri's yellow badge is one of them: it is the bank's own colour, not a
-// leftover from a previous brand's gold, and it stays whatever this site's
-// palette happens to be.
+// KTB's sky blue and KBank's blue are the banks' own colours, not a leftover of
+// some previous brand's hue, and they stay whatever this site's palette is.
 const bankPool = [
   { name: "KBank", color: "bg-[#1155cc]", icon: kbankLogo.src },
   { name: "SCB", color: "bg-[#4e1c80]", icon: scbLogo.src },
@@ -35,52 +34,52 @@ const bankPool = [
 // there. data-pending-chance is 0.2, so the server-rendered rows mirror it with
 // a 1-in-5 draw rather than brandFlag's 50/50.
 //
-// PROFIT55: this variant was last dressed for an earlier brand's mint green
-// paired with gold; it now carries this brand's inverted pair — gold as primary
-// (#e3ac22 / #f6d24a / #ffe9a8 / #8a6410) with chrome silver as the secondary
-// (#cfd8e2 / #eef3f8 / #8b96a4) over #161004 / #2a1d05 / #0a0702, body #f3e6c4
-// and muted #f3e6c4 at 70–80% opacity. The big-withdrawal row takes the silver
-// treatment so it reads apart from the gold default rows. Earlier brands' hex
-// values are deliberately not written out here — Tailwind scans this file as raw
-// text and cannot tell a comment from markup; read them out of git history
-// instead. The "ถอนสำเร็จ" green is a status colour, not a brand colour, and
-// stays.
+// GEN4: this variant was last dressed for an earlier brand's gold paired with
+// chrome silver; it now carries this brand's electric blue as primary
+// (#0071d5 / #01a3f3 / #6fd2ff / #00408a) with the logo's red as the sparing
+// second hue (#e8241c / #ff5a33) over #050b1a / #0b1b3a / #102a5c, body
+// #d7e7ff, headings #eaf4ff and muted #d7e7ff at 70–80% opacity. The
+// big-withdrawal row takes the red treatment so it reads apart from the blue
+// default rows. Earlier brands' hex values are deliberately not written out
+// here — Tailwind scans this file as raw text and cannot tell a comment from
+// markup; read them out of git history instead. The "ถอนสำเร็จ" green is a
+// status colour, not a brand colour, and stays.
 const BIG_WIN = 40000;
 const pick = (salt: string, n: number) => brandPick(Astro.site, salt, n);
 const digits = (salt: string, n: number) => Array.from({ length: n }, (_, d) => pick(`${salt}-${d}`, 10)).join("");
 
 const initialRows = Array.from({ length: 5 }, (_, i) => {
-  const amount = 100 + pick(`profit55-amount-${i}`, 48901);
+  const amount = 100 + pick(`gen4-amount-${i}`, 48901);
   return {
-    bank: bankPool[pick(`profit55-bank-${i}`, bankPool.length)],
-    user: `0${pick(`profit55-p-${i}`, 2) === 0 ? "8" : "9"}***${digits(`profit55-u${i}`, 4)}`,
+    bank: bankPool[pick(`gen4-bank-${i}`, bankPool.length)],
+    user: `0${pick(`gen4-p-${i}`, 2) === 0 ? "8" : "9"}***${digits(`gen4-u${i}`, 4)}`,
     amount,
     big: amount > BIG_WIN,
-    pending: pick(`profit55-s-${i}`, 5) === 0,
+    pending: pick(`gen4-s-${i}`, 5) === 0,
   };
 });
 
 const seedTotal = initialRows.reduce((sum, row) => sum + row.amount, 0);
 
-const ROW_NORMAL = "border-[#e3ac22]/20";
-const ROW_BIG = "border-[#cfd8e2]/55 shadow-[0_0_15px_rgba(207,216,226,0.25)]";
-const STATUS_PENDING = "text-[#e3ac22] font-bold";
+const ROW_NORMAL = "border-[#0071d5]/25";
+const ROW_BIG = "border-[#e8241c]/55 shadow-[0_0_15px_rgba(232,36,28,0.25)]";
+const STATUS_PENDING = "text-[#6fd2ff] font-bold";
 const STATUS_DONE = "text-green-400 font-bold";
 ---
 
 <div class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก PROFIT55"
-    class="relative overflow-hidden rounded-3xl border border-[#e3ac22]/35 bg-[#161004]/88 shadow-[0_10px_40px_rgba(10,7,2,0.85)] backdrop-blur-xl">
-    <div class="relative z-10 flex flex-col gap-4 border-b border-[#e3ac22]/30 px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-8">
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก GEN4"
+    class="relative overflow-hidden rounded-3xl border border-[#0071d5]/40 bg-[#050b1a]/88 shadow-[0_10px_40px_rgba(1,3,10,0.85)] backdrop-blur-xl">
+    <div class="relative z-10 flex flex-col gap-4 border-b border-[#0071d5]/30 px-5 py-5 sm:flex-row sm:items-center sm:justify-between md:px-8">
       <div class="flex items-center gap-3">
-        <span aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full border border-[#cfd8e2]/45 bg-[#2a1d05] text-2xl text-[#eef3f8]">🏆</span>
+        <span aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full border border-[#01a3f3]/45 bg-[#102a5c] text-2xl text-[#eaf4ff]">🏆</span>
         <div class="flex flex-col">
-          <p class="text-2xl font-black tracking-widest text-[#eef3f8] drop-shadow-sm">
-            รายการถอนเงินล่าสุด PROFIT<span class="text-[#e3ac22]">55</span>
+          <p class="text-2xl font-black tracking-widest text-[#eaf4ff] drop-shadow-sm">
+            รายการถอนเงินล่าสุด GEN<span class="text-[#e8241c]">4</span>
           </p>
-          <span class="text-[11px] font-medium tracking-wide text-[#f3e6c4]/70">
-            ระบบออโต้จัดการยอดให้เองตลอด 24 ชั่วโมง ถอนตอนตีสองตีสามก็เข้าบัญชีภายในไม่กี่วินาที ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินกดอนุมัติ
+          <span class="text-[11px] font-medium tracking-wide text-[#d7e7ff]/70">
+            ระบบฝากถอนออโต้สุดไฮสปีดจัดการธุรกรรมให้ตลอด 24 ชั่วโมง ดำเนินการเสร็จสรรพผ่านหน้าเว็บในไม่กี่วินาที ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินกดอนุมัติ
           </span>
         </div>
       </div>
@@ -90,28 +89,28 @@ const STATUS_DONE = "text-green-400 font-bold";
       </div>
     </div>
 
-    <div class="relative z-10 grid grid-cols-2 gap-px overflow-hidden border-b border-[#e3ac22]/20 bg-[#2a1d05]/40 sm:grid-cols-3">
-      <div class="flex flex-col items-center gap-1 bg-[#0a0702] px-4 py-4">
-        <span class="text-[11px] font-medium tracking-wide text-[#f3e6c4]/70">ยอดถอนรวมวันนี้</span>
+    <div class="relative z-10 grid grid-cols-2 gap-px overflow-hidden border-b border-[#0071d5]/25 bg-[#102a5c]/40 sm:grid-cols-3">
+      <div class="flex flex-col items-center gap-1 bg-[#01030a] px-4 py-4">
+        <span class="text-[11px] font-medium tracking-wide text-[#d7e7ff]/70">ยอดถอนรวมวันนี้</span>
         <span
           data-winners-total
           data-prefix="฿"
           data-seed={seedTotal}
-          class="bg-gradient-to-r from-[#f6d24a] to-[#8a6410] bg-clip-text font-mono text-lg font-black text-transparent sm:text-xl">
+          class="bg-gradient-to-r from-[#6fd2ff] to-[#0071d5] bg-clip-text font-mono text-lg font-black text-transparent sm:text-xl">
           ฿{seedTotal.toLocaleString("en-US")}
         </span>
       </div>
-      <div class="flex flex-col items-center gap-1 bg-[#0a0702] px-4 py-4">
-        <span class="text-[11px] font-medium tracking-wide text-[#f3e6c4]/70">รายการสำเร็จวันนี้</span>
-        <span data-winners-count data-seed={initialRows.length} class="font-mono text-lg font-black text-[#f3e6c4] sm:text-xl">{initialRows.length}</span>
+      <div class="flex flex-col items-center gap-1 bg-[#01030a] px-4 py-4">
+        <span class="text-[11px] font-medium tracking-wide text-[#d7e7ff]/70">รายการสำเร็จวันนี้</span>
+        <span data-winners-count data-seed={initialRows.length} class="font-mono text-lg font-black text-[#d7e7ff] sm:text-xl">{initialRows.length}</span>
       </div>
-      <div class="col-span-2 flex flex-col items-center gap-1 bg-[#0a0702] px-4 py-4 sm:col-span-1">
-        <span class="text-[11px] font-medium tracking-wide text-[#f3e6c4]/70">หักค่าธรรมเนียมการถอน</span>
-        <span class="font-mono text-lg font-black text-[#f3e6c4] sm:text-xl">0% จ่ายเต็มทุกยอด</span>
+      <div class="col-span-2 flex flex-col items-center gap-1 bg-[#01030a] px-4 py-4 sm:col-span-1">
+        <span class="text-[11px] font-medium tracking-wide text-[#d7e7ff]/70">หักค่าธรรมเนียมการถอน</span>
+        <span class="font-mono text-lg font-black text-[#d7e7ff] sm:text-xl">0% จ่ายเต็มทุกยอด</span>
       </div>
     </div>
 
-    <div class="relative z-10 hidden grid-cols-[2fr_1.3fr_1fr_0.8fr] gap-4 px-8 pt-4 text-[11px] font-bold tracking-widest text-[#f3e6c4]/70 uppercase sm:grid">
+    <div class="relative z-10 hidden grid-cols-[2fr_1.3fr_1fr_0.8fr] gap-4 px-8 pt-4 text-[11px] font-bold tracking-widest text-[#d7e7ff]/70 uppercase sm:grid">
       <span>ผู้ใช้งาน</span>
       <span>สถานะ</span>
       <span class="text-right">จำนวนเงิน</span>
@@ -135,12 +134,12 @@ const STATUS_DONE = "text-green-400 font-bold";
               data-winner-big
               data-normal-class={ROW_NORMAL}
               data-big-class={ROW_BIG}
-              class={`grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border bg-[#2a1d05]/88 p-3.5 shadow-sm transition-colors duration-300 hover:border-[#cfd8e2]/60 hover:bg-[#2a1d05] sm:grid-cols-[2fr_1.3fr_1fr_0.8fr] ${row.big ? ROW_BIG : ROW_NORMAL}`}>
+              class={`grid grid-cols-[auto_1fr] items-center gap-4 rounded-xl border bg-[#102a5c]/88 p-3.5 shadow-sm transition-colors duration-300 hover:border-[#01a3f3]/60 hover:bg-[#102a5c] sm:grid-cols-[2fr_1.3fr_1fr_0.8fr] ${row.big ? ROW_BIG : ROW_NORMAL}`}>
               <div class="col-span-2 flex items-center gap-3 sm:col-span-1">
                 <div data-winner-bank class={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-white/10 shadow-inner ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="20" height="20" loading="lazy" decoding="async" class="h-5 w-5 object-contain grayscale" />
                 </div>
-                <span data-winner-user class="font-mono text-sm font-bold text-[#f3e6c4]">{row.user}</span>
+                <span data-winner-user class="font-mono text-sm font-bold text-[#d7e7ff]">{row.user}</span>
               </div>
               <div class="flex items-center gap-1.5 text-[11px] tracking-wide sm:text-xs">
                 <span data-winner-big data-normal-text="✓" data-big-text="👑" aria-hidden="true" class="shrink-0">
@@ -156,10 +155,10 @@ const STATUS_DONE = "text-green-400 font-bold";
                   {row.pending ? "กำลังโอนเข้าบัญชี" : "ถอนสำเร็จ จ่ายเต็มจำนวน"}
                 </span>
               </div>
-              <div class="bg-gradient-to-r from-[#f6d24a] to-[#8a6410] bg-clip-text text-right font-mono text-base font-black text-transparent sm:text-lg">
+              <div class="bg-gradient-to-r from-[#6fd2ff] to-[#0071d5] bg-clip-text text-right font-mono text-base font-black text-transparent sm:text-lg">
                 ฿<span data-winner-amount>{row.amount.toLocaleString("en-US")}</span>
               </div>
-              <div class="text-right text-[11px] font-medium text-[#f3e6c4]/70 sm:text-xs">เมื่อสักครู่</div>
+              <div class="text-right text-[11px] font-medium text-[#d7e7ff]/70 sm:text-xs">เมื่อสักครู่</div>
             </div>
           </div>
         ))

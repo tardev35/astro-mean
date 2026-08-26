@@ -6,31 +6,34 @@
 // ห้ามขึ้นต้นด้วย emoji — marquee นี้ render ข้อความซ้ำสองรอบเพื่อให้วนไม่มีรอยต่อ
 // emoji ที่ฝังในข้อความ prop ทำ aria-hidden ไม่ได้ จึงถูกอ่านออกเสียงซ้ำทุกรอบ
 //
-// ORCA789: ย้ายจากม่วงนีออนของ GDK88 (#a855f7 / #5b1497 / #f3e8ff / #ece0ff บนผิว
-// #0f0320 คู่ทอง #f0b429) มาเป็นฟ้านีออนใต้ทะเลของแบรนด์นี้ — ฟ้าหลัก #00abfc /
-// #84ccfb / #011dc4 บนผิว #041028 เนื้อความ #dbeafe จุดสัญญาณเป็นทอง #ffd54a
-// (วัดจาก palette.json: vivid ของโลโก้คือ #011dc4 / #84ccfb / #00abfc)
+// GEN4: ย้ายจากนีออนฟ้า-บานเย็นของแบรนด์ก่อน มาเป็นน้ำเงินอิเล็กทริกคู่แดงของ
+// แบรนด์นี้ — น้ำเงินหลัก #01a3f3 / #6fd2ff คู่แดง #e8241c บนผิวกรมท่าเกือบดำ
+// #050b1a เนื้อความ #eaf4ff จุดสัญญาณเป็นแดง #e8241c
+// (วัดจาก palette.json: vivid ของโลโก้คือ #006fd5 / #007cdd / #01a3f3)
+//
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
+// ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
 const {
-  message = "ORCA789 สล็อตตัวฮิตมาแรง เกมเด็ดครบเครื่อง เว็บเดียวเอาอยู่ • รวมความตื่นเต้นครบทุกมิติไว้ในที่เดียว ทั้งสล็อตตัวฮิตกระแสแรง บาคาร่าสด คาสิโน และแทงบอลออนไลน์ ไม่ต้องย้ายเว็บไปมาให้เสียเวลา • ล็อบบี้คัดมาเฉพาะเกมเด็ดแตกหนักจากทุกค่ายชั้นนำ ทั้งธีมแฟนตาซีตระการตา แนวสตรีทสุดเท่ และคลาสสิกโบนัสแตกง่าย • บาคาร่ายิงตรงสัญญาณสดความละเอียดสูง HD จากคาสิโนจริง ส่วนโหมดฟุตบอลราคาน้ำดี เปิดกว้างทุกลีกทั่วโลก สลับเล่นได้ในยูสเซอร์เดียว • ทีมงานอัปเดตไลน์อัปเกมใหม่เข้าระบบต่อเนื่อง ค่ายดังออกเกมอะไรมาก็ได้ลองเป็นกลุ่มแรกเสมอ • ระบบหลังบ้านปรับจูนให้เสถียรสูงสุด รองรับสมาชิกจำนวนมากพร้อมกันโดยไม่หน่วง ไม่กระตุก ไม่มีเกมหลุดระหว่างลุ้นโบนัส • ฝากถอนออโต้ไฮสปีดจบใน 3 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ปลอดภัยทุกธุรกรรม",
+  message = "GEN4 สล็อตเจนใหม่มีของ เกมลิขสิทธิ์แท้มาเต็ม ระบบอัปเดตใหม่ • แพลตฟอร์มสล็อตระดับเนกซ์เจนที่ขนความบันเทิงมาแบบจัดเต็ม ศูนย์รวมเกมลิขสิทธิ์แท้ส่งตรงจากค่ายชั้นนำระดับโลก • คลังเกมขนาดใหญ่ออกแบบมาเพื่อนักเดิมพันยุคปัจจุบันโดยเฉพาะ ทั้งสายกราฟิก 3D สุดอลังการ และสายกลไกเกมแปลกใหม่ที่มีอัตราคูณโบนัสสูง • ล็อบบี้รวมทั้งเกมฮิตระดับตำนานที่แจ็คพอตแตกง่าย และเกมตัวน่าลองนอกกระแสที่มีฟีเจอร์เด็ดซ่อนอยู่ • ทีมงานอัปเดตไลน์อัปเกมใหม่เข้าระบบต่อเนื่อง ค่ายดังเปิดตัวเกมไหนคุณจะได้ทดลองเล่นเป็นกลุ่มแรกๆ เสมอ • อัปเกรดเซิร์ฟเวอร์และซอฟต์แวร์หลังบ้านใหม่ทั้งหมด โหลดหน้าเว็บและหน้าเกมฉับไวขึ้นชัดเจน ไม่หน่วง ไม่กระตุก • คลิกเลือกเกมในล็อบบี้แล้วพุ่งตรงเข้าหน้าสปินได้ในไม่กี่วินาที ตัดขั้นตอนเปลี่ยนผ่านที่ยุ่งยากออกทั้งหมด • ฝากถอนออโต้ตลอด 24 ชั่วโมง เสร็จในไม่กี่วินาที ยอดเข้าบัญชีทันที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ",
 } = Astro.props;
 ---
 
 <div class="mx-auto w-full max-w-7xl px-4 py-3 font-sans">
   <div
-    class="relative flex overflow-hidden border border-[#00abfc]/55 bg-[#041028]/92 shadow-[0_0_15px_rgba(0,171,252,0.32)] backdrop-blur-md"
+    class="relative flex overflow-hidden border border-[#01a3f3]/55 bg-[#050b1a]/92 shadow-[0_0_15px_rgba(1,163,243,0.32)] backdrop-blur-md"
     style="clip-path: polygon(15px 0, 100% 0, calc(100% - 15px) 100%, 0 100%);">
     <div
-      class="relative z-10 flex shrink-0 items-center justify-center bg-gradient-to-r from-[#011dc4] to-[#00abfc] px-6 py-2.5 font-black text-[#f0f9ff]"
+      class="relative z-10 flex shrink-0 items-center justify-center bg-gradient-to-r from-[#00408a] to-[#01a3f3] px-6 py-2.5 font-black text-[#eaf4ff]"
       style="clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);">
       ประกาศ
     </div>
 
     <div class="marquee-container relative flex-1 overflow-hidden py-2.5 pr-6">
-      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#041028] to-transparent"></div>
+      <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#050b1a] to-transparent"></div>
 
-      <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-widest whitespace-nowrap text-[#dbeafe]">
-        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#ffd54a] shadow-[0_0_8px_rgba(255,213,74,1)]"></span>{message}</span>
-        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#ffd54a] shadow-[0_0_8px_rgba(255,213,74,1)]"></span>{message}</span>
+      <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-widest whitespace-nowrap text-[#eaf4ff]">
+        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#e8241c] shadow-[0_0_8px_rgba(232,36,28,1)]"></span>{message}</span>
+        <span class="mr-8 inline-flex items-center gap-2"><span class="h-2 w-2 bg-[#e8241c] shadow-[0_0_8px_rgba(232,36,28,1)]"></span>{message}</span>
       </div>
     </div>
   </div>

@@ -6,15 +6,16 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// VIREL168: ย้ายชุดสีมาที่ทองของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง #faca4c /
-// #ebb134 / #e2a52d / #ffeec2 คู่เงินโครเมียม #e1e1e1 บนผิว #0a0501 เนื้อความ
-// #f4e7cd (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
-// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+// GEN4: ย้ายชุดสีจากส้มไฟของแบรนด์ก่อน มาที่น้ำเงินอิเล็กทริกคู่แดงของแบรนด์นี้ที่
+// วัดจากอาร์ตจริง — น้ำเงิน #0071d5 / #01a3f3 / #6fd2ff / #00408a บนผิวกรมท่า
+// เกือบดำ #050b1a เนื้อความ #d7e7ff หัวข้อ #eaf4ff (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้
+// ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก
+// git history)
 //
 // คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
-// #020100 (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #2e1a04 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
-// ไปใช้สีทอง การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่ variant
-// นี้มีไว้ทำ
+// #01030a (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #0b1b3a (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
+// ไปใช้น้ำเงินนีออน การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่
+// variant นี้มีไว้ทำ
 //
 // text-center อยู่บน <header> เท่านั้น ไม่ได้อยู่บนการ์ดหรือ <section> ถ้าย้ายขึ้นไป
 // มันจะ inherit ลงไปใน slot แล้วย่อหน้าเนื้อความจะถูกจัดกึ่งกลางตามไปด้วย
@@ -22,11 +23,11 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="w-full max-w-[1400px] rounded-[25px] border border-[#e2a52d]/30 bg-[#0a0501] p-8 text-left text-base leading-relaxed text-[#f4e7cd] shadow-[10px_10px_20px_#020100,-10px_-10px_20px_#2e1a04]">
+    class="w-full max-w-[1400px] rounded-[25px] border border-[#0071d5]/30 bg-[#050b1a] p-8 text-left text-base leading-relaxed text-[#d7e7ff] shadow-[10px_10px_20px_#01030a,-10px_-10px_20px_#0b1b3a]">
     {
       title && (
-        <header class="mb-8 border-b border-[#e1e1e1]/25 pb-4 text-center">
-          <HeadingTag class={`bg-gradient-to-r from-[#fff8e4] via-[#e1e1e1] to-[#e2a52d] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#01a3f3]/25 pb-4 text-center">
+          <HeadingTag class={`bg-gradient-to-r from-[#eaf4ff] via-[#01a3f3] to-[#0071d5] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

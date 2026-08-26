@@ -1,37 +1,36 @@
 ---
 // Widget ไม่ใช่ article: หัวข้อ render เป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
-// assistive tech ห้ามเลื่อน <p> ขึ้นเป็น <h2> เพื่อแก้เรื่องชื่อ section เพราะ
-// จำนวน h2 บนหน้าแรกถูก diff กับ checklist ของ docx
+// assistive tech ห้ามเลื่อน <p> ขึ้นเป็น <h2> เพราะจำนวน h2 บนหน้าแรกถูก diff กับ
+// checklist ของ docx และชื่อค่ายในการ์ดก็ห้ามเป็น <h3> ด้วยเหตุผลเดียวกัน
 //
-// เนื้อหาตาม brief ของ VIREL168 — ค่ายเกมยักษ์ใหญ่ระดับโลกถูกรวมไว้ในล็อบบี้เดียว
-// ทั้งค่ายที่ขึ้นชื่อเรื่องภาพสวยสมจริงและค่ายที่เน้นจังหวะโบนัสระเบิดไว เปิดเข้ามา
-// ครั้งเดียวก็เลือกเล่นได้ตามความชอบโดยไม่ต้องโยกเว็บไปมา กริดนี้เป็นภาพประกอบของ
-// หัวข้อ docx ข้อ 2 (ค่ายดังครบเครื่อง เปิดครั้งเดียวเจอเกมได้หลายสไตล์) โดยตรง
-// จึงวางต่อท้ายบล็อกนั้น
+// เนื้อหาตาม brief ของ GEN4 — จับมือกับค่ายเกมสล็อตยักษ์ใหญ่ทั่วโลก เพื่อนำเสนอ
+// ลิขสิทธิ์แท้ที่ไม่ผ่านการดัดแปลงโปรแกรมใดๆ และล็อบบี้ถูกออกแบบให้รวมทั้งเกมฮิต
+// ระดับตำนานที่แจ็คพอตแตกง่าย กับเกมตัวน่าลองนอกกระแสที่มีฟีเจอร์เด็ดซ่อนอยู่
+// กริดนี้จึงเป็นภาพประกอบของหัวข้อ docx เรื่องเกมลิขสิทธิ์แท้หลายค่ายโดยตรง
 //
-// VIREL168: ย้ายชุดสีมาที่ทองของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง #faca4c /
-// #ebb134 / #e2a52d / #ffeec2 / #855a14 คู่เงินโครเมียม #e1e1e1 / #949494 บนผิว
-// #0a0501 / #1b0d02 / #2e1a04 ขอบ #442503 เนื้อความ #f4e7cd หมึกบนป้ายทอง #0a0501
-// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
-// เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
-// git history)
+// GEN4: ชุดสีเป็นน้ำเงินอิเล็กทริกคู่แดงบนกรมท่าเกือบดำตามอาร์ตจริง — น้ำเงิน
+// #0071d5 / #01a3f3 / #6fd2ff / #00408a คู่แดง #e8241c / #ff5a33 (สีของเลข 4 ใน
+// โลโก้ ใช้เป็นสีเน้นรองบนป้ายมุมการ์ดเท่านั้น) บนผิว #050b1a / #0b1b3a / #102a5c
+// เนื้อความ #d7e7ff หัวข้อ #eaf4ff ข้อความรอง #8fb4e0 (ห้ามพิมพ์ hex ของแบรนด์ก่อน
+// ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาส
+// จากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 const providers = [
-  { name: "PG SOFT", desc: "ค่ายที่ส่งเกมแตกง่ายติดเทรนด์เข้าล็อบบี้ใหม่ต่อเนื่องตลอดทั้งปี", tag: "เกมฮิตมาแรง", icon: "🎰" },
-  { name: "JOKER", desc: "ตัวเลือกยอดฮิตของสายปั่น จังหวะโบนัสระเบิดไวและกดเข้าเล่นได้ทันที", tag: "โบนัสระเบิดไว", icon: "🃏" },
-  { name: "JILI", desc: "เกมสล็อตและเกมยิงปลาแนวสนุกเร็ว เหมาะกับคนที่ชอบเปลี่ยนสไตล์บ่อย", tag: "เปลี่ยนฟีลไว", icon: "🐟" },
-  { name: "Microgaming", desc: "ค่ายระดับโลกที่งานภาพและกลไกเกมหลากหลายให้เลือกได้อย่างอิสระ", tag: "หลายสไตล์", icon: "🌐" },
-  { name: "Pragmatic Play", desc: "อัตราการจ่ายเงินรางวัลดีเยี่ยม ลุ้นรอบแจ็คพอตได้ง่ายในทุกระดับเบท", tag: "ลุ้นแจ็คพอตง่าย", icon: "💥" },
-  { name: "Habanero", desc: "สล็อตภาพสวยสมจริงระดับ HD สำหรับคนที่ให้ความสำคัญกับงานภาพ", tag: "ภาพสวยสมจริง", icon: "💠" },
-  { name: "Red Tiger", desc: "เกมแนวแอ็กชันที่มีฟีเจอร์ตัวคูณสะสมแบบทวีคูณให้ลุ้นคูณก้อนใหญ่", tag: "ตัวคูณสะสม", icon: "🐯" },
+  { name: "PG SOFT", desc: "งานภาพกราฟิก 3D สุดอลังการ ลิขสิทธิ์แท้ส่งตรงจากค่าย ไม่ผ่านการดัดแปลงโปรแกรม", tag: "กราฟิก 3D", icon: "🎰" },
+  { name: "JOKER", desc: "เกมฮิตระดับตำนานที่ขึ้นชื่อเรื่องแจ็คพอตแตกง่าย เป็นตัวฮิตที่ไม่เคยตกเจน", tag: "ตัวฮิตไม่ตกเจน", icon: "🃏" },
+  { name: "JILI", desc: "กลไกเกมแปลกใหม่ที่มีอัตราคูณโบนัสสูง เปลี่ยนบรรยากาศการทำกำไรได้อิสระ", tag: "ตัวคูณสูง", icon: "🐉" },
+  { name: "Microgaming", desc: "ค่ายยักษ์ใหญ่ระดับโลกที่ GEN4 จับมือด้วย เพื่อยืนยันว่าทุกเกมเป็นลิขสิทธิ์แท้", tag: "ลิขสิทธิ์แท้", icon: "🌐" },
+  { name: "Pragmatic Play", desc: "ไลน์อัปเกมใหม่เข้าระบบต่อเนื่อง ค่ายเปิดตัวเกมไหนก็ได้ลองเป็นกลุ่มแรกๆ", tag: "ของสดตลอด", icon: "💥" },
+  { name: "Habanero", desc: "เกมตัวน่าลองนอกกระแสที่มีฟีเจอร์เด็ดซ่อนอยู่ ช่วยกระจายความเสี่ยงได้ดี", tag: "ตัวน่าลอง", icon: "💠" },
+  { name: "Red Tiger", desc: "อัตราการจ่ายเงินรางวัลได้มาตรฐานยุติธรรม 100% เข้าเล่นได้ลื่นไม่มีสะดุด", tag: "จ่ายยุติธรรม", icon: "🔥" },
 ];
 ---
 
-<section aria-label="ค่ายดังครบเครื่องที่ VIREL168 รวมไว้ในล็อบบี้เดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="เกมลิขสิทธิ์แท้หลายค่ายที่ GEN4 รวมไว้ ทั้งตัวฮิตและตัวน่าลอง" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#fff8e4] via-[#ffeec2] to-[#e2a52d] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายดังครบเครื่องที่ <span class="text-[#faca4c]">VIREL168</span> รวมไว้ในล็อบบี้เดียว
+    <p class="bg-gradient-to-r from-[#eaf4ff] via-[#01a3f3] to-[#0071d5] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      เกมลิขสิทธิ์แท้หลายค่ายที่ <span class="text-[#6fd2ff]">GEN4</span> รวมไว้ในที่เดียว
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e2a52d] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#01a3f3] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
@@ -39,20 +38,20 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#e2a52d]/30 bg-[#1b0d02]/92 p-5 shadow-[0_10px_30px_rgba(226,165,45,0.22)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#ffeec2]/60 hover:bg-[#2e1a04]/95 hover:shadow-[0_15px_40px_rgba(250,202,76,0.35)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#855a14]/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#0071d5]/40 bg-[#0b1b3a]/92 p-5 shadow-[0_10px_30px_rgba(0,113,213,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#01a3f3]/60 hover:bg-[#102a5c]/95 hover:shadow-[0_15px_40px_rgba(1,163,243,0.38)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#00408a]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffeec2] to-[#faca4c] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#0a0501] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ff5a33] to-[#e8241c] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#eaf4ff] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
             {provider.icon}
           </div>
-          <p class="text-center text-sm font-black text-[#f4e7cd] transition-colors group-hover:text-[#ffeec2]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#c4ab7d]">{provider.desc}</p>
+          <p class="text-center text-sm font-black text-[#d7e7ff] transition-colors group-hover:text-[#6fd2ff]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#8fb4e0]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#e2a52d]/40 bg-[#0a0501] py-1.5 text-center text-[11px] font-bold text-[#ffeec2] shadow-inner transition-colors duration-300 group-hover:border-[#ffeec2]/60 group-hover:bg-gradient-to-r group-hover:from-[#ffeec2] group-hover:to-[#faca4c] group-hover:text-[#0a0501]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#0071d5]/50 bg-[#050b1a] py-1.5 text-center text-[11px] font-bold text-[#6fd2ff] shadow-inner transition-colors duration-300 group-hover:border-[#01a3f3]/60 group-hover:bg-gradient-to-r group-hover:from-[#01a3f3] group-hover:to-[#0071d5] group-hover:text-[#eaf4ff]">
             เข้าดูเกมทั้งหมด
           </span>
         </a>

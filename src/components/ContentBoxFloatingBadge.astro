@@ -16,22 +16,23 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // สองตัวข้างหัวข้ออีก ~52px จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
 // *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ H2 ข้อสุดท้ายของ VIREL168 (68 ตัวอักษร) chrome ของป้าย =
-// py-2.5 (20px) + border-2 (4px) = 24px:
+// คำนวณกับหัวข้อ H1 ของ GEN4 (58 ตัวอักษร — สั้นกว่าเคสเดิมที่คำนวณไว้ที่ 68 ตัว)
+// chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
-//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 9px ต่อตัวอักษร
-//   → ~25 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
-//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
-//   108px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 68px
+//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-xl ≈ 10px ต่อตัวอักษร
+//   → ~23 ตัวต่อบรรทัด หัวข้อจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
+//   leading-normal ที่ 20px = 30px ต่อบรรทัด → 120px + 24px = 144px ขอบล่างอยู่ที่
+//   120px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 56px
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ไอคอน เหลือ ~566px,
-//   text-2xl/leading-normal = 36px ต่อบรรทัด, 2 บรรทัด = 72px + 24px = 96px
-//   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-36 (144px) → เหลือ 72px
+//   text-3xl/leading-normal = 45px ต่อบรรทัด, 2 บรรทัด = 90px + 24px = 114px
+//   ขอบล่างอยู่ที่ 90px เทียบกับ md:pt-36 (144px) → เหลือ 54px
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// VIREL168: ย้ายชุดสีมาที่ทองของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง #faca4c /
-// #ebb134 / #e2a52d / #ffeec2 / #855a14 คู่เงินโครเมียม #e1e1e1 บนผิว #1b0d02 /
-// #0a0501 เนื้อความ #f4e7cd ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามโลโก้เมทัลลิก
+// GEN4: ย้ายจากชุดทองของแบรนด์ก่อนมาที่น้ำเงินอิเล็กทริกคู่แดงของแบรนด์นี้ที่วัด
+// จากอาร์ตจริง — น้ำเงิน #0071d5 / #01a3f3 / #6fd2ff / #00408a คู่แดง #e8241c ซึ่ง
+// เป็นสีของเลข 4 ในโลโก้ จึงใช้เป็นสีเน้นรองเท่านั้น บนผิว #0b1b3a / #050b1a
+// เนื้อความ #d7e7ff หัวข้อ #eaf4ff ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามเดิม
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย
 // ดูของเดิมได้จาก git history)
@@ -39,18 +40,18 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#e2a52d]/30 bg-[#1b0d02]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#f4e7cd] shadow-[0_10px_30px_rgba(226,165,45,0.18)] backdrop-blur-md md:pt-36">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#e2a52d]/40 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#e1e1e1]/25 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#0071d5]/35 bg-[#0b1b3a]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#d7e7ff] shadow-[0_10px_30px_rgba(0,113,213,0.22)] backdrop-blur-md md:pt-36">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#01a3f3]/40 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#e8241c]/25 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffeec2]/55 bg-[#0a0501] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(226,165,45,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#e2a52d]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#6fd2ff]/55 bg-[#050b1a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(1,163,243,0.4)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#01a3f3]">
             ◆
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#fff8e4] via-[#faca4c] to-[#e1e1e1] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#e2a52d]">
+          <HeadingTag class={`bg-gradient-to-r from-[#eaf4ff] via-[#6fd2ff] to-[#e8241c] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#01a3f3]">
             ◆
           </span>
         </div>

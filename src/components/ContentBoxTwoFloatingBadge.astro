@@ -7,24 +7,23 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// MONEY777: ย้ายจากทองบูสต์คู่น้ำเงินไฟฟ้าของ BOOST168 (และก่อนหน้านั้นเป็นทองบนดำ
-// กับฟ้า/ไซแอน — ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความ
-// ดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย
-// ดูของเดิมได้จาก git history) มาเป็นแดงส้มคู่ทองบนพื้นดำอมแดง — ทอง #fff4ec /
-// #ffe08a / #f6c945 / #a3760a คู่แดง #e0330a / #ff6a2b บนผิว #1a0503 / #0b0101
-// เนื้อความ #ffe6d8
+// XTOP666: ย้ายจากแดงส้มคู่ทองของแบรนด์ก่อน (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
+// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
+// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) มาเป็นส้มไฟคู่ทองของแบรนด์
+// นี้ — ส้ม #fc5b02 / #ff8c3a / #ffd9bd / #7a2601 คู่ทอง #ffb020 / #ffd76e บนผิว
+// #1c0d05 / #0a0503 เนื้อความ #ffe8d8 และขาวอมส้ม #fff3ea เป็นหัวไล่สีของป้าย
 //
 // ป้ายหัวข้อเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap กลับมา
 // ตัวนั้นคือสิ่งที่เคยดันป้ายทะลุขอบจอมือถือแล้วทำให้ทั้งหน้าเลื่อนแนวนอนได้
 //
 // pt-32/md:pt-28 คงไว้ ป้ายถูกตรึงที่ -top-6 ขอบล่างจึงอยู่ที่ (ความสูงป้าย − 24px)
-// นับจากขอบบนการ์ด คิดใหม่กับหัวข้อ H2 ข้อ 6 ของ docx MONEY777 ยาว 68 ตัวอักษร
-// ("ลองระบบออโต้เวอร์ชันใหม่แล้วเป็นยังไง ทำรายการคล่องขึ้นแค่ไหนมาดูกัน") ซึ่ง
-// สั้นกว่าเคสที่เคยคำนวณไว้ (75 ตัว) จึงยังพอทั้งสองเบรกพอยต์
+// นับจากขอบบนการ์ด คิดใหม่กับหัวข้อ H2 ข้อ 7 ของ docx XTOP666 ยาว 63 ตัวอักษร
+// ("มือถือก็ไว คอมก็เต็มจอ XTOP666 พร้อมต่อการใช้งานได้บนทุกอุปกรณ์") ซึ่งสั้นกว่า
+// เคสที่เคยคำนวณไว้ (68 ตัว) จึงยังพอทั้งสองเบรกพอยต์
 // chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ ✦ สองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-base + tracking-tighter
-//   ≈ 7.5px ต่อตัวอักษร → ~30 ตัวต่อบรรทัด หัวข้อ 68 ตัวจึงตัดเป็น 3 บรรทัด เผื่อ
+//   ≈ 7.5px ต่อตัวอักษร → ~30 ตัวต่อบรรทัด หัวข้อ 63 ตัวจึงตัดเป็น 3 บรรทัด เผื่อ
 //   แบบแย่สุด 4 บรรทัด: leading-normal ที่ 16px = 24px ต่อบรรทัด → 96px + 24px =
 //   120px ขอบล่างอยู่ที่ 96px เทียบกับ pt-32 (128px) → เหลือช่องว่าง 32px
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ ✦ เหลือ ~566px,
@@ -34,23 +33,22 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 //
 // ✦ สองตัวเป็น sibling ที่ aria-hidden ไม่ได้อยู่ในข้อความของหัวข้อ
 //
-// titleleft/titleright เคย render เป็น <h3> ทั้งคู่ ตอนนี้เป็น <p> ป้ายคอลัมน์
-// (คลาสเดิม) เพราะ docx ของแบรนด์นี้แบน H1 + H2 ล้วน ไม่มี H3 เลย หัวข้อ section
-// รับผ่าน `title` + `as` ตัวเดียว
+// titleleft/titleright render เป็น <p> ป้ายคอลัมน์ เพราะ docx ของแบรนด์นี้แบน
+// H1 + H2 ล้วน ไม่มี H3 เลย หัวข้อ section รับผ่าน `title` + `as` ตัวเดียว
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
-  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#f6c945]/40 bg-gradient-to-b from-[#1a0503] to-[#0b0101] p-8 pt-32 shadow-[0_10px_40px_rgba(11,1,1,0.6)] md:pt-28">
+  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#ffb020]/40 bg-gradient-to-b from-[#1c0d05] to-[#0a0503] p-8 pt-32 shadow-[0_10px_40px_rgba(10,5,3,0.6)] md:pt-28">
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#f6c945]/50 bg-[#0b0101] px-4 py-2.5 text-center shadow-[0_5px_15px_rgba(246,201,69,0.25)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#ffe08a]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffb020]/50 bg-[#0a0503] px-4 py-2.5 text-center shadow-[0_5px_15px_rgba(255,176,32,0.25)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#ffd76e]">
             ✦
           </span>
-          <HeadingTag class="bg-gradient-to-r from-[#fff4ec] via-[#f6c945] to-[#e0330a] bg-clip-text text-base leading-normal font-black tracking-tighter text-transparent uppercase sm:text-xl md:text-2xl">
+          <HeadingTag class="bg-gradient-to-r from-[#fff3ea] via-[#ffb020] to-[#fc5b02] bg-clip-text text-base leading-normal font-black tracking-tighter text-transparent uppercase sm:text-xl md:text-2xl">
             {title}
           </HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#ffe08a]">
+          <span aria-hidden="true" class="shrink-0 text-[#ffd76e]">
             ✦
           </span>
         </div>
@@ -58,13 +56,13 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ffe6d8]/90">
-        {titleleft && <p class="text-2xl leading-normal font-bold text-[#f6c945] drop-shadow-[0_0_5px_rgba(246,201,69,0.3)]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ffe8d8]/90">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#ffb020] drop-shadow-[0_0_5px_rgba(255,176,32,0.3)]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ffe6d8]/90 md:border-l md:border-[#e0330a]/30 md:pl-10">
-        {titleright && <p class="text-2xl leading-normal font-bold text-[#f6c945] drop-shadow-[0_0_5px_rgba(246,201,69,0.3)]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ffe8d8]/90 md:border-l md:border-[#fc5b02]/30 md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#ffb020] drop-shadow-[0_0_5px_rgba(255,176,32,0.3)]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>
