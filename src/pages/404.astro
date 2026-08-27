@@ -27,14 +27,14 @@ import { BRAND_NAME } from "../lib/brandProfile";
 // crawled so the crawler finds its way back to the real pages.
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character. This one
-// measures 154 once BRAND_NAME (GEN4, 4 characters) is substituted. The length
-// moves with the brand name: it read 157 on the 7-character brand before this
-// one and went over 160 on an 8-character one, so re-count it every launch
-// rather than assuming the sentence is still in the window.
+// measures 159 once BRAND_NAME (ASHTON168, 9 characters) is substituted. The
+// length moves with the brand name: it read 154 on the 4-character brand before
+// this one, so re-count it every launch rather than assuming the sentence is
+// still in the window — a 10-character brand would push it past 160.
 //
-// GEN4 is a straight-web SLOT brand, so the sentence names what the site
-// actually carries — licensed slot games from the major studios and the direct
-// entry link — not the live-baccarat/sports lobby a previous brand had here.
+// ASHTON168 is a straight-web SLOT brand, so the sentence names what the site
+// actually carries — slot games from the major studios and the direct entry
+// link — not the live-baccarat/sports lobby a previous brand had here.
 const pageDescription = `ไม่พบหน้าที่คุณกำลังมองหาบน ${BRAND_NAME} อาจถูกย้ายหรือลิงก์หมดอายุ กลับไปหน้าแรกเพื่อเลือกเกมสล็อตแตกจริงจากค่ายชั้นนำ หรือทางเข้าเว็บหลักได้ทันทีตลอด 24 ชั่วโมง`;
 ---
 

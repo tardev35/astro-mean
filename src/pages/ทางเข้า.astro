@@ -2,29 +2,28 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
 // <h1>) and the two-column login/register grid, nothing else. The docx never
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 //
-// GEN4: Announcement2 → AnnouncementCyber ตามการหมุน variant รอบนี้ (เรียก
-// Announcement แบบ bare เพราะ default message ของ variant นี้เป็นข้อความของ
-// แบรนด์นี้แล้ว) ส่วนกล่องยังเป็น ContentBoxPremium ที่หน้าย่อยใช้ร่วมกัน
-// ปุ่มย้ายจากสีไฟของแบรนด์ก่อนมาเป็นน้ำเงินอิเล็กทริกคู่แดงของรอบนี้ —
-// ปุ่มเข้าสู่ระบบเป็นผิวยกขึ้น #0b1b3a ขอบ #0071d5 เนื้อความ #d7e7ff hover เป็น
-// #00408a ส่วนปุ่มสมัครสมาชิกไล่น้ำเงิน #6fd2ff / #01a3f3 / #00408a
-// ตัวอักษรเข้ม #050b1a
+// ASHTON168: AnnouncementCyber → AnnouncementPremium ตามการหมุน variant รอบนี้
+// (เรียก Announcement แบบ bare เพราะ default message ของ variant นี้เป็นข้อความ
+// ของแบรนด์นี้แล้ว) ส่วนกล่องยังเป็น ContentBoxPremium ที่หน้าย่อยใช้ร่วมกัน
+// ปุ่มย้ายมาเป็นทองคำคู่โครมเงินของรอบนี้ — ปุ่มเข้าสู่ระบบเป็นผิวยกขึ้น #160e03
+// ขอบ #c8941a เนื้อความ #f0e6d2 hover เป็น #7a5405 ส่วนปุ่มสมัครสมาชิกไล่ทอง
+// #ffe9a3 / #f5c518 / #7a5405 ตัวอักษรเข้ม #080502
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
 // count reads about three times too long. This one measures 159.
-const pageDescription = "ทางเข้า GEN4 เว็บหลัก ลิงก์ตรงอัปเดตใหม่ ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตเจนใหม่มีของ เกมลิขสิทธิ์แท้มาเต็ม ระบบอัปเดตใหม่ เข้าเล่นไว";
+const pageDescription = "ทางเข้า ASHTON168 เว็บหลัก ลิงก์ตรงอัปเดตใหม่ ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตระบบแน่น เกมพร้อมรัน ออโต้ไวทันใจ เข้าเล่นได้ทุกอุปกรณ์";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า GEN4 เว็บหลัก",
+  name: "ทางเข้า ASHTON168 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -33,40 +32,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า GEN4 | สล็อตเจนใหม่มีของ เกมลิขสิทธิ์แท้มาเต็ม ระบบอัปเดตใหม่" description={pageDescription}>
+<MainLayout title="ทางเข้า ASHTON168 | สล็อตระบบแน่น เกมพร้อมรัน ออโต้ไวทันใจ" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า GEN4 เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า ASHTON168 เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ GEN4"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#0071d5]/60 bg-[#0b1b3a] px-6 py-4 shadow-[0_10px_30px_rgba(0,113,213,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#6fd2ff] hover:bg-[#00408a] hover:shadow-[0_15px_40px_rgba(1,163,243,0.4)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#01a3f3]/25 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ ASHTON168"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#c8941a]/60 bg-[#160e03] px-6 py-4 shadow-[0_10px_30px_rgba(200,148,26,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#ffe9a3] hover:bg-[#7a5405] hover:shadow-[0_15px_40px_rgba(245,197,24,0.4)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#f5c518]/25 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#d7e7ff]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#f0e6d2]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#d7e7ff]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#f0e6d2]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก GEN4"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#6fd2ff]/60 bg-gradient-to-r from-[#6fd2ff] via-[#01a3f3] to-[#00408a] px-6 py-4 shadow-[0_10px_30px_rgba(1,163,243,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(232,36,28,0.45)]">
+          aria-label="สมัครสมาชิก ASHTON168"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ffe9a3]/60 bg-gradient-to-r from-[#ffe9a3] via-[#f5c518] to-[#7a5405] px-6 py-4 shadow-[0_10px_30px_rgba(245,197,24,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(226,229,233,0.45)]">
           <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/25 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#050b1a]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#080502]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#050b1a]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#080502]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

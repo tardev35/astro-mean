@@ -2,12 +2,12 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBoxPremium.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 
 import { Picture } from "astro:assets";
 
-// GEN4: ticker กลับไปเป็น AnnouncementCyber ให้ตรงกับทั้งเว็บ เรียก <Announcement />
-// เปล่าๆ เพราะ default message ของ variant นี้เป็นข้อความ GEN4 อยู่แล้ว
+// ASHTON168: ticker เป็น AnnouncementPremium ให้ตรงกับทั้งเว็บ เรียก <Announcement />
+// เปล่าๆ เพราะ default message ของ variant นี้เป็นข้อความ ASHTON168 อยู่แล้ว
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the single
@@ -18,44 +18,39 @@ import { Picture } from "astro:assets";
 // Meta and never a body.
 //
 // Named for what each banner ACTUALLY prints, not for its file number.
-// The GEN4 drop (2026-08-27) is four 600x250 banners on a pink/blue neon set:
-//   slide1 = ก้าวสู่มิติใหม่ GEN4 สล็อตยุค 5G / ปุ่ม สมัครเลย /
-//            สัมผัสความเร็ว แรง บนแพลตฟอร์มสล็อตออนไลน์ที่เหนือระดับ
-//            (หญิงสาวเสื้อแจ็คเก็ตแดง ตัวละครนักรบแอซเท็ก เทพเจ้าแห่งโชคลาภ
-//            และนักฟุตบอลเสื้อ PG เบอร์ 8 บนฉากเมืองโทนชมพูม่วง)
-//   slide2 = คืนยอดเสีย 5% / คืนสูงสุด 99,999 บาท / ฝากขั้นต่ำ 100 บาท
-//            คืนยอดเสียทุกวัน 05:00 น. / เฉพาะหมวดสล็อต ไม่มีเทิร์น
-//            (ชายหนุ่มแจ็คเก็ตแดงถือธนบัตรคลี่เป็นพัด กระเป๋าเงินฟ้ากับกองเหรียญทอง)
-//   slide3 = โปรพิเศษ! ขาประจำ ฝากครบ 3 วัน รับโบนัสทันที! 200฿
-//            (ชายหนุ่มแจ็คเก็ตแดงถือมือถือที่หน้าจอเป็นโลโก้ GEN4 ล้อมด้วยเหรียญทองและธนบัตร)
-//   slide4 = ประกาศแจ้งลูกค้าทุกท่าน เราใช้บัญชีสถาบันการเงินชั้นนำ ไม่ใช้บัญชีม้า /
-//            ทางเว็บไซต์ใช้ระบบ ฝาก-ถอน แบบ PAYMENT
-//            (หญิงสาวชุดเลื่อมสีเข้มชี้นิ้วขึ้น ข้างโทรโข่งสีแดงขนาดใหญ่บนพื้นชมพู)
+// The ASHTON168 drop (2026-08-27) is three 600x600 banners on a black-and-gold
+// luxury set, each with a model in a gold outfit:
+//   slide1 = เว็บตรง ลิขสิทธิ์แท้ / ฝาก-ถอน AUTO 3 นาที / ระบบเกมดีสุดใน ASIA /
+//            สมัครฟรี ไม่มีขั้นต่ำ / การันตีความมั่นคง 100% + แถวโลโก้ธนาคาร
+//   slide2 = แนะนำเพื่อน รับค่าคอมมิชชั่น 3% / คืนยอดเสียด้วยระบบ Auto
+//   slide3 = สล็อตเว็บตรง ไม่ผ่านเอเยนต์ / จ่ายเต็ม เท่าไหร่ก็ถอนได้ /
+//            ฝาก-ถอน ไม่มีขั้นต่ำ ด้วยระบบ AUTO รวดเร็วภายใน 3 วินาที
 // The mapping between file number and artwork changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after what is printed instead of after the file.
 //
-// banner.png / banner1.png / banner2-4.png are deliberately NOT imported here:
-// banner1 belongs to MainLayout's hero <picture> alone, and the rest are stale
-// artwork from previous brands. An imported image is an emitted image even when
-// nothing renders it. Only what is printed on each banner may be stated here.
-import promoWelcome from "../assets/slide1.png";
-import promoCashback from "../assets/slide2.png";
-import promoDaily from "../assets/slide3.png";
-import promoPayment from "../assets/slide4.png";
+// slide4.png is deliberately NOT imported: it is the PREVIOUS brand's pink
+// announcement banner and it shows that brand's logo in the artwork itself.
+// banner1.png belongs to MainLayout's hero <picture> alone, and banner2-4.png
+// are stale art from earlier brands. An imported image is an emitted image even
+// when nothing renders it. Only what is printed on each banner may be stated
+// here.
+import promoDirect from "../assets/slide1.png";
+import promoReferral from "../assets/slide2.png";
+import promoNoAgent from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 156. It states what the
+// byte count reads ~3x too long). This one measures 157. It states what the
 // page holds — the offers the slides themselves print — and stops.
 const pageDescription =
-  "รวมโปรโมชั่น GEN4 สล็อตเจนใหม่ คืนยอดเสีย 5% สูงสุด 99,999 บาท โปรขาประจำฝากครบ 3 วันรับ 200 บาท กดรับเองได้จากหน้าเว็บ ฝากถอนออโต้ 24 ชั่วโมง ไม่ต้องส่งสลิป";
+  "รวมโปรโมชั่น ASHTON168 สล็อตเว็บตรงลิขสิทธิ์แท้ ไม่ผ่านเอเยนต์ แนะนำเพื่อนรับค่าคอมมิชชั่น 3% คืนยอดเสียด้วยระบบออโต้ ฝาก-ถอนไม่มีขั้นต่ำ AUTO ภายใน 3 วินาที";
 
-const pageTitle = "โปรโมชั่น GEN4 | คืนยอดเสีย 5% โปรขาประจำฝากครบ 3 วันรับ 200";
+const pageTitle = "โปรโมชั่น ASHTON168 | แนะนำเพื่อนรับ 3% คืนยอดเสียระบบออโต้";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น GEN4 รวมสิทธิ์ที่เปิดให้สมาชิกกดรับในรอบนี้";
+const pageHeading = "โปรโมชั่น ASHTON168 รวมสิทธิ์ที่เปิดให้สมาชิกกดรับในรอบนี้";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -64,7 +59,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoCashback.src,
+  primaryImagePath: promoDirect.src,
 });
 
 // Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem),
@@ -75,9 +70,9 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
 
-// ขอบน้ำเงินอิเล็กทริกของแบรนด์ล้อกับนีออนบนสไลด์ แล้วเรืองฟ้าสว่างขึ้นตอน hover
+// ขอบทองลึกของแบรนด์ล้อกับตัวอักษรทองบนสไลด์ แล้วเรืองทองอ่อนขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#0071d5]/35 object-contain shadow-[0_10px_30px_rgba(0,113,213,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#6fd2ff]/70 hover:shadow-[0_15px_40px_rgba(1,163,243,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#c8941a]/35 object-contain shadow-[0_10px_30px_rgba(200,148,26,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe9a3]/70 hover:shadow-[0_15px_40px_rgba(245,197,24,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
 // drop — the column is drawn up to 644px, so nothing above 600 buys detail.
@@ -92,14 +87,14 @@ const imageWidths = [300, 450, 600];
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#6fd2ff]">GEN4</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งเปอร์เซ็นต์ที่ได้รับ เพดานสูงสุด และรอบเวลาของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองแล้ว
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffe9a3]">ASHTON168</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งเปอร์เซ็นต์ที่ได้รับ เพดานสูงสุด และรอบเวลาของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองแล้ว
         แต่ละรายการคิดจากยอดคนละชุดและมีเงื่อนไขของตัวเอง จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเว็บก่อนเข้าเกม จบในไม่กี่วินาทีโดยไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={promoWelcome}
-          alt="แบนเนอร์โปรโมชั่นโทนชมพูม่วง มีโลโก้ GEN4 มุมซ้ายบน พิมพ์ข้อความ ก้าวสู่มิติใหม่ GEN4 สล็อตยุค 5G พร้อมปุ่ม สมัครเลย และบรรทัด สัมผัสความเร็ว แรง บนแพลตฟอร์มสล็อตออนไลน์ที่เหนือระดับ ภาพเป็นหญิงสาวสวมแจ็คเก็ตแดงยืนคู่กับตัวละครนักรบแอซเท็ก เทพเจ้าแห่งโชคลาภ และนักฟุตบอลเสื้อ PG เบอร์ 8 บนฉากเมือง"
+          src={promoDirect}
+          alt="แบนเนอร์โปรโมชั่นพื้นดำตกแต่งด้วยแสงและริบบิ้นสีทอง พิมพ์ข้อความ เว็บตรง ลิขสิทธิ์แท้ ฝาก-ถอน AUTO 3 นาที ระบบเกมดีสุดใน ASIA พร้อมป้าย สมัครฟรี ไม่มีขั้นต่ำ และบรรทัด การันตีความมั่นคง 100% ภาพเป็นหญิงสาวสวมชุดสีทองยืนหันข้าง ด้านล่างเป็นแถวสัญลักษณ์ธนาคาร"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -112,8 +107,8 @@ const imageWidths = [300, 450, 600];
         />
 
         <Picture
-          src={promoCashback}
-          alt="แบนเนอร์โปรโมชั่นโทนชมพูฟ้า พิมพ์ข้อความ คืนยอดเสีย 5% คืนสูงสุด 99,999 บาท และบรรทัดเงื่อนไข ฝากขั้นต่ำ 100 บาท คืนยอดเสียทุกวัน 05:00 น. เฉพาะหมวดสล็อต ไม่มีเทิร์น ไม่ต้องแชร์ ถอนได้เต็มที่ ภาพเป็นชายหนุ่มสวมแจ็คเก็ตแดงถือธนบัตรคลี่เป็นพัด ข้างกระเป๋าเงินสีฟ้ากับกองเหรียญทอง"
+          src={promoReferral}
+          alt="แบนเนอร์โปรโมชั่นพื้นดำมีไพ่และสัญลักษณ์รูปหัวใจสีทองปลิวอยู่รอบภาพ พิมพ์ข้อความ แนะนำเพื่อน รับค่าคอมมิชชั่น 3% และแถบล่าง คืนยอดเสียด้วยระบบ Auto ภาพเป็นหญิงสาวสวมชุดเลื่อมสีทองและต่างหูทรงข้าวหลามตัด"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -126,22 +121,8 @@ const imageWidths = [300, 450, 600];
         />
 
         <Picture
-          src={promoDaily}
-          alt="แบนเนอร์โปรโมชั่นโทนชมพู มีโลโก้ GEN4 มุมซ้ายบน พิมพ์ข้อความ โปรพิเศษ ขาประจำ ฝากครบ 3 วัน รับโบนัสทันที 200 บาท ภาพเป็นชายหนุ่มสวมแจ็คเก็ตแดงถือโทรศัพท์มือถือที่หน้าจอแสดงโลโก้ GEN4 ล้อมรอบด้วยเหรียญทองและธนบัตร"
-          loading="lazy"
-          fetchpriority="low"
-          widths={imageWidths}
-          sizes={imageSizes}
-          class={imageClass}
-          decoding="async"
-          formats={["avif", "webp"]}
-          fallbackFormat="webp"
-          quality={80}
-        />
-
-        <Picture
-          src={promoPayment}
-          alt="แบนเนอร์ประกาศโทนชมพู พิมพ์ข้อความ ประกาศแจ้งลูกค้าทุกท่าน เราใช้บัญชีสถาบันการเงินชั้นนำ ไม่ใช้บัญชีม้า และแถบล่าง ทางเว็บไซต์ใช้ระบบ ฝาก-ถอน แบบ PAYMENT ภาพเป็นหญิงสาวสวมชุดเลื่อมสีเข้มชี้นิ้วขึ้น ยืนข้างโทรโข่งสีแดงขนาดใหญ่"
+          src={promoNoAgent}
+          alt="แบนเนอร์โปรโมชั่นพื้นดำมีลูกเต๋าและสัญลักษณ์โพดำสีทองกระจายอยู่รอบภาพ พิมพ์ข้อความ สล็อตเว็บตรง ไม่ผ่านเอเยนต์ พร้อมป้าย จ่ายเต็ม เท่าไหร่ก็ถอนได้ และบรรทัดล่าง ฝาก-ถอน ไม่มีขั้นต่ำ ด้วยระบบ AUTO รวดเร็วภายใน 3 วินาที ภาพเป็นหญิงสาวสวมชุดสีทองยืนกลางแบนเนอร์"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -157,8 +138,8 @@ const imageWidths = [300, 450, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#6fd2ff]/60 bg-gradient-to-r from-[#6fd2ff] via-[#01a3f3] to-[#00408a] px-10 py-3.5 text-lg font-black text-[#050b1a] shadow-[0_10px_30px_rgba(1,163,243,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(0,113,213,0.5)]">
-          สมัครสมาชิก GEN4
+          class="flex items-center justify-center rounded-lg border border-[#ffe9a3]/60 bg-gradient-to-r from-[#ffe9a3] via-[#f5c518] to-[#7a5405] px-10 py-3.5 text-lg font-black text-[#080502] shadow-[0_10px_30px_rgba(245,197,24,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(200,148,26,0.5)]">
+          สมัครสมาชิก ASHTON168
         </a>
       </div>
     </div>

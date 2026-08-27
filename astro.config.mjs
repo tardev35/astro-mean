@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.gen4-new.com",
+  site: "https://www.ashton168-vip.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

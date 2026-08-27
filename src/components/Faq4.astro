@@ -11,13 +11,17 @@ export interface Props {
 
 const { title, faqs = [] } = Astro.props;
 
-// VIREL168: variant นี้ผ่านมาแล้วหลายชุดสี รอบนี้ย้ายมาที่ทองของแบรนด์นี้ที่วัด
-// จากอาร์ตจริง — ทอง #fff8e4 / #ffeec2 / #faca4c / #ebb134 / #e2a52d / #855a14
-// คู่เงินโครเมียม #e1e1e1 บนผิว #1b0d02 / #2e1a04 / #0a0501 ขอบ #442503 เนื้อความ
-// #f4e7cd ไม่มีแดงหรือส้มเหลืออยู่ในไฟล์นี้ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้
-// — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่
-// ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// ASHTON168: variant นี้ผ่านมาแล้วหลายชุดสี รอบนี้ย้ายมาที่ทองสว่างคู่เงินโครเมียม
+// ของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง #f5c518 / #ffd75e / #ffe9a3 / #c8941a /
+// #a87908 / #7a5405 คู่เงินโครเมียม #e2e5e9 บนผิว #160e03 / #120b02 / #080502
+// ขอบ #2a1c06 เนื้อความ #f0e6d2 หัวข้อ #fdf6e6 ไม่มีสีของแบรนด์ก่อนเหลืออยู่ในไฟล์
+// นี้ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
+// ได้จาก git history)
 // accordion เป็น <details>/<summary> ไม่มี <script> และให้เป็นแบบนี้ต่อไป
+//
+// สัญลักษณ์ ♠ หน้าคำถามล้อกับโลโก้ของแบรนด์นี้ซึ่งเป็นตัว A ทรงโพดำโครเมียมเงิน
+// มันเป็นของตกแต่ง จึงอยู่ใน <span aria-hidden="true"> ของตัวเอง ไม่ปนกับข้อความ
 //
 // คำถามเป็น <span> ไม่ใช่ <h3> — เป็นระดับเดิมที่ variant นี้ ship มา และห้าม
 // เลื่อนขึ้นเป็นหัวข้อ docx ของแบรนด์นี้แบนราบ (H1 + H2 ล้วน ไม่มี H3 ซ้อน)
@@ -34,9 +38,9 @@ const { title, faqs = [] } = Astro.props;
   {
     title && (
       <div
-        class="mb-8 flex items-center gap-3 border-l-4 border-[#faca4c] bg-gradient-to-r from-[#442503] via-[#2e1a04]/70 to-transparent px-4 py-2.5"
+        class="mb-8 flex items-center gap-3 border-l-4 border-[#f5c518] bg-gradient-to-r from-[#2a1c06] via-[#120b02]/70 to-transparent px-4 py-2.5"
         style="clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 100%, 0 100%);">
-        <p class="text-xl leading-normal font-black tracking-widest text-[#fff8e4] uppercase md:text-2xl">{title}</p>
+        <p class="text-xl leading-normal font-black tracking-widest text-[#fdf6e6] uppercase md:text-2xl">{title}</p>
       </div>
     )
   }
@@ -46,13 +50,13 @@ const { title, faqs = [] } = Astro.props;
       faqs.map((faq) => (
         <details
           name="faq-terminal"
-          class="faq-item group relative overflow-hidden border border-[#faca4c]/30 bg-[#1b0d02]/92 backdrop-blur-sm transition-all duration-300 hover:border-[#faca4c]/55 hover:shadow-[0_15px_40px_rgba(250,202,76,0.28)]"
+          class="faq-item group relative overflow-hidden border border-[#f5c518]/30 bg-[#160e03]/92 backdrop-blur-sm transition-all duration-300 hover:border-[#f5c518]/55 hover:shadow-[0_15px_40px_rgba(245,197,24,0.28)]"
           style="clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);">
-          <div aria-hidden="true" class="absolute top-0 left-0 h-[2px] w-16 bg-gradient-to-r from-[#ffeec2] to-transparent" />
+          <div aria-hidden="true" class="absolute top-0 left-0 h-[2px] w-16 bg-gradient-to-r from-[#ffe9a3] to-transparent" />
 
           <summary class="flex w-full cursor-pointer items-center justify-between p-5 text-left transition-all">
-            <span class="flex items-center gap-2 text-base leading-normal font-bold text-[#f4e7cd] transition-colors group-hover:text-[#fff8e4] md:text-lg">
-              <span aria-hidden="true" class="text-[#e2a52d]">
+            <span class="flex items-center gap-2 text-base leading-normal font-bold text-[#f0e6d2] transition-colors group-hover:text-[#fdf6e6] md:text-lg">
+              <span aria-hidden="true" class="text-[#c8941a]">
                 ♠
               </span>
               {faq.q}
@@ -60,13 +64,13 @@ const { title, faqs = [] } = Astro.props;
 
             <span
               aria-hidden="true"
-              class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center border border-[#faca4c]/40 bg-[#0a0501] text-lg font-black text-[#faca4c] transition-all duration-300 group-hover:border-[#ffeec2]/60 group-hover:text-[#ffeec2]"
+              class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center border border-[#f5c518]/40 bg-[#080502] text-lg font-black text-[#f5c518] transition-all duration-300 group-hover:border-[#ffe9a3]/60 group-hover:text-[#ffe9a3]"
               style="clip-path: polygon(25% 0, 100% 0, 100% 75%, 75% 100%, 0 100%, 0 25%);">
               +
             </span>
           </summary>
 
-          <div class="faq-answer border-t border-[#442503] p-5 pt-4 text-left text-base leading-relaxed text-[#f4e7cd]">{faq.a}</div>
+          <div class="faq-answer border-t border-[#2a1c06] p-5 pt-4 text-left text-base leading-relaxed text-[#f0e6d2]">{faq.a}</div>
         </details>
       ))
     }
@@ -86,13 +90,13 @@ const { title, faqs = [] } = Astro.props;
     display: none;
   }
   .faq-item[open] {
-    border-color: rgba(250, 202, 76, 0.6);
-    box-shadow: 0 15px 40px rgba(226, 165, 45, 0.35);
+    border-color: rgba(245, 197, 24, 0.6);
+    box-shadow: 0 15px 40px rgba(200, 148, 26, 0.35);
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    border-color: #faca4c;
-    color: #ffeec2;
+    border-color: #f5c518;
+    color: #ffe9a3;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;
