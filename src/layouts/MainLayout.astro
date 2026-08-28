@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarPremium.astro";
-import Footer from "../components/FooterPremium.astro";
+import Navbar from "../components/NavbarStyle6.astro";
+import Footer from "../components/FooterCyber.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "ASHTON168 | สล็อตระบบแน่น เกมพร้อมรัน ออโต้ไวทันใจ โปรคุ้มสุด ๆ",
-  description = "ASHTON168 สล็อตระบบแน่น เกมพร้อมรันจากค่ายชั้นนำ จัดหมวดตัวฮิตให้เลือกง่าย ออโต้ไวทันใจ โปรคุ้มสุด ๆ เติมโบนัสและสิทธิพิเศษให้ตามได้ทุกวัน",
+  title = "XTOP666 | สล็อตสปีดท็อป โหลดเกมไว ระบบพร้อมบวก โบนัสรับได้เลย",
+  description = "XTOP666 สล็อตสปีดท็อป โหลดเกมไวผ่านลิงก์ตรงได้ทันใจ เกมค่ายดังให้เลือกเล่น ระบบพร้อมบวก โบนัสรับได้เลย ใช้งานต่อเนื่องได้ทั้งมือถือและคอม ครบจบในเว็บเดียว",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #080502;
+        background-color: #0a0403;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ ASHTON168 พื้นดำเข้มมีลำแสงสีทองพาดเฉียง ด้านซ้ายเป็นโลโก้ ASHTON168 ตัวอักษรโครเมียมเงินไล่เงาโดยมีตัว S และเลข 168 เป็นสีทอง ใต้ลงมาเป็นแถบกรอบทองเขียนว่า สล็อตระบบแน่น เกมพร้อมรัน ถัดลงมาเขียนว่า ออโต้ไวทันใจ โปรคุ้มสุด ๆ แถบล่างเป็นไอคอนทองห้าช่อง สล็อตระบบแน่น เสถียร ไม่มีสะดุด เกมพร้อมรัน เล่นได้ทุกค่าย ออโต้ไวทันใจ ลุ้นได้ไม่มีพลาด โปรคุ้มสุด ๆ โบนัสเพียบ จัดเต็ม และปลอดภัย 100% มั่นคง เชื่อถือได้ ด้านขวาเป็นหญิงสาวสวมชุดสีดำขลิบทองสลักคำว่า ASHTON168 ข้างกันเป็นโทรศัพท์ที่หน้าจอขึ้น JACKPOT 168,888,888 พร้อมภาพเกมสล็อตหลายค่าย ล้อมด้วยเหรียญทอง ลูกเต๋า ชิปคาสิโน ตู้สล็อตขึ้นเลข 777 และตัวการ์ตูนเสือ พ่อมด และหมูนำโชค มุมขวาล่างเป็นปุ่มสีทองเขียนว่า สมัครสมาชิก"
+          alt="แบนเนอร์ XTOP666 พื้นดำมีสายพลังงานสีแดงแตกกระจายทั่วภาพ ด้านซ้ายบนเป็นตราตัว X สามมิติสีแดงส้มวางทับตัวอักษร TXP โครเมียมเงิน ใต้ตราเขียนว่า XTOP ถัดลงมาเป็นคำว่า XTOP ตัวอักษรเงินโครเมียมต่อด้วยเลข 666 สีแดง ใต้ลงมาเป็นข้อความ สล็อตสปีดท็อป ตามด้วยบรรทัด โหลดเกมไว ระบบพร้อมบวก และ โบนัสรับได้เลย โดยคำว่า โหลดเกมไว กับ โบนัส เป็นสีส้ม ข้างซ้ายมีจรวดพุ่งขึ้นและชิปคาสิโนสีแดงดำสลักโลโก้ TXP กระจายอยู่ ด้านขวาเป็นหญิงสาวผมยาวสวมชุดหนังสีดำขลิบแดงมีปลอกคอสลักคำว่า XTOP และสายรัดขาสลักคำเดียวกัน ถัดไปเป็นตู้สล็อตที่หน้าจอขึ้นคำว่า JACKPOT วงล้อเลข 777 และช่อง BAR สามช่อง ข้างกันเป็นไพ่เอซสี่ใบและลูกเต๋า มุมขวาล่างเป็นปุ่มสีแดงเขียนว่า สมัครสมาชิก พร้อมลูกศรวงกลม"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

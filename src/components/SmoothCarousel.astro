@@ -1,9 +1,8 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideDirect from "../assets/slide1.png";
-import slideReferral from "../assets/slide2.png";
-import slideNoAgent from "../assets/slide3.png";
+import slideCashbackTwiceMonthly from "../assets/slide1.png";
+import slideCashbackAllProviders from "../assets/slide2.png";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -19,35 +18,29 @@ import slideNoAgent from "../assets/slide3.png";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของโปสเตอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
 //
-// ASHTON168: asset drop รอบนี้มีสไลด์ของแบรนด์นี้สามใบ และแถบนี้ถือครบทั้งสามใบ —
-// slide1 (เว็บตรง ลิขสิทธิ์แท้ ฝาก-ถอน AUTO 3 นาที), slide2 (แนะนำเพื่อน รับค่า
-// คอมมิชชั่น 3% คืนยอดเสียด้วยระบบ Auto) และ slide3 (สล็อตเว็บตรง ไม่ผ่านเอเยนต์)
-// สองใบแรกยังไปปรากฏในบล็อก ContentBoxSevenThree* ของหน้าแรกด้วย เพราะทั้งชุดเป็น
-// โปรโมชั่นชุดเดียวกันของ asset drop นี้ ส่วน slide4 เป็นอาร์ตค้างของแบรนด์ก่อน
-// ห้าม import ที่นี่ เช่นเดียวกับไฟล์ banner ที่ไม่ใช่ banner1 — การ import คือ
-// การ emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม
-// สีขอบ/เงาย้ายมาเป็นทองสว่าง #f5c518 / #c8941a ของแบรนด์นี้
+// XTOP666: asset drop รอบนี้มีสไลด์ของแบรนด์นี้สองใบเท่านั้น — slide1 (เล่นเสีย
+// ก็ได้คืน รับเลย 5% เดือนละ 2 รอบ) และ slide2 (สล็อต คืนยอดเสีย 10% ทุกค่าย)
+// ทั้งสองใบยังไปปรากฏในบล็อก ContentBoxSevenThree* ของหน้าแรกด้วย เพราะเป็น
+// โปรโมชั่นชุดเดียวกันของ asset drop นี้ ส่วน slide3 กับ slide4 เป็นอาร์ตค้างของ
+// แบรนด์ก่อน ห้าม import ที่นี่ เช่นเดียวกับไฟล์ banner ที่ไม่ใช่ banner1 — การ
+// import คือการ emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม (รอบก่อนไฟล์นี้ import
+// slide3 อยู่ ถูกถอดออกรอบนี้)
 //
 // ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตามนามสกุลจริง
 //
-// สไลด์ชุดนี้เป็นภาพจัตุรัส 600×600 (1:1) ไม่ใช่แบนเนอร์แนวนอนเหมือน drop ก่อน
-// จึงให้เห็นพร้อมกัน 2 ช่องบนมือถือ / 3 ช่องบนเดสก์ท็อป ที่ max-w-[820px] แต่ละใบ
-// จึงวาดราวๆ 252px บนเดสก์ท็อป ซึ่งไม่เกินความกว้างจริงของไฟล์ ค่า --shift ใน
-// stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สามใบรอบนี้) เทียบกับจำนวนช่องที่
-// เห็น: หนึ่งชุดเต็ม = 3 × basis + 3 × gap ถ้าเปลี่ยนจำนวนรูปหรือจำนวนช่อง ต้องคิด
+// สไลด์ชุดนี้เป็นภาพจัตุรัส (1:1) ไม่ใช่แบนเนอร์แนวนอนเหมือน drop ก่อน จึงให้เห็น
+// พร้อมกัน 2 ช่องบนมือถือ / 3 ช่องบนเดสก์ท็อป ที่ max-w-[820px] ค่า --shift ใน
+// stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (สองใบรอบนี้) เทียบกับจำนวนช่องที่
+// เห็น: หนึ่งชุดเต็ม = 2 × basis + 2 × gap ถ้าเปลี่ยนจำนวนรูปหรือจำนวนช่อง ต้องคิด
 // --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
 const images = [
   {
-    src: slideDirect,
-    alt: "โปสเตอร์โปรโมชั่นของ ASHTON168 พื้นสีดำมีลำแสงทองและเหรียญทองปลิวอยู่ ด้านซ้ายเป็นผู้หญิงผมยาวสวมชุดสีทองเมทัลลิก ด้านขวาเป็นข้อความสีขาวว่า เว็บตรง แล้วต่อด้วยข้อความสีทองตัวใหญ่ว่า ลิขสิทธิ์แท้ ถัดลงมาเป็นบรรทัดว่า ฝาก-ถอน AUTO 3 นาที และ ระบบเกมดีสุดใน ASIA ใต้ลงมาเป็นปุ่มขอบทองเขียนว่า สมัครฟรี ไม่มีขั้นต่ำ ตามด้วยบรรทัดเล็กว่า การันตีความมั่นคง 100% แถวล่างสุดเป็นโลโก้ค่ายเกมพันธมิตรสีทองเรียงกันเจ็ดอัน",
+    src: slideCashbackTwiceMonthly,
+    alt: "โปสเตอร์โปรโมชั่นของ XTOP666 พื้นสีดำแดง มีไพ่ ลูกเต๋า และชิปคาสิโนสีแดงกระจายอยู่รอบภาพ ด้านซ้ายเป็นผู้หญิงผมยาวสวมชุดราตรีสีแดงเกาะอก ด้านขวาเป็นข้อความตัวใหญ่ว่า เล่นเสีย ก็ได้คืน ถัดลงมาเป็นบรรทัดว่า รับเลย 5% และ เดือนละ 2รอบ",
   },
   {
-    src: slideReferral,
-    alt: "โปสเตอร์โปรโมชั่นของ ASHTON168 พื้นสีดำมีริบบิ้นทองและรูปโพดำสีทองปลิวอยู่รอบภาพ ตรงกลางเป็นผู้หญิงผมยาวสวมชุดสีทองประดับเลื่อมและต่างหูทรงข้าวหลามตัด ด้านล่างเป็นข้อความสีขาวตัวใหญ่ว่า แนะนำเพื่อน คู่กับข้อความสีทองว่า รับค่าคอมมิชชั่น และตัวเลข 3 เปอร์เซ็นต์ขนาดใหญ่สีทอง ปิดท้ายด้วยกรอบมนขอบทองเขียนว่า คืนยอดเสียด้วยระบบ Auto",
-  },
-  {
-    src: slideNoAgent,
-    alt: "โปสเตอร์โปรโมชั่นของ ASHTON168 พื้นสีดำมีไพ่ ลูกเต๋า และสัญลักษณ์โพดำสีทองปลิวอยู่รอบภาพ ตรงกลางเป็นผู้หญิงผมยาวสวมชุดสีทอง ด้านล่างเป็นข้อความสีทองตัวใหญ่ว่า สล็อตเว็บตรง และ ไม่ผ่านเอเยนต์ ถัดลงมาเป็นกรอบมนขอบทองเขียนว่า จ่ายเต็ม เท่าไหร่ก็ถอนได้ แถวล่างสุดเป็นบรรทัดเล็กสีขาวว่า ฝาก-ถอน ไม่มีขั้นต่ำ ด้วยระบบ AUTO รวดเร็วภายใน 3 วินาที",
+    src: slideCashbackAllProviders,
+    alt: "โปสเตอร์โปรโมชั่นของ XTOP666 พื้นสีดำแดง มีไพ่เอซและชิปคาสิโนสีแดงวางอยู่ ด้านหนึ่งเป็นผู้หญิงผมยาวสวมชุดสีแดง อีกด้านเป็นข้อความตัวใหญ่ว่า สล็อต คืนยอดเสีย ถัดลงมาเป็นบรรทัดว่า 10% ทุกค่าย",
   },
 ];
 
@@ -73,7 +66,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#f5c518]/60 peer-focus-visible:bg-[#2a1c06] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffe9a3]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#fc5b03]/60 peer-focus-visible:bg-[#2e0c04] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffc9a3]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -86,7 +79,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#c8941a]/45 object-cover shadow-[0_10px_30px_rgba(245,197,24,0.28)]"
+              class="block w-full rounded-xl border border-[#d94a02]/45 object-cover shadow-[0_10px_30px_rgba(252,91,3,0.28)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
@@ -106,31 +99,33 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
 </div>
 
 <style>
-  /* --shift คือหนึ่งชุดเต็มของรูป: สามสไลด์บวกช่องว่างที่ตามมาสามช่อง วัดเทียบ
+  /* --shift คือหนึ่งชุดเต็มของรูป: สองสไลด์บวกช่องว่างที่ตามมาสองช่อง วัดเทียบ
      กับความกว้างของ track (ซึ่งเท่ากับความกว้างของกล่อง — สไลด์ล้นออกไป ซึ่งเป็น
      จุดประสงค์) ตั้งค่านี้ผิดไปหนึ่งพิกเซลคือสิ่งที่ทำให้ marquee กระตุกทุกรอบลูป
+     เขียนเป็น calc ซ้อนตามสูตรตรงๆ แทนการย่อเป็นทศนิยม เพราะฝั่งเดสก์ท็อปหารสาม
+     ไม่ลงตัว
 
-     mobile:  3 * ((100% - 12px)/2 + 12px) = 150% + 18px
-     desktop: 3 * ((100% - 32px)/3 + 16px) = 100% + 16px */
+     mobile:  2 * ((100% - 12px)/2 + 12px) = 100% + 12px
+     desktop: 2 * ((100% - 32px)/3 + 16px) */
   .marquee {
     --gap: 12px;
     --per-view: 2;
-    --shift: calc(-150% - 18px);
+    --shift: calc(-2 * ((100% - 12px) / 2 + 12px));
   }
 
   @media (min-width: 768px) {
     .marquee {
       --gap: 16px;
       --per-view: 3;
-      --shift: calc(-100% - 16px);
+      --shift: calc(-2 * ((100% - 32px) / 3 + 16px));
     }
   }
 
   .marquee-track {
     gap: var(--gap);
     width: 100%;
-    /* 9 วินาทีต่อสไลด์ คูณสามใบ — ความเร็วต่อสไลด์เท่าเดิมทุกรอบรีแบรนด์ */
-    animation: carousel-scroll 27s linear infinite;
+    /* 9 วินาทีต่อสไลด์ คูณสองใบ — ความเร็วต่อสไลด์เท่าเดิมทุกรอบรีแบรนด์ */
+    animation: carousel-scroll 18s linear infinite;
     will-change: transform;
   }
 

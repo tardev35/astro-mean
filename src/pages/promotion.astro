@@ -1,13 +1,14 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import ContentBox from "../components/ContentBoxPremium.astro";
+import ContentBox from "../components/ContentBoxCyberCut.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 
 import { Picture } from "astro:assets";
 
-// ASHTON168: ticker เป็น AnnouncementPremium ให้ตรงกับทั้งเว็บ เรียก <Announcement />
-// เปล่าๆ เพราะ default message ของ variant นี้เป็นข้อความ ASHTON168 อยู่แล้ว
+// XTOP666: ticker หมุนมาเป็น AnnouncementCyber และกล่องหน้าย่อยหมุนมาเป็น
+// ContentBoxCyberCut ตามสเปกรอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default
+// message ของ variant นี้ถูกตั้งเป็นข้อความของแบรนด์นี้แล้ว
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the single
@@ -18,26 +19,22 @@ import { Picture } from "astro:assets";
 // Meta and never a body.
 //
 // Named for what each banner ACTUALLY prints, not for its file number.
-// The ASHTON168 drop (2026-08-27) is three 600x600 banners on a black-and-gold
-// luxury set, each with a model in a gold outfit:
-//   slide1 = เว็บตรง ลิขสิทธิ์แท้ / ฝาก-ถอน AUTO 3 นาที / ระบบเกมดีสุดใน ASIA /
-//            สมัครฟรี ไม่มีขั้นต่ำ / การันตีความมั่นคง 100% + แถวโลโก้ธนาคาร
-//   slide2 = แนะนำเพื่อน รับค่าคอมมิชชั่น 3% / คืนยอดเสียด้วยระบบ Auto
-//   slide3 = สล็อตเว็บตรง ไม่ผ่านเอเยนต์ / จ่ายเต็ม เท่าไหร่ก็ถอนได้ /
-//            ฝาก-ถอน ไม่มีขั้นต่ำ ด้วยระบบ AUTO รวดเร็วภายใน 3 วินาที
+// The XTOP666 drop (2026-08-29) is two 600x200 red-and-black promo strips:
+//   slide1 = เล่นเสีย ก็ได้คืน / รับเลย 5% / เดือนละ 2รอบ
+//   slide2 = สล็อต คืนยอดเสีย / 10% ทุกค่าย
 // The mapping between file number and artwork changes with every asset drop,
 // so these imports follow the ARTWORK — that is the whole reason the variables
 // are named after what is printed instead of after the file.
 //
-// slide4.png is deliberately NOT imported: it is the PREVIOUS brand's pink
-// announcement banner and it shows that brand's logo in the artwork itself.
-// banner1.png belongs to MainLayout's hero <picture> alone, and banner2-4.png
-// are stale art from earlier brands. An imported image is an emitted image even
-// when nothing renders it. Only what is printed on each banner may be stated
-// here.
-import promoDirect from "../assets/slide1.png";
-import promoReferral from "../assets/slide2.png";
-import promoNoAgent from "../assets/slide3.png";
+// slide3.png and slide4.png are deliberately NOT imported: both are PREVIOUS
+// brands' artwork (this round's drop is slide1 + slide2 only). The slide3
+// import was removed here on 2026-08-29 — an imported image is an emitted
+// image even when nothing renders it, so leaving it in ships another brand's
+// banner into dist/ on every build. banner1.png belongs to MainLayout's hero
+// <picture> alone, and banner.png / banner2-4.png are stale art from earlier
+// brands. Only what is printed on each banner may be stated here.
+import promoLossbackTwice from "../assets/slide1.png";
+import promoSlotCashback from "../assets/slide2.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
@@ -45,12 +42,12 @@ import { pageGraph } from "../lib/schema";
 // byte count reads ~3x too long). This one measures 157. It states what the
 // page holds — the offers the slides themselves print — and stops.
 const pageDescription =
-  "รวมโปรโมชั่น ASHTON168 สล็อตเว็บตรงลิขสิทธิ์แท้ ไม่ผ่านเอเยนต์ แนะนำเพื่อนรับค่าคอมมิชชั่น 3% คืนยอดเสียด้วยระบบออโต้ ฝาก-ถอนไม่มีขั้นต่ำ AUTO ภายใน 3 วินาที";
+  "รวมโปรโมชั่น XTOP666 สล็อตคืนยอดเสีย 10% ครบทุกค่าย และสิทธิ์เล่นเสียก็ได้คืนรับเลย 5% เดือนละ 2 รอบ กดรับเองได้จากหน้าเว็บก่อนเข้าเกม ไม่ต้องรอแอดมินอนุมัติ";
 
-const pageTitle = "โปรโมชั่น ASHTON168 | แนะนำเพื่อนรับ 3% คืนยอดเสียระบบออโต้";
+const pageTitle = "โปรโมชั่น XTOP666 | คืนยอดเสีย 10% ทุกค่าย รับเพิ่ม 5% เดือนละ 2 รอบ";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น ASHTON168 รวมสิทธิ์ที่เปิดให้สมาชิกกดรับในรอบนี้";
+const pageHeading = "โปรโมชั่น XTOP666 รวมสิทธิ์ที่เปิดให้สมาชิกกดรับในรอบนี้";
 
 const graph = pageGraph(Astro, {
   name: pageTitle,
@@ -59,23 +56,24 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoDirect.src,
+  primaryImagePath: promoLossbackTwice.src,
 });
 
-// Drawn one-up on phones inside the box's own padding (px-4 + p-8 = 6rem),
-// then two-up from sm: inside that same padding plus one 2rem grid gap. The
-// Premium box steps p-8 → md:p-10 at 768px, so the padding total goes 6rem →
-// 7rem there. The card caps at max-w-[1400px], so once the viewport passes
-// 1432px the column settles at 644px.
-const imageSizes =
-  "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
+// Recomputed for ContentBoxCyberCut, which this round's variant rotation put
+// under every sub-page. Unlike the box used last round it does NOT step its
+// padding at md:, so the padding total is a flat 6rem (px-4 = 2rem + p-8 =
+// 4rem) at every width. Drawn one-up on phones inside that padding, then
+// two-up from sm: inside the same padding plus one 2rem grid gap. The card
+// caps at max-w-7xl (1280px), so once the viewport passes 1312px the column
+// settles at 592px.
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 1311px) calc((100vw - 8rem) / 2), 592px";
 
-// ขอบทองลึกของแบรนด์ล้อกับตัวอักษรทองบนสไลด์ แล้วเรืองทองอ่อนขึ้นตอน hover
+// ขอบส้มไฟของแบรนด์ล้อกับตัวอักษรบนสไลด์ แล้วเรืองแดงขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#c8941a]/35 object-contain shadow-[0_10px_30px_rgba(200,148,26,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffe9a3]/70 hover:shadow-[0_15px_40px_rgba(245,197,24,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#fc5b03]/35 object-contain shadow-[0_10px_30px_rgba(252,91,3,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffc9a3]/70 hover:shadow-[0_15px_40px_rgba(225,18,18,0.45)]";
 
 // Capped at 600 because that is the intrinsic width of every slide*.png in this
-// drop — the column is drawn up to 644px, so nothing above 600 buys detail.
+// drop — the column is drawn up to 592px, so nothing above 600 buys detail.
 const imageWidths = [300, 450, 600];
 ---
 
@@ -87,14 +85,14 @@ const imageWidths = [300, 450, 600];
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffe9a3]">ASHTON168</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งเปอร์เซ็นต์ที่ได้รับ เพดานสูงสุด และรอบเวลาของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองแล้ว
-        แต่ละรายการคิดจากยอดคนละชุดและมีเงื่อนไขของตัวเอง จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเว็บก่อนเข้าเกม จบในไม่กี่วินาทีโดยไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ffc9a3]">XTOP666</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งเปอร์เซ็นต์ที่ได้คืน เพดานสูงสุด และรอบเวลาของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองแล้ว
+        แต่ละรายการคิดจากยอดคนละชุดและมีเงื่อนไขของตัวเอง จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเว็บก่อนเข้าเกม จบในไม่กี่วินาทีโดยไม่ต้องรอแอดมินอนุมัติ
       </p>
 
       <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
         <Picture
-          src={promoDirect}
-          alt="แบนเนอร์โปรโมชั่นพื้นดำตกแต่งด้วยแสงและริบบิ้นสีทอง พิมพ์ข้อความ เว็บตรง ลิขสิทธิ์แท้ ฝาก-ถอน AUTO 3 นาที ระบบเกมดีสุดใน ASIA พร้อมป้าย สมัครฟรี ไม่มีขั้นต่ำ และบรรทัด การันตีความมั่นคง 100% ภาพเป็นหญิงสาวสวมชุดสีทองยืนหันข้าง ด้านล่างเป็นแถวสัญลักษณ์ธนาคาร"
+          src={promoLossbackTwice}
+          alt="แบนเนอร์โปรโมชั่นพื้นดำแดง พิมพ์ข้อความ เล่นเสีย ก็ได้คืน รับเลย 5% เดือนละ 2รอบ มีไพ่โพดำ ลูกเต๋า และชิปคาสิโนสีแดงกระจายอยู่รอบภาพ ด้านขวาเป็นหญิงสาวสวมชุดเกาะอกสีแดง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -107,22 +105,8 @@ const imageWidths = [300, 450, 600];
         />
 
         <Picture
-          src={promoReferral}
-          alt="แบนเนอร์โปรโมชั่นพื้นดำมีไพ่และสัญลักษณ์รูปหัวใจสีทองปลิวอยู่รอบภาพ พิมพ์ข้อความ แนะนำเพื่อน รับค่าคอมมิชชั่น 3% และแถบล่าง คืนยอดเสียด้วยระบบ Auto ภาพเป็นหญิงสาวสวมชุดเลื่อมสีทองและต่างหูทรงข้าวหลามตัด"
-          loading="lazy"
-          fetchpriority="low"
-          widths={imageWidths}
-          sizes={imageSizes}
-          class={imageClass}
-          decoding="async"
-          formats={["avif", "webp"]}
-          fallbackFormat="webp"
-          quality={80}
-        />
-
-        <Picture
-          src={promoNoAgent}
-          alt="แบนเนอร์โปรโมชั่นพื้นดำมีลูกเต๋าและสัญลักษณ์โพดำสีทองกระจายอยู่รอบภาพ พิมพ์ข้อความ สล็อตเว็บตรง ไม่ผ่านเอเยนต์ พร้อมป้าย จ่ายเต็ม เท่าไหร่ก็ถอนได้ และบรรทัดล่าง ฝาก-ถอน ไม่มีขั้นต่ำ ด้วยระบบ AUTO รวดเร็วภายใน 3 วินาที ภาพเป็นหญิงสาวสวมชุดสีทองยืนกลางแบนเนอร์"
+          src={promoSlotCashback}
+          alt="แบนเนอร์โปรโมชั่นพื้นดำแดง พิมพ์ข้อความ สล็อต คืนยอดเสีย 10% ทุกค่าย มีไพ่เอซโพดำและชิปคาสิโนสีแดงวางซ้อนกัน ด้านขวาเป็นหญิงสาวสวมชุดสีแดง"
           loading="lazy"
           fetchpriority="low"
           widths={imageWidths}
@@ -138,8 +122,8 @@ const imageWidths = [300, 450, 600];
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffe9a3]/60 bg-gradient-to-r from-[#ffe9a3] via-[#f5c518] to-[#7a5405] px-10 py-3.5 text-lg font-black text-[#080502] shadow-[0_10px_30px_rgba(245,197,24,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(200,148,26,0.5)]">
-          สมัครสมาชิก ASHTON168
+          class="flex items-center justify-center rounded-lg border border-[#ffc9a3]/60 bg-gradient-to-r from-[#ffc9a3] via-[#fc5b03] to-[#a33200] px-10 py-3.5 text-lg font-black text-[#0a0403] shadow-[0_10px_30px_rgba(252,91,3,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(225,18,18,0.5)]">
+          สมัครสมาชิก XTOP666
         </a>
       </div>
     </div>

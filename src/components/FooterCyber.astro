@@ -12,25 +12,26 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 // บล็อก <address> ด้านล่างจงใจไม่ใส่สีของแบรนด์ (ใช้ border-white/15, bg-black/20
 // และ opacity ทับสีตัวอักษรที่ inherit มา) — footer ทุก variant ในคลังเป็นพื้นเข้ม
 // ทั้งหมด บล็อกนี้จึงลงตัวทุกตัวโดยไม่ต้องแก้ และไม่ทิ้ง hex ของแบรนด์นี้ไว้ให้
-// รอบหน้า ป้ายชื่อเป็น <p> ไม่ใช่หัวข้อด้วยเหตุผลเดียวกัน
+// รอบหน้า ป้ายชื่อเป็น <p> ไม่ใช่หัวข้อด้วยเหตุผลเดียวกัน ที่อยู่กับอีเมลมาจาก
+// BRAND_ADDRESS ซึ่งผูกกับ BRAND_NAME และ site: ห้ามพิมพ์ทับเอง
 //
-// GEN4 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย กับ
+// XTOP666 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย กับ
 // /แนวทาง (สองหน้านั้นอยู่ใน src/pages-disabled/ ไม่มี route จริง)
 //
-// GEN4: ย้ายจากนีออนฟ้า-บานเย็นของแบรนด์ก่อน มาเป็นน้ำเงินอิเล็กทริกคู่แดงของ
-// แบรนด์นี้ — น้ำเงิน #0071d5 / #01a3f3 / #6fd2ff คู่แดง #e8241c บนผิวกรมท่า
-// เกือบดำ #050b1a / #0b1b3a เนื้อความ #eaf4ff เมนูรอง #93b4dd
+// XTOP666: ย้ายจากน้ำเงินอิเล็กทริกคู่แดงของแบรนด์ก่อน มาเป็นส้มไฟคู่แดงเลือดของ
+// แบรนด์นี้ — ส้ม #fc5b03 / #ff8a3d / #a33200 คู่แดง #e11212 / #ff5a4d บนผิว
+// เกือบดำอมแดง #0a0403 / #1a0603 เนื้อความ #f6e5dc เมนูรอง #c9a394
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
 ---
 
 <footer
-  class="relative mt-10 w-full overflow-hidden border-t border-[#01a3f3]/40 bg-[#050b1a] pt-16 pb-8 font-sans text-[#eaf4ff]"
+  class="relative mt-10 w-full overflow-hidden border-t border-[#fc5b03]/40 bg-[#0a0403] pt-16 pb-8 font-sans text-[#f6e5dc]"
   style="clip-path: polygon(0 30px, 50vw 0, 100% 30px, 100% 100%, 0 100%);">
   <div aria-hidden="true"
     class="pointer-events-none absolute inset-0 opacity-[0.14]"
-    style="background-image: linear-gradient(#00408a 1px, transparent 1px), linear-gradient(90deg, #01a3f3 1px, transparent 1px); background-size: 30px 30px;">
+    style="background-image: linear-gradient(#a33200 1px, transparent 1px), linear-gradient(90deg, #fc5b03 1px, transparent 1px); background-size: 30px 30px;">
   </div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
@@ -41,43 +42,43 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ GEN4 ตัวอักษร GEN สีน้ำเงินอิเล็กทริกไล่เฉดฟ้า ต่อด้วยเลข 4 สีแดงเมทัลลิกทรงเหลี่ยมพาดเฉียง ตัวอักษรทั้งชุดมีไฮไลต์มันวาวแบบโลหะ"
+                alt="โลโก้ XTOP666 เป็นตัว X สามมิติสีส้มไล่เฉดตัดกับสีขาวเงิน วางทับตัวอักษร TXP สีเทาจาง ใต้ลงมาเป็นคำว่า XTOP ตัวอักษรสีขาว"
                 loading="lazy"
                 decoding="async"
                 widths={[150, 300, 450]}
                 sizes="150px"
-                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(1,163,243,0.5)]"
+                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(252,91,3,0.5)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="text-3xl font-black tracking-widest text-[#6fd2ff]">GEN4</p>
+              <p class="text-3xl font-black tracking-widest text-[#ff8a3d]">XTOP666</p>
             )
           }
         </a>
-        <p class="border-l-2 border-[#01a3f3] pl-4 text-sm leading-relaxed text-[#93b4dd]">
-          GEN4 สล็อตเจนใหม่มีของ ศูนย์รวมเกมลิขสิทธิ์แท้ส่งตรงจากค่ายชั้นนำระดับโลก มาพร้อมโครงสร้างระบบอัปเดตใหม่ล่าสุดที่ประมวลผลรวดเร็ว เสถียร และปลอดภัยในทุกการใช้งาน ตัวฮิตไม่ตกเจน เกมใหม่ไม่หลุดลิสต์ ฝากถอนออโต้เสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ
+        <p class="border-l-2 border-[#fc5b03] pl-4 text-sm leading-relaxed text-[#c9a394]">
+          XTOP666 สล็อตสปีดท็อป เว็บตรงสายสปีดที่ตัดทุกความล่าช้าออกไปตั้งแต่คลิกแรก โหลดเกมไวผ่านลิงก์ตรงที่ไม่ผ่านหน้าเอเย่นต์ ระบบหลังบ้านเสถียรพร้อมบวกทุกสถานการณ์ เกมค่ายดังคัดมาหลายแนวให้เลือกตามสไตล์ และโบนัสกดรับเองได้ทันทีก่อนขึ้นสปิน ใช้งานต่อเนื่องได้ทั้งมือถือและคอม
         </p>
         <div class="mt-4 flex gap-3">
-          <span class="border border-[#01a3f3]/50 bg-[#0b1b3a] px-3 py-1 font-mono text-xs text-[#6fd2ff]">LICENSED_GAMES</span>
-          <span class="border border-[#e8241c]/50 bg-[#0b1b3a] px-3 py-1 font-mono text-xs text-[#ff5a33]">AUTO_HISPEED</span>
+          <span class="border border-[#fc5b03]/50 bg-[#1a0603] px-3 py-1 font-mono text-xs text-[#ff8a3d]">SPEED_TOP</span>
+          <span class="border border-[#e11212]/50 bg-[#1a0603] px-3 py-1 font-mono text-xs text-[#ff5a4d]">DIRECT_LINK</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#eaf4ff] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
-        <ul class="flex flex-col gap-3 font-mono text-sm text-[#93b4dd]">
-          <li><a href="/" class="transition-colors hover:text-[#6fd2ff]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#6fd2ff]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#6fd2ff]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#6fd2ff]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#6fd2ff]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#6fd2ff]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
+        <p class="text-lg font-black tracking-widest text-[#f6e5dc] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
+        <ul class="flex flex-col gap-3 font-mono text-sm text-[#c9a394]">
+          <li><a href="/" class="transition-colors hover:text-[#ff8a3d]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#ff8a3d]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ff8a3d]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ff8a3d]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#ff8a3d]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#ff8a3d]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#eaf4ff] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
+        <p class="text-lg font-black tracking-widest text-[#f6e5dc] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
 
         <a
           href="/line"
@@ -108,22 +109,22 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
         <a
           href="/register"
-          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#00408a] via-[#01a3f3] to-[#e8241c] py-3 font-black text-[#050b1a] transition-all hover:brightness-110"
+          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#a33200] via-[#fc5b03] to-[#e11212] py-3 font-black text-[#0a0403] transition-all hover:brightness-110"
           style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
           สมัครสมาชิก
         </a>
 
-        <div class="mt-2 font-mono text-xs text-[#93b4dd]">ACCEPTED_PAYMENTS</div>
+        <div class="mt-2 font-mono text-xs text-[#c9a394]">ACCEPTED_PAYMENTS</div>
         <BankStrip size={28} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#01a3f3]/30 pt-6 font-mono text-xs text-[#93b4dd] md:flex-row">
-      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} GEN4</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#fc5b03]/30 pt-6 font-mono text-xs text-[#c9a394] md:flex-row">
+      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} XTOP666</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="hover:text-[#6fd2ff]">TERMS_OF_SERVICE</a>
-        <a href="/privacy/" class="hover:text-[#6fd2ff]">PRIVACY_POLICY</a>
-        <a href="#top" class="hover:text-[#6fd2ff]">BACK_TO_TOP</a>
+        <a href="/terms/" class="hover:text-[#ff8a3d]">TERMS_OF_SERVICE</a>
+        <a href="/privacy/" class="hover:text-[#ff8a3d]">PRIVACY_POLICY</a>
+        <a href="#top" class="hover:text-[#ff8a3d]">BACK_TO_TOP</a>
       </div>
     </div>
   </div>

@@ -14,60 +14,61 @@ const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright, label 
 // เป็น <p> (คงคลาสเดิมไว้) แล้วเพิ่ม prop `title` ตัวเดียวเป็นหัวข้อที่ component
 // นี้ปล่อยออกมาได้ — วิธีเดียวกับที่ ContentBox3Three/ContentBoxTwo ทำไว้แล้ว
 //
-// VIREL168: variant นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind
+// XTOP666: variant นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind
 // สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
-// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้ย้ายมาที่ทองที่วัดจากอาร์ต
-// ของแบรนด์นี้ — #faca4c / #ebb134 / #e2a52d / #ffeec2 / #855a14 คู่เงินโครเมียม
-// #e1e1e1 บนผิว #0a0501 เนื้อความ #f4e7cd ไม่มีเขียวและไม่มีฟ้าเหลืออยู่
+// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้ย้ายมาที่ส้มเรซซิ่งที่วัด
+// จากอาร์ตของแบรนด์นี้ — #fc5b03 / #d94a02 / #ffc9a3 / #fff0e6 / #a33200 คู่แดง
+// หลอม #e11212 ที่ถือเส้นมุมฝั่งล่างขวา บนผิว #0a0403 เนื้อความ #f6e5dc
+// ไม่มีทองและไม่มีโครเมียมเงินเหลืออยู่
 const sectionLabel = title ? undefined : (label ?? titleleft ?? titlecenter ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="mx-auto mb-6 w-full max-w-7xl px-4 font-sans">
   <div
-    class="relative isolate w-full border border-[#e2a52d]/40 bg-[#0a0501]/92 p-8 text-[#f4e7cd] shadow-[0_0_25px_rgba(226,165,45,0.25)] backdrop-blur-md transition-all duration-300 hover:border-[#ffeec2] hover:shadow-[0_0_40px_rgba(250,202,76,0.35)]"
+    class="relative isolate w-full border border-[#d94a02]/40 bg-[#0a0403]/92 p-8 text-[#f6e5dc] shadow-[0_0_25px_rgba(252,91,3,0.25)] backdrop-blur-md transition-all duration-300 hover:border-[#ffc9a3] hover:shadow-[0_0_40px_rgba(252,91,3,0.35)]"
     style="clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);">
-    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#e2a52d] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#e1e1e1] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#e2a52d] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#e1e1e1] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#d94a02] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#e11212] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#d94a02] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#e11212] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#e2a52d]/30 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffeec2] via-[#faca4c] to-[#855a14] shadow-[0_0_10px_rgba(250,202,76,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fff8e4] via-[#ffeec2] to-[#e2a52d] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#d94a02]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe4d0] via-[#fc5b03] to-[#a33200] shadow-[0_0_10px_rgba(252,91,3,0.5)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#fff0e6] via-[#ffc9a3] to-[#d94a02] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      <article class="flex flex-col gap-4 border-b border-[#e2a52d]/30 pb-6 text-left text-base leading-relaxed text-[#f4e7cd] md:border-r md:border-b-0 md:pr-6 md:pb-0">
+      <article class="flex flex-col gap-4 border-b border-[#d94a02]/30 pb-6 text-left text-base leading-relaxed text-[#f6e5dc] md:border-r md:border-b-0 md:pr-6 md:pb-0">
         {
           titleleft && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#faca4c] uppercase">
-              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#ffeec2] shadow-[0_0_5px_rgba(250,202,76,0.8)]" /> {titleleft}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#fc5b03] uppercase">
+              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#ffc9a3] shadow-[0_0_5px_rgba(252,91,3,0.8)]" /> {titleleft}
             </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 border-b border-[#e2a52d]/30 pb-6 text-left text-base leading-relaxed text-[#f4e7cd] md:border-r md:border-b-0 md:px-4 md:pb-0">
+      <article class="flex flex-col gap-4 border-b border-[#d94a02]/30 pb-6 text-left text-base leading-relaxed text-[#f6e5dc] md:border-r md:border-b-0 md:px-4 md:pb-0">
         {
           titlecenter && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#faca4c] uppercase">
-              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#ffeec2] shadow-[0_0_5px_rgba(250,202,76,0.8)]" /> {titlecenter}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#fc5b03] uppercase">
+              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#ffc9a3] shadow-[0_0_5px_rgba(252,91,3,0.8)]" /> {titlecenter}
             </p>
           )
         }
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e7cd] md:pl-6">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6e5dc] md:pl-6">
         {
           titleright && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#faca4c] uppercase">
-              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#ffeec2] shadow-[0_0_5px_rgba(250,202,76,0.8)]" /> {titleright}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#fc5b03] uppercase">
+              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#ffc9a3] shadow-[0_0_5px_rgba(252,91,3,0.8)]" /> {titleright}
             </p>
           )
         }

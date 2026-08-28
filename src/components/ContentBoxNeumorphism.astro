@@ -6,15 +6,14 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// GEN4: ย้ายชุดสีจากส้มไฟของแบรนด์ก่อน มาที่น้ำเงินอิเล็กทริกคู่แดงของแบรนด์นี้ที่
-// วัดจากอาร์ตจริง — น้ำเงิน #0071d5 / #01a3f3 / #6fd2ff / #00408a บนผิวกรมท่า
-// เกือบดำ #050b1a เนื้อความ #d7e7ff หัวข้อ #eaf4ff (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้
-// ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก
-// git history)
+// XTOP666: ย้ายชุดสีของ variant นี้มาที่ส้มเรซซิ่งคู่แดงหลอมของแบรนด์นี้ ที่วัดจาก
+// อาร์ตจริง — ส้มหลัก #fc5b03 / #ff8a3d / #ffc9a3 / #ffe4d0 / #a33200 บนผิวดำอมอุ่น
+// #0a0403 เนื้อความ #f6e5dc (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกน
+// ไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 //
 // คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
-// #01030a (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #0b1b3a (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
-// ไปใช้น้ำเงินนีออน การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่
+// #030101 (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #1a0603 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
+// ไปใช้ส้มนีออน การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่
 // variant นี้มีไว้ทำ
 //
 // text-center อยู่บน <header> เท่านั้น ไม่ได้อยู่บนการ์ดหรือ <section> ถ้าย้ายขึ้นไป
@@ -23,11 +22,11 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="w-full max-w-[1400px] rounded-[25px] border border-[#0071d5]/30 bg-[#050b1a] p-8 text-left text-base leading-relaxed text-[#d7e7ff] shadow-[10px_10px_20px_#01030a,-10px_-10px_20px_#0b1b3a]">
+    class="w-full max-w-[1400px] rounded-[25px] border border-[#fc5b03]/30 bg-[#0a0403] p-8 text-left text-base leading-relaxed text-[#f6e5dc] shadow-[10px_10px_20px_#030101,-10px_-10px_20px_#1a0603]">
     {
       title && (
-        <header class="mb-8 border-b border-[#01a3f3]/25 pb-4 text-center">
-          <HeadingTag class={`bg-gradient-to-r from-[#eaf4ff] via-[#01a3f3] to-[#0071d5] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#ff8a3d]/25 pb-4 text-center">
+          <HeadingTag class={`bg-gradient-to-r from-[#ffe4d0] via-[#ff8a3d] to-[#fc5b03] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

@@ -6,16 +6,22 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
 
-// XTOP666: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (รอบล่าสุดเป็นนีออนฟ้าคู่บานเย็น ก่อนหน้า
-// นั้นเป็นม่วงลึกคู่มาเจนต้า แดงส้มคู่ทอง ฟ้านีออนใต้ทะเล ทองคาสิโนจีน ฯลฯ — ค่า hex
-// เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์
-// จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
-// รอบนี้เป็นส้มไฟคู่ทองของแบรนด์ — ส้ม #fc5b02 / #ff8c3a / #ffd9bd / #7a2601 เป็นสี
-// เน้นหลักและถือเส้นมุมฝั่งบนซ้าย ส่วนทอง #ffb020 / #ffd76e เป็นสีเน้นรองที่ถือ
-// เส้นมุมฝั่งล่างขวา บนผิวเกือบดำ #0a0503 เนื้อความ #ffe8d8 เก็บไว้แค่ทรงมุมตัด
-// สไตล์ cyber-cut ซึ่งเป็นเอกลักษณ์เดียวของ variant นี้
+// XTOP666: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (นีออนฟ้าคู่บานเย็น ม่วงลึกคู่มาเจนต้า
+// ฟ้านีออนใต้ทะเล ทองคาสิโนจีน ฯลฯ — ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind
+// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
+// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
-// รอบนี้บล็อกนี้แบกหัวข้อ H1 ของ docx บนหน้าแรก
+// รอบนี้เป็นส้มไฟคู่แดงเลือดของแบรนด์ — ส้ม #fc5b03 / #ff8a3d / #ffc9a3 / #a33200
+// เป็นสีเน้นหลักและถือเส้นมุมฝั่งบนซ้าย ส่วนแดง #e11212 / #ff5a4d เป็นสีเน้นรอง
+// ที่ถือเส้นมุมฝั่งล่างขวา บนผิวเกือบดำอมแดง #0a0403 เนื้อความ #f6e5dc
+// (วัดจาก palette.json: vivid ของโลโก้เป็นส้ม #fc5b03 / #fc6303 / #fa5302 ส่วน
+// vivid ของสไลด์เป็นแดงเข้ม #9b0101 / #940101 และ dominant ของแบนเนอร์เป็นดำ
+// อมแดง #020101 / #1b0201) เก็บไว้แค่ทรงมุมตัดสไตล์ cyber-cut ซึ่งเป็น
+// เอกลักษณ์เดียวของ variant นี้
+//
+// รอบนี้การ์ดใบนี้เป็นกล่องเนื้อหาของ "ทุกหน้าย่อย" (about-us / promotion /
+// contact-us / ทางเข้า / ทดลองเล่น) จึงเป็น shared chrome — แก้ที่นี่กระทบทุกหน้า
+// ส่วน terms/privacy ยังใช้ ContentBox.astro ตัวธรรมดาตามกฎหน้าถาวร
 //
 // การ์ดเป็น `isolate` และเลเยอร์ตกแต่งทุกชิ้นเป็น `-z-10` เนื้อความจึงลอยอยู่เหนือ
 // เส้นมุมได้เองโดยไม่ต้องมี wrapper `relative z-10` ครอบ slot ห้ามใส่กลับเข้ามา
@@ -23,17 +29,17 @@ const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:t
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#fc5b02]/35 bg-[#0a0503]/92 p-8 text-left text-base leading-relaxed text-[#ffe8d8] shadow-[0_10px_30px_rgba(252,91,2,0.25)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#fc5b03]/35 bg-[#0a0403]/92 p-8 text-left text-base leading-relaxed text-[#f6e5dc] shadow-[0_10px_30px_rgba(252,91,3,0.25)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#fc5b02] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#ffb020] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#fc5b02] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#ffd76e] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#fc5b03] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#e11212] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#fc5b03] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#ff5a4d] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#ffb020] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#fff3ea] via-[#ff8c3a] to-[#7a2601] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#e11212] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#fff0e6] via-[#ff8a3d] to-[#a33200] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }
