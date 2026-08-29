@@ -11,11 +11,11 @@ export interface Props {
 
 const { title, faqs = [] } = Astro.props;
 
-// PABO88: ย้ายจากทองอร่ามคู่เปลวไฟของ กงล้อ88 (ซึ่งก่อนหน้านั้นเป็นแผงสว่างฟ้าของ
-// 9UFA — ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้
-// ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
-// git history) มาที่นีออนม่วงคู่ทองของแบรนด์นี้ — ม่วง #bf3cfa / #e3b8ff / #8b1fd6 /
-// #4a0b8f คู่ทอง #f5c518 / #ffe9a3 บนผิว #20064a / #0a0118 เนื้อความ #ece0ff
+// SBOGOOL: ย้ายจากนีออนม่วงคู่ทองของแบรนด์ก่อน (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
+// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
+// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่น้ำเงินรอยัลสนามไฟคู่ทอง
+// ของแบรนด์นี้ — น้ำเงิน #1e4bb8 / #2f6fe4 / #5b9cff / #7fb0ff / #0b1f52 คู่ทอง
+// #f5c518 / #ffe07a บนผิว #071433 / #030b22 / #0d1f4d เนื้อความ #dce7fb
 //
 // บล็อกนี้เป็น widget ไม่ใช่ section ของ docx — บรรทัดหัวจึงเป็น <p> (คลาสเดิมทุกตัว)
 // ไม่ใช่ <h2> และชื่อสำหรับ assistive tech ย้ายไปอยู่ที่ aria-label บน <section>
@@ -28,23 +28,23 @@ const sectionLabel = title ?? "คำถามที่พบบ่อย";
 ---
 
 <section aria-label={sectionLabel} class="mx-auto max-w-[1000px] px-4 py-10 font-sans">
-  {title && <p class="mb-8 bg-gradient-to-r from-[#faf5ff] via-[#e3b8ff] to-[#bf3cfa] bg-clip-text text-center text-2xl font-black tracking-tight text-transparent md:text-4xl">{title}</p>}
+  {title && <p class="mb-8 bg-gradient-to-r from-[#e8eefc] via-[#7fb0ff] to-[#f5c518] bg-clip-text text-center text-2xl font-black tracking-tight text-transparent md:text-4xl">{title}</p>}
 
   <div class="space-y-4">
     {
       faqs.map((faq) => (
         // `name` makes this an exclusive accordion natively — opening one closes
         // the rest, which is what the removed script did by hand.
-        <details name="faq-plain" class="faq-item group overflow-hidden rounded-xl border border-[#bf3cfa]/25 bg-gradient-to-br from-[#20064a] to-[#0a0118] transition-all hover:border-[#e3b8ff]/55">
+        <details name="faq-plain" class="faq-item group overflow-hidden rounded-xl border border-[#1e4bb8]/25 bg-gradient-to-br from-[#0d1f4d] to-[#030b22] transition-all hover:border-[#5b9cff]/55">
           <summary class="flex w-full cursor-pointer items-center justify-between p-5 text-left transition-all">
-            <span class="text-base font-bold text-[#e3b8ff] md:text-lg">{faq.q}</span>
+            <span class="text-base font-bold text-[#7fb0ff] md:text-lg">{faq.q}</span>
             <span
               aria-hidden="true"
               class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#f5c518]/40 text-lg leading-none font-black text-[#f5c518] transition-transform duration-300">
               +
             </span>
           </summary>
-          <div class="faq-answer border-t border-[#4a0b8f]/60 p-5 pt-0 text-left text-base leading-relaxed text-[#ece0ff]">{faq.a}</div>
+          <div class="faq-answer border-t border-[#0b1f52]/60 p-5 pt-0 text-left text-base leading-relaxed text-[#dce7fb]">{faq.a}</div>
         </details>
       ))
     }
@@ -64,13 +64,13 @@ const sectionLabel = title ?? "คำถามที่พบบ่อย";
     display: none;
   }
   .faq-item[open] {
-    border-color: rgba(191, 60, 250, 0.6);
+    border-color: rgba(47, 111, 228, 0.6);
     box-shadow: 0 0 20px rgba(245, 197, 24, 0.3);
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
     border-color: #f5c518;
-    color: #ffe9a3;
+    color: #ffe07a;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;

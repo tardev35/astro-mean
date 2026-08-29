@@ -14,15 +14,15 @@ const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.pro
 // `title` คือหัวข้อเดียวที่ปล่อยออกมาได้ (วางเหนือคอลัมน์เนื้อความฝั่ง 7 ส่วน) ส่วน
 // titleleft/titleright เป็นป้ายคอลัมน์ระดับ <p>
 //
-// XTOP666: ย้ายชุดสีมาที่ส้มเรซซิ่งคู่แดงหลอมของแบรนด์นี้ที่วัดจากอาร์ตจริง —
-// สีเน้นหลัก #fc5b03 / #ff8a3d / #ffc9a3 / #a33200 คู่แดง #e11212 (ใช้เป็นสีเน้นรอง
-// เท่านั้น) บนผิว #0a0403 เนื้อความ #f6e5dc ข้อความรอง #c9a394 หัวข้อ #fff0e6
-// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
-// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+// GUESS168: ย้ายชุดสีมาที่ทองหลอมคู่ส้มไฟของแบรนด์นี้ที่วัดจากอาร์ตจริง —
+// สีเน้นหลัก #fecc02 / #ffe680 / #ffd54a / #fff6e0 / #c58a00 คู่ส้ม #fe9c01 /
+// #a35800 (ใช้เป็นสีเน้นรองเท่านั้น) บนผิว #140800 เนื้อความ #f7e7c6 ข้อความรอง
+// #d8bb87 หัวข้อ #fff6e0 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกน
+// ไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 //
 // Neumorphism แปลว่าเงาสองด้านต้องเป็นเฉดเข้ม/อ่อนของสีการ์ดเอง ไม่ใช่สีแบรนด์:
-// #030101 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #1a0603 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
-// ไฮไลต์ ถ้าเอาสีส้มนีออนไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
+// #060200 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #231005 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
+// ไฮไลต์ ถ้าเอาสีทองไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
 //
 // ไม่มี text-center บนการ์ดหรือ <section> โดยตั้งใจ — ถ้าใส่ มันจะ inherit ลงไปใน
 // slot แล้วย่อหน้าเนื้อความจะถูกจัดกึ่งกลางตามไปด้วย
@@ -31,19 +31,19 @@ const sectionLabel = title ? undefined : (label ?? titleright ?? titleleft ?? "�
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#fc5b03]/30 bg-[#0a0403] p-8 shadow-[10px_10px_20px_#030101,-10px_-10px_20px_#1a0603] transition-all duration-300 hover:shadow-[15px_15px_30px_#030101,-15px_-15px_30px_#2e0c04]">
+    class="w-full rounded-[25px] border border-[#fecc02]/30 bg-[#140800] p-8 shadow-[10px_10px_20px_#060200,-10px_-10px_20px_#231005] transition-all duration-300 hover:shadow-[15px_15px_30px_#060200,-15px_-15px_30px_#33180a]">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#c9a394]">
-        {titleleft && <p class="bg-gradient-to-r from-[#fff0e6] via-[#ffc9a3] to-[#e11212] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d8bb87]">
+        {titleleft && <p class="bg-gradient-to-r from-[#fff6e0] via-[#ffd54a] to-[#fe9c01] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6e5dc] md:border-l md:border-[#fc5b03]/30 md:pl-8">
-        {title && <HeadingTag class="bg-gradient-to-r from-[#fff0e6] via-[#ff8a3d] to-[#a33200] bg-clip-text text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e7c6] md:border-l md:border-[#fecc02]/30 md:pl-8">
+        {title && <HeadingTag class="bg-gradient-to-r from-[#fff6e0] via-[#ffe680] to-[#c58a00] bg-clip-text text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
         {
           titleright && (
-            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#fff0e6]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#fc5b03] shadow-[0_0_5px_rgba(252,91,3,0.8)]" /> {titleright}
+            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#fff6e0]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#fecc02] shadow-[0_0_5px_rgba(254,204,2,0.8)]" /> {titleright}
             </p>
           )
         }

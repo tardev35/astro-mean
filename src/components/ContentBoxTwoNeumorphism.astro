@@ -8,15 +8,15 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// XTOP666: variant นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind
+// GUESS168: variant นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind
 // สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
-// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้ย้ายมาที่ส้มเรซซิ่งคู่แดง
-// หลอม #fc5b03 / #ff8a3d / #ffc9a3 / #fff0e6 คู่แดง #ff5a4d บนผิวยก #1a0603
-// เนื้อความ #f6e5dc
+// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้ย้ายมาที่ทองหลอมคู่ส้มไฟ
+// #fecc02 / #ffe680 / #ffd54a / #fff6e0 คู่ส้ม #fe9c01 บนผิวยก #231005
+// เนื้อความ #f7e7c6
 //
 // คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
-// #030101 (เข้มกว่าผิวการ์ด) ไฮไลต์ใช้ #2e0c04 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าเอา
-// #fc5b03 มาใส่ การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน
+// #0a0400 (เข้มกว่าผิวการ์ด) ไฮไลต์ใช้ #33180a (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าเอา
+// #fecc02 มาใส่ การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน
 //
 // titleleft/titleright เป็น <p> เพราะมันตั้งชื่อคอลัมน์ UI ไม่ใช่ section ของ docx
 // ส่วน prop `title` คือหัวข้อเดียวที่ component นี้ปล่อยได้ (แบบเดียวกับ
@@ -29,23 +29,23 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#fc5b03]/25 bg-[#1a0603] p-8 shadow-[10px_10px_20px_#030101,-10px_-10px_20px_#2e0c04] transition-all duration-300 hover:shadow-[15px_15px_30px_#030101,-15px_-15px_30px_#4a1405]">
+    class="w-full rounded-[25px] border border-[#fecc02]/25 bg-[#231005] p-8 shadow-[10px_10px_20px_#0a0400,-10px_-10px_20px_#33180a] transition-all duration-300 hover:shadow-[15px_15px_30px_#0a0400,-15px_-15px_30px_#4a2410]">
     {
       title && (
-        <header class="mb-8 border-b border-[#fc5b03]/25 pb-4 text-center">
-          <HeadingTag class="bg-gradient-to-r from-[#fff0e6] via-[#ffc9a3] to-[#fc5b03] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#fecc02]/25 pb-4 text-center">
+          <HeadingTag class="bg-gradient-to-r from-[#fff6e0] via-[#ffd54a] to-[#fecc02] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6e5dc]">
-        {titleleft && <p class="text-2xl leading-normal font-black tracking-wide text-[#ff5a4d]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e7c6]">
+        {titleleft && <p class="text-2xl leading-normal font-black tracking-wide text-[#fe9c01]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6e5dc] md:border-l md:border-[#fc5b03]/20 md:pl-8">
-        {titleright && <p class="text-2xl leading-normal font-black tracking-wide text-[#ff5a4d]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e7c6] md:border-l md:border-[#fecc02]/20 md:pl-8">
+        {titleright && <p class="text-2xl leading-normal font-black tracking-wide text-[#fe9c01]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

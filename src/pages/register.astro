@@ -9,13 +9,13 @@ const targetUrl = "https://yoalink.com/znmz";
 // neither the @theme fallback for --font-sans nor the self-hosted Kanit
 // @font-face. Both have to be supplied here or the page renders in the browser
 // default while the rest of the site does not — hence the @font-face rules in
-// the first <style> block below. XTOP666 runs BRAND_FONT = "kanit", so this
-// round the typeface comes from those self-hosted rules and the CDN <link> is
-// only fetching Oswald; leave both in place either way, the flag flips every
+// the first <style> block below. GUESS168 runs BRAND_FONT = "kanit", so this
+// round the typeface comes from those self-hosted rules and the CDN <link>
+// carries Oswald only; leave both in place either way, the flag flips every
 // rebrand.
 //
-// Oswald is the only face left that needs a CDN on a Kanit brand: the two
-// display headings use it and it is not self-hosted.
+// Oswald is the face the two display headings use and it is not self-hosted, so
+// it stays in the CDN query on both branches.
 //
 // The old value asked Google for "Kanit:wght@300;400;600" even though the site
 // self-hosts Kanit: a third-party request for weights nothing here draws (300
@@ -26,10 +26,11 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: XTOP666 is a HIGH-ENERGY NEON
-// SPEED brand — racing orange (#fc5b03 / #d94a02 / #ffc9a3 / #a33200) with
-// MOLTEN RED (#e11212) as the second accent, on a warm near-black surface
-// (#0a0403 / #1a0603) with #f6e5dc body text. Not gold, not luxury.
+// Palette note for the second <style> block: GUESS168 is a GOLD-ON-BLACK NEON
+// JACKPOT brand — molten gold (#fecc02 / #ffd54a / #ffe680 / #fff6e0) as the
+// primary hue with FIRE ORANGE (#fe9c01 / #a35800) as the second accent and
+// DEEP AMBER (#c58a00) on the borders and glows, over a warm near-black surface
+// (#140800 / #231005 / #33180a) with #f7e7c6 body text. Not blue, not cool.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
@@ -40,8 +41,8 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก XTOP666 | เปิดยูสสล็อตเว็บตรง ฟรีไม่มีค่าธรรมเนียม</title>
-    <meta name="description" content="สมัครสมาชิก XTOP666 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นเกมค่ายดังได้ครบทุกแนว โหลดเกมไวตั้งแต่คลิกแรก โบนัสรับได้เลย" />
+    <title>สมัครสมาชิก GUESS168 | เปิดยูสสล็อตคัดเกรด ฟรีไม่มีค่าธรรมเนียม</title>
+    <meta name="description" content="สมัครสมาชิก GUESS168 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นเกมลิขสิทธิ์ครบทุกค่าย รับโปรเด็ดและฝากถอนออโต้ทุกขั้นตอน" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {
@@ -78,16 +79,17 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #0a0403;
-        --panel-bg: rgba(26, 6, 3, 0.92);
-        --brand-orange: #d94a02;
-        --brand-orange-bright: #fc5b03;
-        --brand-orange-light: #ffc9a3;
-        --brand-orange-deep: #a33200;
-        --brand-red: #e11212;
-        --border-ember: #2e0c04;
-        --text-body: #f6e5dc;
-        --text-muted: #c9a394;
+        --page-bg: #140800;
+        --panel-bg: rgba(35, 16, 5, 0.92);
+        --gold-pale: #fff6e0;
+        --gold-light: #ffe680;
+        --gold-bright: #ffd54a;
+        --gold-primary: #fecc02;
+        --orange-accent: #fe9c01;
+        --orange-deep: #a35800;
+        --surface-raised: #33180a;
+        --text-body: #f7e7c6;
+        --text-muted: #d8bb87;
       }
 
       body {
@@ -95,7 +97,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(252, 91, 3, 0.28) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(225, 18, 18, 0.18) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(197, 138, 0, 0.32) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(254, 156, 1, 0.2) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -109,11 +111,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(252, 91, 3, 0.38);
+        border: 1px solid rgba(197, 138, 0, 0.42);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(10, 4, 3, 0.6),
-          0 0 2rem rgba(252, 91, 3, 0.25);
+          0 1rem 3rem rgba(20, 8, 0, 0.6),
+          0 0 2rem rgba(197, 138, 0, 0.28);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -122,13 +124,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--brand-orange-light) 0%, var(--brand-orange-bright) 40%, var(--brand-orange-deep) 100%);
+        background: linear-gradient(180deg, var(--gold-pale) 0%, var(--gold-bright) 45%, var(--orange-accent) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(252, 91, 3, 0.45));
+        filter: drop-shadow(0 1px 2px rgba(197, 138, 0, 0.5));
       }
 
       .sophisticated-loader {
@@ -144,30 +146,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--brand-orange-light) 0%, var(--brand-orange-bright) 45%, var(--brand-orange-deep) 100%);
+        background: radial-gradient(circle, var(--gold-light) 0%, var(--gold-primary) 45%, var(--orange-deep) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(252, 91, 3, 0.45);
+        box-shadow: 0 0 2rem rgba(197, 138, 0, 0.5);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(217, 74, 2, 0.22);
+        border: 3px solid rgba(197, 138, 0, 0.24);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--brand-orange-bright);
+        border-top-color: var(--gold-primary);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--brand-red);
+        border-bottom-color: var(--orange-accent);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -184,11 +186,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(252, 91, 3, 0.45);
+          box-shadow: 0 0 2rem rgba(197, 138, 0, 0.5);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(225, 18, 18, 0.45);
+          box-shadow: 0 0 3rem rgba(254, 204, 2, 0.42);
         }
       }
 
@@ -199,7 +201,7 @@ const fontHref = usesGoogleFonts
         letter-spacing: 0.1em;
         text-transform: uppercase;
         color: var(--text-body);
-        text-shadow: 0 1px 1px var(--border-ember);
+        text-shadow: 0 1px 1px var(--surface-raised);
         margin: 0;
       }
       .status-text .p {
@@ -212,7 +214,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">XTOP666</div>
+      <div class="brand-identity">GUESS168</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -222,7 +224,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก XTOP666 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก GUESS168 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

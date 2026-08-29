@@ -1,102 +1,106 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
 import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
 import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
 import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBoxTwoFloatingBadge from "../components/ContentBoxTwoFloatingBadge.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
 import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
+import ProviderGridPremium from "../components/ProviderGridPremium.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import LatestWinners3 from "../components/LatestWinners3.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
-import Faq from "../components/Faq2.astro";
+import Faq4 from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgAllProviders from "../assets/slide2.png";
-import imgBonusCashback from "../assets/slide1.png";
+import imgPromoDeposit500 from "../assets/slide3.png";
+import imgGoldWheel from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxNeumorphism as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right)
-//   3 → ContentBox3ThreeCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/center/right)
-//   4 → ContentBoxSevenThreeCyberCut as="h2" + slide2 (แบนเนอร์คืนยอดเสียสล็อต 10%
-//       ทุกค่าย ตรงกับหัวข้อเรื่องเกมค่ายดังหลายแนว) แล้วต่อด้วย ProviderGrid ซึ่ง
-//       เป็นภาพประกอบของหัวข้อเดียวกัน
-//   5 → ContentBoxTwoFloatingBadge as="h2" (แบ่งย่อหน้าเดียวลง left/right) แล้วต่อ
-//       ด้วย GameRankingBoard ซึ่งเป็นตัวอย่างของเมนูที่จัดวางให้หยิบใช้คล่อง
-//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (แบนเนอร์เล่นเสียก็ได้คืน
-//       รับเลย 5% ตรงกับหัวข้อเรื่องโบนัสรับได้เลย) แล้วต่อด้วย LatestWinners3
-//   7 → ContentBoxFloatingBadge as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   1 → ContentBoxCyberCut as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right) แล้วต่อด้วย
+//       ProviderGridPremium ซึ่งเป็นภาพประกอบของหัวข้อเดียวกันเรื่องคลังเกมลิขสิทธิ์
+//       จากค่ายใหญ่มาตรฐานสากล
+//   3 → ContentBoxFloatingBadge as="h2" (ย่อหน้าเดียวใน slot เดียว) แล้วต่อด้วย
+//       GameRankingBoard ซึ่งกางลิสต์เกมที่เพิ่งเข้าคลังของหัวข้อเดียวกัน
+//   4 → ContentBox3ThreeCyberCut as="h2" (ย่อหน้าเดียวของ docx ระบุฟีเจอร์ไว้พอดี
+//       สามกลุ่ม — Multiplier / Wild ซ้อนทับ กับ Cascading / Bonus Buy — จึงลง
+//       คอลัมน์ละกลุ่มตามลำดับประโยคเดิม)
+//   5 → ContentBoxSevenThreeCyberCut as="h2" + slide3 (โปสเตอร์โปรฝาก 500 ขึ้นไป
+//       รับเพิ่ม 10% ตรงกับหัวข้อเรื่องโปรน่าสนใจ) แล้วต่อด้วย LatestWinners3
+//   6 → ContentBoxSpecial as="h2" (บล็อกสองครึ่ง)
+//   7 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (โปสเตอร์ปั่นกงล้อรับทองคำ
+//       ซึ่งเป็นกิจกรรมที่กดได้จบในเว็บเดียว ตรงกับหัวข้อสุดท้าย)
 //
-// variant รอบนี้หมุนทั้งตระกูลจากรอบก่อน: ทรง ContentBox ย้ายจากชุด plain +
-// Premium + Special มาเป็นชุด Neumorphism + CyberCut + FloatingBadge ส่วน Navbar
-// เป็น NavbarStyle6, Footer เป็น FooterCyber, Announcement เป็น AnnouncementCyber,
-// LatestWinners เป็น LatestWinners3 และ Faq เป็น Faq2
+// variant รอบนี้หมุนทั้งตระกูลจากรอบก่อน: ทรง ContentBox ย้ายจากชุด Premium +
+// plain + Special มาเป็นชุด CyberCut + Neumorphism + FloatingBadge + Special
+// ส่วน Navbar เป็น NavbarStyle9, Footer เป็น FooterPremiumSumo, Announcement เป็น
+// AnnouncementPremium, LatestWinners เป็น LatestWinners3, Faq เป็น Faq4 และ
+// provider grid เป็น ProviderGridPremium
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
-// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ AnnouncementCyber
-// เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความ
-// เดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ
-// emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
+// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ AnnouncementPremium
+// เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความเดียวกับ
+// หน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ emoji ที่ฝัง
+// ในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide2 คู่กับหัวข้อข้อ 4 และ
-// slide1 คู่กับหัวข้อข้อ 6 ส่วน slide3 / slide4 กับ banner ทุกหมายเลขที่ไม่ใช่
-// banner1 เป็นอาร์ตค้างของแบรนด์ก่อนๆ ห้าม import ที่ไหนทั้งสิ้น — รูปที่ import
-// คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 เป็นของ MainLayout
-// จัดการเอง และ banner1-mobile ไม่มีอยู่ในรอบนี้
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide3 คู่กับหัวข้อข้อ 5 และ slide1
+// คู่กับหัวข้อข้อ 7 ส่วน slide2 ปรากฏบนหน้านี้เฉพาะในแถบ SmoothCarousel (ที่อยู่จริง
+// ของมันคือกริดหน้า /promotion) และ slide4 เป็นอาร์ตค้างของแบรนด์ก่อน ห้าม import
+// ที่ไหนทั้งสิ้น เช่นเดียวกับ banner ทุกหมายเลข — รูปที่ import คือรูปที่ถูก emit
+// ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ MainLayout
+// จัดการเอง
 //
 // widget ที่ไม่ได้มาจาก docx (LoginRtpSection, ReviewCardSumo2, SmoothCarousel,
 // แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้ายเป็น <p>/<span> + aria-label บน
 // <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสามตัวที่เป็น
-// ภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 4,
-// GameRankingBoard → ข้อ 5, LatestWinners3 → ข้อ 6) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// ภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGridPremium → ข้อ 2,
+// GameRankingBoard → ข้อ 3, LatestWinners3 → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
-// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี ไม่มีตัวที่แปด — หัว FAQ เป็น <p> ใน Faq2.astro
-// คำถามใน Faq เป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
+// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี ไม่มีตัวที่แปด — หัว FAQ เป็น <p> ใน Faq4.astro
+// คำถามใน Faq4 เป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
 // เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
 //
-// title ใช้บรรทัด Title ของ docx ตรงๆ (61 ตัวอักษร) ส่วน description ใช้บรรทัด Des
-// ของ docx (137 ตัวอักษร ต่ำกว่าเกท 150–160 ของ tools/verify-build.mjs ซึ่งจะทำให้
-// build แดง) โดยต่อหางเป็น "ครบจบในเว็บเดียว" ให้ยาว 154 ตัวอักษร ค่าที่ใช้เป็น
-// สตริงเดียวกับที่ส่งเข้า pageGraph และตรงกับที่ส่งให้ MainLayout
-const pageTitle = "XTOP666 | สล็อตสปีดท็อป โหลดเกมไว ระบบพร้อมบวก โบนัสรับได้เลย";
-const pageDescription =
-  "XTOP666 สล็อตสปีดท็อป โหลดเกมไวผ่านลิงก์ตรงได้ทันใจ เกมค่ายดังให้เลือกเล่น ระบบพร้อมบวก โบนัสรับได้เลย ใช้งานต่อเนื่องได้ทั้งมือถือและคอม ครบจบในเว็บเดียว";
+// title ใช้บรรทัด Title ของ docx ตรงๆ (57 ตัวอักษร) ส่วน description ใช้บรรทัด Des
+// ของ docx ต่อหางให้อยู่ในเกท 150–160 ตัวอักษรของ tools/verify-build.mjs (156
+// ตัวอักษร) ค่าที่ใช้เป็นสตริงเดียวกับที่ส่งเข้า pageGraph ตรงกับที่ส่งให้ MainLayout
+// และตรงกับ default ที่ MainLayout ตั้งไว้เป๊ะ
+const pageTitle = "GUESS168 | สล็อตคัดเกรด เกมลิขสิทธิ์แน่น ฝากถอนออโต้ทันใจ";
+const pageDescription = "GUESS168 สล็อตคัดเกรด เกมลิขสิทธิ์แน่นจากค่ายดัง อัปเดตใหม่มีให้ตาม ฟีเจอร์ครบ โปรน่าสนใจ ฝากถอนออโต้ทันใจใน 3 วินาที รวมทุกจังหวะการเล่นไว้ครบจบในเว็บเดียว";
 
 const announcementMessage =
-  "XTOP666 สล็อตสปีดท็อป โหลดเกมไว ระบบพร้อมบวก โบนัสรับได้เลย • เว็บตรงสายสปีดที่ออกแบบมาเพื่อตัดทุกความล่าช้าออกไป ตั้งแต่โหลดเกมรวดเร็วฉับไว ระบบหลังบ้านเสถียรพร้อมบวกทุกสถานการณ์ • ปรับระบบให้ทำงานด้วยความเร็วสูงสุด คลิกเข้าหน้าเว็บแล้วประมวลผลขึ้นแสดงทันที ไม่ต้องนั่งรอหน้าจอโหมดหมุนติ้ว • ลิงก์ตรงทางเข้าไม่ผ่านหน้าเอเย่นต์ ตัดการกรอกข้อมูลซ้ำซ้อนและการยืนยันตัวตนหลายชั้นออก พุ่งตรงเข้าล็อบบี้เกมค่ายดังได้ในคลิกเดียว • คัดเกมค่ายชั้นนำมาหลากสไตล์ ทั้งแฟนตาซีภาพ 3D อลังการ คลาสสิกโบนัสแตกไว และสายสะสมตัวคูณ เลือกได้ตรงจริตทุกคน • วางเมนูฝากถอน คลังเกม ค่ายเกม และหน้ากิจกรรมไว้เป็นระเบียบ กดหยิบใช้งานได้ทันทีไม่ต้องคลิกวนหาหลายชั้น • โบนัสกดรับเองได้ก่อนเข้าตัวเกม ทั้งเครดิตเพิ่มทุนรายวันและสิทธิประโยชน์จากการเติมเงิน เพิ่มรอบสปินและโอกาสพิชิตแจ็คพอตก้อนใหญ่ • มือถือก็ไว คอมก็เต็มจอ ระบบปรับสเกลตามหน้าจอโดยอัตโนมัติ ลื่นไหลระดับเดียวกันในทุกช่องทาง";
+  "GUESS168 สล็อตคัดเกรด เกมลิขสิทธิ์แน่น ฝากถอนออโต้ทันใจ • เว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก คัดเฉพาะสล็อตแตกง่ายค่า RTP สูง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ • ระบบฝากถอนออโต้ทำงานใน 3 วินาที ถอนปุ๊บเงินเข้าปั๊บ ไร้เทิร์นโอเวอร์จุกจิก ปั่นได้เท่าไหร่ถอนออกได้ครบทุกบาท • คัดกรองเฉพาะค่ายใหญ่มาตรฐานสากล PG Soft Pragmatic Play และ Joker Gaming ทุกเกมผ่านการทดสอบอัตราจ่าย เบทเริ่มต้น 1 บาทก็ลุ้นโบนัสก้อนโตได้ทันที • ค่ายใหญ่ปล่อยเกมไหน อัปเดตเข้าคลังทันทีใน 24 ชั่วโมง พร้อมโหมดทดลองเล่นฟรีให้เช็กจังหวะโบนัสและกลไกเกมก่อนลงเงินจริง • ฟีเจอร์อัดแน่นทั้ง Multiplier สุ่มตัวคูณหนัก ระบบ Wild ซ้อนทับ คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy ซื้อฟรีสปิน • โบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน กดรับเองผ่านหน้าเว็บ เงื่อนไขชัดเจน ไม่ติดล็อกยูส • กระเป๋าเดียวจบ เลือกเกม สลับค่าย กดรับโปร และกดถอนกำไร ทำได้ครบผ่านหน้าแดชบอร์ดเดียว";
 
 // FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
 // ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
 // ที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "XTOP666 บอกว่าเป็นสล็อตสปีดท็อป วัดความเร็วจากตรงไหน",
-    a: "ความเร็วของที่นี่เริ่มนับตั้งแต่คลิกแรก ระบบถูกปรับแต่งให้ทำงานด้วยความเร็วสูงสุด พอเข้าหน้าเว็บก็ประมวลผลและดึงข้อมูลขึ้นมาแสดงผลทันที ไม่ต้องนั่งรอหน้าจอโหมดหมุนติ้ว การเร่งจังหวะตั้งแต่เริ่มต้นแบบนี้ทำให้ผู้เล่นไม่เสียเวลา ไม่เสียอารมณ์ และเข้าถึงหน้าเลือกเกมได้เร็วกว่าระบบทั่วไปหลายเท่า",
+    q: "GUESS168 เป็นเว็บตรงจริงไหม แล้วค่า RTP ถูกดัดแปลงหรือเปล่า",
+    a: "เป็นเว็บตรงที่ใช้ API แท้ยิงตรงจากเซิร์ฟเวอร์หลักของค่ายเกม ไม่มีการดัดแปลงเปอร์เซ็นต์ชนะระหว่างทาง เกมที่คัดเข้าคลังจึงเป็นสล็อตแตกง่ายที่ค่า RTP สูงตามที่ค่ายตั้งไว้จริง และเมื่อรวมกับกติกาที่ไม่มีเทิร์นโอเวอร์จุกจิก ปั่นได้เท่าไหร่ก็ถอนออกได้ครบทุกบาทโดยไม่มีเงื่อนไขซ่อนไว้ตอนกดถอน",
   },
   {
-    q: "ลิงก์ตรงของ XTOP666 ตัดขั้นตอนอะไรออกไปบ้าง",
-    a: "ลิงก์ตรงทางเข้าถูกพัฒนาให้ไม่ต้องผ่านหน้าเว็บเอเย่นต์หรือหน้าเปลี่ยนเส้นทางซับซ้อน จึงตัดขั้นตอนยุ่งยากออกไปได้ทั้งการกรอกข้อมูลซ้ำซ้อน การยืนยันตัวตนหลายชั้น และการรอโหลดหน้าคีย์ข้อมูล ผลคือคุณพุ่งตรงเข้าสู่หน้าล็อบบี้ของเกมค่ายดังระดับโลกได้ในคลิกเดียว โฟกัสอยู่กับเกมโปรดได้ทันที",
+    q: "ในคลังมีค่ายเกมอะไรบ้าง แล้วต้องเบทขั้นต่ำเท่าไหร่ถึงจะลุ้นโบนัสได้",
+    a: "คลังคัดกรองเฉพาะค่ายใหญ่มาตรฐานสากลอย่าง PG Soft, Pragmatic Play และ Joker Gaming ไม่เอาเกมไร้คุณภาพมาลงให้รกคลัง ทุกเกมผ่านการทดสอบอัตราจ่ายและจ่ายจริงตามอัลกอริทึมโรงงาน ส่วนเรื่องทุนไม่ต้องอัดหนักตั้งแต่ไม้แรก เพราะเบทเริ่มต้นที่ 1 บาทก็อยู่ในเงื่อนไขลุ้นโบนัสก้อนโตได้ทันทีเหมือนกัน",
   },
   {
-    q: "เกมในเว็บมีแนวไหนให้เลือกบ้าง",
-    a: "เกมจากค่ายชั้นนำถูกคัดมาแบบพิถีพิถัน ไม่ได้เอาจำนวนเข้าขู่ แต่เน้นให้มีจุดเด่นหลากหลายสไตล์ ทั้งสล็อตแนวแฟนตาซีภาพ 3D อลังการ สล็อตสไตล์คลาสสิกที่เน้นโบนัสแตกไว และสล็อตสายสะสมตัวคูณสุดมันส์ ผู้เล่นทุกคนจึงเลือกเกมที่ตรงกับจริตและสไตล์การเล่นของตัวเองได้อย่างลงตัว",
+    q: "เกมที่ค่ายเพิ่งปล่อยใหม่ ต้องรอนานแค่ไหน แล้วลองเล่นก่อนได้ไหม",
+    a: "ไม่ต้องรอข้ามสัปดาห์และไม่ต้องคอยให้กระแสซา เพราะค่ายใหญ่ปล่อยเกมไหนก็ถูกอัปเดตเข้าคลังภายใน 24 ชั่วโมง ไม่มีขั้นตอนรอระบบอนุมัติมาคั่น และทุกเกมมีโหมดทดลองเล่นฟรีให้กดเข้าไปเช็กจังหวะโบนัสกับกลไกของเกมก่อนลงเงินจริง จึงจับทางตัวใหม่ได้ก่อนตัดสินใจวางเบท",
   },
   {
-    q: "หาเมนูฝากถอนหรือคลังเกมยากไหม ต้องคลิกวนหลายชั้นหรือเปล่า",
-    a: "อินเทอร์เฟซออกแบบโดยคำนึงถึงผู้ใช้งานเป็นหลัก เมนูสำคัญอย่างปุ่มฝากถอน คลังเกม ค่ายเกม และหน้ากิจกรรมถูกวางตำแหน่งไว้อย่างเป็นระเบียบชัดเจน อยากใช้ฟังก์ชันไหนก็กดหยิบใช้งานได้ทันที ไม่ต้องคลิกวนหาหลายชั้นให้เสียเวลา ช่วยเพิ่มความคล่องตัวให้ลุยทำกำไรได้อย่างแม่นยำ",
+    q: "ฟีเจอร์ในเกมมีอะไรบ้าง แล้วสายใจร้อนควรเลือกโหมดไหน",
+    a: "ลูกเล่นหลักมีสี่กลุ่ม ได้แก่ Multiplier ที่สุ่มแจกตัวคูณหนัก ระบบ Wild ซ้อนทับ คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Bonus Buy สายใจร้อนที่อยากพุ่งตรงเข้าลุ้นรางวัลใหญ่มักเลือก Bonus Buy เพราะซื้อฟรีสปินเข้ารอบได้เลย ส่วนคนที่ชอบลุ้นยาวในสปินเดียวจะถูกใจ Cascading ที่แตกต่อกันเป็นชุดมากกว่า",
   },
   {
-    q: "โบนัสต้องรอทีมงานอนุมัติก่อนไหม และเล่นบนมือถือได้เต็มที่หรือเปล่า",
-    a: "ระบบโบนัสเปิดให้ผู้เล่นเลือกกดรับสิทธิพิเศษได้เองทันทีก่อนเข้าสู่ตัวเกม ทั้งเครดิตเพิ่มทุนรายวันและสิทธิประโยชน์จากการเติมเงิน ช่วยเสริมสภาพคล่อง เพิ่มรอบการหมุนสปิน และยกระดับโอกาสพิชิตแจ็คพอตก้อนใหญ่ ส่วนการใช้งานครอบคลุมทุกอุปกรณ์ ตัวระบบปรับสเกลตามหน้าจอโดยอัตโนมัติ ทั้งมือถือและคอมจึงลื่นไหลระดับเดียวกัน",
+    q: "โปรมีอะไรบ้าง ต้องแจ้งแอดมินไหม แล้วฝากถอนใช้เวลานานเท่าไหร่",
+    a: "สิทธิ์หลักมีโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน ทั้งหมดกดรับเองผ่านหน้าเว็บโดยไม่ต้องแจ้งแอดมิน เงื่อนไขเขียนไว้ชัดเจนและไม่ติดล็อกยูส ส่วนการทำรายการวิ่งผ่าน Gateway ตรง ฝากถอนเสร็จใน 3-5 วินาที ไม่ต้องโอนสลิปและไม่ต้องคอยคิวอนุมัติ",
   },
 ];
 
@@ -114,91 +118,48 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxNeumorphism as="h1" title="XTOP666 สล็อตสปีดท็อป โหลดเกมไว ระบบพร้อมบวก โบนัสรับได้เลย">
+  <ContentBoxCyberCut as="h1" title="GUESS168 สล็อตคัดเกรด เกมลิขสิทธิ์แน่น ฝากถอนออโต้ทันใจ">
     <p class="text-left text-base leading-relaxed">
-      ปลดล็อกความสะใจของการปั่นสล็อตที่เน้นความเร็วระดับสปีดท็อปกับ XTOP666 เว็บตรงสายสปีดที่ถูกออกแบบมาเพื่อตัดทุกความล่าช้าออกไป ตั้งแต่การโหลดเกมที่รวดเร็วฉับไว
-      ระบบหลังบ้านเสถียรพร้อมบวกทุกสถานการณ์ และโบนัสพิเศษที่พร้อมกดรับไปใช้เพิ่มทุนได้ทันทีโดยไม่มีเงื่อนไขยุ่งยาก ตอบโจทย์สายปั่นยุคใหม่ที่ต้องการความคล่องตัว
-      ทำกำไรได้ต่อเนื่องแบบไม่มีสะดุด
+      GUESS168 เว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก คัดเฉพาะสล็อตแตกง่ายค่า RTP สูง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ ระบบฝากถอนออโต้ทำงานใน 3 วินาที ถอนปุ๊บเงินเข้าปั๊บ ไร้เทิร์นโอเวอร์จุกจิก
+      ปั่นได้เท่าไหร่ถอนออกได้ครบทุกบาท
     </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxCyberCut>
 
   <ContentBoxTwoNeumorphism
     as="h2"
-    title="XTOP666 สล็อตสปีดท็อป เร่งจังหวะเข้าเกมให้ไวตั้งแต่คลิกแรก"
-    titleleft="ประมวลผลขึ้นทันทีตั้งแต่คลิกแรก"
-    titleright="ถึงหน้าเลือกเกมไวกว่าหลายเท่า">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      หัวใจสำคัญของ XTOP666 คือการปรับแต่งระบบให้ทำงานด้วยความเร็วสูงสุด ตั้งแต่คุณคลิกเข้าหน้าเว็บ ตัวระบบจะทำการประมวลผลและดึงข้อมูลขึ้นมาแสดงผลทันทีโดยไม่ต้องนั่งรอหน้าจอโหมดหมุนติ้ว
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      การเร่งจังหวะความเร็วตั้งแต่เริ่มต้นช่วยให้ผู้เล่นไม่เสียเวลา ไม่เสียอารมณ์ และเข้าสู่หน้าเลือกเกมได้รวดเร็วกว่าระบบทั่วไปหลายเท่า
-    </p>
+    title="GUESS168 สล็อตคัดเกรด เปิดคลังเกมลิขสิทธิ์จากค่ายดังแบบเน้นตัวมีของ"
+    titleleft="คัดเฉพาะค่ายใหญ่มาตรฐานสากล"
+    titleright="ทดสอบอัตราจ่ายทุกเกม เบทเริ่ม 1 บาท">
+    <p slot="left" class="text-left text-base leading-relaxed">GUESS168 สล็อตคัดเกรด คัดกรองเฉพาะค่ายใหญ่มาตรฐานสากล เช่น PG Soft, Pragmatic Play, และ Joker Gaming ไม่เอาเกมไร้คุณภาพมาลงให้รกคลัง</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ทุกเกมผ่านการทดสอบอัตราจ่าย จ่ายจริงตามอัลกอริทึมโรงงาน เบทเริ่มต้น 1 บาทก็ลุ้นโบนัสก้อนโตได้ทันที</p>
   </ContentBoxTwoNeumorphism>
 
-  <ContentBox3ThreeCyberCut
-    as="h2"
-    title="ลิงก์ตรงของ XTOP666 ช่วยตัดขั้นตอนไหนบ้าง ก่อนพาเข้าสู่เกมค่ายดัง"
-    titleleft="ไม่ผ่านหน้าเอเย่นต์"
-    titlecenter="ตัดขั้นตอนซ้ำซ้อน"
-    titleright="เข้าล็อบบี้ในคลิกเดียว">
-    <p slot="left" class="text-left text-base leading-relaxed">ด้วยการพัฒนาลิงก์ตรงทางเข้าที่ไม่ผ่านหน้าเว็บเอเย่นต์หรือหน้าเปลี่ยนเส้นทางซับซ้อน</p>
-    <p slot="center" class="text-left text-base leading-relaxed">
-      XTOP666 จึงช่วยตัดขั้นตอนยุ่งยากอย่างการกรอกข้อมูลซ้ำซ้อน การยืนยันตัวตนหลายชั้น หรือการรอโหลดหน้าคีย์ข้อมูลออกไปจนหมด
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ลิงก์ตรงนี้จะพาคุณพุ่งตรงเข้าสู่หน้าล็อบบี้ของเกมค่ายดังระดับโลกได้ในคลิกเดียว ช่วยรักษาจังหวะและโฟกัสการเล่นของคุณให้อยู่กับเกมโปรดได้ทันที
-    </p>
-  </ContentBox3ThreeCyberCut>
+  <ProviderGridPremium />
 
-  <ContentBoxSevenThreeCyberCut
-    as="h2"
-    title="เกมค่ายดังไม่ได้มาแค่ให้ครบ XTOP666 คัดหลายแนวให้เลือกตามสไตล์"
-    titleleft="สล็อต คืนยอดเสีย 10% ทุกค่าย">
-    <Picture
-      slot="left"
-      src={imgAllProviders}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชันของ XTOP666 พื้นสีดำไล่แดง ด้านซ้ายเป็นข้อความสีขาวตัวใหญ่ว่า สล็อต คืนยอดเสีย และบรรทัดถัดมาว่า 10% ทุกค่าย ฉากหลังเป็นกองชิปคาสิโนสีแดงและดำ ไพ่โพดำ A หนึ่งใบ และวงล้อรูเล็ตสีแดง ด้านขวาเป็นผู้หญิงผมยาวสีดำสวมชุดเกาะอกสีแดงกำลังยิ้ม"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#fc5b03]/45 shadow-[0_10px_30px_rgba(252,91,3,0.3)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      การขนเกมจากค่ายชั้นนำมาให้บริการที่ XTOP666 ไม่ใช่แค่การเอาจำนวนเข้าขู่ แต่เป็นการพิถีพิถันคัดสรรเกมที่มีจุดเด่นหลากหลายสไตล์มารวบรวมไว้ ทั้งสล็อตแนวแฟนตาซีภาพ 3D อลังการ
-      สล็อตสไตล์คลาสสิกที่เน้นโบนัสแตกไว หรือสล็อตสายสะสมตัวคูณสุดมันส์ ผู้เล่นทุกคนจึงสามารถเลือกเกมที่ตรงกับจริตและสไตล์การเล่นของตัวเองได้อย่างลงตัวที่สุด
+  <ContentBoxFloatingBadge as="h2" title="เกมอัปเดตใหม่มีอะไรให้ตาม? GUESS168 เติมตัวน่าลองเข้าลิสต์ต่อเนื่อง">
+    <p class="text-left text-base leading-relaxed">
+      ค่ายใหญ่ปล่อยเกมไหน GUESS168 อัปเดตเข้าคลังทันทีใน 24 ชั่วโมง ไม่ต้องคอยกระแสซา ไม่ต้องรอระบบอนุมัติข้ามสัปดาห์ พร้อมโหมดทดลองเล่นฟรีให้เช็กจังหวะโบนัสและกลไกเกมก่อนลงเงินจริง
+      เข้าถึงเกมใหม่ไฟแรงได้ก่อนใครตลอดเวลา
     </p>
-  </ContentBoxSevenThreeCyberCut>
-
-  <ProviderGrid />
-
-  <ContentBoxTwoFloatingBadge
-    as="h2"
-    title="ระบบพร้อมบวก วางทุกเมนูให้หยิบใช้คล่องโดยไม่ต้องวนหาให้เสียเวลา"
-    titleleft="เมนูสำคัญวางไว้เป็นระเบียบ"
-    titleright="กดหยิบใช้งานได้ทันที">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      สัมผัสความสะดวกสบายของการออกแบบอินเทอร์เฟซที่คำนึงถึงผู้ใช้งานเป็นหลัก ระบบของ XTOP666 วางตำแหน่งเมนูสำคัญอย่างปุ่มฝากถอน คลังเกม ค่ายเกม และหน้ากิจกรรมไว้อย่างเป็นระเบียบชัดเจน
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      อยากใช้ฟังก์ชันไหนก็กดหยิบใช้งานได้ทันที ไม่ต้องคลิกวนหาหลายชั้นให้เสียเวลา เพิ่มความคล่องตัวในการใช้งานให้คุณลุยทำกำไรได้อย่างแม่นยำ
-    </p>
-  </ContentBoxTwoFloatingBadge>
+  </ContentBoxFloatingBadge>
 
   <GameRankingBoard />
 
-  <ContentBoxSevenThreeNeumorphism
+  <ContentBox3ThreeCyberCut
     as="h2"
-    title="โบนัสรับได้เลย เพิ่มอีกหนึ่งจังหวะน่าตามก่อนเลือกเกมโปรดขึ้นสปิน"
-    titleleft="เล่นเสีย ก็ได้คืน รับเลย 5%"
-    titleright="กดรับเองได้ก่อนขึ้นสปิน">
+    title="ฟีเจอร์ครบแค่ไหน เจาะลูกเล่นในเกมที่ช่วยให้แต่ละสปินไม่ซ้ำฟีล"
+    titleleft="Multiplier สุ่มตัวคูณหนัก"
+    titlecenter="Wild ซ้อนทับ และ Cascading"
+    titleright="Bonus Buy ซื้อฟรีสปิน">
+    <p slot="left" class="text-left text-base leading-relaxed">กดสปินที่นี่ไม่มีคำว่ากริบ ตัวเกมอัดแน่นด้วยฟีเจอร์ Multiplier สุ่มตัวคูณหนัก</p>
+    <p slot="center" class="text-left text-base leading-relaxed">ระบบ Wild ซ้อนทับ และคอมโบแตกต่อเนื่อง Cascading</p>
+    <p slot="right" class="text-left text-base leading-relaxed">พร้อมโหมด Bonus Buy ซื้อฟรีสปินพุ่งตรงเข้าลุ้นรางวัลใหญ่ทันที ทุกการหมุนมีจังหวะให้ลุ้น ไม่น่าเบื่อ ไม่ปล่อยให้เสียจังหวะฟรี</p>
+  </ContentBox3ThreeCyberCut>
+
+  <ContentBoxSevenThreeCyberCut as="h2" title="โปรน่าสนใจของ GUESS168 มีอะไรบ้าง เลือกสิทธิ์ให้เข้ากับจังหวะเล่น" titleleft="ฝาก 500 ขึ้นไปรับเพิ่ม 10%">
     <Picture
       slot="left"
-      src={imgBonusCashback}
+      src={imgPromoDeposit500}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -207,23 +168,42 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชันของ XTOP666 พื้นสีดำไล่แดง ด้านซ้ายเป็นข้อความสีขาวว่า เล่นเสีย ก็ได้คืน ตามด้วยบรรทัด รับเลย 5% และ เดือนละ 2รอบ กลางภาพเป็นไพ่โพดำ A สี่ใบเรียงเป็นพัดกับลูกเต๋าสีแดงสองลูก มีชิปคาสิโนสีแดงและขาววางกระจายอยู่รอบ ด้านขวาเป็นผู้หญิงผมยาวสีดำสวมชุดเกาะอกสีแดงกำลังยิ้ม"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e11212]/45 shadow-[0_10px_30px_rgba(225,18,18,0.28)]"
+      alt="โปสเตอร์โปรโมชั่นของ GUESS168 เป็นตัวอักษรสีทองบนพื้นดำ บรรทัดบนสุดเขียนว่า โปรโมชั่น ถัดมาตัวใหญ่ว่า ฝาก 500 แล้ว ขึ้นไปรับเพิ่ม พร้อมตัวเลข 10% ตัวโตกลางภาพ ใต้ลงมาเป็นเงื่อนไขว่า หนึ่งบิลต่อหนึ่งวัน และ รับรายละเอียดได้ที่แอดมิน บรรทัดล่างระบุชื่อเว็ป app.guess168.vip ปิดท้ายด้วยข้อความว่า ยินดีให้บริการ"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#c58a00]/45 shadow-[0_10px_30px_rgba(254,204,2,0.3)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      เพิ่มความคุ้มค่าให้กับการเริ่มต้นเดิมพันด้วยระบบโบนัสของ XTOP666 ที่เปิดให้ผู้เล่นเลือกกดรับสิทธิพิเศษได้เองทันทีก่อนเข้าสู่ตัวเกม ไม่ว่าจะเป็นเครดิตเพิ่มทุนรายวัน
-      หรือสิทธิประโยชน์จากการเติมเงิน จังหวะการรับโบนัสที่ง่ายดายนี้เข้ามาช่วยเสริมสภาพคล่องทางการเงิน เพิ่มรอบการหมุนสปิน และยกระดับโอกาสพิชิตแจ็คพอตก้อนใหญ่ให้สูงขึ้น
+      ตัดเงื่อนไขโปรโมชันหลอกลวงทิ้งทั้งหมด GUESS168 ให้สิทธิประโยชน์ที่กดรับไปใช้ได้จริง โบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน กดรับเองผ่านหน้าเว็บ
+      เงื่อนไขชัดเจน ถอนได้จริง ไม่ติดล็อกยูส
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+  </ContentBoxSevenThreeCyberCut>
 
   <LatestWinners3 />
 
-  <ContentBoxFloatingBadge as="h2" title="มือถือก็ไว คอมก็เต็มจอ XTOP666 พร้อมต่อการใช้งานได้บนทุกอุปกรณ์">
-    <p class="text-left text-base leading-relaxed">
-      อิสระในการเข้าถึงความบันเทิงที่ XTOP666 มอบให้ครอบคลุมทุกอุปกรณ์อย่างสมบูรณ์แบบ ไม่ว่าจะเข้าใช้งานผ่านมือถือสมาร์ตโฟนด้วยการประมวลผลที่ฉับไว สัมผัสใกล้มือ
-      หรือเล่นผ่านคอมพิวเตอร์ที่แสดงผลกราฟิกและเอฟเฟกต์เต็มตาสุดอลังการ ตัวระบบถูกพัฒนาให้ปรับสเกลตามหน้าจอโดยอัตโนมัติ ให้ความลื่นไหลระดับเดียวกันในทุกช่องทาง
+  <ContentBoxSpecial as="h2" title="ฝากถอนออโต้ทันใจ ลดขั้นตอนการทำรายการให้คล่องโดยไม่ต้องรอนาน">
+    <p slot="left" class="text-left text-base leading-relaxed">ระบบฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ทำรายการเสร็จใน 3-5 วินาที ไม่ต้องโอนสลิปให้แอดมิน ไม่ต้องคอยคิวอนุมัติ</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ฝากแล้วยอดเด้งเข้าเกมทันที ถอนกำไรปุ๊บเงินวิ่งเข้าบัญชีธนาคารหรือวอลเล็ททันใจ หมดปัญหาเงินค้างระบบ</p>
+  </ContentBoxSpecial>
+
+  <ContentBoxSevenThreeNeumorphism as="h2" title="GUESS168 รวมทุกจังหวะไว้ครบจบเว็บเดียว ตั้งแต่เลือกเกมจนถึงทำรายการ" titleleft="ปั่นกงล้อรับทองคำ วันละ 1 บาท">
+    <Picture
+      slot="left"
+      src={imgGoldWheel}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="โปสเตอร์กิจกรรมของ GUESS168 พื้นสีดำตกแต่งด้วยสีทองและแดง หัวเรื่องว่า ปั่นกงล้อรับทองคำ วันละ 1 บาท บรรทัดรองว่า ปั่นได้ทุกวัน วันละ 1 ครั้ง กลางภาพเป็นวงล้อเสี่ยงโชคสีแดงสลับขาว ช่องรางวัลเขียนว่า ทอง 1 บาท 50 บาท 100 บาท 150 บาท 200 บาท 250 บาท 400 บาท 500 บาท 1,000 บาท และ 2,000 บาท ด้านซ้ายเป็นกองทองคำแท่ง ด้านขวาเป็นสร้อยคอทองคำในกล่องกำมะหยี่สีแดง มุมขวาบนเป็นโลโก้ Guess168 ล่างสุดเป็นป้ายไลน์ @Guess168th"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#fecc02]/45 shadow-[0_10px_30px_rgba(197,138,0,0.28)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      กระเป๋าเดียวจบ ไม่ต้องโยกเงินข้ามค่ายให้เสียเวลา เลือกเกม สลับค่าย กดรับโปร และกดถอนกำไร ทำได้ครบผ่านหน้าแดชบอร์ดเดียว GUESS168 วางโครงสร้างระบบให้ตอบโจทย์สายปั่นยุคใหม่ เน้นความเร็ว ความแม่นยำ
+      และผลลัพธ์ทางการเงินที่ชัดเจนที่สุด
     </p>
-  </ContentBoxFloatingBadge>
+  </ContentBoxSevenThreeNeumorphism>
 
   <LoginRtpSection />
 
@@ -234,18 +214,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffc9a3] via-[#fc5b03] to-[#a33200] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0403] shadow-[0_10px_30px_rgba(252,91,3,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,91,3,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe680] via-[#fecc02] to-[#a35800] px-4 py-3 text-sm font-black whitespace-nowrap text-[#140800] shadow-[0_10px_30px_rgba(254,204,2,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(254,204,2,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#ff5a4d]/70 bg-[#0a0403]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ff5a4d] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fc5b03] hover:bg-[#2e0c04] hover:text-[#fff0e6] hover:shadow-[0_15px_40px_rgba(225,18,18,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#c58a00]/70 bg-[#140800]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ffd54a] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fecc02] hover:bg-[#33180a] hover:text-[#fff6e0] hover:shadow-[0_15px_40px_rgba(254,156,1,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ XTOP666" faqs={faqs} />
+  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ GUESS168" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

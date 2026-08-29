@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.xtop666th.com",
+  site: "https://www.guess168-game.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

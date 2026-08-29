@@ -9,7 +9,7 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // ลิงก์ด่วนชุดเดียว ใช้ .map ด้านล่าง — เดิมเขียน <a> ซ้ำหกก้อน ทำให้เพิ่ม/ลบหน้า
 // ต้องไล่แก้ทีละอัน (และเป็นที่ที่ลิงก์หน้าหวยของแบรนด์ก่อนเคยค้างอยู่)
-// GGPLUS88 เป็นสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
+// SBOGOOL เป็นสล็อต/กีฬา หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
   { name: "ทดลองเล่นเกมฟรี", path: "/ทดลองเล่น" },
@@ -21,37 +21,35 @@ const quickLinks = [
 ];
 
 const LOGO_ALT =
-  "โลโก้ GGPLUS88 เป็นตราหกเหลี่ยมขอบทอง ข้างในเป็นอักษร GG สีมาเจนต้าตัดเงินเมทัลลิก วางอยู่เหนือคำว่า PLUS อักษรเงินและเลข 88 สีทองบนแผ่นสี่เหลี่ยมมุมมนสีม่วงเข้ม";
+  "โลโก้ SBOGOOL เป็นรูปนักวิ่งลายเส้นโค้งสีน้ำเงินซ้อนเงาเทา ถัดมาเป็นตัวอักษร SBO สีเงินโครเมียมต่อด้วย GOOL สีน้ำเงินเข้ม โดยตัว O ตัวหนึ่งเป็นลูกฟุตบอลล้อมด้วยเส้นโค้งหลากสี ใต้ข้อความเขียนว่า NUMBER ONE SPORT GAME IN THE WORLD";
 
-// GGPLUS88: ย้ายจากหยกเขียวคู่ทองของ KANGFU1688 (#24ac6c / #7fe6b4 / #16945d /
-// #0b4b2f คู่ทอง #e8b530 / #ffe6a6 / #8a6410 บนผิว #02120a / #072216 / #0d3d28
-// เนื้อความ #dff3e6 รองด้วย #86b39c / #5f8672) มาเป็นม่วงลึกคู่มาเจนต้าของ
-// แบรนด์นี้ — ม่วง #9b2fe0 / #d9a5ff / #5a1290 คู่มาเจนต้า #d81b7e / #ff6fb5
-// คู่ทอง #f0c14b / #ffe9a8 / #a97d12 บนผิว #0b0212 / #1b0630 / #2d0a50
-// เนื้อความ #ece0f7 รองด้วย #a98cc4 / #7a5f96
+// SBOGOOL: ย้ายจากม่วงลึกคู่มาเจนต้าของแบรนด์ก่อน มาเป็นน้ำเงินรอยัลสนามไฟคู่ทอง
+// ของแบรนด์นี้ — น้ำเงิน #1e4bb8 / #2f6fe4 / #5b9cff / #7fb0ff / #0b1f52 คู่ทอง
+// #f5c518 / #ffe07a / #a87908 บนผิว #030b22 / #071433 / #0d1f4d เนื้อความ
+// #dce7fb รองด้วย #93a9d4 / #6b80ad
 //
 // บล็อก <address> ด้านล่างวางตามที่ playbook กำหนดแบบคำต่อคำ — ไม่ใส่สีของแบรนด์
 // ลงไป (border-white/15 + bg-black/20 + opacity ทำงานได้กับ footer ทุก variant
 // ซึ่งเป็นพื้นเข้มทั้งหมด) ห้าม retype ข้อความข้างในเอง มาจาก BRAND_ADDRESS
 ---
 
-<footer class="relative mt-32 w-full border-t border-[#9b2fe0]/30 bg-[#0b0212] pt-64 pb-6 font-sans text-[#ece0f7] shadow-[0_-10px_30px_rgba(155,47,224,0.2)] md:pt-40">
+<footer class="relative mt-32 w-full border-t border-[#1e4bb8]/35 bg-[#030b22] pt-64 pb-6 font-sans text-[#dce7fb] shadow-[0_-10px_30px_rgba(30,75,184,0.25)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#f0c14b]/35 bg-gradient-to-r from-[#1b0630] via-[#5a1290] to-[#0b0212] p-6 shadow-[0_15px_40px_rgba(155,47,224,0.4)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#f5c518]/35 bg-gradient-to-r from-[#071433] via-[#1e4bb8] to-[#030b22] p-6 shadow-[0_15px_40px_rgba(47,111,228,0.45)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#f0c14b] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
-        <span aria-hidden="true">🎰</span> พร้อมหมุนรับฟรีสปินกับ GGPLUS88 หรือยัง?
+      <p class="text-xl font-black tracking-wide text-[#f5c518] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
+        <span aria-hidden="true">🎰</span> พร้อมเปิดโหมดคูลกับ SBOGOOL หรือยัง?
       </p>
-      <p class="mt-2 text-sm font-medium text-[#a98cc4] md:text-base">
-        สมัคร GGPLUS88 แล้วเข้าล็อบบี้ได้ทันที รวมเฉพาะเกมสล็อตแตกจริงลิขสิทธิ์แท้ 100% ไม่ผ่านเอเย่นต์ ไม่ล็อคยูส ฝากถอนออโต้ไม่มีขั้นต่ำ รองรับ True Wallet ทำรายการไวใน 3 วินาที
+      <p class="mt-2 text-sm font-medium text-[#93a9d4] md:text-base">
+        สมัคร SBOGOOL แล้วเข้าล็อบบี้ได้ทันที เกมเด่นระดับท็อปจากค่ายยักษ์ใหญ่มาครบ ฟีเจอร์หลากสไตล์ทั้งตัวคูณทวีคูณ คอมโบแตกต่อเนื่อง และโหมดซื้อฟรีสปิน สลับค่ายได้คล่องในกระเป๋าเดียว ระบบออโต้ทำรายการเสร็จในไม่กี่วินาที
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#f0c14b] bg-gradient-to-b from-[#ffe9a8] to-[#f0c14b] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#1a0430] shadow-[0_0_15px_rgba(240,193,75,0.5)] transition-all hover:scale-105 md:text-base">
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#f5c518] bg-gradient-to-b from-[#ffe07a] to-[#f5c518] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#0b1f52] shadow-[0_0_15px_rgba(245,197,24,0.5)] transition-all hover:scale-105 md:text-base">
       <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🎁</span></span>
-      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffe9a8] transition-transform duration-300 group-hover:translate-y-0"></div>
+      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffe07a] transition-transform duration-300 group-hover:translate-y-0"></div>
     </a>
   </div>
 
@@ -69,19 +67,19 @@ const LOGO_ALT =
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(155,47,224,0.65)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(47,111,228,0.7)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#ff6fb5] to-[#5a1290] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(216,27,126,0.6)]">GGPLUS88</p>
+              <p class="bg-gradient-to-b from-[#7fb0ff] to-[#1e4bb8] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(47,111,228,0.6)]">SBOGOOL</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#a98cc4]">
-          GGPLUS88 สล็อตเว็บตรงมาใหม่ล่าสุดที่คัดเฉพาะเกมแตกจริงจากค่ายชั้นนำมาไว้ครบในล็อบบี้เดียว ลิขสิทธิ์แท้ 100% ไม่ผ่านเอเย่นต์ ไม่ปรับอัตราแพ้ชนะ และไม่มีการล็อคยูสเซอร์ ทุกยูสจึงมีสิทธิ์ลุ้นแจ็กพอตเท่าเทียมกัน
-          ระบบการเงินมั่นคง เล่นได้จ่ายเต็ม ไม่กั๊กยอด ไม่ปิดเว็บหนี ฝากถอนออโต้ไม่มีขั้นต่ำ รองรับทั้งบัญชีธนาคารชั้นนำและ TrueMoney Wallet ปรับยอดเองภายใน 3 วินาที ไม่ต้องส่งสลิปให้แอดมินตรวจสอบ
-          พร้อมทีมงานซัพพอร์ตดูแลตลอด 24 ชั่วโมง
+        <p class="text-sm leading-relaxed text-[#93a9d4]">
+          SBOGOOL เว็บสล็อตที่เปิดโหมดคูลให้กับทุกการสปิน ขนเกมเด่นระดับท็อปจากค่ายยักษ์ใหญ่มาเสิร์ฟไว้อย่างอุดมสมบูรณ์ ล็อบบี้จัดวางมาให้หาเกมที่ใช่ได้ง่าย ไม่มีโฆษณามาบัง ไม่มีเมนูซับซ้อนให้เสียอารมณ์
+          ทั้งสล็อตงานภาพ 3D สตรีตสไตล์สุดเท่ เกมแนวแฟนตาซีตระการตา และเกมโบนัสแตกไวที่ซ่อนเงินรางวัลคูณโหดเอาไว้ พร้อมอัปเดตไลน์อัปเกมเข้าใหม่ต่อเนื่องให้ได้ลองฟีเจอร์แปลกใหม่เป็นกลุ่มแรกเสมอ
+          ระบบออโต้จัดการทุกขั้นตอน เข้าสู่ระบบ ฝากเงิน ถอนกำไร เสร็จในไม่กี่วินาที ไม่ต้องส่งสลิปยืนยัน และไม่ต้องรอแอดมินกดอนุมัติ
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -114,16 +112,16 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#ece0f7] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#dce7fb] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#d81b7e] to-[#9b2fe0] shadow-[0_0_8px_rgba(216,27,126,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#f5c518] to-[#2f6fe4] shadow-[0_0_8px_rgba(245,197,24,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#a98cc4] transition-colors hover:text-[#f0c14b]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#d81b7e] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#93a9d4] transition-colors hover:text-[#f5c518]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#2f6fe4] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -132,40 +130,40 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#ece0f7] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#dce7fb] uppercase">
           ระบบการเงิน
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#d81b7e] to-[#9b2fe0] shadow-[0_0_8px_rgba(216,27,126,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#f5c518] to-[#2f6fe4] shadow-[0_0_8px_rgba(245,197,24,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#a98cc4]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#93a9d4]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#1b0630] transition-colors hover:border-[#9b2fe0]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#ece0f7]"><span aria-hidden="true" class="text-lg text-[#f0c14b]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#071433] transition-colors hover:border-[#2f6fe4]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#dce7fb]"><span aria-hidden="true" class="text-lg text-[#f5c518]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#9b2fe0]/25" />
+    <hr class="mb-6 border-[#1e4bb8]/30" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#7a5f96] md:block">
-      สล็อตเว็บตรงมาใหม่ที่รวมเฉพาะเกมแตกจริงจากค่ายชั้นนำไว้ในที่เดียว ลิขสิทธิ์แท้ 100% ไม่ปรับอัตราแพ้ชนะ ทุกการหมุนจึงลุ้นทำกำไรได้จริง เป็นผู้ให้บริการเว็บตรงไม่ผ่านเอเย่นต์ที่ได้มาตรฐานสากล
-      มีใบอนุญาตประกอบกิจการถูกต้องตามกฎหมาย ระบบการเงินมีความมั่นคงสูง เล่นได้จ่ายเต็ม ไม่มีการกั๊กยอดหรือปิดเว็บหนี ไม่ว่าจะทำกำไรหลักร้อยหรือหลักแสนก็การันตีโอนไว จ่ายครบทุกบาททุกสตางค์
-      ล็อบบี้คัดเฉพาะเกมสล็อตแตกง่ายที่อัตราการจ่ายสูง ทุกยูสเซอร์มีสิทธิ์ลุ้นแจ็กพอตเท่าเทียมกัน ไม่มีการล็อคยูสเซอร์หรือปรับลดเปอร์เซ็นต์ชนะ ไม่ว่าจะเบทต่ำหรือเบทสูงก็เข้าโบนัสไทม์ได้ทุกรอบการหมุน
-      ระบบฝาก-ถอนอัตโนมัติรุ่นใหม่ปรับยอดทันทีภายใน 3 วินาที ไม่ต้องส่งสลิป รองรับทั้งบัญชีธนาคารและ TrueMoney Wallet ไม่มีขั้นต่ำ ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ GGPLUS88
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#6b80ad] md:block">
+      เว็บสล็อตที่เปิดโหมดคูลให้กับทุกการสปิน ขนเกมเด่นระดับท็อปจากค่ายยักษ์ใหญ่มาเสิร์ฟไว้อย่างอุดมสมบูรณ์ จัดระเบียบทุกค่ายเกมไว้อย่างดีให้ค้นหาเกมที่ใช่ได้สนุก โดยไม่มีโฆษณามาบังหรือเมนูซับซ้อนให้เสียอารมณ์
+      กระแสเกมไหนกำลังมาแรงหรือสล็อตค่ายไหนกำลังฮิตติดลมบนก็ไม่เคยพลาดที่จะดึงเข้ามาไว้ในลิสต์ ทุกเกมที่ติดโผขึ้นชื่อเรื่องอัตราการจ่ายเงินรางวัลที่เป็นธรรม จังหวะเข้าฟรีสปินบ่อย และมีอัตราคูณสะสมที่พร้อมเปลี่ยนเบทหลักสิบให้กลายเป็นกำไรหลักพัน
+      ฟีเจอร์ครบมือหลากหลายสไตล์ ทั้งฟีเจอร์สุ่มแจกตัวคูณทวีคูณ ระบบคอมโบสัญลักษณ์แตกต่อเนื่อง และโหมดซื้อฟีเจอร์ฟรีสปินสำหรับสายใจร้อนที่อยากพุ่งตรงเข้าสู่รอบรางวัลใหญ่ พร้อมโปรโมชันคุ้มค่าทั้งโบนัสต้อนรับ เครดิตเพิ่มทุนรายวัน และข้อเสนอพิเศษที่กดรับไปใช้ได้จริง
+      รองรับการสลับค่ายเกมได้อย่างฉับไวจบในกระเป๋าเดียว ไม่ต้องวนหาเกมหรือโยกเงินให้ยุ่งยาก ระบบออโต้ตัดเวลารอคอยออกทุกขั้นตอน ทั้งเข้าสู่ระบบ ฝากเงิน และถอนกำไร ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ SBOGOOL
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#7a5f96] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#f0c14b] uppercase">GGPLUS88</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#6b80ad] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#f5c518] uppercase">SBOGOOL</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#ece0f7]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#ece0f7]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#dce7fb]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#dce7fb]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#ece0f7] transition-all hover:border-[#9b2fe0] hover:bg-[#1b0630] hover:shadow-[0_0_15px_rgba(155,47,224,0.55)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#dce7fb] transition-all hover:border-[#2f6fe4] hover:bg-[#071433] hover:shadow-[0_0_15px_rgba(47,111,228,0.6)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

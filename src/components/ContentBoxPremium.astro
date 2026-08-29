@@ -6,11 +6,12 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// ASHTON168: ย้ายจากน้ำเงินอิเล็กทริกคู่แดงของแบรนด์ก่อน มาเป็นทองสว่างคู่เงิน
-// โครเมียมที่วัดจากอาร์ตของแบรนด์นี้ — ทอง #f5c518 / #ffd75e / #ffe9a3 /
-// #a87908 / #c8941a คู่เงิน #e2e5e9 / #f0f2f5 บนผิวไล่เฉด #160e03 → #080502
-// ขอบ #2a1c06 เนื้อความ #f0e6d2 (palette.json: vivid ของโลโก้เป็นทอง #dbac1b /
-// #fffd94 ส่วน dominant ของแบนเนอร์เป็นดำอมน้ำตาลเกือบสนิท #020100 / #231402)
+// SBOGOOL: ย้ายจากทองสว่างคู่เงินโครเมียมของแบรนด์ก่อน มาเป็นน้ำเงินรอยัล
+// สนามไฟของแบรนด์นี้ — น้ำเงิน #1e4bb8 / #2f6fe4 / #5b9cff / #7fb0ff / #0b1f52
+// คู่ทอง #f5c518 / #ffe07a / #a87908 คู่เงินโครเมียมจากตัวอักษรโลโก้ #e8eefc /
+// #c3cfe6 บนผิวไล่เฉด #071433 → #030b22 ขอบ #0d1f4d เนื้อความ #dce7fb
+// (palette.json: vivid ของโลโก้เป็นน้ำเงิน #33559a / #1c4190 / #18449d ส่วน
+// dominant ของแบนเนอร์เป็นกรมท่าเกือบดำ #02143c / #021443)
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
@@ -24,15 +25,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#f5c518]/35 bg-gradient-to-br from-[#160e03]/92 to-[#080502]/88 p-8 text-left text-base leading-relaxed text-[#f0e6d2] shadow-[0_10px_30px_rgba(245,197,24,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffd75e]/70 hover:shadow-[0_15px_40px_rgba(226,229,233,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#a87908]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#f5c518]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#2a1c06]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#e2e5e9]/40"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#1e4bb8]/40 bg-gradient-to-br from-[#071433]/92 to-[#030b22]/88 p-8 text-left text-base leading-relaxed text-[#dce7fb] shadow-[0_10px_30px_rgba(30,75,184,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#5b9cff]/70 hover:shadow-[0_15px_40px_rgba(245,197,24,0.22)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#0b1f52]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#2f6fe4]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#0d1f4d]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#f5c518]/25"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#f5c518]/35 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe9a3] via-[#f5c518] to-[#e2e5e9] shadow-[0_0_10px_rgba(245,197,24,0.55)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#fdf6e6] via-[#ffd75e] to-[#e2e5e9] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#1e4bb8]/40 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe07a] via-[#5b9cff] to-[#1e4bb8] shadow-[0_0_10px_rgba(47,111,228,0.6)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#eef4ff] via-[#7fb0ff] to-[#f5c518] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
             {title}
           </HeadingTag>
         </header>

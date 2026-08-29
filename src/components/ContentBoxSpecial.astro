@@ -5,16 +5,15 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2" } = Astro.props;
 
-// ASHTON168: ทองสว่างคู่เงินโครเมียม — ทอง #f5c518 / #ffd75e / #ffe9a3 / #c8941a /
-// #a87908 / #7a5405 คู่เงิน #e2e5e9 / #f0f2f5 / #5f6469 บนผิว #080502 / #160e03 /
-// #2a1c06 เนื้อความ #f0e6d2 ตัวอักษรสว่าง #fdf6e6 (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้
-// เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่
-// ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// GUESS168: ทองหลอมคู่ส้มไฟ — ทอง #fecc02 / #ffe680 / #ffd54a / #fff6e0 / #c58a00
+// คู่ส้ม #fe9c01 / #a35800 บนผิว #140800 / #231005 / #33180a เนื้อความ #f7e7c6
+// (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
+// เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
+// git history)
 //
-// ไอคอนใบแรกเป็นทอง ใบที่สองเป็นเงินโครเมียม ทั้งคู่จึงอ่านเป็นคู่สีของแบรนด์
-// ไม่ใช่สี่เหลี่ยมสีเดียวกันสองใบ — รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 3 (ค่ายชั้นนำ
-// มีอะไรน่าเล่น รวมตัวฮิตไว้ให้เลือกแบบไม่ต้องไล่หา) ไอคอนจึงเป็นสล็อตแมชชีนกับถ้วย
-// รางวัล
+// ไอคอนใบแรกเป็นทอง ใบที่สองเป็นส้ม ทั้งคู่จึงอ่านเป็นคู่สีของแบรนด์ ไม่ใช่
+// สี่เหลี่ยมสีเดียวกันสองใบ — รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 6 (ฝากถอนออโต้ทันใจ
+// ลดขั้นตอนการทำรายการให้คล่อง) ไอคอนจึงเป็นสายฟ้าความเร็วกับธนาคารปลายทาง
 //
 // แต่ละครึ่งเป็น flex row ของ [ไอคอน, slot] ผู้เรียกจึงต้องส่ง "หนึ่ง element
 // ต่อหนึ่ง slot" เท่านั้น ไม่งั้นแต่ละ <p> จะกลายเป็น flex item แยกข้างไอคอน
@@ -22,38 +21,38 @@ const { title, as: HeadingTag = "h2" } = Astro.props;
 
 <section class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#f5c518]/25 bg-[#160e03]/90 p-6 text-[#f0e6d2] shadow-[0_10px_30px_rgba(245,197,24,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffd75e]/55 md:p-10">
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#c58a00]/25 bg-[#231005]/90 p-6 text-[#f7e7c6] shadow-[0_10px_30px_rgba(197,138,0,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffd54a]/55 md:p-10">
     <div
       aria-hidden="true"
-      class="pointer-events-none absolute top-0 left-1/2 -z-10 h-[2px] w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#e2e5e9] to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100">
+      class="pointer-events-none absolute top-0 left-1/2 -z-10 h-[2px] w-1/2 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#fecc02] to-transparent opacity-60 transition-opacity duration-500 group-hover:opacity-100">
     </div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#f5c518]/30 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f5c518] to-[#e2e5e9] shadow-[0_0_10px_rgba(245,197,24,0.4)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fdf6e6] via-[#ffd75e] to-[#c8941a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#c58a00]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fecc02] to-[#fe9c01] shadow-[0_0_10px_rgba(254,204,2,0.45)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#fff6e0] via-[#ffe680] to-[#fe9c01] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
       <article
-        class="relative flex gap-4 rounded-2xl border border-[#f5c518]/20 bg-[#080502] p-6 text-left text-base leading-relaxed text-[#f0e6d2] transition-all duration-300 hover:-translate-y-2 hover:border-[#f5c518]/55 hover:bg-[#2a1c06] hover:shadow-[0_15px_40px_rgba(245,197,24,0.22)]">
+        class="relative flex gap-4 rounded-2xl border border-[#c58a00]/20 bg-[#140800] p-6 text-left text-base leading-relaxed text-[#f7e7c6] transition-all duration-300 hover:-translate-y-2 hover:border-[#ffd54a]/55 hover:bg-[#33180a] hover:shadow-[0_15px_40px_rgba(197,138,0,0.28)]">
         <div
           aria-hidden="true"
-          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#7a5405]/45 bg-gradient-to-br from-[#ffe9a3] via-[#f5c518] to-[#7a5405] text-2xl shadow-[0_5px_15px_rgba(245,197,24,0.35)]">
-          🎰
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#c58a00]/60 bg-gradient-to-br from-[#ffe680] via-[#fecc02] to-[#c58a00] text-2xl shadow-[0_5px_15px_rgba(254,204,2,0.35)]">
+          ⚡
         </div>
         <slot name="left" />
       </article>
 
       <article
-        class="relative flex gap-4 rounded-2xl border border-[#f5c518]/20 bg-[#080502] p-6 text-left text-base leading-relaxed text-[#f0e6d2] transition-all duration-300 hover:-translate-y-2 hover:border-[#e2e5e9]/55 hover:bg-[#2a1c06] hover:shadow-[0_15px_40px_rgba(226,229,233,0.28)]">
+        class="relative flex gap-4 rounded-2xl border border-[#c58a00]/20 bg-[#140800] p-6 text-left text-base leading-relaxed text-[#f7e7c6] transition-all duration-300 hover:-translate-y-2 hover:border-[#fe9c01]/55 hover:bg-[#33180a] hover:shadow-[0_15px_40px_rgba(254,156,1,0.24)]">
         <div
           aria-hidden="true"
-          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#e2e5e9]/60 bg-gradient-to-br from-[#f0f2f5] via-[#e2e5e9] to-[#5f6469] text-2xl shadow-[0_5px_15px_rgba(226,229,233,0.45)]">
-          🏆
+          class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-[#fe9c01]/60 bg-gradient-to-br from-[#ffd54a] via-[#fe9c01] to-[#a35800] text-2xl shadow-[0_5px_15px_rgba(254,156,1,0.4)]">
+          🏦
         </div>
         <slot name="right" />
       </article>
