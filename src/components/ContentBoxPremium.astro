@@ -6,18 +6,20 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// SBOGOOL: ย้ายจากทองสว่างคู่เงินโครเมียมของแบรนด์ก่อน มาเป็นน้ำเงินรอยัล
-// สนามไฟของแบรนด์นี้ — น้ำเงิน #1e4bb8 / #2f6fe4 / #5b9cff / #7fb0ff / #0b1f52
-// คู่ทอง #f5c518 / #ffe07a / #a87908 คู่เงินโครเมียมจากตัวอักษรโลโก้ #e8eefc /
-// #c3cfe6 บนผิวไล่เฉด #071433 → #030b22 ขอบ #0d1f4d เนื้อความ #dce7fb
-// (palette.json: vivid ของโลโก้เป็นน้ำเงิน #33559a / #1c4190 / #18449d ส่วน
-// dominant ของแบนเนอร์เป็นกรมท่าเกือบดำ #02143c / #021443)
+// NEOCLUB88: ย้ายจากน้ำเงินรอยัลคู่ทองของแบรนด์ก่อน มาเป็นทองคลับคู่แพลทินัมตาม
+// โลโก้จริง — ทอง #f2cc53 / #ffe89a / #f6d977 / #c39b3c / #a8842c / #8a6415 คู่
+// แพลทินัมเงิน #eef1f5 / #c6ccd4 / #8d949e บนผิวเกือบดำ #241303 / #140b02 /
+// #0a0602 / #050301 เนื้อความ #ede0c4 หัวข้อไล่เฉด #fbf4e4
+//
+// แพลทินัมคือสีรองที่แบรนด์ก่อนไม่มี (แบรนด์ก่อนเป็นทองล้วน) จึงถูกวางไว้ในจุดที่
+// มองเห็นชัด: สต็อปกลางของไล่เฉดหัวข้อ แถบขีดหัวข้อ และออร่ามุมขวาล่างตอน hover
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
+// ได้จาก git history
 //
-// รอบนี้การ์ดใบนี้เป็นกล่องหลักของ "หน้าย่อย" ทุกหน้า (about-us, contact-us,
-// promotion, ทดลองเล่น, ทางเข้า) และเป็นกล่องที่แบกหัวข้อ docx ข้อ 1 (H1) ของ
-// หน้าแรกด้วย — headingSize จึงแยก h1 เป็น text-3xl ออกจาก h2 ที่เป็น text-2xl
+// รอบนี้การ์ดใบนี้แบกหัวข้อ docx ข้อ 1 (H1) และข้อ 7 (H2) ของหน้าแรก — headingSize
+// จึงแยก h1 เป็น text-3xl ออกจาก h2 ที่เป็น text-2xl
 //
 // การ์ด flatten แล้ว (isolate บนการ์ด + -z-10 บนเลเยอร์ตกแต่ง) ห้ามใส่ wrapper
 // <div class="relative z-10"> กลับเข้ามา
@@ -25,15 +27,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#1e4bb8]/40 bg-gradient-to-br from-[#071433]/92 to-[#030b22]/88 p-8 text-left text-base leading-relaxed text-[#dce7fb] shadow-[0_10px_30px_rgba(30,75,184,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#5b9cff]/70 hover:shadow-[0_15px_40px_rgba(245,197,24,0.22)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#0b1f52]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#2f6fe4]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#0d1f4d]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#f5c518]/25"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#a8842c]/45 bg-gradient-to-br from-[#241303]/92 to-[#0a0602]/88 p-8 text-left text-base leading-relaxed text-[#ede0c4] shadow-[0_10px_30px_rgba(195,155,60,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#f2cc53]/70 hover:shadow-[0_15px_40px_rgba(230,236,243,0.22)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#140b02]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#c39b3c]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#33230b]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#c6ccd4]/25"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#1e4bb8]/40 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe07a] via-[#5b9cff] to-[#1e4bb8] shadow-[0_0_10px_rgba(47,111,228,0.6)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#eef4ff] via-[#7fb0ff] to-[#f5c518] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#a8842c]/40 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe89a] via-[#c6ccd4] to-[#a8842c] shadow-[0_0_10px_rgba(242,204,83,0.6)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#fbf4e4] via-[#c6ccd4] to-[#f2cc53] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>
             {title}
           </HeadingTag>
         </header>

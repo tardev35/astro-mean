@@ -15,71 +15,71 @@ import img6 from "../assets/providers/game6.avif";
 // ชื่อค่ายเดินทางไปด้วยกันในอ็อบเจกต์เดียว ส่วน `name`/`type` เป็นชื่อหมวดเกม
 // ซึ่งไม่ได้ผูกกับรูป จึงเปลี่ยนได้อิสระ
 //
-// GUESS168: ชุดสีเป็นทองหลอมคู่ส้มไฟตามอาร์ตจริง ทองเป็นสีหลักของกระดาน ส่วนแถว
-// อันดับหนึ่งรับคู่ส้มเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว Tailwind เป็นสี
-// เชิงความหมาย ไม่ถูกแตะ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกน
-// ไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมา
-// เป็น CSS ตาย ดูของเดิมได้จาก git history)
+// AURA456: ชุดสีเป็นนีออนบานเย็นคู่ฟ้าอิเล็กทริกตามอาร์ตจริง บานเย็นเป็นสีหลักของ
+// กระดาน ส่วนแถวอันดับหนึ่งรับคู่ฟ้าเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว
+// Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ —
+// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
+// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
-// กระดานนี้เป็นภาพประกอบของหัวข้อ docx เรื่องเกมอัปเดตใหม่ที่เติมเข้าลิสต์ต่อเนื่อง
-// จึงกางลิสต์ตัวน่าลองให้เห็นในหน้าเดียวว่ามีอะไรเพิ่งเข้าคลังบ้าง
+// กระดานนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 4 เรื่องตัวฮิตขึ้นหน้าไม่ต้องตามหา จึงกาง
+// หมวด "เกมฮิตกระแสแรง" ให้เห็นในหน้าเดียวว่าล็อบบี้ดันอะไรขึ้นมาเสิร์ฟบ้าง
 //
 // อันดับ 1–3 แสดงเหรียญ "แทน" ตัวเลข ถ้าซ่อนอิโมจิเฉยๆ สามแถวนั้นจะไม่เหลืออันดับ
 // ให้อ่านเลย ข้อความ sr-only จึงใส่กลับเข้าไปคู่กับ aria-hidden
 const games = [
   {
     rank: 1,
-    name: "ลิสต์เกมเข้าคลังใหม่ภายใน 24 ชั่วโมง",
-    type: "ค่ายใหญ่ปล่อยเกมไหนก็อัปเดตเข้าคลังทันที ไม่ต้องรอระบบอนุมัติข้ามสัปดาห์ • วางไว้หน้าสุดให้เข้าถึงได้ก่อนใคร",
+    name: "หมวดเกมฮิตกระแสแรง",
+    type: "ขึ้นโชว์เด่นหราทันทีที่เข้าสู่ระบบ ไม่ต้องเสียเวลาเลื่อนหาเกมเด็ด • คนกำลังฮิตปั่นเกมอะไร เราดึงมาเสิร์ฟให้ถึงหน้าแรก",
     brand: "Pragmatic Play",
-    menus: ["เข้าคลังใน 24 ชม.", "ไม่ต้องรอกระแสซา"],
+    menus: ["ขึ้นหน้าแรกทันที", "ไม่ต้องเลื่อนหา"],
     players: 5124,
     img: img6,
   },
   {
     rank: 2,
-    name: "หมวดโหมดทดลองเล่นฟรี",
-    type: "เช็กจังหวะโบนัสและกลไกเกมก่อนลงเงินจริง จับทางเกมใหม่ได้โดยไม่ต้องเสี่ยงทุนตั้งแต่ไม้แรก",
+    name: "หมวดค่ายดังเปิดตัวเกมใหม่",
+    type: "ค่ายไหนปล่อยตัวใหม่ก็ถูกดันขึ้นล็อบบี้ให้เห็นก่อน จับทางเกมกระแสได้ตั้งแต่วันแรก",
     brand: "Joker Gaming",
-    menus: ["ทดลองเล่นฟรี", "เช็กจังหวะโบนัส"],
+    menus: ["ของใหม่ขึ้นก่อน", "จับกระแสไว"],
     players: 3842,
     img: img4,
   },
   {
     rank: 3,
-    name: "หมวดฟีเจอร์ Multiplier สุ่มตัวคูณหนัก",
-    type: "รวมเกมที่สุ่มแจกตัวคูณ • ตัวคูณสะสมที่เปลี่ยนเบทเริ่มต้น 1 บาทให้ลุ้นโบนัสก้อนโตได้ทันที",
+    name: "หมวดกลไก Multiplier ตัวคูณทวีคูณ",
+    type: "รวมเกมที่สุ่มแจกตัวคูณหนักแบบทวีคูณ • เปลี่ยนสปินธรรมดาให้กลายเป็นรอบทำกำไร",
     brand: "JILI",
-    menus: ["Multiplier", "เบทเริ่ม 1 บาท"],
+    menus: ["Multiplier", "ตัวคูณทวีคูณ"],
     players: 3517,
     img: img5,
   },
   {
     rank: 4,
-    name: "หมวดระบบ Wild ซ้อนทับ",
-    type: "สัญลักษณ์ไวลด์ซ้อนกันเป็นชั้นในสปินเดียว เปิดทางให้แนวรางวัลเกิดพร้อมกันหลายเส้น",
+    name: "หมวดระบบ Cascading คอมโบต่อเนื่อง",
+    type: "สัญลักษณ์แตกต่อเนื่องเป็นคอมโบในสปินเดียว ยิ่งต่อยาวยิ่งได้ลุ้นรางวัลก้อนโต",
     brand: "SexySlot",
-    menus: ["Wild ซ้อนทับ", "ลุ้นหลายเส้น"],
+    menus: ["Cascading", "คอมโบต่อเนื่อง"],
     players: 2905,
     img: img2,
   },
   {
     rank: 5,
-    name: "หมวดคอมโบแตกต่อเนื่อง Cascading",
-    type: "สัญลักษณ์แตกแล้วร่วงต่อกันเป็นชุด ทุกการหมุนมีจังหวะให้ลุ้นยาว ไม่ปล่อยให้เสียจังหวะฟรี",
+    name: "หมวดสัญลักษณ์ Wild ยืดขยายทับรีล",
+    type: "Wild ยืดขยายคลุมรีลทั้งแถบ เปิดโอกาสให้ไลน์รางวัลเข้าพร้อมกันหลายเส้น",
     brand: "PG Soft (Pocket Games Soft)",
-    menus: ["Cascading", "ลุ้นต่อเนื่อง"],
+    menus: ["Wild ยืดขยาย", "คลุมทั้งรีล"],
     players: 2431,
     img: img1,
   },
   {
     rank: 6,
     name: "หมวดโหมด Bonus Buy ซื้อฟรีสปิน",
-    type: "ซื้อฟรีสปินพุ่งตรงเข้าลุ้นรางวัลใหญ่ทันที สำหรับสายที่ไม่อยากรอจังหวะเข้าโบนัสเอง",
+    type: "สายใจร้อนกดซื้อฟรีสปินพุ่งชนแจ็คพอตใหญ่ได้เลย ไม่ต้องรอสุ่มเข้าฟีเจอร์เอง",
     brand: "SlotXO",
-    menus: ["Bonus Buy", "เข้ารอบใหญ่ไว"],
+    menus: ["Bonus Buy", "ซื้อฟรีสปิน"],
     players: 2108,
     img: img3,
   },
@@ -88,16 +88,16 @@ const games = [
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="ลิสต์เกมอัปเดตใหม่และฟีเจอร์น่าลองที่ GUESS168 เติมเข้าคลังต่อเนื่อง" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="หมวดเกมฮิตกระแสแรงที่ AURA456 ดันขึ้นหน้าล็อบบี้" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#c58a00]/40 bg-[#231005]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(197,138,0,0.28)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl">🆕</span>
-    <p class="bg-gradient-to-r from-[#fff6e0] via-[#ffd54a] to-[#fe9c01] bg-clip-text text-2xl font-black tracking-wide text-transparent">ลิสต์เกมอัปเดตใหม่ในคลัง GUESS168 ที่น่าลองตาม</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#d8bb87]">
-      ค่ายใหญ่ปล่อยเกมไหนก็อัปเดตเข้าคลังภายใน 24 ชั่วโมง ทั้งหมวดของใหม่ล่าสุด หมวดโหมดทดลองเล่นฟรี หมวดฟีเจอร์ Multiplier หมวดระบบ Wild ซ้อนทับ หมวดคอมโบแตกต่อเนื่อง Cascading และหมวดโหมด Bonus Buy
-      กางไว้ในหน้าเดียวให้เลื่อนดูได้ครบ ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราการจ่ายและรายละเอียดฟีเจอร์ของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#8b3cf7]/40 bg-[#120a33]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(139,60,247,0.28)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl">🔥</span>
+    <p class="bg-gradient-to-r from-[#f6ebff] via-[#7fd0ff] to-[#ff2fb0] bg-clip-text text-2xl font-black tracking-wide text-transparent">หมวดเกมฮิตกระแสแรงที่ล็อบบี้ AURA456 ดันขึ้นหน้า</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#9b93c4]">
+      หน้าล็อบบี้จัดระเบียบไว้ให้ใช้งานง่าย ทั้งหมวดเกมฮิตกระแสแรง หมวดค่ายดังเปิดตัวเกมใหม่ หมวดกลไก Multiplier ตัวคูณทวีคูณ หมวดระบบ Cascading คอมโบต่อเนื่อง หมวดสัญลักษณ์ Wild ยืดขยายทับรีล
+      และหมวดโหมด Bonus Buy ซื้อฟรีสปิน กางไว้ในหน้าเดียวให้เลื่อนดูได้ครบ ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราการจ่ายและรายละเอียดฟีเจอร์ของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#fecc02] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#3ba9ff] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -108,10 +108,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#fe9c01]/60 bg-gradient-to-r from-[#33180a]/80 via-[#231005]/92 to-[#140800]/88 shadow-[0_15px_40px_rgba(254,156,1,0.22)]"
-                : "border-[#c58a00]/35 bg-[#231005]/88 shadow-[0_10px_30px_rgba(197,138,0,0.2)] hover:border-[#ffd54a]/55 hover:shadow-[0_15px_40px_rgba(254,204,2,0.32)]"
+                ? "border-[#3ba9ff]/55 bg-gradient-to-r from-[#1c1046]/80 via-[#120a33]/92 to-[#05021a]/88 shadow-[0_15px_40px_rgba(59,169,255,0.18)]"
+                : "border-[#8b3cf7]/35 bg-[#120a33]/88 shadow-[0_10px_30px_rgba(139,60,247,0.2)] hover:border-[#ff2fb0]/55 hover:shadow-[0_15px_40px_rgba(255,47,176,0.3)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#33180a]/70 blur-[40px] transition-all duration-500 group-hover:bg-[#c58a00]/35" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#1c1046]/70 blur-[40px] transition-all duration-500 group-hover:bg-[#c81d8e]/35" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {medal(g.rank) ? (
@@ -120,14 +120,14 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#ffd54a] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#ff2fb0] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
-            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#fe9c01]/60" : "border-[#c58a00]/40"}`}>
+            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#3ba9ff]/60" : "border-[#8b3cf7]/40"}`}>
               <Picture
                 src={g.img}
-                alt={`โลโก้ค่ายเกมลิขสิทธิ์ ${g.brand} ที่อยู่ในคลังเกมของ GUESS168`}
+                alt={`โลโก้ค่ายเกมลิขสิทธิ์ ${g.brand} ที่อยู่ในล็อบบี้ของ AURA456`}
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
                 loading="lazy"
@@ -141,24 +141,24 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#f7e7c6] sm:text-lg">{g.name}</p>
+                <p class="truncate text-base font-black text-[#d8d3f0] sm:text-lg">{g.name}</p>
                 {top && (
-                  <span class="hidden shrink-0 rounded-full border border-[#fe9c01]/70 bg-gradient-to-r from-[#ffd54a] to-[#fe9c01] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#140800] sm:inline">
-                    เข้าคลังล่าสุด
+                  <span class="hidden shrink-0 rounded-full border border-[#3ba9ff]/70 bg-gradient-to-r from-[#d8f2ff] to-[#7fd0ff] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#05021a] sm:inline">
+                    ขึ้นหน้าแรกล่าสุด
                   </span>
                 )}
               </div>
-              <p class="truncate text-[11px] text-[#d8bb87] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#9b93c4] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#c58a00]/40 bg-[#140800] px-2.5 py-0.5 text-[10px] font-bold text-[#ffd54a]">{m}</span>
+                  <span class="rounded-full border border-[#8b3cf7]/40 bg-[#0b0528] px-2.5 py-0.5 text-[10px] font-bold text-[#ff2fb0]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#d8bb87]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#9b93c4]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -169,8 +169,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#ffd54a] to-[#fe9c01] text-[#140800] shadow-[0_10px_30px_rgba(254,156,1,0.35)]"
-                    : "border border-[#c58a00]/60 bg-[#140800] text-[#ffd54a] hover:border-[#fecc02] hover:bg-[#33180a] hover:text-[#fff6e0]"
+                    ? "bg-gradient-to-r from-[#ff7fd4] to-[#c81d8e] text-[#05021a] shadow-[0_10px_30px_rgba(255,47,176,0.35)]"
+                    : "border border-[#8b3cf7]/60 bg-[#0b0528] text-[#ff2fb0] hover:border-[#3ba9ff] hover:bg-[#1c1046] hover:text-[#f6ebff]"
                 }`}>
                 เข้าเล่นเกม
               </a>

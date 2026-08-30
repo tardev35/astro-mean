@@ -6,18 +6,18 @@ import ktbLogo from "../assets/banks/ktb.png";
 import ttbLogo from "../assets/banks/ttb.png";
 import { brandFlag, brandPick } from "../lib/brandProfile";
 
-// ASHTON168: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด (ทั้งชื่อแบรนด์และค่า hex เดิมไม่พิมพ์
+// AURA456: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด (ทั้งชื่อแบรนด์และค่า hex เดิมไม่พิมพ์
 // ไว้ตรงนี้ — คอมเมนต์ที่ยังเอ่ยชื่อแบรนด์ก่อนคือเอกสารที่ผิด และ Tailwind สแกน
 // ไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมา
-// เป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่ทองสว่างคู่เงินโครเมียมของแบรนด์
-// นี้ — ทอง #f5c518 / #ffd75e / #ffe9a3 / #c8941a / #a87908 / #7a5405 คู่เงิน
-// #e2e5e9 บนผิว #080502 / #160e03 / #2a1c06 เนื้อความ #f0e6d2 ข้อความรอง #c9bda2
-// ไม่มีสีของแบรนด์เก่าเหลืออยู่ในไฟล์ เหลือแต่เขียวสถานะ "เงินเข้าแล้ว" ซึ่งเป็นสี
-// เชิงความหมาย
+// เป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่นีออนบานเย็นคู่ฟ้าอิเล็กทริกของ
+// แบรนด์นี้ — บานเย็น #ff2fb0 / #ff7fd4 / #ffc9ee / #c81d8e คู่ฟ้า #3ba9ff /
+// #7fd0ff กับม่วง #8b3cf7 / #4a179e บนผิว #05021a / #0b0528 / #1c1046 เนื้อความ
+// #d8d3f0 ข้อความรอง #9b93c4 ไม่มีสีของแบรนด์เก่าเหลืออยู่ในไฟล์ เหลือแต่เขียว
+// สถานะ "เงินเข้าแล้ว" ซึ่งเป็นสีเชิงความหมาย
 //
-// แถบนี้เป็นภาพประกอบของหัวข้อ docx เรื่องออโต้ไวทันใจที่ทำรายการคล่องไม่ปล่อยให้
-// เสียจังหวะ — รายการฝากถอนที่วิ่งอยู่คือหลักฐานว่าระบบจบงานได้เองในไม่กี่วินาที
-// โดยไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ
+// แถบนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 6 เรื่องโปรดีน่าตามที่กดรับแล้วถอนได้จริง —
+// รายการถอนที่วิ่งอยู่คือหลักฐานว่าเงื่อนไขตรงไปตรงมา ไม่ติดเทิร์นโอเวอร์มหาโหด
+// และระบบออโต้จบงานได้เองใน 3-5 วินาทีโดยไม่ต้องส่งสลิปให้แอดมิน
 //
 // สีในลิสต์นี้เป็นสีโลโก้ธนาคารจริง ไม่ใช่สีแบรนด์ — ห้ามรีธีมตาม palette
 const bankPool = [
@@ -39,7 +39,7 @@ const bankPool = [
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const pickFrom = (chars: string, salt: string) => chars.charAt(brandPick(Astro.site, salt, chars.length));
 
-// เกินยอดนี้แถวจะเปลี่ยนเป็นโทนทองอ่อน "ยอดใหญ่" — ค่าเดียวกันนี้ส่งให้โมดูลผ่าน
+// เกินยอดนี้แถวจะเปลี่ยนเป็นโทนบานเย็นอ่อน "ยอดใหญ่" — ค่าเดียวกันนี้ส่งให้โมดูลผ่าน
 // data-big-win-above เพื่อให้แถวที่ JS สร้างใหม่ตัดสินเหมือนกับแถวที่เซิร์ฟเวอร์
 // render มา ตัวคลาสทั้งสองสถานะอยู่บน data-normal-class / data-big-class ของแถว
 // โมดูลจึงไม่ต้องรู้จัก palette ของแบรนด์นี้เลย
@@ -47,8 +47,8 @@ const BIG_WIN_ABOVE = 70000;
 const AMOUNT_MIN = 15000;
 const AMOUNT_MAX = 95000;
 
-const AMOUNT_NORMAL_CLASS = "text-[#f5c518] drop-shadow-[0_0_8px_rgba(245,197,24,0.5)]";
-const AMOUNT_BIG_CLASS = "text-[#ffe9a3] drop-shadow-[0_0_10px_rgba(255,233,163,0.7)]";
+const AMOUNT_NORMAL_CLASS = "text-[#ff2fb0] drop-shadow-[0_0_8px_rgba(255,47,176,0.5)]";
+const AMOUNT_BIG_CLASS = "text-[#ffc9ee] drop-shadow-[0_0_10px_rgba(255,201,238,0.7)]";
 
 const initialRows = Array.from({ length: 5 }, (_, i) => {
   const amount = AMOUNT_MIN + brandPick(Astro.site, `winner-amount-${i}`, AMOUNT_MAX - AMOUNT_MIN + 1);
@@ -64,15 +64,15 @@ const initialRows = Array.from({ length: 5 }, (_, i) => {
 
 <div class="mx-auto w-full max-w-[1300px] p-4">
   <section
-    aria-label="รายการฝากถอนล่าสุดที่ผ่านระบบออโต้ของ ASHTON168 ซึ่งทำรายการเองได้ในไม่กี่วินาทีโดยไม่ต้องรอแอดมินอนุมัติ"
-    class="relative border-r-4 border-l-4 border-[#f5c518] bg-[#080502]/85 px-4 py-8 shadow-[0_0_30px_rgba(245,197,24,0.22)] md:p-10"
+    aria-label="รายการฝากถอนล่าสุดที่ผ่านระบบออโต้ของ AURA456 ซึ่งทำรายการเสร็จเองใน 3-5 วินาทีโดยไม่ต้องส่งสลิปและไม่ต้องรอคิวอนุมัติ"
+    class="relative border-r-4 border-l-4 border-[#ff2fb0] bg-[#05021a]/85 px-4 py-8 shadow-[0_0_30px_rgba(255,47,176,0.22)] md:p-10"
     style="clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);">
-    <div class="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#f5c518] to-transparent"></div>
-    <div class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#e2e5e9] to-transparent"></div>
+    <div class="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#ff2fb0] to-transparent"></div>
+    <div class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#3ba9ff] to-transparent"></div>
 
-    <div class="relative z-10 mb-8 flex items-center justify-between border-b border-[#f5c518]/30 pb-4">
-      <p class="text-xl font-black tracking-[0.2em] text-[#f5c518] drop-shadow-[0_0_8px_rgba(245,197,24,0.8)]">/// ASHTON168_AUTO_TRANSACTIONS</p>
-      <span class="animate-pulse border border-[#e2e5e9]/60 px-2 py-1 text-xs font-bold tracking-widest text-[#c9bda2]">ONLINE</span>
+    <div class="relative z-10 mb-8 flex items-center justify-between border-b border-[#ff2fb0]/30 pb-4">
+      <p class="text-xl font-black tracking-[0.2em] text-[#ff2fb0] drop-shadow-[0_0_8px_rgba(255,47,176,0.8)]">/// AURA456_AUTO_TRANSACTIONS</p>
+      <span class="animate-pulse border border-[#3ba9ff]/60 px-2 py-1 text-xs font-bold tracking-widest text-[#9b93c4]">ONLINE</span>
     </div>
 
     <div
@@ -90,14 +90,14 @@ const initialRows = Array.from({ length: 5 }, (_, i) => {
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-row origin-left transform transition-all duration-500 ease-out">
-            <div class="flex items-center justify-between border-l-2 border-[#f5c518] bg-gradient-to-r from-[#160e03]/60 to-transparent p-3 backdrop-blur-sm transition-colors hover:bg-[#2a1c06]/55">
+            <div class="flex items-center justify-between border-l-2 border-[#ff2fb0] bg-gradient-to-r from-[#120a33]/60 to-transparent p-3 backdrop-blur-sm transition-colors hover:bg-[#1c1046]/55">
               <div class="flex items-center gap-4">
                 <div data-winner-bank class={`flex h-8 w-8 items-center justify-center border border-white/10 bg-black/50 mix-blend-screen ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="20" height="20" loading="lazy" decoding="async" class="h-5 w-5 object-contain grayscale" />
                 </div>
-                <div class="font-mono text-sm text-[#f0e6d2]">
+                <div class="font-mono text-sm text-[#d8d3f0]">
                   USR_ID:{" "}
-                  <span data-winner-user class="font-bold text-[#ffd75e]">
+                  <span data-winner-user class="font-bold text-[#ff7fd4]">
                     {row.user}
                   </span>
                 </div>
@@ -105,19 +105,19 @@ const initialRows = Array.from({ length: 5 }, (_, i) => {
               <div class="flex items-center gap-6">
                 <div
                   data-winner-status
-                  data-pending-text="[กำลังทำรายการ]"
-                  data-done-text="[เงินเข้าแล้ว]"
+                  data-pending-text="[ออโต้กำลังทำรายการ]"
+                  data-done-text="[ถอนเข้าบัญชีแล้ว]"
                   data-pending-class="is-pending"
                   data-done-class="is-verified"
                   class={`winner-status font-mono text-[10px] tracking-widest ${row.pending ? "is-pending" : "is-verified"}`}>
-                  {row.pending ? "[กำลังทำรายการ]" : "[เงินเข้าแล้ว]"}
+                  {row.pending ? "[ออโต้กำลังทำรายการ]" : "[ถอนเข้าบัญชีแล้ว]"}
                 </div>
                 <div
                   data-winner-big
                   data-normal-class={AMOUNT_NORMAL_CLASS}
                   data-big-class={AMOUNT_BIG_CLASS}
                   class={`font-mono text-xl font-black ${row.big ? AMOUNT_BIG_CLASS : AMOUNT_NORMAL_CLASS}`}>
-                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#c9bda2]">THB</span>
+                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#9b93c4]">THB</span>
                 </div>
               </div>
             </div>
@@ -145,11 +145,11 @@ const initialRows = Array.from({ length: 5 }, (_, i) => {
   }
 
   /* สองสถานะเป็นคลาส ไม่ใช่สตริงใน JS เพื่อให้สคริปต์ไม่ต้องรู้จัก palette ของ
-     แบรนด์นี้เลย สถานะ "เงินเข้าแล้ว" ยังเป็นเขียว success ซึ่งเป็นสีเชิงความหมาย
+     แบรนด์นี้เลย สถานะ "ถอนเข้าบัญชีแล้ว" ยังเป็นเขียว success ซึ่งเป็นสีเชิงความหมาย
      ไม่ใช่สีแบรนด์ จึงไม่ถูกรีธีมตาม palette */
   .winner-status.is-pending {
-    color: #c9bda2;
-    border-color: #7a5405;
+    color: #9b93c4;
+    border-color: #4a179e;
   }
   .winner-status.is-verified {
     color: oklch(79.2% 0.209 151.711);

@@ -1,106 +1,105 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
+import ContentBox3Three from "../components/ContentBox3Three.astro";
 import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ProviderGridPremium from "../components/ProviderGridPremium.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners3 from "../components/LatestWinners3.astro";
+import SmoothCarousel from "../components/SmoothCarousel.astro";
+import LatestWinnersCyber from "../components/LatestWinnersCyber.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import SmoothCarousel from "../components/SmoothCarousel.astro";
 import Faq4 from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgPromoDeposit500 from "../assets/slide3.png";
-import imgGoldWheel from "../assets/slide1.png";
+import imgRankingTiers from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
 //   1 → ContentBoxCyberCut as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxTwoNeumorphism as="h2" (แบ่งย่อหน้าเดียวลง left/right) แล้วต่อด้วย
-//       ProviderGridPremium ซึ่งเป็นภาพประกอบของหัวข้อเดียวกันเรื่องคลังเกมลิขสิทธิ์
-//       จากค่ายใหญ่มาตรฐานสากล
-//   3 → ContentBoxFloatingBadge as="h2" (ย่อหน้าเดียวใน slot เดียว) แล้วต่อด้วย
-//       GameRankingBoard ซึ่งกางลิสต์เกมที่เพิ่งเข้าคลังของหัวข้อเดียวกัน
-//   4 → ContentBox3ThreeCyberCut as="h2" (ย่อหน้าเดียวของ docx ระบุฟีเจอร์ไว้พอดี
-//       สามกลุ่ม — Multiplier / Wild ซ้อนทับ กับ Cascading / Bonus Buy — จึงลง
-//       คอลัมน์ละกลุ่มตามลำดับประโยคเดิม)
-//   5 → ContentBoxSevenThreeCyberCut as="h2" + slide3 (โปสเตอร์โปรฝาก 500 ขึ้นไป
-//       รับเพิ่ม 10% ตรงกับหัวข้อเรื่องโปรน่าสนใจ) แล้วต่อด้วย LatestWinners3
-//   6 → ContentBoxSpecial as="h2" (บล็อกสองครึ่ง)
-//   7 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (โปสเตอร์ปั่นกงล้อรับทองคำ
-//       ซึ่งเป็นกิจกรรมที่กดได้จบในเว็บเดียว ตรงกับหัวข้อสุดท้าย)
+//   2 → ContentBoxTwoCyberCut as="h2" (แบ่งย่อหน้าเดียวลง left/right ตามลำดับ
+//       ประโยคเดิม ไม่ตัดและไม่ย่อ)
+//   3 → ContentBox3Three as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามจังหวะประโยค:
+//       กวาดค่ายยักษ์ใหญ่มาไว้ครบ → คัดเฉพาะตัวที่อัตราจ่ายเป็นธรรม → เบทเริ่ม 1
+//       บาท) แล้วต่อด้วย ProviderGrid ซึ่งกางรายชื่อค่ายที่ย่อหน้าเดียวกันพูดถึง
+//   4 → ContentBoxSpecial as="h2" (สองครึ่ง: ล็อบบี้จัดระเบียบกับหมวดเกมฮิต /
+//       ดึงเกมกระแสมาเสิร์ฟหน้าแรกและสลับค่ายได้ทันที) แล้วต่อด้วย GameRankingBoard
+//       ที่กางหมวด "เกมฮิตกระแสแรง" ให้เห็นในหน้าเดียว และ SmoothCarousel ซึ่งรอบนี้
+//       เป็นแถบแบนเนอร์ค่ายเกม/เกมออกใหม่ จึงอ่านเป็นภาพล็อบบี้ของหัวข้อเดียวกัน
+//   5 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ เรื่องกลไกทำเงินยุคใหม่)
+//   6 → ContentBoxSevenThreeCyberCut as="h2" + slide1 (แบนเนอร์ระบบลำดับขั้นสะสม
+//       ออร่า ยิ่งฝากยิ่งอัพเลเวลเพื่อรับโบนัส ตรงกับหัวข้อเรื่องโปรดีน่าตามที่เติม
+//       สิทธิ์เด็ดให้ตลอดวัน) แล้วต่อด้วย LatestWinnersCyber ซึ่งเป็นหลักฐานของ
+//       ประโยค "กดรับแล้วถอนได้จริง"
+//   7 → ContentBoxFloatingBadge as="h2" (ป้ายหัวข้อลอยเหนือการ์ดคอลัมน์เดียว)
 //
-// variant รอบนี้หมุนทั้งตระกูลจากรอบก่อน: ทรง ContentBox ย้ายจากชุด Premium +
-// plain + Special มาเป็นชุด CyberCut + Neumorphism + FloatingBadge + Special
-// ส่วน Navbar เป็น NavbarStyle9, Footer เป็น FooterPremiumSumo, Announcement เป็น
-// AnnouncementPremium, LatestWinners เป็น LatestWinners3, Faq เป็น Faq4 และ
-// provider grid เป็น ProviderGridPremium
+// variant รอบนี้หมุนทั้งตระกูลจากรอบก่อน: ทรง ContentBox ย้ายจากชุด Premium นำมา
+// เป็นชุด CyberCut นำ + 3Three + Special + Neumorphism + FloatingBadge ส่วน Navbar
+// เป็น NavbarCyber, Footer เป็น FooterCyber, Announcement เป็น AnnouncementCyber,
+// LatestWinners เป็น LatestWinnersCyber และ Faq เป็น Faq4
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
-// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ AnnouncementPremium
-// เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความเดียวกับ
-// หน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ emoji ที่ฝัง
-// ในสตริงถูก mark aria-hidden ไม่ได้
+// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ AnnouncementCyber
+// เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความเดียว
+// กับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ emoji ที่
+// ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook — slide3 คู่กับหัวข้อข้อ 5 และ slide1
-// คู่กับหัวข้อข้อ 7 ส่วน slide2 ปรากฏบนหน้านี้เฉพาะในแถบ SmoothCarousel (ที่อยู่จริง
-// ของมันคือกริดหน้า /promotion) และ slide4 เป็นอาร์ตค้างของแบรนด์ก่อน ห้าม import
-// ที่ไหนทั้งสิ้น เช่นเดียวกับ banner ทุกหมายเลข — รูปที่ import คือรูปที่ถูก emit
-// ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ MainLayout
-// จัดการเอง
+// SevenThree ใช้บล็อกเดียวรอบนี้ (เพดานของ playbook คือสอง) เพราะสไลด์ที่เป็นของ
+// แบรนด์นี้จริงมีใบเดียวคือ slide1 — slide2/3/4 กับ banner ทุกหมายเลขเป็นอาร์ตของ
+// แบรนด์ก่อนที่มีชื่อและโดเมนของเขาพิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม
+// เพราะรูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ
+// banner1-mobile เป็นของ MainLayout จัดการเอง
 //
-// widget ที่ไม่ได้มาจาก docx (LoginRtpSection, ReviewCardSumo2, SmoothCarousel,
-// แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้ายเป็น <p>/<span> + aria-label บน
-// <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสามตัวที่เป็น
-// ภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGridPremium → ข้อ 2,
-// GameRankingBoard → ข้อ 3, LatestWinners3 → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// widget ที่ไม่ได้มาจาก docx (LoginRtpSection, ReviewCardSumo2, แถวปุ่ม
+// login/register, FAQ, Navfoot) ใช้ป้ายเป็น <p>/<span> + aria-label บน <section>
+// และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสี่ตัวที่เป็นภาพประกอบของ
+// หัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 3, GameRankingBoard กับ
+// SmoothCarousel → ข้อ 4, LatestWinnersCyber → ข้อ 6) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
 // h1 ×1 + h2 ×6 = หัวข้อ docx พอดี ไม่มีตัวที่แปด — หัว FAQ เป็น <p> ใน Faq4.astro
 // คำถามใน Faq4 เป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
 // เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
 //
-// title ใช้บรรทัด Title ของ docx ตรงๆ (57 ตัวอักษร) ส่วน description ใช้บรรทัด Des
-// ของ docx ต่อหางให้อยู่ในเกท 150–160 ตัวอักษรของ tools/verify-build.mjs (156
-// ตัวอักษร) ค่าที่ใช้เป็นสตริงเดียวกับที่ส่งเข้า pageGraph ตรงกับที่ส่งให้ MainLayout
-// และตรงกับ default ที่ MainLayout ตั้งไว้เป๊ะ
-const pageTitle = "GUESS168 | สล็อตคัดเกรด เกมลิขสิทธิ์แน่น ฝากถอนออโต้ทันใจ";
-const pageDescription = "GUESS168 สล็อตคัดเกรด เกมลิขสิทธิ์แน่นจากค่ายดัง อัปเดตใหม่มีให้ตาม ฟีเจอร์ครบ โปรน่าสนใจ ฝากถอนออโต้ทันใจใน 3 วินาที รวมทุกจังหวะการเล่นไว้ครบจบในเว็บเดียว";
+// title ใช้บรรทัด Title ของ docx ตรงๆ ส่วน description อยู่ในเกท 150–160 ตัวอักษร
+// ของ tools/verify-build.mjs ทั้งสองค่าเป็นสตริงเดียวกับที่ส่งเข้า pageGraph ตรงกับ
+// ที่ส่งให้ MainLayout และตรงกับ default ที่ MainLayout ตั้งไว้เป๊ะ
+const pageTitle = "AURA456 | สล็อตตัวตึงออร่าพุ่ง ระบบแรง เกมเด็ดพร้อมลั่น โปรดีน่าตาม";
+const pageDescription =
+  "AURA456 สล็อตตัวตึงออร่าพุ่ง ระบบแรง เกมเด็ดพร้อมลั่นจากหลายค่าย ตัวฮิตขึ้นหน้า ฟีเจอร์หลากหลาย โปรดีน่าตาม พร้อมออโต้ทำรายการตลอดวัน ฝากถอนไว 3-5 วินาที";
 
 const announcementMessage =
-  "GUESS168 สล็อตคัดเกรด เกมลิขสิทธิ์แน่น ฝากถอนออโต้ทันใจ • เว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก คัดเฉพาะสล็อตแตกง่ายค่า RTP สูง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ • ระบบฝากถอนออโต้ทำงานใน 3 วินาที ถอนปุ๊บเงินเข้าปั๊บ ไร้เทิร์นโอเวอร์จุกจิก ปั่นได้เท่าไหร่ถอนออกได้ครบทุกบาท • คัดกรองเฉพาะค่ายใหญ่มาตรฐานสากล PG Soft Pragmatic Play และ Joker Gaming ทุกเกมผ่านการทดสอบอัตราจ่าย เบทเริ่มต้น 1 บาทก็ลุ้นโบนัสก้อนโตได้ทันที • ค่ายใหญ่ปล่อยเกมไหน อัปเดตเข้าคลังทันทีใน 24 ชั่วโมง พร้อมโหมดทดลองเล่นฟรีให้เช็กจังหวะโบนัสและกลไกเกมก่อนลงเงินจริง • ฟีเจอร์อัดแน่นทั้ง Multiplier สุ่มตัวคูณหนัก ระบบ Wild ซ้อนทับ คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy ซื้อฟรีสปิน • โบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน กดรับเองผ่านหน้าเว็บ เงื่อนไขชัดเจน ไม่ติดล็อกยูส • กระเป๋าเดียวจบ เลือกเกม สลับค่าย กดรับโปร และกดถอนกำไร ทำได้ครบผ่านหน้าแดชบอร์ดเดียว";
+  "AURA456 สล็อตตัวตึงออร่าพุ่ง ระบบแรง เกมเด็ดพร้อมลั่น โปรดีน่าตาม • เว็บตรงสล็อตคัดเกรด รันบนเซิร์ฟเวอร์หลัก API แท้ 100% ค่า RTP โปร่งใส ไม่มีการดัดแปลงระบบหลังบ้าน ออโต้ประมวลผลไว 3 วินาที กดฝากปุ๊บเงินเข้าปั๊บ ถอนกำไรเด้งเข้าบัญชีทันใจ • วางโครงสร้างสถาปัตยกรรมเว็บให้ตอบสนองฉับไวตั้งแต่คลิกแรก อินเทอร์เฟซสะอาดตา ไร้ป๊อปอัปโฆษณากวนใจ โหลดเกมและกราฟิก 3D ลื่นไหลไม่มีกระตุกแม้ช่วงพีค • กวาดเกมสล็อตลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ทั่วโลกมาไว้ในล็อบบี้ ทั้ง PG Soft Pragmatic Play Joker และอีกมากมาย เบทเริ่มต้นเบาๆ แค่ 1 บาท ก็ลุ้นโบนัสก้อนโตได้ • จัดระเบียบหน้าล็อบบี้ให้ใช้งานง่าย หมวดเกมฮิตกระแสแรงขึ้นโชว์ทันทีที่เข้าสู่ระบบ สลับค่ายเล่นได้ทันทีแบบไม่ต้องโยกเงินในกระเป๋า • อัดแน่นด้วยกลไกทำเงินยุคใหม่ ทั้ง Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง Multiplier ตัวคูณทวีคูณ Wild ยืดขยายทับรีล และโหมด Bonus Buy ซื้อฟรีสปิน • แจกสิทธิประโยชน์ที่ใช้งานได้จริง ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเพิ่มทุนยอดฝากแรกของวัน และคืนยอดเสีย Cash Back เงื่อนไขตรงไปตรงมา ไม่ติดเทิร์นโอเวอร์มหาโหด • ฝากถอนออโต้ 100% เชื่อมต่อตรงกับธนาคารและวอลเล็ท ทำรายการเสร็จใน 3-5 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอคิวอนุมัติ ถอนได้ตลอด 24 ชั่วโมง";
 
-// FAQ ห้าข้อเขียนจากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้าไหนมา
-// ทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบคำถาม
-// ที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
+// FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
+// ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
+// คำถามที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
 // <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "GUESS168 เป็นเว็บตรงจริงไหม แล้วค่า RTP ถูกดัดแปลงหรือเปล่า",
-    a: "เป็นเว็บตรงที่ใช้ API แท้ยิงตรงจากเซิร์ฟเวอร์หลักของค่ายเกม ไม่มีการดัดแปลงเปอร์เซ็นต์ชนะระหว่างทาง เกมที่คัดเข้าคลังจึงเป็นสล็อตแตกง่ายที่ค่า RTP สูงตามที่ค่ายตั้งไว้จริง และเมื่อรวมกับกติกาที่ไม่มีเทิร์นโอเวอร์จุกจิก ปั่นได้เท่าไหร่ก็ถอนออกได้ครบทุกบาทโดยไม่มีเงื่อนไขซ่อนไว้ตอนกดถอน",
+    q: "AURA456 เป็นเว็บสล็อตแบบไหน แล้วเกมในล็อบบี้เป็นลิขสิทธิ์แท้จริงไหม",
+    a: "เป็นเว็บตรงสล็อตคัดเกรดที่รันบนเซิร์ฟเวอร์หลัก เชื่อมด้วย API แท้ 100% เกมทุกตัวในล็อบบี้จึงเป็นลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ทั่วโลก ทั้ง PG Soft, Pragmatic Play, Joker และอีกมากมาย ค่า RTP โปร่งใสตามที่ค่ายผู้พัฒนาตั้งไว้ ไม่มีการดัดแปลงระบบหลังบ้าน และคัดเน้นๆ เฉพาะเกมที่มีอัตราจ่ายรางวัลเป็นธรรม จ่ายเงินจริงตามระบบอัลกอริทึมโรงงาน",
   },
   {
-    q: "ในคลังมีค่ายเกมอะไรบ้าง แล้วต้องเบทขั้นต่ำเท่าไหร่ถึงจะลุ้นโบนัสได้",
-    a: "คลังคัดกรองเฉพาะค่ายใหญ่มาตรฐานสากลอย่าง PG Soft, Pragmatic Play และ Joker Gaming ไม่เอาเกมไร้คุณภาพมาลงให้รกคลัง ทุกเกมผ่านการทดสอบอัตราจ่ายและจ่ายจริงตามอัลกอริทึมโรงงาน ส่วนเรื่องทุนไม่ต้องอัดหนักตั้งแต่ไม้แรก เพราะเบทเริ่มต้นที่ 1 บาทก็อยู่ในเงื่อนไขลุ้นโบนัสก้อนโตได้ทันทีเหมือนกัน",
+    q: "ทุนน้อยเล่นได้ไหม เบทเริ่มต้นเท่าไหร่ แล้วต้องโยกเงินข้ามค่ายหรือเปล่า",
+    a: "เบทเริ่มต้นเบาๆ แค่ 1 บาทก็พร้อมลุ้นโบนัสก้อนโตได้ทันที ไม่ต้องมีทุนหนักถึงจะเข้าเล่นได้ และระบบใช้กระเป๋าเดียวจบ อยากสลับไปปั่นค่ายไหนก็กดเปลี่ยนได้ทันทีโดยไม่ต้องโยกเงินในกระเป๋าไปมา ทำให้เลือกเกมได้อิสระโดยไม่เสียจังหวะระหว่างทาง",
   },
   {
-    q: "เกมที่ค่ายเพิ่งปล่อยใหม่ ต้องรอนานแค่ไหน แล้วลองเล่นก่อนได้ไหม",
-    a: "ไม่ต้องรอข้ามสัปดาห์และไม่ต้องคอยให้กระแสซา เพราะค่ายใหญ่ปล่อยเกมไหนก็ถูกอัปเดตเข้าคลังภายใน 24 ชั่วโมง ไม่มีขั้นตอนรอระบบอนุมัติมาคั่น และทุกเกมมีโหมดทดลองเล่นฟรีให้กดเข้าไปเช็กจังหวะโบนัสกับกลไกของเกมก่อนลงเงินจริง จึงจับทางตัวใหม่ได้ก่อนตัดสินใจวางเบท",
+    q: "ช่วงที่คนเล่นเยอะ เกมจะค้างหรือเด้งหลุดไหม",
+    a: "โครงสร้างสถาปัตยกรรมเว็บวางมาให้ตอบสนองฉับไวตั้งแต่คลิกแรก อินเทอร์เฟซสะอาดตา ไร้ป๊อปอัปโฆษณากวนใจ โหลดตัวเกมและกราฟิก 3D ได้ลื่นไหลไม่มีกระตุก แม้จะเป็นช่วงเวลาพีคที่มีผู้เล่นหนาแน่น จังหวะสปินก็ยังสมูธ ไม่มีปัญหาเกมค้างหรือเด้งหลุดมาทำลายอารมณ์บวก",
   },
   {
-    q: "ฟีเจอร์ในเกมมีอะไรบ้าง แล้วสายใจร้อนควรเลือกโหมดไหน",
-    a: "ลูกเล่นหลักมีสี่กลุ่ม ได้แก่ Multiplier ที่สุ่มแจกตัวคูณหนัก ระบบ Wild ซ้อนทับ คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Bonus Buy สายใจร้อนที่อยากพุ่งตรงเข้าลุ้นรางวัลใหญ่มักเลือก Bonus Buy เพราะซื้อฟรีสปินเข้ารอบได้เลย ส่วนคนที่ชอบลุ้นยาวในสปินเดียวจะถูกใจ Cascading ที่แตกต่อกันเป็นชุดมากกว่า",
+    q: "หาเกมเด็ดยังไงให้เร็ว แล้วแต่ละเกมมีลูกเล่นอะไรให้ลองบ้าง",
+    a: "หน้าล็อบบี้จัดระเบียบไว้ให้ใช้งานง่าย หมวดหมู่ เกมฮิตกระแสแรง ขึ้นโชว์เด่นหราทันทีที่เข้าสู่ระบบ ค่ายดังเปิดตัวเกมไหนหรือคนกำลังฮิตปั่นเกมอะไรก็ถูกดึงมาเสิร์ฟถึงหน้าแรก ส่วนกลไกในตัวเกมมีให้ลองครบ ทั้งระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง, Multiplier สุ่มแจกตัวคูณหนักแบบทวีคูณ, สัญลักษณ์ Wild ยืดขยายทับรีล และโหมด Bonus Buy สำหรับสายที่อยากซื้อฟรีสปินพุ่งชนแจ็คพอตใหญ่",
   },
   {
-    q: "โปรมีอะไรบ้าง ต้องแจ้งแอดมินไหม แล้วฝากถอนใช้เวลานานเท่าไหร่",
-    a: "สิทธิ์หลักมีโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน ทั้งหมดกดรับเองผ่านหน้าเว็บโดยไม่ต้องแจ้งแอดมิน เงื่อนไขเขียนไว้ชัดเจนและไม่ติดล็อกยูส ส่วนการทำรายการวิ่งผ่าน Gateway ตรง ฝากถอนเสร็จใน 3-5 วินาที ไม่ต้องโอนสลิปและไม่ต้องคอยคิวอนุมัติ",
+    q: "โปรโมชั่นมีอะไรบ้าง ติดเทิร์นโอเวอร์ไหม แล้วฝากถอนใช้เวลานานแค่ไหน",
+    a: "สิทธิ์หลักมีทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเพิ่มทุนสำหรับยอดฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ที่ช่วยซัพพอร์ตทุนให้กลับมาแก้ตัวได้ใหม่ เงื่อนไขตรงไปตรงมา ถอนได้จริง ไม่ติดเทิร์นโอเวอร์มหาโหด ส่วนการทำรายการวิ่งผ่านระบบฝากถอนออโต้ 100% ที่เชื่อมต่อตรงกับธนาคารและแอปพลิเคชันวอลเล็ท เสร็จสิ้นใน 3-5 วินาที ไม่ต้องส่งสลิปให้แอดมิน ไม่ต้องรอคิวอนุมัติ และกดถอนได้ตลอด 24 ชั่วโมง",
   },
 ];
 
@@ -118,48 +117,67 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="GUESS168 สล็อตคัดเกรด เกมลิขสิทธิ์แน่น ฝากถอนออโต้ทันใจ">
+  <ContentBoxCyberCut as="h1" title="AURA456 สล็อตตัวตึงออร่าพุ่ง ระบบแรง เกมเด็ดพร้อมลั่น โปรดีน่าตาม">
     <p class="text-left text-base leading-relaxed">
-      GUESS168 เว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก คัดเฉพาะสล็อตแตกง่ายค่า RTP สูง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ ระบบฝากถอนออโต้ทำงานใน 3 วินาที ถอนปุ๊บเงินเข้าปั๊บ ไร้เทิร์นโอเวอร์จุกจิก
-      ปั่นได้เท่าไหร่ถอนออกได้ครบทุกบาท
+      AURA456 เว็บตรงสล็อตคัดเกรด รันบนเซิร์ฟเวอร์หลัก API แท้ 100% สล็อตแตกง่าย ค่า RTP โปร่งใส ไม่มีการดัดแปลงระบบหลังบ้าน มาพร้อมระบบออโต้ประมวลผลไว 3 วินาที กดฝากปุ๊บเงินเข้าปั๊บ
+      ถอนกำไรเด้งเข้าบัญชีทันใจ ไร้เงื่อนไขจุกจิก ปั่นง่าย ทำกำไรคล่อง ตอบโจทย์สายสปินที่ต้องการผลลัพธ์ชัดเจน
     </p>
   </ContentBoxCyberCut>
 
-  <ContentBoxTwoNeumorphism
+  <ContentBoxTwoCyberCut
     as="h2"
-    title="GUESS168 สล็อตคัดเกรด เปิดคลังเกมลิขสิทธิ์จากค่ายดังแบบเน้นตัวมีของ"
-    titleleft="คัดเฉพาะค่ายใหญ่มาตรฐานสากล"
-    titleright="ทดสอบอัตราจ่ายทุกเกม เบทเริ่ม 1 บาท">
-    <p slot="left" class="text-left text-base leading-relaxed">GUESS168 สล็อตคัดเกรด คัดกรองเฉพาะค่ายใหญ่มาตรฐานสากล เช่น PG Soft, Pragmatic Play, และ Joker Gaming ไม่เอาเกมไร้คุณภาพมาลงให้รกคลัง</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ทุกเกมผ่านการทดสอบอัตราจ่าย จ่ายจริงตามอัลกอริทึมโรงงาน เบทเริ่มต้น 1 บาทก็ลุ้นโบนัสก้อนโตได้ทันที</p>
-  </ContentBoxTwoNeumorphism>
-
-  <ProviderGridPremium />
-
-  <ContentBoxFloatingBadge as="h2" title="เกมอัปเดตใหม่มีอะไรให้ตาม? GUESS168 เติมตัวน่าลองเข้าลิสต์ต่อเนื่อง">
-    <p class="text-left text-base leading-relaxed">
-      ค่ายใหญ่ปล่อยเกมไหน GUESS168 อัปเดตเข้าคลังทันทีใน 24 ชั่วโมง ไม่ต้องคอยกระแสซา ไม่ต้องรอระบบอนุมัติข้ามสัปดาห์ พร้อมโหมดทดลองเล่นฟรีให้เช็กจังหวะโบนัสและกลไกเกมก่อนลงเงินจริง
-      เข้าถึงเกมใหม่ไฟแรงได้ก่อนใครตลอดเวลา
+    title="AURA456 สล็อตตัวตึงออร่าพุ่ง เปิดฟอร์มระบบแรงให้ทุกจังหวะไปต่อได้คล่อง"
+    titleleft="ตอบสนองฉับไวตั้งแต่คลิกแรก"
+    titleright="ช่วงพีคคนแน่นก็ยังสปินสมูธ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ระบบแรงไม่ต้องรอโหลดนาน AURA456 วางโครงสร้างสถาปัตยกรรมเว็บให้ตอบสนองฉับไวตั้งแต่คลิกแรก อินเทอร์เฟซสะอาดตา ไร้ป๊อปอัปโฆษณากวนใจ โหลดตัวเกมและกราฟิก 3D ได้ลื่นไหลไม่มีกระตุก
     </p>
-  </ContentBoxFloatingBadge>
+    <p slot="right" class="text-left text-base leading-relaxed">แม้จะเป็นช่วงเวลาพีคที่มีผู้เล่นหนาแน่น จังหวะสปินของคุณก็จะยังสมูธ ไม่มีปัญหาเกมค้างหรือเด้งหลุดมาทำลายอารมณ์บวก</p>
+  </ContentBoxTwoCyberCut>
+
+  <ContentBox3Three
+    as="h2"
+    title="เกมเด็ดพร้อมลั่นจากหลายค่าย AURA456 รวมตัวน่าเล่นไว้แน่นแค่ไหน?"
+    titleleft="ค่ายยักษ์ใหญ่ครบในล็อบบี้เดียว"
+    titlecenter="อัตราจ่ายเป็นธรรม จ่ายเงินจริง"
+    titleright="เบทเริ่มต้นเบาๆ แค่ 1 บาท">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ไม่ต้องกลัวว่าจะไม่มีเกมให้ปั่น AURA456 กวาดเกมสล็อตลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ทั่วโลกมาไว้ในล็อบบี้เพียบ ทั้ง PG Soft, Pragmatic Play, Joker และอีกมากมาย
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">คัดเน้นๆ เฉพาะเกมที่มีอัตราจ่ายรางวัลเป็นธรรม จ่ายเงินจริงตามระบบอัลกอริทึมโรงงาน</p>
+    <p slot="right" class="text-left text-base leading-relaxed">เบทเริ่มต้นเบาๆ แค่ 1 บาท ก็พร้อมลุ้นโบนัสก้อนโตได้ทันที</p>
+  </ContentBox3Three>
+
+  <ProviderGrid />
+
+  <ContentBoxSpecial as="h2" title="ตัวฮิตขึ้นหน้าไม่ต้องตามหา เปิดล็อบบี้แล้วเจอเกมกระแสได้ง่ายกว่าเดิม">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ไม่ต้องเสียเวลาเลื่อนหาเกมเด็ด AURA456 จัดระเบียบหน้าล็อบบี้ให้ใช้งานง่ายสุดๆ หมวดหมู่ "เกมฮิตกระแสแรง" ขึ้นโชว์เด่นหราทันทีที่เข้าสู่ระบบ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ค่ายดังเปิดตัวเกมไหน หรือคนกำลังฮิตปั่นเกมอะไร เราดึงมาเสิร์ฟให้ถึงหน้าแรก พร้อมสลับค่ายเล่นได้ทันทีแบบไม่ต้องโยกเงินในกระเป๋า
+    </p>
+  </ContentBoxSpecial>
 
   <GameRankingBoard />
 
-  <ContentBox3ThreeCyberCut
-    as="h2"
-    title="ฟีเจอร์ครบแค่ไหน เจาะลูกเล่นในเกมที่ช่วยให้แต่ละสปินไม่ซ้ำฟีล"
-    titleleft="Multiplier สุ่มตัวคูณหนัก"
-    titlecenter="Wild ซ้อนทับ และ Cascading"
-    titleright="Bonus Buy ซื้อฟรีสปิน">
-    <p slot="left" class="text-left text-base leading-relaxed">กดสปินที่นี่ไม่มีคำว่ากริบ ตัวเกมอัดแน่นด้วยฟีเจอร์ Multiplier สุ่มตัวคูณหนัก</p>
-    <p slot="center" class="text-left text-base leading-relaxed">ระบบ Wild ซ้อนทับ และคอมโบแตกต่อเนื่อง Cascading</p>
-    <p slot="right" class="text-left text-base leading-relaxed">พร้อมโหมด Bonus Buy ซื้อฟรีสปินพุ่งตรงเข้าลุ้นรางวัลใหญ่ทันที ทุกการหมุนมีจังหวะให้ลุ้น ไม่น่าเบื่อ ไม่ปล่อยให้เสียจังหวะฟรี</p>
-  </ContentBox3ThreeCyberCut>
+  <SmoothCarousel />
 
-  <ContentBoxSevenThreeCyberCut as="h2" title="โปรน่าสนใจของ GUESS168 มีอะไรบ้าง เลือกสิทธิ์ให้เข้ากับจังหวะเล่น" titleleft="ฝาก 500 ขึ้นไปรับเพิ่ม 10%">
+  <ContentBoxNeumorphism as="h2" title="ฟีเจอร์หลากหลายของ AURA456 แต่ละเกมมีลูกเล่นอะไรให้ลองบ้าง">
+    <p class="text-left text-base leading-relaxed">
+      สปินที่นี่ไม่มีคำว่าน่าเบื่อ เพราะเกมบน AURA456 อัดแน่นด้วยกลไกทำเงินยุคใหม่ ทั้งระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง, Multiplier สุ่มแจกตัวคูณหนักแบบทวีคูณ, สัญลักษณ์ Wild
+      ยืดขยายทับรีล และโหมด Bonus Buy สำหรับสายใจร้อนที่อยากซื้อฟรีสปินพุ่งชนแจ็คพอตใหญ่ได้เลย
+    </p>
+  </ContentBoxNeumorphism>
+
+  <ContentBoxSevenThreeCyberCut
+    as="h2"
+    title="โปรดีน่าตาม AURA456 เติมสิทธิ์เด็ดให้มีอะไรน่าสนใจตลอดวัน"
+    titleleft="ระบบลำดับขั้นสะสมออร่า"
+    titleright="สิทธิ์เด็ดที่กดรับแล้วถอนได้จริง">
     <Picture
       slot="left"
-      src={imgPromoDeposit500}
+      src={imgRankingTiers}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -168,64 +186,43 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="โปสเตอร์โปรโมชั่นของ GUESS168 เป็นตัวอักษรสีทองบนพื้นดำ บรรทัดบนสุดเขียนว่า โปรโมชั่น ถัดมาตัวใหญ่ว่า ฝาก 500 แล้ว ขึ้นไปรับเพิ่ม พร้อมตัวเลข 10% ตัวโตกลางภาพ ใต้ลงมาเป็นเงื่อนไขว่า หนึ่งบิลต่อหนึ่งวัน และ รับรายละเอียดได้ที่แอดมิน บรรทัดล่างระบุชื่อเว็ป app.guess168.vip ปิดท้ายด้วยข้อความว่า ยินดีให้บริการ"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#c58a00]/45 shadow-[0_10px_30px_rgba(254,204,2,0.3)]"
+      alt="แบนเนอร์นีออนแนวนอนของ AURA456 มุมซ้ายบนเป็นโลโก้ AURA456 กับคำบรรยายว่า CYBER MYSTIC CASINO ถัดมาเป็นคำว่า RANKING ตัวใหญ่แบบนีออน พร้อมบรรทัดภาษาไทยว่า ลำดับขั้น ยิ่งฝาก ยิ่งอัพเลเวล เพื่อรับโบนัสในการเล่น และ รีเซ็ตทุก 2 เดือน ด้านล่างเป็นแถวป้ายลำดับขั้นทรงข้าวหลามตัดเรืองแสงหกใบ เขียนว่า Spark จุดประกาย, Pulse พลังชีพจร, Nova ออร่าพุ่ง, Prism พลังหลากมิติ, Radiant เปล่งประกาย และ Eclipse ขั้นสูงสุด ผู้ครองเงาออร่า"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#8b3cf7]/45 shadow-[0_10px_30px_rgba(255,47,176,0.3)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ตัดเงื่อนไขโปรโมชันหลอกลวงทิ้งทั้งหมด GUESS168 ให้สิทธิประโยชน์ที่กดรับไปใช้ได้จริง โบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน กดรับเองผ่านหน้าเว็บ
-      เงื่อนไขชัดเจน ถอนได้จริง ไม่ติดล็อกยูส
+      โปรโมชันที่กดรับแล้วถอนได้จริง AURA456 แจกสิทธิประโยชน์ที่ใช้งานได้จริง ไม่ว่าจะเป็นโบนัสต้อนรับสมาชิกใหม่ โปรเพิ่มทุนสำหรับยอดฝากแรกของวัน และระบบคืนยอดเสีย Cash Back
+      ที่ช่วยซัพพอร์ตทุนให้คุณนำกลับมาแก้ตัวได้ใหม่ เงื่อนไขตรงไปตรงมา ถอนได้จริง ไม่ติดเทิร์นโอเวอร์มหาโหด
     </p>
   </ContentBoxSevenThreeCyberCut>
 
-  <LatestWinners3 />
+  <LatestWinnersCyber />
 
-  <ContentBoxSpecial as="h2" title="ฝากถอนออโต้ทันใจ ลดขั้นตอนการทำรายการให้คล่องโดยไม่ต้องรอนาน">
-    <p slot="left" class="text-left text-base leading-relaxed">ระบบฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ทำรายการเสร็จใน 3-5 วินาที ไม่ต้องโอนสลิปให้แอดมิน ไม่ต้องคอยคิวอนุมัติ</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ฝากแล้วยอดเด้งเข้าเกมทันที ถอนกำไรปุ๊บเงินวิ่งเข้าบัญชีธนาคารหรือวอลเล็ททันใจ หมดปัญหาเงินค้างระบบ</p>
-  </ContentBoxSpecial>
-
-  <ContentBoxSevenThreeNeumorphism as="h2" title="GUESS168 รวมทุกจังหวะไว้ครบจบเว็บเดียว ตั้งแต่เลือกเกมจนถึงทำรายการ" titleleft="ปั่นกงล้อรับทองคำ วันละ 1 บาท">
-    <Picture
-      slot="left"
-      src={imgGoldWheel}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="โปสเตอร์กิจกรรมของ GUESS168 พื้นสีดำตกแต่งด้วยสีทองและแดง หัวเรื่องว่า ปั่นกงล้อรับทองคำ วันละ 1 บาท บรรทัดรองว่า ปั่นได้ทุกวัน วันละ 1 ครั้ง กลางภาพเป็นวงล้อเสี่ยงโชคสีแดงสลับขาว ช่องรางวัลเขียนว่า ทอง 1 บาท 50 บาท 100 บาท 150 บาท 200 บาท 250 บาท 400 บาท 500 บาท 1,000 บาท และ 2,000 บาท ด้านซ้ายเป็นกองทองคำแท่ง ด้านขวาเป็นสร้อยคอทองคำในกล่องกำมะหยี่สีแดง มุมขวาบนเป็นโลโก้ Guess168 ล่างสุดเป็นป้ายไลน์ @Guess168th"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#fecc02]/45 shadow-[0_10px_30px_rgba(197,138,0,0.28)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      กระเป๋าเดียวจบ ไม่ต้องโยกเงินข้ามค่ายให้เสียเวลา เลือกเกม สลับค่าย กดรับโปร และกดถอนกำไร ทำได้ครบผ่านหน้าแดชบอร์ดเดียว GUESS168 วางโครงสร้างระบบให้ตอบโจทย์สายปั่นยุคใหม่ เน้นความเร็ว ความแม่นยำ
-      และผลลัพธ์ทางการเงินที่ชัดเจนที่สุด
+  <ContentBoxFloatingBadge as="h2" title="ออโต้พร้อมทำรายการตลอดวัน ลดขั้นตอนให้ฝากถอนคล่องไม่ขัดจังหวะ">
+    <p class="text-left text-base leading-relaxed">
+      หมดปัญหาระบบการเงินล้าหลัง AURA456 ใช้ระบบฝากถอนออโต้ 100% เชื่อมต่อตรงกับธนาคารและแอปพลิเคชันวอลเล็ท ทำรายการเสร็จสิ้นใน 3-5 วินาที ไม่ต้องคอยส่งสลิปยืนยันให้แอดมิน ไม่ต้องรอคิวอนุมัติ
+      ฝากยอดปุ๊บเข้าเล่นได้ทันที ปั่นได้กำไรก็กดถอนเงินเข้ากระเป๋าได้เลยตลอด 24 ชั่วโมง
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+  </ContentBoxFloatingBadge>
 
   <LoginRtpSection />
 
   <ReviewCardSumo2 />
 
-  <SmoothCarousel />
-
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffe680] via-[#fecc02] to-[#a35800] px-4 py-3 text-sm font-black whitespace-nowrap text-[#140800] shadow-[0_10px_30px_rgba(254,204,2,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(254,204,2,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffc9ee] via-[#ff2fb0] to-[#4a179e] px-4 py-3 text-sm font-black whitespace-nowrap text-[#05021a] shadow-[0_10px_30px_rgba(255,47,176,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,47,176,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#c58a00]/70 bg-[#140800]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ffd54a] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fecc02] hover:bg-[#33180a] hover:text-[#fff6e0] hover:shadow-[0_15px_40px_rgba(254,156,1,0.4)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#3ba9ff]/55 bg-[#05021a]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#d8f2ff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ff2fb0] hover:bg-[#1c1046] hover:text-[#f6ebff] hover:shadow-[0_15px_40px_rgba(59,169,255,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ GUESS168" faqs={faqs} />
+  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ AURA456" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

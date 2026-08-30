@@ -16,35 +16,35 @@ const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.pro
 // `title` + `as` ตัวเดียว หัวข้อจะไปอยู่เหนือคอลัมน์เนื้อความ (ฝั่ง 7 ส่วน) ซึ่ง
 // กว้างพอรับหัวข้อยาวของ docx ได้โดยไม่ล้นออกนอกการ์ด
 //
-// SBOGOOL: น้ำเงินรอยัลสนามไฟคู่ทอง — น้ำเงิน #1e4bb8 / #2f6fe4 / #5b9cff / #7fb0ff /
-// #0b1f52 คู่ทอง #f5c518 / #ffe07a คู่เงินโครเมียมจากตัวอักษรโลโก้ #e8eefc /
-// #c3cfe6 บนผิว #030b22 / #071433 / #0d1f4d เนื้อความ #dce7fb (ข้อความรอง #93a9d4)
+// NEOCLUB88: ทองคลับคู่แพลทินัม — ทอง #f2cc53 / #ffe89a / #f6d977 / #c39b3c /
+// #a8842c / #8a6415 คู่แพลทินัม #eef1f5 / #c6ccd4 / #8d949e บนผิว #241303 /
+// #140b02 / #0a0602 เนื้อความ #ede0c4 ข้อความรอง #a8977a หัวข้อ #fbf4e4
 // (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
 // คอมเมนต์ ดูของเดิมได้จาก git history)
 //
-// รอบนี้บล็อกนี้เป็น SevenThree ใบที่สองในสองใบของเพดาน playbook คู่กับ slide2
-// (ฝากรายวัน ฝากครั้งแรก รับโบนัส 20% สำหรับกีฬา) กับหัวข้อ docx ข้อ 7 เรื่องระบบ
-// ออโต้ที่ตัดเวลารอออกจากทุกขั้นตอน
+// รอบนี้บล็อกนี้เป็น SevenThree ใบที่สองในสองใบของเพดาน playbook คู่กับ slide4
+// (โปรโมชั่น VIP รับโบนัสฟรี 50%) กับหัวข้อ docx ข้อ 5 เรื่องโปรโมชั่นให้สมาชิก
+// ทุกวัน
 const sectionLabel = title ? undefined : (label ?? titleright ?? titleleft ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#f5c518]/25 bg-[#071433]/88 p-8 text-[#dce7fb] shadow-[0_10px_30px_rgba(245,197,24,0.18)] backdrop-blur-xl transition-all duration-500 hover:border-[#f5c518]/50 md:p-10">
-    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#0d1f4d]/70 blur-[60px]"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#c6ccd4]/25 bg-[#241303]/88 p-8 text-[#ede0c4] shadow-[0_10px_30px_rgba(230,236,243,0.16)] backdrop-blur-xl transition-all duration-500 hover:border-[#f2cc53]/50 md:p-10">
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#33230b]/70 blur-[60px]"></div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 border-b border-[#f5c518]/25 pb-6 text-left text-base leading-relaxed text-[#93a9d4] md:border-r md:border-b-0 md:pr-6 md:pb-0">
-        {titleleft && <p class="bg-gradient-to-r from-[#e8eefc] via-[#7fb0ff] to-[#f5c518] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{titleleft}</p>}
+      <article class="flex flex-col gap-4 border-b border-[#c6ccd4]/25 pb-6 text-left text-base leading-relaxed text-[#a8977a] md:border-r md:border-b-0 md:pr-6 md:pb-0">
+        {titleleft && <p class="bg-gradient-to-r from-[#eef1f5] via-[#c6ccd4] to-[#f2cc53] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#dce7fb] md:pl-6">
-        {title && <HeadingTag class="bg-gradient-to-r from-[#e8eefc] via-[#7fb0ff] to-[#f5c518] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#ede0c4] md:pl-6">
+        {title && <HeadingTag class="bg-gradient-to-r from-[#fbf4e4] via-[#c6ccd4] to-[#f2cc53] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>}
         {
           titleright && (
-            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#ffe07a]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#f5c518] shadow-[0_0_5px_rgba(245,197,24,0.8)]" /> {titleright}
+            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#f6d977]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#c6ccd4] shadow-[0_0_5px_rgba(230,236,243,0.8)]" /> {titleright}
             </p>
           )
         }

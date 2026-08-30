@@ -5,12 +5,15 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h1" } = Astro.props;
 
-// GUESS168: ย้ายจากน้ำเงินรอยัลสนามไฟคู่ทองของแบรนด์ก่อน มาเป็นทองหลอมคู่ส้มไฟ
-// ของแบรนด์นี้ — ทอง #fecc02 / #ffe680 / #ffd54a / #c58a00 คู่ส้ม #fe9c01 /
-// #a35800 บนผิวดำอมน้ำตาล #140800 / #231005 / #33180a เนื้อความ #f7e7c6
-// (วัดจาก palette.json: vivid ของโลโก้เป็นทอง #fecc02 / #fed402 / #ffc401 /
-// #feb302 / #fe9c01 ส่วน dominant ของแบนเนอร์เป็นดำอมน้ำตาล #140500 / #230c00 /
-// #1b0a01 และ dominant ของสไลด์เป็น #020000 / #0b0303)
+// AURA456: ย้ายจากทองคลับคู่แพลทินัมของแบรนด์ก่อน มาเป็นนีออนบานเย็นคู่ฟ้า
+// อิเล็กทริกของแบรนด์นี้ — บานเย็น #ff2fb0 / #ffc9ee / #ff7fd4 / #c81d8e คู่ฟ้า
+// #3ba9ff / #7fd0ff / #d8f2ff ม่วงบนขอบ #8b3cf7 / #4a179e บนผิวครามเกือบดำ
+// #03010f / #0b0528 / #120a33 เนื้อความ #d8d3f0
+//
+// อาร์ตเวิร์กรอบนี้เป็นนีออนสองสีชัดเจน: คำว่า AURA เป็นชมพูบานเย็น เลข 456 เป็น
+// ฟ้าอิเล็กทริก ส่วนค่า vivid ใน palette.json ที่ออกมาเป็นครามเข้ม (#05053c /
+// #0b0a43) คือ "พื้น" ของภาพ ไม่ใช่สีเน้น — palette.json จัดอันดับให้ แต่ไม่ได้
+// ตีความให้ คู่สีชมพู-ฟ้าคือตัวที่ทำให้แบรนด์นี้ไม่ใช่แบรนด์ก่อนเปลี่ยนสี
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
@@ -26,15 +29,15 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#c58a00]/40 bg-[#140800]/90 p-8 text-left text-base leading-relaxed text-[#f7e7c6] shadow-[0_10px_30px_rgba(197,138,0,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ffd54a]/60 hover:shadow-[0_15px_40px_rgba(254,156,1,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#33180a]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#c58a00]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#231005]/50 blur-[60px] transition-all duration-500 group-hover:bg-[#fe9c01]/35"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#8b3cf7]/40 bg-[#0b0528]/90 p-8 text-left text-base leading-relaxed text-[#d8d3f0] shadow-[0_10px_30px_rgba(139,60,247,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ff7fd4]/60 hover:shadow-[0_15px_40px_rgba(255,47,176,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#1c1046]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#8b3cf7]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#120a33]/50 blur-[60px] transition-all duration-500 group-hover:bg-[#3ba9ff]/35"></div>
 
     {
       title && (
-        <header class="mb-6 flex items-center gap-4 border-b border-[#c58a00]/40 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe680] to-[#c58a00] shadow-[0_0_10px_rgba(254,156,1,0.6)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fff6e0] via-[#fecc02] to-[#fe9c01] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-6 flex items-center gap-4 border-b border-[#8b3cf7]/40 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#d8f2ff] via-[#ffc9ee] to-[#8b3cf7] shadow-[0_0_10px_rgba(255,47,176,0.6)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#7fd0ff] via-[#ff2fb0] to-[#c81d8e] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }

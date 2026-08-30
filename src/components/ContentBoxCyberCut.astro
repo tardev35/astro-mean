@@ -6,14 +6,15 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
 
-// GUESS168: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
+// AURA456: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
 // Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
 // ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
-// รอบนี้เป็นทองหลอมคู่ส้มไฟบนดำอมน้ำตาล — ทอง #fecc02 / #ffe680 / #ffd54a /
-// #fff6e0 / #c58a00 เป็นสีเน้นหลักและถือเส้นมุมฝั่งบนซ้าย ส่วนส้ม #fe9c01 /
-// #a35800 เป็นสีเน้นรองที่ถือเส้นมุมฝั่งล่างขวา บนผิว #140800 เนื้อความ #f7e7c6
-// เก็บไว้แค่ทรงมุมตัดสไตล์ cyber-cut ซึ่งเป็นเอกลักษณ์เดียวของ variant นี้
+// รอบนี้เป็นนีออนบานเย็นคู่ฟ้าอิเล็กทริกบนครามเกือบดำ — บานเย็น #ff2fb0 / #ff7fd4 /
+// #ffc9ee / #c81d8e เป็นสีเน้นหลักและถือเส้นมุมฝั่งบนซ้าย ส่วนฟ้า #3ba9ff / #7fd0ff
+// กับม่วง #8b3cf7 / #4a179e เป็นสีเน้นรองที่ถือเส้นมุมฝั่งล่างขวา บนผิว #0b0528
+// เนื้อความ #d8d3f0 เก็บไว้แค่ทรงมุมตัดสไตล์ cyber-cut ซึ่งเป็นเอกลักษณ์เดียวของ
+// variant นี้
 //
 // รอบนี้ไฟล์นี้ถูก render จากหน้าแรกหน้าเดียว (หน้าย่อยทุกหน้าใช้ ContentBox.astro
 // ตัวธรรมดาตามที่ brand spec ล็อกไว้) จึง retheme ทับได้เลย
@@ -24,17 +25,17 @@ const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:t
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#fecc02]/35 bg-[#140800]/92 p-8 text-left text-base leading-relaxed text-[#f7e7c6] shadow-[0_10px_30px_rgba(254,204,2,0.25)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#ff2fb0]/35 bg-[#0b0528]/92 p-8 text-left text-base leading-relaxed text-[#d8d3f0] shadow-[0_10px_30px_rgba(255,47,176,0.25)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#fecc02] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#fe9c01] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#fecc02] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#a35800] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#ff2fb0] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#3ba9ff] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#ff2fb0] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#4a179e] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#fe9c01] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#fff6e0] via-[#fecc02] to-[#c58a00] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#3ba9ff] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#ffc9ee] via-[#ff2fb0] to-[#8b3cf7] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

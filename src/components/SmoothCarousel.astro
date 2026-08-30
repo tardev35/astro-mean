@@ -1,8 +1,12 @@
 ---
 import { Picture } from "astro:assets";
 
-import slideGoldWheel from "../assets/slide1.png";
-import slideReferFriend from "../assets/slide2.png";
+import bannerPgSoft from "../assets/gamedemo11.webp";
+import bannerSlotXo from "../assets/gamedemo9.webp";
+import bannerJili from "../assets/gamedemo14.webp";
+import bannerJoker from "../assets/gamedemo17.webp";
+import bannerSkywind from "../assets/gamedemo10.webp";
+import bannerNewGame from "../assets/gamedemo16.webp";
 
 // ตัวนี้เคยเป็น Swiper: JavaScript 158,890 ไบต์ (86,801 ไบต์เป็นโมดูลที่ config
 // ไม่เคยแตะ) เพื่อเลื่อนรูปไปทางข้างตลอดกาล ตอนนี้เป็น CSS animation — เทคนิค
@@ -16,30 +20,48 @@ import slideReferFriend from "../assets/slide2.png";
 //   * สไลด์เป็น markup ธรรมดา crawler และ screen reader จึงเห็นครบทุกใบ
 // แต่ละใบบรรยายด้วยสิ่งที่มันเขียนไว้จริง ไม่ใช่ลำดับที่มันอยู่ในลิสต์
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
-// เนื้อหาทั้งใบของโปสเตอร์โปรโมชั่นคือตัวหนังสือบนรูป ตัวหนังสือนั้นจึงเป็น alt
+// เนื้อหาทั้งใบของแบนเนอร์คือตัวหนังสือกับตัวละครบนรูป สิ่งนั้นจึงเป็น alt
 //
-// GUESS168: แถบนี้ยังใช้ slide1 กับ slide2 คู่เดิม — slide1 ถูก render อยู่แล้วใน
-// บล็อก ContentBoxSevenThreeNeumorphism ของหัวข้อ docx ข้อสุดท้าย ส่วน slide2
-// มีที่อยู่จริงบนหน้า /promotion แถบนี้จึงเป็นที่เดียวบนหน้าแรกที่ slide2 ปรากฏ
-// ทั้งสองใบถูก import อยู่แล้ว แถบนี้จึงไม่ได้เพิ่มไฟล์รูปใหม่ลง dist/ เลย
-// ส่วน slide4 กับไฟล์ banner ที่ไม่ใช่ banner1 เป็นอาร์ตค้างของแบรนด์ก่อน
-// ห้าม import ที่นี่ — การ import คือการ emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม
+// AURA456: รอบนี้แถบนี้เลิกใช้ slide* แล้ว — สไลด์ที่เป็นของแบรนด์นี้จริงมีใบเดียว
+// (slide1) และมันไปอยู่ในบล็อก ContentBoxSevenThreeCyberCut บนหน้าแรกแล้ว ส่วน
+// slide2/3/4 กับ banner ทุกหมายเลขเป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและโดเมนของเขา
+// พิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม — การ import คือการ emit ลง
+// dist/ ถึงจะไม่มีใคร render ก็ตาม แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายเกม/เกมออกใหม่ที่
+// เป็นกลางกับแบรนด์แทน ซึ่งทำให้มันอ่านเป็นแถบล็อบบี้ "เกมฮิตกระแสแรง" ตามหัวข้อ
+// docx ข้อ 4 พอดี จึงย้ายมาวางต่อจาก GameRankingBoard
 //
-// ไฟล์สไลด์บนดิสก์รอบนี้เป็น .png ทั้งชุด จึง import ตามนามสกุลจริง
+// แบนเนอร์ชุดนี้เป็นภาพแนวนอน (อัตราส่วนราว 1.58:1) ไม่ใช่จัตุรัสเหมือนสไลด์ชุดก่อน
+// จำนวนช่องที่เห็นยังเท่าเดิม (2 ช่องบนมือถือ / 3 ช่องบนเดสก์ท็อป ที่ max-w-[820px])
+// ความกว้างของช่องจึงไม่เปลี่ยน sizes ยังเป็นค่าเดิม แต่ความสูงเตี้ยลงตามสัดส่วนจริง
+// ซึ่ง width/height ที่ส่งจาก src ของแต่ละไฟล์จัดการให้เอง
 //
-// สไลด์ชุดนี้เป็นแบนเนอร์แนวนอน ให้เห็นพร้อมกัน 2 ช่องบนมือถือ / 3 ช่องบนเดสก์ท็อป
-// ที่ max-w-[820px] ค่า --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ
-// (สองใบรอบนี้) เทียบกับจำนวนช่องที่เห็น: หนึ่งชุดเต็ม = 2 × basis + 2 × gap
-// ถ้าเปลี่ยนจำนวนรูปหรือจำนวนช่อง ต้องคิด --shift ใหม่ทั้งสอง breakpoint และปรับ
-// duration ตาม
+// ค่า --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (หกใบรอบนี้) เทียบกับ
+// จำนวนช่องที่เห็น: หนึ่งชุดเต็ม = 6 × basis + 6 × gap ถ้าเปลี่ยนจำนวนรูปหรือจำนวน
+// ช่อง ต้องคิด --shift ใหม่ทั้งสอง breakpoint และปรับ duration ตาม
 const images = [
   {
-    src: slideGoldWheel,
-    alt: "โปสเตอร์โปรโมชั่นของ GUESS168 พื้นสีดำตกแต่งด้วยสีทองและแดง หัวเรื่องตัวใหญ่ว่า ปั่นกงล้อรับทองคำ วันละ 1 บาท บรรทัดรองว่า ปั่นได้ทุกวัน วันละ 1 ครั้ง กลางภาพเป็นวงล้อเสี่ยงโชคสีแดงสลับขาว ช่องรางวัลเขียนว่า ทอง 1 บาท 50 บาท 100 บาท 150 บาท 200 บาท 250 บาท 400 บาท 500 บาท 1,000 บาท และ 2,000 บาท ด้านซ้ายเป็นกองทองคำแท่ง ด้านขวาเป็นสร้อยคอทองคำในกล่องกำมะหยี่สีแดง มุมขวาบนเป็นโลโก้ Guess168 และล่างสุดเป็นป้ายไลน์ @Guess168th",
+    src: bannerPgSoft,
+    alt: "แบนเนอร์ค่ายเกม PG Soft โลโก้พิกเซลตัวอักษร PG ข้างตัวละครหญิงนักรบสวมเครื่องประดับทองและหมวกขนนกสีสด",
   },
   {
-    src: slideReferFriend,
-    alt: "โปสเตอร์กิจกรรมของ GUESS168 พื้นสีน้ำเงินอมม่วงโรยด้วยเหรียญทอง ข้อความว่า เปิดแล้วจ้า กิจกรรมชวนเพื่อน ชวนเพื่อน 1 คนรับฟรี 1 บาท วงเล็บว่า เพื่อนที่สมัครต่อไม่จำเป็นต้องฝาก ถัดมาว่า มีแอดมินคอยดูแลลูกค้า ตลอด 24 ชั่วโมง ด้านซ้ายเป็นผู้หญิงสวมชุดสีทอง มุมซ้ายบนเป็นโลโก้ Guess168 แถบล่างสุดเป็นไอคอนธนาคารและข้อความว่า PAY WITH TrueMoney Wallet",
+    src: bannerSlotXo,
+    alt: "แบนเนอร์ค่ายเกม SlotXO โลโก้ตู้สล็อตและเหรียญทองข้างภาพนักรบโรมันสวมมงกุฎใบลอเรลหน้าโคลอสเซียม",
+  },
+  {
+    src: bannerJili,
+    alt: "แบนเนอร์ค่ายเกม JILI ตัวอักษรสีทองข้างตัวละครนางเงือกผมแดงถือหอยสังข์ใต้ทะเลพร้อมปลาการ์ตูน",
+  },
+  {
+    src: bannerJoker,
+    alt: "แบนเนอร์ค่ายเกม JOKER ตัวอักษรขาวทองข้างนักรบโรมันสวมหมวกขนนกและสิงโตคำรามในสนามประลอง",
+  },
+  {
+    src: bannerSkywind,
+    alt: "แบนเนอร์ค่ายเกม Skywind Group โลโก้วงกลมสี่สีข้างแมวกวักญี่ปุ่นสีขาวคอกระพรวนทอง มีไหเงินและป้ายทองท่ามกลางดอกซากุระ",
+  },
+  {
+    src: bannerNewGame,
+    alt: "แบนเนอร์เกมออกใหม่ New Game ตัวอักษรขาวบนฟลอร์นีออนสีสด ขนาบด้วยตัวการ์ตูนฟักทองสวมหมวกและโครงกระดูกยิ้ม",
   },
 ];
 
@@ -65,7 +87,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#fecc02]/60 peer-focus-visible:bg-[#33180a] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffd54a]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#3ba9ff]/60 peer-focus-visible:bg-[#1c1046] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ff2fb0]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -78,13 +100,13 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#c58a00]/45 object-cover shadow-[0_10px_30px_rgba(197,138,0,0.28)]"
+              class="block w-full rounded-xl border border-[#8b3cf7]/45 object-cover shadow-[0_10px_30px_rgba(139,60,247,0.28)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
               fetchpriority="low"
               decoding="async"
-              widths={[200, 300, 400]}
+              widths={[200, 300, 400, 520]}
               sizes="(max-width: 767px) 46vw, 252px"
               formats={["avif", "webp"]}
               fallbackFormat="webp"
@@ -98,33 +120,33 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
 </div>
 
 <style>
-  /* --shift คือหนึ่งชุดเต็มของรูป: สองสไลด์บวกช่องว่างที่ตามมาสองช่อง วัดเทียบ
+  /* --shift คือหนึ่งชุดเต็มของรูป: หกสไลด์บวกช่องว่างที่ตามมาหกช่อง วัดเทียบ
      กับความกว้างของ track (ซึ่งเท่ากับความกว้างของกล่อง — สไลด์ล้นออกไป ซึ่งเป็น
      จุดประสงค์) ตั้งค่านี้ผิดไปหนึ่งพิกเซลคือสิ่งที่ทำให้ marquee กระตุกทุกรอบลูป
      เขียนเป็น calc ซ้อนตามสูตรตรงๆ แทนการย่อเป็นทศนิยม เพราะฝั่งเดสก์ท็อปหารสาม
      ไม่ลงตัว
 
-     mobile:  2 * ((100% - 12px)/2 + 12px) = 100% + 12px
-     desktop: 2 * ((100% - 32px)/3 + 16px) */
+     mobile:  6 * ((100% - 12px)/2 + 12px)
+     desktop: 6 * ((100% - 32px)/3 + 16px) */
   .marquee {
     --gap: 12px;
     --per-view: 2;
-    --shift: calc(-2 * ((100% - 12px) / 2 + 12px));
+    --shift: calc(-6 * ((100% - 12px) / 2 + 12px));
   }
 
   @media (min-width: 768px) {
     .marquee {
       --gap: 16px;
       --per-view: 3;
-      --shift: calc(-2 * ((100% - 32px) / 3 + 16px));
+      --shift: calc(-6 * ((100% - 32px) / 3 + 16px));
     }
   }
 
   .marquee-track {
     gap: var(--gap);
     width: 100%;
-    /* 9 วินาทีต่อสไลด์ คูณสองใบ — ความเร็วต่อสไลด์เท่าเดิมทุกรอบรีแบรนด์ */
-    animation: carousel-scroll 18s linear infinite;
+    /* 9 วินาทีต่อสไลด์ คูณหกใบ — ความเร็วต่อสไลด์เท่าเดิมทุกรอบรีแบรนด์ */
+    animation: carousel-scroll 54s linear infinite;
     will-change: transform;
   }
 

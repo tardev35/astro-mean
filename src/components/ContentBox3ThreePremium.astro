@@ -8,63 +8,65 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright } = Astro.props;
 
-// SBOGOOL: ไฟล์นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind
+// NEOCLUB88: ไฟล์นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind
 // สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
 // ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
-// รอบนี้เป็นน้ำเงินรอยัลสนามไฟคู่ทอง — น้ำเงิน #1e4bb8 / #2f6fe4 / #5b9cff /
-// #7fb0ff / #0b1f52 คู่ทอง #f5c518 / #ffe07a บนผิว #030b22 / #071433 / #0d1f4d
-// เนื้อความ #dce7fb ตัวอักษรสว่าง #e8eefc
+// รอบนี้เป็นทองคลับคู่แพลทินัม — ทอง #f2cc53 / #ffe89a / #f6d977 / #c39b3c /
+// #a8842c / #8a6415 คู่แพลทินัม #eef1f5 / #c6ccd4 / #8d949e บนผิว #241303 /
+// #140b02 / #0a0602 เนื้อความ #ede0c4 หัวข้อ #fbf4e4
+//
+// จุดคั่นสามคอลัมน์ใช้แพลทินัมเพื่อให้สีรองมีที่ยืนจริงในการ์ด ไม่ใช่ทองล้วนแบบ
+// แบรนด์ก่อน
 //
 // ป้ายสามคอลัมน์เป็น <p> (คลาสเดิม ไม่ใช่ <h3>) เพราะ docx ของแบรนด์นี้แบน
 // H1 + H2 ล้วน หัวข้อ section รับผ่าน `title` + `as` ตัวเดียว รอบนี้บล็อกนี้แบก
-// หัวข้อ docx ข้อ 5 (ฟีเจอร์ครบมือแค่ไหน รวมลูกเล่นหลายสไตล์ไว้ในที่เดียว) โดยแบ่ง
-// ย่อหน้าเดียวของ docx ลงสามคอลัมน์ตามฟีเจอร์ที่ย่อหน้านั้นระบุไว้พอดีสามตัว —
-// ตัวคูณทวีคูณ, คอมโบแตกต่อเนื่อง Cascade, โหมดซื้อฟรีสปิน Bonus Buy — เรียงตาม
-// ลำดับประโยคเดิม ไม่มีการตัดหรือย่อ
+// หัวข้อ docx ข้อ 4 (ของใหม่ต้องไม่หลุดคลับ) โดยแบ่งย่อหน้าเดียวของ docx ลงสาม
+// คอลัมน์ตามลำดับประโยคเดิม — อัปเดตทันทีที่ค่ายปล่อย, ได้สัมผัสก่อนใครและมีโหมด
+// ทดลองเล่น, ล็อบบี้เคลื่อนไหวตลอด — ไม่มีการตัดหรือย่อ
 ---
 
 <section class="mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#1e4bb8]/30 bg-[#030b22]/88 p-8 text-[#dce7fb] shadow-[0_10px_30px_rgba(30,75,184,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#5b9cff]/60 hover:shadow-[0_15px_40px_rgba(245,197,24,0.26)] md:p-10">
-    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#0d1f4d]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#2f6fe4]/40"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#a8842c]/35 bg-[#0a0602]/88 p-8 text-[#ede0c4] shadow-[0_10px_30px_rgba(195,155,60,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#f2cc53]/60 hover:shadow-[0_15px_40px_rgba(230,236,243,0.24)] md:p-10">
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#33230b]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#c39b3c]/40"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#1e4bb8]/30 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#7fb0ff] via-[#2f6fe4] to-[#f5c518] shadow-[0_0_10px_rgba(47,111,228,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#e8eefc] via-[#7fb0ff] to-[#f5c518] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#a8842c]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe89a] via-[#c6ccd4] to-[#a8842c] shadow-[0_0_10px_rgba(242,204,83,0.5)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#fbf4e4] via-[#c6ccd4] to-[#f2cc53] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      <article class="flex flex-col gap-3 border-b border-[#0d1f4d] pb-8 text-left text-base leading-relaxed text-[#dce7fb] md:border-r md:border-b-0 md:pr-8 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#33230b] pb-8 text-left text-base leading-relaxed text-[#ede0c4] md:border-r md:border-b-0 md:pr-8 md:pb-0">
         {
           titleleft && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#7fb0ff] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f5c518] shadow-[0_0_8px_rgba(245,197,24,0.9)]" /> {titleleft}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f2cc53] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#c6ccd4] shadow-[0_0_8px_rgba(230,236,243,0.85)]" /> {titleleft}
             </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 border-b border-[#0d1f4d] pb-8 text-left text-base leading-relaxed text-[#dce7fb] md:border-r md:border-b-0 md:px-4 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#33230b] pb-8 text-left text-base leading-relaxed text-[#ede0c4] md:border-r md:border-b-0 md:px-4 md:pb-0">
         {
           titlecenter && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#7fb0ff] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f5c518] shadow-[0_0_8px_rgba(245,197,24,0.9)]" /> {titlecenter}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f2cc53] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#c6ccd4] shadow-[0_0_8px_rgba(230,236,243,0.85)]" /> {titlecenter}
             </p>
           )
         }
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#dce7fb] md:pl-8">
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#ede0c4] md:pl-8">
         {
           titleright && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#7fb0ff] uppercase">
-              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#f5c518] shadow-[0_0_8px_rgba(245,197,24,0.9)]" /> {titleright}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f2cc53] uppercase">
+              <span aria-hidden="true" class="h-1.5 w-1.5 shrink-0 rounded-full bg-[#c6ccd4] shadow-[0_0_8px_rgba(230,236,243,0.85)]" /> {titleright}
             </p>
           )
         }

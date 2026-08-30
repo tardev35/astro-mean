@@ -3,38 +3,39 @@
 // assistive tech ห้ามเลื่อนขึ้นเป็น <h2> เพราะจำนวน h2 บนหน้าแรกถูก diff กับ
 // checklist ของ docx ชื่อผู้รีวิวในการ์ดก็เป็น <span> ด้วยเหตุผลเดียวกัน
 //
-// GUESS168: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด มาที่ทองหลอมคู่ส้มไฟที่วัดจากอาร์ต
-// จริง ดาวที่ติดแล้วเป็นทอง ส่วนดาวที่ยังไม่ติดใช้สีแผงชั้นใน ตัวเลขคะแนนเฉลี่ย
-// รับไล่เฉดครีมไปทองเข้ม เพื่อให้คู่สีทั้งสองอยู่ในกล่องเดียวกัน (ห้ามพิมพ์ hex
-// ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์
-// จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// AURA456: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด มาที่นีออนบานเย็นคู่ฟ้าอิเล็กทริกที่วัด
+// จากอาร์ตจริง ดาวที่ติดแล้วเป็นบานเย็น ส่วนดาวที่ยังไม่ติดใช้สีผิวชั้นใน ตัวเลข
+// คะแนนเฉลี่ยรับไล่เฉดฟ้าไปบานเย็น เพื่อให้คู่สีทั้งสองอยู่ในกล่องเดียวกัน (ห้าม
+// พิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
+// คอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
+// git history)
 //
-// เนื้อความรีวิวเขียนใหม่ตาม brief — คลังเกมลิขสิทธิ์กับค่า RTP ที่ไม่ถูกดัดแปลง /
-// เกมใหม่เข้าคลังใน 24 ชั่วโมงกับฟีเจอร์ที่อัดแน่น / โปรที่กดรับเองได้กับระบบ
-// ฝากถอนออโต้ที่ไม่ต้องส่งสลิป
+// เนื้อความรีวิวเขียนใหม่ตาม brief — เว็บตรง API แท้กับ RTP ที่โปร่งใส / ระบบแรง
+// โหลดลื่นและล็อบบี้ที่ดันเกมฮิตขึ้นหน้า / โปรที่กดรับแล้วถอนได้จริงกับออโต้ 3-5
+// วินาที
 const reviews = [
   {
-    name: "สายที่เปิดคลังเกมทุกวัน",
-    role: "เว็บตรง API แท้ RTP สูง เกมลิขสิทธิ์แน่น",
+    name: "สมาชิกที่เปิดล็อบบี้ทุกวัน",
+    role: "เว็บตรง API แท้ 100% ค่า RTP โปร่งใส",
     stars: 5,
-    tag: "สล็อตคัดเกรด",
-    content: "คลังคัดมาแต่ค่ายใหญ่จริง ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ยิงตรงจากเซิร์ฟเวอร์หลัก ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ เบทเริ่มที่ 1 บาทก็ยังลุ้นโบนัสก้อนโตได้",
-    avatar: "🎰",
+    tag: "คัดเกรดมาแล้ว",
+    content: "ล็อบบี้กวาดเกมลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่มาไว้เพียบ ทั้ง PG Soft, Pragmatic Play และ Joker รันบนเซิร์ฟเวอร์หลัก ไม่มีการดัดแปลงระบบหลังบ้าน เบทเริ่มแค่ 1 บาทก็ลุ้นโบนัสก้อนโตได้",
+    avatar: "🛡️",
   },
   {
-    name: "คนที่ชอบตามเกมใหม่ก่อนใคร",
-    role: "อัปเดตใหม่มีให้ตาม ฟีเจอร์ครบทุกลูกเล่น",
+    name: "คนที่ปั่นยาวช่วงคนเยอะ",
+    role: "ระบบแรง โหลดลื่นไม่มีกระตุก",
     stars: 5,
-    tag: "เข้าคลังใน 24 ชม.",
-    content: "ค่ายปล่อยเกมไหนก็เข้าคลังภายในวันเดียว มีโหมดทดลองเล่นฟรีให้เช็กจังหวะโบนัสก่อน พอลงเงินจริงก็เจอทั้ง Multiplier, Wild ซ้อนทับ, Cascading และ Bonus Buy ครบ",
-    avatar: "🆕",
+    tag: "ออร่าพุ่งไม่มีสะดุด",
+    content: "คลิกแรกก็ตอบสนองทันที อินเทอร์เฟซสะอาดตาไม่มีป๊อปอัปโฆษณามากวน กราฟิก 3D ลื่นไหลแม้ช่วงพีคที่คนหนาแน่น หมวดเกมฮิตกระแสแรงขึ้นโชว์ให้เห็นตั้งแต่เข้าสู่ระบบ ไม่ต้องเลื่อนหาเอง",
+    avatar: "🚀",
   },
   {
     name: "คนที่ถอนกำไรออกทุกวัน",
-    role: "โปรน่าสนใจ ฝากถอนออโต้ทันใจ",
+    role: "โปรดีน่าตาม ฝากถอนออโต้ 100%",
     stars: 5,
-    tag: "ไม่ต้องส่งสลิป",
-    content: "โบนัสต้อนรับ โปรฝากแรกของวัน และ Cash Back คืนยอดเสียกดรับเองผ่านหน้าเว็บ ไม่ติดล็อกยูส ฝากถอนผ่าน Gateway ตรงจบใน 3-5 วินาที ไม่ต้องโอนสลิปและไม่ต้องรอคิวอนุมัติ",
+    tag: "ไม่ติดเทิร์นโอเวอร์",
+    content: "โบนัสต้อนรับสมาชิกใหม่ โปรเพิ่มทุนยอดฝากแรกของวัน และ Cash Back คืนยอดเสีย เงื่อนไขตรงไปตรงมาถอนได้จริง ทำรายการจบใน 3-5 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอคิวอนุมัติ ถอนได้ตลอด 24 ชั่วโมง",
     avatar: "⚡",
   },
 ];
@@ -43,61 +44,61 @@ const totalStars = reviews.reduce((sum, r) => sum + r.stars, 0);
 const average = (totalStars / reviews.length).toFixed(1);
 ---
 
-<section aria-label="เสียงจากสมาชิก GUESS168" class="relative z-10 mx-auto mb-12 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="เสียงจากสมาชิก AURA456" class="relative z-10 mx-auto mb-12 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <div class="inline-block rounded-2xl border border-[#c58a00]/40 bg-[#231005]/88 px-6 py-3 shadow-[0_10px_30px_rgba(197,138,0,0.28)] backdrop-blur-md">
-      <p class="bg-gradient-to-r from-[#fff6e0] via-[#ffd54a] to-[#fe9c01] bg-clip-text text-3xl font-black tracking-wide text-transparent">เสียงจากสมาชิก GUESS168</p>
+    <div class="inline-block rounded-2xl border border-[#8b3cf7]/40 bg-[#120a33]/88 px-6 py-3 shadow-[0_10px_30px_rgba(139,60,247,0.28)] backdrop-blur-md">
+      <p class="bg-gradient-to-r from-[#f6ebff] via-[#7fd0ff] to-[#ff2fb0] bg-clip-text text-3xl font-black tracking-wide text-transparent">เสียงจากสมาชิก AURA456</p>
     </div>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#fecc02] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#3ba9ff] to-transparent"></div>
   </div>
 
-  <div class="mx-auto mb-8 flex max-w-md items-center justify-center gap-5 rounded-2xl border border-[#c58a00]/40 bg-[#231005]/88 px-6 py-4 shadow-[0_10px_30px_rgba(197,138,0,0.28)] backdrop-blur-xl">
+  <div class="mx-auto mb-8 flex max-w-md items-center justify-center gap-5 rounded-2xl border border-[#3ba9ff]/35 bg-[#120a33]/88 px-6 py-4 shadow-[0_10px_30px_rgba(59,169,255,0.18)] backdrop-blur-xl">
     <div class="flex flex-col items-center">
-      <span class="bg-gradient-to-b from-[#fff6e0] to-[#c58a00] bg-clip-text text-4xl leading-none font-black text-transparent">{average}</span>
-      <span class="mt-1 text-[10px] font-bold tracking-widest text-[#d8bb87]">คะแนนเฉลี่ย</span>
+      <span class="bg-gradient-to-b from-[#d8f2ff] to-[#c81d8e] bg-clip-text text-4xl leading-none font-black text-transparent">{average}</span>
+      <span class="mt-1 text-[10px] font-bold tracking-widest text-[#5f7fb8]">คะแนนเฉลี่ย</span>
     </div>
-    <div class="h-12 w-px bg-[#33180a]"></div>
+    <div class="h-12 w-px bg-[#1c1046]"></div>
     <div class="flex flex-col gap-1.5">
       <div aria-hidden="true" class="flex gap-1 text-lg">
-        {Array.from({ length: 5 }).map((_, i) => <span class={i < Math.round(Number(average)) ? "text-[#fecc02]" : "text-[#33180a]"}>★</span>)}
+        {Array.from({ length: 5 }).map((_, i) => <span class={i < Math.round(Number(average)) ? "text-[#ff2fb0]" : "text-[#1c1046]"}>★</span>)}
       </div>
-      <span class="text-xs font-bold text-[#d8bb87]">คะแนนเฉลี่ย {average} จาก 5 ดาว จากการใช้งานจริงของสมาชิก {reviews.length} ด้าน</span>
+      <span class="text-xs font-bold text-[#9b93c4]">คะแนนเฉลี่ย {average} จาก 5 ดาว จากการใช้งานจริงของสมาชิก {reviews.length} ด้าน</span>
     </div>
   </div>
 
   <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
     {
       reviews.map((review) => (
-        <article class="group relative isolate flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#c58a00]/35 bg-[#231005]/88 p-6 text-left shadow-[0_10px_30px_rgba(197,138,0,0.25)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd54a]/55 hover:shadow-[0_15px_40px_rgba(254,204,2,0.34)]">
-          <span class="absolute inset-y-0 left-0 -z-10 w-1 bg-gradient-to-b from-[#fecc02] to-[#fe9c01] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
-          <span class="pointer-events-none absolute -top-14 -right-14 -z-10 h-32 w-32 rounded-full bg-[#33180a]/70 blur-[50px] transition-all duration-300 group-hover:bg-[#c58a00]/35" />
+        <article class="group relative isolate flex flex-col gap-4 overflow-hidden rounded-2xl border border-[#8b3cf7]/35 bg-[#120a33]/88 p-6 text-left shadow-[0_10px_30px_rgba(139,60,247,0.25)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#ff2fb0]/55 hover:shadow-[0_15px_40px_rgba(255,47,176,0.3)]">
+          <span class="absolute inset-y-0 left-0 -z-10 w-1 bg-gradient-to-b from-[#ff2fb0] to-[#3ba9ff] opacity-80 transition-opacity duration-300 group-hover:opacity-100" />
+          <span class="pointer-events-none absolute -top-14 -right-14 -z-10 h-32 w-32 rounded-full bg-[#1c1046]/70 blur-[50px] transition-all duration-300 group-hover:bg-[#c81d8e]/35" />
 
           <div class="flex items-center justify-between gap-3">
-            <span class="inline-flex items-center gap-1.5 rounded-full border border-[#c58a00]/40 bg-[#140800] px-3 py-1 text-[10px] font-bold tracking-wide text-[#ffd54a]">
-              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#fecc02]" />
+            <span class="inline-flex items-center gap-1.5 rounded-full border border-[#3ba9ff]/35 bg-[#05021a] px-3 py-1 text-[10px] font-bold tracking-wide text-[#7fd0ff]">
+              <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-[#ff2fb0]" />
               {review.tag}
             </span>
             <span class="flex gap-0.5 text-sm">
               <span aria-hidden="true" class="flex gap-0.5">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <span class={i < review.stars ? "text-[#fecc02]" : "text-[#33180a]"}>★</span>
+                  <span class={i < review.stars ? "text-[#ff2fb0]" : "text-[#1c1046]"}>★</span>
                 ))}
               </span>
               <span class="sr-only">ให้คะแนน {review.stars} จาก 5 ดาว</span>
             </span>
           </div>
 
-          <p class="text-left text-base leading-relaxed text-[#f7e7c6]">{review.content}</p>
+          <p class="text-left text-base leading-relaxed text-[#d8d3f0]">{review.content}</p>
 
-          <div class="mt-auto flex items-center gap-3 border-t border-[#33180a] pt-4">
+          <div class="mt-auto flex items-center gap-3 border-t border-[#1c1046] pt-4">
             <span
               aria-hidden="true"
-              class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#fecc02]/40 bg-gradient-to-br from-[#ffe680] via-[#fecc02] to-[#a35800] text-xl shadow-inner transition-transform duration-300 group-hover:scale-110">
+              class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#ff2fb0]/40 bg-gradient-to-br from-[#ffc9ee] via-[#ff2fb0] to-[#4a179e] text-xl shadow-inner transition-transform duration-300 group-hover:scale-110">
               {review.avatar}
             </span>
             <span class="flex flex-col">
-              <span class="text-sm font-black text-[#f7e7c6] transition-colors group-hover:text-[#ffd54a]">{review.name}</span>
-              <span class="text-[10px] font-bold tracking-wider text-[#d8bb87]">{review.role}</span>
+              <span class="text-sm font-black text-[#d8d3f0] transition-colors group-hover:text-[#ff2fb0]">{review.name}</span>
+              <span class="text-[10px] font-bold tracking-wider text-[#5f7fb8]">{review.role}</span>
             </span>
           </div>
         </article>

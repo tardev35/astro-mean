@@ -2,54 +2,48 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 
 import { Picture } from "astro:assets";
 
-// GUESS168: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยหมุนมาเป็น
-// ContentBox ตามสเปกรอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default
-// message ของ variant นี้ถูกตั้งเป็นข้อความของแบรนด์นี้แล้ว
+// AURA456: ticker หมุนมาเป็น AnnouncementCyber และกล่องหน้าย่อยใช้ ContentBox
+// ตามสเปกรอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
+// variant นี้ถูกตั้งเป็นข้อความของแบรนด์นี้แล้ว
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the single
-// <h1>), ONE short intro paragraph, the promo image grid, one CTA. Nothing
-// else — no <h2>, no section paragraphs. The slides already print their own
-// offer in large type, so prose below them re-types what the visitor can
-// already read, in smaller letters. The docx gives this page a Title and a
-// Meta and never a body. Four <h2> sections plus six paragraphs were deleted
-// here on 2026-08-29; they were invented by an earlier rebrand.
+// <h1>), ONE short intro paragraph, the promo image, one CTA. Nothing else —
+// no <h2>, no section paragraphs. The artwork already prints its own offer in
+// large type, so prose below it re-types what the visitor can already read, in
+// smaller letters. The docx gives this page a Title and a Meta and never a body.
 //
-// Named for what each banner ACTUALLY prints, not for its file number.
-// The GUESS168 drop (2026-08-30) is three gold-on-dark promo strips:
-//   slide1 = ปั่นกงล้อรับทองคำ วันละ 1 บาท (ปั่นได้ทุกวัน วันละ 1 ครั้ง)
-//   slide2 = เปิดแล้วจ้า กิจกรรมชวนเพื่อน ชวนเพื่อน 1 คนรับฟรี 1 บาท
-//   slide3 = โปรโมชั่น ฝาก 500 ขึ้นไปรับเพิ่ม 10% หนึ่งบิลต่อหนึ่งวัน
-// The mapping between file number and artwork changes with every asset drop,
-// so these imports follow the ARTWORK — that is the whole reason the variables
-// are named after what is printed instead of after the file.
+// Named for what the banner ACTUALLY prints, not for its file number.
+// This drop supplies ONE promo image: slide1 = the RANKING tier ladder
+// (Spark → Pulse → Nova → Prism → Radiant → Eclipse, ยิ่งฝากยิ่งอัพเลเวล,
+// รีเซ็ตทุก 2 เดือน), 600x229, a wide neon banner rather than a square poster.
 //
-// slide4.png is NOT imported on purpose: it is the previous brand's cashback
-// strip left on disk from the 2026-08-29 drop, and an imported image is an
-// emitted image even when nothing renders it. banner1.png likewise belongs to
-// MainLayout's hero <picture> alone, and banner.png / banner2-4.png are stale
-// art from earlier brands. Only what is printed on each banner may be stated
-// in an alt.
-import promoGoldWheel from "../assets/slide1.png";
-import promoReferFriend from "../assets/slide2.png";
-import promoDeposit500 from "../assets/slide3.png";
+// slide2/3/4.png are the PREVIOUS brand's artwork (dated a day before this
+// drop) — gold-on-black posters carrying another brand's logo and domain as
+// pixels — so they are not imported here. Neither are banner.png / banner2-4:
+// an imported image is an EMITTED image even when nothing renders it, so a
+// dead import ships another brand's bytes on every deploy. banner1 /
+// banner1-mobile belong to MainLayout's hero <picture> alone.
+//
+// Only what is printed on the banner may be stated in its alt.
+import promoRanking from "../assets/slide1.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 156. It states what the
-// page holds — the offers the slides themselves print — and stops.
+// byte count reads ~3x too long). This one measures 158. It states what the
+// page holds — the offers the banner itself prints — and stops.
 const pageDescription =
-  "รวมโปรโมชั่น GUESS168 ทั้งกิจกรรมปั่นกงล้อรับทองคำวันละครั้ง ชวนเพื่อน 1 คนรับฟรี 1 บาท และฝาก 500 ขึ้นไปรับเพิ่ม 10% เงื่อนไขแต่ละสิทธิ์พิมพ์อยู่บนแบนเนอร์";
+  "รวมโปรโมชั่น AURA456 ทั้งระบบแรงกิ้งลำดับขั้น ยิ่งฝากยิ่งอัพเลเวล รีเซ็ตทุก 2 เดือน โบนัสต้อนรับสมาชิกใหม่ โปรเพิ่มทุนฝากแรกของวัน และระบบคืนยอดเสีย Cash Back";
 
-const pageTitle = "โปรโมชั่น GUESS168 | ปั่นกงล้อรับทองคำ ชวนเพื่อนรับฟรี ฝาก 500 รับเพิ่ม 10%";
+const pageTitle = "โปรโมชั่น AURA456 | แรงกิ้งลำดับขั้น โบนัสต้อนรับ โปรฝากแรกของวัน Cash Back";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น GUESS168 รวมสิทธิ์ที่เปิดให้สมาชิกกดรับในรอบนี้";
+const pageHeading = "โปรโมชั่น AURA456 รวมสิทธิ์และระบบลำดับขั้นที่เปิดให้สมาชิกกดรับ";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -58,47 +52,35 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoGoldWheel.src,
+  primaryImagePath: promoRanking.src,
 });
 
-// Recomputed for ContentBox, which this round's variant rotation put under
-// every sub-page. Its padding steps at md: (p-8 → p-10), and the card caps at
-// max-w-[1400px] — so the column settles once the viewport passes
-// 1400 + the section's own px-4 (2rem) = 1432px.
-//   < 640px  : 1 คอลัมน์ ในกรอบ px-4 (2rem) + p-8 (4rem)  → 100vw - 6rem
-//   640–767  : 2 คอลัมน์ กรอบเดิม + gap-8 หนึ่งช่อง (2rem) → (100vw - 8rem) / 2
-//   768–1431 : 2 คอลัมน์ กรอบ px-4 (2rem) + p-10 (5rem) + gap → (100vw - 9rem) / 2
-//   ≥ 1432px : การ์ดชนเพดาน 1400px → (1400 - 5rem - 2rem) / 2 = 644px
-const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 8rem) / 2), (max-width: 1431px) calc((100vw - 9rem) / 2), 644px";
+// One image, so no grid — a grid-cols-1 sm:grid-cols-2 grid holding a single
+// card reads as a layout that lost half its content. It is one centred column
+// capped at max-w-3xl (768px) instead.
+//
+// sizes describes how wide the picture is DRAWN, not how wide a file to fetch.
+// ContentBox wraps it in px-4 (2rem) + p-8 (4rem, stepping to p-10 = 5rem at
+// md:), and the card caps at max-w-[1400px]:
+//   < 768px  : คอลัมน์เดียวในกรอบ px-4 + p-8            → 100vw - 6rem
+//   768–879  : กรอบ px-4 + p-10 ยังแคบกว่าเพดาน 768px    → 100vw - 7rem
+//   ≥ 880px  : ภาพชนเพดาน max-w-3xl                      → 768px
+const imageSizes = "(max-width: 767px) calc(100vw - 6rem), (max-width: 879px) calc(100vw - 7rem), 768px";
 
-// ขอบทองอำพันของแบรนด์ล้อกับพื้นดำอมน้ำตาลบนสไลด์ แล้วเรืองส้มไฟขึ้นตอน hover
+// ขอบม่วงนีออนของแบรนด์ล้อกับพื้นครามบนแบนเนอร์ แล้วสว่างขึ้นเป็นบานเย็นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#c58a00]/40 object-contain shadow-[0_10px_30px_rgba(197,138,0,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ffd54a]/70 hover:shadow-[0_15px_40px_rgba(254,156,1,0.45)]";
+  "mx-auto h-auto w-full max-w-3xl rounded-xl border border-[#8b3cf7]/40 object-contain shadow-[0_10px_30px_rgba(139,60,247,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ff7fd4]/70 hover:shadow-[0_15px_40px_rgba(200,29,142,0.45)]";
 
-// The column is drawn up to 644px, so 600 is the widest step worth asking for.
-// This drop is NOT one uniform size the way the last one was (600x390, 478x311
-// and 600x600), so the ladder is clamped to each file's own intrinsic width and
-// the original is appended — otherwise sharp upscales the narrow one and ships
-// more bytes than the source ever held.
+// The column is drawn up to 768px, but the ladder is clamped to the file's own
+// intrinsic width (600px here) so a sharp upscale never becomes a source and
+// never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
-  const steps = [300, 450, 600].filter((w) => w < img.width);
-  return [...steps, Math.min(img.width, 600)];
+  const steps = [384, 576, 768].filter((w) => w < img.width);
+  return [...steps, Math.min(img.width, 768)];
 };
 
-const promos = [
-  {
-    src: promoGoldWheel,
-    alt: "แบนเนอร์โปรโมชั่นพื้นดำตัวอักษรทองสลับแดง พิมพ์ข้อความ ปั่นกงล้อรับทองคำ วันละ 1 บาท และบรรทัดรอง ปั่นได้ทุกวัน วันละ 1 ครั้ง กลางภาพเป็นวงล้อเสี่ยงโชคแดงสลับขาว ช่องรางวัลเขียนว่า ทอง 1 บาท 50 บาท 100 บาท 150 บาท 200 บาท 250 บาท 400 บาท 500 บาท 1,000 บาท และ 2,000 บาท ด้านซ้ายเป็นกองทองคำแท่ง ด้านขวาเป็นสร้อยคอทองคำในกล่องกำมะหยี่แดง มุมขวาบนเป็นโลโก้ GUESS168 ล่างสุดเป็นป้ายไลน์ @Guess168th",
-  },
-  {
-    src: promoReferFriend,
-    alt: "แบนเนอร์โปรโมชั่นพื้นน้ำเงินม่วงโรยเหรียญทอง พิมพ์ข้อความ เปิดแล้วจ้า กิจกรรมชวนเพื่อน ชวนเพื่อน 1 คนรับฟรี 1 บาท วงเล็บว่าเพื่อนที่สมัครต่อไม่จำเป็นต้องฝาก และบรรทัดถัดมา มีแอดมินคอยดูแลลูกค้า ตลอด 24 ชั่วโมง ด้านซ้ายเป็นหญิงสาวสวมชุดสีทอง มุมซ้ายบนเป็นโลโก้ GUESS168 แถบล่างเป็นไอคอนธนาคารและข้อความ PAY WITH TrueMoney Wallet",
-  },
-  {
-    src: promoDeposit500,
-    alt: "แบนเนอร์โปรโมชั่นตัวอักษรทองบนพื้นดำ พิมพ์คำว่า โปรโมชั่น ฝาก 500 ขึ้นไปรับเพิ่ม 10% ใต้ลงมาเป็นเงื่อนไข หนึ่งบิลต่อหนึ่งวัน และ รับรายละเอียดได้ที่แอดมิน ปิดท้ายด้วยชื่อเว็บ app.guess168.vip และข้อความ ยินดีให้บริการ",
-  },
-];
+const promoAlt =
+  "แบนเนอร์โปรโมชั่นนีออนแนวนอนบนพื้นครามเกือบดำ มุมซ้ายบนเป็นโลโก้ AURA456 พร้อมบรรทัดใต้โลโก้เขียนว่า CYBER MYSTIC CASINO กลางภาพเป็นคำว่า RANKING ตัวอักษรนีออนขนาดใหญ่ ถัดลงมาเป็นข้อความ ลำดับขั้น ยิ่งฝาก ยิ่งอัพเลเวล เพื่อรับโบนัสในการเล่น และ รีเซ็ตทุก 2 เดือน ด้านล่างเป็นแถวป้ายทรงข้าวหลามตัดเรืองแสงหกอันเรียงกัน กำกับว่า Spark จุดประกาย, Pulse พลังชีพจร, Nova ออร่าพุ่ง, Prism พลังหลากมิติ, Radiant เปล่งประกาย และ Eclipse ขั้นสูงสุด ผู้ครองเงาออร่า";
 ---
 
 <MainLayout title={pageTitle} description={pageDescription}>
@@ -109,35 +91,29 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#fecc02]">GUESS168</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งจำนวนเงินรางวัล เปอร์เซ็นต์โบนัส ยอดฝากขั้นต่ำ และรอบเวลาของแต่ละรายการพิมพ์อยู่บนแบนเนอร์ของตัวเองครบแล้ว
-        แต่ละรายการคิดจากยอดคนละชุด จึงควรอ่านแบนเนอร์ของรายการที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเว็บก่อนเข้าเกม จบในไม่กี่วินาทีด้วยระบบออโต้ ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ff2fb0]">AURA456</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งระบบลำดับขั้นที่อัพเลเวลตามยอดฝากและรีเซ็ตทุก 2 เดือน โบนัสต้อนรับสมาชิกใหม่ โปรเพิ่มทุนสำหรับยอดฝากแรกของวัน และระบบคืนยอดเสีย Cash Back
+        ชื่อของแต่ละขั้น เงื่อนไขของแต่ละสิทธิ์ และรอบเวลาที่ใช้คำนวณ พิมพ์อยู่บนแบนเนอร์ครบแล้ว จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกรายการเลือกกดรับเองได้จากหน้าเว็บก่อนเข้าเกม จบในไม่กี่วินาทีด้วยระบบออโต้ ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ
       </p>
 
-      <div class="grid w-full grid-cols-1 gap-8 sm:grid-cols-2">
-        {
-          promos.map((promo) => (
-            <Picture
-              src={promo.src}
-              alt={promo.alt}
-              loading="lazy"
-              fetchpriority="low"
-              widths={widthLadder(promo.src)}
-              sizes={imageSizes}
-              class={imageClass}
-              decoding="async"
-              formats={["avif", "webp"]}
-              fallbackFormat="webp"
-              quality={80}
-            />
-          ))
-        }
-      </div>
+      <Picture
+        src={promoRanking}
+        alt={promoAlt}
+        loading="lazy"
+        fetchpriority="low"
+        widths={widthLadder(promoRanking)}
+        sizes={imageSizes}
+        class={imageClass}
+        decoding="async"
+        formats={["avif", "webp"]}
+        fallbackFormat="webp"
+        quality={80}
+      />
 
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffe680]/60 bg-gradient-to-r from-[#ffe680] via-[#fecc02] to-[#a35800] px-10 py-3.5 text-lg font-black text-[#140800] shadow-[0_10px_30px_rgba(254,204,2,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(254,156,1,0.5)]">
-          สมัครสมาชิก GUESS168
+          class="flex items-center justify-center rounded-lg border border-[#d8f2ff]/40 bg-gradient-to-r from-[#ffc9ee] via-[#ff2fb0] to-[#4a179e] px-10 py-3.5 text-lg font-black text-[#0b0528] shadow-[0_10px_30px_rgba(255,47,176,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(200,29,142,0.5)]">
+          สมัครสมาชิก AURA456
         </a>
       </div>
     </div>

@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.guess168-game.com",
+  site: "https://www.aura456-th.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

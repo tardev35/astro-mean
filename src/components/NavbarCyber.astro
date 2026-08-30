@@ -7,11 +7,12 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 const currentPath = Astro.url.pathname;
 const isActive = (path: string) => isActivePath(currentPath, path);
 
-// GEN4: ย้ายจากนีออนฟ้า-บานเย็นของแบรนด์ก่อน มาเป็นน้ำเงินอิเล็กทริกคู่แดงของ
-// แบรนด์นี้ — น้ำเงิน #0071d5 / #01a3f3 / #6fd2ff คู่แดง #e8241c บนผิวกรมท่า
-// เกือบดำ #050b1a / #0b1b3a ตัวอักษร #eaf4ff เมนูปกติ #93b4dd
-// (วัดจาก palette.json: vivid ของโลโก้คือ #006fd5 / #007cdd / #01a3f3)
-// ทรงมุมตัดสไตล์ cyber เก็บไว้ทั้งหมด เข้ากับลุค next-gen ของแบรนด์
+// AURA456: ย้ายจากน้ำเงินอิเล็กทริกคู่แดงของแบรนด์ก่อน มาเป็นนีออนบานเย็นคู่ฟ้า
+// ของแบรนด์นี้ — บานเย็น #ff2fb0 / #ff7fd4 คู่ฟ้าอิเล็กทริก #3ba9ff บนผิวคราม
+// เกือบดำ #05021a / #1c1046 ตัวอักษร #f6ebff เมนูปกติ #9b93c4
+// (อาร์ตเวิร์กเป็นนีออนสองสีจริงๆ: AURA เป็นชมพู 456 เป็นฟ้า ส่วนค่าใน
+// palette.json ที่เป็นครามเข้มคือพื้นหลังของภาพ ไม่ใช่สีเน้น)
+// ทรงมุมตัดสไตล์ cyber เก็บไว้ทั้งหมด เข้ากับลุค cyber mystic ของแบรนด์
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
@@ -23,42 +24,42 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // concatenated into the label text (that would put "house หน้าแรก" into the
 // accessible name).
 //
-// GEN4: หน้าแรก แล้ว โปรโมชั่น มาก่อนหน้าที่เหลือตามลำดับใน SKILL.md —
+// AURA456: หน้าแรก แล้ว โปรโมชั่น มาก่อนหน้าที่เหลือตามลำดับใน SKILL.md —
 // รอบนี้ /login กับ /register ยังเป็นหน้า interstitial (noindex) จึงไม่มีรายการ
 // เมนูของสองหน้านั้นให้จัดลำดับ มีแต่ปุ่ม CTA ที่มุมขวาซึ่งเป็น chrome ของ
 // variant นี้เอง และ /ทางเข้า จึงยังอยู่ในเมนูตามปกติ
 //
-// ไม่มี /ตรวจหวย กับ /แนวทาง เพราะ GEN4 เป็นเว็บสล็อต ไม่ใช่เว็บหวย —
-// สองหน้านั้นอยู่ใน src/pages-disabled/ จึงไม่มี route ให้ลิงก์ไปหา
+// ไม่มี /ตรวจหวย กับ /แนวทาง เพราะ AURA456 เป็นเว็บสล็อต ไม่ใช่เว็บหวย —
+// สองหน้านั้นไม่ได้อยู่ใน src/pages/ จึงไม่มี route ให้ลิงก์ไปหา
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
   { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "⚡" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "✨" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 ---
 
 <header class="sticky top-0 z-[100] w-full font-sans">
   <nav
-    class="relative mx-auto flex h-[80px] w-full items-center justify-between border-b border-[#01a3f3]/45 bg-[#050b1a]/95 px-4 shadow-[0_5px_25px_rgba(1,163,243,0.28)] backdrop-blur-xl xl:px-8"
+    class="relative mx-auto flex h-[80px] w-full items-center justify-between border-b border-[#ff2fb0]/45 bg-[#05021a]/95 px-4 shadow-[0_5px_25px_rgba(255,47,176,0.28)] backdrop-blur-xl xl:px-8"
     style="clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));">
     <a href="/" class="z-[110] flex-shrink-0 transition-transform hover:scale-105">
       {
         mainLogo ? (
           <Picture
             src={mainLogo}
-            alt="โลโก้ GEN4 ตัวอักษร GEN สีน้ำเงินอิเล็กทริกไล่เฉดฟ้า ต่อด้วยเลข 4 สีแดงเมทัลลิกทรงเหลี่ยมพาดเฉียง ตัวอักษรทั้งชุดมีไฮไลต์มันวาวแบบโลหะ"
+            alt="โลโก้ AURA456 ตัวอักษรป้ายไฟนีออน คำว่า AURA เป็นสีชมพูบานเย็นแล้วไล่เป็นฟ้าอิเล็กทริกที่เลข 456 ทุกตัวมีเส้นขอบเรืองแสง ด้านหลังเป็นวงกลมเรืองแสงสีม่วงคราม มีสัญลักษณ์โพดำนีออนอยู่ด้านบน ขนาบข้างด้วยชิปคาสิโนและลูกเต๋าสีชมพูฟ้า"
             loading="eager"
             widths={[140, 280, 420]}
             sizes="140px"
-            class="h-[46px] w-auto drop-shadow-[0_0_12px_rgba(1,163,243,0.6)] xl:h-[58px]"
+            class="h-[46px] w-auto drop-shadow-[0_0_12px_rgba(255,47,176,0.6)] xl:h-[58px]"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
           />
         ) : (
-          <span class="bg-gradient-to-r from-[#6fd2ff] via-[#01a3f3] to-[#e8241c] bg-clip-text text-3xl font-black tracking-wider text-transparent">GEN4</span>
+          <span class="bg-gradient-to-r from-[#ff7fd4] via-[#ff2fb0] to-[#3ba9ff] bg-clip-text text-3xl font-black tracking-wider text-transparent">AURA456</span>
         )
       }
     </a>
@@ -68,13 +69,13 @@ const links = [
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative flex h-full items-center gap-1.5 px-1 text-xs font-bold tracking-widest uppercase transition-colors xl:text-sm ${isActive(item.path) ? "text-[#6fd2ff] drop-shadow-[0_0_8px_rgba(1,163,243,0.85)]" : "text-[#93b4dd] hover:text-[#eaf4ff]"}`}>
+            class={`group relative flex h-full items-center gap-1.5 px-1 text-xs font-bold tracking-widest uppercase transition-colors xl:text-sm ${isActive(item.path) ? "text-[#ff7fd4] drop-shadow-[0_0_8px_rgba(255,47,176,0.85)]" : "text-[#9b93c4] hover:text-[#f6ebff]"}`}>
             <span aria-hidden="true" class="text-base">
               {item.icon}
             </span>
             <span>{item.name}</span>
             <div
-              class={`absolute bottom-0 left-0 h-[4px] w-full bg-gradient-to-r from-[#01a3f3] to-[#e8241c] shadow-[0_-2px_10px_rgba(1,163,243,0.9)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+              class={`absolute bottom-0 left-0 h-[4px] w-full bg-gradient-to-r from-[#ff2fb0] to-[#3ba9ff] shadow-[0_-2px_10px_rgba(255,47,176,0.9)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
             />
           </a>
         ))
@@ -84,40 +85,40 @@ const links = [
     <div class="z-[110] flex items-center gap-4">
       <a
         href="/login"
-        class="hidden items-center justify-center border border-[#6fd2ff]/60 bg-transparent px-6 py-2 text-sm font-bold text-[#eaf4ff] transition-all hover:bg-[#6fd2ff]/15 lg:flex"
+        class="hidden items-center justify-center border border-[#ff7fd4]/60 bg-transparent px-6 py-2 text-sm font-bold text-[#f6ebff] transition-all hover:bg-[#ff7fd4]/15 lg:flex"
         style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
         เข้าระบบ
       </a>
       <a
         href="/register"
-        class="hidden items-center justify-center bg-gradient-to-r from-[#6fd2ff] via-[#01a3f3] to-[#e8241c] px-6 py-2 text-sm font-black text-[#050b1a] shadow-[0_0_15px_rgba(1,163,243,0.5)] transition-all hover:scale-105 lg:flex"
+        class="hidden items-center justify-center bg-gradient-to-r from-[#ff7fd4] via-[#ff2fb0] to-[#3ba9ff] px-6 py-2 text-sm font-black text-[#05021a] shadow-[0_0_15px_rgba(255,47,176,0.5)] transition-all hover:scale-105 lg:flex"
         style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
         สมัครสมาชิก
       </a>
 
       <button
         id="hamburger-btn"
-        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] border border-[#01a3f3]/55 bg-[#0b1b3a] lg:hidden"
+        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] border border-[#ff2fb0]/55 bg-[#1c1046] lg:hidden"
         style="clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);"
         aria-label="เปิดเมนู"
         aria-controls="mobile-menu"
         aria-expanded="false">
-        <span class="line-1 h-[2px] w-6 origin-center bg-[#01a3f3] shadow-[0_0_5px_rgba(1,163,243,0.9)] transition-all duration-300"></span>
-        <span class="line-2 h-[2px] w-6 origin-center bg-[#01a3f3] shadow-[0_0_5px_rgba(1,163,243,0.9)] transition-all duration-300"></span>
-        <span class="line-3 h-[2px] w-6 origin-center bg-[#01a3f3] shadow-[0_0_5px_rgba(1,163,243,0.9)] transition-all duration-300"></span>
+        <span class="line-1 h-[2px] w-6 origin-center bg-[#ff2fb0] shadow-[0_0_5px_rgba(255,47,176,0.9)] transition-all duration-300"></span>
+        <span class="line-2 h-[2px] w-6 origin-center bg-[#ff2fb0] shadow-[0_0_5px_rgba(255,47,176,0.9)] transition-all duration-300"></span>
+        <span class="line-3 h-[2px] w-6 origin-center bg-[#ff2fb0] shadow-[0_0_5px_rgba(255,47,176,0.9)] transition-all duration-300"></span>
       </button>
     </div>
   </nav>
 
   <div
     id="mobile-menu"
-    class="pointer-events-none absolute top-[80px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col border-b border-[#01a3f3]/45 bg-[#050b1a]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden">
+    class="pointer-events-none absolute top-[80px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col border-b border-[#ff2fb0]/45 bg-[#05021a]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-300 lg:hidden">
     <div class="flex flex-col gap-2">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`flex items-center gap-3 border-l-4 px-4 py-3 text-lg font-bold tracking-widest uppercase transition-colors ${isActive(item.path) ? "border-[#e8241c] bg-[#01a3f3]/20 text-[#6fd2ff]" : "border-transparent text-[#93b4dd] hover:bg-white/5 hover:text-[#eaf4ff]"}`}>
+            class={`flex items-center gap-3 border-l-4 px-4 py-3 text-lg font-bold tracking-widest uppercase transition-colors ${isActive(item.path) ? "border-[#3ba9ff] bg-[#ff2fb0]/20 text-[#ff7fd4]" : "border-transparent text-[#9b93c4] hover:bg-white/5 hover:text-[#f6ebff]"}`}>
             <span aria-hidden="true">{item.icon}</span>
             <span>{item.name}</span>
           </a>
@@ -127,13 +128,13 @@ const links = [
     <div class="mt-6 flex flex-col gap-4">
       <a
         href="/register"
-        class="flex w-full justify-center bg-gradient-to-r from-[#6fd2ff] via-[#01a3f3] to-[#e8241c] py-3.5 text-lg font-black text-[#050b1a] shadow-[0_0_15px_rgba(1,163,243,0.5)]"
+        class="flex w-full justify-center bg-gradient-to-r from-[#ff7fd4] via-[#ff2fb0] to-[#3ba9ff] py-3.5 text-lg font-black text-[#05021a] shadow-[0_0_15px_rgba(255,47,176,0.5)]"
         style="clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);">
         สมัครสมาชิก
       </a>
       <a
         href="/login"
-        class="flex w-full justify-center border border-[#6fd2ff]/60 bg-transparent py-3.5 text-lg font-bold text-[#eaf4ff]"
+        class="flex w-full justify-center border border-[#ff7fd4]/60 bg-transparent py-3.5 text-lg font-bold text-[#f6ebff]"
         style="clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);">
         เข้าระบบ
       </a>

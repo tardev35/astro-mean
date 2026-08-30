@@ -9,9 +9,9 @@ const targetUrl = "https://yoalink.com/znmz";
 // neither the @theme fallback for --font-sans nor the self-hosted Kanit
 // @font-face. Both have to be supplied here or the page renders in the browser
 // default while the rest of the site does not — hence the @font-face rules in
-// the first <style> block below. GUESS168 runs BRAND_FONT = "kanit", so this
-// round the typeface comes from those self-hosted rules and the CDN <link>
-// carries Oswald only; leave both in place either way, the flag flips every
+// the first <style> block below. AURA456 runs BRAND_FONT = "kanit", so this
+// round the typeface comes from those self-hosted rules and the CDN <link> only
+// carries Oswald; leave both branches in place either way, the flag flips every
 // rebrand.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
@@ -26,23 +26,29 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: GUESS168 is a GOLD-ON-BLACK NEON
-// JACKPOT brand — molten gold (#fecc02 / #ffd54a / #ffe680 / #fff6e0) as the
-// primary hue with FIRE ORANGE (#fe9c01 / #a35800) as the second accent and
-// DEEP AMBER (#c58a00) on the borders and glows, over a warm near-black surface
-// (#140800 / #231005 / #33180a) with #f7e7c6 body text. Not blue, not cool.
+// Palette note for the second <style> block: AURA456 is a NEON CYBER-MYSTIC
+// casino brand — hot neon magenta (#ff2fb0 / #ff7fd4 / #ffc9ee) as the primary
+// hue PAIRED WITH ELECTRIC BLUE (#d8f2ff / #7fd0ff / #3ba9ff) as the second
+// accent, with violet (#8b3cf7 / #c81d8e / #4a179e) on the borders and glows,
+// over a near-black indigo surface (#0b0528 / #120a33 / #1c1046) with #d8d3f0
+// body text. There is NO gold and NO platinum in this brand.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
 // no gold in them and a `--brand-red` on a gold one, so the next editor reused
-// it by name and shipped the wrong hue. Rename with the value.
+// it by name and shipped the wrong hue. Rename with the value. The `--gold-*`
+// and `--platinum-*` properties this file used to carry are gone for that
+// reason — neither colour exists in this brand.
 ---
 
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก GUESS168 | เปิดยูสสล็อตคัดเกรด ฟรีไม่มีค่าธรรมเนียม</title>
-    <meta name="description" content="สมัครสมาชิก GUESS168 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นเกมลิขสิทธิ์ครบทุกค่าย รับโปรเด็ดและฝากถอนออโต้ทุกขั้นตอน" />
+    <title>สมัครสมาชิก AURA456 | เปิดยูสเว็บตรงสล็อตคัดเกรด ฟรีไม่มีค่าธรรมเนียม</title>
+    <meta
+      name="description"
+      content="สมัครสมาชิก AURA456 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นเกมลิขสิทธิ์แท้ครบทุกค่าย รับสิทธิ์พิเศษและฝากถอนออโต้ทุกขั้นตอน"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {
@@ -79,17 +85,18 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #140800;
-        --panel-bg: rgba(35, 16, 5, 0.92);
-        --gold-pale: #fff6e0;
-        --gold-light: #ffe680;
-        --gold-bright: #ffd54a;
-        --gold-primary: #fecc02;
-        --orange-accent: #fe9c01;
-        --orange-deep: #a35800;
-        --surface-raised: #33180a;
-        --text-body: #f7e7c6;
-        --text-muted: #d8bb87;
+        --page-bg: #0b0528;
+        --panel-bg: rgba(18, 10, 51, 0.92);
+        --pink-pale: #ffc9ee;
+        --pink-light: #ff7fd4;
+        --pink-primary: #ff2fb0;
+        --magenta-deep: #c81d8e;
+        --violet-deep: #4a179e;
+        --cyan-pale: #d8f2ff;
+        --cyan-light: #7fd0ff;
+        --surface-raised: #1c1046;
+        --text-body: #d8d3f0;
+        --text-muted: #9b93c4;
       }
 
       body {
@@ -97,7 +104,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(197, 138, 0, 0.32) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(254, 156, 1, 0.2) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(139, 60, 247, 0.32) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(59, 169, 255, 0.14) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -111,11 +118,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(197, 138, 0, 0.42);
+        border: 1px solid rgba(139, 60, 247, 0.42);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(20, 8, 0, 0.6),
-          0 0 2rem rgba(197, 138, 0, 0.28);
+          0 1rem 3rem rgba(3, 1, 14, 0.6),
+          0 0 2rem rgba(139, 60, 247, 0.28);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -124,13 +131,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--gold-pale) 0%, var(--gold-bright) 45%, var(--orange-accent) 100%);
+        background: linear-gradient(180deg, var(--cyan-pale) 0%, var(--pink-light) 45%, var(--magenta-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(197, 138, 0, 0.5));
+        filter: drop-shadow(0 1px 2px rgba(139, 60, 247, 0.5));
       }
 
       .sophisticated-loader {
@@ -146,30 +153,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--gold-light) 0%, var(--gold-primary) 45%, var(--orange-deep) 100%);
+        background: radial-gradient(circle, var(--pink-pale) 0%, var(--pink-primary) 45%, var(--violet-deep) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(197, 138, 0, 0.5);
+        box-shadow: 0 0 2rem rgba(139, 60, 247, 0.5);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(197, 138, 0, 0.24);
+        border: 3px solid rgba(139, 60, 247, 0.24);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--gold-primary);
+        border-top-color: var(--pink-primary);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--orange-accent);
+        border-bottom-color: var(--cyan-light);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -186,11 +193,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(197, 138, 0, 0.5);
+          box-shadow: 0 0 2rem rgba(139, 60, 247, 0.5);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(254, 204, 2, 0.42);
+          box-shadow: 0 0 3rem rgba(255, 47, 176, 0.42);
         }
       }
 
@@ -214,7 +221,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">GUESS168</div>
+      <div class="brand-identity">AURA456</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -224,7 +231,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก GUESS168 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก AURA456 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 
