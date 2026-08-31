@@ -5,16 +5,15 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h1" } = Astro.props;
 
-// TITANWIN168: ย้ายจากนีออนบานเย็นคู่ฟ้าอิเล็กทริกของแบรนด์ก่อน มาเป็นม่วงไททันคู่
-// มงกุฎทองของแบรนด์นี้ — ม่วง #a855f7 / #c084fc / #ede4ff / #7c3aed / #6d28d9 /
-// #3b0d73 คู่ทองมงกุฎ #e3c176 / #f2dda3 และโครเมียมเงิน #dfe4f0 บนผิวดำสนิท
-// #07030f / #160a2b / #22104a / #2e1065 เนื้อความ #ddd2f5
+// PAY69: ย้ายจากม่วงไททันคู่มงกุฎทองของแบรนด์ก่อน มาเป็นทองแชมเปญเดี่ยวบนดำสนิท
+// — ทอง #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว #08070a /
+// #12100c / #1c1811 เนื้อความ #e6dac2
 //
-// อาร์ตเวิร์กรอบนี้เป็นม่วงนำชัดเจน: พื้นหลังดำสนิท ควันกับสายฟ้าเป็นม่วงนีออน
-// ตัวอักษรโลโก้เป็นโครเมียมเงิน และมงกุฎบนโลโก้เป็นทองประดับอัญมณีม่วง ส่วนค่า
-// vivid ใน palette.json ที่ออกมาเป็นม่วงเข้มมาก (#2b1c3b / #230c34) คือ "พื้น"
-// ของภาพ ไม่ใช่สีเน้น — palette.json จัดอันดับให้ แต่ไม่ได้ตีความให้ ทองจึงเป็น
-// สีคู่ที่ดึงมาจากมงกุฎ ไม่ใช่จากตารางอันดับ
+// อาร์ตเวิร์กรอบนี้เป็นทองล้วนบนดำ ไม่มีสีคู่: พื้นหลังแบนเนอร์เป็นดำสนิท ควันกับ
+// เส้นแสงเป็นทอง โลโก้เป็นตัวอักษรทองแชมเปญในกรอบดำ ค่า vivid ของโลโก้ใน
+// palette.json (#ecdbb4 / #f2dcbb / #e5cca5) จึงเป็นสีเน้นจริง ส่วน dominant
+// ที่ออกมาเป็นดำ (#14191c / #13171c) คือ "พื้น" ไม่ใช่สีเน้น — palette.json
+// จัดอันดับให้ แต่ไม่ได้ตีความให้
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
@@ -30,15 +29,15 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#a855f7]/40 bg-[#160a2b]/90 p-8 text-left text-base leading-relaxed text-[#ddd2f5] shadow-[0_10px_30px_rgba(109,40,217,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#c084fc]/60 hover:shadow-[0_15px_40px_rgba(168,85,247,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#2e1065]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#a855f7]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#22104a]/50 blur-[60px] transition-all duration-500 group-hover:bg-[#e3c176]/35"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#a87c2e]/40 bg-[#12100c]/90 p-8 text-left text-base leading-relaxed text-[#e6dac2] shadow-[0_10px_30px_rgba(107,77,21,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#e8c37a]/60 hover:shadow-[0_15px_40px_rgba(232,195,122,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#1c1811]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#e8c37a]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#12100c]/50 blur-[60px] transition-all duration-500 group-hover:bg-[#a87c2e]/35"></div>
 
     {
       title && (
-        <header class="mb-6 flex items-center gap-4 border-b border-[#a855f7]/40 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dfe4f0] via-[#ede4ff] to-[#a855f7] shadow-[0_0_10px_rgba(168,85,247,0.6)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#dfe4f0] via-[#c084fc] to-[#e3c176] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-6 flex items-center gap-4 border-b border-[#a87c2e]/40 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] shadow-[0_0_10px_rgba(232,195,122,0.6)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#e8c37a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }

@@ -5,35 +5,35 @@
 //
 // ค่า default ต้องเป็นคำโฆษณาของแบรนด์ปัจจุบันเสมอ — หน้าย่อยทุกหน้าเรียก
 // <Announcement /> เปล่าๆ จึงตกมาใช้ค่านี้ ถ้าลืมอัปเดต ทั้งเว็บยกเว้นหน้าแรก
-// จะวิ่งข้อความของแบรนด์ก่อนหน้า
+// จะวิ่งข้อความของแบรนด์ก่อนหน้า สตริงนี้ต้องตรงกับที่ index.astro ส่งเข้ามาเป๊ะ
 //
-// NEOCLUB88: ย้ายจากทองหลอมคู่ส้มไฟของแบรนด์ก่อน มาเป็นทองคลับคู่แพลทินัมของ
-// แบรนด์นี้ — ทอง #f2cc53 / #ffe89a / #c39b3c / #a8842c / #8a6415 คู่แพลทินัม
-// #c6ccd4 บนผิว #050301 / #140b02 / #241303 ขอบ #33230b เนื้อความ #ede0c4
+// PAY69: ย้ายจากทองคลับคู่แพลทินัมของแบรนด์ก่อน มาเป็นทองแชมเปญเดี่ยวบนดำสนิท
+// ไม่มีสีคู่ — ทอง #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว
+// #08070a / #12100c / #1c1811 เนื้อความ #e6dac2
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 const {
-  message = "NEOCLUB88 สล็อตเอ็กซ์คลูซีฟคลับระดับ VIP เกมคัดพิเศษ ดูแล 24 ชม. • ยกระดับเว็บสล็อตสู่คลับพรีเมียม รวบรวมเฉพาะเกมลิขสิทธิ์แท้ API ตรง เซิร์ฟเวอร์หลักนอก ค่า RTP ยุติธรรม ไม่มีการดัดแปลงผลการออกรางวัล ปั่นง่ายแตกจริง • ระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จใน 3 วินาที ถอนได้เต็มยอดไม่มีกั๊ก ตอบโจทย์สายเล่นที่ต้องการความชัวร์และบริการระดับ VIP ตลอดวัน • ตัดระบบเอเย่นต์และเอฟเฟกต์รกตาออกทั้งหมด เน้นความเสถียรขั้นสุด โหลดเกมไว ไม่มีสะดุด ทุกยูสเซอร์เข้าถึงระบบประมวลผลความเร็วสูงเหมือนกันหมด • กรองเฉพาะเกมสล็อตตัวท็อปจากค่ายใหญ่อย่าง PG Soft Pragmatic Play และ Joker Gaming คัดเฉพาะตัวที่มีฟีเจอร์ Multiplier คูณโหด ตัวคูณสะสม และระบบฟรีสปินที่ออกรางวัลจริง • อัปเดตไฟล์เกมเข้าใหม่ทันทีที่ค่ายผู้พัฒนาปล่อยออกมา มีโหมดทดลองเล่นให้เช็กกลไกเกมฟรี ล็อบบี้มีความเคลื่อนไหวตลอดเวลา เล่นได้ยาวๆ แบบไม่มีคำว่าตกเทรนด์ • เติมสิทธิ์พิเศษให้สมาชิกทุกวัน ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรโมชันฝากแรกของวัน และระบบคืนยอดเสีย Cash Back เงื่อนไขชัดเจน ถอนออกได้จริง ไม่หมกเม็ดเทิร์นโอเวอร์ • ระบบกระเป๋าเดียวไม่ต้องโยกเงินข้ามค่าย เลือกเกมและสลับค่ายสปินได้ทันที พร้อมทีมงานสแตนด์บายดูแลสมาชิกแบบ VIP ตลอด 24 ชั่วโมง",
+  message = "PAY69 คาสิโนฟลอร์ใหญ่ โต๊ะสดค่ายดัง เว็บใหญ่ทุนหนาพร้อมเปย์ • คาสิโนสดเว็บตรง API แท้ ยิงสัญญาณสดระดับ Ultra HD ส่งตรงจากฟลอร์คาสิโนจริงในต่างประเทศ ไม่ผ่านเอเย่นต์ เว็บใหญ่เงินทุนหนา การันตีความมั่นคงทางการเงินระดับสากล ถอนหลักแสนหลักล้านจ่ายครบเต็มจำนวน ไม่ล็อคยูส ไม่ปรับอัตราแพ้ชนะ • จำลองบรรยากาศคาสิโนระดับโลกมาไว้บนหน้าจอ ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ ไร้การตัดต่อหรือใช้คลิปวน มุมกล้องหลากหลายมองเห็นทุกมิติการแทง สัญญาณเสถียรไม่มีอาการกระตุก • รวมค่ายคาสิโนชั้นนำระดับโลกไว้ครบครันทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ Pragmatic Play Live มีทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ต เสือมังกร และไฮโล เลือกห้องเล่นได้ตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller • สลับจากโต๊ะบาคาร่าไปเดิมพันรูเล็ต วงล้อเสี่ยงโชค หรือเกมโชว์สดได้ทันทีในยูสเซอร์เดียว ระบบกระเป๋าเงินเดียวยืดหยุ่นสูงสุด ไม่ต้องโยกเงินข้ามค่ายให้เสียเวลา • ฐานการเงินแข็งแกร่งระดับเว็บใหญ่ พร้อมจ่ายทุกยอดชนะทันที รองรับช่องทางการเงินครบครันทั้งธนาคารชั้นนำทั่วไทยและ TrueMoney Wallet เก็บข้อมูลสมาชิกเป็นความลับขั้นสุด • สิทธิพิเศษอัปเดตใหม่ทุกวัน ทั้งโบนัสต้อนรับคาสิโนสด โปรโมชันฝากแรกของวัน คืนยอดเสียรับ Cash Back และคอมมิชชันการชวนเพื่อน เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันทีผ่านหน้าแดชบอร์ด • ฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ฝากเงินปุ๊บเครดิตเข้าเกมใน 3 วินาที กดถอนเข้าบัญชีได้ด้วยตัวเอง ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ",
 } = Astro.props;
 ---
 
 <div class="mx-auto w-full max-w-7xl px-4 py-3 font-sans">
-  <div class="relative overflow-hidden rounded-md border border-[#a8842c]/55 bg-[#050301] shadow-[0_0_15px_rgba(242,204,83,0.28)]">
-    <div class="absolute top-0 -left-4 h-full w-8 -skew-x-12 bg-gradient-to-b from-[#ffe89a] to-[#8a6415]"></div>
-    <div class="absolute top-0 -right-4 h-full w-8 -skew-x-12 bg-[#33230b]/60"></div>
+  <div class="relative overflow-hidden rounded-md border border-[#a87c2e]/55 bg-[#08070a] shadow-[0_0_15px_rgba(232,195,122,0.28)]">
+    <div class="absolute top-0 -left-4 h-full w-8 -skew-x-12 bg-gradient-to-b from-[#f7dfa5] to-[#6b4d15]"></div>
+    <div class="absolute top-0 -right-4 h-full w-8 -skew-x-12 bg-[#1c1811]/60"></div>
 
     <div class="flex items-center">
-      <div class="relative z-10 flex w-12 shrink-0 items-center justify-center bg-gradient-to-b from-[#ffe89a] to-[#8a6415] py-2.5">
-        <span aria-hidden="true" class="animate-pulse text-lg drop-shadow-[0_0_5px_rgba(5,3,1,0.7)]">🔔</span>
+      <div class="relative z-10 flex w-12 shrink-0 items-center justify-center bg-gradient-to-b from-[#f7dfa5] to-[#6b4d15] py-2.5">
+        <span aria-hidden="true" class="animate-pulse text-lg drop-shadow-[0_0_5px_rgba(8,7,10,0.7)]">🔔</span>
       </div>
 
       <div class="marquee-container relative flex-1 overflow-hidden py-2.5 pr-6">
-        <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#050301] to-transparent"></div>
-        <div class="pointer-events-none absolute top-0 right-0 z-10 h-full w-12 bg-gradient-to-l from-[#050301] to-transparent"></div>
+        <div class="pointer-events-none absolute top-0 left-0 z-10 h-full w-8 bg-gradient-to-r from-[#08070a] to-transparent"></div>
+        <div class="pointer-events-none absolute top-0 right-0 z-10 h-full w-12 bg-gradient-to-l from-[#08070a] to-transparent"></div>
 
-        <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-wide whitespace-nowrap text-[#ede0c4]">
-          <span class="mr-8 inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-[#f2cc53] shadow-[0_0_5px_rgba(242,204,83,0.9)]"></span>{message}</span>
-          <span aria-hidden="true" class="mr-8 inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-[#f2cc53] shadow-[0_0_5px_rgba(242,204,83,0.9)]"></span>{message}</span>
+        <div class="marquee-content inline-block pl-4 text-sm font-bold tracking-wide whitespace-nowrap text-[#e6dac2]">
+          <span class="mr-8 inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-[#e8c37a] shadow-[0_0_5px_rgba(232,195,122,0.9)]"></span>{message}</span>
+          <span aria-hidden="true" class="mr-8 inline-flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-[#e8c37a] shadow-[0_0_5px_rgba(232,195,122,0.9)]"></span>{message}</span>
         </div>
       </div>
     </div>

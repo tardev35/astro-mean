@@ -16,42 +16,42 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // สองตัวข้างหัวข้ออีก ~52px จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
 // *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ H2 ข้อ 7 ของ docx AURA456 ที่ไฟล์นี้รับรอบนี้ (61 ตัวอักษร —
-// "ออโต้พร้อมทำรายการตลอดวัน ลดขั้นตอนให้ฝากถอนคล่องไม่ขัดจังหวะ") chrome ของป้าย =
+// คำนวณกับหัวข้อ H1 ของ docx PAY69 ที่ไฟล์นี้รับรอบนี้ (57 ตัวอักษร —
+// "PAY69 คาสิโนฟลอร์ใหญ่ โต๊ะสดค่ายดัง เว็บใหญ่ทุนหนาพร้อมเปย์") chrome ของป้าย =
 // py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
-//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 9px ต่อตัวอักษร
-//   → ~25 ตัวต่อบรรทัด หัวข้อ 61 ตัวจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
-//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
-//   108px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 68px ไม่ต้องดัน pt ขึ้น
+//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-xl ≈ 10px ต่อตัวอักษร
+//   → ~23 ตัวต่อบรรทัด หัวข้อ 57 ตัวจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
+//   leading-normal ที่ 20px = 30px ต่อบรรทัด → 120px + 24px = 144px ขอบล่างอยู่ที่
+//   120px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 56px ไม่ต้องดัน pt ขึ้น
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ไอคอน เหลือ ~566px,
-//   md:text-2xl/leading-normal = 36px ต่อบรรทัด, 2 บรรทัด = 72px + 24px = 96px
-//   ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-36 (144px) → เหลือ 72px
+//   md:text-3xl/leading-normal = 45px ต่อบรรทัด, 2 บรรทัด = 90px + 24px = 114px
+//   ขอบล่างอยู่ที่ 90px เทียบกับ md:pt-36 (144px) → เหลือ 54px
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// AURA456: ย้ายมาที่นีออนบานเย็นคู่ฟ้าอิเล็กทริกของแบรนด์นี้ที่วัดจากอาร์ตจริง —
-// บานเย็น #ff2fb0 / #ff7fd4 / #ffc9ee / #c81d8e คู่ฟ้า #3ba9ff กับม่วง #8b3cf7 /
-// #4a179e ซึ่งเป็นสีเน้นรอง บนผิว #0b0528 / #05021a เนื้อความ #d8d3f0 ไอคอนสองข้าง
-// ป้ายยังเป็นข้าวหลามตัดตามเดิม (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind
-// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
-// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// PAY69: ย้ายจากนีออนของแบรนด์ก่อนมาที่ทองแชมเปญเดี่ยวบนดำสนิท ไม่มีสีคู่ —
+// ทอง #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว #08070a / #12100c /
+// #1c1811 เนื้อความ #e6dac2 ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามเดิม แต่รับทอง
+// แทนสีเน้นที่สอง (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็น
+// ข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS
+// ตาย ดูของเดิมได้จาก git history)
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#ff2fb0]/35 bg-[#0b0528]/88 p-8 pt-44 text-left text-base leading-relaxed text-[#d8d3f0] shadow-[0_10px_30px_rgba(255,47,176,0.22)] backdrop-blur-md md:pt-36">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#3ba9ff]/40 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#4a179e]/30 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#a87c2e]/40 bg-[#12100c]/90 p-8 pt-44 text-left text-base leading-relaxed text-[#e6dac2] shadow-[0_10px_30px_rgba(107,77,21,0.25)] backdrop-blur-md md:pt-36">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#a87c2e]/35 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#1c1811]/70 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ff7fd4]/55 bg-[#05021a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(255,47,176,0.4)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#3ba9ff]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#e8c37a]/55 bg-[#08070a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(232,195,122,0.35)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#a87c2e]">
             ◆
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffc9ee] via-[#ff7fd4] to-[#3ba9ff] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#3ba9ff]">
+          <HeadingTag class={`bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#a87c2e]">
             ◆
           </span>
         </div>

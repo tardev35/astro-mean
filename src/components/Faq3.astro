@@ -22,10 +22,10 @@ const { title, faqs = [] } = Astro.props;
 // ป้ายของ widget ไม่ใช่ section ของ docx ชื่อสำหรับ assistive tech ย้ายไปอยู่ที่
 // aria-label บน <section> แทน หน้าตายังเหมือนเดิมเพราะขนาดกับน้ำหนักอยู่ในคลาส
 //
-// NEOCLUB88: ย้ายจากน้ำเงินอิเล็กทริกคู่แดงของแบรนด์ก่อนหน้ามาที่ทองคลับคู่แพลทินัม
-// ของแบรนด์นี้ — ทอง #f2cc53 / #ffe89a / #f6d977 / #c39b3c / #a8842c คู่แพลทินัม
-// #eef1f5 / #c6ccd4 / #8d949e (แพลทินัมใช้กับไอคอนตอนกางคำตอบและเส้นคั่นใต้หัวข้อ)
-// บนผิว #050301 / #140b02 / #241303 / #33230b เนื้อความ #ede0c4 หัวข้อ #fbf4e4
+// PAY69: ย้ายจากทองคลับคู่แพลทินัมของแบรนด์ก่อนหน้ามาที่ทองแชมเปญเดี่ยวบนดำสนิท
+// ไม่มีสีคู่ — ทอง #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว #08070a /
+// #12100c / #1c1811 เนื้อความ #e6dac2 (ทองครีมสว่างใช้กับไอคอนตอนกางคำตอบและ
+// เส้นคั่นใต้หัวข้อ เพื่อให้มีน้ำหนักต่างจากทองหลักโดยไม่ต้องมีสีที่สอง)
 // (ค่า hex ของแบรนด์เก่าไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้
 // ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 ---
@@ -34,10 +34,10 @@ const { title, faqs = [] } = Astro.props;
   {
     title && (
       <header class="mb-8 text-center">
-        <p class="bg-gradient-to-r from-[#fbf4e4] via-[#c6ccd4] to-[#f2cc53] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <p class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </p>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#c6ccd4] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f7dfa5] to-transparent" />
       </header>
     )
   }
@@ -45,8 +45,8 @@ const { title, faqs = [] } = Astro.props;
   <div class="space-y-3">
     {
       faqs.map((faq) => (
-        <details class="faq-item rounded-3xl border border-[#a8842c]/30 bg-[#241303]/85 p-2 shadow-[0_10px_30px_rgba(5,3,1,0.8)] backdrop-blur-xl transition-all hover:border-[#f2cc53]/60 hover:bg-[#33230b]/85">
-          <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left text-[#ede0c4] transition-colors hover:text-[#f2cc53]">
+        <details class="faq-item rounded-3xl border border-[#a87c2e]/30 bg-[#12100c]/90 p-2 shadow-[0_10px_30px_rgba(8,7,10,0.8)] backdrop-blur-xl transition-all hover:border-[#e8c37a]/60 hover:bg-[#1c1811]/90">
+          <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left text-[#e6dac2] transition-colors hover:text-[#f7dfa5]">
             <span class="flex-1 text-left text-sm leading-normal font-bold md:text-base">{faq.q}</span>
             <span aria-hidden="true" class="faq-icon ml-4 flex h-6 w-6 shrink-0 items-center justify-center text-2xl transition-transform duration-300 ease-in-out">
               +
@@ -54,7 +54,7 @@ const { title, faqs = [] } = Astro.props;
           </summary>
 
           <div class="faq-answer overflow-hidden">
-            <p class="px-4 pb-4 text-left text-base leading-relaxed text-[#ede0c4]">{faq.a}</p>
+            <p class="px-4 pb-4 text-left text-base leading-relaxed text-[#e6dac2]">{faq.a}</p>
           </div>
         </details>
       ))
@@ -73,7 +73,7 @@ const { title, faqs = [] } = Astro.props;
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    color: #c6ccd4;
+    color: #f7dfa5;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;

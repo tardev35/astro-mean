@@ -7,19 +7,19 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// AM88K: ไฟล์นี้ค้างชุดสีของแบรนด์ก่อนหน้ามา (ทองคู่แดงของ DEKDDD — ค่า hex เดิม
-// ไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์
-// จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
-// รอบนี้ย้ายมาเขียวมิ้นต์คู่ทองของแบรนด์นี้ — มิ้นต์ #d6fbe8 / #8cdcad / #4cb783 /
-// #1d6f47 คู่ทอง #f3db6b / #e4b314 / #a8790a บนผิว #08200f / #04120a เนื้อความ
-// #e6f6ec ไม่มีแดงเหลืออยู่ในไฟล์นี้
+// PAY69: ไฟล์นี้ค้างชุดสีเขียวมิ้นต์คู่ทองของแบรนด์ก่อนหน้ามา (ค่า hex เดิมไม่พิมพ์
+// ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen
+// คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้
+// ย้ายมาทองแชมเปญเดี่ยวบนดำสนิท ไม่มีสีคู่ — ทอง #e8c37a / #f7dfa5 / #fdf4e0 /
+// #a87c2e / #6b4d15 บนผิว #08070a / #12100c / #1c1811 เนื้อความ #e6dac2
+// ไม่มีเขียวเหลืออยู่ในไฟล์นี้
 //
 // `as` มีมาเพื่อให้หน้าเรียกกำหนดระดับหัวข้อได้เหมือน ContentBox* ตัวอื่น ส่วน
 // titleleft/titleright เป็น <p> ป้ายคอลัมน์: มันตั้งชื่อคอลัมน์ UI ไม่ใช่ section
-// ของ docx ถ้าปล่อยเป็น <h2> docx หัวข้อเดียวจะกลายเป็นสามหัวข้อบนหน้าเว็บ
+// ของ docx ถ้าปล่อยเป็นหัวข้อ docx หัวข้อเดียวจะกลายเป็นสามหัวข้อบนหน้าเว็บ
 //
-// pt-36/md:pt-28 ตั้งไว้เผื่อหัวข้อ docx ที่ยาวที่สุดของ AM88K สำหรับบล็อกนี้
-// ("โปรมีจังหวะให้ตาม เปิด AM88K เมื่อไรก็มีสิทธิพิเศษน่าสนใจรออยู่" — 59 ตัวอักษร)
+// pt-36/md:pt-28 ตั้งไว้เผื่อหัวข้อ docx ข้อ 6 ของ PAY69 ที่บล็อกนี้รับรอบนี้
+// ("สิทธิพิเศษมีทุกวัน เปิดลิสต์โปรของ PAY69 ที่สมาชิกไม่ควรมองข้าม" — 57 ตัวอักษร)
 // ป้ายห้อยอยู่ที่ -top-6 ขอบล่างของมันจึงอยู่ต่ำจากขอบบนการ์ดเท่ากับ
 // (ความสูงป้าย − 24px) chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) เหลือพื้นที่
@@ -36,14 +36,14 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#e4b314]/30 bg-gradient-to-b from-[#08200f]/95 to-[#04120a]/95 p-8 pt-36 shadow-[0_10px_30px_rgba(228,179,20,0.18)] md:pt-28">
-    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#1d6f47]/55 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#e4b314]/30 blur-[60px]"></div>
+    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#a87c2e]/35 bg-gradient-to-b from-[#12100c]/95 to-[#08070a]/95 p-8 pt-36 shadow-[0_10px_30px_rgba(107,77,21,0.22)] md:pt-28">
+    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#6b4d15]/55 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#a87c2e]/35 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#e4b314]/55 bg-[#04120a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(228,179,20,0.35)] sm:px-8">
-          <HeadingTag class="bg-gradient-to-r from-[#f3db6b] via-[#e4b314] to-[#8cdcad] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
+        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#e8c37a]/55 bg-[#08070a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(232,195,122,0.32)] sm:px-8">
+          <HeadingTag class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
             {title}
           </HeadingTag>
         </div>
@@ -51,13 +51,13 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e6f6ec]">
-        {titleleft && <p class="text-2xl leading-normal font-bold text-[#e4b314]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e6dac2]">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#e8c37a]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e6f6ec] md:border-l md:border-[#4cb783]/60 md:pl-10">
-        {titleright && <p class="text-2xl leading-normal font-bold text-[#f3db6b]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e6dac2] md:border-l md:border-[#a87c2e]/60 md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#f7dfa5]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

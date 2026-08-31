@@ -1,111 +1,110 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
-import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBox3ThreeNeumorphism from "../components/ContentBox3ThreeNeumorphism.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
-import ProviderGridPremium from "../components/ProviderGridPremium.astro";
-import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
+import Announcement from "../components/Announcement5.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ContentBoxTwo from "../components/ContentBoxTwo.astro";
+import ContentBox3ThreeFloatingBadge from "../components/ContentBox3ThreeFloatingBadge.astro";
+import ContentBox3Three from "../components/ContentBox3Three.astro";
+import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
+import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
+import LatestWinnersCyber from "../components/LatestWinnersCyber.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import Faq2 from "../components/Faq2.astro";
+import Faq3 from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgCashback from "../assets/slide2.png";
-import imgRankingTiers from "../assets/slide1.png";
+import imgMonthlyBonus from "../assets/slide2.png";
+import imgWelcomeBonus from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งลง left/right ตามลำดับประโยค
-//       เดิม ไม่ตัดและไม่ย่อ)
-//   3 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามจังหวะ
-//       ประโยค: ยกทัพค่ายยักษ์ใหญ่ → ครบทุกสไตล์ทั้ง 3D และสตรีตสไตล์ → กระเป๋า
-//       เดียวสลับได้อิสระ) แล้วต่อด้วย ProviderGridPremium ซึ่งกางรายชื่อค่ายที่
-//       ย่อหน้าเดียวกันพูดถึง
-//   4 → ContentBoxSevenThreePremium as="h2" + slide2 (แบนเนอร์คืนยอดเสีย 12%
-//       ซึ่งเป็นภาพของสิทธิ์ Cash Back ที่ย่อหน้านี้พูดถึงตรงๆ) แล้วต่อด้วย
-//       LatestWinnersPremium ซึ่งเป็นหลักฐานของประโยค "กดรับเองได้ทันที"
-//   5 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (แบนเนอร์ระบบ RANKING
-//       ลำดับขั้น ยิ่งฝากยิ่งอัพเวส ตรงกับหัวข้อเรื่องเกมตัวเด่นที่มีทรงโบนัสแตกดี
-//       แบบมีทิศทาง ไม่ใช่หมุนไปเรื่อยๆ) แล้วต่อด้วย GameRankingBoard และ
-//       SmoothCarousel ซึ่งกางเกมตัวเด่นให้เห็นในหน้าเดียว
-//   6 → ContentBox3ThreeNeumorphism as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามชื่อ
-//       ฟีเจอร์: Multipliers → Cascading กับ Wild ขยาย → Buy Feature)
-//   7 → ContentBoxTwoNeumorphism as="h2" (ย่อหน้าเดียวแบ่งลงสองคอลัมน์: ฝั่งฝาก →
-//       ฝั่งถอน)
+//   1 → ContentBoxFloatingBadge as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxTwo as="h2" (ย่อหน้าเดียวแบ่งลง left/right ตามลำดับประโยคเดิม
+//       ไม่ตัดและไม่ย่อ: ฝั่งดีลเลอร์แจกไพ่จริง → ฝั่งมุมกล้องกับสัญญาณ)
+//   3 → ContentBox3ThreeFloatingBadge as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตาม
+//       จังหวะประโยค: รายชื่อค่าย → รายชื่อโต๊ะ → ช่วงงบเบทของห้อง) แล้วต่อด้วย
+//       ProviderGrid ซึ่งกางรายชื่อค่ายที่ย่อหน้าเดียวกันพูดถึง
+//   4 → ContentBox3Three as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์: สลับโต๊ะในยูส
+//       เดียว → กระเป๋าเงินเดียว → ไม่ต้องโยกเงินข้ามค่าย) แล้วต่อด้วย
+//       GameRankingBoard กับ SmoothCarousel ซึ่งกางหมวดโต๊ะสดให้เห็นในหน้าเดียว
+//   5 → ContentBoxSevenThree as="h2" + slide2 (แบนเนอร์ Monthly Extra Bonus ซึ่ง
+//       เป็นภาพของสิทธิ์รายเดือนที่มาจากฐานการเงินที่ย่อหน้านี้พูดถึง) แล้วต่อด้วย
+//       LatestWinnersCyber ซึ่งเป็นหลักฐานของประโยค "พร้อมจ่ายทุกยอดชนะทันที"
+//   6 → ContentBoxSevenThreeFloatingBadge as="h2" + slide1 (แบนเนอร์โปรโมชั่น
+//       ต้อนรับสมาชิกใหม่ ตรงกับหัวข้อเรื่องลิสต์โปรที่สมาชิกไม่ควรมองข้าม)
+//   7 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งลงสองครึ่ง: ฝั่งฝาก → ฝั่งถอน)
 //
-// variant รอบนี้หมุนทั้งตระกูลจากรอบก่อน: ทรง ContentBox ย้ายจากชุด CyberCut นำ มา
-// เป็นชุด Premium นำแล้วต่อด้วย Neumorphism ส่วน Navbar เป็น NavbarPremium, Footer
-// เป็น FooterPremium, Announcement เป็น AnnouncementPremium, LatestWinners เป็น
-// LatestWinnersPremium, ProviderGrid เป็น ProviderGridPremium และ Faq เป็น Faq2
+// variant รอบนี้หมุนทั้งตระกูลจากสองรอบก่อน (แบรนด์ชื่อนี้เคยเปิดจากเทมเพลตนี้มา
+// แล้วหนึ่งครั้ง): ทรง ContentBox เป็นชุด FloatingBadge นำ + ตัวเปล่า + Special
+// ส่วน Navbar เป็น NavbarStyle9, Footer เป็น FooterStyle2, Announcement เป็น
+// Announcement5, LatestWinners เป็น LatestWinnersCyber, ProviderGrid เป็นตัวเปล่า
+// และ Faq เป็น Faq3
 //
-// ContentBoxSevenThreePremium ปล่อยหัวข้อจาก `titleright ?? title` ตัวเดียว จึงส่ง
-// แค่ `title` เข้าไป (ไม่ส่ง titleright) ไม่งั้นหัวข้อ docx จะถูกป้ายคอลัมน์แทนที่
+// ContentBoxSevenThree ปล่อยหัวข้อจาก prop `title` ตัวเดียวในคอลัมน์ฝั่ง 7 ส่วน
+// ส่วน titleleft/titleright เป็นป้ายคอลัมน์ที่ยังเป็น <p> ทั้งคู่
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
-// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ AnnouncementPremium
+// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ Announcement5
 // เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความเดียว
 // กับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ emoji ที่
 // ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
 // SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide2 ซึ่งเป็นสไลด์
-// ของแบรนด์นี้จริงทั้งสองใบ — slide3/slide4 กับ banner ทุกหมายเลขเป็นอาร์ตของแบรนด์
-// ก่อนที่มีชื่อและโดเมนของเขาพิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะ
-// รูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 เป็นของ
+// ของแบรนด์นี้จริงทั้งสองใบ — slide3/slide4 ไปอยู่หน้าโปรโมชั่น ส่วน banner ทุก
+// หมายเลข (banner2/3/4 กับ banner.png) เป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและโดเมนของ
+// เขาพิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่
+// ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ
 // MainLayout จัดการเอง
 //
 // widget ที่ไม่ได้มาจาก docx (LoginRtpSection, ReviewCardSumo2, แถวปุ่ม
 // login/register, FAQ, Navfoot) ใช้ป้ายเป็น <p>/<span> + aria-label บน <section>
 // และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสี่ตัวที่เป็นภาพประกอบของ
-// หัวข้อ docx หนึ่งข้อโดยตรง (ProviderGridPremium → ข้อ 3, LatestWinnersPremium →
-// ข้อ 4, GameRankingBoard กับ SmoothCarousel → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// หัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 3, GameRankingBoard กับ
+// SmoothCarousel → ข้อ 4, LatestWinnersCyber → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
-// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี ไม่มีตัวที่แปด — หัว FAQ เป็น <p> ใน Faq2.astro
-// คำถามใน Faq2 เป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
+// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี ไม่มีตัวที่แปด — หัว FAQ เป็น <p> ใน Faq3.astro
+// คำถามใน Faq3 เป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
 // เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
 //
-// title ใช้บรรทัด Title ของ docx ตรงๆ ส่วน description ใช้บรรทัด Des ตรงๆ ทั้งสองค่า
-// เป็นสตริงเดียวกับที่ส่งเข้า pageGraph ตรงกับที่ส่งให้ MainLayout และตรงกับ default
-// ที่ MainLayout ตั้งไว้เป๊ะ
-const pageTitle = "TITANWIN168 | สล็อตรวมทัพเกมดัง เกมคัดเกรด ระบบออโต้ทันใจไว 3 วิ";
-const pageDescription =
-  "TITANWIN168 เว็บตรง API แท้ สล็อตรวมทัพเกมดัง เกมคัดเกรดจากค่ายชั้นนำแน่น โปรโมชั่นใหม่พร้อมชนทุกเวลา โบนัสแตกดีมีทรงให้ลุ้น ฟีเจอร์ครบ พร้อมออโต้ทันใจไว 3 วิ";
+// title ใช้บรรทัด Title ของ docx ตรงๆ ส่วน description ใช้บรรทัด Des ของ docx เป็น
+// ฐานแล้วต่อท้ายด้วยข้อเท็จจริงจาก docx อีกวรรคเดียว ("เครดิตเข้าใน 3 วิ") เพราะ
+// บรรทัด Des ดิบยาว 138 ตัวอักษร ซึ่งต่ำกว่าเพดานล่าง 150 ตัวของเกทคุณภาพ ทั้งสอง
+// ค่าเป็นสตริงเดียวกับที่ส่งเข้า pageGraph และตรงกับที่ส่งให้ MainLayout
+const pageTitle = "PAY69 | คาสิโนฟลอร์ใหญ่ โต๊ะสดค่ายดัง เว็บใหญ่ทุนหนาพร้อมแปย์";
+const pageDescription = "PAY69 คาสิโนฟลอร์ใหญ่ รวมโต๊ะสดค่ายดังระดับพรีเมียม พร้อมเกมหลายหมวดให้สลับฟีล เว็บใหญ่ทุนหนาพร้อมเพย์ สิทธิพิเศษมีทุกวัน ฝากถอนออโต้ทันใจ เครดิตเข้าใน 3 วิ";
 
 const announcementMessage =
-  "TITANWIN168 สล็อตรวมทัพเกมดัง เกมคัดเกรด ระบบออโต้ทันใจไว 3 วิ • เว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ คัดสรรเกมสล็อตแตกง่าย อัตราจ่าย RTP ยุติธรรมตรงตามสเปกโรงงาน ไร้ประวัติการล็อกยูส ถอนเงินออกได้เต็มจำนวนทุกยอด • รวบรวมคลังเกมคัดเกรดคุณภาพสูงไว้ครบครัน ไม่เอาเกมระบบล้าหลังหรืออัตราจ่ายต่ำมาเปิดให้บริการ ทุกเกมสปินสนุก กราฟิกคมชัด จ่ายรางวัลตามอัลกอริทึมมาตรฐานสากล • ยกทัพค่ายเกมยักษ์ใหญ่ระดับโลกมาประชันแบบจัดเต็ม ทั้ง PG Soft Pragmatic Play Joker Gaming และค่ายชั้นนำอีกมากมาย ครบทุกสไตล์ทั้งสล็อตภาพสวย 3D และสตรีตสไตล์เน้นคูณหนัก สลับเล่นอิสระกระเป๋าเดียวไม่ต้องโยกเงิน • อัปเดตโปรโมชั่นใหม่พร้อมชนทุกช่วงเวลา ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และสิทธิ์รับเครดิตคืนยอดเสีย Cash Back เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันที • คัดเฉพาะเกมตัวเด่นที่มีทรงโบนัสแตกดี จังหวะเข้ารอบฟรีสปินไว โครงสร้างการแจกรางวัลน่าสนใจ ให้ลุ้นกำไรก้อนโตแบบมีทิศทาง • ฟีเจอร์ครบมือทั้ง Multipliers ตัวคูณสะสมทวีคูณ ระบบ Cascading สัญลักษณ์แตกต่อเนื่อง รีลขยาย Wild ซ้อนทับ และโหมด Buy Feature ซื้อฟรีสปิน • ระบบการเงินฝากถอนออโต้ทันใจไว 3 วิ ประมวลผลผ่าน Gateway ตรง ฝากเงินปุ๊บยอดเข้าเกมปั๊บ ไม่ต้องส่งสลิป ไม่ต้องรอคิวอนุมัติ ถอนกำไรเด้งเข้าบัญชีธนาคารหรือวอลเล็ททันที";
+  "PAY69 คาสิโนฟลอร์ใหญ่ โต๊ะสดค่ายดัง เว็บใหญ่ทุนหนาพร้อมเปย์ • คาสิโนสดเว็บตรง API แท้ ยิงสัญญาณสดระดับ Ultra HD ส่งตรงจากฟลอร์คาสิโนจริงในต่างประเทศ ไม่ผ่านเอเย่นต์ เว็บใหญ่เงินทุนหนา การันตีความมั่นคงทางการเงินระดับสากล ถอนหลักแสนหลักล้านจ่ายครบเต็มจำนวน ไม่ล็อคยูส ไม่ปรับอัตราแพ้ชนะ • จำลองบรรยากาศคาสิโนระดับโลกมาไว้บนหน้าจอ ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ ไร้การตัดต่อหรือใช้คลิปวน มุมกล้องหลากหลายมองเห็นทุกมิติการแทง สัญญาณเสถียรไม่มีอาการกระตุก • รวมค่ายคาสิโนชั้นนำระดับโลกไว้ครบครันทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ Pragmatic Play Live มีทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ต เสือมังกร และไฮโล เลือกห้องเล่นได้ตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller • สลับจากโต๊ะบาคาร่าไปเดิมพันรูเล็ต วงล้อเสี่ยงโชค หรือเกมโชว์สดได้ทันทีในยูสเซอร์เดียว ระบบกระเป๋าเงินเดียวยืดหยุ่นสูงสุด ไม่ต้องโยกเงินข้ามค่ายให้เสียเวลา • ฐานการเงินแข็งแกร่งระดับเว็บใหญ่ พร้อมจ่ายทุกยอดชนะทันที รองรับช่องทางการเงินครบครันทั้งธนาคารชั้นนำทั่วไทยและ TrueMoney Wallet เก็บข้อมูลสมาชิกเป็นความลับขั้นสุด • สิทธิพิเศษอัปเดตใหม่ทุกวัน ทั้งโบนัสต้อนรับคาสิโนสด โปรโมชันฝากแรกของวัน คืนยอดเสียรับ Cash Back และคอมมิชชันการชวนเพื่อน เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันทีผ่านหน้าแดชบอร์ด • ฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ฝากเงินปุ๊บเครดิตเข้าเกมใน 3 วินาที กดถอนเข้าบัญชีได้ด้วยตัวเอง ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
 // คำถามที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq2> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+// <Faq3> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "TITANWIN168 เป็นเว็บตรงจริงไหม แล้วอัตราจ่าย RTP เชื่อถือได้แค่ไหน",
-    a: "เป็นเว็บตรง API แท้ที่ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์คนกลาง อัตราจ่าย RTP จึงยุติธรรมตรงตามสเปกโรงงานของค่ายผู้พัฒนา ไม่มีการดัดแปลงค่าใดๆ ทุกเกมในคลังผ่านการคัดกรองระบบหลังบ้านมาแล้วว่าจ่ายรางวัลตามอัลกอริทึมมาตรฐานสากล และไม่มีประวัติการล็อกยูส ถอนเงินออกได้เต็มจำนวนทุกยอดโดยไม่มีเงื่อนไขยุ่งยาก",
+    q: "PAY69 เป็นคาสิโนสดเว็บตรงจริงไหม แล้วภาพที่เห็นเป็นการถ่ายทอดสดจริงหรือคลิปวน",
+    a: "เป็นคาสิโนสดเว็บตรง API แท้ที่ยิงสัญญาณสดระดับ Ultra HD ส่งตรงจากฟลอร์คาสิโนจริงในต่างประเทศ ไม่ผ่านเอเย่นต์คนกลาง ทุกโต๊ะเป็นดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ ไม่มีการตัดต่อและไม่ใช้คลิปวน มีมุมกล้องให้เลือกหลายมุมจึงมองเห็นทุกมิติการแทง สัญญาณเสถียรไม่มีอาการกระตุก และไม่มีการล็อคยูสหรือปรับอัตราแพ้ชนะ",
   },
   {
-    q: "ในคลังมีค่ายเกมอะไรบ้าง แล้วต้องโยกเงินข้ามค่ายหรือเปล่า",
-    a: "รวมตัวเด่นจากค่ายยักษ์ใหญ่ระดับโลกไว้ครบ ทั้ง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอีกมากมาย เลือกได้ครบทุกสไตล์ ทั้งสล็อตสายภาพสวย 3D และสล็อตสตรีตสไตล์ที่เน้นคูณหนัก จุดสำคัญคือใช้กระเป๋าเดียวจบ อยากสลับไปปั่นค่ายไหนก็กดเปลี่ยนได้อิสระทันที ไม่ต้องโยกเงินไปมาให้เสียจังหวะ",
+    q: "มีค่ายคาสิโนสดอะไรบ้าง แล้วมีโต๊ะแบบไหนให้เลือกเล่น",
+    a: "รวมค่ายคาสิโนชั้นนำระดับโลกไว้ครบครัน ทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ Pragmatic Play Live มีโต๊ะสดให้เลือกเล่นเพียบ ทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ต เสือมังกร และไฮโล รวมถึงวงล้อเสี่ยงโชคและเกมโชว์สด เลือกห้องเล่นได้ตามงบเบทตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller",
   },
   {
-    q: "โปรโมชั่นมีอะไรให้เก็บบ้าง ต้องทักแอดมินก่อนไหม แล้วติดเทิร์นโอเวอร์หนักหรือเปล่า",
-    a: "สิทธิ์หลักที่อัปเดตพร้อมชนทุกช่วงเวลามีทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และสิทธิ์รับเครดิตคืนยอดเสีย Cash Back ที่เอาไปเพิ่มทุนสปินต่อได้ยาวขึ้น ทุกรายการกดรับเองได้ทันทีจากหน้าโปรโมชั่นโดยไม่ต้องรอแอดมินกดให้ เงื่อนไขเขียนไว้โปร่งใสและไม่ติดเทิร์นโอเวอร์มหาโหด",
+    q: "อยากสลับจากบาคาร่าไปเล่นเกมโต๊ะอื่น ต้องโยกเงินข้ามค่ายไหม",
+    a: "ไม่ต้องโยกเลย ทุกโต๊ะอยู่ในยูสเซอร์เดียวและใช้ระบบกระเป๋าเงินเดียว เปลี่ยนบรรยากาศการเดิมพันได้ทันทีโดยไม่ต้องย้ายเว็บ อยากสลับจากโต๊ะบาคาร่าไปเดิมพันรูเล็ต วงล้อเสี่ยงโชค หรือเกมโชว์สดก็กดเข้าได้เลย ทำให้บริหารเงินทุนได้ยืดหยุ่นและไม่เสียเวลารอระหว่างเปลี่ยนโต๊ะ",
   },
   {
-    q: "อยากได้เกมที่โบนัสแตกดี ควรดูจากอะไร แล้วในเกมมีฟีเจอร์อะไรให้ลองบ้าง",
-    a: "ดูที่ทรงโบนัสกับจังหวะเข้ารอบฟรีสปินเป็นหลัก เพราะเกมที่คัดมาเน้นตัวที่เข้ารอบฟรีสปินไวและมีโครงสร้างการแจกรางวัลชัดเจน ให้ลุ้นกำไรแบบมีทิศทางแทนการหมุนวงล้อไปเรื่อยๆ ส่วนลูกเล่นในตัวเกมมีให้ลองครบมือ ทั้ง Multipliers ตัวคูณสะสมแบบทวีคูณ ระบบ Cascading สัญลักษณ์แตกต่อเนื่อง รีลขยาย Wild ซ้อนทับ และโหมด Buy Feature สำหรับคนที่อยากซื้อฟรีสปินเข้าลุ้นโบนัสก้อนใหญ่ทันที",
+    q: "ถอนยอดใหญ่ได้จริงไหม แล้วรองรับช่องทางการเงินอะไรบ้าง",
+    a: "ฐานการเงินแข็งแกร่งระดับเว็บใหญ่และพร้อมจ่ายทุกยอดชนะทันที ไม่ว่าจะบวกหลักหมื่นหรือหลักล้านก็ถอนออกได้เต็มจำนวน รองรับช่องทางการเงินครบครันทั้งธนาคารชั้นนำทั่วไทยและระบบ TrueMoney Wallet ระบบการเงินวางไว้แน่นหนาและปลอดภัย พร้อมเก็บข้อมูลสมาชิกเป็นความลับขั้นสุด",
   },
   {
-    q: "ฝากถอนใช้เวลานานแค่ไหน ต้องส่งสลิปหรือรอคิวอนุมัติไหม",
-    a: "ระบบการเงินเป็นออโต้ทันใจไว 3 วิ ประมวลผลผ่าน Gateway ตรง ฝากเงินปุ๊บยอดเข้าเกมปั๊บ พอปั่นได้กำไรก็กดถอนแล้วเด้งเข้าบัญชีธนาคารหรือวอลเล็ททันที ไม่ต้องส่งสลิปให้แอดมินยืนยัน ไม่ต้องรอคิวอนุมัติ และไม่มีขั้นตอนคั่นกลางให้เสียจังหวะการเล่น",
+    q: "โปรโมชั่นมีอะไรให้เก็บบ้าง ต้องทักแอดมินก่อนไหม แล้วฝากถอนใช้เวลานานแค่ไหน",
+    a: "สิทธิพิเศษอัปเดตใหม่ทุกวัน ทั้งโบนัสต้อนรับคาสิโนสด โปรโมชันฝากแรกของวัน คืนยอดเสียรับ Cash Back ทุกวัน และคอมมิชชันการชวนเพื่อน เงื่อนไขโปร่งใสและไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันทีผ่านหน้าแดชบอร์ดโดยไม่ต้องรอแอดมิน ส่วนการเงินเป็นออโต้ผ่าน Gateway ตรง ฝากแล้วเครดิตเข้าเกมใน 3 วินาที และกดถอนเข้าบัญชีได้ด้วยตัวเองโดยไม่ต้องส่งสลิปยืนยัน",
   },
 ];
 
@@ -123,100 +122,108 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="TITANWIN168 สล็อตรวมทัพเกมดัง เกมคัดเกรด ระบบออโต้ทันใจไว 3 วิ">
+  <ContentBoxFloatingBadge as="h1" title="PAY69 คาสิโนฟลอร์ใหญ่ โต๊ะสดค่ายดัง เว็บใหญ่ทุนหนาพร้อมเปย์">
     <p class="text-left text-base leading-relaxed">
-      TITANWIN168 เว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ คัดสรรเกมสล็อตแตกง่าย อัตราจ่าย RTP ยุติธรรมตรงตามสเปกโรงงาน ชูจุดเด่นด้วยระบบฝากถอนออโต้ทันใจไว 3 วิ ปั่นง่าย
-      ไร้ประวัติการล็อกยูส ถอนเงินออกได้เต็มจำนวนทุกยอดโดยไม่มีเงื่อนไขยุ่งยาก
+      PAY69 คาสิโนสดเว็บตรง API แท้ ยิงสัญญาณสดระดับ Ultra HD ส่งตรงจากฟลอร์คาสิโนจริงในต่างประเทศ ไม่ผ่านเอเย่นต์ เว็บใหญ่เงินทุนหนา การันตีความมั่นคงทางการเงินระดับสากล
+      ถอนหลักแสนหลักล้านจ่ายครบเต็มจำนวน ไม่ล็อคยูส ไม่ปรับอัตราแพ้ชนะ พร้อมรองรับทุกยอดเดิมพันด้วยระบบมาตรฐานสูงสุด
     </p>
-  </ContentBoxPremium>
+  </ContentBoxFloatingBadge>
 
-  <ContentBoxTwoPremium as="h2" title="TITANWIN168 สล็อตรวมทัพเกมดัง เปิดคลังเกมคัดเกรดจากค่ายชั้นนำ" titleleft="คัดเกรดก่อนเปิดให้บริการ" titleright="สปินสนุก จ่ายตามมาตรฐานสากล">
-    <p slot="left" class="text-left text-base leading-relaxed">TITANWIN168 สล็อตรวมทัพเกมดัง รวบรวมคลังเกมคัดเกรดคุณภาพสูงไว้อย่างครบครัน ไม่เอาเกมระบบล้าหลังหรืออัตราจ่ายต่ำมาเปิดให้บริการ</p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ทุกเกมผ่านการคัดกรองระบบหลังบ้านมาแล้วว่าสปินสนุก กราฟิกคมชัด และจ่ายรางวัลตามอัลกอริทึมมาตรฐานสากล ให้คุณลุยทำกำไรได้ด้วยความมั่นใจทุกครั้งที่กดเข้าเล่น
-    </p>
-  </ContentBoxTwoPremium>
-
-  <ContentBox3ThreePremium
+  <ContentBoxTwo
     as="h2"
-    title="ค่ายชั้นนำยกตัวไหนมาชน? TITANWIN168 คัดเกมเด่นไว้ให้เลือกหลายแนว"
-    titleleft="ค่ายยักษ์ใหญ่ระดับโลกมาประชัน"
-    titlecenter="ครบทุกสไตล์ทั้ง 3D และสตรีตสไตล์"
-    titleright="กระเป๋าเดียวสลับเล่นได้อิสระ">
+    title="PAY69 คาสิโนฟลอร์ใหญ่ เปิดประสบการณ์โต๊ะสดแบบเต็มอารมณ์คาสิโน"
+    titleleft="ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์"
+    titleright="มุมกล้องครบทุกมิติ สัญญาณเสถียร"
+    iconleft="🎥"
+    iconright="📡">
     <p slot="left" class="text-left text-base leading-relaxed">
-      ยกทัพค่ายเกมยักษ์ใหญ่ระดับโลกมาประชันกันแบบจัดเต็ม TITANWIN168 รวมตัวเด่นจากทั้ง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอีกมากมาย
+      จำลองบรรยากาศคาสิโนระดับโลกมาไว้บนหน้าจอ PAY69 คาสิโนฟลอร์ใหญ่ ให้คุณสัมผัสดีลเลอร์สาวสวยแจกไพ่จริงแบบเรียลไทม์ ไร้การตัดต่อหรือใช้คลิปวน
     </p>
-    <p slot="center" class="text-left text-base leading-relaxed">มีให้เลือกเล่นครบทุกสไตล์ ไม่ว่าจะเป็นสล็อตสายภาพสวย 3D หรือสล็อตสตรีตสไตล์เน้นคูณหนัก</p>
-    <p slot="right" class="text-left text-base leading-relaxed">สลับเล่นได้อิสระกระเป๋าเดียวไม่ต้องโยกเงิน</p>
-  </ContentBox3ThreePremium>
-
-  <ProviderGridPremium />
-
-  <ContentBoxSevenThreePremium as="h2" title="โปรโมชั่นใหม่พร้อมชนทุกเวลา TITANWIN168 มีสิทธิ์อะไรน่าตามบ้าง" titleleft="คืนยอดเสียสูงถึง 12%">
-    <Picture
-      slot="left"
-      src={imgCashback}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นม่วงของ TITANWIN168 มุมซ้ายบนเป็นโลโก้ TITANWIN168 ใต้มงกุฎทอง ถัดมาเป็นบรรทัดว่า รอบนี้คืนให้หนักกว่าเดิม! พร้อมป้ายอัญมณีม่วงพิมพ์เลข 12% ตัวใหญ่ และข้อความว่า ยอดเสียรับคืนสูงถึง 12% ด้านล่างเป็นแถบทองเขียนว่า โปรพิเศษเฉพาะช่วงนี้เท่านั้น ฝั่งขวาเป็นมาสคอตนกฮูกสีขาวสวมเสื้อคลุมม่วงประดับทอง กอดคริสตัลม่วงไว้ในอ้อมแขน"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#6d28d9]/45 shadow-[0_10px_30px_rgba(168,85,247,0.3)]"
-    />
     <p slot="right" class="text-left text-base leading-relaxed">
-      เติมความคุ้มค่าแบบจัดเต็ม TITANWIN168 อัปเดตโปรโมชั่นใหม่พร้อมชนทุกช่วงเวลา แจกสิทธิ์พิเศษที่ใช้งานได้จริง ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และสิทธิ์รับเครดิตคืนยอดเสีย Cash Back
-      ให้คุณนำไปใช้เพิ่มทุนสปินได้ยาวขึ้น เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันที
+      มุมกล้องหลากหลายมองเห็นทุกมิติการแทง เพิ่มความโปร่งใสในทุกตา สัญญาณเสถียรไม่มีอาการกระตุก ให้ความรู้สึกเหมือนนั่งเดิมพันอยู่ริมโต๊ะ VIP จริง
     </p>
-  </ContentBoxSevenThreePremium>
+  </ContentBoxTwo>
 
-  <LatestWinnersPremium />
+  <ContentBox3ThreeFloatingBadge
+    as="h2"
+    title="รวมโต๊ะสดค่ายดังระดับพรีเมียม PAY69 มีเกมไหนน่าจับตามองบ้าง?"
+    titleleft="ค่ายคาสิโนชั้นนำระดับโลก"
+    titlecenter="โต๊ะสดให้เลือกเล่นเพียบ"
+    titleright="เลือกห้องได้ตามงบเบท">
+    <p slot="left" class="text-left text-base leading-relaxed">รวมค่ายคาสิโนชั้นนำระดับโลกไว้อย่างครบครันทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ Pragmatic Play Live</p>
+    <p slot="center" class="text-left text-base leading-relaxed">มีโต๊ะสดให้เลือกเล่นเพียบ ทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ต เสือมังกร และไฮโล</p>
+    <p slot="right" class="text-left text-base leading-relaxed">เลือกห้องเล่นได้ตามงบเบท ตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller</p>
+  </ContentBox3ThreeFloatingBadge>
 
-  <ContentBoxSevenThreeNeumorphism as="h2" title="โบนัสแตกดีมีทรงให้ลุ้น เจาะเกมตัวเด่นที่มาพร้อมจังหวะน่าสนใจ" titleleft="ระบบลำดับขั้นยิ่งฝากยิ่งอัพเวส" titleright="ลุ้นรางวัลใหญ่แบบมีทิศทาง">
-    <Picture
-      slot="left"
-      src={imgRankingTiers}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์ระบบลำดับขั้นพื้นม่วงของ TITANWIN168 มุมซ้ายบนเป็นโลโก้ TITANWIN168 ใต้มงกุฎทอง กลางภาพเป็นคำว่า RANKING ลำดับขั้น!! ตัวใหญ่ ตามด้วยบรรทัด ยิงฝาก ยิงอัพเวส และแถบเขียนว่า เพื่อรับไอเทมในการเล่น รีเซ็ตทุก 2 เดือน ด้านล่างเป็นแถวตราลำดับขั้นเรืองแสงหกใบ เขียนว่า EXPLORER, WARRIOR, ELITE, COMMANDER, TITAN และ TITAN EMPEROR โดยใบสุดท้ายเป็นสีทอง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#6d28d9]/45 shadow-[0_10px_30px_rgba(168,85,247,0.3)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      สายล่าแจ็คพอตต้องไม่พลาด เพราะ TITANWIN168 คัดเฉพาะเกมตัวเด่นที่มีทรงโบนัสแตกดี จังหวะเข้ารอบฟรีสปินไว และมีโครงสร้างการแจกรางวัลที่น่าสนใจ ให้คุณได้ลุ้นกำไรก้อนโตแบบมีทิศทาง
-      ไม่ใช่แค่การหมุนวงล้อไปเรื่อยๆ แต่เป็นการสปินที่ได้ลุ้นรางวัลใหญ่ทะลุเพดานแทบทุกนาที
+  <ProviderGrid />
+
+  <ContentBox3Three
+    as="h2"
+    title="เกมหลายหมวดพร้อมสลับฟีล จากบาคาร่าไปเกมโต๊ะยอดนิยมได้ในที่เดียว"
+    titleleft="สลับโต๊ะได้ในยูสเซอร์เดียว"
+    titlecenter="กระเป๋าเงินเดียวยืดหยุ่นสูงสุด"
+    titleright="ไม่ต้องโยกเงินข้ามค่าย">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      เปลี่ยนบรรยากาศการเดิมพันได้ทันทีโดยไม่ต้องย้ายเว็บ สลับจากโต๊ะบาคาร่าไปเดิมพันรูเล็ต วงล้อเสี่ยงโชค หรือเกมโชว์สดสุดตื่นเต้นได้ทันทีในยูสเซอร์เดียว
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+    <p slot="center" class="text-left text-base leading-relaxed">ระบบกระเป๋าเงินเดียวยืดหยุ่นสูงสุด ช่วยให้คุณบริหารเงินทุนและสลับไปเล่นเกมโต๊ะยอดนิยมอื่นๆ ได้อย่างอิสระ</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ไม่ต้องโยกเงินข้ามค่ายให้เสียเวลา</p>
+  </ContentBox3Three>
 
   <GameRankingBoard />
 
   <SmoothCarousel />
 
-  <ContentBox3ThreeNeumorphism
-    as="h2"
-    title="ฟีเจอร์ครบแค่ไหน? TITANWIN168 รวมลูกเล่นหลายสไตล์ไว้ให้ลอง"
-    titleleft="Multipliers ตัวคูณสะสม"
-    titlecenter="Cascading และรีลขยาย Wild"
-    titleright="Buy Feature ซื้อฟรีสปิน">
-    <p slot="left" class="text-left text-base leading-relaxed">ยกระดับความตื่นเต้นด้วยฟีเจอร์เกมที่จัดมาให้อย่างครบมือ TITANWIN168 รวมลูกเล่นทันสมัยอย่าง Multipliers ตัวคูณสะสมแบบทวีคูณ</p>
-    <p slot="center" class="text-left text-base leading-relaxed">ระบบ Cascading สัญลักษณ์แตกต่อเนื่อง, รีลขยาย Wild ซ้อนทับ</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ไปจนถึงโหมด Buy Feature สำหรับสายใจร้อนที่อยากซื้อฟรีสปินพุ่งตรงเข้าลุ้นโบนัสก้อนใหญ่ได้ทันที</p>
-  </ContentBox3ThreeNeumorphism>
-
-  <ContentBoxTwoNeumorphism as="h2" title="ออโต้ทันใจไว 3 วิ ลดเวลารอให้ทุกขั้นตอนไปต่อได้แบบไม่เสียจังหวะ" titleleft="ฝากเงินปุ๊บยอดเข้าเกมปั๊บ" titleright="ถอนกำไรเด้งเข้าบัญชีทันที">
-    <p slot="left" class="text-left text-base leading-relaxed">ยุคนี้ไม่มีเวลามานั่งคอยแอดมิน TITANWIN168 วางระบบการเงินฝากถอนออโต้ทันใจไว 3 วิ ประมวลผลผ่าน Gateway ตรง ฝากเงินปุ๊บยอดเข้าเกมปั๊บ</p>
+  <ContentBoxSevenThree as="h2" title="เว็บใหญ่ทุนหนาพร้อมเพย์ จุดเด่นของ PAY69 ที่วางระบบการเงินไว้ครบ" titleleft="Monthly Extra Bonus ทุกเดือน" titleright="จ่ายทุกยอดชนะทันที ถอนหลักล้านได้สบาย">
+    <Picture
+      slot="left"
+      src={imgMonthlyBonus}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 380px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โบนัสรายเดือนพื้นทองของ PAY69 มุมขวาบนเป็นโลโก้ PAY69 กลางภาพเป็นข้อความ Monthly Extra Bonus ตัวใหญ่ ใต้ลงมาเป็นบรรทัดภาษาไทยว่า ทุกความพยายาม มีคุณค่าเสมอ ฝั่งซ้ายเป็นมาสคอตหนูสวมชุดจีนสีขาวทองกอดทองแท่งไว้ในอ้อมแขน รอบตัวมีกองเหรียญทอง ถุงเงินจีนสีแดง และประทัดจีนแขวนอยู่ด้านบน"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#a87c2e]/45 shadow-[0_10px_30px_rgba(232,195,122,0.28)]"
+    />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ถอนกำไรเด้งเข้าบัญชีธนาคารหรือวอลเล็ททันที ไม่ต้องส่งสลิป ไม่ต้องรอคิวอนุมัติ ให้ทุกขั้นตอนการเล่นไปต่อได้อย่างลื่นไหลไม่มีเสียจังหวะ
+      ความน่าเชื่อถือของ PAY69 อยู่ที่ฐานการเงินที่แข็งแกร่งระดับเว็บใหญ่ พร้อมจ่ายทุกยอดชนะทันที ไม่ว่าจะบวกหลักหมื่นหรือหลักล้านก็ถอนออกได้สบาย
+      รองรับช่องทางการเงินครบครันทั้งธนาคารชั้นนำทั่วไทยและระบบ TrueMoney Wallet วางระบบการเงินแน่นหนา ปลอดภัย เก็บข้อมูลสมาชิกเป็นความลับขั้นสุด
     </p>
-  </ContentBoxTwoNeumorphism>
+  </ContentBoxSevenThree>
+
+  <LatestWinnersCyber />
+
+  <ContentBoxSevenThreeFloatingBadge as="h2" title="สิทธิพิเศษมีทุกวัน เปิดลิสต์โปรของ PAY69 ที่สมาชิกไม่ควรมองข้าม" titleleft="โปรต้อนรับสมาชิกใหม่" titleright="กดรับเองได้ผ่านหน้าแดชบอร์ด">
+    <Picture
+      slot="left"
+      src={imgWelcomeBonus}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 340px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นพื้นฟ้าและทองของ PAY69 มุมขวาบนเป็นโลโก้ PAY69 กลางภาพเขียนว่า โปรโมชั่นต้อนรับสมาชิกใหม่ รับฟรีสูงสุด 1,100! เลือกได้ 1 ใน 2 พร้อมป้ายสองใบเขียนว่า ฝาก 20 รับ 20 และ ฝาก 100 รับ 200 ฝั่งซ้ายเป็นมาสคอตหญิงสไตล์พิกเซลกำลังเปิดหีบสมบัติใต้ป้าย SCATTER แถบล่างสุดเขียนว่า ทำ Step 1 แล้ว รับต่อ Step 2 และ ฝากสะสม 299 รับเพิ่ม 39 ท่ามกลางเหรียญทองที่ปลิวอยู่รอบภาพ"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#a87c2e]/45 shadow-[0_10px_30px_rgba(232,195,122,0.28)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เสริมสภาพคล่องการเดิมพันด้วยสิทธิพิเศษที่อัปเดตใหม่ทุกวัน ไม่ว่าจะเป็นโบนัสต้อนรับคาสิโนสด โปรโมชันฝากแรกของวัน คืนยอดเสียรับ Cash Back ทุกวัน รวมถึงคอมมิชชันการชวนเพื่อน เงื่อนไขโปร่งใส
+      ไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันทีผ่านหน้าแดชบอร์ด
+    </p>
+  </ContentBoxSevenThreeFloatingBadge>
+
+  <ContentBoxSpecial as="h2" title="ฝากถอนออโต้ทันใจ ลดขั้นตอนทำรายการให้คล่องตั้งแต่ฝากจนถึงถอน">
+    <p slot="left" class="text-left text-base leading-relaxed">ตัดขั้นตอนซับซ้อนน่ารำคาญออกทั้งหมด ด้วยระบบฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ฝากเงินปุ๊บเครดิตเข้าเกมใน 3 วินาที</p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      เมื่อทำกำไรได้ก็กดถอนเงินเข้าบัญชีได้ด้วยตัวเอง ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ ดำเนินการคล่องตัว สมูธตั้งแต่เริ่มต้นฝากจนถึงยอดเงินเข้าบัญชี
+    </p>
+  </ContentBoxSpecial>
 
   <LoginRtpSection />
 
@@ -225,18 +232,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ede4ff] via-[#a855f7] to-[#3b0d73] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0417] shadow-[0_10px_30px_rgba(168,85,247,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(168,85,247,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fdf4e0] via-[#e8c37a] to-[#6b4d15] px-4 py-3 text-sm font-black whitespace-nowrap text-[#08070a] shadow-[0_10px_30px_rgba(232,195,122,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(232,195,122,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e3c176]/55 bg-[#0a0417]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#dfe4f0] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#a855f7] hover:bg-[#2e1065] hover:text-[#ede4ff] hover:shadow-[0_15px_40px_rgba(227,193,118,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e8c37a]/55 bg-[#08070a]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e6dac2] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#f7dfa5] hover:bg-[#1c1811] hover:text-[#fdf4e0] hover:shadow-[0_15px_40px_rgba(232,195,122,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq2 title="คำถามที่พบบ่อยเกี่ยวกับ TITANWIN168" faqs={faqs} />
+  <Faq3 title="คำถามที่พบบ่อยเกี่ยวกับ PAY69" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

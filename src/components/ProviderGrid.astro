@@ -3,54 +3,57 @@
 // assistive tech ห้ามเลื่อน <p> ขึ้นเป็น <h2> เพราะจำนวน h2 บนหน้าแรกถูก diff กับ
 // checklist ของ docx และชื่อค่ายในการ์ดก็ห้ามเป็น <h3> ด้วยเหตุผลเดียวกัน
 //
-// เนื้อหาตาม brief ของ AURA456 — ล็อบบี้กวาดเกมสล็อตลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่
-// ทั่วโลกมาไว้เพียบ ทั้ง PG Soft, Pragmatic Play, Joker และอีกมากมาย คัดเน้นๆ เฉพาะ
-// เกมที่มีอัตราจ่ายรางวัลเป็นธรรม จ่ายเงินจริงตามระบบอัลกอริทึมโรงงาน เบทเริ่มต้น
-// เบาๆ แค่ 1 บาท กริดนี้จึงเป็นภาพประกอบของหัวข้อ docx ข้อ 3 โดยตรง
+// เนื้อหาตาม brief ของ PAY69 — คาสิโนสด ไม่ใช่สล็อต ล็อบบี้รวมค่ายคาสิโนชั้นนำ
+// ระดับโลกไว้ครบครันทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ
+// Pragmatic Play Live มีโต๊ะสดให้เลือกเล่นเพียบทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า
+// รูเล็ต เสือมังกร และไฮโล เลือกห้องเล่นได้ตามงบเบทตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ
+// High Roller กริดนี้จึงเป็นภาพประกอบของหัวข้อ docx ข้อ 3 โดยตรง
 //
-// AURA456: ชุดสีเป็นนีออนบานเย็นคู่ฟ้าอิเล็กทริกตามอาร์ตจริง บานเย็นเป็นสีหลักของ
-// การ์ด ส่วนป้ายมุมบนขวารับฟ้าเพื่อให้ตัดกับพื้นครามเข้ม (ห้ามพิมพ์ hex ของแบรนด์ก่อน
-// ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจาก
-// ค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// การ์ดเป็นป้ายชื่อค่าย ไม่ใช่รูปโลโก้: อาร์ตใน src/assets/providers/ เป็นโลโก้
+// ค่าย "สล็อต" (PG / SexySlot / SlotXO / Joker / JILI / PP SLOT) ซึ่งไม่ตรงกับ
+// ค่ายคาสิโนสดทั้งสี่ค่ายในบรีฟรอบนี้ ห้ามเอามาแปะแล้วเขียน alt ให้เป็นค่ายอื่น
+// และห้ามอ้างชื่อไฟล์ที่ไม่มีอยู่จริง — การ์ดจึงเป็นไอคอนกลางๆ ไปก่อน
+//
+// PAY69: ชุดสีเป็นทองแชมเปญเดี่ยวบนดำสนิท ไม่มีสีคู่ ป้ายมุมบนขวารับทองครีมสว่าง
+// เพื่อให้ตัดกับพื้นดำของการ์ด (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind
+// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
+// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 const providers = [
-  { name: "PG SOFT", desc: "ค่ายยักษ์ใหญ่ที่ขึ้นหน้าล็อบบี้เป็นชุดแรก งานภาพคมและกลไกทำเงินครบมือ", tag: "ตัวตึงของล็อบบี้", icon: "🎰" },
-  { name: "Pragmatic Play", desc: "ลิขสิทธิ์แท้ที่จ่ายเงินจริงตามระบบอัลกอริทึมโรงงาน ไม่ดัดแปลงหลังบ้าน", tag: "จ่ายจริงตามอัลกอริทึม", icon: "🎁" },
-  { name: "JOKER", desc: "สายฟีเจอร์แตกไวที่ซ่อนตัวคูณทวีคูณไว้ในรอบโบนัสของแต่ละเกม", tag: "Multiplier ทวีคูณ", icon: "🃏" },
-  { name: "JILI", desc: "เกมที่มีสัญลักษณ์ Wild ยืดขยายทับรีล เปลี่ยนสปินธรรมดาให้เป็นรอบทำกำไร", tag: "Wild ยืดขยาย", icon: "🐉" },
-  { name: "Microgaming", desc: "ค่ายชั้นนำระดับโลกที่ส่งเกมลิขสิทธิ์แท้เข้าล็อบบี้อย่างต่อเนื่อง", tag: "ลิขสิทธิ์แท้ 100%", icon: "🌐" },
-  { name: "Habanero", desc: "เกมแนวแฟนตาซีที่คัดเน้นๆ เฉพาะตัวที่มีอัตราจ่ายรางวัลเป็นธรรม", tag: "อัตราจ่ายเป็นธรรม", icon: "💠" },
-  { name: "Red Tiger", desc: "ไลน์อัปที่รองรับโหมด Bonus Buy ให้ซื้อฟรีสปินพุ่งชนแจ็คพอตได้เลย", tag: "Bonus Buy", icon: "🆕" },
+  { name: "Evolution Gaming", desc: "ฟลอร์คาสิโนจริงในต่างประเทศ ยิงสัญญาณสดระดับ Ultra HD ไม่มีการตัดต่อหรือใช้คลิปวน", tag: "สตูดิโอสดระดับโลก", icon: "🎥" },
+  { name: "SA Gaming", desc: "โต๊ะบาคาร่าคลาสสิกและบาคาร่าสายฟ้า เปิดห้องตั้งแต่งบหลักสิบไปจนถึง High Roller", tag: "บาคาร่าสายฟ้า", icon: "🃏" },
+  { name: "Sexy Baccarat", desc: "ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ มุมกล้องหลากหลายมองเห็นทุกมิติการแทง", tag: "ดีลเลอร์เรียลไทม์", icon: "🎬" },
+  { name: "Pragmatic Play Live", desc: "รูเล็ต เสือมังกร ไฮโล วงล้อเสี่ยงโชค และเกมโชว์สด สลับเล่นได้ในยูสเซอร์เดียว", tag: "เกมโชว์สด", icon: "🎡" },
 ];
 ---
 
-<section aria-label="ค่ายเกมลิขสิทธิ์แท้ที่ AURA456 กวาดมาไว้ในล็อบบี้" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายคาสิโนสดชั้นนำที่ PAY69 รวมโต๊ะไว้ในฟลอร์เดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#f6ebff] via-[#7fd0ff] to-[#ff2fb0] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมลิขสิทธิ์แท้ที่ <span class="text-[#ff2fb0]">AURA456</span> กวาดมาไว้ในล็อบบี้
+    <p class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายคาสิโนสดชั้นนำที่ <span class="text-[#e8c37a]">PAY69</span> รวมโต๊ะไว้ในฟลอร์เดียว
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#3ba9ff] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e8c37a] to-transparent"></div>
   </div>
 
-  <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 lg:gap-5 xl:grid-cols-7">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
     {
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#8b3cf7]/40 bg-[#120a33]/92 p-5 shadow-[0_10px_30px_rgba(139,60,247,0.25)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#ff2fb0]/60 hover:bg-[#1c1046]/95 hover:shadow-[0_15px_40px_rgba(255,47,176,0.35)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#0b0528]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#a87c2e]/45 bg-[#12100c]/92 p-5 pt-9 shadow-[0_10px_30px_rgba(107,77,21,0.28)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#e8c37a]/60 hover:bg-[#1c1811]/95 hover:shadow-[0_15px_40px_rgba(232,195,122,0.32)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#08070a]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#d8f2ff] to-[#7fd0ff] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#05021a] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#fdf4e0] to-[#e8c37a] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#08070a] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
             {provider.icon}
           </div>
-          <p class="text-center text-sm font-black text-[#d8d3f0] transition-colors group-hover:text-[#ff2fb0]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#9b93c4]">{provider.desc}</p>
+          <p class="text-center text-sm font-black text-[#e6dac2] transition-colors group-hover:text-[#f7dfa5]">{provider.name}</p>
+          <p class="mt-1 text-center text-[10px] text-[#a99a7d]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#8b3cf7]/50 bg-[#05021a] py-1.5 text-center text-[11px] font-bold text-[#ff2fb0] shadow-inner transition-colors duration-300 group-hover:border-[#3ba9ff]/60 group-hover:bg-gradient-to-r group-hover:from-[#c81d8e] group-hover:to-[#4a179e] group-hover:text-[#f6ebff]">
-            เข้าดูเกมทั้งหมด
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#a87c2e]/55 bg-[#08070a] py-1.5 text-center text-[11px] font-bold text-[#e8c37a] shadow-inner transition-colors duration-300 group-hover:border-[#f7dfa5]/60 group-hover:bg-gradient-to-r group-hover:from-[#6b4d15] group-hover:to-[#a87c2e] group-hover:text-[#fdf4e0]">
+            เข้าดูโต๊ะสดทั้งหมด
           </span>
         </a>
       ))

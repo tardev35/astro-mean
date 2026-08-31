@@ -2,13 +2,13 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
-// TITANWIN168: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยใช้ ContentBox
-// ตามสเปกรอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
-// variant นี้เป็นข้อความของแบรนด์นี้แล้ว ticker จึงเหมือนกันทั้งเว็บ
+// PAY69: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox ตามสเปก
+// รอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ variant นี้
+// เป็นข้อความของแบรนด์นี้แล้ว ticker จึงเหมือนกันทั้งเว็บ
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the single
@@ -16,37 +16,42 @@ import { Picture } from "astro:assets";
 // — no <h2>, no section paragraphs. The artwork already prints its own offer in
 // large type, so prose below it re-types what the visitor can already read, in
 // smaller letters. The docx gives this page a Title and a Meta and never a body.
+// The three <h2> blocks and the extra paragraphs that stood here were invented
+// by an earlier rebrand and were deleted, not rewritten.
 //
-// Named for what each banner ACTUALLY prints, not for its file number.
-// This drop supplies TWO promo images:
-//   slide1 = the RANKING tier ladder (EXPLORER → WARRIOR → ELITE → COMMANDER →
-//            TITAN → TITAN EMPEROR, ยิงฝาก ยิงอัพเวส, รีเซ็ตทุก 2 เดือน), 600x229
-//   slide2 = the owl-mascot cashback banner (รอบนี้คืนให้หนักกว่าเดิม!,
-//            ยอดเสียรับคืนสูงถึง 12%), 600x200
-// Both are wide neon banners rather than square posters.
+// Named for what each banner ACTUALLY prints, not for its file number. All four
+// slides in this drop are PAY69 art (2026-09-01) so all four run in the grid;
+// slide1/slide2 also illustrate two sections of the homepage, slide3/slide4 are
+// exclusive to this page.
+//   slide1 = โปรโมชั่นต้อนรับสมาชิกใหม่ รับฟรีสูงสุด 1,100 เลือกได้ 1 ใน 2
+//   slide2 = Monthly Extra Bonus — ทุกความพยายาม มีคุณค่าเสมอ
+//   slide3 = กิจกรรมคอลเลกชันลิมิเต็ด PAY69 COLLECTIBLE SERIES
+//   slide4 = ต้นเดือนกันยาพาเฮง โบนัสเพิ่มทันที 50% (01-05 ก.ย. 2026)
+// ทุกไฟล์เป็นโปสเตอร์ 600x386 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
 //
-// slide3/4.png are NEOCLUB88's posters — another brand's logo and domain baked
-// into the pixels — so they are not imported here. Neither are banner.png /
-// banner2-4: an imported image is an EMITTED image even when nothing renders
-// it, so a dead import ships another brand's bytes on every deploy. banner1
-// belongs to MainLayout's hero <picture> alone.
+// banner.png / banner2-4.png ไม่ถูก import ที่นี่: เป็นอาร์ตของแบรนด์ก่อน และ
+// รูปที่ import แล้วคือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render
+// ส่วน banner1 เป็นของ <picture> hero ใน MainLayout เท่านั้น
 //
-// Only what is printed on the banner may be stated in its alt.
-import promoRanking from "../assets/slide1.png";
-import promoCashback from "../assets/slide2.png";
+// Only what is printed on the banner may be stated in its alt — ทั้งสี่ไฟล์
+// เปิดดูด้วยตาแล้วเมื่อ 2026-09-01 แล้วถอดข้อความบนภาพมาเขียน alt
+import promoWelcome from "../assets/slide1.png";
+import promoMonthly from "../assets/slide2.png";
+import promoCollectible from "../assets/slide3.png";
+import promoSeptember from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 155. It states what the
+// byte count reads ~3x too long). This one measures 158. It states what the
 // page holds — the offers the banners themselves print — and stops.
 const pageDescription =
-  "รวมโปรโมชั่น TITANWIN168 ทั้งระบบแรงกิ้งลำดับขั้นที่ยิ่งฝากยิ่งอัพเวลและรีเซ็ตทุก 2 เดือน กับโปรคืนยอดเสียสูงถึง 12% เงื่อนไขโปร่งใส กดรับเองได้ก่อนเข้าเกม";
+  "รวมโปรโมชั่นคาสิโนสด PAY69 ทั้งโบนัสต้อนรับสมาชิกใหม่ โบนัสรายเดือน กิจกรรมคอลเลกชันลิมิเต็ด และโบนัสเพิ่มทันที 50% ต้นเดือนกันยายน กดรับเองได้จากหน้าแดชบอร์ด";
 
-const pageTitle = "โปรโมชั่น TITANWIN168 | แรงกิ้งลำดับขั้น คืนยอดเสียสูงถึง 12% กดรับเอง";
+const pageTitle = "โปรโมชั่น PAY69 | โบนัสต้อนรับ โบนัสรายเดือน และสิทธิพิเศษคาสิโนสด";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น TITANWIN168 รวมสิทธิ์และระบบลำดับขั้นที่เปิดให้สมาชิกกดรับ";
+const pageHeading = "โปรโมชั่น PAY69 รวมสิทธิพิเศษคาสิโนสดที่เปิดให้สมาชิกกดรับเอง";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -55,11 +60,10 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoRanking.src,
+  primaryImagePath: promoWelcome.src,
 });
 
-// Two images this round, so it is a real grid: one column on phones, two from
-// sm: up, gap-6 (1.5rem) between the cells.
+// One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
 //
 // sizes describes how wide each cell is DRAWN, not how wide a file to fetch.
 // ContentBox wraps the grid in px-4 (2rem) + p-8 (4rem, stepping to p-10 =
@@ -71,12 +75,12 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบม่วงไททันของแบรนด์ล้อกับพื้นม่วงเข้มบนแบนเนอร์ แล้วสว่างขึ้นตอน hover
+// ขอบทองบรอนซ์ของแบรนด์ล้อกับกรอบดำของโลโก้บนแบนเนอร์ แล้วสว่างขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#6d28d9]/40 object-contain shadow-[0_10px_30px_rgba(109,40,217,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#c084fc]/70 hover:shadow-[0_15px_40px_rgba(124,58,237,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#a87c2e]/45 object-contain shadow-[0_10px_30px_rgba(107,77,21,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e8c37a]/70 hover:shadow-[0_15px_40px_rgba(232,195,122,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
-// intrinsic width (600px for both banners here) so a sharp upscale never
+// intrinsic width (600px for all four posters here) so a sharp upscale never
 // becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
   const steps = [384, 576, 648].filter((w) => w < img.width);
@@ -85,12 +89,20 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoRanking,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นม่วงเข้มเกือบดำ มุมซ้ายบนเป็นโลโก้ TITANWIN168 กลางภาพเป็นตัวอักษรขนาดใหญ่ว่า RANKING ลำดับขั้น!! และ ยิงฝาก ยิงอัพเวส ถัดลงมาเป็นแถบเขียนว่า เพื่อรับไอเทมในการเล่น รีเซ็ตทุก 2 เดือน ด้านล่างเป็นแถวตราสัญลักษณ์เรืองแสงหกอันเรียงกัน กำกับว่า EXPLORER, WARRIOR, ELITE, COMMANDER, TITAN และ TITAN EMPEROR",
+    src: promoWelcome,
+    alt: "แบนเนอร์โปรโมชั่นพื้นฟ้าสดใสมีเหรียญทองปลิว มุมขวาบนเป็นโลโก้ PAY69 มุมซ้ายบนเป็นป้ายไม้เขียนว่า SCATTER ด้านซ้ายเป็นตัวการ์ตูนหญิงกำลังเปิดหีบสมบัติ ข้อความกลางภาพเขียนว่า โปรโมชั่นต้อนรับสมาชิกใหม่ สมาชิกใหม่ รับฟรีสูงสุด 1,100! เลือกได้ 1 ใน 2 ถัดลงมาเป็นกล่องสองใบเขียนว่า ฝาก 20 รับ 20 และ ฝาก 100 รับ 200 แถบล่างสุดเขียนว่า ทำ Step 1 แล้ว รับต่อ Step 2 ฝากสะสม 299 รับเพิ่ม 39",
   },
   {
-    src: promoCashback,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นม่วงเข้ม มุมซ้ายบนเป็นโลโก้ TITANWIN168 ด้านขวาเป็นนกฮูกการ์ตูนสวมเสื้อคลุมม่วงกอดคริสตัลสีม่วง ข้อความด้านบนเขียนว่า รอบนี้คืนให้หนักกว่าเดิม! กลางภาพเป็นป้ายคริสตัลตัวเลข 12% คู่กับข้อความ ยอดเสียรับคืนสูงถึง 12% และแถบล่างเขียนว่า โปรพิเศษเฉพาะช่วงนี้เท่านั้น",
+    src: promoMonthly,
+    alt: "แบนเนอร์โปรโมชั่นพื้นทองอร่ามมีกองเหรียญทองและถุงเงินสีแดง มุมขวาบนเป็นโลโก้ PAY69 ข้างโลโก้เป็นประทัดจีนสีแดง ด้านซ้ายเป็นตัวการ์ตูนหนูสวมชุดจีนสีขาวทองถือทองแท่ง ข้อความกลางภาพเป็นตัวอักษรทองเขียนว่า Monthly Extra Bonus และบรรทัดล่างเขียนว่า ทุกความพยายาม มีคุณค่าเสมอ",
+  },
+  {
+    src: promoCollectible,
+    alt: "แบนเนอร์กิจกรรมพื้นม่วงเข้มบรรยากาศฮาโลวีนมีฟักทองและค้างคาว มุมขวาบนเป็นโลโก้ PAY69 มุมซ้ายบนเขียนว่า คอลเลกชันลิมิเต็ด LIMITED EDITION 2569 กลางแถบบนเขียนว่า PAY69 COLLECTIBLE SERIES ข้อความใหญ่กลางภาพเขียนว่า กิจกรรม คอลเลกชันลิมิเต็ด ด้านซ้ายเป็นกล่องสินค้าลาย PAY69 ถัดมาเป็นฟิกเกอร์สี่ตัวยืนบนแท่นสลักชื่อ PAY69 ได้แก่ หญิงชุดกระโหลก หุ่นไล่กาหัวฟักทอง แมวดำหัวฟักทอง และพ่อมดหมวกปีกกว้าง แถบล่างเป็นป้ายสามอันเขียนว่า สะสมครบ 5 ตัว Collection Exclusive และ รับรางวัลแน่นอน 100%",
+  },
+  {
+    src: promoSeptember,
+    alt: "แบนเนอร์โปรโมชั่นพื้นม่วงไล่เป็นสีทองรูปท้องฟ้ามีบอลลูนลอยสามลูก มุมขวาบนเป็นโลโก้ PAY69 ข้อความกลางภาพเขียนว่า ต้นเดือนกันยาพาเฮง รับโชคใหญ่ บรรทัดถัดมาเขียนว่า โบนัสเพิ่มทันที 50% และในวงเล็บเขียนว่า 01-05 ก.ย. 2026 นี้เท่านั้น มุมซ้ายล่างเป็นป้ายเขียนว่า FREE SPIN มุมขวาล่างเป็นป้ายคริสตัลเขียนว่า WILD",
   },
 ];
 ---
@@ -103,8 +115,8 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#a855f7]">TITANWIN168</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งระบบแรงกิ้งลำดับขั้นที่อัพเวลตามยอดฝากและรีเซ็ตทุก 2 เดือน และโปรคืนยอดเสีย Cash Back
-        ชื่อของแต่ละขั้น เพดานของแต่ละสิทธิ์ และรอบเวลาที่ใช้คำนวณ พิมพ์อยู่บนแบนเนอร์ครบแล้ว จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกรายการเลือกกดรับเองได้จากหน้าเว็บก่อนเข้าเกม เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด และไม่ต้องรอแอดมินอนุมัติ
+        แบนเนอร์ด้านล่างคือสิทธิพิเศษที่ <strong class="text-[#e8c37a]">PAY69</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งโบนัสต้อนรับสมาชิกใหม่ โบนัสรายเดือน กิจกรรมสะสมคอลเลกชันลิมิเต็ด และโบนัสเพิ่มของต้นเดือนที่มีช่วงวันจำกัด
+        ยอดที่รับได้ เงื่อนไขของแต่ละขั้น และช่วงเวลาที่ร่วมได้ พิมพ์อยู่บนแบนเนอร์ครบแล้ว จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกรายการกดรับเองได้จากหน้าแดชบอร์ดก่อนเข้าโต๊ะ เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด และไม่ต้องรอแอดมินอนุมัติ
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -130,8 +142,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#dfe4f0]/40 bg-gradient-to-r from-[#ede4ff] via-[#a855f7] to-[#3b0d73] px-10 py-3.5 text-lg font-black text-[#160a2b] shadow-[0_10px_30px_rgba(168,85,247,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(124,58,237,0.5)]">
-          สมัครสมาชิก TITANWIN168
+          class="flex items-center justify-center rounded-lg border border-[#fdf4e0]/40 bg-gradient-to-r from-[#fdf4e0] via-[#e8c37a] to-[#a87c2e] px-10 py-3.5 text-lg font-black text-[#08070a] shadow-[0_10px_30px_rgba(232,195,122,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(232,195,122,0.5)]">
+          สมัครสมาชิก PAY69
         </a>
       </div>
     </div>

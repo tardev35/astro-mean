@@ -1,103 +1,101 @@
 ---
-import { Picture } from "astro:assets";
-import img1 from "../assets/providers/game1.avif";
-import img2 from "../assets/providers/game2.avif";
-import img3 from "../assets/providers/game3.avif";
-import img4 from "../assets/providers/game4.avif";
-import img5 from "../assets/providers/game5.avif";
-import img6 from "../assets/providers/game6.avif";
-
-// รูปในแต่ละแถวคือ "โลโก้ค่ายพันธมิตร" ไม่ใช่ภาพของเกมนั้น alt จึงบรรยายโลโก้ตาม
-// ตัวอักษรที่พิมพ์อยู่บนรูปจริง — game1 = PG (Pocket Games Soft) ซึ่งก็คือ PG Soft
-// ในบรีฟ, game2 = SexySlot, game3 = SlotXO, game4 = Joker ซึ่งก็คือ Joker Gaming,
-// game5 = JILI, game6 = PP SLOT ซึ่งก็คือ Pragmatic Play
-// ห้ามเปลี่ยนค่า `brand` ของแถวโดยไม่เปลี่ยนไฟล์รูปตาม สลับลำดับแถวได้เพราะรูปกับ
-// ชื่อค่ายเดินทางไปด้วยกันในอ็อบเจกต์เดียว ส่วน `name`/`type` เป็นชื่อหมวดเกม
-// ซึ่งไม่ได้ผูกกับรูป จึงเปลี่ยนได้อิสระ
+// PAY69: ชุดสีย้ายมาที่ทองแชมเปญเดี่ยวบนดำสนิทตามอาร์ตจริง ไม่มีสีคู่ — ทอง
+// #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว #08070a / #12100c /
+// #1c1811 เนื้อความ #e6dac2 ข้อความรอง #a99a7d แถวอันดับหนึ่งรับทองครีมสว่างเพื่อ
+// ให้ตัดกับแถวที่เหลือ จุด live สีเขียว Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ
+// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
+// เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
+// git history)
 //
-// TITANWIN168: ชุดสีย้ายมาที่ม่วงไททันคู่มงกุฎทองตามอาร์ตจริง ม่วงเป็นสีหลักของ
-// กระดาน ส่วนแถวอันดับหนึ่งรับคู่ทองเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว
-// Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ —
-// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
-// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// รอบนี้ตัดรูปโลโก้ค่ายออกจากทุกแถว และตัด import ของ src/assets/providers/game*
+// ทิ้งไปด้วย เพราะอาร์ตชุดนั้นเป็นโลโก้ค่าย "สล็อต" (PG / SexySlot / SlotXO /
+// Joker / JILI / PP SLOT) ส่วน PAY69 เป็นแบรนด์คาสิโนสด กระดานนี้จึงเป็นหมวดโต๊ะสด
+// ไม่ใช่หมวดเกมสล็อต การเอาโลโก้สล็อตมาแปะข้างชื่อโต๊ะบาคาร่าแล้วเขียน alt ให้เป็น
+// อย่างอื่นคือ alt ที่ไม่ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit
+// ลง dist/ ฟรีๆ ช่องรูปจึงถูกแทนด้วยไอคอนกรอบทองที่เป็น aria-hidden แทน
+//
+// ไม่ผูกชื่อโต๊ะกับชื่อค่ายรายแถว: docx เอ่ยค่าย (Evolution Gaming, SA Gaming,
+// Sexy Baccarat, Pragmatic Play Live) กับชื่อเกมไว้คนละประโยค การจับคู่ว่าโต๊ะไหน
+// เป็นของค่ายไหนเป็นข้อมูลที่ brief ไม่ได้ให้ ช่องขวาของแต่ละแถวจึงบอก "ช่วงงบเบท
+// ของห้อง" ซึ่งเป็นข้อเท็จจริงที่ docx ให้ไว้ตรงๆ แทน
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
-// กระดานนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 5 เรื่องโบนัสแตกดีมีทรงให้ลุ้น จึงกางเกม
-// ตัวเด่นที่มีทรงโบนัสดีกับฟีเจอร์ที่พาไปถึงโบนัสให้เห็นครบในหน้าเดียว
+// กระดานนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 4 เรื่องเกมหลายหมวดพร้อมสลับฟีล จึงกาง
+// โต๊ะสดทุกหมวดที่สลับไปมาได้ในยูสเซอร์เดียวให้เห็นครบในหน้าเดียว
 //
 // อันดับ 1–3 แสดงเหรียญ "แทน" ตัวเลข ถ้าซ่อนอิโมจิเฉยๆ สามแถวนั้นจะไม่เหลืออันดับ
 // ให้อ่านเลย ข้อความ sr-only จึงใส่กลับเข้าไปคู่กับ aria-hidden
 const games = [
   {
     rank: 1,
-    name: "หมวดเกมตัวเด่นทรงโบนัสแตกดี",
-    type: "คัดเฉพาะเกมที่มีทรงโบนัสแตกดีและโครงสร้างการแจกรางวัลน่าสนใจ • ให้ลุ้นกำไรก้อนโตแบบมีทิศทาง ไม่ใช่หมุนวงล้อไปเรื่อยๆ",
-    brand: "Pragmatic Play",
-    menus: ["ทรงโบนัสแตกดี", "ลุ้นแบบมีทิศทาง"],
+    name: "บาคาร่าคลาสสิก",
+    type: "โต๊ะยอดนิยมที่ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ • ไร้การตัดต่อหรือใช้คลิปวน มุมกล้องหลากหลายมองเห็นทุกมิติการแทง",
+    room: "ห้องเริ่มต้นหลักสิบ",
+    menus: ["แจกไพ่เรียลไทม์", "มุมกล้องหลายมุม"],
     players: 5124,
-    img: img6,
+    icon: "🃏",
   },
   {
     rank: 2,
-    name: "หมวดจังหวะเข้ารอบฟรีสปินไว",
-    type: "รวมเกมที่กดเข้ารอบฟรีสปินได้ไว ไม่ต้องนั่งสปินเปล่ายาวกว่าจะได้ลุ้นรอบโบนัสสักที",
-    brand: "Joker Gaming",
-    menus: ["ฟรีสปินเข้าไว", "ไม่ต้องรอนาน"],
+    name: "บาคาร่าสายฟ้า",
+    type: "จังหวะเร้าใจกว่าบาคาร่าปกติ เหมาะกับคนที่อยากได้ฟีลโต๊ะสดแบบไม่ต้องรอนาน",
+    room: "ห้องกลางถึง High Roller",
+    menus: ["จังหวะเร็ว", "ฟีลโต๊ะ VIP"],
     players: 3842,
-    img: img4,
+    icon: "⚡",
   },
   {
     rank: 3,
-    name: "หมวดฟีเจอร์ Multipliers ตัวคูณสะสม",
-    type: "รวมเกมที่มีตัวคูณสะสมแบบทวีคูณ • ยิ่งต่อยอดในรอบเดียวกัน ยอดรางวัลยิ่งถูกคูณขึ้นไปอีกชั้น",
-    brand: "JILI",
-    menus: ["Multipliers", "ตัวคูณสะสม"],
+    name: "รูเล็ตสด",
+    type: "สลับจากโต๊ะบาคาร่ามาเดิมพันรูเล็ตได้ทันทีในยูสเซอร์เดียว ไม่ต้องย้ายเว็บและไม่ต้องโยกเงิน",
+    room: "เลือกห้องได้ตามงบเบท",
+    menus: ["สลับได้ทันที", "ยูสเซอร์เดียว"],
     players: 3517,
-    img: img5,
+    icon: "🎡",
   },
   {
     rank: 4,
-    name: "หมวดระบบ Cascading สัญลักษณ์แตกต่อเนื่อง",
-    type: "สัญลักษณ์แตกต่อเนื่องภายในสปินเดียว ยิ่งต่อยาวยิ่งได้ลุ้นรางวัลก้อนโตแบบไม่ต้องเริ่มรอบใหม่",
-    brand: "SexySlot",
-    menus: ["Cascading", "แตกต่อเนื่อง"],
+    name: "เสือมังกร",
+    type: "เกมโต๊ะจังหวะไวที่ตัดสินกันไพ่ใบเดียว อ่านเกมง่ายสำหรับคนที่เพิ่งเข้าฟลอร์คาสิโนสด",
+    room: "ห้องเริ่มต้นหลักสิบ",
+    menus: ["ตัดสินไว", "อ่านเกมง่าย"],
     players: 2905,
-    img: img2,
+    icon: "🐯",
   },
   {
     rank: 5,
-    name: "หมวดรีลขยาย Wild ซ้อนทับ",
-    type: "Wild ขยายซ้อนทับคลุมรีลทั้งแถบ เปิดโอกาสให้ไลน์รางวัลเข้าพร้อมกันได้หลายเส้นในสปินเดียว",
-    brand: "PG Soft (Pocket Games Soft)",
-    menus: ["รีลขยาย Wild", "ซ้อนทับทั้งรีล"],
+    name: "ไฮโลสด",
+    type: "โต๊ะไทยคุ้นมือที่ยิงสัญญาณสดระดับ Ultra HD ตรงจากฟลอร์คาสิโนจริงในต่างประเทศ",
+    room: "เลือกห้องได้ตามงบเบท",
+    menus: ["สัญญาณ Ultra HD", "ฟลอร์จริง"],
     players: 2431,
-    img: img1,
+    icon: "🎲",
   },
   {
     rank: 6,
-    name: "หมวดโหมด Buy Feature ซื้อฟรีสปิน",
-    type: "สายใจร้อนกดซื้อฟรีสปินพุ่งตรงเข้าลุ้นโบนัสก้อนใหญ่ได้ทันที ไม่ต้องรอสุ่มเข้าฟีเจอร์เอง",
-    brand: "SlotXO",
-    menus: ["Buy Feature", "ซื้อฟรีสปิน"],
+    name: "วงล้อเสี่ยงโชคและเกมโชว์สด",
+    type: "หมวดเปลี่ยนบรรยากาศเมื่ออยากพักจากโต๊ะไพ่ • กระเป๋าเงินเดียวยืดหยุ่นสูงสุด สลับเข้าเล่นได้อิสระ",
+    room: "กระเป๋าเงินเดียว",
+    menus: ["เกมโชว์สด", "สลับอิสระ"],
     players: 2108,
-    img: img3,
+    icon: "🎯",
   },
 ];
 
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="เกมตัวเด่นทรงโบนัสแตกดีที่ TITANWIN168 คัดมาไว้ในคลัง" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="หมวดโต๊ะสดที่ PAY69 เปิดให้สลับเล่นได้ในยูสเซอร์เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#6d28d9]/40 bg-[#22104a]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(109,40,217,0.28)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl">🔥</span>
-    <p class="bg-gradient-to-r from-[#ede4ff] via-[#f2dda3] to-[#a855f7] bg-clip-text text-2xl font-black tracking-wide text-transparent">เกมตัวเด่นทรงโบนัสแตกดีที่ TITANWIN168 คัดมาไว้ในคลัง</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#a396c9]">
-      กางให้เห็นครบในหน้าเดียว ทั้งหมวดเกมตัวเด่นทรงโบนัสแตกดี หมวดจังหวะเข้ารอบฟรีสปินไว หมวดฟีเจอร์ Multipliers ตัวคูณสะสม หมวดระบบ Cascading สัญลักษณ์แตกต่อเนื่อง หมวดรีลขยาย Wild ซ้อนทับ
-      และหมวดโหมด Buy Feature ซื้อฟรีสปิน เลื่อนดูได้ครบทุกแนว ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราการจ่ายและรายละเอียดฟีเจอร์ของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#a87c2e]/40 bg-[#12100c]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(107,77,21,0.28)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl">🎴</span>
+    <p class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#e8c37a] bg-clip-text text-2xl font-black tracking-wide text-transparent">หมวดโต๊ะสดที่ PAY69 เปิดให้สลับเล่นได้ในยูสเซอร์เดียว</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#a99a7d]">
+      กางให้เห็นครบในหน้าเดียว ทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ตสด เสือมังกร ไฮโลสด และหมวดวงล้อเสี่ยงโชคกับเกมโชว์สด เลือกห้องเล่นได้ตามงบเบทตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller
+      ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูกติกาและเพดานเดิมพันของแต่ละโต๊ะจากหน้าห้องจริงอีกครั้งก่อนลงเดิมพัน
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e3c176] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e8c37a] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -108,10 +106,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#e3c176]/55 bg-gradient-to-r from-[#2e1065]/80 via-[#22104a]/92 to-[#0a0417]/88 shadow-[0_15px_40px_rgba(227,193,118,0.18)]"
-                : "border-[#6d28d9]/35 bg-[#22104a]/88 shadow-[0_10px_30px_rgba(109,40,217,0.2)] hover:border-[#a855f7]/55 hover:shadow-[0_15px_40px_rgba(168,85,247,0.3)]"
+                ? "border-[#f7dfa5]/55 bg-gradient-to-r from-[#1c1811]/85 via-[#12100c]/92 to-[#08070a]/90 shadow-[0_15px_40px_rgba(232,195,122,0.2)]"
+                : "border-[#a87c2e]/35 bg-[#12100c]/90 shadow-[0_10px_30px_rgba(107,77,21,0.2)] hover:border-[#e8c37a]/55 hover:shadow-[0_15px_40px_rgba(232,195,122,0.28)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#2e1065]/70 blur-[40px] transition-all duration-500 group-hover:bg-[#7c3aed]/35" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#1c1811]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#a87c2e]/40" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {medal(g.rank) ? (
@@ -120,45 +118,39 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#a855f7] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#e8c37a] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
-            <div class={`relative z-10 h-14 w-14 shrink-0 overflow-hidden rounded-xl border sm:h-16 sm:w-16 ${top ? "border-[#e3c176]/60" : "border-[#6d28d9]/40"}`}>
-              <Picture
-                src={g.img}
-                alt={`โลโก้ค่ายเกมลิขสิทธิ์ ${g.brand} ที่อยู่ในคลังเกมของ TITANWIN168`}
-                formats={["avif", "webp"]}
-                fallbackFormat="webp"
-                loading="lazy"
-                fetchpriority="low"
-                widths={[100, 200]}
-                sizes="(max-width: 640px) 56px, 64px"
-                decoding="async"
-                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
+            <div
+              aria-hidden="true"
+              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#08070a] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
+                top ? "border-[#f7dfa5]/60" : "border-[#a87c2e]/45"
+              }`}>
+              {g.icon}
             </div>
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#ddd2f5] sm:text-lg">{g.name}</p>
+                <p class="truncate text-base font-black text-[#e6dac2] sm:text-lg">{g.name}</p>
                 {top && (
-                  <span class="hidden shrink-0 rounded-full border border-[#e3c176]/70 bg-gradient-to-r from-[#dfe4f0] to-[#f2dda3] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#0a0417] sm:inline">
-                    ทรงโบนัสมาแรงล่าสุด
+                  <span class="hidden shrink-0 rounded-full border border-[#f7dfa5]/70 bg-gradient-to-r from-[#fdf4e0] to-[#e8c37a] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#08070a] sm:inline">
+                    โต๊ะที่คนเข้ามากที่สุด
                   </span>
                 )}
               </div>
-              <p class="truncate text-[11px] text-[#a396c9] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#a99a7d] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
+                <span class="rounded-full border border-[#6b4d15]/70 bg-[#1c1811] px-2.5 py-0.5 text-[10px] font-bold text-[#f7dfa5]">{g.room}</span>
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#6d28d9]/40 bg-[#160a2b] px-2.5 py-0.5 text-[10px] font-bold text-[#a855f7]">{m}</span>
+                  <span class="rounded-full border border-[#a87c2e]/40 bg-[#1c1811] px-2.5 py-0.5 text-[10px] font-bold text-[#e8c37a]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#a396c9]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#a99a7d]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -169,10 +161,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#c084fc] to-[#7c3aed] text-[#0a0417] shadow-[0_10px_30px_rgba(168,85,247,0.35)]"
-                    : "border border-[#6d28d9]/60 bg-[#160a2b] text-[#a855f7] hover:border-[#e3c176] hover:bg-[#2e1065] hover:text-[#ede4ff]"
+                    ? "bg-gradient-to-r from-[#fdf4e0] to-[#a87c2e] text-[#08070a] shadow-[0_10px_30px_rgba(232,195,122,0.35)]"
+                    : "border border-[#a87c2e]/60 bg-[#1c1811] text-[#e8c37a] hover:border-[#f7dfa5] hover:bg-[#6b4d15] hover:text-[#fdf4e0]"
                 }`}>
-                เข้าเล่นเกม
+                เข้าโต๊ะสด
               </a>
             </div>
           </article>

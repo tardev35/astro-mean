@@ -2,8 +2,8 @@
 import { Picture } from "astro:assets";
 
 import bannerPgSoft from "../assets/gamedemo11.webp";
-import bannerSlotXo from "../assets/gamedemo9.webp";
-import bannerJili from "../assets/gamedemo14.webp";
+import bannerPopularGame from "../assets/gamedemo8.webp";
+import bannerSbobet from "../assets/gamedemo12.webp";
 import bannerJoker from "../assets/gamedemo17.webp";
 import bannerSkywind from "../assets/gamedemo10.webp";
 import bannerNewGame from "../assets/gamedemo16.webp";
@@ -22,13 +22,17 @@ import bannerNewGame from "../assets/gamedemo16.webp";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์คือตัวหนังสือกับตัวละครบนรูป สิ่งนั้นจึงเป็น alt
 //
-// TITANWIN168: แถบนี้ไม่ใช้ slide* — สไลด์ที่เป็นของแบรนด์นี้จริงมีสองใบ (slide1
-// กับ slide2) และทั้งคู่ไปอยู่ในบล็อก ContentBoxSevenThree* บนหน้าแรกแล้ว ส่วน
-// slide3/slide4 กับ banner ทุกหมายเลขเป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและโดเมนของเขา
-// พิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม — การ import คือการ emit ลง
-// dist/ ถึงจะไม่มีใคร render ก็ตาม แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายเกม/เกมออกใหม่ที่
-// เป็นกลางกับแบรนด์แทน ซึ่งทำให้มันอ่านเป็นแถบค่ายชั้นนำที่ยกตัวเด่นมาชนตามหัวข้อ
-// docx ข้อ 5 พอดี จึงวางต่อจาก GameRankingBoard
+// PAY69: แถบนี้ไม่ใช้ slide* — slide1 กับ slide2 ไปอยู่ในบล็อก ContentBoxSevenThree*
+// บนหน้าแรกแล้ว ส่วน slide3/slide4 อยู่บนหน้าโปรโมชั่น และ banner ทุกหมายเลข
+// (banner2/3/4 กับ banner.png) เป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและโดเมนของเขาพิมพ์
+// อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม — การ import คือการ emit ลง dist/
+// ถึงจะไม่มีใคร render ก็ตาม แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายพันธมิตร/เกมออกใหม่ที่
+// เป็นกลางกับแบรนด์แทน วางต่อจาก GameRankingBoard เป็นภาพประกอบท้ายของหัวข้อ docx
+// ข้อ 4 เรื่องสลับฟีลได้หลายหมวดในล็อบบี้เดียว
+//
+// alt ของแต่ละใบบรรยาย "ตัวหนังสือที่พิมพ์อยู่บนรูปจริง" ห้ามเขียนให้เป็นชื่อค่าย
+// คาสิโนสดในบรีฟเพื่อให้เข้าธีม — นั่นคือ alt ที่ไม่ตรงกับรูป ถ้าวันไหนต้องการให้
+// แถบนี้อ่านเป็นคาสิโนสดเต็มตัว ต้องเปลี่ยนไฟล์รูปก่อน แล้วค่อยเปลี่ยน alt ตาม
 //
 // แบนเนอร์ชุดนี้เป็นภาพแนวนอน (อัตราส่วนราว 1.58:1) ไม่ใช่จัตุรัสเหมือนสไลด์ชุดก่อน
 // จำนวนช่องที่เห็นยังเท่าเดิม (2 ช่องบนมือถือ / 3 ช่องบนเดสก์ท็อป ที่ max-w-[820px])
@@ -44,12 +48,12 @@ const images = [
     alt: "แบนเนอร์ค่ายเกม PG Soft โลโก้พิกเซลตัวอักษร PG ข้างตัวละครหญิงนักรบสวมเครื่องประดับทองและหมวกขนนกสีสด",
   },
   {
-    src: bannerSlotXo,
-    alt: "แบนเนอร์ค่ายเกม SlotXO โลโก้ตู้สล็อตและเหรียญทองข้างภาพนักรบโรมันสวมมงกุฎใบลอเรลหน้าโคลอสเซียม",
+    src: bannerPopularGame,
+    alt: "แบนเนอร์เกมยอดนิยม ตัวอักษรทองคำว่า POPULAR GAME อยู่กลางภาพ ขนาบด้วยตัวละครกระต่ายถือหีบสมบัติและแมวสวมแว่นกันแดด มีชิปคาสิโนและเหรียญทองปลิวรอบวงกลมสัญลักษณ์โพดำ",
   },
   {
-    src: bannerJili,
-    alt: "แบนเนอร์ค่ายเกม JILI ตัวอักษรสีทองข้างตัวละครนางเงือกผมแดงถือหอยสังข์ใต้ทะเลพร้อมปลาการ์ตูน",
+    src: bannerSbobet,
+    alt: "แบนเนอร์ค่ายเกม SBOBET โลโก้ตัวอักษรสีขาวบนพื้นดำ ข้างภาพตัวละครหญิงผมบลอนด์สวมชุดกิโมโนสีชมพูถือลูกอมเกลียวสีรุ้ง",
   },
   {
     src: bannerJoker,
@@ -87,7 +91,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e3c176]/60 peer-focus-visible:bg-[#2e1065] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#a855f7]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e8c37a]/60 peer-focus-visible:bg-[#1c1811] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#f7dfa5]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -100,7 +104,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#6d28d9]/45 object-cover shadow-[0_10px_30px_rgba(109,40,217,0.28)]"
+              class="block w-full rounded-xl border border-[#a87c2e]/45 object-cover shadow-[0_10px_30px_rgba(107,77,21,0.3)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

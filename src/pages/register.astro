@@ -18,9 +18,9 @@ const targetUrl = "https://yoalink.com/znmz";
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
 // undo half of it. Nothing is lost by dropping them — Google Sans covers Thai,
-// so it paints this page on its own. TITANWIN168 runs google-sans, so this
-// round the rules do not render; the flag flips every rebrand, so keep both
-// branches.
+// so it paints this page on its own. PAY69 runs kanit, so this round the rules
+// DO render and this page is the only place they come from; the flag flips
+// every rebrand, so keep both branches.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
@@ -34,21 +34,21 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: TITANWIN168 is a TITAN/CROWN
-// casino brand — neon violet (#a855f7 / #c084fc / #ede4ff / #7c3aed) as the
-// primary hue PAIRED WITH A CROWN GOLD (#e3c176 / #f2dda3) as the second accent
-// and SILVER CHROME (#dfe4f0) on the lettering, with deep violet (#6d28d9 /
-// #3b0d73) on the borders and glows, over a near-black surface (#07030f /
-// #160a2b / #22104a / #2e1065) with #ddd2f5 body text. Violet leads, gold
-// accents. There is NO magenta and NO cyan in this brand — that pair is what
-// made the previous brand look like the previous brand.
+// Palette note for the second <style> block: PAY69 is a live-dealer casino
+// brand painted in CHAMPAGNE GOLD ONLY over near-black. There is no second hue
+// at all — every accent, border and glow on this page is a gold. The artwork is
+// gold lettering and gold light-trails on a black floor, so the whole page is one
+// gold ramp (#fdf4e0 → #f7dfa5 → #e8c37a → #a87c2e → #6b4d15) over the surface
+// stack (#08070a / #12100c / #1c1811) with #e6dac2 body text and #a99a7d
+// captions. If you find yourself reaching for a contrasting accent here, the
+// answer is a darker or lighter gold, not another hue.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
-// no gold in them and a `--brand-red` on a gold one, so the next editor reused
-// it by name and shipped the wrong hue. Rename with the value. `--gold-light`
-// is honest this round — the logo really does carry a gold crown — but it holds
-// the SECOND hue only; never reach for it as the primary.
+// no gold in them and a `--brand-red` on a gold one, and the round before this
+// one shipped a `--gold-light` that held the brand's SECOND accent, not its
+// primary — so the next editor reused it by name and got the wrong role. Rename
+// with the value, and re-check the role when the palette changes shape.
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -56,10 +56,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก TITANWIN168 | เปิดยูสเว็บตรงสล็อตเกมคัดเกรด ฟรีไม่มีค่าธรรมเนียม</title>
+    <title>สมัครสมาชิก PAY69 | เปิดยูสคาสิโนสดเว็บตรง ฟรีไม่มีค่าธรรมเนียม</title>
     <meta
       name="description"
-      content="สมัครสมาชิก TITANWIN168 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นเกมคัดเกรดครบทุกค่าย รับโบนัสต้อนรับและฝากถอนออโต้ไว 3 วิ"
+      content="สมัครสมาชิก PAY69 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นโต๊ะสดครบทุกค่าย รับโบนัสต้อนรับคาสิโนสดและฝากถอนออโต้ไว 3 วินาที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -101,18 +101,16 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #160a2b;
-        --panel-bg: rgba(34, 16, 74, 0.92);
-        --violet-pale: #ede4ff;
-        --violet-light: #c084fc;
-        --violet-primary: #a855f7;
-        --violet-strong: #7c3aed;
-        --violet-deepest: #3b0d73;
-        --chrome-pale: #dfe4f0;
-        --gold-light: #f2dda3;
-        --surface-raised: #2e1065;
-        --text-body: #ddd2f5;
-        --text-muted: #a196c9;
+        --page-bg: #08070a;
+        --panel-bg: rgba(18, 16, 12, 0.92);
+        --gold-cream: #fdf4e0;
+        --gold-bright: #f7dfa5;
+        --gold-primary: #e8c37a;
+        --gold-deep: #a87c2e;
+        --gold-shadow: #6b4d15;
+        --surface-raised: #1c1811;
+        --text-body: #e6dac2;
+        --text-muted: #a99a7d;
       }
 
       body {
@@ -120,7 +118,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(109, 40, 217, 0.32) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(227, 193, 118, 0.14) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(232, 195, 122, 0.22) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(168, 124, 46, 0.16) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -134,11 +132,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(109, 40, 217, 0.42);
+        border: 1px solid rgba(168, 124, 46, 0.45);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(7, 3, 15, 0.6),
-          0 0 2rem rgba(109, 40, 217, 0.28);
+          0 1rem 3rem rgba(8, 7, 10, 0.6),
+          0 0 2rem rgba(232, 195, 122, 0.2);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -147,13 +145,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--chrome-pale) 0%, var(--violet-light) 45%, var(--violet-strong) 100%);
+        background: linear-gradient(180deg, var(--gold-cream) 0%, var(--gold-bright) 45%, var(--gold-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(109, 40, 217, 0.5));
+        filter: drop-shadow(0 1px 2px rgba(107, 77, 21, 0.55));
       }
 
       .sophisticated-loader {
@@ -169,30 +167,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--violet-pale) 0%, var(--violet-primary) 45%, var(--violet-deepest) 100%);
+        background: radial-gradient(circle, var(--gold-cream) 0%, var(--gold-primary) 45%, var(--gold-shadow) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(109, 40, 217, 0.5);
+        box-shadow: 0 0 2rem rgba(232, 195, 122, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(109, 40, 217, 0.24);
+        border: 3px solid rgba(168, 124, 46, 0.3);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--violet-primary);
+        border-top-color: var(--gold-primary);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--gold-light);
+        border-bottom-color: var(--gold-cream);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -209,11 +207,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(109, 40, 217, 0.5);
+          box-shadow: 0 0 2rem rgba(232, 195, 122, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(168, 85, 247, 0.42);
+          box-shadow: 0 0 3rem rgba(247, 223, 165, 0.42);
         }
       }
 
@@ -237,7 +235,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">TITANWIN168</div>
+      <div class="brand-identity">PAY69</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -247,7 +245,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก TITANWIN168 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก PAY69 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 
