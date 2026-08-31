@@ -9,10 +9,18 @@ const targetUrl = "https://yoalink.com/znmz";
 // neither the @theme fallback for --font-sans nor the self-hosted Kanit
 // @font-face. Both have to be supplied here or the page renders in the browser
 // default while the rest of the site does not — hence the @font-face rules in
-// the first <style> block below. AURA456 runs BRAND_FONT = "kanit", so this
-// round the typeface comes from those self-hosted rules and the CDN <link> only
-// carries Oswald; leave both branches in place either way, the flag flips every
-// rebrand.
+// the first <style> block below.
+//
+// Those rules are gated on !usesGoogleFonts, and the gate is the point of the
+// whole BRAND_FONT rotation: /fonts/kanit-v17-latin_thai-*.woff2 is the SAME
+// path on every Kanit brand in the portfolio, which is a sharper cross-brand
+// match than anything visual on the page. brandProfile drops the Kanit
+// preloads for a Google Sans brand for exactly this reason; emitting the
+// @font-face here anyway would put the shared paths back on two pages and
+// undo half of it. Nothing is lost by dropping them — Google Sans covers Thai,
+// so it paints this page on its own. TITANWIN168 runs google-sans, so this
+// round the rules do not render; the flag flips every rebrand, so keep both
+// branches.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
@@ -26,28 +34,32 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: AURA456 is a NEON CYBER-MYSTIC
-// casino brand — hot neon magenta (#ff2fb0 / #ff7fd4 / #ffc9ee) as the primary
-// hue PAIRED WITH ELECTRIC BLUE (#d8f2ff / #7fd0ff / #3ba9ff) as the second
-// accent, with violet (#8b3cf7 / #c81d8e / #4a179e) on the borders and glows,
-// over a near-black indigo surface (#0b0528 / #120a33 / #1c1046) with #d8d3f0
-// body text. There is NO gold and NO platinum in this brand.
+// Palette note for the second <style> block: TITANWIN168 is a TITAN/CROWN
+// casino brand — neon violet (#a855f7 / #c084fc / #ede4ff / #7c3aed) as the
+// primary hue PAIRED WITH A CROWN GOLD (#e3c176 / #f2dda3) as the second accent
+// and SILVER CHROME (#dfe4f0) on the lettering, with deep violet (#6d28d9 /
+// #3b0d73) on the borders and glows, over a near-black surface (#07030f /
+// #160a2b / #22104a / #2e1065) with #ddd2f5 body text. Violet leads, gold
+// accents. There is NO magenta and NO cyan in this brand — that pair is what
+// made the previous brand look like the previous brand.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
 // no gold in them and a `--brand-red` on a gold one, so the next editor reused
-// it by name and shipped the wrong hue. Rename with the value. The `--gold-*`
-// and `--platinum-*` properties this file used to carry are gone for that
-// reason — neither colour exists in this brand.
+// it by name and shipped the wrong hue. Rename with the value. `--gold-light`
+// is honest this round — the logo really does carry a gold crown — but it holds
+// the SECOND hue only; never reach for it as the primary.
+//
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
 
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ AURA456 | ทางเข้าเว็บตรงสล็อตคัดเกรด ฝากถอนออโต้</title>
+    <title>เข้าสู่ระบบ TITANWIN168 | ทางเข้าเว็บตรงสล็อตเกมคัดเกรด ฝากถอนออโต้</title>
     <meta
       name="description"
-      content="เข้าสู่ระบบ AURA456 สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นสล็อตเว็บตรงคัดเกรด API แท้ 100% ผ่านลิงก์ตรง ฝากถอนออโต้ไม่ต้องรอแอดมิน"
+      content="เข้าสู่ระบบ TITANWIN168 สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าปั่นสล็อตเว็บตรง API แท้ ไม่ผ่านเอเย่นต์ เกมคัดเกรด ฝากถอนออโต้ไว 3 วิ"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -66,8 +78,10 @@ const fontHref = usesGoogleFonts
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href={fontHref} rel="stylesheet" />
 
-    <style>
-      @font-face {
+    {
+      !usesGoogleFonts && (
+        <style>
+          {`@font-face {
         font-family: "Kanit";
         font-style: normal;
         font-weight: 400;
@@ -80,23 +94,25 @@ const fontHref = usesGoogleFonts
         font-weight: 700;
         font-display: swap;
         src: url("/fonts/kanit-v17-latin_thai-700.woff2") format("woff2");
-      }
-    </style>
+      }`}
+        </style>
+      )
+    }
 
     <style>
       :root {
-        --page-bg: #0b0528;
-        --panel-bg: rgba(18, 10, 51, 0.92);
-        --pink-pale: #ffc9ee;
-        --pink-light: #ff7fd4;
-        --pink-primary: #ff2fb0;
-        --magenta-deep: #c81d8e;
-        --violet-deep: #4a179e;
-        --cyan-pale: #d8f2ff;
-        --cyan-light: #7fd0ff;
-        --surface-raised: #1c1046;
-        --text-body: #d8d3f0;
-        --text-muted: #9b93c4;
+        --page-bg: #160a2b;
+        --panel-bg: rgba(34, 16, 74, 0.92);
+        --violet-pale: #ede4ff;
+        --violet-light: #c084fc;
+        --violet-primary: #a855f7;
+        --violet-strong: #7c3aed;
+        --violet-deepest: #3b0d73;
+        --chrome-pale: #dfe4f0;
+        --gold-light: #f2dda3;
+        --surface-raised: #2e1065;
+        --text-body: #ddd2f5;
+        --text-muted: #a196c9;
       }
 
       body {
@@ -104,7 +120,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(139, 60, 247, 0.32) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(59, 169, 255, 0.14) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(109, 40, 217, 0.32) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(227, 193, 118, 0.14) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -118,11 +134,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(139, 60, 247, 0.42);
+        border: 1px solid rgba(109, 40, 217, 0.42);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(3, 1, 14, 0.6),
-          0 0 2rem rgba(139, 60, 247, 0.28);
+          0 1rem 3rem rgba(7, 3, 15, 0.6),
+          0 0 2rem rgba(109, 40, 217, 0.28);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -131,13 +147,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--cyan-pale) 0%, var(--pink-light) 45%, var(--magenta-deep) 100%);
+        background: linear-gradient(180deg, var(--chrome-pale) 0%, var(--violet-light) 45%, var(--violet-strong) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(139, 60, 247, 0.5));
+        filter: drop-shadow(0 1px 2px rgba(109, 40, 217, 0.5));
       }
 
       .sophisticated-loader {
@@ -153,30 +169,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--pink-pale) 0%, var(--pink-primary) 45%, var(--violet-deep) 100%);
+        background: radial-gradient(circle, var(--violet-pale) 0%, var(--violet-primary) 45%, var(--violet-deepest) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(139, 60, 247, 0.5);
+        box-shadow: 0 0 2rem rgba(109, 40, 217, 0.5);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(139, 60, 247, 0.24);
+        border: 3px solid rgba(109, 40, 217, 0.24);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--pink-primary);
+        border-top-color: var(--violet-primary);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--cyan-light);
+        border-bottom-color: var(--gold-light);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -193,11 +209,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(139, 60, 247, 0.5);
+          box-shadow: 0 0 2rem rgba(109, 40, 217, 0.5);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(255, 47, 176, 0.42);
+          box-shadow: 0 0 3rem rgba(168, 85, 247, 0.42);
         }
       }
 
@@ -221,7 +237,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">AURA456</div>
+      <div class="brand-identity">TITANWIN168</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -231,7 +247,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ AURA456 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ TITANWIN168 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

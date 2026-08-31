@@ -12,21 +12,22 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // ข้อความ ไม่ใช่แทรกอยู่ในตัวข้อความ
 //
 // ลำดับ: หน้าแรก → โปรโมชั่น → (สมัคร/เข้าสู่ระบบ ถ้าเปิด cta toggle) → ที่เหลือ
-// NEOCLUB88 ปิด cta toggle เหมือนแบรนด์ก่อน (/login กับ /register ยังเป็นหน้า
+// TITANWIN168 ปิด cta toggle เหมือนแบรนด์ก่อน (/login กับ /register ยังเป็นหน้า
 // interstitial แบบ noindex) จึงไม่มีสองรายการนั้นในเมนู เหลือปุ่ม CTA มุมขวา
 // ตามที่ variant นี้วางไว้ และ /ทางเข้า ยังอยู่ในเมนูตามปกติ
 //
-// ไม่มี /ตรวจหวย กับ /แนวทาง เพราะ NEOCLUB88 เป็นเว็บสล็อต ไม่ใช่เว็บหวย —
+// ไม่มี /ตรวจหวย กับ /แนวทาง เพราะ TITANWIN168 เป็นเว็บสล็อต ไม่ใช่เว็บหวย —
 // สองหน้านั้นอยู่ใน src/pages-disabled/ จึงไม่มี route ให้ลิงก์ไปหา
 //
-// NEOCLUB88: ย้ายจากทองหลอมคู่ส้มไฟของแบรนด์ก่อน มาเป็นทองคลับคู่แพลทินัมของ
-// แบรนด์นี้ — ทอง #f2cc53 / #ffe89a / #f6d977 / #c39b3c / #a8842c / #8a6415
-// คู่แพลทินัม #eef1f5 / #c6ccd4 / #8d949e บนผิว #050301 / #140b02 / #241303
-// เนื้อความ #ede0c4 (วัดจาก palette.json: vivid ของโลโก้เป็นทอง #f2cc53 /
-// #c39b3c / #eeca54 ส่วน dominant ของแบนเนอร์เป็นดำ #020100 / #140b02 และคำว่า
-// CLUB ในโลโก้เป็นโครเมียมเงิน จึงดึงแพลทินัมขึ้นมาเป็นสีคู่)
+// TITANWIN168: ย้ายจากทองคลับคู่แพลทินัมของแบรนด์ก่อน มาเป็นม่วงไททันคู่มงกุฎทอง
+// ของแบรนด์นี้ — ม่วง #a855f7 / #c084fc / #ede4ff / #7c3aed / #6d28d9 / #3b0d73
+// คู่ทองมงกุฎ #e3c176 / #f2dda3 / #a9803a และโครเมียมเงิน #dfe4f0 / #b9c0d0 บนผิว
+// #07030f / #160a2b / #22104a เนื้อความ #ddd2f5 (อ่านจากอาร์ตเวิร์กจริง: ตัวอักษร
+// โลโก้เป็นโครเมียมเงิน มงกุฎเป็นทองประดับอัญมณีม่วง ส่วนแสงและควันรอบตัวอักษรกับ
+// พื้นหลังทั้งใบเป็นม่วงนีออนบนดำสนิท ม่วงจึงเป็นสีนำ ทองเป็นสีคู่ที่ใช้กับปุ่ม
+// conversion ให้ล้อมงกุฎบนโลโก้)
 //
-// ไอคอนเลือกตามแนวคลับ VIP — บ้าน/ของขวัญ/สล็อต/ประตู/มงกุฎ/แชท
+// ไอคอนเลือกตามแนวไททัน/มงกุฎ — บ้าน/ของขวัญ/สล็อต/ประตู/มงกุฎ/แชท
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
@@ -39,13 +40,13 @@ const links = [
 
 <header class="sticky top-0 z-[100] w-full font-sans">
   <nav
-    class="relative mx-auto flex h-[85px] w-full items-center justify-between rounded-b-2xl border-b border-[#f2cc53]/40 bg-[#050301]/85 px-4 shadow-[0_10px_30px_rgba(242,204,83,0.3)] backdrop-blur-xl xl:px-8">
-    <a href="/" class="z-[110] flex-shrink-0 transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(255,232,154,0.5)]">
+    class="relative mx-auto flex h-[85px] w-full items-center justify-between rounded-b-2xl border-b border-[#a855f7]/40 bg-[#07030f]/85 px-4 shadow-[0_10px_30px_rgba(168,85,247,0.3)] backdrop-blur-xl xl:px-8">
+    <a href="/" class="z-[110] flex-shrink-0 transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(192,132,252,0.5)]">
       {
         mainLogo ? (
           <Picture
             src={mainLogo}
-            alt="โลโก้ NEOCLUB88 ด้านบนเป็นตราวงกลมสีทองลายเส้นโค้งซ้อนกันเป็นรูปอักษรผสม มีดาวห้าแฉกสีเงินโครเมียมซ้อนอยู่ด้านขวา ใต้ตราเป็นตัวอักษรคำว่า NEOCLUB88 โดย NEO เป็นสีทองเงาวาว CLUB เป็นสีเงินโครเมียม และเลข 88 เป็นสีทอง ล่างสุดเป็นข้อความเส้นบางว่า LIVE CASINO AND SLOT ONLINE"
+            alt="โลโก้ TITANWIN168 ตัวอักษรโลหะโครเมียมเงินทรงเหลี่ยมคมแบบตราศึกอ่านว่า TITANWIN มีมงกุฎทองประดับอัญมณีสีม่วงวางอยู่ด้านบนตรงกลาง ขนาบด้วยปีกโลหะสีดำเงาขอบม่วงแผ่ออกสองข้าง ใต้ตัวอักษรเป็นเลข 168 สีเงินไล่เป็นม่วง วางอยู่บนลวดลายโลหะโค้งประดับอัญมณีม่วง"
             loading="eager"
             widths={[140, 280, 420]}
             sizes="(max-width: 1279px) 140px, 180px"
@@ -54,9 +55,9 @@ const links = [
             fallbackFormat="webp"
           />
         ) : (
-          <span class="bg-gradient-to-r from-[#eef1f5] to-[#8d949e] bg-clip-text text-4xl font-black tracking-widest text-transparent drop-shadow-md">
-            <span class="bg-gradient-to-r from-[#ffe89a] to-[#c39b3c] bg-clip-text text-transparent">NEO</span>CLUB<span
-              class="bg-gradient-to-r from-[#f6d977] to-[#8a6415] bg-clip-text text-transparent">88</span>
+          <span class="bg-gradient-to-r from-[#dfe4f0] to-[#8d93a8] bg-clip-text text-4xl font-black tracking-widest text-transparent drop-shadow-md">
+            TITAN<span class="bg-gradient-to-r from-[#ede4ff] to-[#a855f7] bg-clip-text text-transparent">WIN</span><span
+              class="bg-gradient-to-r from-[#f2dda3] to-[#a9803a] bg-clip-text text-transparent">168</span>
           </span>
         )
       }
@@ -67,13 +68,13 @@ const links = [
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative flex h-full items-center gap-2 px-2 text-sm font-bold tracking-widest uppercase transition-colors duration-300 xl:text-base ${isActive(item.path) ? "text-[#ffe89a]" : "text-[#ede0c4]/60 hover:text-white"}`}>
+            class={`group relative flex h-full items-center gap-2 px-2 text-sm font-bold tracking-widest uppercase transition-colors duration-300 xl:text-base ${isActive(item.path) ? "text-[#c084fc]" : "text-[#ddd2f5]/60 hover:text-white"}`}>
             <span aria-hidden="true" class="text-base leading-none">
               {item.icon}
             </span>
             <span>{item.name}</span>
             <div
-              class={`absolute bottom-0 left-0 h-[3px] w-full rounded-t-full bg-gradient-to-r from-[#ffe89a] via-[#f2cc53] to-[#c6ccd4] shadow-[0_-2px_10px_rgba(242,204,83,0.8)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+              class={`absolute bottom-0 left-0 h-[3px] w-full rounded-t-full bg-gradient-to-r from-[#ede4ff] via-[#a855f7] to-[#e3c176] shadow-[0_-2px_10px_rgba(168,85,247,0.8)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
             />
           </a>
         ))
@@ -83,35 +84,35 @@ const links = [
     <div class="z-[110] flex items-center gap-4">
       <a
         href="/login"
-        class="hidden items-center justify-center rounded-full border border-[#c6ccd4]/50 bg-[#050301]/60 px-7 py-2.5 text-sm font-bold text-[#ede0c4] backdrop-blur-md transition-all duration-300 hover:bg-[#241303]/70 hover:text-white hover:shadow-[0_0_15px_rgba(198,204,212,0.4)] lg:flex">
+        class="hidden items-center justify-center rounded-full border border-[#b9c0d0]/50 bg-[#07030f]/60 px-7 py-2.5 text-sm font-bold text-[#ddd2f5] backdrop-blur-md transition-all duration-300 hover:bg-[#22104a]/70 hover:text-white hover:shadow-[0_0_15px_rgba(185,192,208,0.4)] lg:flex">
         เข้าสู่ระบบ
       </a>
       <a
         href="/register"
-        class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#f6d977] via-[#f2cc53] to-[#8a6415] px-7 py-2.5 text-sm font-black text-[#050301] shadow-[0_4px_15px_rgba(242,204,83,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(246,217,119,0.6)] lg:flex">
+        class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#f2dda3] via-[#e3c176] to-[#a9803a] px-7 py-2.5 text-sm font-black text-[#07030f] shadow-[0_4px_15px_rgba(227,193,118,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(242,221,163,0.6)] lg:flex">
         สมัครสมาชิก
       </a>
 
       <button
         id="hamburger-btn"
-        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] rounded-full border border-[#f2cc53]/30 bg-[#050301]/60 lg:hidden"
+        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] rounded-full border border-[#a855f7]/30 bg-[#07030f]/60 lg:hidden"
         aria-label="เปิดเมนู">
-        <span class="line-1 h-[2px] w-5 origin-center rounded-full bg-[#ffe89a] transition-all duration-300"></span>
-        <span class="line-2 h-[2px] w-5 origin-center rounded-full bg-[#ffe89a] transition-all duration-300"></span>
-        <span class="line-3 h-[2px] w-5 origin-center rounded-full bg-[#ffe89a] transition-all duration-300"></span>
+        <span class="line-1 h-[2px] w-5 origin-center rounded-full bg-[#c084fc] transition-all duration-300"></span>
+        <span class="line-2 h-[2px] w-5 origin-center rounded-full bg-[#c084fc] transition-all duration-300"></span>
+        <span class="line-3 h-[2px] w-5 origin-center rounded-full bg-[#c084fc] transition-all duration-300"></span>
       </button>
     </div>
   </nav>
 
   <div
     id="mobile-menu"
-    class="pointer-events-none absolute top-[85px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col rounded-b-3xl border-b border-[#f2cc53]/40 bg-[#050301]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-400 lg:hidden">
+    class="pointer-events-none absolute top-[85px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col rounded-b-3xl border-b border-[#a855f7]/40 bg-[#07030f]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-400 lg:hidden">
     <div class="flex flex-col gap-2">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`flex items-center gap-3 rounded-xl px-5 py-3.5 text-lg font-bold tracking-widest uppercase transition-colors ${isActive(item.path) ? "bg-[#241303]/70 text-[#ffe89a] shadow-inner" : "text-[#ede0c4]/60 hover:bg-white/5 hover:text-white"}`}>
+            class={`flex items-center gap-3 rounded-xl px-5 py-3.5 text-lg font-bold tracking-widest uppercase transition-colors ${isActive(item.path) ? "bg-[#22104a]/70 text-[#c084fc] shadow-inner" : "text-[#ddd2f5]/60 hover:bg-white/5 hover:text-white"}`}>
             <span aria-hidden="true" class="text-xl leading-none">
               {item.icon}
             </span>
@@ -123,10 +124,10 @@ const links = [
     <div class="mt-6 flex flex-col gap-4">
       <a
         href="/register"
-        class="flex w-full justify-center rounded-full bg-gradient-to-r from-[#f6d977] to-[#8a6415] py-3.5 text-lg font-black text-[#050301] shadow-[0_5px_15px_rgba(242,204,83,0.35)]">
+        class="flex w-full justify-center rounded-full bg-gradient-to-r from-[#f2dda3] to-[#a9803a] py-3.5 text-lg font-black text-[#07030f] shadow-[0_5px_15px_rgba(227,193,118,0.35)]">
         สมัครสมาชิก
       </a>
-      <a href="/login" class="flex w-full justify-center rounded-full border border-[#c6ccd4]/50 bg-[#050301]/60 py-3.5 text-lg font-bold text-[#ede0c4]">เข้าสู่ระบบ</a>
+      <a href="/login" class="flex w-full justify-center rounded-full border border-[#b9c0d0]/50 bg-[#07030f]/60 py-3.5 text-lg font-bold text-[#ddd2f5]">เข้าสู่ระบบ</a>
     </div>
   </div>
 </header>

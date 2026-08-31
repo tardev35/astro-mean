@@ -8,21 +8,22 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// NEOCLUB88: ทองคลับคู่แพลทินัมตามโลโก้จริง — ทอง #f2cc53 / #ffe89a / #f6d977 /
-// #c39b3c / #a8842c / #8a6415 คู่แพลทินัมเงิน #eef1f5 / #c6ccd4 / #8d949e บนผิว
-// #241303 / #140b02 / #0a0602 เนื้อความ #ede0c4 หัวข้อ #fbf4e4
-// (ค่า hex ของแบรนด์ก่อนไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ
+// TITANWIN168: ไฟล์นี้มาถึงรอบนี้ในชุดสีทองคลับคู่แพลทินัมของแบรนด์ก่อนหน้า ย้ายทั้ง
+// ไฟล์มาเป็นม่วงไททันคู่มงกุฎทอง — ม่วง #a855f7 / #c084fc / #ede4ff / #7c3aed /
+// #6d28d9 คู่ทองมงกุฎ #e3c176 / #f2dda3 / #a9803a และโครเมียมเงิน #dfe4f0 /
+// #b9c0d0 บนผิว #22104a / #2e1065 / #07030f เนื้อความ #ddd2f5
+// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
 // ได้จาก git history)
 //
-// ป้ายคอลัมน์ซ้ายรับคู่ทอง ป้ายคอลัมน์ขวารับคู่แพลทินัม ทั้งการ์ดจึงอ่านเป็นคู่สี
-// ของแบรนด์ ไม่ใช่แถบสีเดียวกันสองแถบ
+// การ์ดใบนี้ออกแบบให้อ่านเป็น "คู่สี" ไม่ใช่แถบสีเดียวกันสองแถบ รอบนี้คู่สีคือม่วง
+// กับทอง: ป้ายคอลัมน์ซ้ายรับม่วงซึ่งเป็นสีนำ ป้ายคอลัมน์ขวารับทองมงกุฎซึ่งเป็นสีคู่
+// ส่วนโครเมียมเงิน (ตัวอักษรโลโก้) ไปอยู่ที่ไล่เฉดหัวข้อกับแถบขีดหัวข้อ
 //
 // `title` เป็นหัวข้อเดียวที่ component นี้ปล่อยออกมาได้ และมีไว้ให้บล็อกนี้แบก
 // section ของ docx ได้ ส่วนหัวคอลัมน์ทั้งสองยังเป็น <p>: มันตั้งชื่อแผง UI
 // ไม่ใช่ section ของ docx การเลื่อนขึ้นเป็นหัวข้อจะเพิ่มระดับหัวข้อที่ brief
-// ไม่เคยขอ — เป็นการแบ่งชุดเดียวกับที่ ContentBoxTwo.astro ใช้ รอบนี้บล็อกนี้
-// แบกหัวข้อ docx ข้อ 2 (เปิดประสบการณ์แบบสมาชิกพรีเมียม)
+// ไม่เคยขอ — docx รอบนี้แบน H1 + H2 ล้วน ไม่มี H3 เลย
 //
 // เมื่อส่ง title มา หัวข้อตั้งชื่อ section ให้แล้ว จึงไม่เพิ่ม aria-label ทับ
 // ถ้าไม่มี title ให้ section ใช้ `label` เป็นชื่อสำหรับ assistive tech แทน
@@ -31,24 +32,24 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#a8842c]/30 bg-[#241303]/90 p-8 text-[#ede0c4] shadow-[0_10px_30px_rgba(195,155,60,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#f2cc53]/55 hover:shadow-[0_15px_40px_rgba(230,236,243,0.24)] md:p-10">
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#33230b]/70 to-transparent opacity-80"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#6d28d9]/30 bg-[#22104a]/90 p-8 text-[#ddd2f5] shadow-[0_10px_30px_rgba(124,58,237,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#a855f7]/55 hover:shadow-[0_15px_40px_rgba(223,228,240,0.24)] md:p-10">
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#2e1065]/70 to-transparent opacity-80"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#a8842c]/30 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe89a] via-[#c6ccd4] to-[#a8842c] shadow-[0_0_10px_rgba(242,204,83,0.55)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fbf4e4] via-[#c6ccd4] to-[#f2cc53] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#6d28d9]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f2dda3] via-[#dfe4f0] to-[#6d28d9] shadow-[0_0_10px_rgba(168,85,247,0.55)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#dfe4f0] via-[#c084fc] to-[#e3c176] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ede0c4]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ddd2f5]">
         {
           titleleft && (
-            <p class="flex items-center gap-3 border-b border-[#a8842c]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#f2cc53]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe89a] via-[#f2cc53] to-[#8a6415] shadow-[0_0_10px_rgba(242,204,83,0.5)]" />
+            <p class="flex items-center gap-3 border-b border-[#6d28d9]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#c084fc]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ede4ff] via-[#c084fc] to-[#6d28d9] shadow-[0_0_10px_rgba(168,85,247,0.5)]" />
               {titleleft}
             </p>
           )
@@ -56,11 +57,11 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ede0c4] md:border-l md:border-[#c6ccd4]/35 md:pl-10">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ddd2f5] md:border-l md:border-[#e3c176]/35 md:pl-10">
         {
           titleright && (
-            <p class="flex items-center gap-3 border-b border-[#c6ccd4]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#c6ccd4]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#eef1f5] via-[#c6ccd4] to-[#8d949e] shadow-[0_0_10px_rgba(230,236,243,0.45)]" />
+            <p class="flex items-center gap-3 border-b border-[#e3c176]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#e3c176]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f2dda3] via-[#e3c176] to-[#a9803a] shadow-[0_0_10px_rgba(227,193,118,0.45)]" />
               {titleright}
             </p>
           )

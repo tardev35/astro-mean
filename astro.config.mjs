@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.aura456-th.com",
+  site: "https://www.titanwin168-th.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

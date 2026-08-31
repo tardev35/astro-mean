@@ -2,48 +2,51 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 
 import { Picture } from "astro:assets";
 
-// AURA456: ticker หมุนมาเป็น AnnouncementCyber และกล่องหน้าย่อยใช้ ContentBox
+// TITANWIN168: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยใช้ ContentBox
 // ตามสเปกรอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
-// variant นี้ถูกตั้งเป็นข้อความของแบรนด์นี้แล้ว
+// variant นี้เป็นข้อความของแบรนด์นี้แล้ว ticker จึงเหมือนกันทั้งเว็บ
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the single
-// <h1>), ONE short intro paragraph, the promo image, one CTA. Nothing else —
-// no <h2>, no section paragraphs. The artwork already prints its own offer in
+// <h1>), ONE short intro paragraph, the promo image grid, one CTA. Nothing else
+// — no <h2>, no section paragraphs. The artwork already prints its own offer in
 // large type, so prose below it re-types what the visitor can already read, in
 // smaller letters. The docx gives this page a Title and a Meta and never a body.
 //
-// Named for what the banner ACTUALLY prints, not for its file number.
-// This drop supplies ONE promo image: slide1 = the RANKING tier ladder
-// (Spark → Pulse → Nova → Prism → Radiant → Eclipse, ยิ่งฝากยิ่งอัพเลเวล,
-// รีเซ็ตทุก 2 เดือน), 600x229, a wide neon banner rather than a square poster.
+// Named for what each banner ACTUALLY prints, not for its file number.
+// This drop supplies TWO promo images:
+//   slide1 = the RANKING tier ladder (EXPLORER → WARRIOR → ELITE → COMMANDER →
+//            TITAN → TITAN EMPEROR, ยิงฝาก ยิงอัพเวส, รีเซ็ตทุก 2 เดือน), 600x229
+//   slide2 = the owl-mascot cashback banner (รอบนี้คืนให้หนักกว่าเดิม!,
+//            ยอดเสียรับคืนสูงถึง 12%), 600x200
+// Both are wide neon banners rather than square posters.
 //
-// slide2/3/4.png are the PREVIOUS brand's artwork (dated a day before this
-// drop) — gold-on-black posters carrying another brand's logo and domain as
-// pixels — so they are not imported here. Neither are banner.png / banner2-4:
-// an imported image is an EMITTED image even when nothing renders it, so a
-// dead import ships another brand's bytes on every deploy. banner1 /
-// banner1-mobile belong to MainLayout's hero <picture> alone.
+// slide3/4.png are NEOCLUB88's posters — another brand's logo and domain baked
+// into the pixels — so they are not imported here. Neither are banner.png /
+// banner2-4: an imported image is an EMITTED image even when nothing renders
+// it, so a dead import ships another brand's bytes on every deploy. banner1
+// belongs to MainLayout's hero <picture> alone.
 //
 // Only what is printed on the banner may be stated in its alt.
 import promoRanking from "../assets/slide1.png";
+import promoCashback from "../assets/slide2.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 158. It states what the
-// page holds — the offers the banner itself prints — and stops.
+// byte count reads ~3x too long). This one measures 155. It states what the
+// page holds — the offers the banners themselves print — and stops.
 const pageDescription =
-  "รวมโปรโมชั่น AURA456 ทั้งระบบแรงกิ้งลำดับขั้น ยิ่งฝากยิ่งอัพเลเวล รีเซ็ตทุก 2 เดือน โบนัสต้อนรับสมาชิกใหม่ โปรเพิ่มทุนฝากแรกของวัน และระบบคืนยอดเสีย Cash Back";
+  "รวมโปรโมชั่น TITANWIN168 ทั้งระบบแรงกิ้งลำดับขั้นที่ยิ่งฝากยิ่งอัพเวลและรีเซ็ตทุก 2 เดือน กับโปรคืนยอดเสียสูงถึง 12% เงื่อนไขโปร่งใส กดรับเองได้ก่อนเข้าเกม";
 
-const pageTitle = "โปรโมชั่น AURA456 | แรงกิ้งลำดับขั้น โบนัสต้อนรับ โปรฝากแรกของวัน Cash Back";
+const pageTitle = "โปรโมชั่น TITANWIN168 | แรงกิ้งลำดับขั้น คืนยอดเสียสูงถึง 12% กดรับเอง";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น AURA456 รวมสิทธิ์และระบบลำดับขั้นที่เปิดให้สมาชิกกดรับ";
+const pageHeading = "โปรโมชั่น TITANWIN168 รวมสิทธิ์และระบบลำดับขั้นที่เปิดให้สมาชิกกดรับ";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -55,32 +58,41 @@ const graph = pageGraph(Astro, {
   primaryImagePath: promoRanking.src,
 });
 
-// One image, so no grid — a grid-cols-1 sm:grid-cols-2 grid holding a single
-// card reads as a layout that lost half its content. It is one centred column
-// capped at max-w-3xl (768px) instead.
+// Two images this round, so it is a real grid: one column on phones, two from
+// sm: up, gap-6 (1.5rem) between the cells.
 //
-// sizes describes how wide the picture is DRAWN, not how wide a file to fetch.
-// ContentBox wraps it in px-4 (2rem) + p-8 (4rem, stepping to p-10 = 5rem at
-// md:), and the card caps at max-w-[1400px]:
-//   < 768px  : คอลัมน์เดียวในกรอบ px-4 + p-8            → 100vw - 6rem
-//   768–879  : กรอบ px-4 + p-10 ยังแคบกว่าเพดาน 768px    → 100vw - 7rem
-//   ≥ 880px  : ภาพชนเพดาน max-w-3xl                      → 768px
-const imageSizes = "(max-width: 767px) calc(100vw - 6rem), (max-width: 879px) calc(100vw - 7rem), 768px";
+// sizes describes how wide each cell is DRAWN, not how wide a file to fetch.
+// ContentBox wraps the grid in px-4 (2rem) + p-8 (4rem, stepping to p-10 =
+// 5rem at md:), and the card caps at max-w-[1400px]:
+//   < 640px  : คอลัมน์เดียวเต็มกรอบ px-4 + p-8       → 100vw - 6rem
+//   640–767  : 2 คอลัมน์ + gap-6 ยังเป็น p-8         → (100vw - 7.5rem) / 2
+//   768–1431 : 2 คอลัมน์ + gap-6 ขยับเป็น p-10       → (100vw - 8.5rem) / 2
+//   ≥ 1432px : การ์ดชนเพดาน 1400px                   → (1400 - 5rem - 1.5rem) / 2 = 648px
+const imageSizes =
+  "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบม่วงนีออนของแบรนด์ล้อกับพื้นครามบนแบนเนอร์ แล้วสว่างขึ้นเป็นบานเย็นตอน hover
+// ขอบม่วงไททันของแบรนด์ล้อกับพื้นม่วงเข้มบนแบนเนอร์ แล้วสว่างขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full max-w-3xl rounded-xl border border-[#8b3cf7]/40 object-contain shadow-[0_10px_30px_rgba(139,60,247,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ff7fd4]/70 hover:shadow-[0_15px_40px_rgba(200,29,142,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#6d28d9]/40 object-contain shadow-[0_10px_30px_rgba(109,40,217,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#c084fc]/70 hover:shadow-[0_15px_40px_rgba(124,58,237,0.45)]";
 
-// The column is drawn up to 768px, but the ladder is clamped to the file's own
-// intrinsic width (600px here) so a sharp upscale never becomes a source and
-// never ships more bytes than the file held.
+// A cell is drawn up to 648px, but the ladder is clamped to each file's own
+// intrinsic width (600px for both banners here) so a sharp upscale never
+// becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
-  const steps = [384, 576, 768].filter((w) => w < img.width);
-  return [...steps, Math.min(img.width, 768)];
+  const steps = [384, 576, 648].filter((w) => w < img.width);
+  return [...steps, Math.min(img.width, 648)];
 };
 
-const promoAlt =
-  "แบนเนอร์โปรโมชั่นนีออนแนวนอนบนพื้นครามเกือบดำ มุมซ้ายบนเป็นโลโก้ AURA456 พร้อมบรรทัดใต้โลโก้เขียนว่า CYBER MYSTIC CASINO กลางภาพเป็นคำว่า RANKING ตัวอักษรนีออนขนาดใหญ่ ถัดลงมาเป็นข้อความ ลำดับขั้น ยิ่งฝาก ยิ่งอัพเลเวล เพื่อรับโบนัสในการเล่น และ รีเซ็ตทุก 2 เดือน ด้านล่างเป็นแถวป้ายทรงข้าวหลามตัดเรืองแสงหกอันเรียงกัน กำกับว่า Spark จุดประกาย, Pulse พลังชีพจร, Nova ออร่าพุ่ง, Prism พลังหลากมิติ, Radiant เปล่งประกาย และ Eclipse ขั้นสูงสุด ผู้ครองเงาออร่า";
+const promos = [
+  {
+    src: promoRanking,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นม่วงเข้มเกือบดำ มุมซ้ายบนเป็นโลโก้ TITANWIN168 กลางภาพเป็นตัวอักษรขนาดใหญ่ว่า RANKING ลำดับขั้น!! และ ยิงฝาก ยิงอัพเวส ถัดลงมาเป็นแถบเขียนว่า เพื่อรับไอเทมในการเล่น รีเซ็ตทุก 2 เดือน ด้านล่างเป็นแถวตราสัญลักษณ์เรืองแสงหกอันเรียงกัน กำกับว่า EXPLORER, WARRIOR, ELITE, COMMANDER, TITAN และ TITAN EMPEROR",
+  },
+  {
+    src: promoCashback,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นม่วงเข้ม มุมซ้ายบนเป็นโลโก้ TITANWIN168 ด้านขวาเป็นนกฮูกการ์ตูนสวมเสื้อคลุมม่วงกอดคริสตัลสีม่วง ข้อความด้านบนเขียนว่า รอบนี้คืนให้หนักกว่าเดิม! กลางภาพเป็นป้ายคริสตัลตัวเลข 12% คู่กับข้อความ ยอดเสียรับคืนสูงถึง 12% และแถบล่างเขียนว่า โปรพิเศษเฉพาะช่วงนี้เท่านั้น",
+  },
+];
 ---
 
 <MainLayout title={pageTitle} description={pageDescription}>
@@ -91,29 +103,35 @@ const promoAlt =
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#ff2fb0]">AURA456</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งระบบลำดับขั้นที่อัพเลเวลตามยอดฝากและรีเซ็ตทุก 2 เดือน โบนัสต้อนรับสมาชิกใหม่ โปรเพิ่มทุนสำหรับยอดฝากแรกของวัน และระบบคืนยอดเสีย Cash Back
-        ชื่อของแต่ละขั้น เงื่อนไขของแต่ละสิทธิ์ และรอบเวลาที่ใช้คำนวณ พิมพ์อยู่บนแบนเนอร์ครบแล้ว จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกรายการเลือกกดรับเองได้จากหน้าเว็บก่อนเข้าเกม จบในไม่กี่วินาทีด้วยระบบออโต้ ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ
+        แบนเนอร์ด้านล่างคือสิทธิ์ที่ <strong class="text-[#a855f7]">TITANWIN168</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งระบบแรงกิ้งลำดับขั้นที่อัพเวลตามยอดฝากและรีเซ็ตทุก 2 เดือน และโปรคืนยอดเสีย Cash Back
+        ชื่อของแต่ละขั้น เพดานของแต่ละสิทธิ์ และรอบเวลาที่ใช้คำนวณ พิมพ์อยู่บนแบนเนอร์ครบแล้ว จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกรายการเลือกกดรับเองได้จากหน้าเว็บก่อนเข้าเกม เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด และไม่ต้องรอแอดมินอนุมัติ
       </p>
 
-      <Picture
-        src={promoRanking}
-        alt={promoAlt}
-        loading="lazy"
-        fetchpriority="low"
-        widths={widthLadder(promoRanking)}
-        sizes={imageSizes}
-        class={imageClass}
-        decoding="async"
-        formats={["avif", "webp"]}
-        fallbackFormat="webp"
-        quality={80}
-      />
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        {
+          promos.map((promo) => (
+            <Picture
+              src={promo.src}
+              alt={promo.alt}
+              loading="lazy"
+              fetchpriority="low"
+              widths={widthLadder(promo.src)}
+              sizes={imageSizes}
+              class={imageClass}
+              decoding="async"
+              formats={["avif", "webp"]}
+              fallbackFormat="webp"
+              quality={80}
+            />
+          ))
+        }
+      </div>
 
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#d8f2ff]/40 bg-gradient-to-r from-[#ffc9ee] via-[#ff2fb0] to-[#4a179e] px-10 py-3.5 text-lg font-black text-[#0b0528] shadow-[0_10px_30px_rgba(255,47,176,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(200,29,142,0.5)]">
-          สมัครสมาชิก AURA456
+          class="flex items-center justify-center rounded-lg border border-[#dfe4f0]/40 bg-gradient-to-r from-[#ede4ff] via-[#a855f7] to-[#3b0d73] px-10 py-3.5 text-lg font-black text-[#160a2b] shadow-[0_10px_30px_rgba(168,85,247,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(124,58,237,0.5)]">
+          สมัครสมาชิก TITANWIN168
         </a>
       </div>
     </div>

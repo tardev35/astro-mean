@@ -22,13 +22,13 @@ import bannerNewGame from "../assets/gamedemo16.webp";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์คือตัวหนังสือกับตัวละครบนรูป สิ่งนั้นจึงเป็น alt
 //
-// AURA456: รอบนี้แถบนี้เลิกใช้ slide* แล้ว — สไลด์ที่เป็นของแบรนด์นี้จริงมีใบเดียว
-// (slide1) และมันไปอยู่ในบล็อก ContentBoxSevenThreeCyberCut บนหน้าแรกแล้ว ส่วน
-// slide2/3/4 กับ banner ทุกหมายเลขเป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและโดเมนของเขา
+// TITANWIN168: แถบนี้ไม่ใช้ slide* — สไลด์ที่เป็นของแบรนด์นี้จริงมีสองใบ (slide1
+// กับ slide2) และทั้งคู่ไปอยู่ในบล็อก ContentBoxSevenThree* บนหน้าแรกแล้ว ส่วน
+// slide3/slide4 กับ banner ทุกหมายเลขเป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและโดเมนของเขา
 // พิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม — การ import คือการ emit ลง
 // dist/ ถึงจะไม่มีใคร render ก็ตาม แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายเกม/เกมออกใหม่ที่
-// เป็นกลางกับแบรนด์แทน ซึ่งทำให้มันอ่านเป็นแถบล็อบบี้ "เกมฮิตกระแสแรง" ตามหัวข้อ
-// docx ข้อ 4 พอดี จึงย้ายมาวางต่อจาก GameRankingBoard
+// เป็นกลางกับแบรนด์แทน ซึ่งทำให้มันอ่านเป็นแถบค่ายชั้นนำที่ยกตัวเด่นมาชนตามหัวข้อ
+// docx ข้อ 5 พอดี จึงวางต่อจาก GameRankingBoard
 //
 // แบนเนอร์ชุดนี้เป็นภาพแนวนอน (อัตราส่วนราว 1.58:1) ไม่ใช่จัตุรัสเหมือนสไลด์ชุดก่อน
 // จำนวนช่องที่เห็นยังเท่าเดิม (2 ช่องบนมือถือ / 3 ช่องบนเดสก์ท็อป ที่ max-w-[820px])
@@ -87,7 +87,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#3ba9ff]/60 peer-focus-visible:bg-[#1c1046] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ff2fb0]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e3c176]/60 peer-focus-visible:bg-[#2e1065] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#a855f7]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -100,7 +100,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#8b3cf7]/45 object-cover shadow-[0_10px_30px_rgba(139,60,247,0.28)]"
+              class="block w-full rounded-xl border border-[#6d28d9]/45 object-cover shadow-[0_10px_30px_rgba(109,40,217,0.28)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
