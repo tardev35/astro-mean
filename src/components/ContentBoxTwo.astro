@@ -10,23 +10,23 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, iconleft = "🔐", iconright = "💎", label } = Astro.props;
 
-// PAY69: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด มาที่ทองแชมเปญเดี่ยวบนดำสนิท ไม่มีสีคู่ —
-// ทอง #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว #08070a / #12100c /
-// #1c1811 เนื้อความ #e6dac2 ข้อความรอง #a99a7d
-// สองคอลัมน์แยกกันด้วยน้ำหนักของทองคนละระดับ (ซ้ายรับทองหลัก ขวารับทองครีมสว่าง)
-// ไม่ใช่ด้วยสีที่สอง เพราะอาร์ตของแบรนด์นี้เป็นทองล้วนบนดำ (ห้ามพิมพ์ hex ของ
-// แบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง
-// gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// PHOENIX168: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด มาที่ไฟฟีนิกซ์คู่ทองขนนกบนถ่านเกือบดำ
+// — ส้มไฟ #ff5a1e / #ffa14a / #ffe2c4 / #c04a12 / #7a2408 คู่ทอง #f3ac3c / #f4dc6d
+// บนผิว #0a0402 / #150703 / #1f0a05 เนื้อความ #f2ddc9 ข้อความรอง #c4a08a
+// สองคอลัมน์แยกกันด้วยน้ำหนักของไฟคนละระดับ (ซ้ายรับส้มไฟแกนกลาง ขวารับส้มครีมสว่าง
+// ปลายขนนก) ไม่ใช่ด้วยสีที่สามที่ไม่มีอยู่ในอาร์ตของแบรนด์ (ห้ามพิมพ์ hex ของแบรนด์
+// ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen
+// คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
 // `title` เป็นหัวข้อเดียวที่ component นี้ปล่อยออกมาได้ และมีไว้ให้บล็อกนี้แบก
 // section ของ docx ได้ ส่วนหัวคอลัมน์ทั้งสองยังเป็น <p>: มันตั้งชื่อแผง UI (ฟอร์ม
 // เข้าสู่ระบบ, ตารางอ้างอิง) ไม่ใช่ section ของ docx การเลื่อนขึ้นเป็นหัวข้อจะเพิ่ม
 // ระดับหัวข้อที่ brief ไม่เคยขอ
 //
-// รอบนี้มีผู้เรียกสองราย: หน้าแรกส่ง `title` เข้ามาให้บล็อกนี้แบกหัวข้อ docx ข้อ 2
-// (พร้อม iconleft/iconright ของตัวเอง) และ LoginRtpSection ซึ่งเป็น widget ส่งแค่
-// `label` แล้วใช้ค่า default กุญแจ/เพชร อิโมจิอยู่ใน <span aria-hidden="true">
-// แยกจากข้อความป้ายเสมอ
+// รอบนี้มีผู้เรียกรายเดียวคือ LoginRtpSection ซึ่งเป็น widget ส่งแค่ `label` แล้วใช้
+// ค่า default กุญแจ/เพชร (หน้าแรกรอบนี้ไม่ได้ส่ง `title` เข้ามา — หัวข้อ docx ไปอยู่
+// กับ Premium / Neumorphism / SevenThree / 3ThreePremium / CyberCut / Special แทน)
+// อิโมจิอยู่ใน <span aria-hidden="true"> แยกจากข้อความป้ายเสมอ
 //
 // เมื่อส่ง title มา หัวข้อตั้งชื่อ section ให้แล้ว จึงไม่เพิ่ม aria-label ทับ ถ้าไม่มี
 // title ให้ section ใช้ `label` เป็นชื่อสำหรับ assistive tech แทน
@@ -35,18 +35,18 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 // ใส่ chrome ของการ์ดเฉพาะตอนบล็อกนี้แบก section ของ docx (`title`) เท่านั้น เวลา
 // ถูกใช้เป็นโครงสองคอลัมน์เปล่าๆ — LoginRtpSection ส่งแผงของตัวเองเข้า slot —
 // คอลัมน์จะแบนราบไว้ ไม่งั้นหน้าเว็บจะได้การ์ดซ้อนการ์ด
-const columnBase = "flex flex-col gap-4 text-left text-base leading-relaxed text-[#e6dac2]";
+const columnBase = "flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ddc9]";
 const columnCard =
-  "rounded-3xl border border-[#a87c2e]/35 bg-[#12100c]/90 p-6 shadow-[0_10px_30px_rgba(107,77,21,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#e8c37a]/60 hover:shadow-[0_15px_40px_rgba(232,195,122,0.3)] md:p-8";
+  "rounded-3xl border border-[#c04a12]/35 bg-[#150703]/90 p-6 shadow-[0_10px_30px_rgba(122,36,8,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ff5a1e]/60 hover:shadow-[0_15px_40px_rgba(255,90,30,0.3)] md:p-8";
 const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   {
     title && (
-      <header class="mb-6 flex items-center gap-4 border-b border-[#a87c2e]/40 pb-4">
-        <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fdf4e0] via-[#f7dfa5] to-[#6b4d15] shadow-[0_0_10px_rgba(232,195,122,0.55)]" />
-        <HeadingTag class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#e8c37a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+      <header class="mb-6 flex items-center gap-4 border-b border-[#c04a12]/40 pb-4">
+        <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffe2c4] via-[#ffa14a] to-[#7a2408] shadow-[0_0_10px_rgba(255,90,30,0.55)]" />
+        <HeadingTag class="bg-gradient-to-r from-[#ffe2c4] via-[#ffa14a] to-[#ff5a1e] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
       </header>
     )
   }
@@ -55,10 +55,10 @@ const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
     <article class={columnClass}>
       {
         titleleft && (
-          <p class="flex items-center gap-3 border-b border-[#a87c2e]/30 pb-3 text-xl leading-normal font-black tracking-widest text-[#e8c37a] uppercase">
+          <p class="flex items-center gap-3 border-b border-[#c04a12]/30 pb-3 text-xl leading-normal font-black tracking-widest text-[#ff5a1e] uppercase">
             <span
               aria-hidden="true"
-              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#e8c37a]/55 bg-gradient-to-br from-[#fdf4e0] via-[#e8c37a] to-[#6b4d15] text-sm text-[#08070a] shadow-[0_5px_15px_rgba(232,195,122,0.4)]">
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#ff5a1e]/55 bg-gradient-to-br from-[#ffe2c4] via-[#ff5a1e] to-[#7a2408] text-sm text-[#0a0402] shadow-[0_5px_15px_rgba(255,90,30,0.4)]">
               {iconleft}
             </span>
             {titleleft}
@@ -71,10 +71,10 @@ const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
     <article class={columnClass}>
       {
         titleright && (
-          <p class="flex items-center gap-3 border-b border-[#e8c37a]/35 pb-3 text-xl leading-normal font-black tracking-widest text-[#fdf4e0] uppercase">
+          <p class="flex items-center gap-3 border-b border-[#ff5a1e]/35 pb-3 text-xl leading-normal font-black tracking-widest text-[#ffe2c4] uppercase">
             <span
               aria-hidden="true"
-              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#fdf4e0]/60 bg-gradient-to-br from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] text-sm text-[#08070a] shadow-[0_5px_15px_rgba(253,244,224,0.3)]">
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#ffe2c4]/60 bg-gradient-to-br from-[#f4dc6d] via-[#ffa14a] to-[#c04a12] text-sm text-[#0a0402] shadow-[0_5px_15px_rgba(244,220,109,0.3)]">
               {iconright}
             </span>
             {titleright}

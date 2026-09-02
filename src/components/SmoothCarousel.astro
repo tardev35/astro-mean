@@ -22,17 +22,17 @@ import bannerNewGame from "../assets/gamedemo16.webp";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์คือตัวหนังสือกับตัวละครบนรูป สิ่งนั้นจึงเป็น alt
 //
-// PAY69: แถบนี้ไม่ใช้ slide* — slide1 กับ slide2 ไปอยู่ในบล็อก ContentBoxSevenThree*
-// บนหน้าแรกแล้ว ส่วน slide3/slide4 อยู่บนหน้าโปรโมชั่น และ banner ทุกหมายเลข
-// (banner2/3/4 กับ banner.png) เป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและโดเมนของเขาพิมพ์
-// อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม — การ import คือการ emit ลง dist/
-// ถึงจะไม่มีใคร render ก็ตาม แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายพันธมิตร/เกมออกใหม่ที่
-// เป็นกลางกับแบรนด์แทน วางต่อจาก GameRankingBoard เป็นภาพประกอบท้ายของหัวข้อ docx
-// ข้อ 4 เรื่องสลับฟีลได้หลายหมวดในล็อบบี้เดียว
+// PHOENIX168: แถบนี้ไม่ใช้ slide* — slide1 กับ slide3 ไปอยู่ในบล็อก
+// ContentBoxSevenThree* บนหน้าแรกแล้ว ส่วน slide2 ปล่อยไม่ใช้รอบนี้ และ slide4 กับ
+// banner ทุกหมายเลข (banner2/3/4 กับ banner.png) เป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและ
+// โดเมนของเขาพิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม — การ import คือการ
+// emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายพันธมิตร/
+// เกมออกใหม่ที่เป็นกลางกับแบรนด์แทน วางต่อจาก GameRankingBoard เป็นภาพประกอบท้าย
+// ของหัวข้อ docx ข้อ 4 เรื่องเปิดล็อบบี้เดียวก็เจอเกมน่าตามหลายแนว
 //
-// alt ของแต่ละใบบรรยาย "ตัวหนังสือที่พิมพ์อยู่บนรูปจริง" ห้ามเขียนให้เป็นชื่อค่าย
-// คาสิโนสดในบรีฟเพื่อให้เข้าธีม — นั่นคือ alt ที่ไม่ตรงกับรูป ถ้าวันไหนต้องการให้
-// แถบนี้อ่านเป็นคาสิโนสดเต็มตัว ต้องเปลี่ยนไฟล์รูปก่อน แล้วค่อยเปลี่ยน alt ตาม
+// alt ของแต่ละใบบรรยาย "ตัวหนังสือที่พิมพ์อยู่บนรูปจริง" ห้ามเขียนใหม่ให้เข้าธีม
+// ของแบรนด์ — นั่นคือ alt ที่ไม่ตรงกับรูป ถ้าวันไหนต้องการให้แถบนี้อ่านเป็นชุดอื่น
+// ต้องเปลี่ยนไฟล์รูปก่อน แล้วค่อยเปลี่ยน alt ตาม
 //
 // แบนเนอร์ชุดนี้เป็นภาพแนวนอน (อัตราส่วนราว 1.58:1) ไม่ใช่จัตุรัสเหมือนสไลด์ชุดก่อน
 // จำนวนช่องที่เห็นยังเท่าเดิม (2 ช่องบนมือถือ / 3 ช่องบนเดสก์ท็อป ที่ max-w-[820px])
@@ -91,7 +91,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e8c37a]/60 peer-focus-visible:bg-[#1c1811] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#f7dfa5]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#ff5a1e]/60 peer-focus-visible:bg-[#1f0a05] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffa14a]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -104,7 +104,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#a87c2e]/45 object-cover shadow-[0_10px_30px_rgba(107,77,21,0.3)]"
+              class="block w-full rounded-xl border border-[#c04a12]/45 object-cover shadow-[0_10px_30px_rgba(255,90,30,0.3)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

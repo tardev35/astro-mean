@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
@@ -10,26 +10,26 @@ import { pageGraph } from "../lib/schema";
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 // h2 and h3 counts on this page must both stay 0.
 //
-// The <h1> names what the page IS ("ทางเข้า PAY69 เว็บหลัก"). Do not give it a
-// title that previews an article; there is no article and there never was.
+// The <h1> names what the page IS ("ทางเข้า PHOENIX168 เว็บหลัก"). Do not give
+// it a title that previews an article; there is no article and there never was.
 //
-// PAY69: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox ตามการ
-// หมุน variant รอบนี้ (เรียก <Announcement /> เปล่าๆ เพื่อใช้ default message
-// ของ variant ซึ่งเป็นข้อความของแบรนด์นี้แล้ว)
+// PHOENIX168: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยใช้
+// ContentBox ตามการหมุน variant รอบนี้ (เรียก <Announcement /> เปล่าๆ เพื่อใช้
+// default message ของ variant ซึ่งเป็นข้อความของแบรนด์นี้แล้ว)
 //
-// ปุ่มรอบนี้เป็นทองแชมเปญเดี่ยวบนดำสนิท ไม่มีสีคู่ — ปุ่มเข้าสู่ระบบเป็นผิว
-// #1c1811 ขอบ #e8c37a เนื้อความ #e8c37a hover เป็น #12100c ส่วนปุ่มสมัครสมาชิก
-// ไล่ทอง #fdf4e0 / #f7dfa5 / #a87c2e ขอบ #e8c37a ตัวอักษรผิวเข้ม #12100c
+// ปุ่มรอบนี้เป็นไฟนกฟีนิกซ์บนดำถ่าน — ปุ่มเข้าสู่ระบบเป็นผิว #1f0a05 ขอบ #ff5a1e
+// เนื้อความ #ff5a1e hover เป็น #0a0402 ส่วนปุ่มสมัครสมาชิกไล่ไฟ #ffe2c4 /
+// #ffa14a / #c04a12 ขอบ #ff5a1e ตัวอักษรผิวเข้ม #0a0402
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 155.
+// count reads about three times too long. This one measures 158.
 const pageDescription =
-  "ทางเข้า PAY69 เว็บหลัก ลิงก์ตรงอัปเดตใหม่ ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที คาสิโนสดเว็บตรง API แท้ โต๊ะสดค่ายดัง ฝากถอนออโต้ไว 3 วินาที";
+  "ทางเข้า PHOENIX168 เว็บหลัก ลิงก์ตรงอัปเดตใหม่ ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตเว็บตรง API แท้ เกมลิขสิทธิ์ค่ายดัง ฝากถอนออโต้ไฮสปีด";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า PAY69 เว็บหลัก",
+  name: "ทางเข้า PHOENIX168 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -38,40 +38,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า PAY69 | เว็บหลักลิงก์ตรง โต๊ะสดค่ายดัง ฝากถอนออโต้" description={pageDescription}>
+<MainLayout title="ทางเข้า PHOENIX168 | เว็บหลักลิงก์ตรง เกมลิขสิทธิ์ค่ายดัง ฝากถอนออโต้" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า PAY69 เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า PHOENIX168 เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ PAY69"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#e8c37a]/60 bg-[#1c1811] px-6 py-4 shadow-[0_10px_30px_rgba(107,77,21,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#f7dfa5] hover:bg-[#12100c] hover:shadow-[0_15px_40px_rgba(232,195,122,0.45)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#a87c2e]/25 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ PHOENIX168"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ff5a1e]/60 bg-[#1f0a05] px-6 py-4 shadow-[0_10px_30px_rgba(122,36,8,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#ffa14a] hover:bg-[#0a0402] hover:shadow-[0_15px_40px_rgba(255,90,30,0.45)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#c04a12]/25 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#e8c37a]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#ff5a1e]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#e8c37a]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#ff5a1e]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก PAY69"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#e8c37a]/60 bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] px-6 py-4 shadow-[0_10px_30px_rgba(232,195,122,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(232,195,122,0.5)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#fdf4e0]/30 to-transparent"></div>
+          aria-label="สมัครสมาชิก PHOENIX168"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ff5a1e]/60 bg-gradient-to-r from-[#ffe2c4] via-[#ffa14a] to-[#c04a12] px-6 py-4 shadow-[0_10px_30px_rgba(255,90,30,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,90,30,0.5)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#ffe2c4]/30 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#12100c]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#0a0402]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#12100c]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#0a0402]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

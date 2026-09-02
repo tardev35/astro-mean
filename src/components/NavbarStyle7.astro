@@ -19,35 +19,35 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // "house หน้าแรก") — tools/verify-build.mjs ตรวจข้อนี้แล้ว build จะแดงถ้าพลาด
 //
 // ลำดับเมนู: หน้าแรก → โปรโมชั่น → (สมัคร/เข้าสู่ระบบ ถ้าเปิด toggle) → ที่เหลือ
-// รอบนี้ /login กับ /register ยังเป็นหน้าปุ่มที่ไม่มีรายการเมนูของตัวเอง มีแต่ปุ่ม
-// CTA ที่มุมขวา และ "ทางเข้า" จึงยังอยู่ในเมนูตามปกติ
+// รอบนี้ /login กับ /register ยังเป็นหน้า interstitial ที่ไม่มีรายการเมนูของตัวเอง
+// มีแต่ปุ่ม CTA ที่มุมขวา และ "ทางเข้า" จึงยังอยู่ในเมนูตามปกติ
 //
-// BOOST168 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ใน src/pages-disabled/
+// PHOENIX168 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ใน src/pages-disabled/
 // ห้ามมีลิงก์ถึงทั้งคู่
 //
-// ไอคอนเลือกให้เข้าธีมจรวดบูสต์ของ BOOST168 — 🚀 คือจรวดในโลโก้ ใช้กับทางเข้าที่
-// เน้นความไว และ 🎰 คือตู้สล็อตที่หน้าทดลองเล่น
+// ไอคอนเลือกให้เข้าธีมนกฟีนิกซ์ไฟของ PHOENIX168 — 🔥 คือเปลวไฟในโลโก้ ใช้กับทางเข้า
+// ที่เน้นความไว และ 🎰 คือตู้สล็อตที่หน้าทดลองเล่น
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
-  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚀" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🔥" },
   { name: "เกี่ยวกับเรา", path: "/about-us", icon: "📖" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "📞" },
 ];
 
 const LOGO_ALT =
-  "โลโก้ BOOST168 ตัวอักษร BOOST สีเงินโครเมียมขอบน้ำเงินต่อด้วยเลข 168 สีทองส้ม มีจรวดสีเงินหัวแดงพุ่งขึ้นพร้อมเปลวไฟสีส้มทองโค้งอยู่ด้านบน ใต้ตัวอักษรเป็นแถบไอคอนจอยเกม โพดำ ข้าวหลามตัด โพแดง ดอกจิก และลูกเต๋าสีทอง";
+  "โลโก้ PHOENIX168 ตัวอักษร X ขนาดใหญ่สีเงินเหล็ก มีนกฟีนิกซ์สีแดงส้มกางปีกเปลวไฟสีทองอยู่ด้านหน้า ใต้ลงมาเป็นแผ่นป้ายสีดำขอบเทาเขียนว่า PHOENIX ด้วยตัวอักษรไล่เฉดส้มทอง และเลข 168 สีขาวเงินอยู่บรรทัดล่าง";
 ---
 
 <header class="sticky top-0 z-50 w-full font-sans">
-  <nav class="relative z-40 w-full border-b border-[#ffc233]/45 bg-[#050818]/95 shadow-[0_5px_25px_rgba(63,140,255,0.35)] backdrop-blur-xl">
+  <nav class="relative z-40 w-full border-b border-[#ff5a1e]/45 bg-[#120503]/95 shadow-[0_5px_25px_rgba(243,172,60,0.3)] backdrop-blur-xl">
     <div class="mx-auto flex h-[70px] max-w-7xl items-center justify-between px-4 lg:h-[80px] xl:px-8">
       <div class="flex items-center gap-4">
         <button id="hamburger-btn" class="flex flex-col items-center justify-center space-y-1.5 p-2 lg:hidden" aria-label="เปิดหรือปิดเมนู">
-          <span class="hamburger-line h-[2px] w-6 origin-center rounded-full bg-[#ffe680] shadow-[0_0_5px_rgba(255,230,128,0.5)] transition-all duration-300"></span>
-          <span class="hamburger-line h-[2px] w-6 rounded-full bg-[#ffe680] shadow-[0_0_5px_rgba(255,230,128,0.5)] transition-all duration-300"></span>
-          <span class="hamburger-line h-[2px] w-6 origin-center rounded-full bg-[#ffe680] shadow-[0_0_5px_rgba(255,230,128,0.5)] transition-all duration-300"></span>
+          <span class="hamburger-line h-[2px] w-6 origin-center rounded-full bg-[#ffa14a] shadow-[0_0_5px_rgba(255,161,74,0.5)] transition-all duration-300"></span>
+          <span class="hamburger-line h-[2px] w-6 rounded-full bg-[#ffa14a] shadow-[0_0_5px_rgba(255,161,74,0.5)] transition-all duration-300"></span>
+          <span class="hamburger-line h-[2px] w-6 origin-center rounded-full bg-[#ffa14a] shadow-[0_0_5px_rgba(255,161,74,0.5)] transition-all duration-300"></span>
         </button>
 
         <a href="/" class="flex-shrink-0 transition-transform hover:scale-105">
@@ -59,12 +59,12 @@ const LOGO_ALT =
                 loading="eager"
                 widths={[110, 220, 330]}
                 sizes="110px"
-                class="h-[35px] w-auto drop-shadow-[0_0_10px_rgba(255,194,51,0.55)] lg:h-[50px]"
+                class="h-[35px] w-auto drop-shadow-[0_0_10px_rgba(255,90,30,0.55)] lg:h-[50px]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="bg-gradient-to-b from-[#fff6dd] to-[#b26a00] bg-clip-text text-2xl font-black text-transparent drop-shadow-[0_0_8px_rgba(255,194,51,0.6)] lg:text-3xl">BOOST168</span>
+              <span class="bg-gradient-to-b from-[#ffe2c4] to-[#7a2408] bg-clip-text text-2xl font-black text-transparent drop-shadow-[0_0_8px_rgba(255,90,30,0.6)] lg:text-3xl">PHOENIX168</span>
             )
           }
         </a>
@@ -74,13 +74,13 @@ const LOGO_ALT =
         {
           links.map((item) => (
             <a href={item.path} class="group relative flex h-full flex-col items-center justify-center text-sm font-bold transition-all xl:text-base">
-              <span class={`flex items-center gap-1.5 transition-colors duration-300 ${isActive(item.path) ? "text-[#ffc233] drop-shadow-[0_0_8px_rgba(255,194,51,0.55)]" : "text-[#e6ecfb]/80 group-hover:text-[#ffe680]"}`}>
+              <span class={`flex items-center gap-1.5 transition-colors duration-300 ${isActive(item.path) ? "text-[#ff5a1e] drop-shadow-[0_0_8px_rgba(255,90,30,0.55)]" : "text-[#f2ddc9]/80 group-hover:text-[#ffa14a]"}`}>
                 <span aria-hidden="true">{item.icon}</span>
                 <span>{item.name}</span>
               </span>
               <div
                 aria-hidden="true"
-                class={`absolute bottom-5 w-1.5 h-1.5 rounded-full bg-[#3f8cff] transition-all duration-300 ${isActive(item.path) ? "opacity-100 scale-100 shadow-[0_0_10px_rgba(63,140,255,1)]" : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"}`}
+                class={`absolute bottom-5 w-1.5 h-1.5 rounded-full bg-[#f3ac3c] transition-all duration-300 ${isActive(item.path) ? "opacity-100 scale-100 shadow-[0_0_10px_rgba(243,172,60,1)]" : "opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100"}`}
               />
             </a>
           ))
@@ -90,13 +90,13 @@ const LOGO_ALT =
       <div class="flex items-center gap-3">
         <a
           href="/login"
-          class="hidden items-center justify-center rounded-full border border-[#3f8cff]/55 bg-[#0e1430]/70 px-6 py-2.5 text-sm font-bold text-[#9ecbff] transition-all hover:bg-[#18204a]/90 hover:text-[#ffe680] md:flex">
+          class="hidden items-center justify-center rounded-full border border-[#f3ac3c]/55 bg-[#1f0a05]/70 px-6 py-2.5 text-sm font-bold text-[#ffc79a] transition-all hover:bg-[#2c0e06]/90 hover:text-[#ffa14a] md:flex">
           เข้าสู่ระบบ
         </a>
         <a
           href="/register"
-          style="background-image: linear-gradient(in oklab to right, #b26a00, #ffc233, #ffe680, #b26a00);"
-          class="flex items-center justify-center rounded-full px-5 py-2 text-xs font-extrabold text-[#0a0f22] shadow-[0_0_20px_rgba(255,194,51,0.35)] transition-all hover:shadow-[0_0_25px_rgba(255,194,51,0.55)] hover:brightness-110 lg:px-7 lg:py-2.5 lg:text-sm">
+          style="background-image: linear-gradient(in oklab to right, #7a2408, #ff5a1e, #f4dc6d, #7a2408);"
+          class="flex items-center justify-center rounded-full px-5 py-2 text-xs font-extrabold text-[#1a0603] shadow-[0_0_20px_rgba(255,90,30,0.35)] transition-all hover:shadow-[0_0_25px_rgba(255,90,30,0.55)] hover:brightness-110 lg:px-7 lg:py-2.5 lg:text-sm">
           สมัครสมาชิก
         </a>
       </div>
@@ -107,9 +107,9 @@ const LOGO_ALT =
 
   <div
     id="mobile-bottom-sheet"
-    class="pb-safe fixed bottom-0 left-0 z-[60] w-full translate-y-full transform rounded-t-3xl border-t border-[#ffc233]/50 bg-[#050818] shadow-[0_-10px_40px_rgba(0,0,0,0.8)] transition-transform duration-400 ease-[cubic-bezier(0.3,1,0.3,1)] lg:hidden">
+    class="pb-safe fixed bottom-0 left-0 z-[60] w-full translate-y-full transform rounded-t-3xl border-t border-[#ff5a1e]/50 bg-[#120503] shadow-[0_-10px_40px_rgba(0,0,0,0.8)] transition-transform duration-400 ease-[cubic-bezier(0.3,1,0.3,1)] lg:hidden">
     <div class="flex w-full cursor-pointer justify-center pt-3 pb-2" id="close-sheet-btn">
-      <div class="h-1.5 w-12 rounded-full bg-[#3f8cff]/80"></div>
+      <div class="h-1.5 w-12 rounded-full bg-[#f3ac3c]/80"></div>
     </div>
 
     <div class="flex flex-col space-y-2 px-6 pt-2 pb-8">
@@ -117,24 +117,24 @@ const LOGO_ALT =
         links.map((item) => (
           <a
             href={item.path}
-            class={`sheet-item flex items-center justify-between px-5 py-4 rounded-2xl transition-all ${isActive(item.path) ? "bg-gradient-to-r from-[#ffc233]/30 to-transparent border border-[#ffe680]/35 text-[#ffe680]" : "bg-white/5 border-transparent text-[#e6ecfb]/80"}`}>
+            class={`sheet-item flex items-center justify-between px-5 py-4 rounded-2xl transition-all ${isActive(item.path) ? "bg-gradient-to-r from-[#ff5a1e]/30 to-transparent border border-[#ffa14a]/35 text-[#ffa14a]" : "bg-white/5 border-transparent text-[#f2ddc9]/80"}`}>
             <span class="flex items-center gap-4">
               <span aria-hidden="true" class="text-2xl drop-shadow-lg">
                 {item.icon}
               </span>
               <span class="text-base font-bold tracking-wide">{item.name}</span>
             </span>
-            {isActive(item.path) && <span aria-hidden="true" class="h-2 w-2 rounded-full bg-[#3f8cff] shadow-[0_0_8px_rgba(63,140,255,1)]" />}
+            {isActive(item.path) && <span aria-hidden="true" class="h-2 w-2 rounded-full bg-[#f3ac3c] shadow-[0_0_8px_rgba(243,172,60,1)]" />}
           </a>
         ))
       }
 
       <div class="mt-2 grid grid-cols-2 gap-3 border-t border-white/5 pt-4">
-        <a href="/login" class="flex items-center justify-center rounded-xl border border-[#3f8cff]/40 bg-[#3f8cff]/10 py-3.5 text-sm font-bold text-[#9ecbff]">เข้าสู่ระบบ</a>
+        <a href="/login" class="flex items-center justify-center rounded-xl border border-[#f3ac3c]/40 bg-[#f3ac3c]/10 py-3.5 text-sm font-bold text-[#ffc79a]">เข้าสู่ระบบ</a>
         <a
           href="/register"
-          style="background-image: linear-gradient(in oklab to right, #b26a00, #ffc233, #ffe680, #b26a00);"
-          class="flex items-center justify-center rounded-xl py-3.5 text-sm font-extrabold text-[#0a0f22] shadow-[0_0_15px_rgba(255,194,51,0.4)]">
+          style="background-image: linear-gradient(in oklab to right, #7a2408, #ff5a1e, #f4dc6d, #7a2408);"
+          class="flex items-center justify-center rounded-xl py-3.5 text-sm font-extrabold text-[#1a0603] shadow-[0_0_15px_rgba(255,90,30,0.4)]">
           สมัครสมาชิก
         </a>
       </div>

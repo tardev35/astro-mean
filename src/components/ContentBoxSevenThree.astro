@@ -16,34 +16,35 @@ const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.pro
 // `title` + `as` ตัวเดียว หัวข้อจะไปอยู่เหนือคอลัมน์เนื้อความ (ฝั่ง 7 ส่วน) ซึ่ง
 // กว้างพอรับหัวข้อยาวของ docx ได้โดยไม่ล้นออกนอกการ์ด
 //
-// PAY69: ย้ายจากทองคลับคู่แพลทินัมของแบรนด์ก่อนมาที่ทองแชมเปญเดี่ยวบนดำสนิท
-// ไม่มีสีคู่ — ทอง #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว #08070a /
-// #12100c / #1c1811 เนื้อความ #e6dac2 ข้อความรอง #a99a7d
+// PHOENIX168: ย้ายจากทองแชมเปญเดี่ยวของแบรนด์ก่อนมาที่ไฟฟีนิกซ์คู่ทองขนนก — ส้มไฟ
+// #ff5a1e / #ffa14a / #ffe2c4 / #c04a12 / #7a2408 คู่ทอง #f3ac3c / #f4dc6d บนผิว
+// #0a0402 / #150703 / #1f0a05 เนื้อความ #f2ddc9 ข้อความรอง #c4a08a
 // (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
 // คอมเมนต์ ดูของเดิมได้จาก git history)
 //
-// รอบนี้บล็อกนี้เป็น SevenThree ใบแรกในสองใบของเพดาน playbook คู่กับ slide2
-// (Monthly Extra Bonus) กับหัวข้อ docx ข้อ 5 เรื่องเว็บใหญ่ทุนหนาพร้อมเพย์
+// รอบนี้บล็อกนี้เป็น SevenThree ใบแรกในสองใบของเพดาน playbook คู่กับ slide1
+// (แบนเนอร์ต้อนรับสมาชิกใหม่ที่ระบุบนรูปว่าเล่นได้เฉพาะสล็อตและกีฬา) กับหัวข้อ docx
+// ข้อ 3 เรื่องคลังเกมสล็อตลิขสิทธิ์แท้หลายค่าย
 const sectionLabel = title ? undefined : (label ?? titleright ?? titleleft ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#a87c2e]/35 bg-[#12100c]/90 p-8 text-[#e6dac2] shadow-[0_10px_30px_rgba(107,77,21,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#e8c37a]/55 md:p-10">
-    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#1c1811]/80 blur-[60px]"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#c04a12]/35 bg-[#150703]/90 p-8 text-[#f2ddc9] shadow-[0_10px_30px_rgba(122,36,8,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ff5a1e]/55 md:p-10">
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#1f0a05]/80 blur-[60px]"></div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 border-b border-[#a87c2e]/30 pb-6 text-left text-base leading-relaxed text-[#a99a7d] md:border-r md:border-b-0 md:pr-6 md:pb-0">
-        {titleleft && <p class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{titleleft}</p>}
+      <article class="flex flex-col gap-4 border-b border-[#c04a12]/30 pb-6 text-left text-base leading-relaxed text-[#c4a08a] md:border-r md:border-b-0 md:pr-6 md:pb-0">
+        {titleleft && <p class="bg-gradient-to-r from-[#ffe2c4] via-[#f3ac3c] to-[#c04a12] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#e6dac2] md:pl-6">
-        {title && <HeadingTag class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#e8c37a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f2ddc9] md:pl-6">
+        {title && <HeadingTag class="bg-gradient-to-r from-[#ffe2c4] via-[#ffa14a] to-[#ff5a1e] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>}
         {
           titleright && (
-            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#f7dfa5]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#e8c37a] shadow-[0_0_5px_rgba(232,195,122,0.85)]" /> {titleright}
+            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#ffa14a]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#ff5a1e] shadow-[0_0_5px_rgba(255,90,30,0.85)]" /> {titleright}
             </p>
           )
         }

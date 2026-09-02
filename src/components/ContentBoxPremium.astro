@@ -6,20 +6,14 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// TITANWIN168: ไฟล์นี้มาถึงรอบนี้ในชุดสีทองคลับคู่แพลทินัมของแบรนด์ก่อนหน้า ตอนนี้
-// ย้ายทั้งไฟล์มาเป็นม่วงไททันคู่มงกุฎทอง — ม่วง #a855f7 / #c084fc / #ede4ff /
-// #7c3aed / #6d28d9 / #3b0d73 คู่ทองมงกุฎ #e3c176 / #f2dda3 / #a9803a และโครเมียม
-// เงิน #dfe4f0 / #b9c0d0 บนผิวดำสนิท #07030f / #160a2b / #22104a / #2e1065
-// เนื้อความ #ddd2f5
+// PHOENIX168: ไฟล์นี้มาถึงรอบนี้ในชุดม่วงไททันคู่มงกุฎทองของแบรนด์ก่อนหน้า ตอนนี้
+// ย้ายทั้งไฟล์มาเป็นไฟฟีนิกซ์ — ส้มไฟ #ff5a1e / #ffa14a / #ffe2c4 / #c04a12 /
+// #7a2408 คู่ทองขนนก #f3ac3c / #f4dc6d บนผิวถ่านเกือบดำ #0a0402 / #150703 /
+// #1f0a05 เนื้อความ #f2ddc9
 //
-// การแมปทำตามหน้าที่ ไม่ใช่ตามตารางค่าต่อค่า เพราะแบรนด์ก่อนของไฟล์นี้ไม่ได้อยู่ใน
-// ตารางแปลงของรอบนี้: สีเน้นเดิม -> ม่วง #a855f7, สีเน้นอ่อน -> #c084fc, สีอ่อนสุด
-// -> #ede4ff, สีเน้นเข้ม -> #7c3aed / #6d28d9, แพลทินัม -> โครเมียม #dfe4f0 /
-// #b9c0d0, ผิวเกือบดำ -> #07030f / #160a2b / #22104a และเนื้อความ -> #ddd2f5
-//
-// ทองยังอยู่ แต่ย้ายบทบาทเป็น "สีคู่" ไม่ใช่สีนำ — มันคือมงกุฎบนโลโก้ จึงถูกวางไว้
-// ปลายไล่เฉดหัวข้อและออร่ามุมขวาล่างตอน hover เท่านั้น ส่วนโครเมียมเงินคือตัวอักษร
-// โลโก้ จึงเป็นสต็อปแรกของไล่เฉดหัวข้อ
+// ทองเป็น "สีคู่" ไม่ใช่สีนำ — มันคือปลายขนนกบนโลโก้ จึงถูกวางไว้ปลายไล่เฉดหัวข้อ
+// และออร่ามุมขวาล่างตอน hover เท่านั้น ส่วนส้มไฟคือแกนกลางของโลโก้ จึงถือทั้งขอบ
+// การ์ด เงา และสต็อปกลางของไล่เฉด
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
@@ -34,15 +28,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#6d28d9]/45 bg-gradient-to-br from-[#22104a]/92 to-[#07030f]/88 p-8 text-left text-base leading-relaxed text-[#ddd2f5] shadow-[0_10px_30px_rgba(124,58,237,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#a855f7]/70 hover:shadow-[0_15px_40px_rgba(223,228,240,0.22)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#160a2b]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#7c3aed]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#2e1065]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#e3c176]/30"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#c04a12]/45 bg-gradient-to-br from-[#1f0a05]/92 to-[#0a0402]/88 p-8 text-left text-base leading-relaxed text-[#f2ddc9] shadow-[0_10px_30px_rgba(255,90,30,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#ff5a1e]/70 hover:shadow-[0_15px_40px_rgba(243,172,60,0.22)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#150703]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#ff5a1e]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#7a2408]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#f3ac3c]/30"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#6d28d9]/40 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f2dda3] via-[#dfe4f0] to-[#6d28d9] shadow-[0_0_10px_rgba(168,85,247,0.6)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#dfe4f0] via-[#c084fc] to-[#e3c176] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#c04a12]/40 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f4dc6d] via-[#ff5a1e] to-[#7a2408] shadow-[0_0_10px_rgba(255,90,30,0.6)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#ffe2c4] via-[#ff5a1e] to-[#f3ac3c] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

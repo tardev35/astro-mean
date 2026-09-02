@@ -8,15 +8,14 @@ export interface Props {
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 const rightHeading = titleright ?? title;
 
-// TITANWIN168: ย้ายจากชุดทองคู่แพลทินัมของแบรนด์ก่อนหน้า มาเป็นม่วงไททันคู่มงกุฎทอง
-// — ม่วง #a855f7 / #c084fc / #ede4ff / #7c3aed / #6d28d9 คู่ทองมงกุฎ #e3c176 /
-// #f2dda3 และโครเมียมเงิน #dfe4f0 / #b9c0d0 บนผิว #22104a / #160a2b / #07030f /
-// #2e1065 เนื้อความ #ddd2f5 (ค่า hex ของแบรนด์ก่อนไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind
-// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
-// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// PHOENIX168: ย้ายจากชุดม่วงคู่ทองของแบรนด์ก่อนหน้า มาเป็นไฟฟีนิกซ์คู่ทองขนนก —
+// ส้มไฟ #ff5a1e / #ffa14a / #ffe2c4 / #c04a12 / #7a2408 คู่ทอง #f3ac3c / #f4dc6d
+// บนผิว #1f0a05 / #150703 / #0a0402 เนื้อความ #f2ddc9 (ค่า hex ของแบรนด์ก่อนไม่
+// พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen
+// คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
-// ป้ายคอลัมน์รูปรับโครเมียมเงินไล่ไปหาม่วง ส่วนหัวข้อฝั่งเนื้อความรับโครเมียม -> ม่วง
-// -> ทอง สองฝั่งจึงแยกกันออกด้วยสีของแบรนด์เอง และทองมงกุฎยังโผล่ที่ออร่ามุมขวาล่าง
+// ป้ายคอลัมน์รูปรับครีมสว่างไล่ไปหาส้มไฟ ส่วนหัวข้อฝั่งเนื้อความรับครีม -> ส้มไฟ ->
+// ทองขนนก สองฝั่งจึงแยกกันออกด้วยสีของแบรนด์เอง และทองยังโผล่ที่ออร่ามุมขวาล่าง
 // ตอน hover
 //
 // titleleft เป็น <p> ป้ายคอลัมน์ ไม่ใช่หัวข้อ docx ส่วนหัวข้อจริงออกมาที่ระดับที่
@@ -27,22 +26,22 @@ const rightHeading = titleright ?? title;
 // ที่ไม่มีหัวข้อ docx รองรับ
 //
 // คอลัมน์ซ้าย 3fr คือช่องรูป คอลัมน์ขวา 7fr คือเนื้อความ — ส่งรูปหนึ่งใบเข้า
-// slot="left" และย่อหน้าเดียวเข้า slot="right" รอบนี้บล็อกนี้เป็น SevenThree ใบแรก
-// ในสองใบของเพดาน playbook คู่กับ slide2 (แบนเนอร์คืนยอดเสียสูงสุด 12%) และหัวข้อ
-// docx ข้อ 4 เรื่องโปรโมชั่นใหม่พร้อมชนทุกเวลา
+// slot="left" และย่อหน้าเดียวเข้า slot="right" รอบนี้บล็อกนี้เป็น SevenThree ใบที่สอง
+// ในสองใบของเพดาน playbook คู่กับ slide3 (แบนเนอร์กงล้อนำโชคที่แจกชิ้นส่วนเพชร
+// ทุกชั่วโมง) และหัวข้อ docx ข้อ 7 เรื่องเปิดให้ปั่นตลอด 24 ชั่วโมง
 ---
 
 <section class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#6d28d9]/35 bg-gradient-to-br from-[#22104a]/92 to-[#07030f]/88 p-8 text-[#ddd2f5] shadow-[0_10px_30px_rgba(124,58,237,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#a855f7]/65 hover:shadow-[0_15px_40px_rgba(223,228,240,0.26)] md:p-10">
-    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#2e1065]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#7c3aed]/40"></div>
-    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#160a2b]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#e3c176]/25"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#c04a12]/35 bg-gradient-to-br from-[#1f0a05]/92 to-[#0a0402]/88 p-8 text-[#f2ddc9] shadow-[0_10px_30px_rgba(255,90,30,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ff5a1e]/65 hover:shadow-[0_15px_40px_rgba(243,172,60,0.26)] md:p-10">
+    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#7a2408]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#ff5a1e]/40"></div>
+    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#150703]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#f3ac3c]/25"></div>
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ddd2f5]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ddc9]">
         {
           titleleft && (
-            <p class="bg-gradient-to-r from-[#dfe4f0] via-[#b9c0d0] to-[#6d28d9] bg-clip-text text-center text-xl leading-normal font-black tracking-widest text-transparent uppercase md:text-left">
+            <p class="bg-gradient-to-r from-[#ffe2c4] via-[#ffa14a] to-[#c04a12] bg-clip-text text-center text-xl leading-normal font-black tracking-widest text-transparent uppercase md:text-left">
               {titleleft}
             </p>
           )
@@ -50,10 +49,10 @@ const rightHeading = titleright ?? title;
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ddd2f5] md:border-l md:border-[#6d28d9]/50 md:pl-10">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ddc9] md:border-l md:border-[#c04a12]/50 md:pl-10">
         {
           rightHeading && (
-            <HeadingTag class="mb-2 bg-gradient-to-r from-[#dfe4f0] via-[#c084fc] to-[#e3c176] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase">
+            <HeadingTag class="mb-2 bg-gradient-to-r from-[#ffe2c4] via-[#ff5a1e] to-[#f3ac3c] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase">
               {rightHeading}
             </HeadingTag>
           )

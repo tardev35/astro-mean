@@ -18,9 +18,9 @@ const targetUrl = "https://yoalink.com/znmz";
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
 // undo half of it. Nothing is lost by dropping them — Google Sans covers Thai,
-// so it paints this page on its own. PAY69 runs kanit, so this round the rules
-// DO render and this page is the only place they come from; the flag flips
-// every rebrand, so keep both branches.
+// so it paints this page on its own. PHOENIX168 runs google-sans, so this round
+// the rules do NOT render at all; the flag flips every rebrand, so keep both
+// branches.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
@@ -34,21 +34,24 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: PAY69 is a live-dealer casino
-// brand painted in CHAMPAGNE GOLD ONLY over near-black. There is no second hue
-// at all — every accent, border and glow on this page is a gold. The artwork is
-// gold lettering and gold light-trails on a black floor, so the whole page is one
-// gold ramp (#fdf4e0 → #f7dfa5 → #e8c37a → #a87c2e → #6b4d15) over the surface
-// stack (#08070a / #12100c / #1c1811) with #e6dac2 body text and #a99a7d
-// captions. If you find yourself reaching for a contrasting accent here, the
-// answer is a darker or lighter gold, not another hue.
+// Palette note for the second <style> block: PHOENIX168 is a speed-slot brand
+// painted as a PHOENIX FIRE — a molten orange-red core over a near-black ember
+// floor, with gold only at the feather tips. The whole page is one fire ramp
+// (#ffe2c4 → #ffa14a → #ff5a1e → #c04a12 → #7a2408) over the surface stack
+// (#0a0402 page / rgba(23,7,4) panel / #1f0a05 raised) with #f2ddc9 body text
+// and #b08a72 captions. The single gold (#f3ac3c) is the mid-stop of the
+// wordmark gradient and nothing else — it stands for the "168" lettering, not
+// for the brand's accent. If you find yourself reaching for a contrasting hue
+// here, the answer is a hotter or deeper ember, not another colour family.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
-// no gold in them and a `--brand-red` on a gold one, and the round before this
-// one shipped a `--gold-light` that held the brand's SECOND accent, not its
-// primary — so the next editor reused it by name and got the wrong role. Rename
-// with the value, and re-check the role when the palette changes shape.
+// no gold in them and a `--brand-red` on a gold one, and a later round shipped a
+// `--gold-light` that held the brand's SECOND accent, not its primary — so the
+// next editor reused it by name and got the wrong role. Rename with the value,
+// and re-check the role when the palette changes shape. (That is exactly what
+// happened this round: the names all said "gold" and the values are now ember,
+// so the names moved with them.)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -56,10 +59,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก PAY69 | เปิดยูสคาสิโนสดเว็บตรง ฟรีไม่มีค่าธรรมเนียม</title>
+    <title>สมัครสมาชิก PHOENIX168 | เปิดยูสสล็อตเว็บตรง ฟรีไม่มีค่าธรรมเนียม</title>
     <meta
       name="description"
-      content="สมัครสมาชิก PAY69 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นโต๊ะสดครบทุกค่าย รับโบนัสต้อนรับคาสิโนสดและฝากถอนออโต้ไว 3 วินาที"
+      content="สมัครสมาชิก PHOENIX168 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นสล็อตครบทุกค่าย รับโบนัสต้อนรับและฝากถอนออโต้ไฮสปีดไม่ต้องรอ"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -101,16 +104,17 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #08070a;
-        --panel-bg: rgba(18, 16, 12, 0.92);
-        --gold-cream: #fdf4e0;
-        --gold-bright: #f7dfa5;
-        --gold-primary: #e8c37a;
-        --gold-deep: #a87c2e;
-        --gold-shadow: #6b4d15;
-        --surface-raised: #1c1811;
-        --text-body: #e6dac2;
-        --text-muted: #a99a7d;
+        --page-bg: #0a0402;
+        --panel-bg: rgba(23, 7, 4, 0.92);
+        --ember-cream: #ffe2c4;
+        --ember-light: #ffa14a;
+        --ember-primary: #ff5a1e;
+        --ember-deep: #c04a12;
+        --ember-shadow: #7a2408;
+        --feather-gold: #f3ac3c;
+        --surface-raised: #1f0a05;
+        --text-body: #f2ddc9;
+        --text-muted: #b08a72;
       }
 
       body {
@@ -118,7 +122,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(232, 195, 122, 0.22) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(168, 124, 46, 0.16) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(255, 90, 30, 0.22) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(192, 74, 18, 0.16) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -132,11 +136,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(168, 124, 46, 0.45);
+        border: 1px solid rgba(192, 74, 18, 0.45);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(8, 7, 10, 0.6),
-          0 0 2rem rgba(232, 195, 122, 0.2);
+          0 1rem 3rem rgba(10, 4, 2, 0.6),
+          0 0 2rem rgba(255, 90, 30, 0.2);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -145,13 +149,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--gold-cream) 0%, var(--gold-bright) 45%, var(--gold-deep) 100%);
+        background: linear-gradient(180deg, var(--ember-cream) 0%, var(--feather-gold) 40%, var(--ember-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(107, 77, 21, 0.55));
+        filter: drop-shadow(0 1px 2px rgba(122, 36, 8, 0.55));
       }
 
       .sophisticated-loader {
@@ -167,30 +171,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--gold-cream) 0%, var(--gold-primary) 45%, var(--gold-shadow) 100%);
+        background: radial-gradient(circle, var(--ember-cream) 0%, var(--ember-primary) 45%, var(--ember-shadow) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(232, 195, 122, 0.4);
+        box-shadow: 0 0 2rem rgba(255, 90, 30, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(168, 124, 46, 0.3);
+        border: 3px solid rgba(192, 74, 18, 0.3);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--gold-primary);
+        border-top-color: var(--ember-primary);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--gold-cream);
+        border-bottom-color: var(--ember-light);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -207,11 +211,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(232, 195, 122, 0.4);
+          box-shadow: 0 0 2rem rgba(255, 90, 30, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(247, 223, 165, 0.42);
+          box-shadow: 0 0 3rem rgba(255, 161, 74, 0.42);
         }
       }
 
@@ -235,7 +239,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">PAY69</div>
+      <div class="brand-identity">PHOENIX168</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -245,7 +249,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก PAY69 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก PHOENIX168 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

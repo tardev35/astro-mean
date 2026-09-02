@@ -2,13 +2,13 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 
 import { Picture } from "astro:assets";
 
-// PAY69: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox ตามสเปก
-// รอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ variant นี้
-// เป็นข้อความของแบรนด์นี้แล้ว ticker จึงเหมือนกันทั้งเว็บ
+// PHOENIX168: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยใช้ ContentBox
+// ตามสเปกรอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ variant
+// นี้เป็นข้อความของแบรนด์นี้แล้ว ticker จึงเหมือนกันทั้งเว็บ
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the single
@@ -16,29 +16,24 @@ import { Picture } from "astro:assets";
 // — no <h2>, no section paragraphs. The artwork already prints its own offer in
 // large type, so prose below it re-types what the visitor can already read, in
 // smaller letters. The docx gives this page a Title and a Meta and never a body.
-// The three <h2> blocks and the extra paragraphs that stood here were invented
-// by an earlier rebrand and were deleted, not rewritten.
 //
-// Named for what each banner ACTUALLY prints, not for its file number. All four
-// slides in this drop are PAY69 art (2026-09-01) so all four run in the grid;
-// slide1/slide2 also illustrate two sections of the homepage, slide3/slide4 are
-// exclusive to this page.
-//   slide1 = โปรโมชั่นต้อนรับสมาชิกใหม่ รับฟรีสูงสุด 1,100 เลือกได้ 1 ใน 2
-//   slide2 = Monthly Extra Bonus — ทุกความพยายาม มีคุณค่าเสมอ
-//   slide3 = กิจกรรมคอลเลกชันลิมิเต็ด PAY69 COLLECTIBLE SERIES
-//   slide4 = ต้นเดือนกันยาพาเฮง โบนัสเพิ่มทันที 50% (01-05 ก.ย. 2026)
-// ทุกไฟล์เป็นโปสเตอร์ 600x386 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
+// Named for what each banner ACTUALLY prints, not for its file number. This
+// drop has THREE slides (2026-09-02) and all three run in the grid:
+//   slide1 = ต้อนรับสมาชิกใหม่ ฝากแรก 500 รับโบนัส 300
+//   slide2 = แนะนำเพื่อน รับโบนัสสูงสุด 20,000 บาทต่อวัน
+//   slide3 = กงล้อนำโชค รับฟรีชิ้นส่วนเพชรทุกชม. ลุ้นรางวัลมูลค่ากว่า 500,000
+// ทุกไฟล์เป็นโปสเตอร์ 600x251 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
 //
-// banner.png / banner2-4.png ไม่ถูก import ที่นี่: เป็นอาร์ตของแบรนด์ก่อน และ
-// รูปที่ import แล้วคือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render
+// slide4.png / banner.png / banner2-4.png ไม่ถูก import ที่นี่: เป็นอาร์ตของ
+// แบรนด์ก่อน (slide4 ลงวันที่ 2026-09-01 คนละดรอปกับชุดนี้) และรูปที่ import
+// แล้วคือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render
 // ส่วน banner1 เป็นของ <picture> hero ใน MainLayout เท่านั้น
 //
-// Only what is printed on the banner may be stated in its alt — ทั้งสี่ไฟล์
-// เปิดดูด้วยตาแล้วเมื่อ 2026-09-01 แล้วถอดข้อความบนภาพมาเขียน alt
+// Only what is printed on the banner may be stated in its alt — ทั้งสามไฟล์
+// เปิดดูด้วยตาแล้วเมื่อ 2026-09-02 แล้วถอดข้อความบนภาพมาเขียน alt
 import promoWelcome from "../assets/slide1.png";
-import promoMonthly from "../assets/slide2.png";
-import promoCollectible from "../assets/slide3.png";
-import promoSeptember from "../assets/slide4.png";
+import promoReferral from "../assets/slide2.png";
+import promoWheel from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
@@ -46,12 +41,12 @@ import { pageGraph } from "../lib/schema";
 // byte count reads ~3x too long). This one measures 158. It states what the
 // page holds — the offers the banners themselves print — and stops.
 const pageDescription =
-  "รวมโปรโมชั่นคาสิโนสด PAY69 ทั้งโบนัสต้อนรับสมาชิกใหม่ โบนัสรายเดือน กิจกรรมคอลเลกชันลิมิเต็ด และโบนัสเพิ่มทันที 50% ต้นเดือนกันยายน กดรับเองได้จากหน้าแดชบอร์ด";
+  "รวมโปรโมชั่นสล็อต PHOENIX168 ทั้งโบนัสต้อนรับสมาชิกใหม่ ฝากแรก 500 รับโบนัส 300 โบนัสแนะนำเพื่อนสูงสุด 20,000 ต่อวัน และกงล้อนำโชคลุ้นรางวัลมูลค่ากว่า 500,000";
 
-const pageTitle = "โปรโมชั่น PAY69 | โบนัสต้อนรับ โบนัสรายเดือน และสิทธิพิเศษคาสิโนสด";
+const pageTitle = "โปรโมชั่น PHOENIX168 | โบนัสต้อนรับสมาชิกใหม่ แนะนำเพื่อน และกงล้อนำโชค";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น PAY69 รวมสิทธิพิเศษคาสิโนสดที่เปิดให้สมาชิกกดรับเอง";
+const pageHeading = "โปรโมชั่น PHOENIX168 รวมสิทธิพิเศษสายสปีดที่กดรับเองได้ทันที";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -75,12 +70,12 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบทองบรอนซ์ของแบรนด์ล้อกับกรอบดำของโลโก้บนแบนเนอร์ แล้วสว่างขึ้นตอน hover
+// ขอบส้มไฟของแบรนด์ล้อกับเปลวไฟบนแบนเนอร์ แล้วสว่างขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#a87c2e]/45 object-contain shadow-[0_10px_30px_rgba(107,77,21,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e8c37a]/70 hover:shadow-[0_15px_40px_rgba(232,195,122,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#c04a12]/45 object-contain shadow-[0_10px_30px_rgba(122,36,8,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ff5a1e]/70 hover:shadow-[0_15px_40px_rgba(255,90,30,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
-// intrinsic width (600px for all four posters here) so a sharp upscale never
+// intrinsic width (600px for all three posters here) so a sharp upscale never
 // becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
   const steps = [384, 576, 648].filter((w) => w < img.width);
@@ -90,19 +85,15 @@ const widthLadder = (img: { width: number }) => {
 const promos = [
   {
     src: promoWelcome,
-    alt: "แบนเนอร์โปรโมชั่นพื้นฟ้าสดใสมีเหรียญทองปลิว มุมขวาบนเป็นโลโก้ PAY69 มุมซ้ายบนเป็นป้ายไม้เขียนว่า SCATTER ด้านซ้ายเป็นตัวการ์ตูนหญิงกำลังเปิดหีบสมบัติ ข้อความกลางภาพเขียนว่า โปรโมชั่นต้อนรับสมาชิกใหม่ สมาชิกใหม่ รับฟรีสูงสุด 1,100! เลือกได้ 1 ใน 2 ถัดลงมาเป็นกล่องสองใบเขียนว่า ฝาก 20 รับ 20 และ ฝาก 100 รับ 200 แถบล่างสุดเขียนว่า ทำ Step 1 แล้ว รับต่อ Step 2 ฝากสะสม 299 รับเพิ่ม 39",
+    alt: "แบนเนอร์โปรโมชั่นพื้นแดงไล่ทองมีเหรียญทองและไพ่โพดำปลิวอยู่รอบภาพ ด้านซ้ายเป็นหญิงสาวผมยาวสวมชุดเกาะอกสีแดงเข้ม ข้อความกลางภาพเขียนว่า ต้อนรับสมาชิกใหม่ ถัดลงมาเป็นกล่องสองใบเขียนว่า ฝากแรก 500 และ รับโบนัส 300 แถบล่างสุดเขียนว่า เล่นได้เฉพาะสล็อตและกีฬาเท่านั้น",
   },
   {
-    src: promoMonthly,
-    alt: "แบนเนอร์โปรโมชั่นพื้นทองอร่ามมีกองเหรียญทองและถุงเงินสีแดง มุมขวาบนเป็นโลโก้ PAY69 ข้างโลโก้เป็นประทัดจีนสีแดง ด้านซ้ายเป็นตัวการ์ตูนหนูสวมชุดจีนสีขาวทองถือทองแท่ง ข้อความกลางภาพเป็นตัวอักษรทองเขียนว่า Monthly Extra Bonus และบรรทัดล่างเขียนว่า ทุกความพยายาม มีคุณค่าเสมอ",
+    src: promoReferral,
+    alt: "แบนเนอร์โปรโมชั่นพื้นแดงไล่ทองมีเหรียญทองและไพ่โพดำปลิวอยู่รอบภาพ ด้านซ้ายเป็นหญิงสาวผมยาวสวมชุดเกาะอกสีแดงเข้ม ข้อความกลางภาพเขียนว่า แนะนำเพื่อน รับโบนัสสูงสุด และบรรทัดล่างเป็นตัวเลขทองขนาดใหญ่เขียนว่า 20,000 บาท ต่อวัน",
   },
   {
-    src: promoCollectible,
-    alt: "แบนเนอร์กิจกรรมพื้นม่วงเข้มบรรยากาศฮาโลวีนมีฟักทองและค้างคาว มุมขวาบนเป็นโลโก้ PAY69 มุมซ้ายบนเขียนว่า คอลเลกชันลิมิเต็ด LIMITED EDITION 2569 กลางแถบบนเขียนว่า PAY69 COLLECTIBLE SERIES ข้อความใหญ่กลางภาพเขียนว่า กิจกรรม คอลเลกชันลิมิเต็ด ด้านซ้ายเป็นกล่องสินค้าลาย PAY69 ถัดมาเป็นฟิกเกอร์สี่ตัวยืนบนแท่นสลักชื่อ PAY69 ได้แก่ หญิงชุดกระโหลก หุ่นไล่กาหัวฟักทอง แมวดำหัวฟักทอง และพ่อมดหมวกปีกกว้าง แถบล่างเป็นป้ายสามอันเขียนว่า สะสมครบ 5 ตัว Collection Exclusive และ รับรางวัลแน่นอน 100%",
-  },
-  {
-    src: promoSeptember,
-    alt: "แบนเนอร์โปรโมชั่นพื้นม่วงไล่เป็นสีทองรูปท้องฟ้ามีบอลลูนลอยสามลูก มุมขวาบนเป็นโลโก้ PAY69 ข้อความกลางภาพเขียนว่า ต้นเดือนกันยาพาเฮง รับโชคใหญ่ บรรทัดถัดมาเขียนว่า โบนัสเพิ่มทันที 50% และในวงเล็บเขียนว่า 01-05 ก.ย. 2026 นี้เท่านั้น มุมซ้ายล่างเป็นป้ายเขียนว่า FREE SPIN มุมขวาล่างเป็นป้ายคริสตัลเขียนว่า WILD",
+    src: promoWheel,
+    alt: "แบนเนอร์กิจกรรมพื้นแดงไล่ทองมีเพชรสีฟ้าและเหรียญทองกระจายทั่วภาพ ด้านซ้ายเป็นวงล้อเสี่ยงโชคและหญิงสาวสวมชุดสีแดง ข้อความกลางภาพเขียนว่า กงล้อนำโชค รับฟรีชิ้นส่วนเพชรทุกชม. บรรทัดถัดมาเขียนว่า สะสมหมุนกงล้อลุ้นรับของรางวัล และตัวเลขทองใหญ่สุดเขียนว่า มูลค่ากว่า 500,000.-",
   },
 ];
 ---
@@ -115,8 +106,8 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิพิเศษที่ <strong class="text-[#e8c37a]">PAY69</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งโบนัสต้อนรับสมาชิกใหม่ โบนัสรายเดือน กิจกรรมสะสมคอลเลกชันลิมิเต็ด และโบนัสเพิ่มของต้นเดือนที่มีช่วงวันจำกัด
-        ยอดที่รับได้ เงื่อนไขของแต่ละขั้น และช่วงเวลาที่ร่วมได้ พิมพ์อยู่บนแบนเนอร์ครบแล้ว จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกรายการกดรับเองได้จากหน้าแดชบอร์ดก่อนเข้าโต๊ะ เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด และไม่ต้องรอแอดมินอนุมัติ
+        แบนเนอร์ด้านล่างคือสิทธิพิเศษที่ <strong class="text-[#ff5a1e]">PHOENIX168</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งโบนัสต้อนรับสมาชิกใหม่ โบนัสจากการแนะนำเพื่อน และกิจกรรมกงล้อนำโชคที่สะสมชิ้นส่วนได้ทุกชั่วโมง
+        ยอดที่รับได้ เงื่อนไขของแต่ละขั้น และช่วงเวลาที่ร่วมได้ พิมพ์อยู่บนแบนเนอร์ครบแล้ว จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกรายการกดรับเองได้จากหน้าแดชบอร์ดก่อนเริ่มสปิน เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด และไม่ต้องรอแอดมินอนุมัติ
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -142,8 +133,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#fdf4e0]/40 bg-gradient-to-r from-[#fdf4e0] via-[#e8c37a] to-[#a87c2e] px-10 py-3.5 text-lg font-black text-[#08070a] shadow-[0_10px_30px_rgba(232,195,122,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(232,195,122,0.5)]">
-          สมัครสมาชิก PAY69
+          class="flex items-center justify-center rounded-lg border border-[#ffe2c4]/40 bg-gradient-to-r from-[#ffe2c4] via-[#ff5a1e] to-[#7a2408] px-10 py-3.5 text-lg font-black text-[#0a0402] shadow-[0_10px_30px_rgba(255,90,30,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,90,30,0.5)]">
+          สมัครสมาชิก PHOENIX168
         </a>
       </div>
     </div>

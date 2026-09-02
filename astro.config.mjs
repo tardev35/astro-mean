@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.pay69-play.com",
+  site: "https://www.phoenix168-th.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

@@ -9,7 +9,7 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // ลิงก์ด่วนชุดเดียว ใช้ .map ด้านล่าง — เดิมเขียน <a> ซ้ำหกก้อน ทำให้เพิ่ม/ลบหน้า
 // ต้องไล่แก้ทีละอัน (และเป็นที่ที่ลิงก์หน้าหวยของแบรนด์ก่อนเคยค้างอยู่)
-// NEOCLUB88 เป็นเว็บสล็อต/คาสิโน หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
+// PHOENIX168 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
   { name: "ทดลองเล่นเกมฟรี", path: "/ทดลองเล่น" },
@@ -21,38 +21,38 @@ const quickLinks = [
 ];
 
 const LOGO_ALT =
-  "โลโก้ NEOCLUB88 ด้านบนเป็นตราวงกลมสีทองลายเส้นโค้งซ้อนกันเป็นรูปอักษรผสม มีดาวห้าแฉกสีเงินโครเมียมซ้อนอยู่ด้านขวา ใต้ตราเป็นตัวอักษรคำว่า NEOCLUB88 โดย NEO เป็นสีทองเงาวาว CLUB เป็นสีเงินโครเมียม และเลข 88 เป็นสีทอง ล่างสุดเป็นข้อความเส้นบางว่า LIVE CASINO AND SLOT ONLINE";
+  "โลโก้ PHOENIX168 ตัวอักษร X ขนาดใหญ่สีเงินเหล็ก มีนกฟีนิกซ์สีแดงส้มกางปีกเปลวไฟสีทองอยู่ด้านหน้า ใต้ลงมาเป็นแผ่นป้ายสีดำขอบเทาเขียนว่า PHOENIX ด้วยตัวอักษรไล่เฉดส้มทอง และเลข 168 สีขาวเงินอยู่บรรทัดล่าง";
 
-// NEOCLUB88: ย้ายจากน้ำเงินรอยัลคู่ทองของแบรนด์ก่อน มาเป็นทองคลับคู่แพลทินัมของ
-// แบรนด์นี้ — ทอง #f2cc53 / #ffe89a / #f6d977 / #c39b3c / #a8842c / #8a6415
-// คู่แพลทินัม #eef1f5 / #c6ccd4 / #8d949e บนผิว #050301 / #140b02 / #241303
-// เนื้อความ #ede0c4 รองด้วย #a8977a
+// PHOENIX168: ย้ายจากทองคลับคู่แพลทินัมของแบรนด์ก่อน มาเป็นไฟฟีนิกซ์คู่ทองของ
+// แบรนด์นี้ — ส้มไฟ #ff5a1e / #ffa14a / #ffe2c4 / #c04a12 / #7a2408 คู่ทอง
+// #f4dc6d / #f3ac3c บนผิว #0a0402 / #1f0a05 / #2c0e06 เนื้อความ #f2ddc9
+// รองด้วย #c0a58c และหมายเหตุตัวเล็ก #9a8574
 //
-// แพลทินัมมาจากคำว่า CLUB ในโลโก้ที่เป็นโครเมียมเงิน จึงใช้เป็นสีคู่ของเส้นใต้
-// หัวคอลัมน์และหัวลูกศรลิงก์ด่วน ส่วนทองยังคุมโครงสร้างหลักทั้งขอบและปุ่ม CTA
+// ทองมาจากปลายขนปีกกับเลข 168 ในโลโก้ จึงใช้เป็นสีคู่ของเส้นใต้หัวคอลัมน์และ
+// หัวลูกศรลิงก์ด่วน ส่วนส้มไฟคุมโครงสร้างหลักทั้งขอบและปุ่ม CTA
 //
 // บล็อก <address> ด้านล่างวางตามที่ playbook กำหนดแบบคำต่อคำ — ไม่ใส่สีของแบรนด์
 // ลงไป (border-white/15 + bg-black/20 + opacity ทำงานได้กับ footer ทุก variant
 // ซึ่งเป็นพื้นเข้มทั้งหมด) ห้าม retype ข้อความข้างในเอง มาจาก BRAND_ADDRESS
 ---
 
-<footer class="relative mt-32 w-full border-t border-[#a8842c]/35 bg-[#050301] pt-64 pb-6 font-sans text-[#ede0c4] shadow-[0_-10px_30px_rgba(168,132,44,0.25)] md:pt-40">
+<footer class="relative mt-32 w-full border-t border-[#7a2408]/35 bg-[#0a0402] pt-64 pb-6 font-sans text-[#f2ddc9] shadow-[0_-10px_30px_rgba(122,36,8,0.25)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#f2cc53]/35 bg-gradient-to-r from-[#140b02] via-[#a8842c] to-[#050301] p-6 shadow-[0_15px_40px_rgba(195,155,60,0.45)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#ff5a1e]/35 bg-gradient-to-r from-[#1f0a05] via-[#7a2408] to-[#0a0402] p-6 shadow-[0_15px_40px_rgba(192,74,18,0.45)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#f2cc53] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
-        <span aria-hidden="true">👑</span> พร้อมเข้าคลับระดับ VIP กับ NEOCLUB88 หรือยัง?
+      <p class="text-xl font-black tracking-wide text-[#ff5a1e] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
+        <span aria-hidden="true">🔥</span> พร้อมติดปีกทะยานไปกับ PHOENIX168 หรือยัง?
       </p>
-      <p class="mt-2 text-sm font-medium text-[#a8977a] md:text-base">
-        สมัคร NEOCLUB88 แล้วเข้าล็อบบี้คลับได้ทันที เกมคัดพิเศษจากค่ายพรีเมียมมาครบ ทั้ง Multiplier คูณโหด ตัวคูณสะสม และระบบฟรีสปินที่ออกรางวัลจริง กระเป๋าเดียวสลับค่ายได้ทันที ฝากถอนออโต้ไฮสปีดเสร็จใน 3 วินาที
+      <p class="mt-2 text-sm font-medium text-[#c0a58c] md:text-base">
+        สมัคร PHOENIX168 แล้วพุ่งตรงเข้าล็อบบี้ได้ในคลิกเดียว เกมสล็อตลิขสิทธิ์แท้จาก PG Soft, Pragmatic Play และ Joker Gaming มาครบ คัดเฉพาะตัวที่แตกง่าย ฟีเจอร์ตัวคูณหนัก ฟรีสปินเข้าไว กระเป๋าเดียวสลับค่ายได้ทันที ฝากถอนออโต้ไฮสปีดเสร็จในไม่กี่วินาที
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#f2cc53] bg-gradient-to-b from-[#ffe89a] to-[#f2cc53] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#050301] shadow-[0_0_15px_rgba(242,204,83,0.5)] transition-all hover:scale-105 md:text-base">
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#ff5a1e] bg-gradient-to-b from-[#ffa14a] to-[#ff5a1e] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#0a0402] shadow-[0_0_15px_rgba(255,90,30,0.5)] transition-all hover:scale-105 md:text-base">
       <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🎁</span></span>
-      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffe89a] transition-transform duration-300 group-hover:translate-y-0"></div>
+      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffa14a] transition-transform duration-300 group-hover:translate-y-0"></div>
     </a>
   </div>
 
@@ -70,19 +70,19 @@ const LOGO_ALT =
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(195,155,60,0.7)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(192,74,18,0.7)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#ffe89a] to-[#a8842c] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(195,155,60,0.6)]">NEOCLUB88</p>
+              <p class="bg-gradient-to-b from-[#ffa14a] to-[#7a2408] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(192,74,18,0.6)]">PHOENIX168</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#a8977a]">
-          NEOCLUB88 ยกระดับเว็บสล็อตสู่คลับพรีเมียม รวบรวมเฉพาะเกมลิขสิทธิ์แท้ที่ยิงตรงผ่าน API จากเซิร์ฟเวอร์หลักนอก ค่า RTP ยุติธรรมตามที่ค่ายตั้งไว้ ไม่มีการดัดแปลงผลการออกรางวัลระหว่างทาง
-          ล็อบบี้คัดเฉพาะตัวท็อปจากค่ายใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming เน้นเกมที่มีฟีเจอร์ Multiplier คูณโหด ตัวคูณสะสม และระบบฟรีสปินที่ออกรางวัลจริง พร้อมอัปเดตไฟล์เกมเข้าใหม่ทันทีที่ค่ายผู้พัฒนาปล่อยออกมา
-          ระบบฝากถอนออโต้ไฮสปีดทำรายการเสร็จใน 3 วินาที ถอนได้เต็มยอดไม่มีกั๊ก ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินกดอนุมัติ
+        <p class="text-sm leading-relaxed text-[#c0a58c]">
+          PHOENIX168 เว็บตรงสล็อตสายสปีดที่ตั้งใจทำระบบออกมาให้คนเล่นใช้งานได้จริงแบบไม่มีสะดุด ยิงตรง API แท้จากค่ายใหญ่ เซิร์ฟนอกมาตรฐานสากล เล่นแล้วโบนัสแตกตามอัตราจ่ายจริง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ
+          คลังเกมจัดเต็มด้วยสล็อตลิขสิทธิ์แท้จากค่ายดังอย่าง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอื่นๆ คัดมาเฉพาะตัวที่แตกง่าย มีฟีเจอร์ตัวคูณหนัก ฟรีสปินเข้าไว และมีอัตราการจ่ายเงินรางวัลที่ยุติธรรม
+          ระบบฝากถอนออโต้ไฮสปีดทำรายการเสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องคอยแอดมินอนุมัติ ปั่นได้เท่าไหร่ถอนออกได้ครบเต็มจำนวนทันที
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -115,16 +115,16 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#ede0c4] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f2ddc9] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#f2cc53] to-[#c6ccd4] shadow-[0_0_8px_rgba(242,204,83,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#ff5a1e] to-[#f3ac3c] shadow-[0_0_8px_rgba(255,90,30,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#a8977a] transition-colors hover:text-[#f2cc53]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#c6ccd4] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#c0a58c] transition-colors hover:text-[#ff5a1e]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#f3ac3c] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -133,40 +133,40 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#ede0c4] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f2ddc9] uppercase">
           ระบบการเงิน
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#f2cc53] to-[#c6ccd4] shadow-[0_0_8px_rgba(242,204,83,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#ff5a1e] to-[#f3ac3c] shadow-[0_0_8px_rgba(255,90,30,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#a8977a]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#c0a58c]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#140b02] transition-colors hover:border-[#c39b3c]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#ede0c4]"><span aria-hidden="true" class="text-lg text-[#f2cc53]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#1f0a05] transition-colors hover:border-[#c04a12]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#f2ddc9]"><span aria-hidden="true" class="text-lg text-[#ff5a1e]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#a8842c]/30" />
+    <hr class="mb-6 border-[#7a2408]/30" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#8d949e] md:block">
-      สล็อตเอ็กซ์คลูซีฟคลับระดับ VIP ที่ตัดระบบเอเย่นต์และเอฟเฟกต์รกตาออกทั้งหมด เน้นความเสถียรขั้นสุด โหลดเกมไว ไม่มีสะดุด ไม่ว่าจะลงเดิมพันด้วยงบหลักร้อยหรือสปินรอบละหลักพัน ทุกยูสเซอร์เข้าถึงระบบประมวลผลความเร็วสูงและอัตราการจ่ายเงินรางวัลมาตรฐานเดียวกับคาสิโนชั้นนำระดับโลก
-      ไม่ต้องเสียเวลาสุ่มเล่นเกมคัดทิ้ง เพราะคลับทำหน้าที่กรองเฉพาะเกมสล็อตตัวท็อปจากค่ายใหญ่มาไว้ในล็อบบี้ คัดเฉพาะตัวที่มีฟีเจอร์ Multiplier คูณโหด ตัวคูณสะสม และระบบฟรีสปินที่ออกรางวัลจริง เพื่อให้ทุกการหมุนมีโอกาสทำกำไรสูงที่สุด
-      สายเก็บเกมใหม่ได้สัมผัสฟีเจอร์และระบบโบนัสสดใหม่ก่อนใคร มีโหมดทดลองเล่นให้เช็กกลไกเกมฟรี ล็อบบี้มีความเคลื่อนไหวตลอดเวลา เล่นได้ยาวๆ แบบไม่มีคำว่าตกเทรนด์ พร้อมโปรโมชันที่เติมสิทธิ์พิเศษให้สมาชิกทุกวัน ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back
-      ระบบกระเป๋าเดียวไม่ต้องโยกเงินข้ามค่าย เลือกเกมและสลับค่ายสปินได้ทันที ฝากถอนเสร็จสรรพผ่านหน้าแดชบอร์ดโดยไม่ต้องสลับแอปให้ยุ่งยาก พร้อมทีมงานสแตนด์บายดูแลสมาชิกแบบ VIP ตลอด 24 ชั่วโมง ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ NEOCLUB88
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#9a8574] md:block">
+      สล็อตสายสปีดที่ตัดระบบเอเย่นต์และขั้นตอนยุ่งยากออกทั้งหมด กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ ปรับจูนระบบหลังบ้านมาให้โหลดไวกว่าเว็บทั่วไปหลายเท่า ไม่ต้องนั่งมองหน้าจอหมุนค้างให้เสียอารมณ์ พาคุณพุ่งตรงจากหน้าแรกเข้าสู่ตัวเกมได้ในคลิกเดียว ช่วยให้ไม่พลาดจังหวะสำคัญในการทำกำไรและเริ่มสปินได้ทันทีโดยไม่ต้องเสียเวลารอ
+      ไม่ต้องเสียเวลาสมัครหลายเว็บเพื่อเล่นเกมที่ชอบ เพราะหน้าล็อบบี้จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ รวบรวมทั้งสล็อตสายภาพสวย 3D สล็อตสตรีตนำโชค หรือสล็อตสายซื้อฟีเจอร์พุ่งชนโบนัส อยากเล่นแนวไหนก็กดเลือกได้ทันทีในกระเป๋าเดียว ไม่ต้องย้ายเว็บ ไม่ต้องโยกเงินให้วุ่นวาย
+      ความรู้สึกตอนสลับเกมคืออีกหนึ่งเรื่องที่ทำมาดีมาก สลับค่ายสลับเกมได้ทันทีโดยไม่ต้องรอโหลดหน้าคีย์ข้อมูลใหม่ ตัวเกมประมวลผลสมูธ กราฟิกแสดงผลคมชัด ไม่มีอาการกระตุกหรือหลุดออกจากเกมให้เสียจังหวะ พร้อมปรับสเกลหน้าจอให้อัตโนมัติทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ ปุ่มกดวางในตำแหน่งที่ใช้นิ้วโป้งกดง่าย
+      ไม่มีปิดปรับปรุงระบบแบบไม่แจ้งล่วงหน้า วางเซิร์ฟเวอร์เสถียรสูงที่พร้อมเปิดให้บริการตลอด 24 ชั่วโมง จะเป็นสายปั่นช่วงพักเที่ยงหรือสายลุยดึกๆ จังหวะโบนัสและระบบฝากถอนก็ทำงานด้วยความเร็วสูงสุดเท่ากันตลอดวัน ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ PHOENIX168
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#8d949e] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#f2cc53] uppercase">NEOCLUB88</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#9a8574] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#ff5a1e] uppercase">PHOENIX168</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#ede0c4]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#ede0c4]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#f2ddc9]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#f2ddc9]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#ede0c4] transition-all hover:border-[#c39b3c] hover:bg-[#140b02] hover:shadow-[0_0_15px_rgba(195,155,60,0.6)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#f2ddc9] transition-all hover:border-[#c04a12] hover:bg-[#1f0a05] hover:shadow-[0_0_15px_rgba(192,74,18,0.6)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

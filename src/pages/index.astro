@@ -1,110 +1,111 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBoxTwo from "../components/ContentBoxTwo.astro";
-import ContentBox3ThreeFloatingBadge from "../components/ContentBox3ThreeFloatingBadge.astro";
-import ContentBox3Three from "../components/ContentBox3Three.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
 import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
-import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
 import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
-import LatestWinnersCyber from "../components/LatestWinnersCyber.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ProviderGridPremium from "../components/ProviderGridPremium.astro";
+import LatestWinners3 from "../components/LatestWinners3.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import Faq3 from "../components/Faq3.astro";
+import Faq2 from "../components/Faq2.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgMonthlyBonus from "../assets/slide2.png";
 import imgWelcomeBonus from "../assets/slide1.png";
+import imgLuckyWheel from "../assets/slide3.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxFloatingBadge as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxTwo as="h2" (ย่อหน้าเดียวแบ่งลง left/right ตามลำดับประโยคเดิม
-//       ไม่ตัดและไม่ย่อ: ฝั่งดีลเลอร์แจกไพ่จริง → ฝั่งมุมกล้องกับสัญญาณ)
-//   3 → ContentBox3ThreeFloatingBadge as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตาม
-//       จังหวะประโยค: รายชื่อค่าย → รายชื่อโต๊ะ → ช่วงงบเบทของห้อง) แล้วต่อด้วย
-//       ProviderGrid ซึ่งกางรายชื่อค่ายที่ย่อหน้าเดียวกันพูดถึง
-//   4 → ContentBox3Three as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์: สลับโต๊ะในยูส
-//       เดียว → กระเป๋าเงินเดียว → ไม่ต้องโยกเงินข้ามค่าย) แล้วต่อด้วย
-//       GameRankingBoard กับ SmoothCarousel ซึ่งกางหมวดโต๊ะสดให้เห็นในหน้าเดียว
-//   5 → ContentBoxSevenThree as="h2" + slide2 (แบนเนอร์ Monthly Extra Bonus ซึ่ง
-//       เป็นภาพของสิทธิ์รายเดือนที่มาจากฐานการเงินที่ย่อหน้านี้พูดถึง) แล้วต่อด้วย
-//       LatestWinnersCyber ซึ่งเป็นหลักฐานของประโยค "พร้อมจ่ายทุกยอดชนะทันที"
-//   6 → ContentBoxSevenThreeFloatingBadge as="h2" + slide1 (แบนเนอร์โปรโมชั่น
-//       ต้อนรับสมาชิกใหม่ ตรงกับหัวข้อเรื่องลิสต์โปรที่สมาชิกไม่ควรมองข้าม)
-//   7 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งลงสองครึ่ง: ฝั่งฝาก → ฝั่งถอน)
+//   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   3 → ContentBoxSevenThree as="h2" + slide1 (แบนเนอร์ต้อนรับสมาชิกใหม่ที่ระบุบน
+//       รูปว่าเล่นได้เฉพาะสล็อตและกีฬา ตรงกับหัวข้อคลังเกมสล็อตลิขสิทธิ์แท้) แล้วต่อ
+//       ด้วย ProviderGridPremium ซึ่งกางชื่อค่ายที่ย่อหน้าเดียวกันเอ่ยถึง
+//   4 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามจังหวะ
+//       ประโยคเดิม: ล็อบบี้จัดหมวดหมู่ → รายชื่อแนวสล็อต → กระเป๋าเดียวไม่ต้องโยกเงิน)
+//       แล้วต่อด้วย GameRankingBoard กับ SmoothCarousel ซึ่งกางหมวดเกมในล็อบบี้ให้
+//       เห็นครบในหน้าเดียว
+//   5 → ContentBoxCyberCut as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   6 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งลงสองครึ่งตามลำดับประโยคเดิม:
+//       ฝั่งการแสดงผลทุกอุปกรณ์ → ฝั่งตำแหน่งปุ่มกดบนมือถือ)
+//   7 → ContentBoxSevenThreePremium as="h2" + slide3 (แบนเนอร์กงล้อนำโชคที่แจก
+//       ชิ้นส่วนเพชร "ทุกชม." ตรงกับหัวข้อเปิดบริการตลอด 24 ชั่วโมง) แล้วต่อด้วย
+//       LatestWinners3 ซึ่งเป็นหลักฐานของประโยคเรื่องระบบฝากถอนที่ทำงานเท่ากันทั้งวัน
 //
-// variant รอบนี้หมุนทั้งตระกูลจากสองรอบก่อน (แบรนด์ชื่อนี้เคยเปิดจากเทมเพลตนี้มา
-// แล้วหนึ่งครั้ง): ทรง ContentBox เป็นชุด FloatingBadge นำ + ตัวเปล่า + Special
-// ส่วน Navbar เป็น NavbarStyle9, Footer เป็น FooterStyle2, Announcement เป็น
-// Announcement5, LatestWinners เป็น LatestWinnersCyber, ProviderGrid เป็นตัวเปล่า
-// และ Faq เป็น Faq3
+// variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจากชุด
+// FloatingBadge นำ มาเป็น Premium + Neumorphism + CyberCut + ตัวเปล่า + Special
+// (ไม่มี FloatingBadge เลยรอบนี้) ส่วน Announcement เป็น AnnouncementPremium,
+// LatestWinners เป็น LatestWinners3, ProviderGrid เป็น ProviderGridPremium และ Faq
+// เป็น Faq2 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน MainLayout กับ brandProfile
 //
-// ContentBoxSevenThree ปล่อยหัวข้อจาก prop `title` ตัวเดียวในคอลัมน์ฝั่ง 7 ส่วน
-// ส่วน titleleft/titleright เป็นป้ายคอลัมน์ที่ยังเป็น <p> ทั้งคู่
+// ContentBoxSevenThreePremium ปล่อยหัวข้อจาก rightHeading = titleright ?? title
+// จึงส่งมาแค่ `title` ตัวเดียว ถ้าส่ง titleright มาด้วยหัวข้อ docx จะถูกแทนที่เงียบๆ
+// ส่วน titleleft ของทั้งสอง SevenThree เป็นป้ายคอลัมน์รูปที่ยังเป็น <p>
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
-// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ Announcement5
+// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ AnnouncementPremium
 // เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความเดียว
 // กับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ emoji ที่
 // ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide2 ซึ่งเป็นสไลด์
-// ของแบรนด์นี้จริงทั้งสองใบ — slide3/slide4 ไปอยู่หน้าโปรโมชั่น ส่วน banner ทุก
-// หมายเลข (banner2/3/4 กับ banner.png) เป็นอาร์ตของแบรนด์ก่อนที่มีชื่อและโดเมนของ
-// เขาพิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่
-// ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ
-// MainLayout จัดการเอง
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide3 ซึ่งเป็นสไลด์ของ
+// แบรนด์นี้จริงทั้งสองใบ — slide2 (แนะนำเพื่อน) ไม่มีหัวข้อ docx ไหนรองรับจึงปล่อยไว้
+// ไม่ใช้ ส่วน slide4 กับ banner ทุกหมายเลข (banner.png, banner2/3/4) เป็นอาร์ตของ
+// แบรนด์ก่อนที่มีชื่อของเขาพิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่
+// import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile
+// เป็นของ MainLayout จัดการเอง
 //
 // widget ที่ไม่ได้มาจาก docx (LoginRtpSection, ReviewCardSumo2, แถวปุ่ม
 // login/register, FAQ, Navfoot) ใช้ป้ายเป็น <p>/<span> + aria-label บน <section>
 // และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสี่ตัวที่เป็นภาพประกอบของ
-// หัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 3, GameRankingBoard กับ
-// SmoothCarousel → ข้อ 4, LatestWinnersCyber → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// หัวข้อ docx หนึ่งข้อโดยตรง (ProviderGridPremium → ข้อ 3, GameRankingBoard กับ
+// SmoothCarousel → ข้อ 4, LatestWinners3 → ข้อ 7) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
-// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี ไม่มีตัวที่แปด — หัว FAQ เป็น <p> ใน Faq3.astro
-// คำถามใน Faq3 เป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
+// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี ไม่มีตัวที่แปด — หัว FAQ เป็น <p> ใน Faq2.astro
+// คำถามใน Faq2 เป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
 // เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
 //
 // title ใช้บรรทัด Title ของ docx ตรงๆ ส่วน description ใช้บรรทัด Des ของ docx เป็น
-// ฐานแล้วต่อท้ายด้วยข้อเท็จจริงจาก docx อีกวรรคเดียว ("เครดิตเข้าใน 3 วิ") เพราะ
-// บรรทัด Des ดิบยาว 138 ตัวอักษร ซึ่งต่ำกว่าเพดานล่าง 150 ตัวของเกทคุณภาพ ทั้งสอง
-// ค่าเป็นสตริงเดียวกับที่ส่งเข้า pageGraph และตรงกับที่ส่งให้ MainLayout
-const pageTitle = "PAY69 | คาสิโนฟลอร์ใหญ่ โต๊ะสดค่ายดัง เว็บใหญ่ทุนหนาพร้อมแปย์";
-const pageDescription = "PAY69 คาสิโนฟลอร์ใหญ่ รวมโต๊ะสดค่ายดังระดับพรีเมียม พร้อมเกมหลายหมวดให้สลับฟีล เว็บใหญ่ทุนหนาพร้อมเพย์ สิทธิพิเศษมีทุกวัน ฝากถอนออโต้ทันใจ เครดิตเข้าใน 3 วิ";
+// ฐานแล้วต่อท้ายด้วยข้อเท็จจริงจาก docx อีกวรรคเดียว ("ฝากถอนออโต้ไว") เพราะบรรทัด
+// Des ดิบยาว 142 ตัวอักษร ซึ่งต่ำกว่าเพดานล่าง 150 ตัวของเกทคุณภาพ — ค่าที่ใช้จริง
+// ยาว 156 ตัวอักษร และเป็นสตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
+const pageTitle = "PHOENIX168 | สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้ ออโต้ไวไม่ต้องรอ";
+const pageDescription = "PHOENIX168 สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้หลายค่าย ตัวท็อปมีครบ ระบบเล่นลื่นไม่มีสะดุด พร้อมรองรับทุกอุปกรณ์ ปั่นเพลินได้ทั้งวัน 24 ชั่วโมง ฝากถอนออโต้ไว";
 
 const announcementMessage =
-  "PAY69 คาสิโนฟลอร์ใหญ่ โต๊ะสดค่ายดัง เว็บใหญ่ทุนหนาพร้อมเปย์ • คาสิโนสดเว็บตรง API แท้ ยิงสัญญาณสดระดับ Ultra HD ส่งตรงจากฟลอร์คาสิโนจริงในต่างประเทศ ไม่ผ่านเอเย่นต์ เว็บใหญ่เงินทุนหนา การันตีความมั่นคงทางการเงินระดับสากล ถอนหลักแสนหลักล้านจ่ายครบเต็มจำนวน ไม่ล็อคยูส ไม่ปรับอัตราแพ้ชนะ • จำลองบรรยากาศคาสิโนระดับโลกมาไว้บนหน้าจอ ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ ไร้การตัดต่อหรือใช้คลิปวน มุมกล้องหลากหลายมองเห็นทุกมิติการแทง สัญญาณเสถียรไม่มีอาการกระตุก • รวมค่ายคาสิโนชั้นนำระดับโลกไว้ครบครันทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ Pragmatic Play Live มีทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ต เสือมังกร และไฮโล เลือกห้องเล่นได้ตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller • สลับจากโต๊ะบาคาร่าไปเดิมพันรูเล็ต วงล้อเสี่ยงโชค หรือเกมโชว์สดได้ทันทีในยูสเซอร์เดียว ระบบกระเป๋าเงินเดียวยืดหยุ่นสูงสุด ไม่ต้องโยกเงินข้ามค่ายให้เสียเวลา • ฐานการเงินแข็งแกร่งระดับเว็บใหญ่ พร้อมจ่ายทุกยอดชนะทันที รองรับช่องทางการเงินครบครันทั้งธนาคารชั้นนำทั่วไทยและ TrueMoney Wallet เก็บข้อมูลสมาชิกเป็นความลับขั้นสุด • สิทธิพิเศษอัปเดตใหม่ทุกวัน ทั้งโบนัสต้อนรับคาสิโนสด โปรโมชันฝากแรกของวัน คืนยอดเสียรับ Cash Back และคอมมิชชันการชวนเพื่อน เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันทีผ่านหน้าแดชบอร์ด • ฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ฝากเงินปุ๊บเครดิตเข้าเกมใน 3 วินาที กดถอนเข้าบัญชีได้ด้วยตัวเอง ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ";
+  "PHOENIX168 สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้ ออโต้ไวไม่ต้องรอ • เว็บตรงสล็อตสายสปีดที่ตั้งใจทำระบบออกมาให้คนเล่นใช้งานได้จริงแบบไม่มีสะดุด ยิงตรง API แท้จากค่ายใหญ่ เซิร์ฟนอกมาตรฐานสากล เล่นแล้วโบนัสแตกตามอัตราจ่ายจริง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ ปั่นได้เท่าไหร่ถอนออกได้ครบเต็มจำนวนทันที • กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ ปรับจูนระบบหลังบ้านมาให้โหลดไวกว่าเว็บทั่วไปหลายเท่า ตัดขั้นตอนยุ่งยากออกทั้งหมด พุ่งตรงจากหน้าแรกเข้าสู่ตัวเกมได้ในคลิกเดียว ไม่พลาดจังหวะสำคัญในการทำกำไร • ขนเกมสล็อตลิขสิทธิ์แท้จากค่ายดังอย่าง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอื่นๆ มาไว้ให้เลือกแบบแน่นๆ คัดมาเฉพาะตัวที่แตกง่าย มีฟีเจอร์ตัวคูณหนัก ฟรีสปินเข้าไว อัตราการจ่ายเงินรางวัลยุติธรรม • หน้าล็อบบี้จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ ทั้งสล็อตสายภาพสวย 3D สล็อตสตรีตนำโชค และสล็อตสายซื้อฟีเจอร์พุ่งชนโบนัส เลือกได้ทันทีในกระเป๋าเดียว ไม่ต้องย้ายเว็บ ไม่ต้องโยกเงินให้วุ่นวาย • สลับค่ายสลับเกมได้ทันทีโดยไม่ต้องรอโหลดหน้าคีย์ข้อมูลใหม่ ตัวเกมประมวลผลสมูธ กราฟิกแสดงผลคมชัด ไม่มีอาการกระตุกหรือหลุดออกจากเกมให้เสียจังหวะ • ปรับสเกลหน้าจอให้อัตโนมัติแบบสมบูรณ์แบบ รองรับทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ แสดงผลคมชัด ลื่นไหล เสถียรเท่ากันทุกช่องทาง ปุ่มกดวางในตำแหน่งที่ใช้นิ้วโป้งกดง่าย • ไม่มีปิดปรับปรุงระบบแบบไม่แจ้งล่วงหน้า เซิร์ฟเวอร์เสถียรสูงพร้อมเปิดให้บริการตลอด 24 ชั่วโมง จังหวะโบนัสและระบบฝากถอนทำงานด้วยความเร็วสูงสุดเท่ากันตลอดวัน ฝากถอนออโต้ไฮสปีดเสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องคอยแอดมินอนุมัติ";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
 // คำถามที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq3> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+// <Faq2> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
 const faqs = [
   {
-    q: "PAY69 เป็นคาสิโนสดเว็บตรงจริงไหม แล้วภาพที่เห็นเป็นการถ่ายทอดสดจริงหรือคลิปวน",
-    a: "เป็นคาสิโนสดเว็บตรง API แท้ที่ยิงสัญญาณสดระดับ Ultra HD ส่งตรงจากฟลอร์คาสิโนจริงในต่างประเทศ ไม่ผ่านเอเย่นต์คนกลาง ทุกโต๊ะเป็นดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ ไม่มีการตัดต่อและไม่ใช้คลิปวน มีมุมกล้องให้เลือกหลายมุมจึงมองเห็นทุกมิติการแทง สัญญาณเสถียรไม่มีอาการกระตุก และไม่มีการล็อคยูสหรือปรับอัตราแพ้ชนะ",
+    q: "PHOENIX168 เป็นเว็บตรงจริงไหม แล้วอัตราจ่ายถูกดัดแปลงหรือเปล่า",
+    a: "เป็นเว็บตรงสล็อตสายสปีดที่ยิงตรง API แท้จากค่ายใหญ่ วางเซิร์ฟนอกมาตรฐานสากล เล่นแล้วโบนัสแตกตามอัตราจ่ายจริงของแต่ละเกม ไม่มีการดัดแปลงเปอร์เซ็นต์ชนะ ระบบทั้งชุดตั้งใจทำออกมาให้คนเล่นใช้งานได้จริงแบบไม่มีสะดุด ปั่นได้เท่าไหร่ก็ถอนออกได้ครบเต็มจำนวนทันที",
   },
   {
-    q: "มีค่ายคาสิโนสดอะไรบ้าง แล้วมีโต๊ะแบบไหนให้เลือกเล่น",
-    a: "รวมค่ายคาสิโนชั้นนำระดับโลกไว้ครบครัน ทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ Pragmatic Play Live มีโต๊ะสดให้เลือกเล่นเพียบ ทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ต เสือมังกร และไฮโล รวมถึงวงล้อเสี่ยงโชคและเกมโชว์สด เลือกห้องเล่นได้ตามงบเบทตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller",
+    q: "มีค่ายเกมอะไรบ้าง แล้วเกมที่เอามาลงคัดจากอะไร",
+    a: "ขนเกมสล็อตลิขสิทธิ์แท้จากค่ายดังอย่าง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอื่นๆ มาไว้ให้เลือกแบบแน่นๆ คัดมาเฉพาะตัวที่แตกง่าย มีฟีเจอร์ตัวคูณหนัก ฟรีสปินเข้าไว และมีอัตราการจ่ายเงินรางวัลที่ยุติธรรม เพื่อให้ทุกการหมุนมีโอกาสลุ้นแจ็คพอตก้อนโตได้จริง",
   },
   {
-    q: "อยากสลับจากบาคาร่าไปเล่นเกมโต๊ะอื่น ต้องโยกเงินข้ามค่ายไหม",
-    a: "ไม่ต้องโยกเลย ทุกโต๊ะอยู่ในยูสเซอร์เดียวและใช้ระบบกระเป๋าเงินเดียว เปลี่ยนบรรยากาศการเดิมพันได้ทันทีโดยไม่ต้องย้ายเว็บ อยากสลับจากโต๊ะบาคาร่าไปเดิมพันรูเล็ต วงล้อเสี่ยงโชค หรือเกมโชว์สดก็กดเข้าได้เลย ทำให้บริหารเงินทุนได้ยืดหยุ่นและไม่เสียเวลารอระหว่างเปลี่ยนโต๊ะ",
+    q: "อยากเล่นหลายแนวต้องสมัครหลายเว็บไหม แล้วต้องโยกเงินข้ามค่ายหรือเปล่า",
+    a: "ไม่ต้องเสียเวลาสมัครหลายเว็บ เพราะหน้าล็อบบี้จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ รวบรวมทั้งสล็อตสายภาพสวย 3D สล็อตสตรีตนำโชค และสล็อตสายซื้อฟีเจอร์พุ่งชนโบนัสไว้ที่เดียว อยากเล่นแนวไหนก็กดเลือกได้ทันทีในกระเป๋าเดียว ไม่ต้องย้ายเว็บ ไม่ต้องโยกเงินให้วุ่นวาย",
   },
   {
-    q: "ถอนยอดใหญ่ได้จริงไหม แล้วรองรับช่องทางการเงินอะไรบ้าง",
-    a: "ฐานการเงินแข็งแกร่งระดับเว็บใหญ่และพร้อมจ่ายทุกยอดชนะทันที ไม่ว่าจะบวกหลักหมื่นหรือหลักล้านก็ถอนออกได้เต็มจำนวน รองรับช่องทางการเงินครบครันทั้งธนาคารชั้นนำทั่วไทยและระบบ TrueMoney Wallet ระบบการเงินวางไว้แน่นหนาและปลอดภัย พร้อมเก็บข้อมูลสมาชิกเป็นความลับขั้นสุด",
+    q: "เล่นบนมือถือกับคอมต่างกันไหม แล้วสลับเกมแล้วต้องรอโหลดใหม่หรือเปล่า",
+    a: "ปรับสเกลหน้าจอให้อัตโนมัติแบบสมบูรณ์แบบ ทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ แสดงผลคมชัด ลื่นไหล และเสถียรเท่ากันทุกช่องทาง ปุ่มกดวางในตำแหน่งที่ใช้นิ้วโป้งกดง่าย ส่วนการสลับค่ายสลับเกมทำได้ทันทีโดยไม่ต้องรอโหลดหน้าคีย์ข้อมูลใหม่ ไม่มีอาการกระตุกหรือหลุดออกจากเกม",
   },
   {
-    q: "โปรโมชั่นมีอะไรให้เก็บบ้าง ต้องทักแอดมินก่อนไหม แล้วฝากถอนใช้เวลานานแค่ไหน",
-    a: "สิทธิพิเศษอัปเดตใหม่ทุกวัน ทั้งโบนัสต้อนรับคาสิโนสด โปรโมชันฝากแรกของวัน คืนยอดเสียรับ Cash Back ทุกวัน และคอมมิชชันการชวนเพื่อน เงื่อนไขโปร่งใสและไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันทีผ่านหน้าแดชบอร์ดโดยไม่ต้องรอแอดมิน ส่วนการเงินเป็นออโต้ผ่าน Gateway ตรง ฝากแล้วเครดิตเข้าเกมใน 3 วินาที และกดถอนเข้าบัญชีได้ด้วยตัวเองโดยไม่ต้องส่งสลิปยืนยัน",
+    q: "เข้าเล่นได้ช่วงไหนบ้าง แล้วฝากถอนต้องส่งสลิปรอแอดมินไหม",
+    a: "เซิร์ฟเวอร์เสถียรสูงพร้อมเปิดให้บริการตลอด 24 ชั่วโมง ไม่มีปิดปรับปรุงระบบแบบไม่แจ้งล่วงหน้า จะเป็นสายปั่นช่วงพักเที่ยงหรือสายลุยดึกๆ จังหวะโบนัสและระบบฝากถอนก็ทำงานด้วยความเร็วสูงสุดเท่ากันตลอดวัน ฝากถอนผ่านระบบออโต้ไฮสปีดเสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องคอยแอดมินอนุมัติ",
   },
 ];
 
@@ -122,62 +123,24 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxFloatingBadge as="h1" title="PAY69 คาสิโนฟลอร์ใหญ่ โต๊ะสดค่ายดัง เว็บใหญ่ทุนหนาพร้อมเปย์">
+  <ContentBoxPremium as="h1" title="PHOENIX168 สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้ ออโต้ไวไม่ต้องรอ">
     <p class="text-left text-base leading-relaxed">
-      PAY69 คาสิโนสดเว็บตรง API แท้ ยิงสัญญาณสดระดับ Ultra HD ส่งตรงจากฟลอร์คาสิโนจริงในต่างประเทศ ไม่ผ่านเอเย่นต์ เว็บใหญ่เงินทุนหนา การันตีความมั่นคงทางการเงินระดับสากล
-      ถอนหลักแสนหลักล้านจ่ายครบเต็มจำนวน ไม่ล็อคยูส ไม่ปรับอัตราแพ้ชนะ พร้อมรองรับทุกยอดเดิมพันด้วยระบบมาตรฐานสูงสุด
+      PHOENIX168 เว็บตรงสล็อตสายสปีดที่ตั้งใจทำระบบออกมาให้คนเล่นใช้งานได้จริงแบบไม่มีสะดุด ยิงตรง API แท้จากค่ายใหญ่ เซิร์ฟนอกมาตรฐานสากล เล่นแล้วโบนัสแตกตามอัตราจ่ายจริง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ
+      ฝากถอนผ่านระบบออโต้ไฮสปีด ทำรายการเสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องคอยแอดมินอนุมัติ ปั่นได้เท่าไหร่ถอนออกได้ครบเต็มจำนวนทันที
     </p>
-  </ContentBoxFloatingBadge>
+  </ContentBoxPremium>
 
-  <ContentBoxTwo
-    as="h2"
-    title="PAY69 คาสิโนฟลอร์ใหญ่ เปิดประสบการณ์โต๊ะสดแบบเต็มอารมณ์คาสิโน"
-    titleleft="ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์"
-    titleright="มุมกล้องครบทุกมิติ สัญญาณเสถียร"
-    iconleft="🎥"
-    iconright="📡">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      จำลองบรรยากาศคาสิโนระดับโลกมาไว้บนหน้าจอ PAY69 คาสิโนฟลอร์ใหญ่ ให้คุณสัมผัสดีลเลอร์สาวสวยแจกไพ่จริงแบบเรียลไทม์ ไร้การตัดต่อหรือใช้คลิปวน
+  <ContentBoxNeumorphism as="h2" title="PHOENIX168 สล็อตสปีดติดปีก เปิดเกมไวพร้อมพาความสนุกทะยานตั้งแต่หน้าแรก">
+    <p class="text-left text-base leading-relaxed">
+      กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ PHOENIX168 ปรับจูนระบบหลังบ้านมาให้โหลดไวกว่าเว็บทั่วไปหลายเท่า ไม่ต้องนั่งมองหน้าจอหมุนค้างให้เสียอารมณ์ ตัดขั้นตอนยุ่งยากออกทั้งหมด
+      พาคุณพุ่งตรงจากหน้าแรกเข้าสู่ตัวเกมได้ในคลิกเดียว ช่วยให้คุณไม่พลาดจังหวะสำคัญในการทำกำไรและเริ่มสปินได้ทันทีโดยไม่ต้องเสียเวลารอ
     </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      มุมกล้องหลากหลายมองเห็นทุกมิติการแทง เพิ่มความโปร่งใสในทุกตา สัญญาณเสถียรไม่มีอาการกระตุก ให้ความรู้สึกเหมือนนั่งเดิมพันอยู่ริมโต๊ะ VIP จริง
-    </p>
-  </ContentBoxTwo>
+  </ContentBoxNeumorphism>
 
-  <ContentBox3ThreeFloatingBadge
-    as="h2"
-    title="รวมโต๊ะสดค่ายดังระดับพรีเมียม PAY69 มีเกมไหนน่าจับตามองบ้าง?"
-    titleleft="ค่ายคาสิโนชั้นนำระดับโลก"
-    titlecenter="โต๊ะสดให้เลือกเล่นเพียบ"
-    titleright="เลือกห้องได้ตามงบเบท">
-    <p slot="left" class="text-left text-base leading-relaxed">รวมค่ายคาสิโนชั้นนำระดับโลกไว้อย่างครบครันทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ Pragmatic Play Live</p>
-    <p slot="center" class="text-left text-base leading-relaxed">มีโต๊ะสดให้เลือกเล่นเพียบ ทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ต เสือมังกร และไฮโล</p>
-    <p slot="right" class="text-left text-base leading-relaxed">เลือกห้องเล่นได้ตามงบเบท ตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller</p>
-  </ContentBox3ThreeFloatingBadge>
-
-  <ProviderGrid />
-
-  <ContentBox3Three
-    as="h2"
-    title="เกมหลายหมวดพร้อมสลับฟีล จากบาคาร่าไปเกมโต๊ะยอดนิยมได้ในที่เดียว"
-    titleleft="สลับโต๊ะได้ในยูสเซอร์เดียว"
-    titlecenter="กระเป๋าเงินเดียวยืดหยุ่นสูงสุด"
-    titleright="ไม่ต้องโยกเงินข้ามค่าย">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      เปลี่ยนบรรยากาศการเดิมพันได้ทันทีโดยไม่ต้องย้ายเว็บ สลับจากโต๊ะบาคาร่าไปเดิมพันรูเล็ต วงล้อเสี่ยงโชค หรือเกมโชว์สดสุดตื่นเต้นได้ทันทีในยูสเซอร์เดียว
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">ระบบกระเป๋าเงินเดียวยืดหยุ่นสูงสุด ช่วยให้คุณบริหารเงินทุนและสลับไปเล่นเกมโต๊ะยอดนิยมอื่นๆ ได้อย่างอิสระ</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ไม่ต้องโยกเงินข้ามค่ายให้เสียเวลา</p>
-  </ContentBox3Three>
-
-  <GameRankingBoard />
-
-  <SmoothCarousel />
-
-  <ContentBoxSevenThree as="h2" title="เว็บใหญ่ทุนหนาพร้อมเพย์ จุดเด่นของ PAY69 ที่วางระบบการเงินไว้ครบ" titleleft="Monthly Extra Bonus ทุกเดือน" titleright="จ่ายทุกยอดชนะทันที ถอนหลักล้านได้สบาย">
+  <ContentBoxSevenThree as="h2" title="เกมฮิตลิขสิทธิ์แท้หลายค่าย PHOENIX168 รวมตัวเด็ดอะไรมาให้เลือกบ้าง?" titleleft="โปรต้อนรับสมาชิกใหม่" titleright="คัดเฉพาะตัวที่แตกง่าย ฟีเจอร์ตัวคูณหนัก">
     <Picture
       slot="left"
-      src={imgMonthlyBonus}
+      src={imgWelcomeBonus}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -186,44 +149,69 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โบนัสรายเดือนพื้นทองของ PAY69 มุมขวาบนเป็นโลโก้ PAY69 กลางภาพเป็นข้อความ Monthly Extra Bonus ตัวใหญ่ ใต้ลงมาเป็นบรรทัดภาษาไทยว่า ทุกความพยายาม มีคุณค่าเสมอ ฝั่งซ้ายเป็นมาสคอตหนูสวมชุดจีนสีขาวทองกอดทองแท่งไว้ในอ้อมแขน รอบตัวมีกองเหรียญทอง ถุงเงินจีนสีแดง และประทัดจีนแขวนอยู่ด้านบน"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#a87c2e]/45 shadow-[0_10px_30px_rgba(232,195,122,0.28)]"
+      alt="แบนเนอร์โปรโมชั่นพื้นแดงทองของ PHOENIX168 กลางภาพเขียนว่า ต้อนรับสมาชิกใหม่ ใต้ลงมาเป็นป้ายสองใบเขียนว่า ฝากแรก 500 และ รับโบนัส 300 ตัวเลขสีทองขนาดใหญ่ แถบล่างสุดเขียนว่า เล่นได้เฉพาะสล็อตและกีฬาเท่านั้น ฝั่งซ้ายเป็นผู้หญิงผมยาวสวมชุดราตรีสีแดงเข้ม รอบตัวมีไพ่โพดำและเหรียญทองปลิวอยู่"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#c04a12]/45 shadow-[0_10px_30px_rgba(255,90,30,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ความน่าเชื่อถือของ PAY69 อยู่ที่ฐานการเงินที่แข็งแกร่งระดับเว็บใหญ่ พร้อมจ่ายทุกยอดชนะทันที ไม่ว่าจะบวกหลักหมื่นหรือหลักล้านก็ถอนออกได้สบาย
-      รองรับช่องทางการเงินครบครันทั้งธนาคารชั้นนำทั่วไทยและระบบ TrueMoney Wallet วางระบบการเงินแน่นหนา ปลอดภัย เก็บข้อมูลสมาชิกเป็นความลับขั้นสุด
+      เรื่องคลังเกมบอกเลยว่าจัดเต็ม PHOENIX168 ขนเกมสล็อตลิขสิทธิ์แท้จากค่ายดังอย่าง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอื่นๆ มาไว้ให้เลือกแบบแน่นๆ คัดมาเฉพาะตัวที่แตกง่าย
+      มีฟีเจอร์ตัวคูณหนัก ฟรีสปินเข้าไว และมีอัตราการจ่ายเงินรางวัลที่ยุติธรรม เพื่อให้ทุกการหมุนของคุณมีโอกาสลุ้นแจ็คพอตก้อนโตได้จริง
     </p>
   </ContentBoxSevenThree>
 
-  <LatestWinnersCyber />
+  <ProviderGridPremium />
 
-  <ContentBoxSevenThreeFloatingBadge as="h2" title="สิทธิพิเศษมีทุกวัน เปิดลิสต์โปรของ PAY69 ที่สมาชิกไม่ควรมองข้าม" titleleft="โปรต้อนรับสมาชิกใหม่" titleright="กดรับเองได้ผ่านหน้าแดชบอร์ด">
+  <ContentBox3ThreePremium
+    as="h2"
+    title="ตัวท็อปมีครบ ไม่ต้องบินหาไกล เปิดล็อบบี้เดียวก็เจอเกมน่าตามหลายแนว"
+    titleleft="ล็อบบี้เดียวจบ ไม่ต้องสมัครหลายเว็บ"
+    titlecenter="ครบทั้ง 3D สตรีตนำโชค และซื้อฟีเจอร์"
+    titleright="กระเป๋าเดียว ไม่ต้องโยกเงิน">
+    <p slot="left" class="text-left text-base leading-relaxed">ไม่ต้องเสียเวลาสมัครหลายเว็บเพื่อเล่นเกมที่ชอบ เพราะหน้าล็อบบี้ของ PHOENIX168 จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ</p>
+    <p slot="center" class="text-left text-base leading-relaxed">รวบรวมทั้งสล็อตสายภาพสวย 3D สล็อตสตรีตนำโชค หรือสล็อตสายซื้อฟีเจอร์พุ่งชนโบนัส</p>
+    <p slot="right" class="text-left text-base leading-relaxed">อยากเล่นแนวไหนก็กดเลือกได้ทันทีในกระเป๋าเดียว ไม่ต้องย้ายเว็บ ไม่ต้องโยกเงินให้วุ่นวาย</p>
+  </ContentBox3ThreePremium>
+
+  <GameRankingBoard />
+
+  <SmoothCarousel />
+
+  <ContentBoxCyberCut as="h2" title="ระบบเล่นลื่นไม่มีสะดุด PHOENIX168 สลับเกมคล่องไม่ปล่อยจังหวะให้หลุด">
+    <p class="text-left text-base leading-relaxed">
+      ความรู้สึกตอนสลับเกมคืออีกหนึ่งเรื่องที่ทำมาดีมาก พอปั่นเกมนี้จนพอใจแล้วอยากเปลี่ยนไปลองเกมอื่น ตัวระบบของ PHOENIX168 ก็ตอบสนองได้ฉับไว สลับค่ายสลับเกมได้ทันทีโดยไม่ต้องรอโหลดหน้าคีย์ข้อมูลใหม่
+      ตัวเกมประมวลผลสมูธ กราฟิกแสดงผลคมชัด ไม่มีอาการกระตุกหรือหลุดออกจากเกมให้เสียจังหวะ
+    </p>
+  </ContentBoxCyberCut>
+
+  <ContentBoxSpecial as="h2" title="มือถือ แท็บเล็ต หรือคอมก็พร้อม PHOENIX168 รองรับทุกอุปกรณ์">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ปรับสเกลหน้าจอให้อัตโนมัติแบบสมบูรณ์แบบ ไม่ว่าคุณจะถนัดปั่นบนมือถือ iOS, Android, แท็บเล็ต หรือเปิดหน้าจอใหญ่เล่นบนคอมพิวเตอร์ PHOENIX168 วางโครงสร้างเว็บให้แสดงผลได้อย่างคมชัด ลื่นไหล
+      และเสถียรเท่ากันทุกช่องทาง
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ปุ่มกดต่างๆ วางในตำแหน่งที่ใช้นิ้วโป้งกดง่าย เล่นบนมือถือได้สบายๆ ไม่เกะกะสายตา</p>
+  </ContentBoxSpecial>
+
+  <ContentBoxSevenThreePremium as="h2" title="ปั่นเพลินได้ทั้งวัน 24 ชั่วโมง อยากเข้าเล่นช่วงไหนก็พร้อมต่อความสนุก" titleleft="กงล้อนำโชคแจกทุกชั่วโมง">
     <Picture
       slot="left"
-      src={imgWelcomeBonus}
+      src={imgLuckyWheel}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 340px"
+      sizes="(max-width: 767px) 92vw, 380px"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นฟ้าและทองของ PAY69 มุมขวาบนเป็นโลโก้ PAY69 กลางภาพเขียนว่า โปรโมชั่นต้อนรับสมาชิกใหม่ รับฟรีสูงสุด 1,100! เลือกได้ 1 ใน 2 พร้อมป้ายสองใบเขียนว่า ฝาก 20 รับ 20 และ ฝาก 100 รับ 200 ฝั่งซ้ายเป็นมาสคอตหญิงสไตล์พิกเซลกำลังเปิดหีบสมบัติใต้ป้าย SCATTER แถบล่างสุดเขียนว่า ทำ Step 1 แล้ว รับต่อ Step 2 และ ฝากสะสม 299 รับเพิ่ม 39 ท่ามกลางเหรียญทองที่ปลิวอยู่รอบภาพ"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#a87c2e]/45 shadow-[0_10px_30px_rgba(232,195,122,0.28)]"
+      alt="แบนเนอร์โปรโมชั่นพื้นแดงทองของ PHOENIX168 ข้อความบนภาพเขียนว่า กงล้อนำโชค รับฟรีชิ้นส่วนเพชรทุกชม. สะสมหมุนกงล้อลุ้นรับของรางวัล มูลค่ากว่า 500,000.- ฝั่งซ้ายเป็นผู้หญิงผมยาวสวมชุดสีแดงยืนอยู่หน้าวงล้อเสี่ยงโชค รอบตัวมีเพชรสีน้ำเงินและเหรียญทองปลิวอยู่"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#c04a12]/45 shadow-[0_10px_30px_rgba(255,90,30,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      เสริมสภาพคล่องการเดิมพันด้วยสิทธิพิเศษที่อัปเดตใหม่ทุกวัน ไม่ว่าจะเป็นโบนัสต้อนรับคาสิโนสด โปรโมชันฝากแรกของวัน คืนยอดเสียรับ Cash Back ทุกวัน รวมถึงคอมมิชชันการชวนเพื่อน เงื่อนไขโปร่งใส
-      ไม่ติดเทิร์นโอเวอร์มหาโหด กดรับเองได้ทันทีผ่านหน้าแดชบอร์ด
+      ไม่มีปิดปรับปรุงระบบแบบไม่แจ้งล่วงหน้า PHOENIX168 วางเซิร์ฟเวอร์เสถียรสูงที่พร้อมเปิดให้บริการตลอด 24 ชั่วโมง ไม่ว่าคุณจะเป็นสายปั่นช่วงพักเที่ยง หรือสายลุยดึกๆ
+      จังหวะโบนัสและระบบฝากถอนก็พร้อมทำงานด้วยความเร็วสูงสุดเท่ากันตลอดวัน อยากหยิบมือถือขึ้นมาเข้าเล่นช่วงไหนก็ต่อความสนุกได้ทันที
     </p>
-  </ContentBoxSevenThreeFloatingBadge>
+  </ContentBoxSevenThreePremium>
 
-  <ContentBoxSpecial as="h2" title="ฝากถอนออโต้ทันใจ ลดขั้นตอนทำรายการให้คล่องตั้งแต่ฝากจนถึงถอน">
-    <p slot="left" class="text-left text-base leading-relaxed">ตัดขั้นตอนซับซ้อนน่ารำคาญออกทั้งหมด ด้วยระบบฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ฝากเงินปุ๊บเครดิตเข้าเกมใน 3 วินาที</p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เมื่อทำกำไรได้ก็กดถอนเงินเข้าบัญชีได้ด้วยตัวเอง ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ ดำเนินการคล่องตัว สมูธตั้งแต่เริ่มต้นฝากจนถึงยอดเงินเข้าบัญชี
-    </p>
-  </ContentBoxSpecial>
+  <LatestWinners3 />
 
   <LoginRtpSection />
 
@@ -232,18 +220,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fdf4e0] via-[#e8c37a] to-[#6b4d15] px-4 py-3 text-sm font-black whitespace-nowrap text-[#08070a] shadow-[0_10px_30px_rgba(232,195,122,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(232,195,122,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#f4dc6d] via-[#ff5a1e] to-[#7a2408] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0402] shadow-[0_10px_30px_rgba(255,90,30,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,90,30,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e8c37a]/55 bg-[#08070a]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e6dac2] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#f7dfa5] hover:bg-[#1c1811] hover:text-[#fdf4e0] hover:shadow-[0_15px_40px_rgba(232,195,122,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#ff5a1e]/55 bg-[#0a0402]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f2ddc9] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ffa14a] hover:bg-[#1f0a05] hover:text-[#ffe2c4] hover:shadow-[0_15px_40px_rgba(255,90,30,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq3 title="คำถามที่พบบ่อยเกี่ยวกับ PAY69" faqs={faqs} />
+  <Faq2 title="คำถามที่พบบ่อยเกี่ยวกับ PHOENIX168" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

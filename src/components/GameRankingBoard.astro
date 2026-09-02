@@ -1,101 +1,102 @@
 ---
-// PAY69: ชุดสีย้ายมาที่ทองแชมเปญเดี่ยวบนดำสนิทตามอาร์ตจริง ไม่มีสีคู่ — ทอง
-// #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว #08070a / #12100c /
-// #1c1811 เนื้อความ #e6dac2 ข้อความรอง #a99a7d แถวอันดับหนึ่งรับทองครีมสว่างเพื่อ
-// ให้ตัดกับแถวที่เหลือ จุด live สีเขียว Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ
+// PHOENIX168: ชุดสีย้ายมาที่ไฟฟีนิกซ์คู่ทองขนนกตามอาร์ตจริง — ส้มไฟ #ff5a1e /
+// #ffa14a / #ffe2c4 / #c04a12 / #7a2408 คู่ทอง #f3ac3c / #f4dc6d บนผิว #0a0402 /
+// #150703 / #1f0a05 เนื้อความ #f2ddc9 ข้อความรอง #c4a08a แถวอันดับหนึ่งรับครีมสว่าง
+// เพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
 // git history)
 //
-// รอบนี้ตัดรูปโลโก้ค่ายออกจากทุกแถว และตัด import ของ src/assets/providers/game*
-// ทิ้งไปด้วย เพราะอาร์ตชุดนั้นเป็นโลโก้ค่าย "สล็อต" (PG / SexySlot / SlotXO /
-// Joker / JILI / PP SLOT) ส่วน PAY69 เป็นแบรนด์คาสิโนสด กระดานนี้จึงเป็นหมวดโต๊ะสด
-// ไม่ใช่หมวดเกมสล็อต การเอาโลโก้สล็อตมาแปะข้างชื่อโต๊ะบาคาร่าแล้วเขียน alt ให้เป็น
-// อย่างอื่นคือ alt ที่ไม่ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit
-// ลง dist/ ฟรีๆ ช่องรูปจึงถูกแทนด้วยไอคอนกรอบทองที่เป็น aria-hidden แทน
+// ไม่มีรูปโลโก้ค่ายในแถวไหนเลย และไม่ import src/assets/providers/game* — โลโก้ค่าย
+// อยู่ที่ ProviderGridPremium ซึ่งเป็นที่ของมัน กระดานนี้กางหมวดหมู่เกมในล็อบบี้
+// ไม่ใช่รายชื่อค่าย การเอาโลโก้ค่ายมาแปะข้างชื่อหมวดแล้วเขียน alt ให้เป็นอย่างอื่น
+// คือ alt ที่ไม่ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit ลง dist/
+// ฟรีๆ ช่องรูปจึงเป็นไอคอนกรอบไฟที่เป็น aria-hidden แทน
 //
-// ไม่ผูกชื่อโต๊ะกับชื่อค่ายรายแถว: docx เอ่ยค่าย (Evolution Gaming, SA Gaming,
-// Sexy Baccarat, Pragmatic Play Live) กับชื่อเกมไว้คนละประโยค การจับคู่ว่าโต๊ะไหน
-// เป็นของค่ายไหนเป็นข้อมูลที่ brief ไม่ได้ให้ ช่องขวาของแต่ละแถวจึงบอก "ช่วงงบเบท
-// ของห้อง" ซึ่งเป็นข้อเท็จจริงที่ docx ให้ไว้ตรงๆ แทน
+// ไม่ผูกหมวดเกมกับชื่อค่ายรายแถว: docx เอ่ยค่าย (PG Soft, Pragmatic Play, Joker
+// Gaming) กับแนวเกมไว้คนละประโยค การจับคู่ว่าแนวไหนเป็นของค่ายไหนเป็นข้อมูลที่ brief
+// ไม่ได้ให้ ช่องขวาของแต่ละแถวจึงบอก "จุดเด่นของหมวด" ซึ่งเป็นข้อเท็จจริงที่ docx
+// ให้ไว้ตรงๆ แทน
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
-// กระดานนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 4 เรื่องเกมหลายหมวดพร้อมสลับฟีล จึงกาง
-// โต๊ะสดทุกหมวดที่สลับไปมาได้ในยูสเซอร์เดียวให้เห็นครบในหน้าเดียว
+// กระดานนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 4 เรื่องเปิดล็อบบี้เดียวก็เจอเกมหลายแนว
+// จึงกางหมวดเกมที่กดสลับได้ในกระเป๋าเดียวให้เห็นครบในหน้าเดียว
 //
 // อันดับ 1–3 แสดงเหรียญ "แทน" ตัวเลข ถ้าซ่อนอิโมจิเฉยๆ สามแถวนั้นจะไม่เหลืออันดับ
 // ให้อ่านเลย ข้อความ sr-only จึงใส่กลับเข้าไปคู่กับ aria-hidden
 const games = [
   {
     rank: 1,
-    name: "บาคาร่าคลาสสิก",
-    type: "โต๊ะยอดนิยมที่ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ • ไร้การตัดต่อหรือใช้คลิปวน มุมกล้องหลากหลายมองเห็นทุกมิติการแทง",
-    room: "ห้องเริ่มต้นหลักสิบ",
-    menus: ["แจกไพ่เรียลไทม์", "มุมกล้องหลายมุม"],
+    name: "สล็อตสายภาพสวย 3D",
+    type: "หมวดที่กราฟิกแสดงผลคมชัดที่สุดในล็อบบี้ • ตัวเกมประมวลผลสมูธ ไม่มีอาการกระตุกหรือหลุดออกจากเกมให้เสียจังหวะ",
+    focus: "กราฟิกคมชัด ประมวลผลสมูธ",
+    menus: ["ภาพ 3D", "เล่นลื่นไม่สะดุด"],
     players: 5124,
-    icon: "🃏",
+    icon: "🎨",
   },
   {
     rank: 2,
-    name: "บาคาร่าสายฟ้า",
-    type: "จังหวะเร้าใจกว่าบาคาร่าปกติ เหมาะกับคนที่อยากได้ฟีลโต๊ะสดแบบไม่ต้องรอนาน",
-    room: "ห้องกลางถึง High Roller",
-    menus: ["จังหวะเร็ว", "ฟีลโต๊ะ VIP"],
+    name: "สล็อตสายซื้อฟีเจอร์",
+    type: "พุ่งชนโบนัสได้ทันทีโดยไม่ต้องรอจังหวะ เหมาะกับคนที่อยากได้ฟีลสปีดตั้งแต่สปินแรก",
+    focus: "ซื้อฟีเจอร์พุ่งชนโบนัส",
+    menus: ["เข้าโบนัสไว", "สายสปีด"],
     players: 3842,
-    icon: "⚡",
+    icon: "🛒",
   },
   {
     rank: 3,
-    name: "รูเล็ตสด",
-    type: "สลับจากโต๊ะบาคาร่ามาเดิมพันรูเล็ตได้ทันทีในยูสเซอร์เดียว ไม่ต้องย้ายเว็บและไม่ต้องโยกเงิน",
-    room: "เลือกห้องได้ตามงบเบท",
-    menus: ["สลับได้ทันที", "ยูสเซอร์เดียว"],
+    name: "สล็อตสตรีตนำโชค",
+    type: "หมวดยอดฮิตของคนไทยที่กดเข้าเล่นได้ทันทีในกระเป๋าเดียว ไม่ต้องย้ายเว็บและไม่ต้องโยกเงิน",
+    focus: "กระเป๋าเดียวกดเลือกได้ทันที",
+    menus: ["ไม่ต้องย้ายเว็บ", "ยูสเซอร์เดียว"],
     players: 3517,
-    icon: "🎡",
+    icon: "🏮",
   },
   {
     rank: 4,
-    name: "เสือมังกร",
-    type: "เกมโต๊ะจังหวะไวที่ตัดสินกันไพ่ใบเดียว อ่านเกมง่ายสำหรับคนที่เพิ่งเข้าฟลอร์คาสิโนสด",
-    room: "ห้องเริ่มต้นหลักสิบ",
-    menus: ["ตัดสินไว", "อ่านเกมง่าย"],
+    name: "สล็อตฟีเจอร์ตัวคูณหนัก",
+    type: "เกมที่คัดมาเฉพาะตัวที่มีตัวคูณหนัก เปิดโอกาสให้ทุกการหมุนลุ้นแจ็คพอตก้อนโตได้จริง",
+    focus: "ตัวคูณหนัก ลุ้นแจ็คพอต",
+    menus: ["ตัวคูณหนัก", "แจ็คพอตก้อนโต"],
     players: 2905,
-    icon: "🐯",
+    icon: "💥",
   },
   {
     rank: 5,
-    name: "ไฮโลสด",
-    type: "โต๊ะไทยคุ้นมือที่ยิงสัญญาณสดระดับ Ultra HD ตรงจากฟลอร์คาสิโนจริงในต่างประเทศ",
-    room: "เลือกห้องได้ตามงบเบท",
-    menus: ["สัญญาณ Ultra HD", "ฟลอร์จริง"],
+    name: "สล็อตฟรีสปินเข้าไว",
+    type: "หมวดที่เข้าฟรีสปินถี่ที่สุด เหมาะกับคนที่ชอบให้เกมเดินเรื่องเร็วและไม่อยากรอนาน",
+    focus: "ฟรีสปินเข้าไว",
+    menus: ["ฟรีสปินถี่", "จังหวะไว"],
     players: 2431,
-    icon: "🎲",
+    icon: "🌀",
   },
   {
     rank: 6,
-    name: "วงล้อเสี่ยงโชคและเกมโชว์สด",
-    type: "หมวดเปลี่ยนบรรยากาศเมื่ออยากพักจากโต๊ะไพ่ • กระเป๋าเงินเดียวยืดหยุ่นสูงสุด สลับเข้าเล่นได้อิสระ",
-    room: "กระเป๋าเงินเดียว",
-    menus: ["เกมโชว์สด", "สลับอิสระ"],
+    name: "สล็อตแตกง่ายอัตราจ่ายยุติธรรม",
+    type: "ยิงตรง API แท้จากค่ายใหญ่ โบนัสแตกตามอัตราจ่ายจริงของเกม ไม่มีการดัดแปลงเปอร์เซ็นต์ชนะ",
+    focus: "อัตราจ่ายจริงจากค่าย",
+    menus: ["API แท้", "ไม่ดัดแปลงอัตราชนะ"],
     players: 2108,
-    icon: "🎯",
+    icon: "💎",
   },
 ];
 
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="หมวดโต๊ะสดที่ PAY69 เปิดให้สลับเล่นได้ในยูสเซอร์เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="หมวดเกมสล็อตที่ PHOENIX168 จัดไว้ให้กดสลับได้ในล็อบบี้เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#a87c2e]/40 bg-[#12100c]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(107,77,21,0.28)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl">🎴</span>
-    <p class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#e8c37a] bg-clip-text text-2xl font-black tracking-wide text-transparent">หมวดโต๊ะสดที่ PAY69 เปิดให้สลับเล่นได้ในยูสเซอร์เดียว</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#a99a7d]">
-      กางให้เห็นครบในหน้าเดียว ทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า รูเล็ตสด เสือมังกร ไฮโลสด และหมวดวงล้อเสี่ยงโชคกับเกมโชว์สด เลือกห้องเล่นได้ตามงบเบทตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ High Roller
-      ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูกติกาและเพดานเดิมพันของแต่ละโต๊ะจากหน้าห้องจริงอีกครั้งก่อนลงเดิมพัน
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#c04a12]/40 bg-[#150703]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(122,36,8,0.28)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl">🎰</span>
+    <p class="bg-gradient-to-r from-[#ffe2c4] via-[#ffa14a] to-[#ff5a1e] bg-clip-text text-2xl font-black tracking-wide text-transparent">
+      หมวดเกมสล็อตที่ PHOENIX168 จัดไว้ให้กดสลับได้ในล็อบบี้เดียว
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e8c37a] to-transparent"></div>
+    <p class="max-w-3xl text-base leading-relaxed text-[#c4a08a]">
+      กางให้เห็นครบในหน้าเดียว ทั้งสล็อตสายภาพสวย 3D สล็อตสายซื้อฟีเจอร์ สล็อตสตรีตนำโชค สล็อตฟีเจอร์ตัวคูณหนัก สล็อตฟรีสปินเข้าไว และหมวดแตกง่ายที่จ่ายตามอัตราจริงของค่าย
+      อยากเล่นแนวไหนก็กดเลือกได้ทันทีในกระเป๋าเดียว ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราจ่ายและเงื่อนไขของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
+    </p>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ff5a1e] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -106,10 +107,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#f7dfa5]/55 bg-gradient-to-r from-[#1c1811]/85 via-[#12100c]/92 to-[#08070a]/90 shadow-[0_15px_40px_rgba(232,195,122,0.2)]"
-                : "border-[#a87c2e]/35 bg-[#12100c]/90 shadow-[0_10px_30px_rgba(107,77,21,0.2)] hover:border-[#e8c37a]/55 hover:shadow-[0_15px_40px_rgba(232,195,122,0.28)]"
+                ? "border-[#ffa14a]/55 bg-gradient-to-r from-[#1f0a05]/85 via-[#150703]/92 to-[#0a0402]/90 shadow-[0_15px_40px_rgba(255,90,30,0.2)]"
+                : "border-[#c04a12]/35 bg-[#150703]/90 shadow-[0_10px_30px_rgba(122,36,8,0.2)] hover:border-[#ff5a1e]/55 hover:shadow-[0_15px_40px_rgba(255,90,30,0.28)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#1c1811]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#a87c2e]/40" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#1f0a05]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#c04a12]/40" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {medal(g.rank) ? (
@@ -118,39 +119,39 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#e8c37a] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#ff5a1e] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
             <div
               aria-hidden="true"
-              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#08070a] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
-                top ? "border-[#f7dfa5]/60" : "border-[#a87c2e]/45"
+              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#0a0402] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
+                top ? "border-[#ffa14a]/60" : "border-[#c04a12]/45"
               }`}>
               {g.icon}
             </div>
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#e6dac2] sm:text-lg">{g.name}</p>
+                <p class="truncate text-base font-black text-[#f2ddc9] sm:text-lg">{g.name}</p>
                 {top && (
-                  <span class="hidden shrink-0 rounded-full border border-[#f7dfa5]/70 bg-gradient-to-r from-[#fdf4e0] to-[#e8c37a] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#08070a] sm:inline">
-                    โต๊ะที่คนเข้ามากที่สุด
+                  <span class="hidden shrink-0 rounded-full border border-[#ffa14a]/70 bg-gradient-to-r from-[#f4dc6d] to-[#ff5a1e] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#0a0402] sm:inline">
+                    หมวดที่คนเข้ามากที่สุด
                   </span>
                 )}
               </div>
-              <p class="truncate text-[11px] text-[#a99a7d] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#c4a08a] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
-                <span class="rounded-full border border-[#6b4d15]/70 bg-[#1c1811] px-2.5 py-0.5 text-[10px] font-bold text-[#f7dfa5]">{g.room}</span>
+                <span class="rounded-full border border-[#7a2408]/70 bg-[#1f0a05] px-2.5 py-0.5 text-[10px] font-bold text-[#ffa14a]">{g.focus}</span>
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#a87c2e]/40 bg-[#1c1811] px-2.5 py-0.5 text-[10px] font-bold text-[#e8c37a]">{m}</span>
+                  <span class="rounded-full border border-[#c04a12]/40 bg-[#1f0a05] px-2.5 py-0.5 text-[10px] font-bold text-[#ff5a1e]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#a99a7d]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#c4a08a]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -161,10 +162,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#fdf4e0] to-[#a87c2e] text-[#08070a] shadow-[0_10px_30px_rgba(232,195,122,0.35)]"
-                    : "border border-[#a87c2e]/60 bg-[#1c1811] text-[#e8c37a] hover:border-[#f7dfa5] hover:bg-[#6b4d15] hover:text-[#fdf4e0]"
+                    ? "bg-gradient-to-r from-[#f4dc6d] to-[#c04a12] text-[#0a0402] shadow-[0_10px_30px_rgba(255,90,30,0.35)]"
+                    : "border border-[#c04a12]/60 bg-[#1f0a05] text-[#ff5a1e] hover:border-[#ffa14a] hover:bg-[#7a2408] hover:text-[#ffe2c4]"
                 }`}>
-                เข้าโต๊ะสด
+                เข้าเล่นเกม
               </a>
             </div>
           </article>
