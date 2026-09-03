@@ -7,30 +7,29 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// NEOCLUB88: ย้ายชุดสีมาที่ทองคลับคู่แพลทินัมของแบรนด์นี้ (ค่า hex เดิมไม่พิมพ์ไว้
-// ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาส
-// จากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) — ทอง
-// #f2cc53 / #ffe89a / #f6d977 / #c39b3c / #a8842c / #8a6415 คู่แพลทินัม #eef1f5 /
-// #c6ccd4 / #8d949e บนผิว #241303 / #140b02 / #0a0602 เนื้อความ #ede0c4 หัวข้อ
-// ไล่เฉดขึ้นต้นด้วย #fbf4e4 ป้ายคอลัมน์ซ้ายรับทอง ป้ายคอลัมน์ขวารับแพลทินัม
+// OKHENG18: ย้ายชุดสีมาที่แดงเฮงคู่ทองของแบรนด์นี้ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้
+// เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่
+// ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) — แดง #ed0133 / #ff5c7a /
+// #a80024 / #5c0212 คู่ทอง #ffd400 / #ffe97a และครีมชมพู #ffe3e8 บนผิว #2b070f /
+// #150407 / #050102 เนื้อความ #f6dde2 หัวข้อไล่เฉดขึ้นต้นด้วย #ffe3e8 ป้ายคอลัมน์
+// ซ้ายรับแดงซึ่งเป็นสีนำ ป้ายคอลัมน์ขวารับทองซึ่งเป็นสีคู่
 //
 // ป้ายหัวข้อเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap กลับมา
 // ตัวนั้นคือสิ่งที่เคยดันป้ายทะลุขอบจอมือถือแล้วทำให้ทั้งหน้าเลื่อนแนวนอนได้
 //
 // pt-32/md:pt-36 — ป้ายถูกตรึงที่ -top-6 ขอบล่างจึงอยู่ที่ (ความสูงป้าย − 24px)
-// นับจากขอบบนการ์ด คิดกับหัวข้อ H2 ข้อ 6 ของ docx NEOCLUB88 ที่ไฟล์นี้รับ ยาว 74
-// ตัวอักษร ("มากกว่าแค่รวมเกม NEOCLUB88 วางฟีลเอ็กซ์คลูซีฟให้ครบตั้งแต่ล็อบบี้ถึง
-// บริการ") chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
+// นับจากขอบบนการ์ด คิดกับหัวข้อ H2 ข้อ 6 ของ docx OKHENG18 ที่ไฟล์นี้รับ ยาว 69
+// ตัวอักษร ("ออโต้โอนไวทันใจจริง ตัดขั้นตอนรอให้เรื่องเงินจบง่ายและเดินต่อได้คล่อง")
+// chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ ✦ สองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-base + tracking-tighter
-//   ≈ 7.5px ต่อตัวอักษร → ~30 ตัวต่อบรรทัด หัวข้อ 74 ตัวจึงตัดเป็น 3 บรรทัด เผื่อ
+//   ≈ 7.5px ต่อตัวอักษร → ~30 ตัวต่อบรรทัด หัวข้อ 69 ตัวจึงตัดเป็น 3 บรรทัด เผื่อ
 //   แบบแย่สุด 4 บรรทัด: leading-normal ที่ 16px = 24px ต่อบรรทัด → 96px + 24px =
 //   120px ขอบล่างอยู่ที่ 96px เทียบกับ pt-32 (128px) → เหลือช่องว่าง 32px
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ ✦ เหลือ ~566px,
-//   md:text-2xl = 36px ต่อบรรทัด ใส่ได้ ~43 ตัวต่อบรรทัด → หัวข้อ 74 ตัวเป็น 2
+//   md:text-2xl = 36px ต่อบรรทัด ใส่ได้ ~43 ตัวต่อบรรทัด → หัวข้อ 69 ตัวเป็น 2
 //   บรรทัด เผื่อแบบแย่สุด 3 บรรทัด = 108px + 24px = 132px ขอบล่างอยู่ที่ 108px
-//   เทียบกับ md:pt-36 (144px) → เหลือ 36px (md:pt-28 เดิมเหลือแค่ 4px จึงถูกดันขึ้น
-//   รอบนี้ เพราะหัวข้อของแบรนด์นี้ยาวกว่าที่ pt เดิมถูกคำนวณไว้)
+//   เทียบกับ md:pt-36 (144px) → เหลือ 36px
 // ให้ไฟล์นี้ตื้นกว่า ContentBoxFloatingBadge (pt-44/md:pt-36) หรือเท่ากันเสมอ
 //
 // ✦ สองตัวเป็น sibling ที่ aria-hidden ไม่ได้อยู่ในข้อความของหัวข้อ
@@ -40,17 +39,17 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
-  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#a8842c]/45 bg-gradient-to-b from-[#241303] to-[#0a0602] p-8 pt-32 shadow-[0_10px_40px_rgba(5,3,1,0.6)] md:pt-36">
+  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#a80024]/45 bg-gradient-to-b from-[#2b070f] to-[#050102] p-8 pt-32 shadow-[0_10px_40px_rgba(5,1,2,0.6)] md:pt-36">
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#c6ccd4]/45 bg-[#0a0602] px-4 py-2.5 text-center shadow-[0_5px_15px_rgba(230,236,243,0.2)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#c6ccd4]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffd400]/45 bg-[#050102] px-4 py-2.5 text-center shadow-[0_5px_15px_rgba(255,212,0,0.2)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#ffd400]">
             ✦
           </span>
-          <HeadingTag class="bg-gradient-to-r from-[#fbf4e4] via-[#f6d977] to-[#f2cc53] bg-clip-text text-base leading-normal font-black tracking-tighter text-transparent uppercase sm:text-xl md:text-2xl">
+          <HeadingTag class="bg-gradient-to-r from-[#ffe3e8] via-[#ff5c7a] to-[#ed0133] bg-clip-text text-base leading-normal font-black tracking-tighter text-transparent uppercase sm:text-xl md:text-2xl">
             {title}
           </HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#c6ccd4]">
+          <span aria-hidden="true" class="shrink-0 text-[#ffd400]">
             ✦
           </span>
         </div>
@@ -58,13 +57,13 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ede0c4]/90">
-        {titleleft && <p class="text-2xl leading-normal font-bold text-[#f2cc53] drop-shadow-[0_0_5px_rgba(242,204,83,0.3)]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6dde2]/90">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#ff5c7a] drop-shadow-[0_0_5px_rgba(237,1,51,0.35)]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ede0c4]/90 md:border-l md:border-[#c6ccd4]/30 md:pl-10">
-        {titleright && <p class="text-2xl leading-normal font-bold text-[#c6ccd4] drop-shadow-[0_0_5px_rgba(230,236,243,0.3)]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6dde2]/90 md:border-l md:border-[#ffd400]/30 md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#ffd400] drop-shadow-[0_0_5px_rgba(255,212,0,0.3)]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

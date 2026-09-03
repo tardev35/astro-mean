@@ -6,16 +6,20 @@ const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
-// GUESS168: ย้ายจากส้มไฟคู่ทองของแบรนด์ก่อน (ดูค่าเดิมได้จาก git history —
+// DEED888: ย้ายจากแดงสดคู่ทองของแบรนด์ก่อน (ดูค่าเดิมได้จาก git history —
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนทิ้งไว้ในคอมเมนต์ Tailwind สแกนไฟล์เป็นข้อความดิบ
-// ไม่รู้ว่าเป็นคอมเมนต์) มาเป็นทองหลอมคู่ส้มไฟของแบรนด์นี้ — ทอง #fecc02 /
-// #ffe680 / #ffd54a / #c58a00 คู่ส้ม #fe9c01 / #a35800 บนผิว #140800 /
-// #231005 / #33180a เนื้อความ #f7e7c6 รอง #d8bb87 ส่วนครีมสว่าง #fff6e0
-// ใช้เป็นสีกลางคู่กับทอง เพราะโลโก้จริงเป็นตัวอักษรทองตัดขอบเข้ม
+// ไม่รู้ว่าเป็นคอมเมนต์) มาเป็นส้มเพลิงคู่ทองของแบรนด์นี้ — ส้ม #e95b0b / #ff9d4d /
+// #93300a / #5c1c03 คู่ทอง #ffcf6b / #ffe3ad บนผิว #150401 / #2a0a02 / #33100a
+// เนื้อความ #fbe3d0 รอง #d8b79a ส่วนครีมทอง #ffe3ad ใช้เป็นสีกลางคู่กับส้ม
+// เพราะโลโก้จริงเป็นตัวอักษรทองหลอมขอบเปลวไฟ
 //
 // เขียว LINE (#00B900 / #009900) บนปุ่มติดต่อแอดมินไม่ใช่สีแบรนด์ — คงไว้
 //
-// GUESS168 เป็นเว็บสล็อต ไม่ใช่เว็บหวย จึงไม่มีลิงก์ /ตรวจหวย และ /แนวทาง ใน shortcuts
+// DEED888 เป็นเว็บสล็อต/คาสิโน ไม่ใช่เว็บหวย จึงไม่มีลิงก์ /ตรวจหวย และ /แนวทาง ใน shortcuts
+//
+// หัวคอลัมน์เป็น <p> ไม่ใช่ <h2>/<h3> เพราะ footer เป็น chrome ไม่ใช่เนื้อบทความ
+// ถ้าเป็นหัวข้อจริงจะกลายเป็นหัวข้อของ "ทุกหน้า" ทั้งเว็บ — ชื่อของภูมิภาคจึงย้าย
+// ไปอยู่ที่ aria-label ของ container แทน ผลที่ตาเห็นเหมือนเดิมเป๊ะ
 //
 // บล็อก <address> มาจาก BRAND_ADDRESS — ไม่ทาสีแบรนด์โดยตั้งใจ (border-white/15,
 // bg-black/20 + opacity ลงตัวกับทุก footer variant ซึ่งพื้นเข้มหมด) ห้าม retype
@@ -30,19 +34,19 @@ const shortcuts = [
 ];
 ---
 
-<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#fecc02]/60 bg-[#140800] pt-16 pb-8 font-sans text-[#f7e7c6] shadow-[0_-15px_40px_rgba(254,204,2,0.25)]">
-  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#fecc02]/20 blur-[100px]"></div>
-  <div class="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-[220px] w-full max-w-2xl rounded-full bg-[#a35800]/30 blur-[100px]"></div>
+<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#e95b0b]/60 bg-[#150401] pt-16 pb-8 font-sans text-[#fbe3d0] shadow-[0_-15px_40px_rgba(233,91,11,0.25)]">
+  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#e95b0b]/20 blur-[100px]"></div>
+  <div class="pointer-events-none absolute inset-x-0 -bottom-24 mx-auto h-[220px] w-full max-w-2xl rounded-full bg-[#5c1c03]/30 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-12">
       <div class="flex flex-col gap-5 md:col-span-5">
-        <a href="/" class="inline-block max-w-max rounded-xl border border-[#fecc02]/30 bg-[#231005] px-4 py-2 transition-transform duration-300 hover:scale-105">
+        <a href="/" class="inline-block max-w-max rounded-xl border border-[#e95b0b]/30 bg-[#2a0a02] px-4 py-2 transition-transform duration-300 hover:scale-105">
           {
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ GUESS168 เป็นตัวอักษรกราฟฟิตี้ลายมือเขียนว่า Guess168 สีทองไล่เฉดจากเหลืองสว่างไปส้ม ตัดขอบด้วยเส้นสีม่วงดำและเส้นขาว"
+                alt="โลโก้ DEED888 เป็นรูปม้าเพลิงสีแดงส้มยืนผงาดสองขาหน้า มีเปลวไฟลุกเป็นแผงคอและหาง อยู่ด้านซ้ายของคำว่า DEED888 ตัวอักษรทองหลอมขอบเปลวไฟ และมีคำว่า .COM ตัวเล็กอยู่มุมบนขวา"
                 widths={[140, 280, 420]}
                 sizes="140px"
                 loading="lazy"
@@ -52,30 +56,30 @@ const shortcuts = [
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="text-3xl font-black tracking-widest text-[#fff6e0]">
-                GUESS<span class="text-[#fecc02]">168</span>
+              <span class="text-3xl font-black tracking-widest text-[#ffe3ad]">
+                DEED<span class="text-[#e95b0b]">888</span>
               </span>
             )
           }
         </a>
-        <p class="border-l-2 border-[#fecc02]/50 pl-4 text-sm leading-relaxed text-[#d8bb87]">
-          GUESS168 สล็อตคัดเกรดที่เลือกเฉพาะเกมลิขสิทธิ์แท้จากค่ายใหญ่มาตรฐานสากล เชื่อมตรงจากเซิร์ฟเวอร์หลักด้วย API แท้ ไม่มีการดัดแปลงเปอร์เซ็นต์ชนะ ค่ายไหนปล่อยเกมใหม่อัปเดตเข้าคลังภายใน 24 ชั่วโมง
-          พร้อมโหมดทดลองเล่นฟรีให้เช็กจังหวะโบนัสก่อนลงเงินจริง และระบบฝากถอนออโต้ที่ทำรายการจบในไม่กี่วินาที
+        <p class="border-l-2 border-[#e95b0b]/50 pl-4 text-sm leading-relaxed text-[#d8b79a]">
+          DEED888 สล็อตเกมแท้ตัวท็อป เชื่อมต่อสัญญาณ API ตรงจากสตูดิโอผู้พัฒนาสล็อตระดับโลก ไม่ผ่านเอเย่นต์ ค่า RTP จึงเป็นมาตรฐานยุติธรรมตามสเปกโรงงาน ไม่มีการปรับแต่งเปอร์เซ็นต์แพ้ชนะ
+          คลังเกมกวาดเฉพาะตัวระดับ A-List จากค่ายยักษ์ใหญ่ และระบบทำรายการออโต้ประมวลผลไวในไม่กี่วินาที ถอนได้จริง ไม่ติดล็อคยูส
         </p>
         <div class="mt-4 flex flex-wrap gap-3">
-          <span class="rounded-full border border-[#fecc02]/40 bg-[#231005] px-4 py-1 text-xs font-medium text-[#ffe680] backdrop-blur-sm">คืนยอดเสีย Cash Back ทุกวัน</span>
-          <span class="rounded-full border border-[#fff6e0]/40 bg-[#231005] px-4 py-1 text-xs font-medium text-[#fff6e0] backdrop-blur-sm">ฝากถอนออโต้ จบใน 3 วินาที</span>
+          <span class="rounded-full border border-[#e95b0b]/40 bg-[#2a0a02] px-4 py-1 text-xs font-medium text-[#ffcf6b] backdrop-blur-sm">คืนยอดเสีย Cash Back รายวัน ไม่ติดล็อคยูส</span>
+          <span class="rounded-full border border-[#ffe3ad]/40 bg-[#2a0a02] px-4 py-1 text-xs font-medium text-[#ffe3ad] backdrop-blur-sm">ฝากถอนออโต้ เสร็จในไม่กี่วินาที</span>
         </div>
       </div>
 
-      <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#ffe680] uppercase drop-shadow-sm">ทางลัด</p>
-        <div class="h-[1px] w-12 bg-[#fecc02]"></div>
-        <ul class="flex flex-col gap-3 text-sm font-medium text-[#d8bb87]">
+      <nav aria-label="ทางลัด" class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
+        <p class="text-lg font-black tracking-widest text-[#ffcf6b] uppercase drop-shadow-sm">ทางลัด</p>
+        <div class="h-[1px] w-12 bg-[#e95b0b]"></div>
+        <ul class="flex flex-col gap-3 text-sm font-medium text-[#d8b79a]">
           {
             shortcuts.map((item) => (
               <li>
-                <a href={item.path} class="transition-colors hover:text-[#fecc02]">
+                <a href={item.path} class="transition-colors hover:text-[#ffcf6b]">
                   {item.name}
                 </a>
               </li>
@@ -84,9 +88,9 @@ const shortcuts = [
         </ul>
       </nav>
 
-      <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#ffe680] uppercase drop-shadow-sm">บริการลูกค้า 24 ชม.</p>
-        <div class="h-[1px] w-12 bg-[#fecc02]"></div>
+      <div aria-label="บริการลูกค้า 24 ชม." class="flex flex-col gap-5 md:col-span-4">
+        <p class="text-lg font-black tracking-widest text-[#ffcf6b] uppercase drop-shadow-sm">บริการลูกค้า 24 ชม.</p>
+        <div class="h-[1px] w-12 bg-[#e95b0b]"></div>
 
         <a
           href="/line"
@@ -120,17 +124,17 @@ const shortcuts = [
           )
         }
 
-        <div class="mt-4 text-xs font-medium tracking-widest text-[#d8bb87] uppercase">Supported Payments</div>
+        <div class="mt-4 text-xs font-medium tracking-widest text-[#d8b79a] uppercase">Supported Payments</div>
         <BankStrip size={30} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#33180a] pt-8 text-xs font-medium tracking-wide text-[#d8bb87] md:flex-row">
-      <p>COPYRIGHT &copy; {new Date().getFullYear()} GUESS168-GAME.COM. ALL RIGHTS RESERVED.</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#33100a] pt-8 text-xs font-medium tracking-wide text-[#d8b79a] md:flex-row">
+      <p>COPYRIGHT &copy; {new Date().getFullYear()} DEED888PLUS.COM. ALL RIGHTS RESERVED.</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="transition-colors hover:text-[#fecc02]">เงื่อนไขข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#fecc02]">นโยบายความเป็นส่วนตัว</a>
-        <a href="#top" class="transition-colors hover:text-[#fecc02]">กลับขึ้นบน</a>
+        <a href="/terms/" class="transition-colors hover:text-[#ffcf6b]">เงื่อนไขข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#ffcf6b]">นโยบายความเป็นส่วนตัว</a>
+        <a href="#top" class="transition-colors hover:text-[#ffcf6b]">กลับขึ้นบน</a>
       </div>
     </div>
   </div>

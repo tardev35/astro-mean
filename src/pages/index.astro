@@ -1,111 +1,124 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
 import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
 import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import FeatureHighlights from "../components/FeatureHighlights.astro";
+import ContentBoxTwo from "../components/ContentBoxTwo.astro";
+import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
 import ProviderGridPremium from "../components/ProviderGridPremium.astro";
-import LatestWinners3 from "../components/LatestWinners3.astro";
-import GameRankingBoard from "../components/GameRankingBoard.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
+import GameRankingBoard from "../components/GameRankingBoard.astro";
+import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import Faq2 from "../components/Faq2.astro";
+import Faq4 from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgWelcomeBonus from "../assets/slide1.png";
-import imgLuckyWheel from "../assets/slide3.png";
+import imgNewMemberBonus from "../assets/slide1.png";
+import imgMysteryBoxCredit from "../assets/slide4.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
 //   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   3 → ContentBoxSevenThree as="h2" + slide1 (แบนเนอร์ต้อนรับสมาชิกใหม่ที่ระบุบน
-//       รูปว่าเล่นได้เฉพาะสล็อตและกีฬา ตรงกับหัวข้อคลังเกมสล็อตลิขสิทธิ์แท้) แล้วต่อ
-//       ด้วย ProviderGridPremium ซึ่งกางชื่อค่ายที่ย่อหน้าเดียวกันเอ่ยถึง
-//   4 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามจังหวะ
-//       ประโยคเดิม: ล็อบบี้จัดหมวดหมู่ → รายชื่อแนวสล็อต → กระเป๋าเดียวไม่ต้องโยกเงิน)
-//       แล้วต่อด้วย GameRankingBoard กับ SmoothCarousel ซึ่งกางหมวดเกมในล็อบบี้ให้
-//       เห็นครบในหน้าเดียว
-//   5 → ContentBoxCyberCut as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   6 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งลงสองครึ่งตามลำดับประโยคเดิม:
-//       ฝั่งการแสดงผลทุกอุปกรณ์ → ฝั่งตำแหน่งปุ่มกดบนมือถือ)
-//   7 → ContentBoxSevenThreePremium as="h2" + slide3 (แบนเนอร์กงล้อนำโชคที่แจก
-//       ชิ้นส่วนเพชร "ทุกชม." ตรงกับหัวข้อเปิดบริการตลอด 24 ชั่วโมง) แล้วต่อด้วย
-//       LatestWinners3 ซึ่งเป็นหลักฐานของประโยคเรื่องระบบฝากถอนที่ทำงานเท่ากันทั้งวัน
+//   2 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับ
+//       ประโยคเดิม: กวาดเกม A-List จากค่ายยักษ์ใหญ่ → คัดกรองการจ่ายกับกราฟิก →
+//       ทุกเบทอยู่บนระบบมาตรฐานสากล) แล้วต่อด้วย ProviderGridPremium ซึ่งกางโลโก้
+//       ค่ายที่ย่อหน้าเดียวกันเอ่ยชื่อไว้
+//   3 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: เกมกระแสติดชาร์ต →
+//       เกมนอกกระแสอัตราคูณโหด)
+//   4 → ContentBoxSevenThreePremium as="h2" + slide1 (อาร์ตสไลด์เป็นแผ่นป้ายทอง
+//       เขียนว่า "สมาชิกใหม่ รับโบนัส 30% สูงสุด 1,000 บาท" ตรงกับโบนัสสมทบทุน
+//       ฝากแรกในย่อหน้านี้)
+//   5 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งลงสองการ์ดไอคอน) แล้ว
+//       ต่อด้วย FeatureHighlights (ฟีเจอร์ย่อยสามตัวที่ย่อหน้านี้ระบุชื่อไว้ตรงๆ →
+//       h3 สามตัว ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบนหน้านี้)
+//   6 → ContentBoxTwo as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: เกมใหม่ขึ้นแถวหน้า →
+//       เช็กอัตราจ่าย/ทดลองเล่นก่อนขึ้นสปิน) แล้วต่อด้วย SmoothCarousel กับ
+//       GameRankingBoard ซึ่งเป็นล็อบบี้ที่ย่อหน้านี้พูดถึงในรูปที่มองเห็นได้
+//   7 → ContentBoxSevenThree as="h2" + slide4 (อาร์ตสไลด์เขียนว่า "เปิดกล่องสุ่ม
+//       ลุ้นรับเครดิตฟรี สูงสุดถึง 1,000" ซึ่งเป็นสิทธิ์ที่กดรับแล้วถอนผ่านระบบ
+//       ออโต้ในย่อหน้านี้) แล้วต่อด้วย LatestWinnersPremium ซึ่งเป็นหลักฐานของ
+//       ประโยคเรื่องถอนเสร็จในไม่กี่วินาที
 //
 // variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจากชุด
-// FloatingBadge นำ มาเป็น Premium + Neumorphism + CyberCut + ตัวเปล่า + Special
-// (ไม่มี FloatingBadge เลยรอบนี้) ส่วน Announcement เป็น AnnouncementPremium,
-// LatestWinners เป็น LatestWinners3, ProviderGrid เป็น ProviderGridPremium และ Faq
-// เป็น Faq2 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน MainLayout กับ brandProfile
+// FloatingBadge/CyberCut/Neumorphism นำ มาเป็นชุด Premium นำ (Premium ×4) + Special
+// + ตัวเปล่า ×2 ส่วน Announcement เป็น Announcement5, LatestWinners เป็น
+// LatestWinnersPremium, ProviderGrid เป็น ProviderGridPremium, ReviewCard เป็น
+// ReviewCardSumo2 และ Faq เป็น Faq4 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน
+// MainLayout กับ brandProfile
 //
-// ContentBoxSevenThreePremium ปล่อยหัวข้อจาก rightHeading = titleright ?? title
-// จึงส่งมาแค่ `title` ตัวเดียว ถ้าส่ง titleright มาด้วยหัวข้อ docx จะถูกแทนที่เงียบๆ
-// ส่วน titleleft ของทั้งสอง SevenThree เป็นป้ายคอลัมน์รูปที่ยังเป็น <p>
+// ContentBoxSevenThree* ทั้งสองตัวปล่อยหัวข้อจาก prop `title` ตัวเดียว ส่วน
+// titleleft เป็นป้ายคอลัมน์รูปที่ยังเป็น <p> — ห้ามส่ง titleright เข้าไป เพราะตัว
+// เปล่าจะสลับไปใช้ titleright เป็นหัวข้อแทน title และตัว Premium จะเพิ่มป้ายซ้อน
+// ใต้หัวข้อเดียวกัน
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
-// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงกับ default ของ AnnouncementPremium
+// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ต้องตรงกับ default ของ Announcement5
 // เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความเดียว
 // กับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ emoji ที่
 // ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide3 ซึ่งเป็นสไลด์ของ
-// แบรนด์นี้จริงทั้งสองใบ — slide2 (แนะนำเพื่อน) ไม่มีหัวข้อ docx ไหนรองรับจึงปล่อยไว้
-// ไม่ใช้ ส่วน slide4 กับ banner ทุกหมายเลข (banner.png, banner2/3/4) เป็นอาร์ตของ
-// แบรนด์ก่อนที่มีชื่อของเขาพิมพ์อยู่บนรูป ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่
-// import คือรูปที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile
-// เป็นของ MainLayout จัดการเอง
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide4 ซึ่งเป็นสไลด์ที่
+// อาร์ตตรงกับหัวข้อ docx ข้อ 4 กับข้อ 7 พอดี — slide2 (ฝากแรกของวัน) กับ slide3
+// (ลูกค้าไม้ใหญ่) ไม่มีหัวข้อ docx ไหนรองรับและเพดาน SevenThree เต็มแล้ว จึงปล่อย
+// ไว้ให้หน้า /promotion ใช้ ส่วน banner ทุกหมายเลข (banner2/3/4) เป็นอาร์ตของแบรนด์
+// ก่อน ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่ถูก emit ถึงจะ
+// ไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ MainLayout จัดการ
+// เอง และรูปในหน้านี้ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP
+// เป็นของ hero ใน MainLayout
 //
 // widget ที่ไม่ได้มาจาก docx (LoginRtpSection, ReviewCardSumo2, แถวปุ่ม
 // login/register, FAQ, Navfoot) ใช้ป้ายเป็น <p>/<span> + aria-label บน <section>
 // และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสี่ตัวที่เป็นภาพประกอบของ
-// หัวข้อ docx หนึ่งข้อโดยตรง (ProviderGridPremium → ข้อ 3, GameRankingBoard กับ
-// SmoothCarousel → ข้อ 4, LatestWinners3 → ข้อ 7) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// หัวข้อ docx หนึ่งข้อโดยตรง (ProviderGridPremium → ข้อ 2, SmoothCarousel กับ
+// GameRankingBoard → ข้อ 6, LatestWinnersPremium → ข้อ 7) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
-// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี ไม่มีตัวที่แปด — หัว FAQ เป็น <p> ใน Faq2.astro
-// คำถามใน Faq2 เป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
-// เป็น <p> — docx รอบนี้แบน H1 + H2 ล้วน หน้านี้จึงไม่มี h3 เลย
+// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×3 จาก FeatureHighlights ซึ่งเป็นรายการ
+// ย่อยของหัวข้อข้อ 5 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
+// Faq4.astro คำถามเป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
+// เป็น <p>
 //
-// title ใช้บรรทัด Title ของ docx ตรงๆ ส่วน description ใช้บรรทัด Des ของ docx เป็น
-// ฐานแล้วต่อท้ายด้วยข้อเท็จจริงจาก docx อีกวรรคเดียว ("ฝากถอนออโต้ไว") เพราะบรรทัด
-// Des ดิบยาว 142 ตัวอักษร ซึ่งต่ำกว่าเพดานล่าง 150 ตัวของเกทคุณภาพ — ค่าที่ใช้จริง
-// ยาว 156 ตัวอักษร และเป็นสตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
-const pageTitle = "PHOENIX168 | สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้ ออโต้ไวไม่ต้องรอ";
-const pageDescription = "PHOENIX168 สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้หลายค่าย ตัวท็อปมีครบ ระบบเล่นลื่นไม่มีสะดุด พร้อมรองรับทุกอุปกรณ์ ปั่นเพลินได้ทั้งวัน 24 ชั่วโมง ฝากถอนออโต้ไว";
+// title ใช้บรรทัด Title ของ docx ส่วน description ต่อท้ายด้วย "ไม่ติดล็อคยูส" ให้ยาว
+// 156 ตัวอักษร เข้ากรอบ 150–160 ของเกทคุณภาพ (บรรทัด Des ดิบของ docx ยาว 142 ตัว
+// ซึ่งต่ำกว่ากรอบ) และเป็นสตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
+const pageTitle = "DEED888 | สล็อตเกมแท้ตัวท็อป จัดโปรฮิตมาเป็นชุด ฟีเจอร์ใหม่น่าลอง";
+const pageDescription =
+  "DEED888 สล็อตเกมแท้ตัวท็อป รวมทั้งเกมกระแสและตัวใหม่จากค่ายดัง จัดโปรฮิตมาเป็นชุด ฟีเจอร์ใหม่น่าลอง ล็อบบี้อัปเดตต่อเนื่อง พร้อมฝากถอนออโต้ทันใจ ไม่ติดล็อคยูส";
 
 const announcementMessage =
-  "PHOENIX168 สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้ ออโต้ไวไม่ต้องรอ • เว็บตรงสล็อตสายสปีดที่ตั้งใจทำระบบออกมาให้คนเล่นใช้งานได้จริงแบบไม่มีสะดุด ยิงตรง API แท้จากค่ายใหญ่ เซิร์ฟนอกมาตรฐานสากล เล่นแล้วโบนัสแตกตามอัตราจ่ายจริง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ ปั่นได้เท่าไหร่ถอนออกได้ครบเต็มจำนวนทันที • กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ ปรับจูนระบบหลังบ้านมาให้โหลดไวกว่าเว็บทั่วไปหลายเท่า ตัดขั้นตอนยุ่งยากออกทั้งหมด พุ่งตรงจากหน้าแรกเข้าสู่ตัวเกมได้ในคลิกเดียว ไม่พลาดจังหวะสำคัญในการทำกำไร • ขนเกมสล็อตลิขสิทธิ์แท้จากค่ายดังอย่าง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอื่นๆ มาไว้ให้เลือกแบบแน่นๆ คัดมาเฉพาะตัวที่แตกง่าย มีฟีเจอร์ตัวคูณหนัก ฟรีสปินเข้าไว อัตราการจ่ายเงินรางวัลยุติธรรม • หน้าล็อบบี้จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ ทั้งสล็อตสายภาพสวย 3D สล็อตสตรีตนำโชค และสล็อตสายซื้อฟีเจอร์พุ่งชนโบนัส เลือกได้ทันทีในกระเป๋าเดียว ไม่ต้องย้ายเว็บ ไม่ต้องโยกเงินให้วุ่นวาย • สลับค่ายสลับเกมได้ทันทีโดยไม่ต้องรอโหลดหน้าคีย์ข้อมูลใหม่ ตัวเกมประมวลผลสมูธ กราฟิกแสดงผลคมชัด ไม่มีอาการกระตุกหรือหลุดออกจากเกมให้เสียจังหวะ • ปรับสเกลหน้าจอให้อัตโนมัติแบบสมบูรณ์แบบ รองรับทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ แสดงผลคมชัด ลื่นไหล เสถียรเท่ากันทุกช่องทาง ปุ่มกดวางในตำแหน่งที่ใช้นิ้วโป้งกดง่าย • ไม่มีปิดปรับปรุงระบบแบบไม่แจ้งล่วงหน้า เซิร์ฟเวอร์เสถียรสูงพร้อมเปิดให้บริการตลอด 24 ชั่วโมง จังหวะโบนัสและระบบฝากถอนทำงานด้วยความเร็วสูงสุดเท่ากันตลอดวัน ฝากถอนออโต้ไฮสปีดเสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องคอยแอดมินอนุมัติ";
+  "DEED888 สล็อตเกมแท้ตัวท็อป จัดโปรฮิตมาเป็นชุด ฟีเจอร์ใหม่น่าลอง • เชื่อมต่อสัญญาณ API ตรงจากสตูดิโอผู้พัฒนาสล็อตระดับโลก ไม่ผ่านเอเย่นต์ ค่า RTP เป็นมาตรฐานยุติธรรมตามสเปกโรงงาน ไม่มีการปรับแต่งเปอร์เซ็นต์แพ้ชนะ • คัดของเด่นจากค่ายดังมาไว้แบบไม่หลุดกระแส กวาดเฉพาะเกมระดับ A-List จาก PG Soft, Pragmatic Play และ Joker Gaming • เกมกระแสมีครบ ตัวใหม่ก็พร้อมมา ทั้งเกมติดอันดับชาร์ตและเกมนอกกระแสอัตราคูณโหด ดึงสัญญาณเกมเข้าใหม่ให้กดสปินทันที • จัดโปรฮิตมาเป็นชุด ทั้งโบนัสสมทบทุนฝากแรก สิทธิ์คืนยอดเสีย Cash Back รายวัน และเครดิตพิเศษเฉพาะช่วงเวลา เงื่อนไขโปร่งใส ถอนได้จริง ไม่ติดล็อคยูส • ฟีเจอร์ใหม่น่าลองมาครบ ทั้งตัวคูณทวีคูณ Multiplier Drops สัญลักษณ์ขยายเต็มรีล Expanding Wilds และโหมดซื้อฟรีสปินแบบทันใจ • ล็อบบี้อัปเดตต่อเนื่อง เกมใหม่และค่ายมาแรงขึ้นแถวหน้าทันทีที่เปิดตัว เช็กอัตราจ่ายและทดลองเล่นฟรีได้ก่อนใคร • พร้อมฝากถอนออโต้ทันใจ ประมวลผลผ่าน Gateway ตรง เสร็จในไม่กี่วินาที ไม่ต้องแนบสลิป ไม่ต้องรอคิวอนุมัติจากแอดมิน";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
 // คำถามที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq2> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
+// Faq4 ใช้ค่า default ของตัวเอง เพราะ default ของทุก variant ในตระกูลนี้เป็นคำถาม
+// ของแบรนด์เก่า
 const faqs = [
   {
-    q: "PHOENIX168 เป็นเว็บตรงจริงไหม แล้วอัตราจ่ายถูกดัดแปลงหรือเปล่า",
-    a: "เป็นเว็บตรงสล็อตสายสปีดที่ยิงตรง API แท้จากค่ายใหญ่ วางเซิร์ฟนอกมาตรฐานสากล เล่นแล้วโบนัสแตกตามอัตราจ่ายจริงของแต่ละเกม ไม่มีการดัดแปลงเปอร์เซ็นต์ชนะ ระบบทั้งชุดตั้งใจทำออกมาให้คนเล่นใช้งานได้จริงแบบไม่มีสะดุด ปั่นได้เท่าไหร่ก็ถอนออกได้ครบเต็มจำนวนทันที",
+    q: "DEED888 ต่อเกมมาจากไหน แล้วค่า RTP ถูกปรับแต่งหรือเปล่า",
+    a: "DEED888 เชื่อมต่อสัญญาณ API ตรงจากสตูดิโอผู้พัฒนาสล็อตระดับโลกโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงเป็นมาตรฐานยุติธรรมตามสเปกโรงงาน ไม่มีการปรับแต่งเปอร์เซ็นต์แพ้ชนะ ทั้งหมดรันบนเซิร์ฟเวอร์เสถียรสูงที่รองรับการเดิมพันได้ทุกระดับ",
   },
   {
-    q: "มีค่ายเกมอะไรบ้าง แล้วเกมที่เอามาลงคัดจากอะไร",
-    a: "ขนเกมสล็อตลิขสิทธิ์แท้จากค่ายดังอย่าง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอื่นๆ มาไว้ให้เลือกแบบแน่นๆ คัดมาเฉพาะตัวที่แตกง่าย มีฟีเจอร์ตัวคูณหนัก ฟรีสปินเข้าไว และมีอัตราการจ่ายเงินรางวัลที่ยุติธรรม เพื่อให้ทุกการหมุนมีโอกาสลุ้นแจ็คพอตก้อนโตได้จริง",
+    q: "คลังเกมมีค่ายอะไรบ้าง แล้วคัดเกมด้วยเกณฑ์อะไร",
+    a: "กวาดเฉพาะเกมระดับ A-List จากค่ายยักษ์ใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming เข้าสู่ระบบ เกณฑ์การคัดคือโครงสร้างการจ่ายรางวัลต้องโปร่งใส โบนัสแตกง่าย และกราฟิกต้องประมวลผลคมชัด ลื่นไหลไม่มีสะดุด ทุกเบทที่กดสปินจึงอยู่บนระบบมาตรฐานสากลของจริง",
   },
   {
-    q: "อยากเล่นหลายแนวต้องสมัครหลายเว็บไหม แล้วต้องโยกเงินข้ามค่ายหรือเปล่า",
-    a: "ไม่ต้องเสียเวลาสมัครหลายเว็บ เพราะหน้าล็อบบี้จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ รวบรวมทั้งสล็อตสายภาพสวย 3D สล็อตสตรีตนำโชค และสล็อตสายซื้อฟีเจอร์พุ่งชนโบนัสไว้ที่เดียว อยากเล่นแนวไหนก็กดเลือกได้ทันทีในกระเป๋าเดียว ไม่ต้องย้ายเว็บ ไม่ต้องโยกเงินให้วุ่นวาย",
+    q: "ถ้าเล่นเกมเดิมจนเบื่อ มีเกมใหม่เข้ามาให้เลือกต่อไหม",
+    a: "ระบบขยายทางเลือกให้สายสล็อตอย่างต่อเนื่อง ทั้งเกมกระแสติดอันดับชาร์ตและเกมนอกกระแสอัตราคูณโหด พร้อมดึงสัญญาณเกมเข้าใหม่เข้ามาให้กดสปินทันที หน้าล็อบบี้ยังดันรายชื่อเกมใหม่และค่ายมาแรงขึ้นแถวหน้าทันทีที่เปิดตัว จึงไม่มีปัญหาคลังเกมตัน",
   },
   {
-    q: "เล่นบนมือถือกับคอมต่างกันไหม แล้วสลับเกมแล้วต้องรอโหลดใหม่หรือเปล่า",
-    a: "ปรับสเกลหน้าจอให้อัตโนมัติแบบสมบูรณ์แบบ ทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ แสดงผลคมชัด ลื่นไหล และเสถียรเท่ากันทุกช่องทาง ปุ่มกดวางในตำแหน่งที่ใช้นิ้วโป้งกดง่าย ส่วนการสลับค่ายสลับเกมทำได้ทันทีโดยไม่ต้องรอโหลดหน้าคีย์ข้อมูลใหม่ ไม่มีอาการกระตุกหรือหลุดออกจากเกม",
+    q: "โปรโมชันมีอะไรบ้าง แล้วติดเงื่อนไขล็อกยูสหรือเปล่า",
+    a: "โปรจัดมาเป็นชุด ทั้งโบนัสสมทบทุนฝากแรก สิทธิ์คืนยอดเสีย Cash Back รายวัน และเครดิตพิเศษเฉพาะช่วงเวลา ทุกโปรโมชันกำหนดเงื่อนไขโปร่งใส ถอนได้จริง ไม่ติดล็อคยูส จึงนำไปขยายรอบสปินเพื่อลุ้นรางวัลใหญ่ได้ยาวนานขึ้น",
   },
   {
-    q: "เข้าเล่นได้ช่วงไหนบ้าง แล้วฝากถอนต้องส่งสลิปรอแอดมินไหม",
-    a: "เซิร์ฟเวอร์เสถียรสูงพร้อมเปิดให้บริการตลอด 24 ชั่วโมง ไม่มีปิดปรับปรุงระบบแบบไม่แจ้งล่วงหน้า จะเป็นสายปั่นช่วงพักเที่ยงหรือสายลุยดึกๆ จังหวะโบนัสและระบบฝากถอนก็ทำงานด้วยความเร็วสูงสุดเท่ากันตลอดวัน ฝากถอนผ่านระบบออโต้ไฮสปีดเสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องคอยแอดมินอนุมัติ",
+    q: "ฝากถอนใช้เวลานานไหม ต้องแนบสลิปหรือรอแอดมินอนุมัติหรือเปล่า",
+    a: "ระบบฝากถอนออโต้ไฮสปีดประมวลผลผ่าน Gateway ตรง ทำรายการเสร็จสิ้นในไม่กี่วินาที ยอดเงินอัปเดตเข้าคลังเกมทันทีโดยไม่ต้องแนบสลิปและไม่ต้องรอคิวอนุมัติจากแอดมิน ทุกจังหวะตั้งแต่เติมทุนจนถึงถอนกำไรเข้าบัญชีจึงลื่นไหลไร้รอยต่อ",
   },
 ];
 
@@ -123,77 +136,43 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="PHOENIX168 สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้ ออโต้ไวไม่ต้องรอ">
+  <ContentBoxPremium as="h1" title="DEED888 สล็อตเกมแท้ตัวท็อป จัดโปรฮิตมาเป็นชุด ฟีเจอร์ใหม่น่าลอง">
     <p class="text-left text-base leading-relaxed">
-      PHOENIX168 เว็บตรงสล็อตสายสปีดที่ตั้งใจทำระบบออกมาให้คนเล่นใช้งานได้จริงแบบไม่มีสะดุด ยิงตรง API แท้จากค่ายใหญ่ เซิร์ฟนอกมาตรฐานสากล เล่นแล้วโบนัสแตกตามอัตราจ่ายจริง ไม่มีดัดแปลงเปอร์เซ็นต์ชนะ
-      ฝากถอนผ่านระบบออโต้ไฮสปีด ทำรายการเสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องคอยแอดมินอนุมัติ ปั่นได้เท่าไหร่ถอนออกได้ครบเต็มจำนวนทันที
+      DEED888 เชื่อมต่อสัญญาณ API ตรงจากสตูดิโอผู้พัฒนาสล็อตระดับโลก ชูจุดเด่นด้วยค่า RTP มาตรฐานยุติธรรมตามสเปกโรงงาน ไม่ผ่านเอเย่นต์ ไม่มีการปรับแต่งเปอร์เซ็นต์แพ้ชนะ
+      รันบนเซิร์ฟเวอร์เสถียรสูงที่รองรับการเดิมพันทุกระดับ พร้อมไลน์อัปโปรโมชันสุดคุ้มและระบบทำรายการออโต้ที่ประมวลผลไวในไม่กี่วินาที
     </p>
   </ContentBoxPremium>
 
-  <ContentBoxNeumorphism as="h2" title="PHOENIX168 สล็อตสปีดติดปีก เปิดเกมไวพร้อมพาความสนุกทะยานตั้งแต่หน้าแรก">
-    <p class="text-left text-base leading-relaxed">
-      กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ PHOENIX168 ปรับจูนระบบหลังบ้านมาให้โหลดไวกว่าเว็บทั่วไปหลายเท่า ไม่ต้องนั่งมองหน้าจอหมุนค้างให้เสียอารมณ์ ตัดขั้นตอนยุ่งยากออกทั้งหมด
-      พาคุณพุ่งตรงจากหน้าแรกเข้าสู่ตัวเกมได้ในคลิกเดียว ช่วยให้คุณไม่พลาดจังหวะสำคัญในการทำกำไรและเริ่มสปินได้ทันทีโดยไม่ต้องเสียเวลารอ
+  <ContentBox3ThreePremium
+    as="h2"
+    title="DEED888 สล็อตเกมแท้ตัวท็อป คัดของเด่นจากค่ายดังมาไว้แบบไม่หลุดกระแส"
+    titleleft="กวาดเกม A-List จากค่ายยักษ์ใหญ่"
+    titlecenter="คัดกรองการจ่ายและกราฟิกทุกเกม"
+    titleright="ทุกเบทอยู่บนมาตรฐานสากล">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      DEED888 สล็อตเกมแท้ตัวท็อป กวาดเฉพาะเกมระดับ A-List จากค่ายยักษ์ใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming เข้าสู่ระบบ
     </p>
-  </ContentBoxNeumorphism>
-
-  <ContentBoxSevenThree as="h2" title="เกมฮิตลิขสิทธิ์แท้หลายค่าย PHOENIX168 รวมตัวเด็ดอะไรมาให้เลือกบ้าง?" titleleft="โปรต้อนรับสมาชิกใหม่" titleright="คัดเฉพาะตัวที่แตกง่าย ฟีเจอร์ตัวคูณหนัก">
-    <Picture
-      slot="left"
-      src={imgWelcomeBonus}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 380px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นแดงทองของ PHOENIX168 กลางภาพเขียนว่า ต้อนรับสมาชิกใหม่ ใต้ลงมาเป็นป้ายสองใบเขียนว่า ฝากแรก 500 และ รับโบนัส 300 ตัวเลขสีทองขนาดใหญ่ แถบล่างสุดเขียนว่า เล่นได้เฉพาะสล็อตและกีฬาเท่านั้น ฝั่งซ้ายเป็นผู้หญิงผมยาวสวมชุดราตรีสีแดงเข้ม รอบตัวมีไพ่โพดำและเหรียญทองปลิวอยู่"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#c04a12]/45 shadow-[0_10px_30px_rgba(255,90,30,0.28)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      เรื่องคลังเกมบอกเลยว่าจัดเต็ม PHOENIX168 ขนเกมสล็อตลิขสิทธิ์แท้จากค่ายดังอย่าง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอื่นๆ มาไว้ให้เลือกแบบแน่นๆ คัดมาเฉพาะตัวที่แตกง่าย
-      มีฟีเจอร์ตัวคูณหนัก ฟรีสปินเข้าไว และมีอัตราการจ่ายเงินรางวัลที่ยุติธรรม เพื่อให้ทุกการหมุนของคุณมีโอกาสลุ้นแจ็คพอตก้อนโตได้จริง
-    </p>
-  </ContentBoxSevenThree>
+    <p slot="center" class="text-left text-base leading-relaxed">คัดกรองตัวเกมที่มีโครงสร้างการจ่ายรางวัลโปร่งใส โบนัสแตกง่าย และกราฟิกประมวลผลคมชัด ลื่นไหลไม่มีสะดุด</p>
+    <p slot="right" class="text-left text-base leading-relaxed">มั่นใจได้ว่าทุกเบทที่กดสปินคือการลุยบนระบบมาตรฐานสากลของจริง</p>
+  </ContentBox3ThreePremium>
 
   <ProviderGridPremium />
 
-  <ContentBox3ThreePremium
+  <ContentBoxTwoPremium
     as="h2"
-    title="ตัวท็อปมีครบ ไม่ต้องบินหาไกล เปิดล็อบบี้เดียวก็เจอเกมน่าตามหลายแนว"
-    titleleft="ล็อบบี้เดียวจบ ไม่ต้องสมัครหลายเว็บ"
-    titlecenter="ครบทั้ง 3D สตรีตนำโชค และซื้อฟีเจอร์"
-    titleright="กระเป๋าเดียว ไม่ต้องโยกเงิน">
-    <p slot="left" class="text-left text-base leading-relaxed">ไม่ต้องเสียเวลาสมัครหลายเว็บเพื่อเล่นเกมที่ชอบ เพราะหน้าล็อบบี้ของ PHOENIX168 จัดวางหมวดหมู่เกมไว้อย่างเป็นระเบียบ</p>
-    <p slot="center" class="text-left text-base leading-relaxed">รวบรวมทั้งสล็อตสายภาพสวย 3D สล็อตสตรีตนำโชค หรือสล็อตสายซื้อฟีเจอร์พุ่งชนโบนัส</p>
-    <p slot="right" class="text-left text-base leading-relaxed">อยากเล่นแนวไหนก็กดเลือกได้ทันทีในกระเป๋าเดียว ไม่ต้องย้ายเว็บ ไม่ต้องโยกเงินให้วุ่นวาย</p>
-  </ContentBox3ThreePremium>
-
-  <GameRankingBoard />
-
-  <SmoothCarousel />
-
-  <ContentBoxCyberCut as="h2" title="ระบบเล่นลื่นไม่มีสะดุด PHOENIX168 สลับเกมคล่องไม่ปล่อยจังหวะให้หลุด">
-    <p class="text-left text-base leading-relaxed">
-      ความรู้สึกตอนสลับเกมคืออีกหนึ่งเรื่องที่ทำมาดีมาก พอปั่นเกมนี้จนพอใจแล้วอยากเปลี่ยนไปลองเกมอื่น ตัวระบบของ PHOENIX168 ก็ตอบสนองได้ฉับไว สลับค่ายสลับเกมได้ทันทีโดยไม่ต้องรอโหลดหน้าคีย์ข้อมูลใหม่
-      ตัวเกมประมวลผลสมูธ กราฟิกแสดงผลคมชัด ไม่มีอาการกระตุกหรือหลุดออกจากเกมให้เสียจังหวะ
+    title="เกมกระแสมีครบ ตัวใหม่ก็พร้อมมา DEED888 เติมทางเลือกให้สายสล็อตได้ตามต่อ"
+    titleleft="เกมกระแสติดอันดับชาร์ต"
+    titleright="เกมนอกกระแสอัตราคูณโหด">
+    <p slot="left" class="text-left text-base leading-relaxed">หมดปัญหาคลังเกมตัน DEED888 ขยายทางเลือกทำเงินให้สายสล็อตอย่างต่อเนื่อง ไม่ว่าจะเป็นเกมกระแสติดอันดับชาร์ต</p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      หรือเกมสล็อตนอกกระแสอัตราคูณโหด ตัวระบบพร้อมดึงสัญญาณเกมเข้าใหม่เข้ามาให้กดสปินทันที มีตัวเลือกหลากแนวรองรับทุกกลยุทธ์การเดินเงินอย่างอิสระ
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxTwoPremium>
 
-  <ContentBoxSpecial as="h2" title="มือถือ แท็บเล็ต หรือคอมก็พร้อม PHOENIX168 รองรับทุกอุปกรณ์">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ปรับสเกลหน้าจอให้อัตโนมัติแบบสมบูรณ์แบบ ไม่ว่าคุณจะถนัดปั่นบนมือถือ iOS, Android, แท็บเล็ต หรือเปิดหน้าจอใหญ่เล่นบนคอมพิวเตอร์ PHOENIX168 วางโครงสร้างเว็บให้แสดงผลได้อย่างคมชัด ลื่นไหล
-      และเสถียรเท่ากันทุกช่องทาง
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">ปุ่มกดต่างๆ วางในตำแหน่งที่ใช้นิ้วโป้งกดง่าย เล่นบนมือถือได้สบายๆ ไม่เกะกะสายตา</p>
-  </ContentBoxSpecial>
-
-  <ContentBoxSevenThreePremium as="h2" title="ปั่นเพลินได้ทั้งวัน 24 ชั่วโมง อยากเข้าเล่นช่วงไหนก็พร้อมต่อความสนุก" titleleft="กงล้อนำโชคแจกทุกชั่วโมง">
+  <ContentBoxSevenThreePremium as="h2" title="จัดโปรฮิตมาเป็นชุด DEED888 รวมสิทธิ์น่าสนใจให้เลือกตามจังหวะที่ต้องการ" titleleft="สมาชิกใหม่ รับโบนัส 30% สูงสุด 1,000 บาท">
     <Picture
       slot="left"
-      src={imgLuckyWheel}
+      src={imgNewMemberBonus}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -202,16 +181,85 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นพื้นแดงทองของ PHOENIX168 ข้อความบนภาพเขียนว่า กงล้อนำโชค รับฟรีชิ้นส่วนเพชรทุกชม. สะสมหมุนกงล้อลุ้นรับของรางวัล มูลค่ากว่า 500,000.- ฝั่งซ้ายเป็นผู้หญิงผมยาวสวมชุดสีแดงยืนอยู่หน้าวงล้อเสี่ยงโชค รอบตัวมีเพชรสีน้ำเงินและเหรียญทองปลิวอยู่"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#c04a12]/45 shadow-[0_10px_30px_rgba(255,90,30,0.28)]"
+      alt="แบนเนอร์โปรโมชั่นของ DEED888 เป็นแผ่นป้ายสีทองมุมมน เขียนว่า สมาชิกใหม่ รับโบนัส 30% ตามด้วย สูงสุด 1,000 บาท และบรรทัดเล็กว่า เล่นได้เฉพาะสล็อต มุมบนซ้ายเป็นเลพริคอนสวมหมวกและสูทสีเขียวนั่งข้างหม้อทองคำ มุมบนขวาเป็นรูปปั้นพระพิฆเนศสีทอง มุมล่างขวาเป็นตัวการ์ตูนลาสวมแจ็กเก็ตแดงยกนิ้วโป้งให้ รอบภาพกองด้วยทองแท่งและเหรียญทอง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#93300a]/45 shadow-[0_10px_30px_rgba(233,91,11,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่มีปิดปรับปรุงระบบแบบไม่แจ้งล่วงหน้า PHOENIX168 วางเซิร์ฟเวอร์เสถียรสูงที่พร้อมเปิดให้บริการตลอด 24 ชั่วโมง ไม่ว่าคุณจะเป็นสายปั่นช่วงพักเที่ยง หรือสายลุยดึกๆ
-      จังหวะโบนัสและระบบฝากถอนก็พร้อมทำงานด้วยความเร็วสูงสุดเท่ากันตลอดวัน อยากหยิบมือถือขึ้นมาเข้าเล่นช่วงไหนก็ต่อความสนุกได้ทันที
+      ยกระดับความคุ้มค่าด้วยการจัดโปรฮิตมาเป็นชุดบน DEED888 มีสิทธิประโยชน์ตอบโจทย์ทุกจังหวะเดิมพัน ทั้งโบนัสสมทบทุนฝากแรก สิทธิ์คืนยอดเสีย Cash Back รายวัน และเครดิตพิเศษเฉพาะช่วงเวลา
+      ทุกโปรโมชันกำหนดเงื่อนไขโปร่งใส ถอนได้จริง ไม่ติดล็อคยูส ให้คุณนำไปขยายรอบสปินเพื่อลุ้นรางวัลใหญ่ได้ยาวนานขึ้น
     </p>
   </ContentBoxSevenThreePremium>
 
-  <LatestWinners3 />
+  <ContentBoxSpecial as="h2" title="ฟีเจอร์ใหม่น่าลองมีอะไรเด็ด เจาะลูกเล่นที่ช่วยเปลี่ยนฟีลแต่ละเกม">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ปลุกความตื่นเต้นให้ทุกการหมุนด้วยลูกเล่นยุคใหม่บน DEED888 ที่รวบรวมฟีเจอร์เด็ด ทั้งระบบสุ่มแจกตัวคูณทวีคูณ (Multiplier Drops) สัญลักษณ์ขยายเต็มรีล (Expanding Wilds)
+      และโหมดซื้อฟรีสปินแบบทันใจ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ช่วยฉีกกฎการหมุนสล็อตแบบเดิมๆ เปลี่ยนความซ้ำซากให้กลายเป็นโอกาสคว้าแจ็คพอตก้อนโตได้ทุกวินาที</p>
+  </ContentBoxSpecial>
+
+  <FeatureHighlights
+    items={[
+      {
+        icon: "×2",
+        title: "Multiplier Drops",
+        description: "ระบบสุ่มแจกตัวคูณทวีคูณระหว่างรอบหมุน ดันยอดรางวัลที่ออกให้ทบขึ้นจากเบทเดิมโดยไม่ต้องเพิ่มทุน",
+        accent: "gold",
+      },
+      {
+        icon: "W",
+        title: "Expanding Wilds",
+        description: "สัญลักษณ์ไวลด์ขยายเต็มรีล เปิดโอกาสเรียงไลน์รางวัลได้กว้างกว่าการหมุนแบบปกติในตาเดียวกัน",
+        accent: "flame",
+      },
+      {
+        icon: "FS",
+        title: "โหมดซื้อฟรีสปินแบบทันใจ",
+        description: "กดเข้ารอบฟรีสปินได้ทันทีโดยไม่ต้องรอสัญลักษณ์ครบ เปลี่ยนความซ้ำซากให้เป็นจังหวะลุ้นแจ็คพอตก้อนโต",
+        accent: "gold",
+      },
+    ]}
+  />
+
+  <ContentBoxTwo
+    as="h2"
+    title="ล็อบบี้อัปเดตต่อเนื่อง ตัวไหนมาใหม่ก็มีพื้นที่ให้เจอก่อนเลือกขึ้นสปิน"
+    titleleft="เกมใหม่ขึ้นแถวหน้าทันทีที่เปิดตัว"
+    titleright="เช็กอัตราจ่ายก่อนเลือกขึ้นสปิน"
+    iconleft="🆕"
+    iconright="🎮">
+    <p slot="left" class="text-left text-base leading-relaxed">หน้าล็อบบี้ของ DEED888 ถูกออกแบบให้เข้าถึงง่าย อัปเดตรายชื่อเกมใหม่และค่ายเกมมาแรงขึ้นแถวหน้าทันทีที่เปิดตัว</p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ผู้เล่นสามารถเช็กอัตราการจ่าย ทดลองเล่นในโหมดทดลองฟรี และอ่านกลไกของเกมเข้าใหม่ได้ก่อนใคร ช่วยให้การเลือกเกมขึ้นสปินทำได้อย่างแม่นยำ ตรงสไตล์ และไม่เสียเวลาค้นหา
+    </p>
+  </ContentBoxTwo>
+
+  <SmoothCarousel />
+
+  <GameRankingBoard />
+
+  <ContentBoxSevenThree as="h2" title="พร้อมฝากถอนออโต้ทันใจ DEED888 ลดขั้นตอนทำรายการให้คล่องตั้งแต่ฝากถึงถอน" titleleft="เปิดกล่องสุ่ม ลุ้นรับเครดิตฟรีสูงสุดถึง 1,000">
+    <Picture
+      slot="left"
+      src={imgMysteryBoxCredit}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 380px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นของ DEED888 เป็นแผ่นป้ายสีทอง เขียนว่า เปิดกล่องสุ่ม ลุ้นรับเครดิตฟรี สูงสุดถึง 1,000 มุมบนซ้ายเป็นเลพริคอนสวมหมวกและสูทสีเขียว กลางภาพเป็นผู้หญิงสวมเสื้อสีชมพูยกถ้วยรางวัลทองคำ มุมล่างขวาเป็นกล่องของขวัญสีขาวผูกริบบิ้นแดง รอบภาพกองด้วยทองแท่งและเหรียญทอง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#93300a]/45 shadow-[0_10px_30px_rgba(233,91,11,0.28)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ปิดช่องว่างความล่าช้าด้วยระบบฝากถอนออโต้ไฮสปีด DEED888 ประมวลผลผ่าน Gateway ตรง ทำรายการเสร็จสิ้นในไม่กี่วินาที ยอดเงินอัปเดตเข้าคลังเกมทันทีโดยไม่ต้องแนบสลิป
+      และไม่ต้องรอคิวอนุมัติจากแอดมิน ทำให้ทุกจังหวะการเงินตั้งแต่การเติมทุนไปจนถึงการถอนกำไรเข้าบัญชีเป็นไปอย่างลื่นไหล ไร้รอยต่อ
+    </p>
+  </ContentBoxSevenThree>
+
+  <LatestWinnersPremium />
 
   <LoginRtpSection />
 
@@ -220,18 +268,18 @@ const graph = pageGraph(Astro, {
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#f4dc6d] via-[#ff5a1e] to-[#7a2408] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0402] shadow-[0_10px_30px_rgba(255,90,30,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,90,30,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffcf6b] via-[#f4940c] to-[#a35c02] px-4 py-3 text-sm font-black whitespace-nowrap text-[#150401] shadow-[0_10px_30px_rgba(244,148,12,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(244,148,12,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#ff5a1e]/55 bg-[#0a0402]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f2ddc9] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ffa14a] hover:bg-[#1f0a05] hover:text-[#ffe2c4] hover:shadow-[0_15px_40px_rgba(255,90,30,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e95b0b]/55 bg-[#150401]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#fbe3d0] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ff9d4d] hover:bg-[#2a0a02] hover:text-[#fff4e8] hover:shadow-[0_15px_40px_rgba(233,91,11,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq2 title="คำถามที่พบบ่อยเกี่ยวกับ PHOENIX168" faqs={faqs} />
+  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ DEED888" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

@@ -4,57 +4,48 @@ export interface Props {
   as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   titleleft?: string;
   titleright?: string;
+  label?: string;
 }
-const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
-const rightHeading = titleright ?? title;
+const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// PHOENIX168: ย้ายจากชุดม่วงคู่ทองของแบรนด์ก่อนหน้า มาเป็นไฟฟีนิกซ์คู่ทองขนนก —
-// ส้มไฟ #ff5a1e / #ffa14a / #ffe2c4 / #c04a12 / #7a2408 คู่ทอง #f3ac3c / #f4dc6d
-// บนผิว #1f0a05 / #150703 / #0a0402 เนื้อความ #f2ddc9 (ค่า hex ของแบรนด์ก่อนไม่
-// พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen
-// คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// สองคอลัมน์ถูก flatten แล้ว: คลาสข้อความอยู่บน <article> และ slot เป็นลูกโดยตรง
+// ผู้เรียกจึงต้องส่ง "หนึ่ง element ต่อหนึ่ง slot" เท่านั้น (ฝั่ง 3 ส่วนรอบนี้รับ
+// <Picture> ใบเดียว)
 //
-// ป้ายคอลัมน์รูปรับครีมสว่างไล่ไปหาส้มไฟ ส่วนหัวข้อฝั่งเนื้อความรับครีม -> ส้มไฟ ->
-// ทองขนนก สองฝั่งจึงแยกกันออกด้วยสีของแบรนด์เอง และทองยังโผล่ที่ออร่ามุมขวาล่าง
-// ตอน hover
+// titleleft/titleright เป็นป้ายคอลัมน์จึงเป็น <p> ส่วนหัวข้อ docx รับผ่าน prop
+// `title` + `as` ตัวเดียว หัวข้อจะไปอยู่เหนือคอลัมน์เนื้อความ (ฝั่ง 7 ส่วน) ซึ่ง
+// กว้างพอรับหัวข้อยาวของ docx ได้โดยไม่ล้นออกนอกการ์ด
 //
-// titleleft เป็น <p> ป้ายคอลัมน์ ไม่ใช่หัวข้อ docx ส่วนหัวข้อจริงออกมาที่ระดับที่
-// prop `as` สั่ง ผ่าน rightHeading — ไม่มี <h3> ฝังตายในไฟล์นี้ (docx รอบนี้แบน
-// H1 + H2 ล้วน)
+// DEED888: ย้ายจากน้ำเงินรอยัลของแบรนด์ก่อนมาที่ส้มเพลิงคู่ทองหลอม — ส้ม #e95b0b /
+// #ff9d4d / #93300a / #6b2205 คู่ทอง #f4940c / #ffcf6b บนผิว #150401 / #210702 /
+// #2a0a02 เนื้อความ #fbe3d0 ข้อความรอง #d9b096 ตัวอักษรสว่าง #fff4e8
+// (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
+// คอมเมนต์ ดูของเดิมได้จาก git history)
 //
-// ส่งหัวข้อเดียวเสมอ — title หรือ titleright — ไม่งั้นหน้าจะได้หัวข้อเกินมาหนึ่งตัว
-// ที่ไม่มีหัวข้อ docx รองรับ
-//
-// คอลัมน์ซ้าย 3fr คือช่องรูป คอลัมน์ขวา 7fr คือเนื้อความ — ส่งรูปหนึ่งใบเข้า
-// slot="left" และย่อหน้าเดียวเข้า slot="right" รอบนี้บล็อกนี้เป็น SevenThree ใบที่สอง
-// ในสองใบของเพดาน playbook คู่กับ slide3 (แบนเนอร์กงล้อนำโชคที่แจกชิ้นส่วนเพชร
-// ทุกชั่วโมง) และหัวข้อ docx ข้อ 7 เรื่องเปิดให้ปั่นตลอด 24 ชั่วโมง
+// รอบนี้บล็อกนี้เป็น SevenThree ใบแรกในสองใบของเพดาน playbook คู่กับ slide1
+// (แผ่นป้ายทองโบนัสสมาชิกใหม่ 30% สูงสุด 1,000 บาท) กับหัวข้อ docx ข้อ 4
+// เรื่องจัดโปรฮิตมาเป็นชุด
+const sectionLabel = title ? undefined : (label ?? titleright ?? titleleft ?? "ข้อมูลประกอบ");
 ---
 
-<section class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
+<section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#c04a12]/35 bg-gradient-to-br from-[#1f0a05]/92 to-[#0a0402]/88 p-8 text-[#f2ddc9] shadow-[0_10px_30px_rgba(255,90,30,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ff5a1e]/65 hover:shadow-[0_15px_40px_rgba(243,172,60,0.26)] md:p-10">
-    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#7a2408]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#ff5a1e]/40"></div>
-    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#150703]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#f3ac3c]/25"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#93300a]/35 bg-[#210702]/90 p-8 text-[#fbe3d0] shadow-[0_10px_30px_rgba(107,34,5,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#e95b0b]/55 md:p-10">
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#2a0a02]/80 blur-[60px]"></div>
 
-    <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ddc9]">
-        {
-          titleleft && (
-            <p class="bg-gradient-to-r from-[#ffe2c4] via-[#ffa14a] to-[#c04a12] bg-clip-text text-center text-xl leading-normal font-black tracking-widest text-transparent uppercase md:text-left">
-              {titleleft}
-            </p>
-          )
-        }
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
+      <article class="flex flex-col gap-4 border-b border-[#93300a]/30 pb-6 text-left text-base leading-relaxed text-[#d9b096] md:border-r md:border-b-0 md:pr-6 md:pb-0">
+        {titleleft && <p class="bg-gradient-to-r from-[#fff4e8] via-[#f4940c] to-[#93300a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f2ddc9] md:border-l md:border-[#c04a12]/50 md:pl-10">
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#fbe3d0] md:pl-6">
+        {title && <HeadingTag class="bg-gradient-to-r from-[#fff4e8] via-[#ff9d4d] to-[#e95b0b] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>}
         {
-          rightHeading && (
-            <HeadingTag class="mb-2 bg-gradient-to-r from-[#ffe2c4] via-[#ff5a1e] to-[#f3ac3c] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase">
-              {rightHeading}
-            </HeadingTag>
+          titleright && (
+            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#ff9d4d]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#e95b0b] shadow-[0_0_5px_rgba(233,91,11,0.85)]" /> {titleright}
+            </p>
           )
         }
         <slot name="right" />

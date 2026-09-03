@@ -15,23 +15,32 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 // รอบหน้า ป้ายชื่อเป็น <p> ไม่ใช่หัวข้อด้วยเหตุผลเดียวกัน ที่อยู่กับอีเมลมาจาก
 // BRAND_ADDRESS ซึ่งผูกกับ BRAND_NAME และ site: ห้ามพิมพ์ทับเอง
 //
-// AURA456 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย กับ
-// /แนวทาง (สองหน้านั้นไม่ได้อยู่ใน src/pages/ ไม่มี route จริง)
+// AWIN8 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย กับ
+// /แนวทาง (สองหน้านั้นอยู่ใน src/pages-disabled/ ไม่มี route จริง)
 //
-// AURA456: ย้ายจากส้มไฟคู่แดงเลือดของแบรนด์ก่อน มาเป็นนีออนบานเย็นคู่ฟ้าของ
-// แบรนด์นี้ — บานเย็น #ff2fb0 / #ff7fd4 / #4a179e คู่ฟ้าอิเล็กทริก #3ba9ff /
-// #7fd0ff บนผิวครามเกือบดำ #05021a / #1c1046 เนื้อความ #f6ebff เมนูรอง #9b93c4
+// AWIN8: ย้ายจากนีออนบานเย็นคู่ฟ้าของแบรนด์ที่เคยใช้ footer ตัวนี้ มาเป็นน้ำเงิน
+// รอยัลคู่ทองส้มของแบรนด์นี้ — น้ำเงิน #1f6fea / #7fb2ff / #0d3f9e / #07265e
+// คู่ทอง #fca311 / #ffd27a บนผิวกรมท่าเกือบดำ #02081c / #0c2247 เนื้อความ
+// #d8e6fb เมนูรอง #9db4d6
+//
+// อาร์ตเวิร์กรอบนี้เป็นโลโก้ตัวอักษรโครเมียมขอบน้ำเงิน มีมงกุฎทองกับเปลวไฟส้มที่
+// เลข 8 — vivid ของโลโก้ (#fc8b02 คู่ #041d43) กับ vivid ของแบนเนอร์ (#ba7b01)
+// จึงเป็นสีเน้นจริงทั้งคู่ ส่วน dominant ของแบนเนอร์ที่เป็นกรมท่าเข้มคือ "พื้น"
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
+
+const LOGO_ALT =
+  "โลโก้ AWIN8 เป็นตัวอักษร AWIN สีขาวโครเมียมตัดขอบน้ำเงินเข้ม ต่อด้วยเลข 8 สีส้มทองที่มีเปลวไฟพุ่งออกทางขวา ด้านบนมีมงกุฎทองห้าแฉกวางอยู่ ใต้ตัวอักษรเป็นแถบสี่เหลี่ยมมนสีน้ำเงินขอบส้มเขียนว่า ARE YOU READVE NONSTOP FUINIS JUST AROUND";
 ---
 
 <footer
-  class="relative mt-10 w-full overflow-hidden border-t border-[#ff2fb0]/40 bg-[#05021a] pt-16 pb-8 font-sans text-[#f6ebff]"
+  class="relative mt-10 w-full overflow-hidden border-t border-[#1f6fea]/40 bg-[#02081c] pt-16 pb-8 font-sans text-[#d8e6fb]"
   style="clip-path: polygon(0 30px, 50vw 0, 100% 30px, 100% 100%, 0 100%);">
-  <div aria-hidden="true"
+  <div
+    aria-hidden="true"
     class="pointer-events-none absolute inset-0 opacity-[0.14]"
-    style="background-image: linear-gradient(#4a179e 1px, transparent 1px), linear-gradient(90deg, #ff2fb0 1px, transparent 1px); background-size: 30px 30px;">
+    style="background-image: linear-gradient(#0d3f9e 1px, transparent 1px), linear-gradient(90deg, #1f6fea 1px, transparent 1px); background-size: 30px 30px;">
   </div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
@@ -42,43 +51,44 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ AURA456 ตัวอักษรป้ายไฟนีออน คำว่า AURA เป็นสีชมพูบานเย็นแล้วไล่เป็นฟ้าอิเล็กทริกที่เลข 456 ทุกตัวมีเส้นขอบเรืองแสง ด้านหลังเป็นวงกลมเรืองแสงสีม่วงคราม มีสัญลักษณ์โพดำนีออนอยู่ด้านบน"
+                alt={LOGO_ALT}
                 loading="lazy"
                 decoding="async"
                 widths={[150, 300, 450]}
                 sizes="150px"
-                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(255,47,176,0.5)]"
+                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(31,111,234,0.5)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="text-3xl font-black tracking-widest text-[#ff7fd4]">AURA456</p>
+              <p class="text-3xl font-black tracking-widest text-[#7fb2ff]">AWIN8</p>
             )
           }
         </a>
-        <p class="border-l-2 border-[#ff2fb0] pl-4 text-sm leading-relaxed text-[#9b93c4]">
-          AURA456 สล็อตตัวตึงออร่าพุ่ง เว็บตรงสล็อตคัดเกรดที่รันบนเซิร์ฟเวอร์หลัก API แท้ 100% ค่า RTP โปร่งใส ไม่มีการดัดแปลงระบบหลังบ้าน โหลดเกมและกราฟิก 3D ลื่นไหลไม่มีกระตุก รวมเกมลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ทั่วโลก เบทเริ่มต้นแค่ 1 บาท พร้อมระบบฝากถอนออโต้ที่ทำรายการเสร็จใน 3-5 วินาที ตลอด 24 ชั่วโมง
+        <p class="border-l-2 border-[#fca311] pl-4 text-sm leading-relaxed text-[#9db4d6]">
+          AWIN8 เชื่อมต่อสัญญาณ API ตรงจากสตูดิโอผู้พัฒนาสล็อตระดับโลก ไม่ผ่านเอเย่นต์ ค่า RTP เป็นมาตรฐานยุติธรรมตามสเปกโรงงาน ไม่มีการปรับแต่งเปอร์เซ็นต์แพ้ชนะ
+          รันบนเซิร์ฟเวอร์เสถียรสูงที่รองรับการเดิมพันทุกระดับ พร้อมไลน์อัปโปรโมชันสุดคุ้มและระบบทำรายการออโต้ที่ประมวลผลไวในไม่กี่วินาที
         </p>
         <div class="mt-4 flex gap-3">
-          <span class="border border-[#ff2fb0]/50 bg-[#1c1046] px-3 py-1 font-mono text-xs text-[#ff7fd4]">AURA_BOOST</span>
-          <span class="border border-[#3ba9ff]/50 bg-[#1c1046] px-3 py-1 font-mono text-xs text-[#7fd0ff]">AUTO_3SEC</span>
+          <span class="border border-[#fca311]/50 bg-[#0c2247] px-3 py-1 font-mono text-xs text-[#ffd27a]">RTP_TRUE_API</span>
+          <span class="border border-[#1f6fea]/50 bg-[#0c2247] px-3 py-1 font-mono text-xs text-[#7fb2ff]">AUTO_GATEWAY</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#f6ebff] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
-        <ul class="flex flex-col gap-3 font-mono text-sm text-[#9b93c4]">
-          <li><a href="/" class="transition-colors hover:text-[#ff7fd4]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#ff7fd4]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ff7fd4]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ff7fd4]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#ff7fd4]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#ff7fd4]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
+        <p class="text-lg font-black tracking-widest text-[#e8f1ff] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
+        <ul class="flex flex-col gap-3 font-mono text-sm text-[#9db4d6]">
+          <li><a href="/" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#f6ebff] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
+        <p class="text-lg font-black tracking-widest text-[#e8f1ff] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
 
         <a
           href="/line"
@@ -109,22 +119,22 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
         <a
           href="/register"
-          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#4a179e] via-[#ff2fb0] to-[#3ba9ff] py-3 font-black text-[#05021a] transition-all hover:brightness-110"
+          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#0d3f9e] via-[#1f6fea] to-[#fca311] py-3 font-black text-[#02081c] transition-all hover:brightness-110"
           style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
           สมัครสมาชิก
         </a>
 
-        <div class="mt-2 font-mono text-xs text-[#9b93c4]">ACCEPTED_PAYMENTS</div>
+        <div class="mt-2 font-mono text-xs text-[#9db4d6]">ACCEPTED_PAYMENTS</div>
         <BankStrip size={28} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#ff2fb0]/30 pt-6 font-mono text-xs text-[#9b93c4] md:flex-row">
-      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} AURA456</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#1f6fea]/30 pt-6 font-mono text-xs text-[#9db4d6] md:flex-row">
+      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} AWIN8</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="hover:text-[#ff7fd4]">TERMS_OF_SERVICE</a>
-        <a href="/privacy/" class="hover:text-[#ff7fd4]">PRIVACY_POLICY</a>
-        <a href="#top" class="hover:text-[#ff7fd4]">BACK_TO_TOP</a>
+        <a href="/terms/" class="hover:text-[#ffd27a]">TERMS_OF_SERVICE</a>
+        <a href="/privacy/" class="hover:text-[#ffd27a]">PRIVACY_POLICY</a>
+        <a href="#top" class="hover:text-[#ffd27a]">BACK_TO_TOP</a>
       </div>
     </div>
   </div>

@@ -2,51 +2,53 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
-// PHOENIX168: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยใช้ ContentBox
+// DEED888: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox
 // ตามสเปกรอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ variant
-// นี้เป็นข้อความของแบรนด์นี้แล้ว ticker จึงเหมือนกันทั้งเว็บ
+// นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the single
 // <h1>), ONE short intro paragraph, the promo image grid, one CTA. Nothing else
 // — no <h2>, no section paragraphs. The artwork already prints its own offer in
 // large type, so prose below it re-types what the visitor can already read, in
-// smaller letters. The docx gives this page a Title and a Meta and never a body.
+// smaller letters. The docx gives this page no body at all.
 //
 // Named for what each banner ACTUALLY prints, not for its file number. This
-// drop has THREE slides (2026-09-02) and all three run in the grid:
-//   slide1 = ต้อนรับสมาชิกใหม่ ฝากแรก 500 รับโบนัส 300
-//   slide2 = แนะนำเพื่อน รับโบนัสสูงสุด 20,000 บาทต่อวัน
-//   slide3 = กงล้อนำโชค รับฟรีชิ้นส่วนเพชรทุกชม. ลุ้นรางวัลมูลค่ากว่า 500,000
-// ทุกไฟล์เป็นโปสเตอร์ 600x251 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
+// drop has FOUR slides (2026-09-04) and all four run in the grid:
+//   slide1 = สมาชิกใหม่ รับโบนัส 30% · สูงสุด 1,000 บาท · เล่นได้เฉพาะสล็อต
+//   slide2 = ฝากแรกของวัน รับโบนัสสูงสุด 20%
+//   slide3 = ลูกค้าไม้ใหญ่ รับโบนัส 10%
+//   slide4 = เปิดกล่องสุ่ม ลุ้นรับเครดิตฟรี สูงสุดถึง 1,000
+// ทุกไฟล์เป็นโปสเตอร์จัตุรัส 600x600 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
 //
-// slide4.png / banner.png / banner2-4.png ไม่ถูก import ที่นี่: เป็นอาร์ตของ
-// แบรนด์ก่อน (slide4 ลงวันที่ 2026-09-01 คนละดรอปกับชุดนี้) และรูปที่ import
-// แล้วคือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render
+// banner.png / banner2-4.png ไม่ถูก import ที่นี่: เป็นอาร์ตของแบรนด์ก่อน
+// (ลงวันที่ 2026-08-04 และ 2026-08-18 คนละดรอปกับชุดนี้) และรูปที่ import แล้ว
+// คือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render
 // ส่วน banner1 เป็นของ <picture> hero ใน MainLayout เท่านั้น
 //
-// Only what is printed on the banner may be stated in its alt — ทั้งสามไฟล์
-// เปิดดูด้วยตาแล้วเมื่อ 2026-09-02 แล้วถอดข้อความบนภาพมาเขียน alt
-import promoWelcome from "../assets/slide1.png";
-import promoReferral from "../assets/slide2.png";
-import promoWheel from "../assets/slide3.png";
+// Only what is printed on the banner may be stated in its alt — ทั้งสี่ไฟล์
+// ถอดข้อความและองค์ประกอบบนภาพมาเขียน alt ตามอาร์ตดรอปวันที่ 2026-09-04
+import promoNewMember from "../assets/slide1.png";
+import promoFirstDeposit from "../assets/slide2.png";
+import promoBigCustomer from "../assets/slide3.png";
+import promoMysteryBox from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 158. It states what the
+// byte count reads ~3x too long). This one measures 155. It states what the
 // page holds — the offers the banners themselves print — and stops.
 const pageDescription =
-  "รวมโปรโมชั่นสล็อต PHOENIX168 ทั้งโบนัสต้อนรับสมาชิกใหม่ ฝากแรก 500 รับโบนัส 300 โบนัสแนะนำเพื่อนสูงสุด 20,000 ต่อวัน และกงล้อนำโชคลุ้นรางวัลมูลค่ากว่า 500,000";
+  "รวมโปรโมชั่นสล็อต DEED888 ทั้งโบนัสสมาชิกใหม่ 30% สูงสุด 1,000 บาท ฝากแรกของวันรับเพิ่ม 20% ลูกค้าไม้ใหญ่รับ 10% และกล่องสุ่มลุ้นเครดิตฟรี เลือกกดรับได้เอง";
 
-const pageTitle = "โปรโมชั่น PHOENIX168 | โบนัสต้อนรับสมาชิกใหม่ แนะนำเพื่อน และกงล้อนำโชค";
+const pageTitle = "โปรโมชั่น DEED888 | โบนัสสมาชิกใหม่ 30% ฝากแรกของวัน และกล่องสุ่มเครดิตฟรี";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น PHOENIX168 รวมสิทธิพิเศษสายสปีดที่กดรับเองได้ทันที";
+const pageHeading = "โปรโมชั่น DEED888 จัดโปรฮิตมาเป็นชุดให้เลือกกดรับตามจังหวะที่ต้องการ";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -55,7 +57,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoWelcome.src,
+  primaryImagePath: promoNewMember.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -70,12 +72,12 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบส้มไฟของแบรนด์ล้อกับเปลวไฟบนแบนเนอร์ แล้วสว่างขึ้นตอน hover
+// ขอบส้มเพลิงของแบรนด์ล้อกับกรอบทองบนแบนเนอร์ แล้วสว่างขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#c04a12]/45 object-contain shadow-[0_10px_30px_rgba(122,36,8,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ff5a1e]/70 hover:shadow-[0_15px_40px_rgba(255,90,30,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#93300a]/45 object-contain shadow-[0_10px_30px_rgba(107,34,5,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e95b0b]/70 hover:shadow-[0_15px_40px_rgba(233,91,11,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
-// intrinsic width (600px for all three posters here) so a sharp upscale never
+// intrinsic width (600px for all four posters here) so a sharp upscale never
 // becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
   const steps = [384, 576, 648].filter((w) => w < img.width);
@@ -84,16 +86,20 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoWelcome,
-    alt: "แบนเนอร์โปรโมชั่นพื้นแดงไล่ทองมีเหรียญทองและไพ่โพดำปลิวอยู่รอบภาพ ด้านซ้ายเป็นหญิงสาวผมยาวสวมชุดเกาะอกสีแดงเข้ม ข้อความกลางภาพเขียนว่า ต้อนรับสมาชิกใหม่ ถัดลงมาเป็นกล่องสองใบเขียนว่า ฝากแรก 500 และ รับโบนัส 300 แถบล่างสุดเขียนว่า เล่นได้เฉพาะสล็อตและกีฬาเท่านั้น",
+    src: promoNewMember,
+    alt: "แบนเนอร์โปรโมชั่นแผงสีทองขอบมน กลางภาพเขียนว่า สมาชิกใหม่ รับโบนัส 30% ใต้ลงมาเขียนว่า สูงสุด 1,000 บาท และ เล่นได้เฉพาะสล็อต มุมซ้ายบนเป็นตัวการ์ตูนเลพริคอนหมวกเขียวนั่งข้างหม้อทองคำ มุมขวาบนเป็นเทวรูปพระพิฆเนศสีทอง มุมขวาล่างเป็นตัวการ์ตูนลาสวมเสื้อแจ็กเก็ตแดงยกนิ้วโป้งให้ รอบภาพมีแท่งทองและเหรียญทองกองอยู่",
   },
   {
-    src: promoReferral,
-    alt: "แบนเนอร์โปรโมชั่นพื้นแดงไล่ทองมีเหรียญทองและไพ่โพดำปลิวอยู่รอบภาพ ด้านซ้ายเป็นหญิงสาวผมยาวสวมชุดเกาะอกสีแดงเข้ม ข้อความกลางภาพเขียนว่า แนะนำเพื่อน รับโบนัสสูงสุด และบรรทัดล่างเป็นตัวเลขทองขนาดใหญ่เขียนว่า 20,000 บาท ต่อวัน",
+    src: promoFirstDeposit,
+    alt: "แบนเนอร์โปรโมชั่นแผงสีทองขอบมน กลางภาพเขียนว่า ฝากแรกของวัน รับโบนัสสูงสุด 20% มุมซ้ายบนเป็นตัวการ์ตูนเลพริคอนหมวกเขียว ด้านขวาเป็นชายยิ้มสวมแจ็กเก็ตสีเข้มถือกระป๋องสเปรย์ มุมขวาล่างเป็นจระเข้การ์ตูนสีเขียว รอบภาพมีแท่งทองและเหรียญทองกองอยู่",
   },
   {
-    src: promoWheel,
-    alt: "แบนเนอร์กิจกรรมพื้นแดงไล่ทองมีเพชรสีฟ้าและเหรียญทองกระจายทั่วภาพ ด้านซ้ายเป็นวงล้อเสี่ยงโชคและหญิงสาวสวมชุดสีแดง ข้อความกลางภาพเขียนว่า กงล้อนำโชค รับฟรีชิ้นส่วนเพชรทุกชม. บรรทัดถัดมาเขียนว่า สะสมหมุนกงล้อลุ้นรับของรางวัล และตัวเลขทองใหญ่สุดเขียนว่า มูลค่ากว่า 500,000.-",
+    src: promoBigCustomer,
+    alt: "แบนเนอร์โปรโมชั่นแผงสีทองขอบมน กลางภาพเขียนว่า ลูกค้าไม้ใหญ่ รับโบนัส 10% มุมซ้ายบนเป็นตัวการ์ตูนเลพริคอนหมวกเขียว ด้านขวาเป็นชายสวมเสื้อแข่งสีเหลืองของ PG ชูมือเชียร์ ถัดมาเป็นหญิงสาวนั่งเอนอยู่ในแก้วค็อกเทลใบใหญ่สีม่วง รอบภาพมีแท่งทองและเหรียญทองกองอยู่",
+  },
+  {
+    src: promoMysteryBox,
+    alt: "แบนเนอร์โปรโมชั่นแผงสีทองขอบมน กลางภาพเขียนว่า เปิดกล่องสุ่ม ลุ้นรับเครดิตฟรี สูงสุดถึง 1,000 มุมซ้ายบนเป็นตัวการ์ตูนเลพริคอนหมวกเขียว ด้านขวาเป็นหญิงสาวสวมเสื้อสีชมพูถือถ้วยรางวัลสีทอง มุมขวาล่างเป็นกล่องของขวัญสีขาวผูกริบบิ้นแดง รอบภาพมีแท่งทองและเหรียญทองกองอยู่",
   },
 ];
 ---
@@ -106,8 +112,8 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือสิทธิพิเศษที่ <strong class="text-[#ff5a1e]">PHOENIX168</strong> เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งโบนัสต้อนรับสมาชิกใหม่ โบนัสจากการแนะนำเพื่อน และกิจกรรมกงล้อนำโชคที่สะสมชิ้นส่วนได้ทุกชั่วโมง
-        ยอดที่รับได้ เงื่อนไขของแต่ละขั้น และช่วงเวลาที่ร่วมได้ พิมพ์อยู่บนแบนเนอร์ครบแล้ว จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกรายการกดรับเองได้จากหน้าแดชบอร์ดก่อนเริ่มสปิน เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด และไม่ต้องรอแอดมินอนุมัติ
+        แบนเนอร์ด้านล่างคือโปรฮิตที่ <strong class="text-[#f4940c]">DEED888</strong> จัดมาเป็นชุดให้เลือกกดรับในรอบนี้ อัตราที่ได้รับและเงื่อนไขของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว
+        แต่ละโปรมีเงื่อนไขของตัวเอง จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์เลือกกดรับเองได้จากหน้าแดชบอร์ด ถอนได้จริง ไม่ติดล็อคยูส และไม่ต้องรอแอดมินอนุมัติ
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -133,8 +139,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffe2c4]/40 bg-gradient-to-r from-[#ffe2c4] via-[#ff5a1e] to-[#7a2408] px-10 py-3.5 text-lg font-black text-[#0a0402] shadow-[0_10px_30px_rgba(255,90,30,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,90,30,0.5)]">
-          สมัครสมาชิก PHOENIX168
+          class="flex items-center justify-center rounded-lg border border-[#ffcf6b]/50 bg-gradient-to-r from-[#ffcf6b] via-[#f4940c] to-[#e95b0b] px-10 py-3.5 text-lg font-black text-[#150401] shadow-[0_10px_30px_rgba(233,91,11,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(233,91,11,0.5)]">
+          สมัครสมาชิก DEED888
         </a>
       </div>
     </div>

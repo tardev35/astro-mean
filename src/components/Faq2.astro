@@ -22,15 +22,15 @@ const { title, faqs = [] } = Astro.props;
 // assistive tech จึงอยู่ที่ aria-label ของ <section> แทน ห้ามเลื่อน <p> ตัวนี้
 // กลับขึ้นเป็นหัวข้อเพื่อ "แก้" เรื่องชื่อ section
 //
-// PHOENIX168: ไฟล์นี้มาถึงรอบนี้ในชุดม่วงคู่ทองของแบรนด์ก่อนหน้า รอบนี้ย้ายทั้งไฟล์
-// มาที่ไฟฟีนิกซ์คู่ทองขนนก — ส้มไฟ #ff5a1e / #ffa14a / #ffe2c4 / #c04a12 / #7a2408
-// คู่ทอง #f3ac3c / #f4dc6d และผิว #1f0a05 / #0a0402 เนื้อความ #f2ddc9
+// AWIN8: ไฟล์นี้มาถึงรอบนี้ในชุดไฟฟีนิกซ์ส้ม-ทองของแบรนด์ก่อนหน้า รอบนี้ย้ายทั้งไฟล์
+// มาที่น้ำเงินรอยัลคู่ทองส้ม — น้ำเงิน #1f6fea / #7fb2ff / #e8f1ff / #0d3f9e /
+// #07265e คู่ทองส้ม #fca311 / #ffd27a และผิว #08172f / #02081c เนื้อความ #d8e6fb
 // ไม่มีสีของแบรนด์ก่อนเหลืออยู่ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind
 // สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
 // ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
-// ลูกศรกับเส้นคำตอบรับทองขนนก เพื่อให้สีคู่ของแบรนด์มีที่ยืนใน widget นี้ ไม่ใช่
-// ส้มล้วนทุกจุด
+// ลูกศรกับเส้นคำตอบรับทองส้ม เพื่อให้สีคู่ของแบรนด์มีที่ยืนใน widget นี้ ไม่ใช่
+// น้ำเงินล้วนทุกจุด
 //
 // ค่า `name` ของ <details> ผูกกลุ่ม accordion เข้าด้วยกัน (เปิดได้ทีละใบ) และต้อง
 // เป็นชื่อของแบรนด์ปัจจุบัน ไม่ใช่ของแบรนด์ก่อน เพราะมันติดไปกับ HTML ที่ ship
@@ -40,33 +40,33 @@ const { title, faqs = [] } = Astro.props;
   {
     title && (
       <header class="mb-8 text-center">
-        <p class="bg-gradient-to-r from-[#ffe2c4] via-[#ff5a1e] to-[#f3ac3c] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <p class="bg-gradient-to-r from-[#e8f1ff] via-[#7fb2ff] to-[#fca311] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </p>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ff5a1e] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#1f6fea] to-transparent" />
       </header>
     )
   }
 
   {
     faqs.map((faq) => (
-      <div class="group relative bg-[#7a2408] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
-        <div class="absolute inset-0 bg-gradient-to-r from-[#f3ac3c] via-[#ff5a1e] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
+      <div class="group relative bg-[#07265e] p-[1px] [clip-path:polygon(0_0,calc(100%-20px)_0,100%_20px,100%_100%,20px_100%,0_calc(100%-20px))]">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#fca311] via-[#1f6fea] to-transparent opacity-40 transition-opacity group-hover:opacity-100" />
 
-        <details name="faq-phoenix168" class="faq-item relative bg-[#1f0a05] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
+        <details name="faq-awin8" class="faq-item relative bg-[#08172f] p-4 [clip-path:polygon(0_0,calc(100%-19px)_0,100%_19px,100%_100%,19px_100%,0_calc(100%-19px))]">
           <summary class="flex w-full cursor-pointer items-center gap-4 text-left">
             <span
               aria-hidden="true"
-              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#ffe2c4] to-[#ff5a1e] font-black text-[#0a0402] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
+              class="flex h-10 w-10 shrink-0 items-center justify-center bg-gradient-to-br from-[#e8f1ff] to-[#1f6fea] font-black text-[#02081c] italic [clip-path:polygon(20%_0,100%_0,80%_100%,0_100%)]">
               ?
             </span>
-            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#f2ddc9]">{faq.q}</span>
-            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#f3ac3c] transition-transform duration-300">
+            <span class="flex-1 text-base leading-normal font-bold tracking-tight text-[#d8e6fb]">{faq.q}</span>
+            <span aria-hidden="true" class="faq-arrow shrink-0 text-[#fca311] transition-transform duration-300">
               ▼
             </span>
           </summary>
 
-          <p class="faq-answer mt-4 border-l-2 border-[#ff5a1e]/50 pl-4 text-left text-base leading-relaxed text-[#f2ddc9]/85">{faq.a}</p>
+          <p class="faq-answer mt-4 border-l-2 border-[#fca311]/50 pl-4 text-left text-base leading-relaxed text-[#d8e6fb]/85">{faq.a}</p>
         </details>
       </div>
     ))

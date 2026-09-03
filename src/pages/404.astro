@@ -27,15 +27,16 @@ import { BRAND_NAME } from "../lib/brandProfile";
 // crawled so the crawler finds its way back to the real pages.
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character. This one
-// measures 154 once BRAND_NAME (10 characters this round) is substituted. The
-// length moves with the brand name: it read 155 on a 9-character brand and 154
-// on a 4-character one, so re-count it every launch rather than assuming the
-// sentence is still in the window — a 20-character brand would push it past 160.
+// measures 157 once BRAND_NAME (7 characters this round) is substituted. The
+// length moves with the brand name: the same sentence read 152 on an
+// 8-character brand and 155 on a 5-character one, so re-count it every launch
+// rather than assuming it is still in the window — that is why "ได้ครบ" was
+// added earlier, and a 20-character brand would push it past 160 instead.
 //
 // This brand's floor is licensed slots from the big studios, so the sentence
 // names that and the direct entry link — not the live-dealer wording a previous
 // brand had here.
-const pageDescription = `ไม่พบหน้าที่คุณกำลังมองหาบน ${BRAND_NAME} อาจถูกย้ายหรือลิงก์หมดอายุ กลับไปหน้าแรกเพื่อเลือกเกมสล็อตลิขสิทธิ์แท้จากค่ายดัง หรือเข้าเว็บหลักได้ตลอด 24 ชั่วโมง`;
+const pageDescription = `ไม่พบหน้าที่คุณกำลังมองหาบน ${BRAND_NAME} อาจถูกย้ายหรือลิงก์หมดอายุ กลับไปหน้าแรกเพื่อเลือกเกมสล็อตลิขสิทธิ์แท้จากค่ายดังได้ครบ หรือเข้าเว็บหลักได้ตลอด 24 ชั่วโมง`;
 ---
 
 <MainLayout title={`ไม่พบหน้านี้ | ${BRAND_NAME}`} description={pageDescription} robots="noindex, follow">

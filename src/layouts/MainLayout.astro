@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle7.astro";
-import Footer from "../components/FooterStyle3.astro";
+import Navbar from "../components/NavbarStyle9.astro";
+import Footer from "../components/FooterPremiumSumo.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "PHOENIX168 | สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้ ออโต้ไวไม่ต้องรอ",
-  description = "PHOENIX168 สล็อตสปีดติดปีก เกมฮิตลิขสิทธิ์แท้หลายค่าย ตัวท็อปมีครบ ระบบเล่นลื่นไม่มีสะดุด พร้อมรองรับทุกอุปกรณ์ ปั่นเพลินได้ทั้งวัน 24 ชั่วโมง",
+  title = "DEED888 | สล็อตเกมแท้ตัวท็อป จัดโปรฮิตมาเป็นชุด ฟีเจอร์ใหม่น่าลอง",
+  description = "DEED888 สล็อตเกมแท้ตัวท็อป รวมทั้งเกมกระแสและตัวใหม่จากค่ายดัง จัดโปรฮิตมาเป็นชุด ฟีเจอร์ใหม่น่าลอง ล็อบบี้อัปเดตต่อเนื่อง พร้อมฝากถอนออโต้ทันใจ ไม่ติดล็อคยูส",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0a0402;
+        background-color: #150401;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ PHOENIX168 พื้นดำอมแดงมีเปลวไฟและประกายไฟสีส้มทองกระจายทั่วภาพ ฝั่งซ้ายเป็นหญิงสาวผมยาวสีน้ำตาลสวมชุดเกราะสีแดงทองประดับลายขนนก นั่งอยู่หน้าตู้สล็อตที่มีเลข 7 สามตัวและป้าย PHOENIX 168 ถัดมาตรงกลางเป็นตัวอักษร X ขนาดใหญ่สีเงินเหล็ก มีนกฟีนิกซ์สีแดงส้มกางปีกไฟอยู่ด้านหน้า ฝั่งขวาเป็นโลโก้ตัวอักษรว่า PHOENIX สีส้มทองในกรอบสีดำ ใต้ลงมาเป็นเลข 168 สีขาวเงิน ต่อด้วยข้อความทองตัวหนาว่า สล็อตสปีดติดปีก ขนาบด้วยปีกทองสองข้าง ถัดลงมาเป็นบรรทัดว่า เกมฮิตลิขสิทธิ์แท้ ออโต้ไวไม่ต้องรอ และปุ่มไล่เฉดแดงทองเขียนว่า สมัครสมาชิก มุมขวาบนเป็นนกฟีนิกซ์อีกตัวบินอยู่เหนือเสาหินโรมัน ด้านล่างเป็นกองเหรียญทองและเหรียญที่มีรูปนกฟีนิกซ์ปลิวอยู่ พร้อมเหรียญกลมสีแดงเขียนว่า PHOENIX 168 ที่มุมขวาล่าง"
+          alt="แบนเนอร์ DEED888 พื้นสีดำอมน้ำตาลไหม้ มีประกายไฟและเหรียญทองปลิวอยู่รอบ ฝั่งซ้ายเป็นม้าเพลิงสีแดงส้มยืนผงาดสองขาหน้า มีเปลวไฟลุกเป็นแผงคอและหาง กลางภาพเป็นโลโก้ DEED888 ตัวอักษรทองหลอมขอบเปลวไฟ มุมบนขวาของโลโก้มีคำว่า .COM ใต้โลโก้เป็นข้อความไทยตัวหนาสีเงินว่า คาสิโนรวมดีลเด็ด ถัดลงมาเป็น โต๊ะสดค่ายดังน่าโดน ตัวอักษรสีทอง แล้วเป็นแถบสีแดงเขียนว่า โปรเด็ดไม่ตกเทรน ล่างสุดเป็นปุ่มขอบทองเรืองแสงเขียนว่า สมัครสมาชิก ฝั่งขวาเป็นหญิงสาวผมยาวสวมชุดสีแดงขลิบทองถือไพ่เอซสามใบ ด้านหลังเป็นตู้สล็อตขึ้นเลข 777 ใต้ป้าย JACKPOT มุมซ้ายล่างเป็นวงล้อรูเล็ต ไพ่เอซโพดำกับโพแดง ชิปคาสิโนสีแดงขาว และลูกเต๋าทอง"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

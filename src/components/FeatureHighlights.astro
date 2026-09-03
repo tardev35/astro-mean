@@ -3,7 +3,7 @@ export interface FeatureItem {
   icon: string;
   title: string;
   description: string;
-  accent?: "gold" | "blue";
+  accent?: "gold" | "flame";
 }
 
 export interface Props {
@@ -11,37 +11,51 @@ export interface Props {
 }
 
 const { items } = Astro.props;
+
+// นี่คือที่เดียวบนหน้าแรกที่ได้รับอนุญาตให้มี <h3> — หัวข้อย่อยแบบ bullet ใต้
+// section ของ docx หนึ่งข้อ (ข้อ 5 ของ DEED888: Multiplier Drops / Expanding Wilds /
+// ซื้อฟรีสปิน) ส่วน h2 ของ section ยังอยู่ที่ ContentBoxSpecial ที่อยู่เหนือมัน
+//
+// item.icon เป็นอิโมจิ/สัญลักษณ์ตกแต่งล้วน กล่องที่ครอบมันจึงต้องมี
+// aria-hidden="true" เสมอ ไม่งั้น screen reader จะอ่านชื่อ CLDR ของอิโมจินำหน้า
+// หัวข้อจริง และ verify-build จะฟ้องเป็น error ว่ามีอิโมจิอยู่นอก aria-hidden
+//
+// DEED888: ย้ายจากน้ำเงินรอยัลคู่ทองส้มของแบรนด์ก่อน มาเป็นส้มเพลิงคู่ทองหลอมแบบ
+// hex ตรงชุดเดียวกับ ContentBox.astro — ส้ม #e95b0b / #ff9d4d / #93300a / #6b2205
+// คู่ทอง #f4940c / #ffcf6b / #a35c02 บนผิว #210702 / #2a0a02 เนื้อความ #fbe3d0
+// ข้อความรอง #d9b096 accent "gold" เป็นค่า default, accent "flame" ใช้สลับให้ลิสต์
+// ไม่จำเจ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 ---
 
 <div class="mt-4 flex flex-col gap-5">
   {
     items.map((item) => {
-      const isGold = item.accent !== "blue";
+      const isGold = item.accent !== "flame";
       return (
         <div
-          class={`group flex flex-col items-start gap-4 rounded-2xl border border-red-900/40 bg-[#14040a]/60 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
+          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#93300a]/40 bg-[#210702]/60 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
             isGold
-              ? "hover:border-amber-500/50 hover:bg-[#1c060c] hover:shadow-[0_10px_20px_rgba(245,158,11,0.12)]"
-              : "hover:border-red-500/60 hover:bg-[#1c060c] hover:shadow-[0_10px_20px_rgba(220,38,38,0.2)]"
+              ? "hover:border-[#f4940c]/50 hover:bg-[#2a0a02] hover:shadow-[0_10px_20px_rgba(244,148,12,0.14)]"
+              : "hover:border-[#ff9d4d]/60 hover:bg-[#2a0a02] hover:shadow-[0_10px_20px_rgba(233,91,11,0.22)]"
           }`}>
           <div
+            aria-hidden="true"
             class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-3xl transition-transform duration-300 group-hover:scale-110 ${
               isGold
-                ? "border border-amber-300/50 bg-gradient-to-br from-amber-400 to-amber-600 shadow-[0_0_15px_rgba(245,158,11,0.5)] group-hover:rotate-3"
-                : "border border-red-500/50 bg-gradient-to-br from-red-600 to-red-900 shadow-[0_0_15px_rgba(220,38,38,0.45)]"
+                ? "border border-[#ffcf6b]/50 bg-gradient-to-br from-[#f4940c] to-[#a35c02] shadow-[0_0_15px_rgba(244,148,12,0.5)] group-hover:rotate-3"
+                : "border border-[#ff9d4d]/50 bg-gradient-to-br from-[#e95b0b] to-[#6b2205] shadow-[0_0_15px_rgba(233,91,11,0.45)]"
             }`}>
             {item.icon}
           </div>
           <div class="flex flex-col gap-2 text-left">
             <h3
               class={`text-xl font-black tracking-wide drop-shadow-sm ${
-                isGold
-                  ? "bg-gradient-to-r from-amber-200 to-amber-500 bg-clip-text text-transparent"
-                  : "bg-gradient-to-r from-red-200 to-red-400 bg-clip-text text-transparent transition-colors group-hover:text-red-300"
+                isGold ? "bg-gradient-to-r from-[#ffcf6b] to-[#f4940c] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#fff4e8] to-[#ff9d4d] bg-clip-text text-transparent"
               }`}>
               {item.title}
             </h3>
-            <p class="text-sm leading-relaxed text-red-50/70 transition-colors group-hover:text-red-50/90">{item.description}</p>
+            <p class="text-sm leading-relaxed text-[#d9b096] transition-colors group-hover:text-[#fbe3d0]">{item.description}</p>
           </div>
         </div>
       );

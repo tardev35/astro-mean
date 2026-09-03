@@ -1,59 +1,88 @@
 ---
+import { Picture } from "astro:assets";
+import img1 from "../assets/providers/game1.avif";
+import img2 from "../assets/providers/game2.avif";
+import img3 from "../assets/providers/game3.avif";
+import img4 from "../assets/providers/game4.avif";
+import img5 from "../assets/providers/game5.avif";
+import img6 from "../assets/providers/game6.avif";
+
 // Widget ไม่ใช่ article: หัวข้อ render เป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ห้ามเลื่อน <p> ขึ้นเป็น <h2> เพราะจำนวน h2 บนหน้าแรกถูก diff กับ
 // checklist ของ docx และชื่อค่ายในการ์ดก็ห้ามเป็น <h3> ด้วยเหตุผลเดียวกัน
 //
-// เนื้อหาตาม brief ของ PAY69 — คาสิโนสด ไม่ใช่สล็อต ล็อบบี้รวมค่ายคาสิโนชั้นนำ
-// ระดับโลกไว้ครบครันทั้ง Evolution Gaming, SA Gaming, Sexy Baccarat และ
-// Pragmatic Play Live มีโต๊ะสดให้เลือกเล่นเพียบทั้งบาคาร่าคลาสสิก บาคาร่าสายฟ้า
-// รูเล็ต เสือมังกร และไฮโล เลือกห้องเล่นได้ตามงบเบทตั้งแต่หลักสิบไปจนถึงโต๊ะระดับ
-// High Roller กริดนี้จึงเป็นภาพประกอบของหัวข้อ docx ข้อ 3 โดยตรง
+// ชื่อค่ายในลิสต์นี้ต้องตรงกับ "โลโก้ที่พิมพ์อยู่บนรูปจริง" เพราะ alt ถูกประกอบจาก
+// ชื่อนั้น — ไฟล์ในโฟลเดอร์ providers/ อ่านออกมาได้ตามนี้ game1 = PG (Pocket Games
+// Soft) ซึ่งก็คือ PG Soft ในบรีฟ, game2 = SexySlot, game3 = SlotXO, game4 = Joker
+// ซึ่งก็คือ Joker Gaming ในบรีฟ, game5 = JILI, game6 = PP SLOT ซึ่งก็คือ Pragmatic
+// Play ในบรีฟ ถ้าจะเปลี่ยนชื่อค่ายของช่องไหน ต้องเปลี่ยนไฟล์รูปตามด้วย ห้ามตั้งชื่อ
+// ค่ายที่โฟลเดอร์นี้ไม่มีโลโก้อยู่จริง
 //
-// การ์ดเป็นป้ายชื่อค่าย ไม่ใช่รูปโลโก้: อาร์ตใน src/assets/providers/ เป็นโลโก้
-// ค่าย "สล็อต" (PG / SexySlot / SlotXO / Joker / JILI / PP SLOT) ซึ่งไม่ตรงกับ
-// ค่ายคาสิโนสดทั้งสี่ค่ายในบรีฟรอบนี้ ห้ามเอามาแปะแล้วเขียน alt ให้เป็นค่ายอื่น
-// และห้ามอ้างชื่อไฟล์ที่ไม่มีอยู่จริง — การ์ดจึงเป็นไอคอนกลางๆ ไปก่อน
+// เนื้อหาตาม brief ของ AWIN8 ซึ่งเป็นสล็อตเว็บตรง ไม่ใช่คาสิโนสด: กวาดเฉพาะเกม
+// ระดับ A-List จากค่ายยักษ์ใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming
+// คัดกรองตัวเกมที่มีโครงสร้างการจ่ายรางวัลโปร่งใส โบนัสแตกง่าย และกราฟิกประมวลผล
+// คมชัดลื่นไหลไม่มีสะดุด กริดนี้จึงเป็นภาพประกอบของหัวข้อ docx ข้อ 2 โดยตรงและ
+// วางต่อท้ายบล็อกนั้นทันที สามช่องแรกเรียงตามลำดับชื่อค่ายที่ย่อหน้านั้นเอ่ยถึง
 //
-// PAY69: ชุดสีเป็นทองแชมเปญเดี่ยวบนดำสนิท ไม่มีสีคู่ ป้ายมุมบนขวารับทองครีมสว่าง
-// เพื่อให้ตัดกับพื้นดำของการ์ด (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind
-// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
-// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// AWIN8: ชุดสีเป็นน้ำเงินรอยัลคู่ทองส้มบนกรมท่าเกือบดำ — น้ำเงิน #1f6fea /
+// #7fb2ff / #0d3f9e / #07265e คู่ทอง #fca311 / #ffd27a และขาวฟ้า #e8f1ff บนผิว
+// #02081c / #040e22 / #08172f เนื้อความ #d8e6fb ข้อความรอง #9db4d6 ป้ายมุมบนขวา
+// รับทองเพื่อให้ตัวหนังสือสีเข้มอ่านออกบนพื้นสว่าง (ห้ามพิมพ์ hex ของแบรนด์ก่อน
+// ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาส
+// จากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 const providers = [
-  { name: "Evolution Gaming", desc: "ฟลอร์คาสิโนจริงในต่างประเทศ ยิงสัญญาณสดระดับ Ultra HD ไม่มีการตัดต่อหรือใช้คลิปวน", tag: "สตูดิโอสดระดับโลก", icon: "🎥" },
-  { name: "SA Gaming", desc: "โต๊ะบาคาร่าคลาสสิกและบาคาร่าสายฟ้า เปิดห้องตั้งแต่งบหลักสิบไปจนถึง High Roller", tag: "บาคาร่าสายฟ้า", icon: "🃏" },
-  { name: "Sexy Baccarat", desc: "ดีลเลอร์แจกไพ่จริงแบบเรียลไทม์ มุมกล้องหลากหลายมองเห็นทุกมิติการแทง", tag: "ดีลเลอร์เรียลไทม์", icon: "🎬" },
-  { name: "Pragmatic Play Live", desc: "รูเล็ต เสือมังกร ไฮโล วงล้อเสี่ยงโชค และเกมโชว์สด สลับเล่นได้ในยูสเซอร์เดียว", tag: "เกมโชว์สด", icon: "🎡" },
+  { name: "PG Soft (Pocket Games Soft)", desc: "ค่ายลิขสิทธิ์แท้ที่เชื่อมสัญญาณ API ตรงจากสตูดิโอ โครงสร้างการจ่ายรางวัลโปร่งใส โบนัสแตกง่าย", tag: "โบนัสแตกง่าย", img: img1 },
+  { name: "Pragmatic Play", desc: "เกมระดับ A-List ที่มีตัวคูณทวีคูณและฟรีสปินซื้อได้ทันใจ ทุกรอบสปินมีจังหวะทำกำไรจริง", tag: "ตัวคูณทวีคูณ", img: img6 },
+  { name: "Joker Gaming", desc: "ค่ายยักษ์ใหญ่ที่คนไทยคุ้นเคย คัดเฉพาะตัวที่กราฟิกคมชัด ประมวลผลลื่นไหลไม่มีสะดุด", tag: "คัดเฉพาะตัวเด่น", img: img4 },
+  { name: "SlotXO", desc: "หมวดเกมสายคลาสสิกที่กดเข้าเล่นจากล็อบบี้เดียวได้ทันที ไม่ต้องคลิกผ่านโฆษณาคั่น", tag: "เข้าเกมไวที่สุด", img: img3 },
+  { name: "JILI", desc: "เกมทำเงินไซซ์กะทัดรัด รอบสปินสั้น เหมาะกับสายลุยทำกำไรเร็วในช่วงเวลาจำกัด", tag: "สายทำกำไรเร็ว", img: img5 },
+  { name: "SexySlot", desc: "เติมความหลากหลายให้คลังเกม เปิดใช้งานจากยูสเซอร์เดียว ไม่ต้องโยกเงินข้ามค่าย", tag: "ยูสเซอร์เดียวจบ", img: img2 },
 ];
 ---
 
-<section aria-label="ค่ายคาสิโนสดชั้นนำที่ PAY69 รวมโต๊ะไว้ในฟลอร์เดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายเกมแท้ระดับ A-List ที่ AWIN8 คัดลงล็อบบี้แบบไม่ปนของ" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#fdf4e0] via-[#f7dfa5] to-[#a87c2e] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายคาสิโนสดชั้นนำที่ <span class="text-[#e8c37a]">PAY69</span> รวมโต๊ะไว้ในฟลอร์เดียว
+    <p class="bg-gradient-to-r from-[#e8f1ff] via-[#ffd27a] to-[#1f6fea] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายเกมแท้ระดับ A-List ที่ <span class="text-[#fca311]">AWIN8</span> คัดลงล็อบบี้แบบไม่ปนของ
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e8c37a] to-transparent"></div>
+    <p class="max-w-3xl text-base leading-relaxed text-[#9db4d6]">
+      คลังเกมกวาดเฉพาะตัวระดับ A-List จากค่ายยักษ์ใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming คัดกรองตัวเกมที่มีโครงสร้างการจ่ายรางวัลโปร่งใส โบนัสแตกง่าย และกราฟิกประมวลผลคมชัด
+      ลื่นไหลไม่มีสะดุด ทุกเบทที่กดสปินจึงอยู่บนระบบมาตรฐานสากลของจริง
+    </p>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#1f6fea] to-transparent"></div>
   </div>
 
-  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
     {
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#a87c2e]/45 bg-[#12100c]/92 p-5 pt-9 shadow-[0_10px_30px_rgba(107,77,21,0.28)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#e8c37a]/60 hover:bg-[#1c1811]/95 hover:shadow-[0_15px_40px_rgba(232,195,122,0.32)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#08070a]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#0d3f9e]/45 bg-[#040e22]/92 p-5 pt-9 shadow-[0_10px_30px_rgba(7,38,94,0.3)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#7fb2ff]/60 hover:bg-[#08172f]/95 hover:shadow-[0_15px_40px_rgba(31,111,234,0.32)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#02081c]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#fdf4e0] to-[#e8c37a] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#08070a] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffd27a] to-[#fca311] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#07265e] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
-          <div aria-hidden="true" class="mb-3 text-4xl transition-transform duration-300 group-hover:scale-125 group-hover:rotate-3">
-            {provider.icon}
-          </div>
-          <p class="text-center text-sm font-black text-[#e6dac2] transition-colors group-hover:text-[#f7dfa5]">{provider.name}</p>
-          <p class="mt-1 text-center text-[10px] text-[#a99a7d]">{provider.desc}</p>
+          <Picture
+            src={provider.img}
+            alt={`โลโก้ค่ายเกม ${provider.name} บนการ์ดค่ายเกมลิขสิทธิ์แท้ในล็อบบี้ของ AWIN8`}
+            formats={["avif", "webp"]}
+            fallbackFormat="webp"
+            loading="lazy"
+            fetchpriority="low"
+            widths={[112, 224]}
+            sizes="112px"
+            decoding="async"
+            quality={70}
+            class="relative z-10 mb-3 block h-28 w-28 rounded-xl border border-[#0d3f9e]/55 object-cover transition-transform duration-500 group-hover:scale-110"
+          />
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#a87c2e]/55 bg-[#08070a] py-1.5 text-center text-[11px] font-bold text-[#e8c37a] shadow-inner transition-colors duration-300 group-hover:border-[#f7dfa5]/60 group-hover:bg-gradient-to-r group-hover:from-[#6b4d15] group-hover:to-[#a87c2e] group-hover:text-[#fdf4e0]">
-            เข้าดูโต๊ะสดทั้งหมด
+          <p class="relative z-10 text-center text-sm font-black text-[#d8e6fb] transition-colors group-hover:text-[#e8f1ff]">{provider.name}</p>
+          <p class="relative z-10 mt-1 text-center text-[11px] leading-relaxed text-[#9db4d6]">{provider.desc}</p>
+
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#0d3f9e]/55 bg-[#02081c] py-1.5 text-center text-[11px] font-bold text-[#7fb2ff] shadow-inner transition-colors duration-300 group-hover:border-[#fca311]/60 group-hover:bg-gradient-to-r group-hover:from-[#07265e] group-hover:to-[#0d3f9e] group-hover:text-[#e8f1ff]">
+            เข้าดูเกมทั้งหมดในค่ายนี้
           </span>
         </a>
       ))

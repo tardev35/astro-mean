@@ -30,18 +30,21 @@ const bankPool = [
 // สี่ swatch `bg-[#…]` ข้างบนเป็นสีโลโก้ธนาคารจริง ไม่ใช่สีแบรนด์ — ห้ามรีธีมตาม
 // palette เปลี่ยนได้แค่ผิวรอบๆ มัน
 //
-// VIREL168: ย้ายชุดสีมาที่ทองของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง #faca4c /
-// #ebb134 / #e2a52d / #ffeec2 / #855a14 คู่เงินโครเมียม #e1e1e1 / #949494 บนผิว
-// #1b0d02 / #0a0501 ขอบ #442503 เนื้อความ #f4e7cd ข้อความรอง #c4ab7d (ห้ามพิมพ์
-// hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
-// คอมเมนต์ ดูของเดิมได้จาก git history)
+// AWIN8: ย้ายชุดสีทอง-เงินของแบรนด์ก่อนออกทั้งหมด มาที่น้ำเงินรอยัลคู่ทองส้มที่วัด
+// จากอาร์ตจริง — น้ำเงิน #1f6fea / #7fb2ff / #e8f1ff / #0d3f9e / #07265e คู่ทองส้ม
+// #fca311 / #ffd27a บนผิว #040e22 / #02081c ขอบ #07265e เนื้อความ #d8e6fb ข้อความรอง
+// #9db4d6 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+//
+// ฟีดนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 7 เรื่องฝากถอนออโต้ทันใจ จึงวางต่อท้าย
+// บล็อกนั้นทันที
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const pick = (salt: string, n: number) => brandPick(Astro.site, salt, n);
 
 const PENDING_TEXT = "กำลังโอน";
 const DONE_TEXT = "เข้าบัญชีแล้ว";
-const PENDING_CLASS = "text-[#c4ab7d]";
-const DONE_CLASS = "text-[#faca4c]";
+const PENDING_CLASS = "text-[#9db4d6]";
+const DONE_CLASS = "text-[#fca311]";
 
 const initialRows = Array.from({ length: 8 }, (_, i) => ({
   bank: bankPool[pick(`pill-bank-${i}`, bankPool.length)],
@@ -53,11 +56,11 @@ const initialRows = Array.from({ length: 8 }, (_, i) => ({
 
 <div class="mx-auto w-full max-w-[1000px] p-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก VIREL168"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#e2a52d]/30 bg-[#1b0d02]/88 px-4 py-8 shadow-[0_15px_40px_rgba(226,165,45,0.2)] backdrop-blur-md">
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก AWIN8"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#0d3f9e]/40 bg-[#040e22]/88 px-4 py-8 shadow-[0_15px_40px_rgba(31,111,234,0.2)] backdrop-blur-md">
     <div class="mb-6 text-center">
-      <p class="bg-gradient-to-b from-[#ffeec2] to-[#e2a52d] bg-clip-text text-xl font-black text-transparent md:text-2xl">
-        <span aria-hidden="true">⚡</span> VIREL168 กดถอนเองผ่านหน้าเว็บ ยอดโอนเข้าบัญชีภายในไม่กี่วินาที
+      <p class="bg-gradient-to-b from-[#e8f1ff] to-[#1f6fea] bg-clip-text text-xl font-black text-transparent md:text-2xl">
+        <span aria-hidden="true">⚡</span> AWIN8 ฝากถอนออโต้ผ่าน Gateway ตรง ทำรายการเสร็จในไม่กี่วินาที
       </p>
     </div>
 
@@ -65,14 +68,14 @@ const initialRows = Array.from({ length: 8 }, (_, i) => ({
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-pill transition-all duration-500 ease-out">
-            <div class="flex items-center gap-3 rounded-full border border-[#e2a52d]/40 bg-[#0a0501] py-1.5 pr-4 pl-1.5 shadow-[0_4px_12px_rgba(226,165,45,0.18)] hover:border-[#e1e1e1]/70">
+            <div class="flex items-center gap-3 rounded-full border border-[#0d3f9e]/45 bg-[#02081c] py-1.5 pr-4 pl-1.5 shadow-[0_4px_12px_rgba(31,111,234,0.18)] hover:border-[#7fb2ff]/70">
               <div data-winner-bank class={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${row.bank.color}`}>
                 <img data-winner-icon src={row.bank.icon} alt="" width="16" height="16" loading="lazy" decoding="async" class="h-4 w-4 object-contain" />
               </div>
-              <div data-winner-user class="text-sm font-bold text-[#f4e7cd]">
+              <div data-winner-user class="text-sm font-bold text-[#d8e6fb]">
                 {row.user}
               </div>
-              <div class="text-sm font-black text-[#ffeec2]">
+              <div class="text-sm font-black text-[#ffd27a]">
                 +<span data-winner-amount>{row.amount}</span> ฿
               </div>
               <span
@@ -81,7 +84,7 @@ const initialRows = Array.from({ length: 8 }, (_, i) => ({
                 data-done-text={DONE_TEXT}
                 data-pending-class={PENDING_CLASS}
                 data-done-class={DONE_CLASS}
-                class={`border-l border-[#442503] pl-3 text-[10px] font-bold tracking-wide ${row.pending ? PENDING_CLASS : DONE_CLASS}`}>
+                class={`border-l border-[#07265e] pl-3 text-[10px] font-bold tracking-wide ${row.pending ? PENDING_CLASS : DONE_CLASS}`}>
                 {row.pending ? PENDING_TEXT : DONE_TEXT}
               </span>
             </div>

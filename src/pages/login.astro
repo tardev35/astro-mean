@@ -17,32 +17,34 @@ const targetUrl = "https://yoalink.com/znmz";
 // match than anything visual on the page. brandProfile drops the Kanit
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
-// undo half of it. Nothing is lost by dropping them — Google Sans covers Thai,
-// so it paints this page on its own. PHOENIX168 runs google-sans, so this round
-// the rules do NOT render at all; the flag flips every rebrand, so keep both
-// branches.
+// undo half of it. Nothing is lost when they drop — Google Sans covers Thai, so
+// it paints this page on its own on a google-sans brand. DEED888 runs
+// GOOGLE-SANS, so this round the rules are DROPPED and the CDN query below is
+// the Google-Sans-plus-Oswald branch. The flag flips every rebrand, so keep BOTH
+// branches correct — the next Kanit brand needs the rules back, and the one
+// after that needs them gone again.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
 //
-// The old value asked Google for "Kanit:wght@300;400;600" even though the site
-// self-hosts Kanit: a third-party request for weights nothing here draws (300
-// and 600 are used zero times), and a query string byte-identical on every
-// Kanit brand in the portfolio — the shared signature BRAND_FONT exists to
-// break up.
+// The Kanit branch deliberately does NOT ask Google for Kanit: the site
+// self-hosts it, so a third-party request there would be for weights nothing
+// here draws, in a query string byte-identical on every Kanit brand in the
+// portfolio — the shared signature BRAND_FONT exists to break up.
 const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: PHOENIX168 is a speed-slot brand
-// painted as a PHOENIX FIRE — a molten orange-red core over a near-black ember
-// floor, with gold only at the feather tips. The whole page is one fire ramp
-// (#ffe2c4 → #ffa14a → #ff5a1e → #c04a12 → #7a2408) over the surface stack
-// (#0a0402 page / rgba(23,7,4) panel / #1f0a05 raised) with #f2ddc9 body text
-// and #b08a72 captions. The single gold (#f3ac3c) is the mid-stop of the
-// wordmark gradient and nothing else — it stands for the "168" lettering, not
-// for the brand's accent. If you find yourself reaching for a contrasting hue
-// here, the answer is a hotter or deeper ember, not another colour family.
+// Palette note for the second <style> block: DEED888 is a fire-horse brand
+// painted as FLAME ORANGE over a scorched near-black brown, with one molten gold
+// reserved for the wordmark — the rearing stallion and the poured-gold logotype.
+// The whole page is one orange ramp (#fff4e8 → #ff9d4d → #e95b0b → #93300a →
+// #4e1905) over the surface stack (#150401 page / rgba(32,8,2) panel / #2a0a02
+// raised) with #fbe3d0 body text and #d6a887 captions. The single gold (#f4940c)
+// is the mid-stop of the wordmark gradient and nothing else — it stands for the
+// molten-gold lettering in the brand mark, not for a second theme colour. If you
+// find yourself reaching for a contrasting hue here, the answer is a brighter or
+// deeper orange, not another colour family.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
@@ -50,8 +52,8 @@ const fontHref = usesGoogleFonts
 // `--gold-light` that held the brand's SECOND accent, not its primary — so the
 // next editor reused it by name and got the wrong role. Rename with the value,
 // and re-check the role when the palette changes shape. (That is exactly what
-// happened this round: the names all said "gold" and the values are now ember,
-// so the names moved with them.)
+// happened this round: the names all said "blue" and the values are now flame
+// orange, so the names moved with them.)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -59,10 +61,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ PHOENIX168 | ทางเข้าสล็อตเว็บตรง เกมลิขสิทธิ์แท้ ฝากถอนออโต้</title>
+    <title>เข้าสู่ระบบ DEED888 | ทางเข้าสล็อตเกมแท้ตัวท็อป ค่ายดังครบในยูสเดียว</title>
     <meta
       name="description"
-      content="เข้าสู่ระบบ PHOENIX168 สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นสล็อตเว็บตรง API แท้ ไม่ผ่านเอเย่นต์ เกมลิขสิทธิ์ค่ายดัง ฝากถอนออโต้ไฮสปีด"
+      content="เข้าสู่ระบบ DEED888 สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นสล็อตเกมแท้ที่ยิงตรง API จากสตูดิโอ ไม่ผ่านเอเย่นต์ ฝากถอนออโต้ไม่กี่วินาที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -104,17 +106,17 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #0a0402;
-        --panel-bg: rgba(23, 7, 4, 0.92);
-        --ember-cream: #ffe2c4;
-        --ember-light: #ffa14a;
-        --ember-primary: #ff5a1e;
-        --ember-deep: #c04a12;
-        --ember-shadow: #7a2408;
-        --feather-gold: #f3ac3c;
-        --surface-raised: #1f0a05;
-        --text-body: #f2ddc9;
-        --text-muted: #b08a72;
+        --page-bg: #150401;
+        --panel-bg: rgba(32, 8, 2, 0.92);
+        --orange-pale: #fff4e8;
+        --orange-light: #ff9d4d;
+        --orange-primary: #e95b0b;
+        --orange-deep: #93300a;
+        --orange-shadow: #4e1905;
+        --molten-gold: #f4940c;
+        --surface-raised: #2a0a02;
+        --text-body: #fbe3d0;
+        --text-muted: #d6a887;
       }
 
       body {
@@ -122,7 +124,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(255, 90, 30, 0.22) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(192, 74, 18, 0.16) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(233, 91, 11, 0.22) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(147, 48, 10, 0.16) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -136,11 +138,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(192, 74, 18, 0.45);
+        border: 1px solid rgba(147, 48, 10, 0.45);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(10, 4, 2, 0.6),
-          0 0 2rem rgba(255, 90, 30, 0.2);
+          0 1rem 3rem rgba(21, 4, 1, 0.6),
+          0 0 2rem rgba(233, 91, 11, 0.2);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -149,13 +151,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--ember-cream) 0%, var(--feather-gold) 40%, var(--ember-deep) 100%);
+        background: linear-gradient(180deg, var(--orange-pale) 0%, var(--molten-gold) 40%, var(--orange-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(122, 36, 8, 0.55));
+        filter: drop-shadow(0 1px 2px rgba(78, 25, 5, 0.55));
       }
 
       .sophisticated-loader {
@@ -171,30 +173,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--ember-cream) 0%, var(--ember-primary) 45%, var(--ember-shadow) 100%);
+        background: radial-gradient(circle, var(--orange-pale) 0%, var(--orange-primary) 45%, var(--orange-shadow) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(255, 90, 30, 0.4);
+        box-shadow: 0 0 2rem rgba(233, 91, 11, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(192, 74, 18, 0.3);
+        border: 3px solid rgba(147, 48, 10, 0.3);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--ember-primary);
+        border-top-color: var(--orange-primary);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--ember-light);
+        border-bottom-color: var(--orange-light);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -211,11 +213,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(255, 90, 30, 0.4);
+          box-shadow: 0 0 2rem rgba(233, 91, 11, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(255, 161, 74, 0.42);
+          box-shadow: 0 0 3rem rgba(255, 157, 77, 0.42);
         }
       }
 
@@ -239,7 +241,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">PHOENIX168</div>
+      <div class="brand-identity">DEED888</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -249,7 +251,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ PHOENIX168 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ DEED888 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 
