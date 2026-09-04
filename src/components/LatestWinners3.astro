@@ -6,7 +6,7 @@ import ktbLogo from "../assets/banks/ktb.png";
 import ttbLogo from "../assets/banks/ttb.png";
 import { brandFlag, brandPick } from "../lib/brandProfile";
 
-// Real bank brand colours — never rethemed to the current brand's palette.
+// สีประจำแบรนด์ธนาคารจริง — ไม่เคยถูก retheme ไปตามพาเลตของแบรนด์ปัจจุบัน
 const bankPool = [
   { name: "KBank", color: "bg-[#1155cc]", icon: kbankLogo.src },
   { name: "SCB", color: "bg-[#4e1c80]", icon: scbLogo.src },
@@ -15,36 +15,33 @@ const bankPool = [
   { name: "TTB", color: "bg-[#1279be]", icon: ttbLogo.src },
 ];
 
-// This component used to be a `<script define:vars={{ bankPool }}>` that built
-// five rows with innerHTML and then ran setInterval forever. define:vars forces
-// is:inline, which strips type/async/defer and leaves a parser-blocking script
-// three quarters of the way down the document — tools/verify-build.mjs fails the
-// build on it. The rows are server-rendered here, the bank list travels as inert
-// JSON below, and src/lib/winnersFeed.ts (shared with the other feed variants,
-// and selector-driven so it needs no changes) takes over the rotation with
-// on-screen, hidden-tab and reduced-motion guards.
+// ไฟล์นี้เคยเป็น `<script define:vars={{ bankPool }}>` ที่สร้างห้าแถวด้วย innerHTML
+// แล้วรัน setInterval ตลอดกาล — define:vars บังคับ is:inline ซึ่งตัด type/async/defer
+// ทิ้งและทิ้งสคริปต์ที่บล็อก parser ไว้กลางเอกสาร tools/verify-build.mjs ฟ้อง build
+// ตก ตอนนี้แถวถูก server-render ที่นี่ ลิสต์ธนาคารเดินทางเป็น JSON เฉยๆ ข้างล่าง
+// และ src/lib/winnersFeed.ts (ใช้ร่วมกับ feed variant ตัวอื่น และทำงานด้วย selector
+// จึงไม่ต้องแก้) รับช่วงหมุนแถวต่อ พร้อมตัวกันเรื่อง on-screen / แท็บซ่อน /
+// reduced-motion
 //
-// The values come from the brand's own domain hash, NOT Math.random(): a
-// Math.random() in frontmatter runs at BUILD time, so every deploy would churn
-// the live site's markup for nothing. brandPick()/brandFlag() make two builds of
-// the same domain byte-identical.
+// ค่าที่เห็นมาจาก hash ของโดเมนแบรนด์ ไม่ใช่ Math.random(): Math.random() ใน
+// frontmatter รันตอน BUILD ทุก deploy จึงจะปั่น markup ของเว็บจริงใหม่โดยไม่ได้อะไร
+// brandPick()/brandFlag() ทำให้ build สองครั้งของโดเมนเดียวกันออกมาเหมือนกันไบต์ต่อไบต์
 //
-// Retheming this file means markup and classes only. Keep every data-winner-*
-// hook and the data-pending-text/data-done-text pair where they are — the
-// module reads the wording, the status classes and every number it uses
-// (interval, row cap, amount range, user format) off the DOM, so it never has
-// to learn this brand's palette or open src/lib.
+// การ retheme ไฟล์นี้แปลว่าแก้ markup กับคลาสเท่านั้น เก็บ data-winner-* ทุกตัวและ
+// คู่ data-pending-text/data-done-text ไว้ที่เดิม — โมดูลอ่านถ้อยคำ คลาสสถานะ และ
+// ตัวเลขทุกตัวที่ใช้ (interval, เพดานแถว, ช่วงยอด, รูปแบบยูสเซอร์) จาก DOM จึงไม่
+// ต้องรู้จักพาเลตของแบรนด์นี้และไม่ต้องเปิด src/lib เลย
 //
-// PHOENIX168: this feed arrived carrying a previous brand's hue and brand name
-// hardcoded in the JSX. It now runs on this brand's phoenix fire — the molten
-// orange core with the gold feather pair over the near-black ember surface. The
-// old hex values are deliberately not written out here: Tailwind scans this file
-// as raw text and cannot tell a comment from markup, so naming them would
-// generate dead CSS for classes nothing uses. The bank swatches and the verified
-// green stay as they are.
+// XONEBET: feed ตัวนี้เป็น inventory ที่ค้างชุดสีและชื่อแบรนด์ก่อนหน้าฝังไว้ใน JSX
+// รอบนี้ย้ายมาที่ทองหลอมคู่เงินโครเมียมของแบรนด์นี้ — ทองแกน #ebb101 / #fee505 /
+// #fff8d1 คู่เงิน #e9e9e9 กับเฉดทองเข้ม #a87c02 / #5c4301 บนผิวเกือบดำ #161105 /
+// #221a08 เนื้อความ #f4e6bd ข้อความรอง #c3ae76 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้
+// — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
+// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) แถบสีธนาคารกับเขียว verified
+// อยู่เหมือนเดิม
 //
-// This feed sits right after docx section 7 (open 24 hours a day) as the proof
-// that the auto deposit/withdraw system runs at the same speed all day.
+// feed นี้วางต่อท้ายหัวข้อ docx ข้อ 7 ที่พูดถึงการเข้าเล่นได้คล่องตลอด 24 ชั่วโมง
+// เป็นหลักฐานว่าระบบฝากถอนออโต้เดินด้วยความเร็วเท่ากันทุกช่วงเวลา
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const pickFrom = (chars: string, salt: string) => chars.charAt(brandPick(Astro.site, salt, chars.length));
 
@@ -58,15 +55,15 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
 
 <div class="mx-auto w-full max-w-[900px] p-4 font-sans">
   <section
-    aria-label="ประวัติการถอนเงินล่าสุดของสมาชิก PHOENIX168"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#ff5a1e]/45 bg-[#1f0a05]/90 px-4 py-8 shadow-[0_10px_30px_rgba(255,90,30,0.25)] backdrop-blur-md md:p-10">
-    <div class="pointer-events-none absolute -top-16 -right-10 h-40 w-40 rounded-full bg-[#7a2408]/60 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-[#ff5a1e]/35 blur-[60px]"></div>
+    aria-label="ประวัติการถอนเงินล่าสุดของสมาชิก XONEBET"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#ebb101]/45 bg-[#161105]/90 px-4 py-8 shadow-[0_10px_30px_rgba(235,177,1,0.25)] backdrop-blur-md md:p-10">
+    <div class="pointer-events-none absolute -top-16 -right-10 h-40 w-40 rounded-full bg-[#5c4301]/60 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-[#ebb101]/35 blur-[60px]"></div>
 
     <div class="relative z-10 mb-8 text-center">
-      <p class="bg-gradient-to-b from-[#ffe2c4] to-[#ff5a1e] bg-clip-text text-xl font-black text-transparent md:text-3xl">ประวัติการถอนเงินของสมาชิก PHOENIX168 แบบเรียลไทม์</p>
-      <p class="mt-2 text-base leading-relaxed text-[#f2ddc9]/80">
-        ฝากถอนผ่านระบบออโต้ไฮสปีด ทำรายการเสร็จในไม่กี่วินาที ไม่ต้องส่งสลิป ไม่ต้องคอยแอดมินอนุมัติ ปั่นได้เท่าไหร่ก็ถอนออกได้ครบเต็มจำนวนทันที และทำงานด้วยความเร็วเท่ากันตลอด 24 ชั่วโมง
+      <p class="bg-gradient-to-b from-[#fff8d1] to-[#ebb101] bg-clip-text text-xl font-black text-transparent md:text-3xl">ประวัติการถอนเงินของสมาชิก XONEBET แบบเรียลไทม์</p>
+      <p class="mt-2 text-base leading-relaxed text-[#f4e6bd]/80">
+        ฝากถอนผ่านระบบออโต้ ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ไม่ต้องรอแอดมินอนุมัติ ปั่นได้เท่าไหร่ก็ถอนออกได้เต็มจำนวนทุกยอด และทำงานด้วยความเร็วเท่ากันตลอด 24 ชั่วโมง
         ตัวเลขด้านล่างเป็นข้อมูลตัวอย่างสำหรับแสดงรูปแบบรายการเท่านั้น
       </p>
     </div>
@@ -80,25 +77,25 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
       data-pending-chance="0.4"
       data-user-style="letters"
       data-user-digits="4"
-      class="relative z-10 ml-4 border-l-2 border-[#ff5a1e]/55 pl-6 md:ml-8 md:pl-8">
+      class="relative z-10 ml-4 border-l-2 border-[#ebb101]/55 pl-6 md:ml-8 md:pl-8">
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-row relative mb-6 transition-all duration-500 ease-out">
-            <div class="absolute top-2 -left-[35px] h-4 w-4 rounded-full border-2 border-[#1f0a05] bg-[#ff5a1e] shadow-[0_0_10px_rgba(255,90,30,0.8)] md:-left-[43px]" />
+            <div class="absolute top-2 -left-[35px] h-4 w-4 rounded-full border-2 border-[#161105] bg-[#ebb101] shadow-[0_0_10px_rgba(235,177,1,0.8)] md:-left-[43px]" />
 
-            <div class="flex items-center gap-4 rounded-[20px] bg-gradient-to-r from-[#2b0f07]/70 to-transparent p-4 transition-colors hover:from-[#7a2408]/50">
+            <div class="flex items-center gap-4 rounded-[20px] bg-gradient-to-r from-[#221a08]/70 to-transparent p-4 transition-colors hover:from-[#5c4301]/50">
               <div data-winner-bank class={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${row.bank.color}`}>
                 <img data-winner-icon src={row.bank.icon} alt="" width="24" height="24" loading="lazy" decoding="async" class="h-6 w-6 object-contain" />
               </div>
 
               <div class="min-w-0 flex-1">
-                <div class="text-sm text-[#f2ddc9]/80">
+                <div class="text-sm text-[#c3ae76]">
                   ยูสเซอร์:{" "}
-                  <span data-winner-user class="font-bold text-[#f2ddc9]">
+                  <span data-winner-user class="font-bold text-[#f4e6bd]">
                     {row.user}
                   </span>
                 </div>
-                <div class="text-xl font-black text-[#f4dc6d]">
+                <div class="text-xl font-black text-[#fee505]">
                   <span data-winner-amount>{row.amount}</span> THB
                 </div>
               </div>
@@ -123,23 +120,22 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
 </div>
 
 <script>
-  // Not `define:vars` — that forces is:inline, which strips type/async/defer and
-  // leaves a parser-blocking script in the middle of the document. The bank list
-  // arrives as inert JSON above instead, and this module is bundled and deferred
-  // like any other.
+  // ไม่ใช่ `define:vars` — ตัวนั้นบังคับ is:inline ซึ่งตัด type/async/defer ทิ้งและ
+  // ทิ้งสคริปต์ที่บล็อก parser ไว้กลางเอกสาร ลิสต์ธนาคารเดินทางมาเป็น JSON เฉยๆ
+  // ข้างบนแทน และโมดูลนี้ถูก bundle กับ defer เหมือนโมดูลอื่นทุกตัว
   import { startWinnersFeed } from "../lib/winnersFeed";
 
   startWinnersFeed();
 </script>
 
 <style>
-  /* The two status colours are classes rather than inline strings so the JS in
-     src/lib/winnersFeed.ts never has to know what this brand's palette is.
-     The verified green is a success signal, not a brand hue — it stays green
-     on every brand. */
+  /* สีของสถานะสองตัวเป็นคลาสแทนที่จะเป็นสตริงในโค้ด เพื่อให้ JS ใน
+     src/lib/winnersFeed.ts ไม่ต้องรู้ว่าพาเลตของแบรนด์นี้คืออะไร
+     เขียว verified เป็นสัญญาณความสำเร็จ ไม่ใช่สีแบรนด์ — มันเป็นเขียวเหมือนกัน
+     ทุกแบรนด์ */
   .winner-status.is-pending {
-    color: #f2ddc9;
-    border-color: #7a2408;
+    color: #f4e6bd;
+    border-color: #5c4301;
   }
   .winner-status.is-verified {
     color: oklch(79.2% 0.209 151.711);

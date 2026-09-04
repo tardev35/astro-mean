@@ -18,38 +18,38 @@ import img6 from "../assets/providers/game6.avif";
 // Play ในบรีฟ ถ้าจะเปลี่ยนชื่อค่ายของช่องไหน ต้องเปลี่ยนไฟล์รูปตามด้วย ห้ามตั้งชื่อ
 // ค่ายที่โฟลเดอร์นี้ไม่มีโลโก้อยู่จริง
 //
-// เนื้อหาตาม brief ของ AWIN8 ซึ่งเป็นสล็อตเว็บตรง ไม่ใช่คาสิโนสด: กวาดเฉพาะเกม
-// ระดับ A-List จากค่ายยักษ์ใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming
-// คัดกรองตัวเกมที่มีโครงสร้างการจ่ายรางวัลโปร่งใส โบนัสแตกง่าย และกราฟิกประมวลผล
-// คมชัดลื่นไหลไม่มีสะดุด กริดนี้จึงเป็นภาพประกอบของหัวข้อ docx ข้อ 2 โดยตรงและ
-// วางต่อท้ายบล็อกนั้นทันที สามช่องแรกเรียงตามลำดับชื่อค่ายที่ย่อหน้านั้นเอ่ยถึง
+// เนื้อหาตาม brief ของ XONEBET ซึ่งเป็นสล็อตเว็บตรง API แท้: คัดกรองเฉพาะค่ายใหญ่
+// ระดับเกรด A เช่น PG Soft, Pragmatic Play และ Joker Gaming เน้นเกมตัวท็อปที่มี
+// โครงสร้างการจ่ายเงินโปร่งใส จังหวะฟรีสปินเข้าไว และอัตราคูณสะสมสูง ตัดเกมไร้
+// คุณภาพออกทั้งหมด กริดนี้จึงเป็นภาพประกอบของหัวข้อ docx ข้อ 3 โดยตรงและวางต่อท้าย
+// บล็อกนั้นทันที สามช่องแรกเรียงตามลำดับชื่อค่ายที่ย่อหน้านั้นเอ่ยถึง
 //
-// AWIN8: ชุดสีเป็นน้ำเงินรอยัลคู่ทองส้มบนกรมท่าเกือบดำ — น้ำเงิน #1f6fea /
-// #7fb2ff / #0d3f9e / #07265e คู่ทอง #fca311 / #ffd27a และขาวฟ้า #e8f1ff บนผิว
-// #02081c / #040e22 / #08172f เนื้อความ #d8e6fb ข้อความรอง #9db4d6 ป้ายมุมบนขวา
-// รับทองเพื่อให้ตัวหนังสือสีเข้มอ่านออกบนพื้นสว่าง (ห้ามพิมพ์ hex ของแบรนด์ก่อน
-// ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาส
-// จากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
+// XONEBET: ชุดสีเป็นทองหลอมคู่เงินโครเมียมบนดำสนิท — ทอง #ebb101 / #fee505 /
+// #a87c02 / #5c4301 คู่เงิน #e9e9e9 / #c4c4c4 และครีมทอง #fff8d1 บนผิว #0a0803 /
+// #161105 / #221a08 เนื้อความ #f4e6bd ข้อความรอง #c3ae76 ป้ายมุมบนขวารับทองเพื่อ
+// ให้ตัวหนังสือสีเข้มอ่านออกบนพื้นสว่าง (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ —
+// Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
+// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 const providers = [
-  { name: "PG Soft (Pocket Games Soft)", desc: "ค่ายลิขสิทธิ์แท้ที่เชื่อมสัญญาณ API ตรงจากสตูดิโอ โครงสร้างการจ่ายรางวัลโปร่งใส โบนัสแตกง่าย", tag: "โบนัสแตกง่าย", img: img1 },
-  { name: "Pragmatic Play", desc: "เกมระดับ A-List ที่มีตัวคูณทวีคูณและฟรีสปินซื้อได้ทันใจ ทุกรอบสปินมีจังหวะทำกำไรจริง", tag: "ตัวคูณทวีคูณ", img: img6 },
-  { name: "Joker Gaming", desc: "ค่ายยักษ์ใหญ่ที่คนไทยคุ้นเคย คัดเฉพาะตัวที่กราฟิกคมชัด ประมวลผลลื่นไหลไม่มีสะดุด", tag: "คัดเฉพาะตัวเด่น", img: img4 },
-  { name: "SlotXO", desc: "หมวดเกมสายคลาสสิกที่กดเข้าเล่นจากล็อบบี้เดียวได้ทันที ไม่ต้องคลิกผ่านโฆษณาคั่น", tag: "เข้าเกมไวที่สุด", img: img3 },
-  { name: "JILI", desc: "เกมทำเงินไซซ์กะทัดรัด รอบสปินสั้น เหมาะกับสายลุยทำกำไรเร็วในช่วงเวลาจำกัด", tag: "สายทำกำไรเร็ว", img: img5 },
-  { name: "SexySlot", desc: "เติมความหลากหลายให้คลังเกม เปิดใช้งานจากยูสเซอร์เดียว ไม่ต้องโยกเงินข้ามค่าย", tag: "ยูสเซอร์เดียวจบ", img: img2 },
+  { name: "PG Soft (Pocket Games Soft)", desc: "ค่ายใหญ่ระดับเกรด A ที่ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลัก โครงสร้างการจ่ายเงินโปร่งใส จังหวะฟรีสปินเข้าไว", tag: "ฟรีสปินเข้าไว", img: img1 },
+  { name: "Pragmatic Play", desc: "เกมตัวท็อปที่อัตราคูณสะสมสูง มาพร้อมตัวคูณทวีคูณและโหมด Buy Feature สำหรับสายใจร้อน", tag: "อัตราคูณสะสมสูง", img: img6 },
+  { name: "Joker Gaming", desc: "ค่ายยักษ์ใหญ่ที่คนไทยคุ้นเคย คัดเฉพาะเกมตัวท็อป ตัดเกมไร้คุณภาพออกทั้งหมดก่อนลงล็อบบี้", tag: "คัดของเด่นเท่านั้น", img: img4 },
+  { name: "SlotXO", desc: "หมวดเกมสายคลาสสิกที่กดเข้าเล่นจากล็อบบี้เดียวได้ทันที ไม่ต้องสลับเว็บและไม่ต้องโยกเงิน", tag: "เข้าเกมไม่สะดุด", img: img3 },
+  { name: "JILI", desc: "เกมทำเงินไซซ์กะทัดรัด รอบสปินสั้น เหมาะกับคนที่อยากได้จังหวะลุ้นเร็วในช่วงเวลาจำกัด", tag: "รอบสปินสั้น", img: img5 },
+  { name: "SexySlot", desc: "เติมความหลากหลายให้คลังเกม เปิดใช้งานจากบัญชีเดียวตามโครงสร้าง One-Stop Service", tag: "บัญชีเดียวจบ", img: img2 },
 ];
 ---
 
-<section aria-label="ค่ายเกมแท้ระดับ A-List ที่ AWIN8 คัดลงล็อบบี้แบบไม่ปนของ" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายเกมใหญ่ระดับเกรด A ที่ XONEBET คัดลงล็อบบี้ให้เลือกตั้งแต่เปิดหน้าแรก" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#e8f1ff] via-[#ffd27a] to-[#1f6fea] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมแท้ระดับ A-List ที่ <span class="text-[#fca311]">AWIN8</span> คัดลงล็อบบี้แบบไม่ปนของ
+    <p class="bg-gradient-to-r from-[#fff8d1] via-[#fee505] to-[#e9e9e9] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายเกมใหญ่ระดับเกรด A ที่ <span class="text-[#fee505]">XONEBET</span> คัดลงล็อบบี้ให้เลือกตั้งแต่เปิดหน้าแรก
     </p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#9db4d6]">
-      คลังเกมกวาดเฉพาะตัวระดับ A-List จากค่ายยักษ์ใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming คัดกรองตัวเกมที่มีโครงสร้างการจ่ายรางวัลโปร่งใส โบนัสแตกง่าย และกราฟิกประมวลผลคมชัด
-      ลื่นไหลไม่มีสะดุด ทุกเบทที่กดสปินจึงอยู่บนระบบมาตรฐานสากลของจริง
+    <p class="max-w-3xl text-base leading-relaxed text-[#c3ae76]">
+      คลังเกมคัดกรองเฉพาะค่ายใหญ่ระดับเกรด A อย่าง PG Soft, Pragmatic Play และ Joker Gaming เน้นเฉพาะเกมตัวท็อปที่มีโครงสร้างการจ่ายเงินโปร่งใส จังหวะฟรีสปินเข้าไว และมีอัตราคูณสะสมสูง
+      ตัดเกมไร้คุณภาพออกทั้งหมดเพื่อให้ทุกสปินมีโอกาสทำเงินได้จริงตั้งแต่เปิดล็อบบี้
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#1f6fea] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ebb101] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
@@ -57,16 +57,16 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#0d3f9e]/45 bg-[#040e22]/92 p-5 pt-9 shadow-[0_10px_30px_rgba(7,38,94,0.3)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#7fb2ff]/60 hover:bg-[#08172f]/95 hover:shadow-[0_15px_40px_rgba(31,111,234,0.32)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#02081c]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#5c4301]/45 bg-[#0a0803]/92 p-5 pt-9 shadow-[0_10px_30px_rgba(92,67,1,0.3)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#fee505]/60 hover:bg-[#161105]/95 hover:shadow-[0_15px_40px_rgba(235,177,1,0.32)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#0a0803]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffd27a] to-[#fca311] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#07265e] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#fee505] to-[#ebb101] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#0a0803] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <Picture
             src={provider.img}
-            alt={`โลโก้ค่ายเกม ${provider.name} บนการ์ดค่ายเกมลิขสิทธิ์แท้ในล็อบบี้ของ AWIN8`}
+            alt={`โลโก้ค่ายเกม ${provider.name} บนการ์ดค่ายเกมลิขสิทธิ์แท้ในล็อบบี้ของ XONEBET`}
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="lazy"
@@ -75,13 +75,13 @@ const providers = [
             sizes="112px"
             decoding="async"
             quality={70}
-            class="relative z-10 mb-3 block h-28 w-28 rounded-xl border border-[#0d3f9e]/55 object-cover transition-transform duration-500 group-hover:scale-110"
+            class="relative z-10 mb-3 block h-28 w-28 rounded-xl border border-[#5c4301]/55 object-cover transition-transform duration-500 group-hover:scale-110"
           />
 
-          <p class="relative z-10 text-center text-sm font-black text-[#d8e6fb] transition-colors group-hover:text-[#e8f1ff]">{provider.name}</p>
-          <p class="relative z-10 mt-1 text-center text-[11px] leading-relaxed text-[#9db4d6]">{provider.desc}</p>
+          <p class="relative z-10 text-center text-sm font-black text-[#f4e6bd] transition-colors group-hover:text-[#fff8d1]">{provider.name}</p>
+          <p class="relative z-10 mt-1 text-center text-[11px] leading-relaxed text-[#c3ae76]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#0d3f9e]/55 bg-[#02081c] py-1.5 text-center text-[11px] font-bold text-[#7fb2ff] shadow-inner transition-colors duration-300 group-hover:border-[#fca311]/60 group-hover:bg-gradient-to-r group-hover:from-[#07265e] group-hover:to-[#0d3f9e] group-hover:text-[#e8f1ff]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#5c4301]/55 bg-[#0a0803] py-1.5 text-center text-[11px] font-bold text-[#fee505] shadow-inner transition-colors duration-300 group-hover:border-[#e9e9e9]/60 group-hover:bg-gradient-to-r group-hover:from-[#5c4301] group-hover:to-[#a87c02] group-hover:text-[#fff8d1]">
             เข้าดูเกมทั้งหมดในค่ายนี้
           </span>
         </a>

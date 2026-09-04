@@ -2,11 +2,11 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/Announcement2.astro";
 
 import { Picture } from "astro:assets";
 
-// DEED888: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox
+// XONEBET: ticker หมุนมาเป็น Announcement2 และกล่องหน้าย่อยใช้ ContentBox
 // ตามสเปกรอบนี้ เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ variant
 // นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
@@ -19,11 +19,12 @@ import { Picture } from "astro:assets";
 //
 // Named for what each banner ACTUALLY prints, not for its file number. This
 // drop has FOUR slides (2026-09-04) and all four run in the grid:
-//   slide1 = สมาชิกใหม่ รับโบนัส 30% · สูงสุด 1,000 บาท · เล่นได้เฉพาะสล็อต
-//   slide2 = ฝากแรกของวัน รับโบนัสสูงสุด 20%
-//   slide3 = ลูกค้าไม้ใหญ่ รับโบนัส 10%
-//   slide4 = เปิดกล่องสุ่ม ลุ้นรับเครดิตฟรี สูงสุดถึง 1,000
-// ทุกไฟล์เป็นโปสเตอร์จัตุรัส 600x600 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
+//   slide1 = สุดพิเศษ!! เราคืนกำไรให้ลูกค้า · คืนยอดเสีย 10% · แนะนำเพื่อน 100%
+//   slide2 = คืนค่าคอมมิสชั่นสูงสุด · สล็อตคืนสูงถึง 2% · บาคาร่าคืนสูงถึง +1%
+//   slide3 = อัพเดทระบบใหม่ ระบบสุ่ม ลุ้นทองคำแท่งและเครดิตฟรี · ฝาก 200฿ รับสูงสุด 500฿
+//   slide4 = ทายแชมป์ฟุตบอลโลก FIFA WORLD CUP 2026 · รางวัลใหญ่ 300,000
+// ทั้งสี่ไฟล์เป็นแบนเนอร์แนวนอน 600x125 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
+// (ดรอปก่อนหน้าเป็นโปสเตอร์จัตุรัส — ถ้าเปลี่ยนสัดส่วนอีก ให้ไล่เช็ก imageSizes ใหม่)
 //
 // banner.png / banner2-4.png ไม่ถูก import ที่นี่: เป็นอาร์ตของแบรนด์ก่อน
 // (ลงวันที่ 2026-08-04 และ 2026-08-18 คนละดรอปกับชุดนี้) และรูปที่ import แล้ว
@@ -32,23 +33,23 @@ import { Picture } from "astro:assets";
 //
 // Only what is printed on the banner may be stated in its alt — ทั้งสี่ไฟล์
 // ถอดข้อความและองค์ประกอบบนภาพมาเขียน alt ตามอาร์ตดรอปวันที่ 2026-09-04
-import promoNewMember from "../assets/slide1.png";
-import promoFirstDeposit from "../assets/slide2.png";
-import promoBigCustomer from "../assets/slide3.png";
-import promoMysteryBox from "../assets/slide4.png";
+import promoCashback from "../assets/slide1.png";
+import promoCommission from "../assets/slide2.png";
+import promoRandomReward from "../assets/slide3.png";
+import promoWorldCup from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 155. It states what the
+// byte count reads ~3x too long). This one measures 156. It states what the
 // page holds — the offers the banners themselves print — and stops.
 const pageDescription =
-  "รวมโปรโมชั่นสล็อต DEED888 ทั้งโบนัสสมาชิกใหม่ 30% สูงสุด 1,000 บาท ฝากแรกของวันรับเพิ่ม 20% ลูกค้าไม้ใหญ่รับ 10% และกล่องสุ่มลุ้นเครดิตฟรี เลือกกดรับได้เอง";
+  "รวมโปรโมชั่นสล็อต XONEBET ทั้งคืนยอดเสีย 10% แนะนำเพื่อน 100% คืนค่าคอมมิสชั่นสล็อตสูงถึง 2% บาคาร่า 1% และกิจกรรมลุ้นทองคำแท่งกับเครดิตฟรี เลือกกดรับได้เอง";
 
-const pageTitle = "โปรโมชั่น DEED888 | โบนัสสมาชิกใหม่ 30% ฝากแรกของวัน และกล่องสุ่มเครดิตฟรี";
+const pageTitle = "โปรโมชั่น XONEBET | คืนยอดเสีย แนะนำเพื่อน คืนค่าคอมมิสชั่น และกิจกรรมลุ้นรางวัล";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น DEED888 จัดโปรฮิตมาเป็นชุดให้เลือกกดรับตามจังหวะที่ต้องการ";
+const pageHeading = "โปรโมชั่น XONEBET รวมสิทธิ์คืนกำไรและกิจกรรมลุ้นรางวัลไว้ให้เลือกกดรับ";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -57,7 +58,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoNewMember.src,
+  primaryImagePath: promoCashback.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -72,12 +73,12 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบส้มเพลิงของแบรนด์ล้อกับกรอบทองบนแบนเนอร์ แล้วสว่างขึ้นตอน hover
+// ขอบทองหลอมของแบรนด์ล้อกับกรอบทองบนแบนเนอร์ แล้วสว่างขึ้นตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#93300a]/45 object-contain shadow-[0_10px_30px_rgba(107,34,5,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e95b0b]/70 hover:shadow-[0_15px_40px_rgba(233,91,11,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#a87c02]/45 object-contain shadow-[0_10px_30px_rgba(92,67,1,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ebb101]/70 hover:shadow-[0_15px_40px_rgba(235,177,1,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
-// intrinsic width (600px for all four posters here) so a sharp upscale never
+// intrinsic width (600px for all four banners here) so a sharp upscale never
 // becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
   const steps = [384, 576, 648].filter((w) => w < img.width);
@@ -86,20 +87,20 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoNewMember,
-    alt: "แบนเนอร์โปรโมชั่นแผงสีทองขอบมน กลางภาพเขียนว่า สมาชิกใหม่ รับโบนัส 30% ใต้ลงมาเขียนว่า สูงสุด 1,000 บาท และ เล่นได้เฉพาะสล็อต มุมซ้ายบนเป็นตัวการ์ตูนเลพริคอนหมวกเขียวนั่งข้างหม้อทองคำ มุมขวาบนเป็นเทวรูปพระพิฆเนศสีทอง มุมขวาล่างเป็นตัวการ์ตูนลาสวมเสื้อแจ็กเก็ตแดงยกนิ้วโป้งให้ รอบภาพมีแท่งทองและเหรียญทองกองอยู่",
+    src: promoCashback,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำทอง ซ้ายมือเป็นโลโก้ XONE.BET ตัว X สีทองพร้อมคำว่า SLOT & CASINO ONLINE ตั้งอยู่กลางแสงระเบิดสีแดงทองและกองเหรียญทอง ข้อความบนภาพเขียนว่า สุดพิเศษ!! เราคืนกำไรให้ลูกค้า คืนยอดเสีย 10% และ แนะนำเพื่อน 100% ขวามือเป็นตัวการ์ตูนพนักงานเสิร์ฟหญิงสวมชุดลายทางแดงขาวและหมวกแดง ยกถาดอาหารไว้ข้างไหล่",
   },
   {
-    src: promoFirstDeposit,
-    alt: "แบนเนอร์โปรโมชั่นแผงสีทองขอบมน กลางภาพเขียนว่า ฝากแรกของวัน รับโบนัสสูงสุด 20% มุมซ้ายบนเป็นตัวการ์ตูนเลพริคอนหมวกเขียว ด้านขวาเป็นชายยิ้มสวมแจ็กเก็ตสีเข้มถือกระป๋องสเปรย์ มุมขวาล่างเป็นจระเข้การ์ตูนสีเขียว รอบภาพมีแท่งทองและเหรียญทองกองอยู่",
+    src: promoCommission,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำทอง กลางภาพเป็นโลโก้ XONE.BET สีทอง ข้อความบนภาพเขียนว่า คืนค่าคอมมิสชั่นสูงสุด นับจากยอดเดิมพันทุกครั้ง สล็อตคืนสูงถึง 2% และ บาคาร่าคืนสูงถึง +1% ซ้ายมือเป็นตัวการ์ตูนโครงกระดูกมาริอาชิสวมหมวกซอมเบรโรกำลังดีดกีตาร์ ขวามือเป็นกระต่ายการ์ตูนใส่แว่นกันแดดกับเสื้อแจ็กเก็ตม่วงยืนอยู่บนสเก็ตบอร์ด",
   },
   {
-    src: promoBigCustomer,
-    alt: "แบนเนอร์โปรโมชั่นแผงสีทองขอบมน กลางภาพเขียนว่า ลูกค้าไม้ใหญ่ รับโบนัส 10% มุมซ้ายบนเป็นตัวการ์ตูนเลพริคอนหมวกเขียว ด้านขวาเป็นชายสวมเสื้อแข่งสีเหลืองของ PG ชูมือเชียร์ ถัดมาเป็นหญิงสาวนั่งเอนอยู่ในแก้วค็อกเทลใบใหญ่สีม่วง รอบภาพมีแท่งทองและเหรียญทองกองอยู่",
+    src: promoRandomReward,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำทอง กลางภาพเป็นโลโก้ XONE.BET สีทองขนาบด้วยกล่องของขวัญสีทองสองกล่อง ข้อความบนภาพเขียนว่า อัพเดทระบบใหม่ มาพร้อมระบบสุ่ม ลุ้นรับทองคำแท่งและเครดิตฟรี ลูกค้าฝากมาเพียง 200฿ และ รับรางวัลสูงสุดถึง 500฿ ซ้ายมือเป็นนักเชิดสิงโตถือหัวมังกรจีนสีเขียวทอง ขวามือเป็นตัวการ์ตูนหัวฟักทองแจ็กโอแลนเทิร์นยืนคู่กับวัวสีน้ำตาล",
   },
   {
-    src: promoMysteryBox,
-    alt: "แบนเนอร์โปรโมชั่นแผงสีทองขอบมน กลางภาพเขียนว่า เปิดกล่องสุ่ม ลุ้นรับเครดิตฟรี สูงสุดถึง 1,000 มุมซ้ายบนเป็นตัวการ์ตูนเลพริคอนหมวกเขียว ด้านขวาเป็นหญิงสาวสวมเสื้อสีชมพูถือถ้วยรางวัลสีทอง มุมขวาล่างเป็นกล่องของขวัญสีขาวผูกริบบิ้นแดง รอบภาพมีแท่งทองและเหรียญทองกองอยู่",
+    src: promoWorldCup,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำทอง ซ้ายมือเป็นภาพนักฟุตบอลทีมชาติหลายคนยืนเรียงกันข้างถ้วยรางวัลฟุตบอลโลกสีทอง มีธงชาติของทีมต่าง ๆ เรียงอยู่ด้านข้าง กลางภาพเป็นโลโก้ XONE.BET สีทอง ข้อความบนภาพเขียนว่า ทายแชมป์ฟุตบอลโลก FIFA WORLD CUP 2026 รางวัลเงินสดพร้อมรางวัลใหญ่ 300,000 และบรรทัดล่างเขียนว่า ระยะเวลารับ 12 มิถุนายน 2026 ประกาศผล 10 กรกฎาคม 2026 เวลา 23:59 น. มุมขวาล่างมีลูกฟุตบอลกลิ้งอยู่",
   },
 ];
 ---
@@ -112,8 +113,8 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรฮิตที่ <strong class="text-[#f4940c]">DEED888</strong> จัดมาเป็นชุดให้เลือกกดรับในรอบนี้ อัตราที่ได้รับและเงื่อนไขของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว
-        แต่ละโปรมีเงื่อนไขของตัวเอง จึงควรอ่านรายการที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์เลือกกดรับเองได้จากหน้าแดชบอร์ด ถอนได้จริง ไม่ติดล็อคยูส และไม่ต้องรอแอดมินอนุมัติ
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#e9e9e9]">XONEBET</strong> เปิดให้กดรับอยู่ในรอบนี้ อัตราที่ได้รับและกำหนดเวลาของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว
+        แต่ละรายการมีเงื่อนไขของตัวเอง จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด ทุกสิทธิ์เลือกกดรับเองได้จากแดชบอร์ดเดียว ไม่ติดเทิร์นจุกจิก และถอนออกได้เต็มจำนวน
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -139,8 +140,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffcf6b]/50 bg-gradient-to-r from-[#ffcf6b] via-[#f4940c] to-[#e95b0b] px-10 py-3.5 text-lg font-black text-[#150401] shadow-[0_10px_30px_rgba(233,91,11,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(233,91,11,0.5)]">
-          สมัครสมาชิก DEED888
+          class="flex items-center justify-center rounded-lg border border-[#c4c4c4]/50 bg-gradient-to-r from-[#fee505] via-[#ebb101] to-[#a87c02] px-10 py-3.5 text-lg font-black text-[#0a0803] shadow-[0_10px_30px_rgba(235,177,1,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(235,177,1,0.5)]">
+          สมัครสมาชิก XONEBET
         </a>
       </div>
     </div>

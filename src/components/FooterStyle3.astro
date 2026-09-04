@@ -9,7 +9,7 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // ลิงก์ด่วนชุดเดียว ใช้ .map ด้านล่าง — เดิมเขียน <a> ซ้ำหกก้อน ทำให้เพิ่ม/ลบหน้า
 // ต้องไล่แก้ทีละอัน (และเป็นที่ที่ลิงก์หน้าหวยของแบรนด์ก่อนเคยค้างอยู่)
-// AWIN8 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
+// XONEBET เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
   { name: "ทดลองเล่นเกมฟรี", path: "/ทดลองเล่น" },
@@ -21,39 +21,39 @@ const quickLinks = [
 ];
 
 const LOGO_ALT =
-  "โลโก้ AWIN8 เป็นตัวอักษร AWIN สีขาวโครเมียมตัดขอบน้ำเงินเข้ม ต่อด้วยเลข 8 สีส้มทองที่มีเปลวไฟพุ่งออกทางขวา ด้านบนมีมงกุฎทองห้าแฉกวางอยู่ ใต้ตัวอักษรเป็นแถบสี่เหลี่ยมมนสีน้ำเงินขอบส้มเขียนว่า ARE YOU READVE NONSTOP FUINIS JUST AROUND";
+  "โลโก้ XONEBET เป็นตัวอักษร X สีทองเหลืองขนาดใหญ่ทรงคมเหมือนสายฟ้าสองเส้นไขว้กัน ใต้ตัว X เป็นคำว่า ONE.BET ตัวอักษรหนาสีเงินโครเมียม และบรรทัดล่างสุดเป็นข้อความตัวเล็กสีเงินว่า SLOT&CASINO ONLINE ทั้งหมดวางอยู่บนพื้นสีดำ";
 
-// AWIN8: ย้ายจากไฟฟีนิกซ์คู่ทองของแบรนด์ก่อน มาเป็นน้ำเงินรอยัลคู่ทองส้มของแบรนด์
-// นี้ — น้ำเงิน #1f6fea / #7fb2ff / #0d3f9e / #07265e คู่ทองส้ม #ffd27a / #fca311
-// บนผิว #02081c / #08172f / #0c2247 เนื้อความ #d8e6fb รองด้วย #9db4d6 และ
-// หมายเหตุตัวเล็ก #7f95b8
+// XONEBET: ย้ายจากน้ำเงินรอยัลคู่ทองส้มของแบรนด์ก่อน มาเป็นทองหลอมคู่เงินโครเมียม
+// ของแบรนด์นี้ — ทอง #ebb101 / #fee505 / #a87c02 / #5c4301 คู่เงิน #e9e9e9 /
+// #c4c4c4 บนผิว #0a0803 / #161105 / #221a08 เนื้อความ #f4e6bd รองด้วย #c3ae76
+// และหมายเหตุตัวเล็ก #9a8a5e
 //
-// ทองส้มมาจากมงกุฎกับเปลวไฟที่เลข 8 ในโลโก้ และจากเหรียญทองที่ปลิวทั่วแบนเนอร์
-// จึงใช้เป็นสีคู่ของเส้นใต้หัวคอลัมน์และหัวลูกศรลิงก์ด่วน ส่วนน้ำเงินรอยัลคุม
-// โครงสร้างหลักทั้งขอบและปุ่ม CTA
+// ทองมาจากตัว X ในโลโก้ มังกรทองคำ และเหรียญทองที่ปลิวทั่วแบนเนอร์ จึงคุมโครงสร้าง
+// หลักทั้งขอบและปุ่ม CTA ส่วนเงินโครเมียมมาจากตัวอักษร ONE.BET ใช้เป็นปลายไล่สี
+// ของเส้นใต้หัวคอลัมน์ เพื่อให้ทองล้วนไม่กลืนกันเอง
 //
 // บล็อก <address> ด้านล่างวางตามที่ playbook กำหนดแบบคำต่อคำ — ไม่ใส่สีของแบรนด์
 // ลงไป (border-white/15 + bg-black/20 + opacity ทำงานได้กับ footer ทุก variant
 // ซึ่งเป็นพื้นเข้มทั้งหมด) ห้าม retype ข้อความข้างในเอง มาจาก BRAND_ADDRESS
 ---
 
-<footer class="relative mt-32 w-full border-t border-[#07265e]/35 bg-[#02081c] pt-64 pb-6 font-sans text-[#d8e6fb] shadow-[0_-10px_30px_rgba(7,38,94,0.25)] md:pt-40">
+<footer class="relative mt-32 w-full border-t border-[#5c4301]/35 bg-[#0a0803] pt-64 pb-6 font-sans text-[#f4e6bd] shadow-[0_-10px_30px_rgba(92,67,1,0.25)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#1f6fea]/35 bg-gradient-to-r from-[#08172f] via-[#07265e] to-[#02081c] p-6 shadow-[0_15px_40px_rgba(13,63,158,0.45)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#ebb101]/35 bg-gradient-to-r from-[#161105] via-[#221a08] to-[#0a0803] p-6 shadow-[0_15px_40px_rgba(168,124,2,0.45)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#7fb2ff] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
-        <span aria-hidden="true">👑</span> พร้อมขึ้นสปินกับ AWIN8 หรือยัง?
+      <p class="text-xl font-black tracking-wide text-[#fee505] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
+        <span aria-hidden="true">🐉</span> พร้อมเปิดล็อบบี้กับ XONEBET หรือยัง?
       </p>
-      <p class="mt-2 text-sm font-medium text-[#9db4d6] md:text-base">
-        สมัคร AWIN8 แล้วพุ่งตรงเข้าล็อบบี้ได้ในคลิกเดียว สล็อตเกมแท้ตัวท็อปจาก PG Soft, Pragmatic Play และ Joker Gaming มาครบ คัดเฉพาะตัวที่โบนัสแตกง่าย กราฟิกคมชัด จัดโปรฮิตมาเป็นชุดให้เลือกตามจังหวะ ฝากถอนออโต้ผ่าน Gateway ตรงเสร็จในไม่กี่วินาที
+      <p class="mt-2 text-sm font-medium text-[#c3ae76] md:text-base">
+        สมัคร XONEBET ยูสเซอร์เดียวจบครบทุกค่ายในแดชบอร์ดเดียว ไม่ต้องสลับเว็บ ไม่ต้องโยกเงินข้ามค่าย คัดเฉพาะค่ายเกรด A อย่าง PG Soft, Pragmatic Play และ Joker Gaming เน้นเกมตัวท็อปที่โครงสร้างการจ่ายเงินโปร่งใส ฝากถอนออโต้ประมวลผลไวใน 3 วินาที
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#fca311] bg-gradient-to-b from-[#ffd27a] to-[#fca311] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#02081c] shadow-[0_0_15px_rgba(252,163,17,0.5)] transition-all hover:scale-105 md:text-base">
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#ebb101] bg-gradient-to-b from-[#fee505] to-[#ebb101] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#0a0803] shadow-[0_0_15px_rgba(235,177,1,0.5)] transition-all hover:scale-105 md:text-base">
       <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🎁</span></span>
-      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#ffd27a] transition-transform duration-300 group-hover:translate-y-0"></div>
+      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#fee505] transition-transform duration-300 group-hover:translate-y-0"></div>
     </a>
   </div>
 
@@ -71,19 +71,19 @@ const LOGO_ALT =
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(13,63,158,0.7)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(168,124,2,0.7)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#7fb2ff] to-[#07265e] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(13,63,158,0.6)]">AWIN8</p>
+              <p class="bg-gradient-to-b from-[#fee505] to-[#5c4301] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(168,124,2,0.6)]">XONEBET</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#9db4d6]">
-          AWIN8 เชื่อมต่อสัญญาณ API ตรงจากสตูดิโอผู้พัฒนาสล็อตระดับโลก ไม่ผ่านเอเย่นต์ ค่า RTP เป็นมาตรฐานยุติธรรมตามสเปกโรงงาน ไม่มีการปรับแต่งเปอร์เซ็นต์แพ้ชนะ รันบนเซิร์ฟเวอร์เสถียรสูงที่รองรับการเดิมพันทุกระดับ
-          คลังเกมกวาดเฉพาะตัวระดับ A-List จากค่ายยักษ์ใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming คัดกรองเฉพาะเกมที่โครงสร้างการจ่ายรางวัลโปร่งใส โบนัสแตกง่าย และกราฟิกประมวลผลคมชัดลื่นไหลไม่มีสะดุด
-          ระบบฝากถอนออโต้ไฮสปีดประมวลผลผ่าน Gateway ตรง เสร็จสิ้นในไม่กี่วินาที ไม่ต้องแนบสลิป ไม่ต้องรอคิวอนุมัติจากแอดมิน ทุกโปรโมชันเงื่อนไขโปร่งใส ถอนได้จริง ไม่ติดล็อคยูส
+        <p class="text-sm leading-relaxed text-[#c3ae76]">
+          XONEBET เว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลักนอก ไม่ผ่านเอเย่นต์ ค่า RTP โปร่งใสตามมาตรฐานสากล ไม่มีการปรับแต่งเปอร์เซ็นต์การชนะ ยึดโครงสร้าง One-Stop Service เต็มรูปแบบ เชื่อมคลังเกมทุกค่ายชั้นนำและระบบการเงินไว้ในบัญชีเดียว
+          คัดกรองเฉพาะค่ายใหญ่ระดับเกรด A อย่าง PG Soft, Pragmatic Play และ Joker Gaming เน้นเฉพาะเกมตัวท็อปที่โครงสร้างการจ่ายเงินโปร่งใส จังหวะฟรีสปินเข้าไว และมีอัตราคูณสะสมสูง ตัดเกมไร้คุณภาพออกทั้งหมด
+          ระบบฝากถอนออโต้ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ปั่นง่าย ทำกำไรได้จริงและถอนออกได้เต็มจำนวนทุกยอด
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -116,16 +116,16 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#d8e6fb] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f4e6bd] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#1f6fea] to-[#fca311] shadow-[0_0_8px_rgba(31,111,234,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#ebb101] to-[#e9e9e9] shadow-[0_0_8px_rgba(235,177,1,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#9db4d6] transition-colors hover:text-[#7fb2ff]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#fca311] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#c3ae76] transition-colors hover:text-[#fee505]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#ebb101] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -134,40 +134,40 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#d8e6fb] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f4e6bd] uppercase">
           ระบบการเงิน
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#1f6fea] to-[#fca311] shadow-[0_0_8px_rgba(31,111,234,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#ebb101] to-[#e9e9e9] shadow-[0_0_8px_rgba(235,177,1,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#9db4d6]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#c3ae76]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#08172f] transition-colors hover:border-[#0d3f9e]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#d8e6fb]"><span aria-hidden="true" class="text-lg text-[#fca311]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#161105] transition-colors hover:border-[#a87c02]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#f4e6bd]"><span aria-hidden="true" class="text-lg text-[#ebb101]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#07265e]/30" />
+    <hr class="mb-6 border-[#5c4301]/30" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#7f95b8] md:block">
-      สล็อตเกมแท้ตัวท็อปที่ตัดระบบเอเย่นต์และขั้นตอนยุ่งยากออกทั้งหมด กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ สัญญาณเกมยิงตรงจากสตูดิโอผู้พัฒนาผ่าน API ค่า RTP จึงเป็นไปตามสเปกโรงงานทุกตัว ไม่มีใครอยู่ตรงกลางให้ปรับเปอร์เซ็นต์แพ้ชนะ ช่วยให้ทุกเบทที่กดสปินเป็นการลุยบนระบบมาตรฐานสากลของจริง
-      หมดปัญหาคลังเกมตัน เพราะล็อบบี้ขยายทางเลือกให้สายสล็อตอย่างต่อเนื่อง ทั้งเกมกระแสติดอันดับชาร์ตและเกมนอกกระแสอัตราคูณโหด ตัวระบบพร้อมดึงสัญญาณเกมเข้าใหม่มาให้กดสปินทันที มีตัวเลือกหลากแนวรองรับทุกกลยุทธ์การเดินเงินอย่างอิสระ เช็กอัตราการจ่ายและทดลองเล่นในโหมดทดลองฟรีได้ก่อนตัดสินใจลงเงินจริง
-      ลูกเล่นยุคใหม่ถูกรวบรวมมาไว้ครบ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multiplier Drops สัญลักษณ์ขยายเต็มรีล Expanding Wilds และโหมดซื้อฟรีสปินแบบทันใจ ช่วยฉีกกฎการหมุนสล็อตแบบเดิมๆ เปลี่ยนความซ้ำซากให้กลายเป็นโอกาสคว้าแจ็คพอตก้อนโต ปรับสเกลหน้าจอให้อัตโนมัติทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์
-      ไลน์อัปโปรโมชันจัดมาเป็นชุด ทั้งโบนัสสมทบทุนฝากแรก สิทธิ์คืนยอดเสีย Cash Back รายวัน และเครดิตพิเศษเฉพาะช่วงเวลา ทุกโปรกำหนดเงื่อนไขโปร่งใส ถอนได้จริง ไม่ติดล็อคยูส ยอดเงินอัปเดตเข้าคลังเกมทันทีโดยไม่ต้องแนบสลิป ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ AWIN8
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#9a8a5e] md:block">
+      สล็อตวันสต็อปที่ตัดระบบเอเย่นต์และขั้นตอนยุ่งยากออกทั้งหมด กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ สัญญาณเกมยิงตรงจากเซิร์ฟเวอร์หลักนอกผ่าน API แท้ ค่า RTP จึงโปร่งใสตามมาตรฐานสากล ไม่มีใครอยู่ตรงกลางให้ปรับเปอร์เซ็นต์การชนะ รวมเกมสล็อตค่ายใหญ่ครบวงจรไว้ในกระเป๋าเดียว
+      ยึดโครงสร้าง One-Stop Service เต็มรูปแบบ เชื่อมต่อคลังเกมจากทุกค่ายชั้นนำและระบบการเงินไว้ในบัญชีเดียว ไม่ต้องเสียเวลาสมัครหลายยูสเซอร์ ไม่ต้องโยกเงินข้ามค่ายให้สับสน เลือกเล่น สลับเกม และจัดการถอนกำไรได้ทันทีผ่านหน้าแดชบอร์ดเดียว คัดกรองเฉพาะค่ายใหญ่ระดับเกรด A เช่น PG Soft, Pragmatic Play และ Joker Gaming
+      จัดหมวดหมู่หน้าเว็บอย่างเป็นระบบ แยกตามประเภทเกม ค่ายดัง และหมวดเกมกระแสมาแรง ค้นหาเกมที่ใช่ได้ในไม่กี่คลิก ฟีเจอร์ยุคใหม่มาครบ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Wild ซ้อนทับ คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Buy Feature สำหรับสายใจร้อน
+      อัปเกรดเซิร์ฟเวอร์หลังบ้านประมวลผลความเร็วสูง สลับค่ายเกมและโหลดหน้าอินเทอร์เฟซได้ฉับไว ไร้ปัญหาเกมค้าง กระตุก หรือเด้งหลุดกลางทาง วางระบบแสดงผลแบบ Responsive 100% รองรับทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ ฝากถอนออโต้ไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ XONEBET
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#7f95b8] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#7fb2ff] uppercase">AWIN8</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#9a8a5e] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#fee505] uppercase">XONEBET</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#d8e6fb]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#d8e6fb]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#f4e6bd]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#f4e6bd]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#d8e6fb] transition-all hover:border-[#0d3f9e] hover:bg-[#08172f] hover:shadow-[0_0_15px_rgba(13,63,158,0.6)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#f4e6bd] transition-all hover:border-[#a87c02] hover:bg-[#161105] hover:shadow-[0_0_15px_rgba(168,124,2,0.6)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

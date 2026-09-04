@@ -10,9 +10,12 @@ const currentPath = Astro.url.pathname;
 
 const isActive = (path: string) => isActivePath(currentPath, path);
 
-// AWIN8: ย้ายจากพิลล์กระจกกรมท่าสนามไฟของแบรนด์ก่อน มาเป็นพิลล์กระจกกรมท่าคู่ทองส้ม
-// ของแบรนด์นี้ — น้ำเงิน #0d3f9e / #1f6fea / #7fb2ff คู่ทองส้ม #fca311 / #ffd27a /
-// #b06a02 บนผิว #02081c / #08172f / #0c2247 เนื้อความ #d8e6fb รองด้วย #9db4d6
+// XONEBET: ย้ายจากพิลล์กระจกกรมท่าคู่ทองส้มของแบรนด์ก่อน มาเป็นพิลล์กระจกดำสนิท
+// คู่ทองหลอมของแบรนด์นี้ — ทอง #a87c02 / #ebb101 / #fee505 คู่เงินโครเมียม
+// #e9e9e9 บนผิว #0a0803 / #161105 / #221a08 เนื้อความ #f4e6bd รองด้วย #c3ae76
+//
+// ทองมาจากตัว X ในโลโก้กับเหรียญทองที่ปลิวทั่วแบนเนอร์ ส่วนเงินโครเมียมมาจาก
+// ตัวอักษร ONE.BET จึงใช้เป็นปลายไล่สีของเส้นใต้เมนู ไม่ใช่สีเน้นที่สอง
 //
 // เมนูชุดเดียวใช้ทั้งแถบเดสก์ท็อปและเมนูเต็มจอ — เดิมไฟล์นี้ประกาศอาร์เรย์ซ้ำสอง
 // ก้อน คนแก้ทีหลังจึงมีโอกาสแก้ก้อนเดียวแล้วอีกก้อนค้าง ตอนนี้เหลือ links ตัวเดียว
@@ -21,15 +24,14 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // อิโมจิลงในสตริง name (screen reader จะอ่านชื่อไอคอนปนกับชื่อเมนู)
 //
 // ไอคอนเลือกให้ตรงกับอาร์ตของแบรนด์ — 🎰 คือตู้สล็อตที่ขึ้นเลข 777 ใต้ป้าย
-// JACKPOT ฝั่งขวาของแบนเนอร์ ใช้แทนหน้าทดลองเล่น 👑 คือมงกุฎทองบนโลโก้และบนหัว
-// ตัวละครในแบนเนอร์ ใช้แทนหน้าเกี่ยวกับเรา 🎁 แทนหน้าโปรโมชัน และ 🔑 แทนลิงก์
-// ตรงเข้าเว็บหลัก
+// JACKPOT ฝั่งขวาของแบนเนอร์ ใช้แทนหน้าทดลองเล่น 🐉 คือมังกรทองคำฝั่งซ้ายของ
+// แบนเนอร์ ใช้แทนหน้าเกี่ยวกับเรา 🎁 แทนหน้าโปรโมชัน และ 🔑 แทนลิงก์ตรงเข้าเว็บหลัก
 //
 // ลำดับเมนู: หน้าแรก → โปรโมชั่น → ที่เหลือ รอบนี้ปุ่มสมัคร/เข้าสู่ระบบยังเป็น
 // interstitial (noindex) ไม่ใช่หน้าจริง จึงไม่มีรายการเมนูของสองหน้านั้นให้จัด
 // ลำดับ และ /ทางเข้า ยังอยู่ในเมนูตามปกติ
 //
-// AWIN8 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// XONEBET เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
 // src/pages-disabled/) ห้ามมีลิงก์ถึง
 //
 // ห้ามใส่คอมเมนต์แบบ HTML ในไฟล์นี้ — Astro ส่งออกไปที่ HTML จริง หมายเหตุเรื่อง
@@ -42,17 +44,17 @@ const links = [
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
   { name: "ทางเข้า", path: "/ทางเข้า", icon: "🔑" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "👑" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🐉" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 
 const LOGO_ALT =
-  "โลโก้ AWIN8 เป็นตัวอักษร AWIN สีขาวโครเมียมตัดขอบน้ำเงินเข้ม ต่อด้วยเลข 8 สีส้มทองที่มีเปลวไฟพุ่งออกทางขวา ด้านบนมีมงกุฎทองห้าแฉกวางอยู่ ใต้ตัวอักษรเป็นแถบสี่เหลี่ยมมนสีน้ำเงินขอบส้มเขียนว่า ARE YOU READVE NONSTOP FUINIS JUST AROUND";
+  "โลโก้ XONEBET เป็นตัวอักษร X สีทองเหลืองขนาดใหญ่ทรงคมเหมือนสายฟ้าสองเส้นไขว้กัน ใต้ตัว X เป็นคำว่า ONE.BET ตัวอักษรหนาสีเงินโครเมียม และบรรทัดล่างสุดเป็นข้อความตัวเล็กสีเงินว่า SLOT&CASINO ONLINE ทั้งหมดวางอยู่บนพื้นสีดำ";
 ---
 
 <header class="sticky top-4 z-50 w-full px-4 font-sans">
   <nav
-    class="mx-auto flex h-[70px] w-full max-w-7xl items-center justify-between rounded-full border border-[#0d3f9e]/40 bg-[#02081c]/92 px-6 shadow-[0_8px_24px_rgba(13,63,158,0.35)] backdrop-blur-md xl:px-8">
+    class="mx-auto flex h-[70px] w-full max-w-7xl items-center justify-between rounded-full border border-[#a87c02]/40 bg-[#0a0803]/92 px-6 shadow-[0_8px_24px_rgba(168,124,2,0.35)] backdrop-blur-md xl:px-8">
     <a href="/" class="z-50 flex-shrink-0 transition-transform hover:scale-105">
       <Picture
         src={mainLogo!}
@@ -61,7 +63,7 @@ const LOGO_ALT =
         fetchpriority="high"
         widths={[120, 240, 360]}
         sizes="120px"
-        class="h-[35px] w-auto drop-shadow-[0_2px_6px_rgba(31,111,234,0.6)] xl:h-[40px]"
+        class="h-[35px] w-auto drop-shadow-[0_2px_6px_rgba(235,177,1,0.6)] xl:h-[40px]"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
       />
@@ -72,13 +74,13 @@ const LOGO_ALT =
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative flex h-full items-center gap-1.5 text-sm font-bold transition-colors xl:text-base ${isActive(item.path) ? "text-[#7fb2ff]" : "text-[#9db4d6] hover:text-[#7fb2ff]"}`}>
+            class={`group relative flex h-full items-center gap-1.5 text-sm font-bold transition-colors xl:text-base ${isActive(item.path) ? "text-[#fee505]" : "text-[#c3ae76] hover:text-[#fee505]"}`}>
             <span aria-hidden="true" class="text-base leading-none">
               {item.icon}
             </span>
             <span>{item.name}</span>
             <div
-              class={`absolute bottom-[15px] left-0 h-[3px] w-full origin-left rounded-full bg-gradient-to-r from-[#fca311] to-[#1f6fea] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+              class={`absolute bottom-[15px] left-0 h-[3px] w-full origin-left rounded-full bg-gradient-to-r from-[#ebb101] to-[#e9e9e9] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
             />
           </a>
         ))
@@ -88,29 +90,29 @@ const LOGO_ALT =
     <div class="z-50 flex items-center gap-3">
       <a
         href="/login"
-        class="hidden items-center justify-center rounded-full border border-[#7fb2ff]/60 bg-[#08172f] px-5 py-2 text-sm font-bold text-[#7fb2ff] transition-all hover:bg-[#0c2247] lg:flex">
+        class="hidden items-center justify-center rounded-full border border-[#fee505]/60 bg-[#161105] px-5 py-2 text-sm font-bold text-[#fee505] transition-all hover:bg-[#221a08] lg:flex">
         เข้าสู่ระบบ
       </a>
       <a
         href="/register"
-        class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#ffd27a] via-[#fca311] to-[#b06a02] px-6 py-2 text-sm font-extrabold text-[#02081c] shadow-[0_4px_14px_rgba(252,163,17,0.4)] transition-all hover:scale-105 lg:flex">
+        class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#fee505] via-[#ebb101] to-[#a87c02] px-6 py-2 text-sm font-extrabold text-[#0a0803] shadow-[0_4px_14px_rgba(235,177,1,0.4)] transition-all hover:scale-105 lg:flex">
         สมัครสมาชิก
       </a>
 
       <button id="hamburger-btn" class="relative flex h-[40px] w-[40px] flex-col items-end justify-center gap-[6px] p-2 lg:hidden" aria-label="Menu">
-        <span class="line-1 h-[2px] w-6 origin-center rounded-full bg-[#7fb2ff] shadow-sm transition-all duration-300"></span>
-        <span class="line-2 h-[2px] w-4 origin-center rounded-full bg-[#7fb2ff] shadow-sm transition-all duration-300"></span>
+        <span class="line-1 h-[2px] w-6 origin-center rounded-full bg-[#fee505] shadow-sm transition-all duration-300"></span>
+        <span class="line-2 h-[2px] w-4 origin-center rounded-full bg-[#fee505] shadow-sm transition-all duration-300"></span>
       </button>
     </div>
   </nav>
 
-  <div id="fullscreen-menu" class="pointer-events-none fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[#02081c]/98 opacity-0 backdrop-blur-2xl transition-opacity duration-500">
+  <div id="fullscreen-menu" class="pointer-events-none fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[#0a0803]/98 opacity-0 backdrop-blur-2xl transition-opacity duration-500">
     <div class="flex w-full flex-col items-center space-y-6 px-6">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`fs-item flex items-center gap-3 text-3xl font-black tracking-widest uppercase transition-all duration-300 ${isActive(item.path) ? "text-[#7fb2ff]" : "text-[#d8e6fb] hover:text-[#7fb2ff]"}`}>
+            class={`fs-item flex items-center gap-3 text-3xl font-black tracking-widest uppercase transition-all duration-300 ${isActive(item.path) ? "text-[#fee505]" : "text-[#f4e6bd] hover:text-[#fee505]"}`}>
             <span aria-hidden="true" class="text-2xl leading-none">
               {item.icon}
             </span>
@@ -122,12 +124,12 @@ const LOGO_ALT =
       <div class="fs-item mt-4 flex w-full max-w-[250px] flex-col gap-4 pt-8">
         <a
           href="/register"
-          class="flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#ffd27a] via-[#fca311] to-[#b06a02] py-3.5 text-lg font-extrabold text-[#02081c] shadow-[0_6px_20px_rgba(252,163,17,0.4)]">
+          class="flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#fee505] via-[#ebb101] to-[#a87c02] py-3.5 text-lg font-extrabold text-[#0a0803] shadow-[0_6px_20px_rgba(235,177,1,0.4)]">
           สมัครสมาชิก
         </a>
         <a
           href="/login"
-          class="flex w-full items-center justify-center rounded-full border-2 border-[#7fb2ff]/60 bg-[#08172f] py-3.5 text-lg font-bold text-[#7fb2ff] transition-colors hover:bg-[#0c2247]">
+          class="flex w-full items-center justify-center rounded-full border-2 border-[#fee505]/60 bg-[#161105] py-3.5 text-lg font-bold text-[#fee505] transition-colors hover:bg-[#221a08]">
           เข้าสู่ระบบ
         </a>
       </div>

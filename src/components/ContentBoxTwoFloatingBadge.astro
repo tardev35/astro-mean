@@ -7,19 +7,19 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// OKHENG18: ย้ายชุดสีมาที่แดงเฮงคู่ทองของแบรนด์นี้ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้
-// เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่
-// ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) — แดง #ed0133 / #ff5c7a /
-// #a80024 / #5c0212 คู่ทอง #ffd400 / #ffe97a และครีมชมพู #ffe3e8 บนผิว #2b070f /
-// #150407 / #050102 เนื้อความ #f6dde2 หัวข้อไล่เฉดขึ้นต้นด้วย #ffe3e8 ป้ายคอลัมน์
-// ซ้ายรับแดงซึ่งเป็นสีนำ ป้ายคอลัมน์ขวารับทองซึ่งเป็นสีคู่
+// XONEBET: ย้ายชุดสีมาที่ทองหลอมคู่เงินโครเมียมของแบรนด์นี้ (ค่า hex เดิมไม่พิมพ์ไว้
+// ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาส
+// จากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) — ทอง #ebb101 /
+// #fee505 / #a87c02 / #5c4301 คู่เงิน #e9e9e9 / #c4c4c4 และครีมทอง #fff8d1 บนผิว
+// #221a08 / #161105 / #0a0803 เนื้อความ #f4e6bd หัวข้อไล่เฉดขึ้นต้นด้วย #fff8d1
+// ป้ายคอลัมน์ซ้ายรับทองซึ่งเป็นสีนำ ป้ายคอลัมน์ขวารับเงินซึ่งเป็นสีคู่
 //
 // ป้ายหัวข้อเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap กลับมา
 // ตัวนั้นคือสิ่งที่เคยดันป้ายทะลุขอบจอมือถือแล้วทำให้ทั้งหน้าเลื่อนแนวนอนได้
 //
 // pt-32/md:pt-36 — ป้ายถูกตรึงที่ -top-6 ขอบล่างจึงอยู่ที่ (ความสูงป้าย − 24px)
-// นับจากขอบบนการ์ด คิดกับหัวข้อ H2 ข้อ 6 ของ docx OKHENG18 ที่ไฟล์นี้รับ ยาว 69
-// ตัวอักษร ("ออโต้โอนไวทันใจจริง ตัดขั้นตอนรอให้เรื่องเงินจบง่ายและเดินต่อได้คล่อง")
+// นับจากขอบบนการ์ด คิดกับหัวข้อ H2 ข้อ 4 ของ docx XONEBET ที่ไฟล์นี้รับ ยาว 69
+// ตัวอักษร ("ไม่ต้องเสียเวลาไล่หา XONEBET จัดเกมน่าเล่นให้เจอง่ายและเลือกได้ตรงฟีล")
 // chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับ ✦ สองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-base + tracking-tighter
@@ -39,17 +39,17 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
-  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#a80024]/45 bg-gradient-to-b from-[#2b070f] to-[#050102] p-8 pt-32 shadow-[0_10px_40px_rgba(5,1,2,0.6)] md:pt-36">
+  <div class="relative w-full max-w-7xl rounded-2xl border-2 border-[#5c4301]/45 bg-gradient-to-b from-[#221a08] to-[#0a0803] p-8 pt-32 shadow-[0_10px_40px_rgba(10,8,3,0.6)] md:pt-36">
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#ffd400]/45 bg-[#050102] px-4 py-2.5 text-center shadow-[0_5px_15px_rgba(255,212,0,0.2)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#ffd400]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#fee505]/45 bg-[#0a0803] px-4 py-2.5 text-center shadow-[0_5px_15px_rgba(254,229,5,0.2)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#fee505]">
             ✦
           </span>
-          <HeadingTag class="bg-gradient-to-r from-[#ffe3e8] via-[#ff5c7a] to-[#ed0133] bg-clip-text text-base leading-normal font-black tracking-tighter text-transparent uppercase sm:text-xl md:text-2xl">
+          <HeadingTag class="bg-gradient-to-r from-[#fff8d1] via-[#fee505] to-[#ebb101] bg-clip-text text-base leading-normal font-black tracking-tighter text-transparent uppercase sm:text-xl md:text-2xl">
             {title}
           </HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#ffd400]">
+          <span aria-hidden="true" class="shrink-0 text-[#fee505]">
             ✦
           </span>
         </div>
@@ -57,13 +57,13 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6dde2]/90">
-        {titleleft && <p class="text-2xl leading-normal font-bold text-[#ff5c7a] drop-shadow-[0_0_5px_rgba(237,1,51,0.35)]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e6bd]/90">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#fee505] drop-shadow-[0_0_5px_rgba(235,177,1,0.35)]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6dde2]/90 md:border-l md:border-[#ffd400]/30 md:pl-10">
-        {titleright && <p class="text-2xl leading-normal font-bold text-[#ffd400] drop-shadow-[0_0_5px_rgba(255,212,0,0.3)]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e6bd]/90 md:border-l md:border-[#e9e9e9]/30 md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#e9e9e9] drop-shadow-[0_0_5px_rgba(233,233,233,0.3)]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

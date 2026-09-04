@@ -5,15 +5,16 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h1" } = Astro.props;
 
-// DEED888: ย้ายจากน้ำเงินรอยัลคู่ทองส้มของแบรนด์ก่อน มาเป็นส้มเพลิงคู่ทอง — ส้ม
-// #e95b0b / #ff9d4d / #93300a / #6b2205 คู่ทอง #f4940c / #ffcf6b / #fff4e8
-// บนผิว #150401 / #210702 / #2a0a02 เนื้อความ #fbe3d0
+// XONEBET: ย้ายจากส้มเพลิงคู่ทองของแบรนด์ก่อน มาเป็นทองหลอมคู่เงินโครเมียม — ทอง
+// #ebb101 / #fee505 / #a87c02 / #5c4301 คู่เงิน #e9e9e9 / #c4c4c4 และทองซีด
+// #fff8d1 บนผิว #0a0803 / #161105 / #221a08 เนื้อความ #f4e6bd
 //
-// อาร์ตเวิร์กรอบนี้เป็นส้มเพลิงคู่ทองหลอมบนพื้นดำอมน้ำตาลไหม้: โลโก้เป็นม้าเพลิง
-// สีแดงส้มคู่ตัวอักษรทองขอบไฟ ค่า vivid ของโลโก้ (#e95b0b คู่ #f4940c) จึงเป็น
-// สีเน้นจริงทั้งคู่ ส่วน dominant ของแบนเนอร์ที่ออกมาเป็นดำอมน้ำตาล (#130200 /
-// #1c0300 / #0c0100) คือ "พื้น" ไม่ใช่สีเน้น — palette.json จัดอันดับให้
-// แต่ไม่ได้ตีความให้
+// อาร์ตเวิร์กรอบนี้เป็นทองบนดำสนิท: โลโก้เป็นตัว X ทองเหลืองทรงสายฟ้าไขว้ คู่กับ
+// คำว่า ONE.BET ตัวอักษรเงินโครเมียม ค่า vivid ของโลโก้ (#ebb101 นำ ตามด้วย
+// #fee505 กับ #fee505 โทนอ่อน) จึงเป็นสีเน้นจริง ส่วน dominant ของแบนเนอร์ที่
+// ออกมาเป็นดำเกือบสนิท (#020101 / #140b02 / #0b0401) คือ "พื้น" ไม่ใช่สีเน้น —
+// palette.json จัดอันดับให้ แต่ไม่ได้ตีความให้ ส่วนเงินโครเมียมเป็นสีคู่ที่มา
+// จากตัวอักษร ONE.BET ไม่ใช่สีเน้นที่สอง จึงใช้เฉพาะจุดที่ต้องการคอนทราสต์เย็น
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
@@ -21,8 +22,8 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 // ไฟล์นี้เป็นการ์ดถาวรของ terms/privacy — ข้างในสองหน้านั้นไม่ระบุสีเลยโดยตั้งใจ
 // สีเนื้อความจึงต้องอยู่บนการ์ดใบนี้เสมอ ห้ามย้ายออก และนี่คือเหตุผลที่สองหน้านั้น
 // หมุน variant ตาม index ไม่ได้ในรอบไหนก็ตาม รอบนี้หน้าย่อยอื่น (promotion /
-// about-us / contact-us / ทางเข้า / ทดลองเล่น) ก็ใช้การ์ดใบนี้ด้วย และหน้าแรก
-// ใช้เป็นบล็อกหัวข้อ docx ข้อ 3
+// about-us / contact-us / ทางเข้า / ทดลองเล่น) ก็ใช้การ์ดใบนี้ด้วย ส่วนหน้าแรก
+// รอบนี้หมุนไปใช้ชุด CyberCut/Neumorphism/FloatingBadge จึงไม่ได้เรียกใบนี้
 //
 // การ์ดใบนี้ flatten แล้ว (isolate บนการ์ด + -z-10 บนเลเยอร์ตกแต่ง) ห้ามใส่
 // wrapper <div class="relative z-10"> กลับเข้ามา
@@ -30,15 +31,15 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#93300a]/40 bg-[#210702]/90 p-8 text-left text-base leading-relaxed text-[#fbe3d0] shadow-[0_10px_30px_rgba(107,34,5,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#e95b0b]/60 hover:shadow-[0_15px_40px_rgba(233,91,11,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#2a0a02]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#e95b0b]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#210702]/50 blur-[60px] transition-all duration-500 group-hover:bg-[#93300a]/35"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#a87c02]/40 bg-[#161105]/90 p-8 text-left text-base leading-relaxed text-[#f4e6bd] shadow-[0_10px_30px_rgba(92,67,1,0.22)] backdrop-blur-xl transition-all duration-500 hover:border-[#ebb101]/60 hover:shadow-[0_15px_40px_rgba(235,177,1,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#221a08]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#ebb101]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#161105]/50 blur-[60px] transition-all duration-500 group-hover:bg-[#a87c02]/35"></div>
 
     {
       title && (
-        <header class="mb-6 flex items-center gap-4 border-b border-[#93300a]/40 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffcf6b] via-[#f4940c] to-[#e95b0b] shadow-[0_0_10px_rgba(233,91,11,0.6)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fff4e8] via-[#f4940c] to-[#e95b0b] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-6 flex items-center gap-4 border-b border-[#a87c02]/40 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fee505] via-[#ebb101] to-[#a87c02] shadow-[0_0_10px_rgba(235,177,1,0.6)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#fff8d1] via-[#fee505] to-[#ebb101] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
