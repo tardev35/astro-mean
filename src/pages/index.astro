@@ -1,123 +1,120 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement2.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
-import ContentBoxTwoFloatingBadge from "../components/ContentBoxTwoFloatingBadge.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
+import Announcement from "../components/Announcement5.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
+import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
 import FeatureHighlights from "../components/FeatureHighlights.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
+import ProviderGridPremium from "../components/ProviderGridPremium.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners3 from "../components/LatestWinners3.astro";
+import LatestWinners2 from "../components/LatestWinners2.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ReviewCardSumo from "../components/ReviewCardSumo.astro";
-import Faq2 from "../components/Faq2.astro";
+import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
+import Faq4 from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgCommissionRebate from "../assets/slide2.png";
-import imgSystemUpdateGold from "../assets/slide3.png";
+import imgWhyPlayHere from "../assets/slide4.png";
+import imgDepositStreak from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxNeumorphism as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxSevenThreeCyberCut as="h2" + slide2 (อาร์ตสไลด์เขียนว่า "คืนค่า
-//       คอมมิสชั่นสูงสุด นับจากยอดเดิมพันทุกครั้ง" พร้อมช่องสล็อตกับบาคาร่าอยู่ใน
-//       ป้ายเดียวกัน ซึ่งเป็นภาพของ One-Stop Service ที่ย่อหน้านี้พูดถึง — ทุกจังหวะ
-//       การเล่นอยู่ในบัญชีเดียวโดยไม่ต้องสลับเว็บ)
-//   3 → ContentBox3ThreeCyberCut as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับ
-//       ประโยคเดิม: คัดค่ายเกรด A → คัดเกมตัวท็อปที่จ่ายโปร่งใส → ตัดเกมไร้คุณภาพ
-//       ออกทั้งหมด) แล้วต่อด้วย ProviderGrid ซึ่งกางโลโก้ค่ายที่ย่อหน้าเดียวกัน
-//       เอ่ยชื่อไว้
-//   4 → ContentBoxTwoFloatingBadge as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: จัดหมวดหมู่
-//       หน้าเว็บเป็นระบบ → ค้นหาเจอในไม่กี่คลิกและสลับฟีลได้ตรงสไตล์)
-//   5 → ContentBoxCyberCut as="h2" (ย่อหน้าเดียวเต็มๆ) แล้วต่อด้วย FeatureHighlights
-//       (ฟีเจอร์ย่อยสามตัวที่ย่อหน้านี้ระบุชื่อไว้ตรงๆ → h3 สามตัว ซึ่งเป็น h3 ชุด
-//       เดียวที่ได้รับอนุญาตบนหน้านี้)
-//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide3 (อาร์ตสไลด์เขียนว่า
-//       "อัพเดทระบบใหม่ มาพร้อมระบบสุ่ม ลุ้นรับทองคำแท่งและเครดิตฟรี" ตรงกับย่อหน้า
-//       เรื่องอัปเกรดเซิร์ฟเวอร์หลังบ้าน) แล้วต่อด้วย SmoothCarousel กับ
-//       GameRankingBoard ซึ่งเป็นล็อบบี้ที่สลับไปมาได้ต่อเนื่องตามที่ย่อหน้านี้พูดถึง
-//   7 → ContentBoxTwoNeumorphism as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: รองรับ iOS /
-//       Android / แท็บเล็ต / คอม → จัดวางปุ่มกับเมนูให้ใช้ง่ายตลอด 24 ชั่วโมง) แล้ว
-//       ต่อด้วย LatestWinners3 ซึ่งเป็นหลักฐานว่าระบบออโต้เดินเร็วเท่ากันทั้งวัน
+//   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxSevenThreePremium as="h2" + slide4 (อาร์ตสไลด์เขียนว่า "เล่นที่นี่
+//       ดียังไง?" แล้วกางข้อดีเป็นชิปแปดอัน ซึ่งเป็นภาพของย่อหน้านี้ที่พูดถึงการคัด
+//       เกมน่าเล่นมาให้แบบไม่ต้องเสียเวลาหา)
+//   3 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับประโยค
+//       เดิม: รวมค่ายชั้นนำระดับโลก → ครบทั้ง 3D/ตัวคูณ/ซื้อฟีเจอร์/คลาสสิก →
+//       สลับเล่นในกระเป๋าเดียว) แล้วต่อด้วย ProviderGridPremium ซึ่งกางโลโก้ค่ายที่
+//       ย่อหน้าเดียวกันเอ่ยชื่อไว้
+//   4 → ContentBoxFloatingBadge as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   5 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: ชื่อฟีเจอร์ทั้งสามตัว →
+//       ผลของมันต่อจังหวะการสปิน) แล้วต่อด้วย FeatureHighlights (ฟีเจอร์ย่อยสามตัวที่
+//       ย่อหน้านี้ระบุชื่อไว้ตรงๆ → h3 สามตัว ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบน
+//       หน้านี้)
+//   6 → ContentBoxSevenThreeFloatingBadge as="h2" + slide1 (อาร์ตสไลด์เป็นโปรฝากประจำ
+//       ที่กางสิทธิ์รับโบนัสเป็นขั้นๆ ตรงกับย่อหน้าเรื่องเปิดระบบรับโบนัสฟรีอัตโนมัติ)
+//   7 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: โครงสร้างหลังบ้าน
+//       เชื่อมตรงกับเซิร์ฟเวอร์หลักและคลังเกม A-List → โปรเพิ่มทุนกับฝากถอนออโต้)
 //
 // variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจากชุด
-// Premium นำ มาเป็น CyberCut ×3 + Neumorphism ×3 + FloatingBadge ×1 ส่วน
-// Announcement เป็น Announcement2, LatestWinners เป็น LatestWinners3, ProviderGrid
-// เป็นตัวเปล่า, ReviewCard เป็น ReviewCardSumo และ Faq เป็น Faq2 — Navbar/Footer/
-// ฟอนต์ ถูกสลับไว้แล้วใน MainLayout กับ brandProfile
+// Neumorphism + CyberCut + TwoFloatingBadge มาเป็น Premium ×4 + Special ×1 +
+// FloatingBadge ×2 ส่วน Announcement เป็น Announcement5, LatestWinners เป็น
+// LatestWinners2, ProviderGrid เป็น ProviderGridPremium, ReviewCard เป็น
+// ReviewCardSumo2 และ Faq เป็น Faq4 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน
+// MainLayout กับ brandProfile
 //
 // ContentBoxSevenThree* ทั้งสองตัวปล่อยหัวข้อจาก prop `title` ตัวเดียว ส่วน
-// titleleft เป็นป้ายคอลัมน์รูปที่ยังเป็น <p> — ห้ามส่ง titleright เข้าไป เพราะตัว
-// Neumorphism จะเพิ่มป้ายซ้อนใต้หัวข้อเดียวกัน
+// titleleft เป็นป้ายคอลัมน์รูปที่ยังเป็น <p> — ห้ามส่ง titleright เข้าไป เพราะจะเพิ่ม
+// ป้ายซ้อนใต้หัวข้อเดียวกัน
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
-// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ต้องตรงกับ default ของ Announcement2
+// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ต้องตรงกับ default ของ Announcement5
 // เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความเดียว
 // กับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ emoji ที่
 // ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide2/slide3 ซึ่งเป็นสไลด์ที่
-// อาร์ตตรงกับหัวข้อ docx ข้อ 2 กับข้อ 6 พอดี — slide1 (คืนยอดเสีย/แนะนำเพื่อน) กับ
-// slide4 (ทายแชมป์ฟุตบอลโลก) ไม่มีหัวข้อ docx ไหนรองรับและเพดาน SevenThree เต็มแล้ว
-// จึงปล่อยไว้ให้หน้า /promotion ใช้ ส่วน banner ทุกหมายเลข (banner2/3/4) เป็นอาร์ต
-// ของแบรนด์ก่อน ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่ถูก
-// emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ MainLayout
-// จัดการเอง และรูปในหน้านี้ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high"
-// เพราะ LCP เป็นของ hero ใน MainLayout
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide4/slide1 ซึ่งเป็นสไลด์ที่
+// อาร์ตตรงกับหัวข้อ docx ข้อ 2 กับข้อ 6 พอดี — slide2 (สะสมยอดเทิร์น) กับ slide3
+// (กงล้อลุ้นโชค) ไม่มีหัวข้อ docx ไหนรองรับและเพดาน SevenThree เต็มแล้ว จึงปล่อยไว้
+// ให้หน้า /promotion ใช้ ส่วน banner ทุกหมายเลข (banner2/3/4) เป็นอาร์ตของแบรนด์ก่อน
+// ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร
+// render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ MainLayout จัดการเอง และรูปใน
+// หน้านี้ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP เป็นของ hero
+// ใน MainLayout
 //
-// widget ที่ไม่ได้มาจาก docx (LoginRtpSection, ReviewCardSumo, แถวปุ่ม
-// login/register, FAQ, Navfoot) ใช้ป้ายเป็น <p>/<span> + aria-label บน <section>
-// และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสี่ตัวที่เป็นภาพประกอบของ
-// หัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 3, SmoothCarousel กับ
-// GameRankingBoard → ข้อ 6, LatestWinners3 → ข้อ 7) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// widget ที่ไม่ได้มาจาก docx (SmoothCarousel, GameRankingBoard, LatestWinners2,
+// LoginRtpSection, ReviewCardSumo2, แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้าย
+// เป็น <p>/<span> + aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้าย
+// ทั้งชุด ยกเว้นสองตัวที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง
+// (ProviderGridPremium → ข้อ 3, FeatureHighlights → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
 // h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×3 จาก FeatureHighlights ซึ่งเป็นรายการ
 // ย่อยของหัวข้อข้อ 5 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
-// Faq2.astro คำถามเป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
+// Faq4.astro คำถามเป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
 // เป็น <p>
 //
-// title ใช้บรรทัด Title ของ docx ส่วน description ต่อท้ายด้วย "ฝากถอนออโต้ไวใน 3
-// วินาที" ให้ยาว 158 ตัวอักษร เข้ากรอบ 150–160 ของเกทคุณภาพ (บรรทัด Des ดิบของ docx
-// ยาว 133 ตัว ซึ่งต่ำกว่ากรอบ) และเป็นสตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
-const pageTitle = "XONEBET | สล็อตวันสต็อป เกมตัวท็อปครบวงจร ระบบใหม่ไหลลื่น";
-const pageDescription =
-  "XONEBET สล็อตวันสต็อป เกมตัวท็อปครบวงจร เปิดล็อบบี้เจอของน่าเล่นแบบไม่ต้องไล่หา ฟีเจอร์ใหม่พร้อมลั่น ระบบใหม่ไหลลื่น รองรับทุกอุปกรณ์ ฝากถอนออโต้ไวใน 3 วินาที";
+// title ใช้บรรทัด Title ของ docx ตรงๆ ส่วน description ต่อท้ายบรรทัด Des ของ docx
+// ด้วย "เว็บตรง API แท้" ให้ยาว 156 ตัวอักษร เข้ากรอบ 150–160 ของเกทคุณภาพ (บรรทัด
+// Des ดิบของ docx ยาว 140 ตัว ซึ่งต่ำกว่ากรอบ) และเป็นสตริงเดียวกับที่ส่งเข้า
+// pageGraph และ MainLayout
+const pageTitle = "HAPPYSUPERWIN | สล็อตรวมตัวจี๊ด เกมดังคัดมาดี โบนัสฟรีรับเลย";
+const pageDescription = "HAPPYSUPERWIN สล็อตรวมตัวจี๊ด เกมดังคัดมาดีจากค่ายชั้นนำ เติมเกมใหม่ให้ตามต่อเนื่อง ฟีเจอร์ครบหลายสไตล์ โบนัสฟรีรับเลย พร้อมฝากถอนออโต้ทันใจ เว็บตรง API แท้";
 
 const announcementMessage =
-  "XONEBET สล็อตวันสต็อป เกมตัวท็อปครบวงจร ระบบใหม่ไหลลื่น • เว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลักนอก ไม่ผ่านเอเย่นต์ ค่า RTP โปร่งใสตามมาตรฐานสากล ไม่มีปรับแต่งเปอร์เซ็นต์การชนะ • ยึดโครงสร้าง One-Stop Service เต็มรูปแบบ รวมคลังเกมทุกค่ายชั้นนำและระบบการเงินไว้ในบัญชีเดียว ไม่ต้องสมัครหลายยูสเซอร์ ไม่ต้องโยกเงินข้ามค่ายให้สับสน • คัดเฉพาะค่ายใหญ่ระดับเกรด A อย่าง PG Soft, Pragmatic Play และ Joker Gaming เน้นเกมตัวท็อปที่โครงสร้างการจ่ายเงินโปร่งใส จังหวะฟรีสปินเข้าไว และอัตราคูณสะสมสูง • จัดหมวดหมู่หน้าเว็บอย่างเป็นระบบ แยกตามประเภทเกม ค่ายดัง และหมวดเกมกระแสมาแรง ค้นหาเกมที่ใช่เจอได้ในไม่กี่คลิก • ฟีเจอร์ใหม่พร้อมลั่นมาครบ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Wild ซ้อนทับ คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Buy Feature สำหรับสายใจร้อน • อัปเกรดเซิร์ฟเวอร์หลังบ้านประมวลผลความเร็วสูง สลับค่ายเกมและโหลดหน้าอินเทอร์เฟซได้ฉับไว ไร้ปัญหาเกมค้าง กระตุก หรือเด้งหลุดกลางทาง • วางระบบแสดงผลแบบ Responsive 100% รองรับเต็มรูปแบบทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ • ฝากถอนออโต้ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ถอนออกได้เต็มจำนวนทุกยอด";
+  "HAPPYSUPERWIN สล็อตรวมตัวจี๊ด เกมดังคัดมาดี โบนัสฟรีรับเลย • เว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ค่า RTP มาตรฐานสากล ไม่มีปรับลดอัตราแตก ถอนเงินออกได้เต็มยอด ไร้เงื่อนไขจุกจิก • คัดเกมน่าเล่นมาให้แบบไม่ต้องเสียเวลาหา กรองเฉพาะเกมที่จ่ายรางวัลสูงและโบนัสแตกบ่อยที่สุดมาไว้ในหน้าแรก เบทเริ่มต้นเบาๆ แต่ลุ้นแจ็คพอตก้อนโตได้ทันที • รวมค่ายเกมชั้นนำระดับโลก PG Soft, Pragmatic Play และ Joker Gaming ครบทั้งสล็อต 3D ภาพสวย ตัวคูณทวีคูณหนัก สายซื้อฟีเจอร์ฟรีสปิน และคลาสสิกแตกไว • ของใหม่ไม่ปล่อยให้รอนาน เติมเกมเข้าล็อบบี้ทันทีที่ค่ายปล่อยไฟล์ออกจากสตูดิโอ ทดลองเล่นฟีเจอร์เด็ดและอ่านจังหวะโบนัสได้ก่อนใคร • ฟีเจอร์ครบหลายสไตล์ ทั้งระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง Multiplier สุ่มแจกตัวคูณหนัก และสัญลักษณ์ Wild ซ้อนทับ • โบนัสฟรีรับเลย กดรับสิทธิ์เพิ่มทุนสปิน เครดิตฟรี และคืนยอดเสีย Cash Back ผ่านหน้าแดชบอร์ดได้เองทันที ไม่ต้องรอแอดมิน • ฝากถอนออโต้ทำรายการเสร็จใน 3 วินาที ปั่นทำกำไรได้โปร่งใส จบครบทุกความต้องการในเว็บเดียว";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
 // คำถามที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq2> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
-// Faq2 ใช้ค่า default ของตัวเอง เพราะ default ของทุก variant ในตระกูลนี้เป็นคำถาม
+// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
+// Faq4 ใช้ค่า default ของตัวเอง เพราะ default ของทุก variant ในตระกูลนี้เป็นคำถาม
 // ของแบรนด์เก่า
 const faqs = [
   {
-    q: "XONEBET ต่อเกมมาจากไหน แล้วค่า RTP ถูกปรับแต่งหรือเปล่า",
-    a: "XONEBET เป็นเว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลักนอกโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงโปร่งใสตามมาตรฐานสากลและไม่มีการปรับแต่งเปอร์เซ็นต์การชนะ ทุกเกมในล็อบบี้รันบนอัตราจ่ายชุดเดียวกับที่ค่ายผู้พัฒนากำหนดไว้",
+    q: "HAPPYSUPERWIN ต่อเกมมาจากไหน แล้วค่า RTP ถูกปรับลดหรือเปล่า",
+    a: "HAPPYSUPERWIN เป็นเว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์นอกโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงเป็นมาตรฐานสากลและไม่มีการปรับลดอัตราแตกในเกมไหนเลย ทุกเกมในล็อบบี้ผ่านการทดสอบระบบหลังบ้านว่าจ่ายจริงตามอัลกอริทึมมาตรฐานสากลก่อนเปิดให้เข้าเล่น",
   },
   {
-    q: "ต้องสมัครหลายยูสเซอร์เพื่อเล่นข้ามค่ายไหม",
-    a: "ไม่ต้อง เพราะยึดโครงสร้าง One-Stop Service เต็มรูปแบบ เชื่อมคลังเกมจากทุกค่ายชั้นนำและระบบการเงินไว้ในบัญชีเดียว ไม่ต้องสมัครหลายยูสเซอร์และไม่ต้องโยกเงินข้ามค่ายให้สับสน เลือกเล่น สลับเกม และจัดการถอนกำไรได้ทันทีผ่านหน้าแดชบอร์ดเดียว",
+    q: "ต้องเสียเวลาไล่หาเกมเองไหม แล้วเบทเริ่มต้นเท่าไหร่",
+    a: "ไม่ต้องไล่หาเอง เพราะคัดกรองเฉพาะเกมสล็อตที่มีอัตราการจ่ายรางวัลสูงและโบนัสแตกบ่อยที่สุดมาไว้ในหน้าแรกให้แล้ว ไม่ต้องเสียเวลาลองสุ่มเล่นเกมไร้คุณภาพ เบทเริ่มต้นเบาๆ ก็มีสิทธิ์ลุ้นแจ็คพอตก้อนโตได้ทันทีตั้งแต่สปินแรก",
   },
   {
-    q: "ในล็อบบี้มีค่ายอะไรบ้าง แล้วคัดเกมด้วยเกณฑ์อะไร",
-    a: "คัดกรองเฉพาะค่ายใหญ่ระดับเกรด A อย่าง PG Soft, Pragmatic Play และ Joker Gaming เกณฑ์คือโครงสร้างการจ่ายเงินต้องโปร่งใส จังหวะฟรีสปินเข้าไว และมีอัตราคูณสะสมสูง ส่วนเกมไร้คุณภาพถูกตัดออกทั้งหมดเพื่อให้ทุกสปินมีโอกาสทำเงินได้จริงตั้งแต่เปิดล็อบบี้",
+    q: "ในล็อบบี้มีค่ายอะไรบ้าง แล้วเกมแนวไหนให้เลือก",
+    a: "รวมค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายไว้ในที่เดียว ครบทั้งสล็อต 3D ภาพสวย ตัวคูณทวีคูณหนัก สล็อตสายซื้อฟีเจอร์ฟรีสปิน และสล็อตคลาสสิกแตกไว สลับเล่นได้หลายแนวในกระเป๋าเดียวโดยไม่ต้องเสียเวลาโยกเงิน",
   },
   {
-    q: "หาเกมที่อยากเล่นยากไหม แล้วมีฟีเจอร์อะไรให้ลุ้นบ้าง",
-    a: "หน้าเว็บจัดหมวดหมู่อย่างเป็นระบบ แยกตามประเภทเกม ค่ายดัง และหมวดเกมกระแสมาแรง ค้นหาเกมที่ใช่ได้ในไม่กี่คลิก ส่วนฟีเจอร์มาครบทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Wild ซ้อนทับ คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Buy Feature สำหรับสายใจร้อน",
+    q: "เกมใหม่เข้าบ่อยแค่ไหน แล้วมีฟีเจอร์อะไรให้ลุ้นบ้าง",
+    a: "อัปเดตคลังเกมใหม่ทันทีที่ค่ายผู้พัฒนาปล่อยไฟล์เกมออกจากสตูดิโอ ได้ทดลองเล่นฟีเจอร์เด็ดและอ่านจังหวะโบนัสก่อนใครแบบไม่ตกเทรนด์ ส่วนฟีเจอร์มาครบหลายสไตล์ ทั้งระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง Multiplier สุ่มแจกตัวคูณหนัก และสัญลักษณ์ Wild ซ้อนทับ",
   },
   {
-    q: "เล่นบนมือถือได้ไหม แล้วฝากถอนใช้เวลานานแค่ไหน",
-    a: "ระบบแสดงผลเป็น Responsive 100% รองรับเต็มรูปแบบทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ ปรับสเกลภาพคมชัดเข้ากับทุกหน้าจอ ส่วนการเงินเป็นระบบฝากถอนออโต้ที่ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก และถอนออกได้เต็มจำนวนทุกยอดตลอด 24 ชั่วโมง",
+    q: "รับโบนัสฟรีต้องทักแอดมินไหม แล้วฝากถอนใช้เวลานานแค่ไหน",
+    a: "ไม่ต้องรอแอดมิน เพราะเปิดระบบรับโบนัสฟรีแบบอัตโนมัติ เลือกกดรับสิทธิ์เพิ่มทุนสปิน เครดิตฟรี หรือคืนยอดเสีย Cash Back ผ่านหน้าแดชบอร์ดได้เองทันที ส่วนระบบฝากถอนออโต้ไฮสปีดทำรายการเสร็จใน 3 วินาที ถอนเงินออกได้เต็มยอด ไร้เงื่อนไขจุกจิก",
   },
 ];
 
@@ -135,147 +132,141 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxNeumorphism as="h1" title="XONEBET สล็อตวันสต็อป เกมตัวท็อปครบวงจร ระบบใหม่ไหลลื่น">
+  <ContentBoxPremium as="h1" title="HAPPYSUPERWIN สล็อตรวมตัวจี๊ด เกมดังคัดมาดี โบนัสฟรีรับเลย">
     <p class="text-left text-base leading-relaxed">
-      XONEBET เว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลักนอก ไม่ผ่านเอเย่นต์ ค่า RTP โปร่งใสตามมาตรฐานสากล ไม่มีปรับแต่งเปอร์เซ็นต์การชนะ รวมเกมสล็อตค่ายใหญ่ครบวงจรไว้ในกระเป๋าเดียว
-      มาพร้อมระบบฝากถอนออโต้ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ปั่นง่าย ทำกำไรได้จริงและถอนออกได้เต็มจำนวนทุกยอด
+      HAPPYSUPERWIN เว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ค่า RTP มาตรฐานสากล ไม่มีปรับลดอัตราแตก คัดเฉพาะสล็อตตัวจี๊ดแตกง่ายจากค่ายใหญ่ มาพร้อมแจกโบนัสฟรีรับเองได้ทันที และระบบฝากถอนออโต้ 3 วินาที
+      ปั่นทำกำไรได้โปร่งใส ถอนเงินออกได้เต็มยอด ไร้เงื่อนไขจุกจิก
     </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxPremium>
 
-  <ContentBoxSevenThreeCyberCut
-    as="h2"
-    title="XONEBET สล็อตวันสต็อป รวมทุกจังหวะการเล่นไว้ครบแบบไม่ต้องสลับเว็บ"
-    titleleft="คืนค่าคอมมิสชั่นสูงสุด นับจากยอดเดิมพันทุกครั้ง">
+  <ContentBoxSevenThreePremium as="h2" title="HAPPYSUPERWIN สล็อตรวมตัวจี๊ด คัดเกมน่าเล่นมาให้แบบไม่ต้องเสียเวลาหา" titleleft="เล่นที่นี่ ดียังไง?">
     <Picture
       slot="left"
-      src={imgCommissionRebate}
+      src={imgWhyPlayHere}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 380px"
+      sizes="(max-width: 767px) 92vw, 386px"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ XONEBET พื้นดำลายทอง บรรทัดบนเขียนว่า คืนค่าคอมมิสชั่นสูงสุด ถัดลงมาเป็นโลโก้ X ONE.BET SLOT & CASINO ONLINE คู่ข้อความ นับจากยอดเดิมพันทุกครั้ง ด้านล่างเป็นสองช่องเขียนว่า สล็อตคืน สูงถึง 2% และ บาคาร่าคืน สูงถึง +1% ซ้ายมือเป็นโครงกระดูกมาเรียชิสวมหมวกปีกกว้างเล่นกีตาร์ ขวามือเป็นกระต่ายสวมแว่นกันแดดยืนบนสเก็ตบอร์ด มีเหรียญทองกระจายรอบภาพ"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#a87c02]/45 shadow-[0_10px_30px_rgba(235,177,1,0.28)]"
+      alt="แบนเนอร์โปรโมชั่นของ HAPPYSUPERWIN พื้นทอง หัวเรื่องเขียนว่า เล่นที่นี่ ดียังไง? มีตัวการ์ตูนแมวยืนอยู่ด้านหนึ่ง ล้อมด้วยป้ายข้อดีแปดอัน ได้แก่ คืนยอดเสีย 20,000 ทุกสัปดาห์ ระบบ AUTO เพียง 3 วินาที สะดวก รวดเร็ว ตลอด 24HR. การเงินมั่นคงปลอดภัย เปิดมานานกว่า 6 ปี โปรโมชั่นสุดปัง เอาใจลูกค้า ฝากเงินขั้นต่ำ ไม่ติดเงื่อนไขยอดฝาก ฝากแล้วไม่ต้องถอนได้ทันที เล่นเท่าไหร่เราก็จ่าย ได้แสนถอนแสน ได้ล้านถอนล้าน และ เว็บใหญ่ไม่ผ่านเอเย่นต์ 100% ลูกค้าที่สมัครตรงเข้าเว็บใหญ่เท่านั้น"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#8a1f9e]/45 shadow-[0_10px_30px_rgba(225,28,204,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ยึดโครงสร้าง One-Stop Service เต็มรูปแบบ XONEBET สล็อตวันสต็อป เชื่อมต่อคลังเกมจากทุกค่ายชั้นนำและระบบการเงินไว้ในบัญชีเดียว ไม่ต้องเสียเวลาสมัครหลายยูสเซอร์ และไม่ต้องโยกเงินข้ามค่ายให้สับสน
-      เลือกเล่น สลับเกม และจัดการถอนกำไรได้ทันทีผ่านหน้าแดชบอร์ดเดียว
+      HAPPYSUPERWIN สล็อตรวมตัวจี๊ด คัดกรองเฉพาะเกมสล็อตที่มีอัตราการจ่ายรางวัลสูงและโบนัสแตกบ่อยที่สุดมาไว้ในหน้าแรก ไม่ต้องเสียเวลาลองสุ่มเล่นเกมไร้คุณภาพ
+      ทุกเกมผ่านการทดสอบระบบหลังบ้านว่าจ่ายจริงตามอัลกอริทึมมาตรฐานสากล เบทเริ่มต้นเบาๆ แต่มีสิทธิ์ลุ้นแจ็คพอตก้อนโตได้ทันที
     </p>
-  </ContentBoxSevenThreeCyberCut>
+  </ContentBoxSevenThreePremium>
 
-  <ContentBox3ThreeCyberCut
+  <ContentBox3ThreePremium
     as="h2"
-    title="เกมตัวท็อปครบวงจร XONEBET คัดของเด่นมาให้เลือกตั้งแต่เปิดล็อบบี้"
-    titleleft="คัดเฉพาะค่ายใหญ่ระดับเกรด A"
-    titlecenter="เน้นเกมตัวท็อปที่จ่ายโปร่งใส"
-    titleright="ตัดเกมไร้คุณภาพออกทั้งหมด">
-    <p slot="left" class="text-left text-base leading-relaxed">XONEBET คัดกรองเฉพาะค่ายใหญ่ระดับเกรด A เช่น PG Soft, Pragmatic Play และ Joker Gaming</p>
-    <p slot="center" class="text-left text-base leading-relaxed">คัดเน้นๆ เฉพาะเกมตัวท็อปที่มีโครงสร้างการจ่ายเงินโปร่งใส จังหวะฟรีสปินเข้าไว และมีอัตราคูณสะสมสูง</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ตัดเกมไร้คุณภาพออกทั้งหมดเพื่อให้ทุกสปินมีโอกาสทำเงินได้จริงตั้งแต่เปิดล็อบบี้</p>
-  </ContentBox3ThreeCyberCut>
+    title="เกมดังค่ายชั้นนำมีอะไรน่าตาม HAPPYSUPERWIN รวมตัวเด่นไว้ครบหลายแนว"
+    titleleft="ค่ายชั้นนำระดับโลกครบในที่เดียว"
+    titlecenter="ครบทั้ง 3D ตัวคูณ และคลาสสิก"
+    titleright="สลับเล่นได้ในกระเป๋าเดียว">
+    <p slot="left" class="text-left text-base leading-relaxed">รวมค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายไว้ในที่เดียว</p>
+    <p slot="center" class="text-left text-base leading-relaxed">HAPPYSUPERWIN ขนมาหมดทั้งสล็อต 3D ภาพสวย ตัวคูณทวีคูณหนัก สล็อตสายซื้อฟีเจอร์ฟรีสปิน และสล็อตคลาสสิกแตกไว</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ให้สลับเล่นได้หลายแนวในกระเป๋าเดียวโดยไม่ต้องเสียเวลาโยกเงิน</p>
+  </ContentBox3ThreePremium>
 
-  <ProviderGrid />
+  <ProviderGridPremium />
 
-  <ContentBoxTwoFloatingBadge
-    as="h2"
-    title="ไม่ต้องเสียเวลาไล่หา XONEBET จัดเกมน่าเล่นให้เจอง่ายและเลือกได้ตรงฟีล"
-    titleleft="จัดหมวดหมู่หน้าเว็บอย่างเป็นระบบ"
-    titleright="ค้นหาเจอในไม่กี่คลิก">
-    <p slot="left" class="text-left text-base leading-relaxed">หมดปัญหาการเลื่อนหาเกมจนเสียเวลา XONEBET จัดหมวดหมู่หน้าเว็บอย่างเป็นระบบ แยกตามประเภทเกม ค่ายดัง และหมวดเกมกระแสมาแรง</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ช่วยให้ผู้เล่นค้นหาเกมที่ใช่ได้ในไม่กี่คลิก สลับเปลี่ยนฟีลการปั่นสล็อตได้ตรงสไตล์ทันทีโดยไม่ต้องค้นหาหลายรอบ</p>
-  </ContentBoxTwoFloatingBadge>
-
-  <ContentBoxCyberCut as="h2" title="ฟีเจอร์ใหม่พร้อมลั่น เติมลูกเล่นสดใหม่ให้แต่ละเกมมีอะไรน่าตามมากกว่าเดิม">
+  <ContentBoxFloatingBadge as="h2" title="ของใหม่ไม่ปล่อยให้รอนาน HAPPYSUPERWIN เติมเกมเข้าล็อบบี้อย่างต่อเนื่อง">
     <p class="text-left text-base leading-relaxed">
-      ยกระดับความตื่นเต้นด้วยฟีเจอร์ยุคใหม่ที่อัปเดตเข้าสู่ระบบ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ (Multipliers) สัญลักษณ์ Wild ซ้อนทับ คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Buy Feature สำหรับสายใจร้อน
-      ช่วยเปลี่ยนการหมุนธรรมดาให้เป็นจังหวะลุ้นแจ็คพอตก้อนโตได้ทุกวินาที
+      อัปเดตคลังเกมใหม่ทันทีที่ค่ายผู้พัฒนาปล่อยไฟล์เกมออกจากสตูดิโอ HAPPYSUPERWIN ดึงสัญญาณเกมสล็อตเข้าใหม่มาเติมในล็อบบี้อย่างต่อเนื่อง ให้สมาชิกได้ทดลองเล่นฟีเจอร์เด็ดและอ่านจังหวะโบนัสก่อนใคร
+      เข้าถึงเกมใหม่ไฟแรงได้ทันทีแบบไม่มีตกเทรนด์
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxFloatingBadge>
+
+  <ContentBoxSpecial as="h2" title="ฟีเจอร์ครบหลายสไตล์ เปลี่ยนฟีลแต่ละรอบให้มีลูกเล่นน่าค้นมากกว่าเดิม">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      หมุนสล็อตได้ไม่มีซ้ำฟีล ด้วยการอัดแน่นฟีเจอร์ยุคใหม่บน HAPPYSUPERWIN ทั้งระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง Multiplier สุ่มแจกตัวคูณหนัก และสัญลักษณ์ Wild ซ้อนทับ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ที่ช่วยเปลี่ยนการกดสปินธรรมดาให้เป็นจังหวะคว้าเงินรางวัลทะลุเพดานทุกวินาที</p>
+  </ContentBoxSpecial>
 
   <FeatureHighlights
     items={[
       {
-        icon: "×2",
-        title: "Multipliers ตัวคูณทวีคูณ",
-        description: "ระบบสุ่มแจกตัวคูณทวีคูณระหว่างรอบหมุน ดันยอดรางวัลที่ออกให้ทบขึ้นจากเบทเดิมโดยไม่ต้องเพิ่มทุน",
+        icon: "🔁",
+        title: "Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง",
+        description: "สัญลักษณ์ที่แตกแล้วร่วงหายไปและมีตัวใหม่ไหลลงมาแทน ต่อคอมโบให้ยาวขึ้นในสปินเดียวโดยไม่ต้องกดหมุนใหม่",
         accent: "gold",
       },
       {
-        icon: "W",
-        title: "Wild ซ้อนทับ",
-        description: "สัญลักษณ์ Wild ซ้อนทับกันบนหน้าจอ เปิดโอกาสเรียงไลน์รางวัลได้กว้างกว่าการหมุนแบบปกติในตาเดียวกัน",
+        icon: "✖️",
+        title: "Multiplier สุ่มแจกตัวคูณหนัก",
+        description: "ระบบสุ่มแจกตัวคูณระหว่างรอบหมุน ดันยอดรางวัลที่ออกให้ทบขึ้นจากเบทเดิมโดยไม่ต้องเพิ่มทุนในตาเดียวกัน",
         accent: "silver",
       },
       {
-        icon: "BUY",
-        title: "Cascading และ Buy Feature",
-        description: "คอมโบแตกต่อเนื่องแบบ Cascading ต่อยอดรางวัลให้ยาวขึ้นในรอบเดียว คู่กับโหมด Buy Feature ที่กดเข้ารอบพิเศษได้ทันทีสำหรับสายใจร้อน",
+        icon: "🃏",
+        title: "สัญลักษณ์ Wild ซ้อนทับ",
+        description: "สัญลักษณ์ Wild ซ้อนทับกันบนหน้าจอ เปิดโอกาสเรียงไลน์รางวัลได้กว้างกว่าการหมุนแบบปกติ เปลี่ยนการกดสปินธรรมดาให้ลุ้นได้ทุกวินาที",
         accent: "gold",
       },
     ]}
   />
 
-  <ContentBoxSevenThreeNeumorphism
-    as="h2"
-    title="ระบบใหม่ไหลลื่น XONEBET ช่วยให้สลับเกมและใช้งานต่อเนื่องไม่ขัดจังหวะ"
-    titleleft="อัพเดทระบบใหม่ ลุ้นรับทองคำแท่งและเครดิตฟรี">
+  <ContentBoxSevenThreeFloatingBadge as="h2" title="โบนัสฟรีรับเลย เปิดสิทธิ์ให้ตามแบบไม่ต้องรอแอดมิน" titleleft="โปรโมชั่น ฝากประจำ">
     <Picture
       slot="left"
-      src={imgSystemUpdateGold}
+      src={imgDepositStreak}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 380px"
+      sizes="(max-width: 767px) 92vw, 350px"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ XONEBET พื้นดำลายทอง มีโลโก้ X ONE.BET SLOT & CASINO ONLINE อยู่ซ้ายกลาง ข้อความว่า อัพเดทระบบใหม่ มาพร้อมระบบสุ่ม ลุ้นรับทองคำแท่งและเครดิตฟรี ด้านล่างซ้ายเขียนว่า ลูกค้าฝากมาเพียง 200 บาท กลางภาพเป็นกล่องของขวัญสีทองสองใบขนาบข้อความ ลุ้นรับทองคำแท่งและเครดิตฟรี ขวามือเขียนว่า รับรางวัลสูงสุดถึง 500 บาท ซ้ายสุดเป็นนักเชิดมังกรจีนกับหัวมังกรสีทองแดง ขวาสุดเป็นตัวการ์ตูนฟักทองแจ็คโอแลนเทิร์นและวัวเขาโค้ง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#a87c02]/45 shadow-[0_10px_30px_rgba(235,177,1,0.28)]"
+      alt="แบนเนอร์โปรโมชั่นของ HAPPYSUPERWIN พื้นม่วง หัวเรื่องเขียนว่า โปรโมชั่น ฝากประจำ มีผู้หญิงชุดชมพูถือโทรศัพท์ที่เปิดเกมค่าย PG Soft ล้อมด้วยเหรียญทองและธนบัตร ข้างกันเป็นสิทธิ์สี่ขั้น ฝาก 500 ครบ 3 วัน รับ 200฿ ครบ 7 วัน รับ 500฿ ครบ 10 วัน รับ 1,000฿ และ ครบ 15 วัน รับ 2,000฿ ด้านล่างเขียนว่า บริการ ฝาก-ถอน ภายใน 30 วินาที ตลอด 24 ชั่วโมง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#8a1f9e]/45 shadow-[0_10px_30px_rgba(225,28,204,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      อัปเกรดเซิร์ฟเวอร์หลังบ้านประมวลผลความเร็วสูง XONEBET ช่วยให้การสลับค่ายเกมและการโหลดหน้าอินเทอร์เฟซทำได้อย่างฉับไว ไร้ปัญหาเกมค้าง กระตุก หรือเด้งหลุดกลางทาง
-      รองรับการใช้งานพร้อมกันจำนวนมากได้อย่างเสถียร ให้ทุกจังหวะการเดินเงินเป็นไปอย่างต่อเนื่องไม่มีขัดจังหวะ
+      ตัดระบบการขอโปรโมชันแบบเดิมๆ ทิ้งไป HAPPYSUPERWIN เปิดระบบรับโบนัสฟรีแบบอัตโนมัติ สมาชิกสามารถเลือกกดรับสิทธิ์เพิ่มทุนสปิน เครดิตฟรี หรือคืนยอดเสีย Cash Back ผ่านหน้าแดชบอร์ดได้เองทันที
+      ยอดเข้าเครดิตไว เงื่อนไขชัดเจน นำไปหมุนทำกำไรและถอนออกได้จริง
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+  </ContentBoxSevenThreeFloatingBadge>
+
+  <ContentBoxTwoPremium
+    as="h2"
+    title="จากเกมดังถึงของใหม่ ทำไม HAPPYSUPERWIN ถึงมีตัวเลือกให้สายสล็อตตามได้เรื่อย ๆ"
+    titleleft="เชื่อมตรงเซิร์ฟเวอร์หลัก คลังเกมระดับ A-List"
+    titleright="โปรเพิ่มทุนและออโต้ไฮสปีด 3 วินาที">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      โครงสร้างระบบหลังบ้านที่เชื่อมต่อตรงกับเซิร์ฟเวอร์หลัก ทำให้ HAPPYSUPERWIN เป็นศูนย์รวมความบันเทิงที่ครบวงจรที่สุด มีทั้งคลังเกมระดับ A-List เกมใหม่เข้าทุกสัปดาห์
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">โปรโมชันเพิ่มทุน และระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จใน 3 วินาที จบครบทุกความต้องการในเว็บเดียว</p>
+  </ContentBoxTwoPremium>
 
   <SmoothCarousel />
 
   <GameRankingBoard />
 
-  <ContentBoxTwoNeumorphism
-    as="h2"
-    title="มือถือหรือคอมก็พร้อม XONEBET รองรับทุกอุปกรณ์ให้เข้าเล่นได้คล่องทุกหน้าจอ"
-    titleleft="รองรับ iOS, Android, แท็บเล็ต และคอม"
-    titleright="ปุ่มกดและเมนูใช้ง่ายตลอด 24 ชั่วโมง">
-    <p slot="left" class="text-left text-base leading-relaxed">วางระบบแสดงผลแบบ Responsive 100% XONEBET รองรับการใช้งานเต็มรูปแบบทั้งบนมือถือระบบ iOS, Android, แท็บเล็ต และคอมพิวเตอร์</p>
-    <p slot="right" class="text-left text-base leading-relaxed">จัดวางตำแหน่งปุ่มกดและเมนูต่างๆ ให้ใช้งานง่าย ปรับสเกลภาพคมชัดเข้ากับทุกหน้าจอ ให้คุณเข้าเล่นทำกำไรได้คล่องตัวตลอด 24 ชั่วโมง</p>
-  </ContentBoxTwoNeumorphism>
-
-  <LatestWinners3 />
+  <LatestWinners2 />
 
   <LoginRtpSection />
 
-  <ReviewCardSumo />
+  <ReviewCardSumo2 />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fff8d1] via-[#fee505] to-[#a87c02] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0a0803] shadow-[0_10px_30px_rgba(235,177,1,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(235,177,1,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fff0fc] via-[#ff5ae6] to-[#8a1f9e] px-4 py-3 text-sm font-black whitespace-nowrap text-[#190430] shadow-[0_10px_30px_rgba(225,28,204,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(225,28,204,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#ebb101]/55 bg-[#0a0803]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f4e6bd] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fee505] hover:bg-[#221a08] hover:text-[#fff8d1] hover:shadow-[0_15px_40px_rgba(235,177,1,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e11ccc]/55 bg-[#190430]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f7e2ff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ff5ae6] hover:bg-[#380a5f] hover:text-[#fff0fc] hover:shadow-[0_15px_40px_rgba(225,28,204,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq2 title="คำถามที่พบบ่อยเกี่ยวกับ XONEBET" faqs={faqs} />
+  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ HAPPYSUPERWIN" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

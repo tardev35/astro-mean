@@ -14,21 +14,21 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // <span aria-hidden> ที่เป็นพี่น้องของข้อความ ไม่ใช่แทรกอยู่ในตัวข้อความ
 //
 // ลำดับ: หน้าแรก → โปรโมชั่น → (สมัคร/เข้าสู่ระบบ ถ้าเปิด cta toggle) → ที่เหลือ
-// แบรนด์นี้ปิด cta toggle (login/register ยังเป็นหน้า forward แบบ noindex) จึงไม่มี
+// HAPPYSUPERWIN ปิด cta toggle (login/register ยังเป็นหน้า forward แบบ noindex) จึงไม่มี
 // สองรายการนั้นในเมนู เหลือปุ่ม CTA มุมขวาตามที่ variant นี้วางไว้ และ /ทางเข้า
 // ยังอยู่ในเมนูตามปกติ
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
-  { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
-  { name: "ทางเข้า", path: "/ทางเข้า", icon: "⚡" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🛡️" },
+  { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🍬" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🍭" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🐰" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 ---
 
 <header class="sticky top-0 z-50 w-full font-sans">
-  <nav class="relative z-40 w-full bg-[#0a0304]/95 shadow-[0_4px_20px_rgba(0,0,0,0.7)] backdrop-blur-lg">
+  <nav class="relative z-40 w-full bg-[#190430]/95 shadow-[0_4px_20px_rgba(0,0,0,0.7)] backdrop-blur-lg">
     <div class="bg-theme-oklab absolute bottom-0 left-0 h-[2px] w-full opacity-90"></div>
 
     <div class="flex h-[65px] w-full items-center justify-between px-3 md:px-6 lg:h-[80px]">
@@ -38,17 +38,17 @@ const links = [
             mainLogo ? (
               <Picture
                 src={mainLogo}
-                alt="โลโก้ FAST369 ตัวอักษร FAST สีแดงและ 369 สีทอง มีสายฟ้าทองพุ่งทะลุวงแหวนทองบนพื้นดำ"
+                alt="โลโก้ HAPPYSUPERWIN คำว่า HAPPY เป็นตัวอักษรลูกกวาดสามมิติสีเขียวมะนาว วางเหลื่อมอยู่บนคำว่า SUPERWIN ตัวอักษรอ้วนกลมสีเหลืองไล่ส้ม ขอบหนาสีม่วงสด มีอมยิ้มเกลียวสีรุ้งเสียบไม้อยู่มุมขวาบน"
                 loading="eager"
                 fetchpriority="high"
                 widths={[130, 260, 390]}
                 sizes="(max-width: 1023px) 100px, 130px"
-                class="h-[35px] w-auto drop-shadow-[0_0_10px_rgba(228,6,19,0.55)] lg:h-[45px]"
+                class="h-[35px] w-auto drop-shadow-[0_0_10px_rgba(225,28,204,0.55)] lg:h-[45px]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="bg-gradient-to-b from-[#ff3b2f] to-[#8f0206] bg-clip-text text-2xl font-black tracking-widest text-transparent">FAST369</span>
+              <span class="bg-gradient-to-b from-[#a8e831] via-[#ffd83d] to-[#e11ccc] bg-clip-text text-xl font-black tracking-widest text-transparent">HAPPYSUPERWIN</span>
             )
           }
         </a>
@@ -58,15 +58,15 @@ const links = [
         {
           links.map((link) => (
             <a href={link.path} class="group relative flex h-full items-center gap-2 text-sm font-bold transition-all xl:text-base">
-              <span aria-hidden="true" class="absolute left-0 -ml-3 text-[#ffc531] opacity-0 transition-all duration-300 group-hover:-ml-4 group-hover:opacity-100">[</span>
+              <span aria-hidden="true" class="absolute left-0 -ml-3 text-[#ffd83d] opacity-0 transition-all duration-300 group-hover:-ml-4 group-hover:opacity-100">[</span>
               <span aria-hidden="true" class="text-base leading-none">
                 {link.icon}
               </span>
-              <span class={`transition-colors duration-300 ${isActive(link.path) ? "text-[#ffc531] drop-shadow-[0_0_8px_rgba(255,197,49,0.75)]" : "text-[#f4e7dd]/75 group-hover:text-[#ffe27a]"}`}>
+              <span class={`transition-colors duration-300 ${isActive(link.path) ? "text-[#ffd83d] drop-shadow-[0_0_8px_rgba(255,216,61,0.75)]" : "text-[#f7e2ff]/75 group-hover:text-[#ff9df0]"}`}>
                 {link.name}
               </span>
-              <span aria-hidden="true" class="absolute right-0 -mr-3 text-[#ffc531] opacity-0 transition-all duration-300 group-hover:-mr-4 group-hover:opacity-100">]</span>
-              {isActive(link.path) && <div class="absolute bottom-0 left-0 h-[3px] w-full rounded-t-md bg-[#e40613] shadow-[0_-2px_10px_rgba(228,6,19,0.9)]" />}
+              <span aria-hidden="true" class="absolute right-0 -mr-3 text-[#ffd83d] opacity-0 transition-all duration-300 group-hover:-mr-4 group-hover:opacity-100">]</span>
+              {isActive(link.path) && <div class="absolute bottom-0 left-0 h-[3px] w-full rounded-t-md bg-[#e11ccc] shadow-[0_-2px_10px_rgba(225,28,204,0.9)]" />}
             </a>
           ))
         }
@@ -75,25 +75,25 @@ const links = [
       <div class="z-50 flex items-center gap-2 md:gap-4">
         <a
           href="/login"
-          class="hidden items-center justify-center rounded border border-[#e40613]/70 px-6 py-2 text-sm font-bold text-[#ffe27a] transition-all hover:bg-[#e40613]/20 hover:shadow-[0_0_15px_rgba(228,6,19,0.45)] lg:flex">
+          class="hidden items-center justify-center rounded border border-[#e11ccc]/70 px-6 py-2 text-sm font-bold text-[#ff9df0] transition-all hover:bg-[#e11ccc]/20 hover:shadow-[0_0_15px_rgba(225,28,204,0.45)] lg:flex">
           เข้าสู่ระบบ
         </a>
         <a
           href="/register"
-          class="bg-theme-oklab hidden items-center justify-center rounded px-6 py-2 text-sm font-extrabold text-[#2a0304] shadow-[0_0_20px_rgba(255,197,49,0.45)] transition-all hover:brightness-110 lg:flex">
+          class="bg-theme-oklab hidden items-center justify-center rounded px-6 py-2 text-sm font-extrabold text-[#2a0640] shadow-[0_0_20px_rgba(255,216,61,0.45)] transition-all hover:brightness-110 lg:flex">
           สมัครสมาชิก
         </a>
 
         <div class="flex items-center gap-2 lg:hidden">
           <a
             href="/register"
-            class="bg-theme-oklab flex items-center justify-center rounded px-3 py-1.5 text-[11px] font-bold text-[#2a0304] shadow-[0_0_10px_rgba(255,197,49,0.45)] md:px-4 md:text-xs">
+            class="bg-theme-oklab flex items-center justify-center rounded px-3 py-1.5 text-[11px] font-bold text-[#2a0640] shadow-[0_0_10px_rgba(255,216,61,0.45)] md:px-4 md:text-xs">
             สมัครสมาชิก
           </a>
-          <button id="hamburger-btn" class="flex flex-col items-center justify-center space-y-1.5 rounded border border-[#e40613]/50 bg-[#e40613]/10 p-1.5" aria-label="เปิดเมนู">
-            <span class="hamburger-line h-[2px] w-5 origin-center rounded-full bg-[#ffc531] transition-all duration-300"></span>
-            <span class="hamburger-line h-[2px] w-5 rounded-full bg-[#ffc531] transition-all duration-300"></span>
-            <span class="hamburger-line h-[2px] w-5 origin-center rounded-full bg-[#ffc531] transition-all duration-300"></span>
+          <button id="hamburger-btn" class="flex flex-col items-center justify-center space-y-1.5 rounded border border-[#e11ccc]/50 bg-[#e11ccc]/10 p-1.5" aria-label="เปิดเมนู">
+            <span class="hamburger-line h-[2px] w-5 origin-center rounded-full bg-[#ffd83d] transition-all duration-300"></span>
+            <span class="hamburger-line h-[2px] w-5 rounded-full bg-[#ffd83d] transition-all duration-300"></span>
+            <span class="hamburger-line h-[2px] w-5 origin-center rounded-full bg-[#ffd83d] transition-all duration-300"></span>
           </button>
         </div>
       </div>
@@ -104,10 +104,10 @@ const links = [
 
   <div
     id="mobile-sidebar"
-    class="fixed top-0 right-0 z-50 h-screen w-[260px] translate-x-full transform overflow-y-auto border-l border-[#e40613]/45 bg-[#0a0304] shadow-[-10px_0_30px_rgba(0,0,0,0.9)] transition-transform duration-400 ease-[cubic-bezier(0.3,1,0.3,1)] lg:hidden">
+    class="fixed top-0 right-0 z-50 h-screen w-[260px] translate-x-full transform overflow-y-auto border-l border-[#e11ccc]/45 bg-[#190430] shadow-[-10px_0_30px_rgba(0,0,0,0.9)] transition-transform duration-400 ease-[cubic-bezier(0.3,1,0.3,1)] lg:hidden">
     <div class="flex items-center justify-between border-b border-white/5 px-5 py-5">
-      <span class="text-sm font-extrabold tracking-wider text-[#f4e7dd]">MENU</span>
-      <button id="close-sidebar-btn" class="p-1 text-xl text-[#ffc531] hover:text-white" aria-label="ปิดเมนู">✕</button>
+      <span class="text-sm font-extrabold tracking-wider text-[#f7e2ff]">MENU</span>
+      <button id="close-sidebar-btn" class="p-1 text-xl text-[#ffd83d] hover:text-white" aria-label="ปิดเมนู">✕</button>
     </div>
 
     <div class="flex flex-col space-y-2 px-4 pt-4 pb-8">
@@ -115,7 +115,7 @@ const links = [
         links.map((link) => (
           <a
             href={link.path}
-            class={`sidebar-item flex items-center rounded-lg border px-4 py-3.5 transition-all ${isActive(link.path) ? "border-[#e40613]/60 bg-[#e40613]/20 text-[#ffc531]" : "border-transparent bg-white/5 text-[#f4e7dd]/75 hover:bg-white/10"}`}>
+            class={`sidebar-item flex items-center rounded-lg border px-4 py-3.5 transition-all ${isActive(link.path) ? "border-[#e11ccc]/60 bg-[#e11ccc]/20 text-[#ffd83d]" : "border-transparent bg-white/5 text-[#f7e2ff]/75 hover:bg-white/10"}`}>
             <span aria-hidden="true" class="mr-3 text-xl">
               {link.icon}
             </span>
@@ -124,10 +124,10 @@ const links = [
         ))
       }
 
-      <div class="mt-6 flex flex-col gap-3 border-t border-[#e40613]/40 pt-6">
+      <div class="mt-6 flex flex-col gap-3 border-t border-[#e11ccc]/40 pt-6">
         <a
           href="/login"
-          class="sidebar-item hover:bg-theme-oklab flex items-center justify-center gap-2 rounded-lg border border-[#ffc531]/70 bg-transparent py-3.5 text-sm font-bold text-[#ffe27a] transition-colors hover:border-transparent hover:text-[#2a0304]">
+          class="sidebar-item hover:bg-theme-oklab flex items-center justify-center gap-2 rounded-lg border border-[#ffd83d]/70 bg-transparent py-3.5 text-sm font-bold text-[#ff9df0] transition-colors hover:border-transparent hover:text-[#2a0640]">
           <span aria-hidden="true">🔒</span> เข้าสู่ระบบ
         </a>
       </div>
@@ -137,10 +137,10 @@ const links = [
 
 <style is:global>
   .bg-theme-oklab {
-    background-image: linear-gradient(in oklab to right, #8f0206, #e40613, #ffc531);
+    background-image: linear-gradient(in oklab to right, #8a1f9e, #e11ccc, #ffd83d);
   }
 
-  /* อนิเมชั่น Hamburger เปลี่ยนเป็น X */
+  
   #hamburger-btn.active .hamburger-line:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
@@ -151,7 +151,7 @@ const links = [
     transform: translateY(-7px) rotate(-45deg);
   }
 
-  /* อนิเมชั่นเด้งไล่ระดับของเมนูใน Sidebar */
+  
   .sidebar-item {
     opacity: 0;
     transform: translateX(20px);

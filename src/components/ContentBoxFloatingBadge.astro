@@ -11,29 +11,30 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // ป้ายตัดบรรทัดหลายบรรทัด แล้วบรรทัดสุดท้ายไปทับบรรทัดแรกของเนื้อความ
 //
 // ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge (pt-36/md:pt-28) กับ
-// ContentBox3ThreeFloatingBadge (pt-40/md:pt-32) โดยตั้งใจ — หัวข้อในไฟล์นี้ใช้
-// text-lg/text-xl ซึ่งสูงกว่าอีกสองไฟล์หนึ่งสเต็ป และป้ายยังเสียความกว้างให้ไอคอน
-// สองตัวข้างหัวข้ออีก ~52px จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
+// ContentBox3ThreeFloatingBadge (pt-40/md:pt-32) โดยตั้งใจ — ป้ายในไฟล์นี้เสีย
+// ความกว้างให้ไอคอนตกแต่งสองตัวข้างหัวข้ออีก ~42px และรองรับกรณี h1 ที่หัวข้อ
+// ใหญ่กว่าอีกหนึ่งสเต็ป จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
 // *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ H1 ของ docx AWIN8 ที่ไฟล์นี้รับรอบนี้ (61 ตัวอักษร —
-// "AWIN8 สล็อตเกมแท้ตัวท็อป จัดโปรฮิตมาเป็นชุด ฟีเจอร์ใหม่น่าลอง") chrome ของป้าย =
-// py-2.5 (20px) + border-2 (4px) = 24px:
+// คำนวณกับหัวข้อ docx ข้อ 4 ของ HAPPYSUPERWIN ที่ไฟล์นี้รับรอบนี้ในระดับ h2 (70
+// ตัวอักษร — "ของใหม่ไม่ปล่อยให้รอนาน HAPPYSUPERWIN เติมเกมเข้าล็อบบี้อย่างต่อเนื่อง")
+// chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
-//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-xl ≈ 10px ต่อตัวอักษร
-//   → ~23 ตัวต่อบรรทัด หัวข้อ 61 ตัวจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
-//   leading-normal ที่ 20px = 30px ต่อบรรทัด → 120px + 24px = 144px ขอบล่างอยู่ที่
-//   120px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 56px ไม่ต้องดัน pt ขึ้น
+//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 8.5px ต่อตัวอักษร
+//   → ~27 ตัวต่อบรรทัด หัวข้อ 70 ตัวจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
+//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
+//   108px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 68px ไม่ต้องดัน pt ขึ้น
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ไอคอน เหลือ ~566px,
-//   md:text-3xl/leading-normal = 45px ต่อบรรทัด, 2 บรรทัด = 90px + 24px = 114px
-//   ขอบล่างอยู่ที่ 90px เทียบกับ md:pt-36 (144px) → เหลือ 54px
+//   md:text-2xl/leading-normal = 36px ต่อบรรทัด และ ~44 ตัวต่อบรรทัด → 2 บรรทัด
+//   = 72px + 24px = 96px ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-36 (144px) → เหลือ 72px
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// AWIN8: ย้ายจากชุดสีของแบรนด์ก่อนมาเป็นน้ำเงินรอยัลคู่ทองส้มบนกรมท่าเกือบดำ —
-// น้ำเงิน #1f6fea / #7fb2ff / #0d3f9e / #07265e คู่ทอง #fca311 / #ffd27a และ
-// ขาวฟ้า #e8f1ff บนผิว #02081c / #040e22 / #08172f เนื้อความ #d8e6fb ไอคอนสองข้าง
-// ป้ายยังเป็นข้าวหลามตัดตามเดิม แต่รับทองซึ่งเป็นสีเน้นที่สองของแบรนด์นี้
+// HAPPYSUPERWIN: ย้ายจากชุดน้ำเงินรอยัลของแบรนด์ก่อนมาเป็นแคนดี้มาเจนต้าคู่เหลือง
+// ลูกอมบนม่วงองุ่นเกือบดำ — มาเจนต้า #ff5ae6 / #e11ccc / #8a1f9e / #4c0d6b
+// คู่เหลือง #f0b429 / #ffd83d และชมพูขาว #fff0fc บนผิว #0e0119 / #190430 / #280747
+// เนื้อความ #f7e2ff ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามเดิม แต่รับเหลืองลูกอมซึ่ง
+// เป็นสีเน้นที่สองของแบรนด์นี้
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
@@ -45,18 +46,18 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#0d3f9e]/45 bg-[#040e22]/90 p-8 pt-44 text-left text-base leading-relaxed text-[#d8e6fb] shadow-[0_10px_30px_rgba(7,38,94,0.32)] backdrop-blur-md md:pt-36">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#1f6fea]/35 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#08172f]/70 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#8a1f9e]/45 bg-[#190430]/90 p-8 pt-44 text-left text-base leading-relaxed text-[#f7e2ff] shadow-[0_10px_30px_rgba(76,13,107,0.32)] backdrop-blur-md md:pt-36">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#e11ccc]/35 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#280747]/70 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#fca311]/55 bg-[#02081c] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(252,163,17,0.3)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#fca311]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#f0b429]/55 bg-[#0e0119] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(240,180,41,0.3)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#f0b429]">
             ◆
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#e8f1ff] via-[#ffd27a] to-[#1f6fea] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#fca311]">
+          <HeadingTag class={`bg-gradient-to-r from-[#fff0fc] via-[#ffd83d] to-[#ff5ae6] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#f0b429]">
             ◆
           </span>
         </div>

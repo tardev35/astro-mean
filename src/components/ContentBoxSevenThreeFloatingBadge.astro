@@ -7,45 +7,45 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// AWIN8: ไฟล์นี้ค้างชุดทองแชมเปญเดี่ยวของแบรนด์ก่อนหน้ามา (ค่า hex เดิมไม่พิมพ์
+// HAPPYSUPERWIN: ไฟล์นี้ค้างชุดน้ำเงินรอยัลของแบรนด์ก่อนหน้ามา (ค่า hex เดิมไม่พิมพ์
 // ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen
 // คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้
-// ย้ายมาน้ำเงินรอยัลคู่ทองส้ม — น้ำเงิน #1f6fea / #7fb2ff / #0d3f9e / #07265e
-// คู่ทอง #fca311 / #ffd27a และขาวฟ้า #e8f1ff บนผิว #02081c / #040e22 / #08172f
-// เนื้อความ #d8e6fb — การ์ดถือน้ำเงิน ป้ายห้อยถือทองเพื่อให้แยกชั้นกันชัด
+// ย้ายมาแคนดี้มาเจนต้าคู่เหลืองลูกอม — มาเจนต้า #ff5ae6 / #e11ccc / #8a1f9e /
+// #4c0d6b คู่เหลือง #f0b429 / #ffd83d และชมพูขาว #fff0fc บนผิว #0e0119 / #190430 /
+// #280747 เนื้อความ #f7e2ff — การ์ดถือมาเจนต้า ป้ายห้อยถือเหลืองเพื่อให้แยกชั้นกันชัด
 //
 // `as` มีมาเพื่อให้หน้าเรียกกำหนดระดับหัวข้อได้เหมือน ContentBox* ตัวอื่น ส่วน
 // titleleft/titleright เป็น <p> ป้ายคอลัมน์: มันตั้งชื่อคอลัมน์ UI ไม่ใช่ section
 // ของ docx ถ้าปล่อยเป็นหัวข้อ docx หัวข้อเดียวจะกลายเป็นสามหัวข้อบนหน้าเว็บ
 //
-// pt-36/md:pt-28 ตั้งไว้เผื่อหัวข้อ docx ข้อ 7 ของ AWIN8 ที่บล็อกนี้รับรอบนี้
-// ("พร้อมฝากถอนออโต้ทันใจ AWIN8 ลดขั้นตอนทำรายการให้คล่องตั้งแต่ฝากถึงถอน" —
-// 68 ตัวอักษร ยาวกว่าของแบรนด์ก่อน จึงคำนวณใหม่ทั้งสองเบรกพอยต์)
+// pt-36/md:pt-28 ตั้งไว้เผื่อหัวข้อ docx ข้อ 6 ของ HAPPYSUPERWIN ที่บล็อกนี้รับ
+// รอบนี้ ("โบนัสฟรีรับเลย เปิดสิทธิ์ให้ตามแบบไม่ต้องรอแอดมิน" — 49 ตัวอักษร)
 // ป้ายห้อยอยู่ที่ -top-6 ขอบล่างของมันจึงอยู่ต่ำจากขอบบนการ์ดเท่ากับ
 // (ความสูงป้าย − 24px) chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) เหลือพื้นที่
 //   ข้อความ ~270px, text-lg/tracking-tight ≈ 8.5px ต่อตัวอักษร → ~31 ตัวต่อบรรทัด
-//   → 68 ตัวได้ 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด: leading-normal ที่ 18px = 27px
-//   ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่ 108px เทียบกับ pt-36 (144px)
-//   → เหลือ 36px
+//   → 49 ตัวได้ 2 บรรทัด เผื่อแบบแย่สุด 3 บรรทัด: leading-normal ที่ 18px = 27px
+//   ต่อบรรทัด → 81px + 24px = 105px ขอบล่างอยู่ที่ 81px เทียบกับ pt-36 (144px)
+//   → เหลือ 63px
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) เหลือ ~608px,
-//   text-2xl/leading-normal = 36px ต่อบรรทัด และ ~52 ตัวต่อบรรทัด → 68 ตัวได้
-//   2 บรรทัด = 72px + 24px = 96px ขอบล่าง 72px เทียบกับ md:pt-28 (112px)
-//   → เหลือ 40px
+//   text-2xl/leading-normal = 36px ต่อบรรทัด และ ~52 ตัวต่อบรรทัด → 49 ตัวได้
+//   1 บรรทัด เผื่อแย่สุด 2 บรรทัด = 72px + 24px = 96px ขอบล่าง 72px เทียบกับ
+//   md:pt-28 (112px) → เหลือ 40px
 // ป้ายเป็น w-[92%] max-w-2xl text-center เสมอ ห้ามใส่ whitespace-nowrap กลับมา
 // และให้ตื้นกว่า ContentBoxFloatingBadge.astro เสมอ เพราะไฟล์นั้นเสียความกว้าง
 // ป้ายไปกับไอคอนตกแต่งสองตัว
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
-  <div class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#0d3f9e]/40 bg-gradient-to-b from-[#08172f]/95 to-[#02081c]/95 p-8 pt-36 shadow-[0_10px_30px_rgba(7,38,94,0.28)] md:pt-28">
-    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#07265e]/55 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#1f6fea]/35 blur-[60px]"></div>
+  <div
+    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#8a1f9e]/40 bg-gradient-to-b from-[#280747]/95 to-[#0e0119]/95 p-8 pt-36 shadow-[0_10px_30px_rgba(76,13,107,0.28)] md:pt-28">
+    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#4c0d6b]/55 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#e11ccc]/35 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#fca311]/55 bg-[#02081c] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(252,163,17,0.32)] sm:px-8">
-          <HeadingTag class="bg-gradient-to-r from-[#e8f1ff] via-[#ffd27a] to-[#1f6fea] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
+        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#f0b429]/55 bg-[#0e0119] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(240,180,41,0.32)] sm:px-8">
+          <HeadingTag class="bg-gradient-to-r from-[#fff0fc] via-[#ffd83d] to-[#ff5ae6] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
             {title}
           </HeadingTag>
         </div>
@@ -53,13 +53,13 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d8e6fb]">
-        {titleleft && <p class="text-2xl leading-normal font-bold text-[#fca311]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e2ff]">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#ff5ae6]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#d8e6fb] md:border-l md:border-[#0d3f9e]/60 md:pl-10">
-        {titleright && <p class="text-2xl leading-normal font-bold text-[#ffd27a]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e2ff] md:border-l md:border-[#8a1f9e]/60 md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#ffd83d]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

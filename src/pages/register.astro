@@ -18,11 +18,11 @@ const targetUrl = "https://yoalink.com/znmz";
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
 // undo half of it. Nothing is lost when they drop — Google Sans covers Thai, so
-// it paints this page on its own on a google-sans brand. XONEBET runs KANIT, so
-// this round the rules are LIVE and the CDN query below drops to the
-// Oswald-only branch. The flag flips every rebrand, so keep BOTH branches
-// correct — the next Google Sans brand needs the rules gone again, and the one
-// after that needs them back.
+// it paints this page on its own on a google-sans brand. HAPPYSUPERWIN runs
+// GOOGLE-SANS, so this round the Kanit rules DROP and the CDN query below is on
+// the Google Sans + Oswald branch. The flag flips every rebrand, so keep BOTH
+// branches correct — the next Kanit brand needs the rules back, and the one
+// after that needs them gone again.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
@@ -35,17 +35,17 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: XONEBET is a gold-luxury brand
-// painted as MOLTEN GOLD over a near-black surface, with a chrome-silver
-// wordmark — the ONE.BET lettering in the logo is brushed silver, not gold, and
-// that is the only place silver appears. The whole page is one gold ramp
-// (#fff8d1 → #fee505 → #ebb101 → #a87c02 → #5c4301) over the surface stack
-// (#0a0803 page / rgba(22,17,5) panel / #221a08 raised) with #f4e6bd body text
-// and #c3ae76 captions. The silver pair (#e9e9e9 / #c4c4c4) sits in the middle
-// of the wordmark gradient and nowhere else — it stands for the chrome lettering
-// in the brand mark, not for a second theme colour. If you find yourself
-// reaching for a contrasting hue here, the answer is a brighter or deeper gold,
-// not another colour family.
+// Palette note for the second <style> block: HAPPYSUPERWIN is a candy-land
+// brand painted as BUBBLEGUM MAGENTA over a deep grape surface, with a candy
+// yellow wordmark — the SUPERWIN lettering in the logo is yellow-to-orange 3D
+// bubble type, and yellow is the only warm colour on the page. The whole thing
+// is one magenta ramp (#fff0fc → #ff5ae6 → #e11ccc → #8a1f9e → #4c0d6b) over
+// the surface stack (#190430 page / rgba(40,7,71) panel / #380a5f raised) with
+// #f7e2ff body text and #cfa5e6 captions. The yellow pair (#ffd83d / #f0b429)
+// sits in the middle of the wordmark gradient and nowhere else — it stands for
+// the candy lettering in the brand mark, not for a second theme colour. If you
+// find yourself reaching for a contrasting hue here, the answer is a brighter or
+// deeper magenta, not another colour family.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
@@ -53,8 +53,8 @@ const fontHref = usesGoogleFonts
 // `--gold-light` that held the brand's SECOND accent, not its primary — so the
 // next editor reused it by name and got the wrong role. Rename with the value,
 // and re-check the role when the palette changes shape. (That is exactly what
-// happened this round: the names all said "orange" and the values are now gold
-// and silver, so the names moved with them.)
+// happened this round: the names all said "gold" and "chrome-silver", and the
+// values are now candy magenta and candy yellow, so the names moved with them.)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -62,10 +62,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก XONEBET | เปิดยูสสล็อตวันสต็อป ฟรีไม่มีค่าธรรมเนียม</title>
+    <title>สมัครสมาชิก HAPPYSUPERWIN | เปิดยูสสล็อตรวมตัวจี๊ด รับโบนัสฟรีได้เลย</title>
     <meta
       name="description"
-      content="สมัครสมาชิก XONEBET ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นสล็อตครบทุกค่าย ไม่ต้องโยกเงินข้ามค่าย ฝากถอนออโต้ใน 3 วินาที"
+      content="สมัครสมาชิก HAPPYSUPERWIN ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นสล็อตครบทุกค่าย รับโบนัสฟรีเอง ฝากถอนออโต้ใน 3 วินาที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -107,18 +107,18 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #0a0803;
-        --panel-bg: rgba(22, 17, 5, 0.92);
-        --gold-pale: #fff8d1;
-        --gold-light: #fee505;
-        --gold-primary: #ebb101;
-        --gold-deep: #a87c02;
-        --gold-shadow: #5c4301;
-        --chrome-silver: #e9e9e9;
-        --chrome-silver-deep: #c4c4c4;
-        --surface-raised: #221a08;
-        --text-body: #f4e6bd;
-        --text-muted: #c3ae76;
+        --page-bg: #190430;
+        --panel-bg: rgba(40, 7, 71, 0.92);
+        --candy-pale: #fff0fc;
+        --candy-bright: #ff5ae6;
+        --candy-primary: #e11ccc;
+        --candy-deep: #8a1f9e;
+        --candy-shadow: #4c0d6b;
+        --candy-yellow: #ffd83d;
+        --candy-yellow-deep: #f0b429;
+        --surface-raised: #380a5f;
+        --text-body: #f7e2ff;
+        --text-muted: #cfa5e6;
       }
 
       body {
@@ -126,7 +126,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(235, 177, 1, 0.22) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(168, 124, 2, 0.16) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(225, 28, 204, 0.22) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(138, 31, 158, 0.16) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -140,11 +140,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(168, 124, 2, 0.45);
+        border: 1px solid rgba(138, 31, 158, 0.45);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(10, 8, 3, 0.6),
-          0 0 2rem rgba(235, 177, 1, 0.2);
+          0 1rem 3rem rgba(14, 1, 25, 0.6),
+          0 0 2rem rgba(225, 28, 204, 0.2);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -153,13 +153,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--gold-pale) 0%, var(--chrome-silver) 35%, var(--chrome-silver-deep) 70%, var(--gold-deep) 100%);
+        background: linear-gradient(180deg, var(--candy-pale) 0%, var(--candy-yellow) 35%, var(--candy-yellow-deep) 70%, var(--candy-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(92, 67, 1, 0.55));
+        filter: drop-shadow(0 1px 2px rgba(76, 13, 107, 0.55));
       }
 
       .sophisticated-loader {
@@ -175,30 +175,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-primary) 45%, var(--gold-shadow) 100%);
+        background: radial-gradient(circle, var(--candy-pale) 0%, var(--candy-primary) 45%, var(--candy-shadow) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(235, 177, 1, 0.4);
+        box-shadow: 0 0 2rem rgba(225, 28, 204, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(168, 124, 2, 0.3);
+        border: 3px solid rgba(138, 31, 158, 0.3);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--gold-primary);
+        border-top-color: var(--candy-primary);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--gold-light);
+        border-bottom-color: var(--candy-bright);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -215,11 +215,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(235, 177, 1, 0.4);
+          box-shadow: 0 0 2rem rgba(225, 28, 204, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(254, 229, 5, 0.42);
+          box-shadow: 0 0 3rem rgba(255, 90, 230, 0.42);
         }
       }
 
@@ -243,7 +243,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">XONEBET</div>
+      <div class="brand-identity">HAPPYSUPERWIN</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -253,7 +253,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก XONEBET ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก HAPPYSUPERWIN ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

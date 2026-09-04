@@ -84,7 +84,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.xonebet-play.com",
+  site: "https://www.happysuperwinplay.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

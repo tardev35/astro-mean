@@ -13,19 +13,20 @@ export interface Props {
 const { items } = Astro.props;
 
 // นี่คือที่เดียวบนหน้าแรกที่ได้รับอนุญาตให้มี <h3> — หัวข้อย่อยแบบ bullet ใต้
-// section ของ docx หนึ่งข้อ (ข้อ 5 ของ XONEBET: Multipliers / Wild ซ้อนทับ /
-// Cascading กับ Buy Feature) ส่วน h2 ของ section ยังอยู่ที่ ContentBoxCyberCut ที่
-// อยู่เหนือมัน
+// section ของ docx หนึ่งข้อ (ข้อ 5 ของ HAPPYSUPERWIN: Cascading / Multiplier /
+// Wild ซ้อนทับ) ส่วน h2 ของ section ยังอยู่ที่ ContentBoxSpecial ที่อยู่เหนือมัน
 //
 // item.icon เป็นอิโมจิ/สัญลักษณ์ตกแต่งล้วน กล่องที่ครอบมันจึงต้องมี
 // aria-hidden="true" เสมอ ไม่งั้น screen reader จะอ่านชื่อ CLDR ของอิโมจินำหน้า
 // หัวข้อจริง และ verify-build จะฟ้องเป็น error ว่ามีอิโมจิอยู่นอก aria-hidden
 //
-// XONEBET: ย้ายจากส้มเพลิงคู่ทองหลอมของแบรนด์ก่อน มาเป็นทองหลอมคู่เงินโครเมียมแบบ
-// hex ตรงชุดเดียวกับ ContentBoxCyberCut — ทอง #ebb101 / #fee505 / #a87c02 /
-// #5c4301 คู่เงิน #e9e9e9 / #c4c4c4 บนผิว #161105 / #221a08 เนื้อความ #f4e6bd
-// ข้อความรอง #c3ae76 accent "gold" เป็นค่า default, accent "silver" ใช้สลับให้ลิสต์
-// ไม่จำเจ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// HAPPYSUPERWIN: ย้ายจากทองหลอมคู่เงินโครเมียมของแบรนด์ก่อน มาเป็นแคนดี้มาเจนต้า
+// คู่เหลืองลูกอมแบบ hex ตรงชุดเดียวกับ ContentBoxSpecial — มาเจนต้า #e11ccc /
+// #ff5ae6 / #8a1f9e / #4c0d6b คู่เหลือง #ffd83d / #f0b429 บนผิว #280747 / #380a5f
+// เนื้อความ #f7e2ff ข้อความรอง #cfa5e6 accent "gold" เป็นค่า default (มาเจนต้า)
+// ส่วน accent "silver" ใช้สลับให้ลิสต์ไม่จำเจ (เหลืองลูกอม) — ชื่อคีย์ทั้งสองเป็น
+// API เดิมของ component นี้ที่หน้าเรียกใช้ข้ามรีแบรนด์ ไม่ได้ผูกกับสีจริงของแบรนด์
+// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 ---
 
@@ -35,28 +36,28 @@ const { items } = Astro.props;
       const isGold = item.accent !== "silver";
       return (
         <div
-          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#5c4301]/40 bg-[#161105]/60 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
+          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#4c0d6b]/40 bg-[#280747]/60 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
             isGold
-              ? "hover:border-[#fee505]/50 hover:bg-[#221a08] hover:shadow-[0_10px_20px_rgba(235,177,1,0.16)]"
-              : "hover:border-[#e9e9e9]/60 hover:bg-[#221a08] hover:shadow-[0_10px_20px_rgba(233,233,233,0.16)]"
+              ? "hover:border-[#ff5ae6]/50 hover:bg-[#380a5f] hover:shadow-[0_10px_20px_rgba(225,28,204,0.16)]"
+              : "hover:border-[#ffd83d]/60 hover:bg-[#380a5f] hover:shadow-[0_10px_20px_rgba(255,216,61,0.16)]"
           }`}>
           <div
             aria-hidden="true"
             class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-3xl transition-transform duration-300 group-hover:scale-110 ${
               isGold
-                ? "border border-[#fee505]/50 bg-gradient-to-br from-[#ebb101] to-[#5c4301] shadow-[0_0_15px_rgba(235,177,1,0.5)] group-hover:rotate-3"
-                : "border border-[#e9e9e9]/50 bg-gradient-to-br from-[#c4c4c4] to-[#5c4301] shadow-[0_0_15px_rgba(233,233,233,0.35)]"
+                ? "border border-[#ff5ae6]/50 bg-gradient-to-br from-[#e11ccc] to-[#4c0d6b] shadow-[0_0_15px_rgba(225,28,204,0.5)] group-hover:rotate-3"
+                : "border border-[#ffd83d]/50 bg-gradient-to-br from-[#f0b429] to-[#4c0d6b] shadow-[0_0_15px_rgba(255,216,61,0.35)]"
             }`}>
             {item.icon}
           </div>
           <div class="flex flex-col gap-2 text-left">
             <h3
               class={`text-xl font-black tracking-wide drop-shadow-sm ${
-                isGold ? "bg-gradient-to-r from-[#fff8d1] to-[#ebb101] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#e9e9e9] to-[#c4c4c4] bg-clip-text text-transparent"
+                isGold ? "bg-gradient-to-r from-[#fff0fc] to-[#e11ccc] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#ffd83d] to-[#f0b429] bg-clip-text text-transparent"
               }`}>
               {item.title}
             </h3>
-            <p class="text-sm leading-relaxed text-[#c3ae76] transition-colors group-hover:text-[#f4e6bd]">{item.description}</p>
+            <p class="text-left text-base leading-relaxed text-[#cfa5e6] transition-colors group-hover:text-[#f7e2ff]">{item.description}</p>
           </div>
         </div>
       );
