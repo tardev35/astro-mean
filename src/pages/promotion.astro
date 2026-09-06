@@ -2,11 +2,11 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 
 import { Picture } from "astro:assets";
 
-// HAPPYSUPERWIN: ticker หมุนมาเป็น Announcement5 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
+// QUEEN189: ticker หมุนมาเป็น AnnouncementPremium ส่วนกล่องหน้าย่อยยังเป็น ContentBox
 // (การ์ดถาวรของหน้าย่อย) เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
 // variant นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
@@ -18,13 +18,13 @@ import { Picture } from "astro:assets";
 // smaller letters. The docx gives this page no body at all.
 //
 // Named for what each banner ACTUALLY prints, not for its file number. This
-// drop has FOUR slides (2026-09-05) and all four run in the grid:
-//   slide1 = โปรโมชั่น ฝากประจำ · ฝาก 500 ครบ 3/7/10/15 วัน รับ 200–2,000฿
-//   slide2 = สะสมยอดเทิร์น 1 สัปดาห์ แจกสูงสุด 30,000 บาท (หกขั้น)
-//   slide3 = กงล้อ ลุ้นโชค อัปเดตใหม่ · ทองคำ 1 บาท และเงินรางวัล 5–1,000 บาท
-//   slide4 = เล่นที่นี่ ดียังไง? · ป้ายข้อดีแปดข้อบนพื้นทอง
-// ทั้งสี่ไฟล์เป็นแบนเนอร์แนวนอน 600x300 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
-// (ดรอปก่อนหน้าเป็น 600x125 — ถ้าเปลี่ยนสัดส่วนอีก ให้ไล่เช็ก imageSizes ใหม่)
+// drop has FOUR slides (2026-09-07) and all four run in the grid:
+//   slide1 = คืน 5% ยอดเสีย · รับได้ทุกวันที่ 1 และ 15
+//   slide2 = สมาชิกใหม่ ฝาก 100 รับ 200
+//   slide3 = วงล้อแห่งโชคลาภ ลุ้นรับเงินโบนัส รับได้ทุกวัน
+//   slide4 = แนะนำเพื่อน รับค่าคอมสูงถึง 1.25%
+// ทั้งสี่ไฟล์เป็นแบนเนอร์แนวนอน 600x252 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
+// (ถ้าดรอปหน้าเปลี่ยนสัดส่วนอีก ให้ไล่เช็ก imageSizes กับ widthLadder ใหม่)
 //
 // banner.png / banner2-4.png ไม่ถูก import ที่นี่: เป็นอาร์ตของแบรนด์ก่อน
 // (ลงวันที่ 2026-08-04 และ 2026-08-18 คนละดรอปกับชุดนี้) และรูปที่ import แล้ว
@@ -32,24 +32,24 @@ import { Picture } from "astro:assets";
 // ส่วน banner1 / banner1-mobile เป็นของ <picture> hero ใน MainLayout เท่านั้น
 //
 // Only what is printed on the banner may be stated in its alt — ทั้งสี่ไฟล์
-// ถอดข้อความและองค์ประกอบบนภาพมาเขียน alt ตามอาร์ตดรอปวันที่ 2026-09-05
-import promoDailyDeposit from "../assets/slide1.png";
-import promoTurnover from "../assets/slide2.png";
+// ถอดข้อความและองค์ประกอบบนภาพมาเขียน alt ตามอาร์ตดรอปวันที่ 2026-09-07
+import promoCashback from "../assets/slide1.png";
+import promoWelcome from "../assets/slide2.png";
 import promoLuckyWheel from "../assets/slide3.png";
-import promoWhyPlayHere from "../assets/slide4.png";
+import promoReferral from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 160. It states what the
+// byte count reads ~3x too long). This one measures 154. It states what the
 // page holds — the offers the banners themselves print — and stops.
 const pageDescription =
-  "รวมโปรโมชั่นสล็อต HAPPYSUPERWIN ทั้งโบนัสฝากประจำ สะสมยอดเทิร์นรายสัปดาห์ กงล้อลุ้นโชคชิงทองคำ และสิทธิ์คืนยอดเสีย เงื่อนไขแต่ละรายการอยู่บนภาพ กดรับเองได้ทันที";
+  "รวมโปรโมชั่น QUEEN189 คาสิโนมงลงทุกสปิน ทั้งคืนยอดเสีย 5% ทุกวันที่ 1 และ 15 สมาชิกใหม่ฝาก 100 รับ 200 วงล้อแห่งโชคลาภทุกวัน และแนะนำเพื่อนรับค่าคอม 1.25%";
 
-const pageTitle = "โปรโมชั่น HAPPYSUPERWIN | ฝากประจำ สะสมยอดเทิร์น กงล้อลุ้นโชค และคืนยอดเสีย";
+const pageTitle = "โปรโมชั่น QUEEN189 | คืนยอดเสีย สมาชิกใหม่ วงล้อโชคลาภ และแนะนำเพื่อน";
 
 // หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น HAPPYSUPERWIN รวมโบนัสฟรีและกิจกรรมลุ้นรางวัลไว้ให้เลือกกดรับ";
+const pageHeading = "โปรโมชั่น QUEEN189 รวมโบนัสและกิจกรรมลุ้นรางวัลไว้ให้เลือกกดรับ";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -58,7 +58,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoDailyDeposit.src,
+  primaryImagePath: promoCashback.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -73,9 +73,9 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบองุ่นเข้มของแบรนด์ล้อกับกรอบม่วงบนแบนเนอร์ แล้วสว่างเป็นบานเย็นตอน hover
+// ขอบสำริดเข้มล้อกับกรอบทองบนแบนเนอร์ แล้วสว่างขึ้นเป็นทองหลักตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#8a1f9e]/45 object-contain shadow-[0_10px_30px_rgba(76,13,107,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e11ccc]/70 hover:shadow-[0_15px_40px_rgba(225,28,204,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#7a5615]/45 object-contain shadow-[0_10px_30px_rgba(122,86,21,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e4bb53]/70 hover:shadow-[0_15px_40px_rgba(228,187,83,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
 // intrinsic width (600px for all four banners here) so a sharp upscale never
@@ -87,20 +87,20 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoDailyDeposit,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นม่วง หัวเรื่องเขียนว่า โปรโมชั่น ฝากประจำ มีภาพผู้หญิงในชุดสีชมพูถือโทรศัพท์ที่เปิดหน้าเกมสล็อตของค่าย PG Soft อยู่ท่ามกลางกองเหรียญทองและปึกธนบัตร ข้างกันเรียงเงื่อนไขไว้สี่ขั้นว่า ฝาก 500 ครบ 3 วัน รับ 200฿ ครบ 7 วัน รับ 500฿ ครบ 10 วัน รับ 1,000฿ และ ครบ 15 วัน รับ 2,000฿ บรรทัดล่างเขียนว่า บริการ ฝาก-ถอน ภายใน 30 วินาที ตลอด 24 ชั่วโมง",
+    src: promoCashback,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า คืน 5% ยอดเสีย และบรรทัดล่างเขียนว่า รับได้ทุกวันที่ 1 และ 15 ด้านซ้ายเป็นหญิงสาวผมยาวในชุดราตรีสีทองระยิบ ยืนถือป้ายสี่เหลี่ยมสีดำที่มีคำว่า CASH BACK พร้อมลูกศรโค้ง ฉากหลังเป็นก้อนเพชรสีทอง เหรียญทองปลิว และประกายแสง",
   },
   {
-    src: promoTurnover,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นม่วง หัวเรื่องเขียนว่า โปรโมชั่น สะสมยอดเทิร์น 1 สัปดาห์ แจกสูงสุด 30,000 บาท มีตัวการ์ตูนม้ากับเลพริคอนหมวกเขียวยืนขนาบตารางรางวัลหกขั้น ไล่จากยอดเทิร์น 500,000 รับ 1,500฿ ขึ้นไปจนถึงยอดเทิร์น 30,000,000 รับ 30,000฿ บรรทัดล่างเขียนว่า รับโบนัส คาสิโน สล็อต เท่านั้น",
+    src: promoWelcome,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า สมาชิกใหม่ ฝาก 100 รับ 200 ด้านซ้ายเป็นหญิงสาวผมยาวในชุดราตรีสีทองปาดไหล่ ยิ้มพร้อมชูพัดธนบัตรอยู่ในมือ ล้อมด้วยก้อนเพชรสีทอง เหรียญทองปลิว และประกายแสง",
   },
   {
     src: promoLuckyWheel,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นชมพู หัวเรื่องเขียนว่า กงล้อ ลุ้นโชค อัปเดตใหม่ เพิ่มรางวัลใหญ่ กลางภาพเป็นวงล้อหมุนที่แบ่งช่องรางวัลไว้ว่า ทองคำ 1 บาท และเงินรางวัล 5 บาท 10 บาท 50 บาท 100 บาท กับ 1,000 บาท ขนาบด้วยตัวการ์ตูนม้าและแมวกวักนำโชค",
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า วงล้อแห่งโชคลาภ ลุ้นรับเงินโบนัส รับได้ทุกวัน ด้านซ้ายเป็นหญิงสาวผมยาวในชุดราตรีสีทองยืนอยู่หน้าวงล้อหมุนลายทองสลับดำ ข้างกันเป็นกองเหรียญทองซ้อนสูงและประกายแสงทั่วภาพ",
   },
   {
-    src: promoWhyPlayHere,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นทอง หัวเรื่องเขียนว่า เล่นที่นี่ ดียังไง? มีตัวการ์ตูนแมวยืนอยู่ข้างป้ายข้อดีแปดข้อ ได้แก่ คืนยอดเสีย 20,000 ทุกสัปดาห์ ระบบ AUTO เพียง 3 วินาที สะดวก รวดเร็ว ตลอด 24HR. การเงินมั่นคงปลอดภัย เปิดมานานกว่า 6 ปี โปรโมชั่นสุดปัง เอาใจลูกค้า ห้องลับ 18+ สุด SEXY ฝากเงินขั้นต่ำ ไม่ติดเงื่อนไขยอดฝาก ฝากแล้วไม่ต้องถอนได้ทันที เล่นเท่าไหร่เราก็จ่าย ได้แสนถอนแสน ได้ล้านถอนล้าน และ เว็บใหญ่ไม่ผ่านเอเย่นต์ 100% ลูกค้าที่สมัครตรงเข้าเว็บใหญ่เท่านั้น",
+    src: promoReferral,
+    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า แนะนำเพื่อน รับค่าคอมสูงถึง 1.25% ด้านซ้ายเป็นหญิงสาวสองคนในชุดราตรีสีทองยืนเคียงกัน คนหนึ่งชูพัดธนบัตร ถัดมาเป็นกองเหรียญทองซ้อนสูงและประกายแสง",
   },
 ];
 ---
@@ -113,9 +113,9 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ffd83d]">HAPPYSUPERWIN</strong> เปิดให้กดรับอยู่ในรอบนี้ ทั้งโบนัสฝากประจำ ยอดสะสมเทิร์นรายสัปดาห์ กงล้อลุ้นโชค และสิทธิ์คืนยอดเสีย
-        อัตราที่ได้รับและกำหนดเวลาของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว แต่ละรายการมีเงื่อนไขของตัวเอง จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด
-        ทุกสิทธิ์เลือกกดรับเองได้จากแดชบอร์ดเดียว ไม่ต้องรอแอดมิน ไม่ติดเทิร์นจุกจิก และถอนออกได้เต็มจำนวน
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#fceb83]">QUEEN189</strong> เปิดให้กดรับอยู่ในรอบนี้ ทั้งสิทธิ์คืนยอดเสีย โบนัสต้อนรับสมาชิกใหม่ วงล้อลุ้นรางวัล และค่าคอมจากการแนะนำเพื่อน
+        อัตราที่ได้รับและกำหนดวันของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว แต่ละรายการมีเงื่อนไขของตัวเอง จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด
+        ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเดียว ไม่ต้องรอแอดมินอนุมัติ ไม่ต้องส่งสลิป ไม่ติดเทิร์นโอเวอร์มหาโหด และถอนออกได้เต็มจำนวน
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -141,8 +141,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffd83d]/60 bg-gradient-to-r from-[#e11ccc] via-[#ff5ae6] to-[#ffd83d] px-10 py-3.5 text-xl font-black text-[#2a0640] shadow-[0_10px_30px_rgba(225,28,204,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,90,230,0.5)]">
-          สมัครสมาชิก HAPPYSUPERWIN
+          class="flex items-center justify-center rounded-lg border border-[#fceb83]/60 bg-gradient-to-r from-[#fdf3d2] via-[#e4bb53] to-[#c38d29] px-10 py-3.5 text-xl font-black text-[#0b0704] shadow-[0_10px_30px_rgba(228,187,83,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,235,131,0.5)]">
+          สมัครสมาชิก QUEEN189
         </a>
       </div>
     </div>

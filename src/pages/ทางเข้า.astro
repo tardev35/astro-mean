@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
@@ -10,27 +10,26 @@ import { pageGraph } from "../lib/schema";
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 // h2 and h3 counts on this page must both stay 0.
 //
-// The <h1> names what the page IS ("ทางเข้า HAPPYSUPERWIN เว็บหลัก"). Do not
-// give it a title that previews an article; there is no article and there never
-// was.
+// The <h1> names what the page IS ("ทางเข้า QUEEN189 เว็บหลัก"). Do not give it
+// a title that previews an article; there is no article and there never was.
 //
-// HAPPYSUPERWIN: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox
+// QUEEN189: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยใช้ ContentBox
 // (เรียก <Announcement /> เปล่าๆ เพื่อใช้ default message ของ variant ซึ่งเป็น
 // ข้อความของแบรนด์นี้แล้ว และตรงกับหน้าแรก)
 //
-// ปุ่มรอบนี้เป็นชมพูบานเย็นบนม่วงองุ่นเข้ม — ปุ่มเข้าสู่ระบบเป็นผิว #380a5f ขอบ
-// #e11ccc เนื้อความ #ff5ae6 hover เป็น #190430 ส่วนปุ่มสมัครสมาชิกไล่สี #fff0fc /
-// #ff5ae6 / #8a1f9e ขอบ #e11ccc ตัวอักษรผิวเข้ม #190430
+// ปุ่มรอบนี้เป็นทองราชสำนักบนดำสนิท — ปุ่มเข้าสู่ระบบเป็นผิว #271a0c ขอบ #e4bb53
+// เนื้อความ #fceb83 hover ลึกลงเป็น #0b0704 ส่วนปุ่มสมัครสมาชิกไล่สี #fdf3d2 /
+// #e4bb53 / #c38d29 ขอบ #fceb83 ตัวอักษรผิวเข้ม #0b0704
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 156.
+// count reads about three times too long. This one measures 159.
 const pageDescription =
-  "ทางเข้า HAPPYSUPERWIN เว็บหลัก ลิงก์ตรงอัปเดตใหม่ ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตรวมตัวจี๊ดเกมดังคัดมาดี ฝากถอนออโต้ไวใน 3 วินาที";
+  "ทางเข้า QUEEN189 เว็บหลัก ลิงก์ตรงอัปเดต ไม่ผ่านเอเย่นต์ ไม่ล็อกยูส กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที คาสิโนมงลงทุกสปิน เกมเด็ดของดีครบ ฝากถอนออโต้ 3 วินาที";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า HAPPYSUPERWIN เว็บหลัก",
+  name: "ทางเข้า QUEEN189 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -39,40 +38,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า HAPPYSUPERWIN | เว็บหลักลิงก์ตรง เกมดังคัดมาดี ฝากถอนออโต้" description={pageDescription}>
+<MainLayout title="ทางเข้า QUEEN189 | เว็บหลักลิงก์ตรง คาสิโนมงลงทุกสปิน ฝากถอนออโต้" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า HAPPYSUPERWIN เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า QUEEN189 เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ HAPPYSUPERWIN"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#e11ccc]/60 bg-[#380a5f] px-6 py-4 shadow-[0_10px_30px_rgba(76,13,107,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#ff5ae6] hover:bg-[#190430] hover:shadow-[0_15px_40px_rgba(225,28,204,0.45)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#8a1f9e]/35 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ QUEEN189"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#e4bb53]/60 bg-[#271a0c] px-6 py-4 shadow-[0_10px_30px_rgba(122,86,21,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#fceb83] hover:bg-[#0b0704] hover:shadow-[0_15px_40px_rgba(228,187,83,0.45)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#7a5615]/35 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#ff5ae6]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#fceb83]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#ff5ae6]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#fceb83]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก HAPPYSUPERWIN"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#e11ccc]/60 bg-gradient-to-r from-[#fff0fc] via-[#ff5ae6] to-[#8a1f9e] px-6 py-4 shadow-[0_10px_30px_rgba(225,28,204,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(225,28,204,0.5)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#fff0fc]/40 to-transparent"></div>
+          aria-label="สมัครสมาชิก QUEEN189"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#fceb83]/60 bg-gradient-to-r from-[#fdf3d2] via-[#e4bb53] to-[#c38d29] px-6 py-4 shadow-[0_10px_30px_rgba(228,187,83,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,235,131,0.5)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#fdf3d2]/40 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#190430]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#0b0704]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#190430]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#0b0704]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

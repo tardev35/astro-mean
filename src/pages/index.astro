@@ -1,52 +1,49 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
-import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
-import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
+import ContentBox3ThreeNeumorphism from "../components/ContentBox3ThreeNeumorphism.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import ContentBox from "../components/ContentBox.astro";
 import FeatureHighlights from "../components/FeatureHighlights.astro";
-import ProviderGridPremium from "../components/ProviderGridPremium.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners2 from "../components/LatestWinners2.astro";
+import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import Faq4 from "../components/Faq4.astro";
+import ReviewCardSumo from "../components/ReviewCardSumo.astro";
+import Faq3 from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgWhyPlayHere from "../assets/slide4.png";
-import imgDepositStreak from "../assets/slide1.png";
+import imgTopSlots from "../assets/slide3.png";
+import imgCashBack from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxSevenThreePremium as="h2" + slide4 (อาร์ตสไลด์เขียนว่า "เล่นที่นี่
-//       ดียังไง?" แล้วกางข้อดีเป็นชิปแปดอัน ซึ่งเป็นภาพของย่อหน้านี้ที่พูดถึงการคัด
-//       เกมน่าเล่นมาให้แบบไม่ต้องเสียเวลาหา)
-//   3 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับประโยค
-//       เดิม: รวมค่ายชั้นนำระดับโลก → ครบทั้ง 3D/ตัวคูณ/ซื้อฟีเจอร์/คลาสสิก →
-//       สลับเล่นในกระเป๋าเดียว) แล้วต่อด้วย ProviderGridPremium ซึ่งกางโลโก้ค่ายที่
-//       ย่อหน้าเดียวกันเอ่ยชื่อไว้
-//   4 → ContentBoxFloatingBadge as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   5 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: ชื่อฟีเจอร์ทั้งสามตัว →
-//       ผลของมันต่อจังหวะการสปิน) แล้วต่อด้วย FeatureHighlights (ฟีเจอร์ย่อยสามตัวที่
-//       ย่อหน้านี้ระบุชื่อไว้ตรงๆ → h3 สามตัว ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบน
-//       หน้านี้)
-//   6 → ContentBoxSevenThreeFloatingBadge as="h2" + slide1 (อาร์ตสไลด์เป็นโปรฝากประจำ
-//       ที่กางสิทธิ์รับโบนัสเป็นขั้นๆ ตรงกับย่อหน้าเรื่องเปิดระบบรับโบนัสฟรีอัตโนมัติ)
-//   7 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: โครงสร้างหลังบ้าน
-//       เชื่อมตรงกับเซิร์ฟเวอร์หลักและคลังเกม A-List → โปรเพิ่มทุนกับฝากถอนออโต้)
+//   1 → ContentBoxNeumorphism as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxCyberCut as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   3 → ContentBox3ThreeNeumorphism as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับ
+//       ประโยคเดิม: ขนทัพค่ายระดับท็อป → คัดเฉพาะเกมตัวเด่น → ไม่ต้องเลื่อนหาเอง)
+//       แล้วต่อด้วย ProviderGrid ซึ่งกางโลโก้ค่ายที่ย่อหน้าเดียวกันเอ่ยชื่อไว้
+//   4 → ContentBoxSevenThreeCyberCut as="h2" + slide3 (อาร์ตสไลด์เป็นวงล้อแห่ง
+//       โชคลาภทองบนดำ ตรงกับย่อหน้าเรื่องคลังสล็อตตัวท็อปที่ลุ้นรางวัลใหญ่ได้ทุกสปิน)
+//       แล้วต่อด้วย FeatureHighlights (ฟีเจอร์ย่อยสามตัวที่ย่อหน้านี้ระบุชื่อไว้ตรงๆ
+//       → h3 สามตัว ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบนหน้านี้)
+//   5 → ContentBoxTwoNeumorphism as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: สัญญาณไลฟ์
+//       Ultra HD → โต๊ะที่เปิดให้เล่นกับกระเป๋าเงินเดียว)
+//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (อาร์ตสไลด์เป็น CASH BACK
+//       คืน 5% ยอดเสีย ตรงกับประโยค Cash Back คืนยอดเสียทุกวันในย่อหน้านี้เป๊ะ)
+//   7 → ContentBox as="h2" (ย่อหน้าเดียวเต็มๆ เรื่องระบบออโต้ 3 วินาที)
 //
 // variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจากชุด
-// Neumorphism + CyberCut + TwoFloatingBadge มาเป็น Premium ×4 + Special ×1 +
-// FloatingBadge ×2 ส่วน Announcement เป็น Announcement5, LatestWinners เป็น
-// LatestWinners2, ProviderGrid เป็น ProviderGridPremium, ReviewCard เป็น
-// ReviewCardSumo2 และ Faq เป็น Faq4 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน
+// Premium ×4 + FloatingBadge ×2 + Special ×1 มาเป็น Neumorphism ×4 + CyberCut ×2 +
+// ContentBox ตัวธรรมดา ×1 ส่วน Announcement เป็น AnnouncementPremium, LatestWinners
+// เป็น LatestWinnersPremium, ProviderGrid เป็นตัวธรรมดา, ReviewCard เป็น
+// ReviewCardSumo และ Faq เป็น Faq3 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน
 // MainLayout กับ brandProfile
 //
 // ContentBoxSevenThree* ทั้งสองตัวปล่อยหัวข้อจาก prop `title` ตัวเดียว ส่วน
@@ -54,67 +51,67 @@ import imgDepositStreak from "../assets/slide1.png";
 // ป้ายซ้อนใต้หัวข้อเดียวกัน
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
-// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ต้องตรงกับ default ของ Announcement5
-// เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ วิ่งข้อความเดียว
-// กับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความซ้ำและ emoji ที่
-// ฝังในสตริงถูก mark aria-hidden ไม่ได้
+// สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ต้องตรงกับ default ของ
+// AnnouncementPremium เป๊ะ เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement />
+// เปล่าๆ วิ่งข้อความเดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render
+// ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide4/slide1 ซึ่งเป็นสไลด์ที่
-// อาร์ตตรงกับหัวข้อ docx ข้อ 2 กับข้อ 6 พอดี — slide2 (สะสมยอดเทิร์น) กับ slide3
-// (กงล้อลุ้นโชค) ไม่มีหัวข้อ docx ไหนรองรับและเพดาน SevenThree เต็มแล้ว จึงปล่อยไว้
-// ให้หน้า /promotion ใช้ ส่วน banner ทุกหมายเลข (banner2/3/4) เป็นอาร์ตของแบรนด์ก่อน
-// ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่ถูก emit ถึงจะไม่มีใคร
-// render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ MainLayout จัดการเอง และรูปใน
-// หน้านี้ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP เป็นของ hero
-// ใน MainLayout
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide3/slide1 ซึ่งเป็นสไลด์ที่
+// อาร์ตตรงกับหัวข้อ docx ข้อ 4 กับข้อ 6 พอดี — slide2 (สมาชิกใหม่ ฝาก 100 รับ 200)
+// กับ slide4 (แนะนำเพื่อน รับค่าคอม) ไม่มีหัวข้อ docx ไหนรองรับและเพดาน SevenThree
+// เต็มแล้ว จึงปล่อยไว้ให้หน้า /promotion ใช้ ส่วน banner ทุกหมายเลข (banner2/3/4)
+// เป็นอาร์ตของแบรนด์ก่อน ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูป
+// ที่ถูก emit ถึงจะไม่มีใคร render ก็ตาม ส่วน banner1 กับ banner1-mobile เป็นของ
+// MainLayout จัดการเอง และรูปในหน้านี้ไม่มีตัวไหนใส่ loading="eager"/
+// fetchpriority="high" เพราะ LCP เป็นของ hero ใน MainLayout
 //
-// widget ที่ไม่ได้มาจาก docx (SmoothCarousel, GameRankingBoard, LatestWinners2,
-// LoginRtpSection, ReviewCardSumo2, แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้าย
+// widget ที่ไม่ได้มาจาก docx (SmoothCarousel, GameRankingBoard, LatestWinnersPremium,
+// LoginRtpSection, ReviewCardSumo, แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้าย
 // เป็น <p>/<span> + aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้าย
 // ทั้งชุด ยกเว้นสองตัวที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง
-// (ProviderGridPremium → ข้อ 3, FeatureHighlights → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// (ProviderGrid → ข้อ 3, FeatureHighlights → ข้อ 4) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
 // h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×3 จาก FeatureHighlights ซึ่งเป็นรายการ
-// ย่อยของหัวข้อข้อ 5 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
-// Faq4.astro คำถามเป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
+// ย่อยของหัวข้อข้อ 4 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
+// Faq3.astro คำถามเป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
 // เป็น <p>
 //
 // title ใช้บรรทัด Title ของ docx ตรงๆ ส่วน description ต่อท้ายบรรทัด Des ของ docx
-// ด้วย "เว็บตรง API แท้" ให้ยาว 156 ตัวอักษร เข้ากรอบ 150–160 ของเกทคุณภาพ (บรรทัด
-// Des ดิบของ docx ยาว 140 ตัว ซึ่งต่ำกว่ากรอบ) และเป็นสตริงเดียวกับที่ส่งเข้า
-// pageGraph และ MainLayout
-const pageTitle = "HAPPYSUPERWIN | สล็อตรวมตัวจี๊ด เกมดังคัดมาดี โบนัสฟรีรับเลย";
-const pageDescription = "HAPPYSUPERWIN สล็อตรวมตัวจี๊ด เกมดังคัดมาดีจากค่ายชั้นนำ เติมเกมใหม่ให้ตามต่อเนื่อง ฟีเจอร์ครบหลายสไตล์ โบนัสฟรีรับเลย พร้อมฝากถอนออโต้ทันใจ เว็บตรง API แท้";
+// ด้วย "เว็บตรง API แท้ ถอนเต็มจำนวน" ให้ยาว 158 ตัวอักษร เข้ากรอบ 150–160 ของเกท
+// คุณภาพ (บรรทัด Des ดิบของ docx ยาว 129 ตัว ซึ่งต่ำกว่ากรอบ) และเป็นสตริงเดียวกับ
+// ที่ส่งเข้า pageGraph และ MainLayout
+const pageTitle = "QUEEN189 | คาสิโนมงลงทุกสปิน เกมเด็ดของดีมีครบ โปรแน่นต้องลอง";
+const pageDescription = "QUEEN189 คาสิโนมงลงทุกสปิน คัดเกมเด็ดของดีมีครบจากค่ายชั้นนำ สล็อตตัวท็อปและโต๊ะสดพร้อมลุย โปรแน่นต้องลอง ระบบออโต้ลั่นไวไม่รอนาน เว็บตรง API แท้ ถอนเต็มจำนวน";
 
 const announcementMessage =
-  "HAPPYSUPERWIN สล็อตรวมตัวจี๊ด เกมดังคัดมาดี โบนัสฟรีรับเลย • เว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ค่า RTP มาตรฐานสากล ไม่มีปรับลดอัตราแตก ถอนเงินออกได้เต็มยอด ไร้เงื่อนไขจุกจิก • คัดเกมน่าเล่นมาให้แบบไม่ต้องเสียเวลาหา กรองเฉพาะเกมที่จ่ายรางวัลสูงและโบนัสแตกบ่อยที่สุดมาไว้ในหน้าแรก เบทเริ่มต้นเบาๆ แต่ลุ้นแจ็คพอตก้อนโตได้ทันที • รวมค่ายเกมชั้นนำระดับโลก PG Soft, Pragmatic Play และ Joker Gaming ครบทั้งสล็อต 3D ภาพสวย ตัวคูณทวีคูณหนัก สายซื้อฟีเจอร์ฟรีสปิน และคลาสสิกแตกไว • ของใหม่ไม่ปล่อยให้รอนาน เติมเกมเข้าล็อบบี้ทันทีที่ค่ายปล่อยไฟล์ออกจากสตูดิโอ ทดลองเล่นฟีเจอร์เด็ดและอ่านจังหวะโบนัสได้ก่อนใคร • ฟีเจอร์ครบหลายสไตล์ ทั้งระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง Multiplier สุ่มแจกตัวคูณหนัก และสัญลักษณ์ Wild ซ้อนทับ • โบนัสฟรีรับเลย กดรับสิทธิ์เพิ่มทุนสปิน เครดิตฟรี และคืนยอดเสีย Cash Back ผ่านหน้าแดชบอร์ดได้เองทันที ไม่ต้องรอแอดมิน • ฝากถอนออโต้ทำรายการเสร็จใน 3 วินาที ปั่นทำกำไรได้โปร่งใส จบครบทุกความต้องการในเว็บเดียว";
+  "QUEEN189 คาสิโนมงลงทุกสปิน เกมเด็ดของดีมีครบ โปรแน่นต้องลอง • เว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ปั่นง่ายแตกจริงด้วยค่า RTP มาตรฐานสากล ไร้การดัดแปลงระบบ ไม่ผ่านเอเย่นต์ ไม่ล็อกยูส • ยกระดับความปังด้วยเกมคัดเกรด รวมเฉพาะสล็อตแตกง่ายและคาสิโนสดอัตราจ่ายสูงไว้ในที่เดียว ไม่เอาเกมล้าหลังหรือเปอร์เซ็นต์แตกต่ำมาลงคลัง ทุกเกมผ่านการทดสอบอัลกอริทึมว่าแจกโบนัสตรงตามมาตรฐานโรงงาน • ขนทัพค่ายระดับท็อปของโลกอย่าง PG Soft, Pragmatic Play, SA Gaming และ Evolution มาไว้แบบครบมือ เน้นเกมตัวเด่นที่โครงสร้างการจ่ายเงินโปร่งใส ฟีเจอร์แตกโหด และสัญญาณไลฟ์สดความคมชัดสูง • สล็อตตัวท็อปอัดแน่นด้วยระบบ Multipliers ตัวคูณสะสม โหมดซื้อฟรีสปิน และคอมโบแตกต่อเนื่อง Cascading สปินลื่น กราฟิกสมูธ ไม่มีกระตุก เบทเริ่มต้นเบา ๆ แต่พร้อมแตกรางวัลใหญ่ • โต๊ะสดพร้อมลุย เชื่อมสัญญาณไลฟ์ระดับ Ultra HD ส่งตรงจากคาสิโนจริง ทั้งบาคาร่า รูเล็ต ไฮโล และเสือมังกร ร่วมกับดีลเลอร์มืออาชีพแบบเรียลไทม์ ผ่านกระเป๋าเงินเดียวไม่ต้องโยกเครดิต • โปรแน่นต้องลอง ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด • ระบบออโต้ลั่นไวไม่รอนาน ทำรายการเสร็จสรรพใน 3 วินาที ตัดขั้นตอนรอแอดมินอนุมัติและการส่งสลิปออกทั้งหมด ถอนยอดไหนก็เงินเข้าเต็มจำนวนทันที";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
 // คำถามที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
-// Faq4 ใช้ค่า default ของตัวเอง เพราะ default ของทุก variant ในตระกูลนี้เป็นคำถาม
+// <Faq3> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
+// Faq3 ใช้ค่า default ของตัวเอง เพราะ default ของทุก variant ในตระกูลนี้เป็นคำถาม
 // ของแบรนด์เก่า
 const faqs = [
   {
-    q: "HAPPYSUPERWIN ต่อเกมมาจากไหน แล้วค่า RTP ถูกปรับลดหรือเปล่า",
-    a: "HAPPYSUPERWIN เป็นเว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์นอกโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงเป็นมาตรฐานสากลและไม่มีการปรับลดอัตราแตกในเกมไหนเลย ทุกเกมในล็อบบี้ผ่านการทดสอบระบบหลังบ้านว่าจ่ายจริงตามอัลกอริทึมมาตรฐานสากลก่อนเปิดให้เข้าเล่น",
+    q: "QUEEN189 ต่อเกมมาจากไหน แล้วค่า RTP ถูกดัดแปลงหรือเปล่า",
+    a: "QUEEN189 เป็นเว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์นอกโดยไม่ผ่านเอเย่นต์และไม่ล็อกยูส ค่า RTP จึงเป็นมาตรฐานสากลไร้การดัดแปลงระบบ ทุกเกมในคลังผ่านการทดสอบอัลกอริทึมว่าแจกโบนัสตรงตามมาตรฐานโรงงานก่อนเปิดให้เข้าเล่น",
   },
   {
-    q: "ต้องเสียเวลาไล่หาเกมเองไหม แล้วเบทเริ่มต้นเท่าไหร่",
-    a: "ไม่ต้องไล่หาเอง เพราะคัดกรองเฉพาะเกมสล็อตที่มีอัตราการจ่ายรางวัลสูงและโบนัสแตกบ่อยที่สุดมาไว้ในหน้าแรกให้แล้ว ไม่ต้องเสียเวลาลองสุ่มเล่นเกมไร้คุณภาพ เบทเริ่มต้นเบาๆ ก็มีสิทธิ์ลุ้นแจ็คพอตก้อนโตได้ทันทีตั้งแต่สปินแรก",
+    q: "ในฟลอร์มีค่ายอะไรบ้าง แล้วต้องไล่หาเกมเองไหม",
+    a: "ขนทัพค่ายระดับท็อปของโลกมาไว้ครบมือ ทั้ง PG Soft, Pragmatic Play, SA Gaming และ Evolution โดยคัดเฉพาะเกมตัวเด่นที่โครงสร้างการจ่ายเงินโปร่งใส ฟีเจอร์แตกโหด และสัญญาณไลฟ์สดความคมชัดสูง จึงไม่ต้องเสียเวลาเลื่อนหาหรือลองผิดลองถูกเองให้เสียทุน",
   },
   {
-    q: "ในล็อบบี้มีค่ายอะไรบ้าง แล้วเกมแนวไหนให้เลือก",
-    a: "รวมค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายไว้ในที่เดียว ครบทั้งสล็อต 3D ภาพสวย ตัวคูณทวีคูณหนัก สล็อตสายซื้อฟีเจอร์ฟรีสปิน และสล็อตคลาสสิกแตกไว สลับเล่นได้หลายแนวในกระเป๋าเดียวโดยไม่ต้องเสียเวลาโยกเงิน",
+    q: "สล็อตตัวท็อปมีฟีเจอร์อะไรให้ลุ้น แล้วเบทเริ่มต้นต้องหนักไหม",
+    a: "คลังสล็อตอัดแน่นด้วยระบบ Multipliers ตัวคูณสะสม โหมดซื้อฟรีสปิน และคอมโบแตกต่อเนื่อง Cascading สปินลื่น กราฟิกสมูธ ไม่มีกระตุก เบทเริ่มต้นเบา ๆ ก็เข้าเล่นได้และยังพร้อมแตกรางวัลใหญ่ในตาเดียวกัน",
   },
   {
-    q: "เกมใหม่เข้าบ่อยแค่ไหน แล้วมีฟีเจอร์อะไรให้ลุ้นบ้าง",
-    a: "อัปเดตคลังเกมใหม่ทันทีที่ค่ายผู้พัฒนาปล่อยไฟล์เกมออกจากสตูดิโอ ได้ทดลองเล่นฟีเจอร์เด็ดและอ่านจังหวะโบนัสก่อนใครแบบไม่ตกเทรนด์ ส่วนฟีเจอร์มาครบหลายสไตล์ ทั้งระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง Multiplier สุ่มแจกตัวคูณหนัก และสัญลักษณ์ Wild ซ้อนทับ",
+    q: "อยากเล่นโต๊ะสดต้องย้ายเว็บหรือโยกเครดิตไหม",
+    a: "สลับจากหน้าสปินมาโต๊ะสดได้ทันทีโดยไม่ต้องย้ายเว็บ สัญญาณไลฟ์สดเป็นระดับ Ultra HD ส่งตรงจากคาสิโนจริง มีทั้งบาคาร่า รูเล็ต ไฮโล และเสือมังกร ร่วมกับดีลเลอร์มืออาชีพแบบเรียลไทม์ ทั้งหมดใช้กระเป๋าเงินเดียวไม่ต้องเสียเวลาโยกเครดิต",
   },
   {
-    q: "รับโบนัสฟรีต้องทักแอดมินไหม แล้วฝากถอนใช้เวลานานแค่ไหน",
-    a: "ไม่ต้องรอแอดมิน เพราะเปิดระบบรับโบนัสฟรีแบบอัตโนมัติ เลือกกดรับสิทธิ์เพิ่มทุนสปิน เครดิตฟรี หรือคืนยอดเสีย Cash Back ผ่านหน้าแดชบอร์ดได้เองทันที ส่วนระบบฝากถอนออโต้ไฮสปีดทำรายการเสร็จใน 3 วินาที ถอนเงินออกได้เต็มยอด ไร้เงื่อนไขจุกจิก",
+    q: "รับโปรต้องส่งสลิปไหม แล้วฝากถอนใช้เวลานานแค่ไหน",
+    a: "ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ สิทธิ์ทั้งโบนัสต้อนรับ โปรฝากแรกของวัน และ Cash Back คืนยอดเสียทุกวัน กดรับเองได้จากหน้าแดชบอร์ด เงื่อนไขชัดเจนไม่ติดเทิร์นโอเวอร์มหาโหด ส่วนระบบออโต้ทำรายการเสร็จสรรพใน 3 วินาที ถอนยอดไหนก็เงินเข้าเต็มจำนวน",
   },
 ];
 
@@ -132,17 +129,86 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="HAPPYSUPERWIN สล็อตรวมตัวจี๊ด เกมดังคัดมาดี โบนัสฟรีรับเลย">
+  <ContentBoxNeumorphism as="h1" title="QUEEN189 คาสิโนมงลงทุกสปิน เกมเด็ดของดีมีครบ โปรแน่นต้องลอง">
     <p class="text-left text-base leading-relaxed">
-      HAPPYSUPERWIN เว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ค่า RTP มาตรฐานสากล ไม่มีปรับลดอัตราแตก คัดเฉพาะสล็อตตัวจี๊ดแตกง่ายจากค่ายใหญ่ มาพร้อมแจกโบนัสฟรีรับเองได้ทันที และระบบฝากถอนออโต้ 3 วินาที
-      ปั่นทำกำไรได้โปร่งใส ถอนเงินออกได้เต็มยอด ไร้เงื่อนไขจุกจิก
+      QUEEN189 เว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ปั่นง่ายแตกจริงด้วยค่า RTP มาตรฐานสากล ไร้การดัดแปลงระบบ ไม่ผ่านเอเย่นต์ ไม่ล็อกยูส รวบรวมเกมสล็อตตัวฮิตและโต๊ะสดจากค่ายใหญ่ระดับโลก
+      พร้อมระบบฝากถอนออโต้ประมวลผลฉับไวใน 3 วินาที การันตีสภาพคล่องทางการเงิน ถอนยอดไหนก็เงินเข้าเต็มจำนวนทันที
     </p>
-  </ContentBoxPremium>
+  </ContentBoxNeumorphism>
 
-  <ContentBoxSevenThreePremium as="h2" title="HAPPYSUPERWIN สล็อตรวมตัวจี๊ด คัดเกมน่าเล่นมาให้แบบไม่ต้องเสียเวลาหา" titleleft="เล่นที่นี่ ดียังไง?">
+  <ContentBoxCyberCut as="h2" title="QUEEN189 คาสิโนมงลงทุกสปิน เปิดลิสต์เกมเด็ดของดีที่คัดมาแล้วว่าน่าจับตา">
+    <p class="text-left text-base leading-relaxed">
+      ยกระดับความปังด้วยเกมคัดเกรดบน QUEEN189 ที่รวมเอาเฉพาะเกมสล็อตแตกง่ายและคาสิโนสดอัตราจ่ายสูงมาไว้ในที่เดียว ไม่เอาเกมล้าหลังหรือเปอร์เซ็นต์แตกต่ำมาลงคลัง
+      ทุกเกมผ่านการทดสอบอัลกอริทึมว่าแจกโบนัสตรงตามมาตรฐานโรงงาน ให้คุณลุ้นรับรางวัลใหญ่ระดับมงลงได้ทุกสปิน
+    </p>
+  </ContentBoxCyberCut>
+
+  <ContentBox3ThreeNeumorphism
+    as="h2"
+    title="ค่ายชั้นนำส่งอะไรลงฟลอร์ QUEEN189 รวมตัวเด่นไว้ให้เลือกแบบไม่ต้องไล่หา"
+    titleleft="ค่ายระดับท็อปของโลกครบมือ"
+    titlecenter="คัดเฉพาะเกมตัวเด่นของแต่ละค่าย"
+    titleright="ไม่ต้องเลื่อนหาเองให้เสียทุน">
+    <p slot="left" class="text-left text-base leading-relaxed">ขนทัพค่ายเกมระดับท็อปของโลกอย่าง PG Soft, Pragmatic Play, SA Gaming และ Evolution มาไว้แบบครบมือ</p>
+    <p slot="center" class="text-left text-base leading-relaxed">QUEEN189 คัดเฉพาะเกมตัวเด่นที่มีโครงสร้างการจ่ายเงินโปร่งใส ฟีเจอร์แตกโหด และสัญญาณไลฟ์สดความคมชัดสูง</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ไม่ต้องเสียเวลาเลื่อนหาหรือลองผิดลองถูกเองให้เสียทุน</p>
+  </ContentBox3ThreeNeumorphism>
+
+  <ProviderGrid />
+
+  <ContentBoxSevenThreeCyberCut as="h2" title="สล็อตตัวท็อปพร้อมขึ้นแท่น เกมฮิตตัวไหนมีของก็ไม่ปล่อยให้หลุดลิสต์" titleleft="วงล้อแห่งโชคลาภ">
     <Picture
       slot="left"
-      src={imgWhyPlayHere}
+      src={imgTopSlots}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) 92vw, 355px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชั่นของ QUEEN189 พื้นดำประกายทอง มีผู้หญิงสวมชุดราตรีสีทองยืนอยู่หน้าวงล้อเสี่ยงโชคทองคำ ล้อมด้วยกองเหรียญทองและเหรียญที่ปลิวอยู่กลางอากาศ ตัวอักษรทองด้านขวาเขียนว่า วงล้อ แห่งโชคลาภ ลุ้นรับเงินโบนัส รับได้ทุกวัน"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e4bb53]/45 shadow-[0_10px_30px_rgba(228,187,83,0.28)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      สายปั่นสล็อตต้องถูกใจ คลังสล็อตของ QUEEN189 อัดแน่นด้วยเกมกระแสแรงที่มีระบบ Multipliers ตัวคูณสะสม โหมดซื้อฟรีสปิน และคอมโบแตกต่อเนื่อง Cascading สปินลื่น กราฟิกสมูธ ไม่มีกระตุก เบทเริ่มต้นเบาๆ
+      แต่พร้อมแตกรางวัลใหญ่พาคุณขึ้นแท่นทำกำไรได้ต่อเนื่อง
+    </p>
+  </ContentBoxSevenThreeCyberCut>
+
+  <FeatureHighlights
+    items={[
+      {
+        icon: "✖️",
+        title: "Multipliers ตัวคูณสะสม",
+        description: "ตัวคูณที่สะสมขึ้นระหว่างรอบหมุน ดันยอดรางวัลที่ออกให้ทบขึ้นจากเบทเดิมโดยไม่ต้องเพิ่มทุนในตาเดียวกัน",
+        accent: "gold",
+      },
+      {
+        icon: "🎟️",
+        title: "โหมดซื้อฟรีสปิน",
+        description: "กดเข้าโหมดฟรีสปินได้เลยโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อยากเข้าจังหวะโบนัสของเกมให้ตรงรอบ",
+        accent: "silver",
+      },
+      {
+        icon: "🔁",
+        title: "Cascading คอมโบแตกต่อเนื่อง",
+        description: "สัญลักษณ์ที่แตกแล้วร่วงหายไปและมีตัวใหม่ไหลลงมาแทน ต่อคอมโบให้ยาวขึ้นในสปินเดียวโดยไม่ต้องกดหมุนใหม่",
+        accent: "gold",
+      },
+    ]}
+  />
+
+  <ContentBoxTwoNeumorphism as="h2" title="โต๊ะสดพร้อมลุย QUEEN189 เปลี่ยนจากหน้าสปินมารับฟีลคาสิโนสดได้ทันที" titleleft="สัญญาณไลฟ์ Ultra HD จากคาสิโนจริง" titleright="ครบทุกโต๊ะในกระเป๋าเงินเดียว">
+    <p slot="left" class="text-left text-base leading-relaxed">สลับอารมณ์มาเดิมพันโต๊ะสดได้ทันทีโดยไม่ต้องย้ายเว็บ QUEEN189 เชื่อมต่อสัญญาณไลฟ์สดระดับ Ultra HD ส่งตรงจากคาสิโนจริง</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ให้คุณสนุกกับบาคาร่า รูเล็ต ไฮโล และเสือมังกร ร่วมกับดีลเลอร์มืออาชีพแบบเรียลไทม์ ผ่านกระเป๋าเงินเดียวที่ไม่ต้องเสียเวลาโยกเครดิต</p>
+  </ContentBoxTwoNeumorphism>
+
+  <ContentBoxSevenThreeNeumorphism as="h2" title="โปรแน่นต้องลอง มีดีลไหนน่าตาม QUEEN189 รวมสิทธิ์เด่นไว้ให้เช็กแบบไม่ตกคิว" titleleft="CASH BACK คืนยอดเสีย">
+    <Picture
+      slot="left"
+      src={imgCashBack}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -151,122 +217,47 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ HAPPYSUPERWIN พื้นทอง หัวเรื่องเขียนว่า เล่นที่นี่ ดียังไง? มีตัวการ์ตูนแมวยืนอยู่ด้านหนึ่ง ล้อมด้วยป้ายข้อดีแปดอัน ได้แก่ คืนยอดเสีย 20,000 ทุกสัปดาห์ ระบบ AUTO เพียง 3 วินาที สะดวก รวดเร็ว ตลอด 24HR. การเงินมั่นคงปลอดภัย เปิดมานานกว่า 6 ปี โปรโมชั่นสุดปัง เอาใจลูกค้า ฝากเงินขั้นต่ำ ไม่ติดเงื่อนไขยอดฝาก ฝากแล้วไม่ต้องถอนได้ทันที เล่นเท่าไหร่เราก็จ่าย ได้แสนถอนแสน ได้ล้านถอนล้าน และ เว็บใหญ่ไม่ผ่านเอเย่นต์ 100% ลูกค้าที่สมัครตรงเข้าเว็บใหญ่เท่านั้น"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#8a1f9e]/45 shadow-[0_10px_30px_rgba(225,28,204,0.28)]"
+      alt="แบนเนอร์โปรโมชั่นของ QUEEN189 พื้นดำประกายทอง มีผู้หญิงสวมชุดราตรีสีทองถือป้ายสีดำที่เขียนว่า CASH BACK พร้อมลูกศรโค้งกลับ ล้อมด้วยเหรียญทองและเพชรทอง ตัวอักษรทองด้านขวาเขียนว่า คืน 5% ยอดเสีย รับได้ทุกวันที่ 1 และ 15"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e4bb53]/45 shadow-[0_10px_30px_rgba(228,187,83,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      HAPPYSUPERWIN สล็อตรวมตัวจี๊ด คัดกรองเฉพาะเกมสล็อตที่มีอัตราการจ่ายรางวัลสูงและโบนัสแตกบ่อยที่สุดมาไว้ในหน้าแรก ไม่ต้องเสียเวลาลองสุ่มเล่นเกมไร้คุณภาพ
-      ทุกเกมผ่านการทดสอบระบบหลังบ้านว่าจ่ายจริงตามอัลกอริทึมมาตรฐานสากล เบทเริ่มต้นเบาๆ แต่มีสิทธิ์ลุ้นแจ็คพอตก้อนโตได้ทันที
+      จัดเต็มสิทธิประโยชน์สุดคุ้มที่ QUEEN189 คัดมาให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน โปร่งใส
+      ไม่ติดเทิร์นโอเวอร์มหาโหด ช่วยเพิ่มจำนวนสปินและต่อยอดกำไรได้จริง
     </p>
-  </ContentBoxSevenThreePremium>
+  </ContentBoxSevenThreeNeumorphism>
 
-  <ContentBox3ThreePremium
-    as="h2"
-    title="เกมดังค่ายชั้นนำมีอะไรน่าตาม HAPPYSUPERWIN รวมตัวเด่นไว้ครบหลายแนว"
-    titleleft="ค่ายชั้นนำระดับโลกครบในที่เดียว"
-    titlecenter="ครบทั้ง 3D ตัวคูณ และคลาสสิก"
-    titleright="สลับเล่นได้ในกระเป๋าเดียว">
-    <p slot="left" class="text-left text-base leading-relaxed">รวมค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายไว้ในที่เดียว</p>
-    <p slot="center" class="text-left text-base leading-relaxed">HAPPYSUPERWIN ขนมาหมดทั้งสล็อต 3D ภาพสวย ตัวคูณทวีคูณหนัก สล็อตสายซื้อฟีเจอร์ฟรีสปิน และสล็อตคลาสสิกแตกไว</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ให้สลับเล่นได้หลายแนวในกระเป๋าเดียวโดยไม่ต้องเสียเวลาโยกเงิน</p>
-  </ContentBox3ThreePremium>
-
-  <ProviderGridPremium />
-
-  <ContentBoxFloatingBadge as="h2" title="ของใหม่ไม่ปล่อยให้รอนาน HAPPYSUPERWIN เติมเกมเข้าล็อบบี้อย่างต่อเนื่อง">
+  <ContentBox as="h2" title="ระบบออโต้ลั่นไวไม่รอนาน ลดจังหวะค้างให้ฝากถอนและทำรายการได้คล่องกว่าเดิม">
     <p class="text-left text-base leading-relaxed">
-      อัปเดตคลังเกมใหม่ทันทีที่ค่ายผู้พัฒนาปล่อยไฟล์เกมออกจากสตูดิโอ HAPPYSUPERWIN ดึงสัญญาณเกมสล็อตเข้าใหม่มาเติมในล็อบบี้อย่างต่อเนื่อง ให้สมาชิกได้ทดลองเล่นฟีเจอร์เด็ดและอ่านจังหวะโบนัสก่อนใคร
-      เข้าถึงเกมใหม่ไฟแรงได้ทันทีแบบไม่มีตกเทรนด์
+      ขับเคลื่อนธุรกรรมทางการเงินด้วยระบบออโต้ไฮสปีด QUEEN189 ทำรายการเสร็จสรรพใน 3 วินาที ตัดขั้นตอนการรอแอดมินอนุมัติและการส่งสลิปออกทั้งหมด ฝากปุ๊บยอดเข้าเกมปั๊บ
+      ถอนกำไรเงินเด้งเข้าบัญชีธนาคารหรือวอลเล็ททันที ให้คุณบริหารการเงินได้ลื่นไหลไร้รอยต่อ
     </p>
-  </ContentBoxFloatingBadge>
-
-  <ContentBoxSpecial as="h2" title="ฟีเจอร์ครบหลายสไตล์ เปลี่ยนฟีลแต่ละรอบให้มีลูกเล่นน่าค้นมากกว่าเดิม">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      หมุนสล็อตได้ไม่มีซ้ำฟีล ด้วยการอัดแน่นฟีเจอร์ยุคใหม่บน HAPPYSUPERWIN ทั้งระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง Multiplier สุ่มแจกตัวคูณหนัก และสัญลักษณ์ Wild ซ้อนทับ
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">ที่ช่วยเปลี่ยนการกดสปินธรรมดาให้เป็นจังหวะคว้าเงินรางวัลทะลุเพดานทุกวินาที</p>
-  </ContentBoxSpecial>
-
-  <FeatureHighlights
-    items={[
-      {
-        icon: "🔁",
-        title: "Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง",
-        description: "สัญลักษณ์ที่แตกแล้วร่วงหายไปและมีตัวใหม่ไหลลงมาแทน ต่อคอมโบให้ยาวขึ้นในสปินเดียวโดยไม่ต้องกดหมุนใหม่",
-        accent: "gold",
-      },
-      {
-        icon: "✖️",
-        title: "Multiplier สุ่มแจกตัวคูณหนัก",
-        description: "ระบบสุ่มแจกตัวคูณระหว่างรอบหมุน ดันยอดรางวัลที่ออกให้ทบขึ้นจากเบทเดิมโดยไม่ต้องเพิ่มทุนในตาเดียวกัน",
-        accent: "silver",
-      },
-      {
-        icon: "🃏",
-        title: "สัญลักษณ์ Wild ซ้อนทับ",
-        description: "สัญลักษณ์ Wild ซ้อนทับกันบนหน้าจอ เปิดโอกาสเรียงไลน์รางวัลได้กว้างกว่าการหมุนแบบปกติ เปลี่ยนการกดสปินธรรมดาให้ลุ้นได้ทุกวินาที",
-        accent: "gold",
-      },
-    ]}
-  />
-
-  <ContentBoxSevenThreeFloatingBadge as="h2" title="โบนัสฟรีรับเลย เปิดสิทธิ์ให้ตามแบบไม่ต้องรอแอดมิน" titleleft="โปรโมชั่น ฝากประจำ">
-    <Picture
-      slot="left"
-      src={imgDepositStreak}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 350px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชั่นของ HAPPYSUPERWIN พื้นม่วง หัวเรื่องเขียนว่า โปรโมชั่น ฝากประจำ มีผู้หญิงชุดชมพูถือโทรศัพท์ที่เปิดเกมค่าย PG Soft ล้อมด้วยเหรียญทองและธนบัตร ข้างกันเป็นสิทธิ์สี่ขั้น ฝาก 500 ครบ 3 วัน รับ 200฿ ครบ 7 วัน รับ 500฿ ครบ 10 วัน รับ 1,000฿ และ ครบ 15 วัน รับ 2,000฿ ด้านล่างเขียนว่า บริการ ฝาก-ถอน ภายใน 30 วินาที ตลอด 24 ชั่วโมง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#8a1f9e]/45 shadow-[0_10px_30px_rgba(225,28,204,0.28)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ตัดระบบการขอโปรโมชันแบบเดิมๆ ทิ้งไป HAPPYSUPERWIN เปิดระบบรับโบนัสฟรีแบบอัตโนมัติ สมาชิกสามารถเลือกกดรับสิทธิ์เพิ่มทุนสปิน เครดิตฟรี หรือคืนยอดเสีย Cash Back ผ่านหน้าแดชบอร์ดได้เองทันที
-      ยอดเข้าเครดิตไว เงื่อนไขชัดเจน นำไปหมุนทำกำไรและถอนออกได้จริง
-    </p>
-  </ContentBoxSevenThreeFloatingBadge>
-
-  <ContentBoxTwoPremium
-    as="h2"
-    title="จากเกมดังถึงของใหม่ ทำไม HAPPYSUPERWIN ถึงมีตัวเลือกให้สายสล็อตตามได้เรื่อย ๆ"
-    titleleft="เชื่อมตรงเซิร์ฟเวอร์หลัก คลังเกมระดับ A-List"
-    titleright="โปรเพิ่มทุนและออโต้ไฮสปีด 3 วินาที">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      โครงสร้างระบบหลังบ้านที่เชื่อมต่อตรงกับเซิร์ฟเวอร์หลัก ทำให้ HAPPYSUPERWIN เป็นศูนย์รวมความบันเทิงที่ครบวงจรที่สุด มีทั้งคลังเกมระดับ A-List เกมใหม่เข้าทุกสัปดาห์
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">โปรโมชันเพิ่มทุน และระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จใน 3 วินาที จบครบทุกความต้องการในเว็บเดียว</p>
-  </ContentBoxTwoPremium>
+  </ContentBox>
 
   <SmoothCarousel />
 
   <GameRankingBoard />
 
-  <LatestWinners2 />
+  <LatestWinnersPremium />
 
   <LoginRtpSection />
 
-  <ReviewCardSumo2 />
+  <ReviewCardSumo />
 
   <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fff0fc] via-[#ff5ae6] to-[#8a1f9e] px-4 py-3 text-sm font-black whitespace-nowrap text-[#190430] shadow-[0_10px_30px_rgba(225,28,204,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(225,28,204,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#c38d29] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0b0704] shadow-[0_10px_30px_rgba(228,187,83,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(228,187,83,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e11ccc]/55 bg-[#190430]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f7e2ff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ff5ae6] hover:bg-[#380a5f] hover:text-[#fff0fc] hover:shadow-[0_15px_40px_rgba(225,28,204,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#e4bb53]/55 bg-[#0b0704]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f3e4c4] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#fceb83] hover:bg-[#271a0c] hover:text-[#fdf3d2] hover:shadow-[0_15px_40px_rgba(228,187,83,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ HAPPYSUPERWIN" faqs={faqs} />
+  <Faq3 title="คำถามที่พบบ่อยเกี่ยวกับ QUEEN189" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

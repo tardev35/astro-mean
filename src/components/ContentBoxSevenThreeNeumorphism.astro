@@ -13,16 +13,16 @@ const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.pro
 //
 // `title` คือหัวข้อเดียวที่ปล่อยออกมาได้ และออกมาที่ระดับที่ prop `as` สั่ง (docx
 // รอบนี้แบน H1 + H2 ล้วน ไม่มี H3) ส่วน titleleft/titleright เป็นป้ายคอลัมน์ระดับ <p>
-// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 6 เรื่องระบบใหม่ไหลลื่น
+// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 6 เรื่องสิทธิประโยชน์และ Cash Back
 //
-// XONEBET: ไฟล์นี้มาถึงรอบนี้ในชุดสีของแบรนด์ก่อนหน้า ย้ายทั้งไฟล์มาเป็นทองหลอมคู่
-// เงินโครเมียม — ทอง #ebb101 / #fee505 / #fff8d1 / #a87c02 คู่เงิน #e9e9e9 /
-// #c4c4c4 บนผิว #161105 เนื้อความ #f4e6bd ข้อความรอง #c3ae76 (ห้ามพิมพ์ hex ของ
-// แบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์
-// ดูของเดิมได้จาก git history)
+// QUEEN189: ไฟล์นี้มาถึงรอบนี้ในชุดสีของแบรนด์ก่อนหน้า ย้ายทั้งไฟล์มาเป็นทอง
+// ราชสำนักบนดำสนิท — ทอง #fdf3d2 / #fceb83 / #e4bb53 / #c38d29 / #7a5615 บนผิว
+// #1a1108 เนื้อความ #f3e4c4 ข้อความรอง #c2a878 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้
+// ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก
+// git history) แบรนด์นี้เป็นทองวรรณะเดียว ไม่มีสีที่สองมาตัด
 //
 // Neumorphism แปลว่าเงาสองด้านต้องเป็นเฉดเข้ม/อ่อนของสีการ์ดเอง ไม่ใช่สีแบรนด์:
-// #050400 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #241c09 (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
+// #050301 (เข้มกว่าพื้นหน้า) เป็นเงาทอด และ #271a0c (ผิวการ์ดยกขึ้นหนึ่งขั้น) เป็น
 // ไฮไลต์ ถ้าเอาทองสดไปแทน การ์ดจะกลายเป็นแสงเรืองแทนผิวนูน
 //
 // ไม่มี text-center บนการ์ดหรือ <section> โดยตั้งใจ — ถ้าใส่ มันจะ inherit ลงไปใน
@@ -32,19 +32,19 @@ const sectionLabel = title ? undefined : (label ?? titleright ?? titleleft ?? "�
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#ebb101]/30 bg-[#161105] p-8 shadow-[10px_10px_20px_#050400,-10px_-10px_20px_#241c09] transition-all duration-300 hover:shadow-[15px_15px_30px_#050400,-15px_-15px_30px_#302608]">
+    class="w-full rounded-[25px] border border-[#e4bb53]/30 bg-[#1a1108] p-8 shadow-[10px_10px_20px_#050301,-10px_-10px_20px_#271a0c] transition-all duration-300 hover:shadow-[15px_15px_30px_#050301,-15px_-15px_30px_#3c2505]">
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#c3ae76]">
-        {titleleft && <p class="bg-gradient-to-r from-[#fff8d1] via-[#fee505] to-[#ebb101] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#c2a878]">
+        {titleleft && <p class="bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#e4bb53] bg-clip-text text-2xl leading-normal font-black text-transparent">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f4e6bd] md:border-l md:border-[#ebb101]/30 md:pl-8">
-        {title && <HeadingTag class="bg-gradient-to-r from-[#fff8d1] via-[#fee505] to-[#e9e9e9] bg-clip-text text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e4c4] md:border-l md:border-[#7a5615]/45 md:pl-8">
+        {title && <HeadingTag class="bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#c38d29] bg-clip-text text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
         {
           titleright && (
-            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#fff8d1]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#e9e9e9] shadow-[0_0_5px_rgba(233,233,233,0.8)]" /> {titleright}
+            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#fdf3d2]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#e4bb53] shadow-[0_0_5px_rgba(228,187,83,0.8)]" /> {titleright}
             </p>
           )
         }

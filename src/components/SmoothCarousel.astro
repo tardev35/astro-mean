@@ -22,17 +22,17 @@ import bannerNewGame from "../assets/gamedemo16.webp";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์คือตัวหนังสือกับตัวละครบนรูป สิ่งนั้นจึงเป็น alt
 //
-// HAPPYSUPERWIN: แถบนี้ไม่ใช้ slide* — slide4 กับ slide1 ไปอยู่ในบล็อก
+// QUEEN189: แถบนี้ไม่ใช้ slide* — slide3 กับ slide1 ไปอยู่ในบล็อก
 // ContentBoxSevenThree* บนหน้าแรกแล้ว (เต็มเพดานสองบล็อกของ playbook) ส่วน slide2
-// กับ slide3 ปล่อยไม่ใช้บนหน้าแรก ให้หน้า /promotion เอาไปใช้ และ banner ทุกหมายเลข
+// กับ slide4 ปล่อยไม่ใช้บนหน้าแรก ให้หน้า /promotion เอาไปใช้ และ banner ทุกหมายเลข
 // (banner.png กับ banner2/3/4) เป็นอาร์ตของแบรนด์ก่อนที่มีชื่อของเขาพิมพ์อยู่บนรูป
 // ห้าม import ที่นี่หรือที่ไหนก็ตาม — การ import คือการ emit ลง dist/ ถึงจะไม่มีใคร
 // render ก็ตาม แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายพันธมิตร/เกมออกใหม่ที่เป็นกลางกับแบรนด์
 // แทน วางต่อท้ายชุด widget ปลายหน้า ซึ่งอยู่หลังหัวข้อ docx ข้อสุดท้ายทั้งหมด
 //
-// ชุดสีรอบนี้เป็นแคนดี้มาเจนต้าคู่เหลืองลูกอม — ขอบสไลด์ #4c0d6b เงา
-// rgba(225,28,204,X) และปุ่มหยุดที่โผล่ตอน focus รับมาเจนต้า #e11ccc / #ff5ae6
-// บนผิว #380a5f
+// ชุดสีรอบนี้เป็นทองราชสำนักบนดำสนิท — ขอบสไลด์ #7a5615 เงา
+// rgba(228,187,83,X) และปุ่มหยุดที่โผล่ตอน focus รับทอง #e4bb53 / #fceb83
+// บนผิว #271a0c
 //
 // alt ของแต่ละใบบรรยาย "ตัวหนังสือที่พิมพ์อยู่บนรูปจริง" ห้ามเขียนใหม่ให้เข้าธีม
 // ของแบรนด์ — นั่นคือ alt ที่ไม่ตรงกับรูป ถ้าวันไหนต้องการให้แถบนี้อ่านเป็นชุดอื่น
@@ -95,7 +95,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e11ccc]/60 peer-focus-visible:bg-[#380a5f] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ff5ae6]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#e4bb53]/60 peer-focus-visible:bg-[#271a0c] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#fceb83]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -108,7 +108,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#4c0d6b]/45 object-cover shadow-[0_10px_30px_rgba(225,28,204,0.3)]"
+              class="block w-full rounded-xl border border-[#7a5615]/55 object-cover shadow-[0_10px_30px_rgba(228,187,83,0.3)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

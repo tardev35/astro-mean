@@ -9,7 +9,7 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // ลิงก์ด่วนชุดเดียว ใช้ .map ด้านล่าง — เดิมเขียน <a> ซ้ำหกก้อน ทำให้เพิ่ม/ลบหน้า
 // ต้องไล่แก้ทีละอัน (และเป็นที่ที่ลิงก์หน้าหวยของแบรนด์ก่อนเคยค้างอยู่)
-// XONEBET เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
+// QUEEN189 เป็นเว็บคาสิโน/สล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
   { name: "ทดลองเล่นเกมฟรี", path: "/ทดลองเล่น" },
@@ -21,39 +21,40 @@ const quickLinks = [
 ];
 
 const LOGO_ALT =
-  "โลโก้ XONEBET เป็นตัวอักษร X สีทองเหลืองขนาดใหญ่ทรงคมเหมือนสายฟ้าสองเส้นไขว้กัน ใต้ตัว X เป็นคำว่า ONE.BET ตัวอักษรหนาสีเงินโครเมียม และบรรทัดล่างสุดเป็นข้อความตัวเล็กสีเงินว่า SLOT&CASINO ONLINE ทั้งหมดวางอยู่บนพื้นสีดำ";
+  "โลโก้ QUEEN189 เป็นมงกุฎทองคำประดับเพชรตั้งอยู่เหนือคำว่า Queen ที่เขียนด้วยตัวอักษรทองคำเงาวาวแบบมีหางโค้ง ใต้ลงมาเป็นเลข 189 สีทองขนาบด้วยลายเส้นหัวลูกศรสีทองสองข้าง";
 
-// XONEBET: ย้ายจากน้ำเงินรอยัลคู่ทองส้มของแบรนด์ก่อน มาเป็นทองหลอมคู่เงินโครเมียม
-// ของแบรนด์นี้ — ทอง #ebb101 / #fee505 / #a87c02 / #5c4301 คู่เงิน #e9e9e9 /
-// #c4c4c4 บนผิว #0a0803 / #161105 / #221a08 เนื้อความ #f4e6bd รองด้วย #c3ae76
-// และหมายเหตุตัวเล็ก #9a8a5e
+// QUEEN189: ย้ายจากทองหลอมคู่เงินโครเมียมของแบรนด์ก่อนที่เคยใช้ไฟล์นี้ มาเป็นทอง
+// ราชสำนักบนดำสนิทของแบรนด์นี้ — ทอง #fdf3d2 / #fceb83 / #e4bb53 / #c38d29 /
+// #7a5615 บนผิว #0b0704 / #1a1108 / #271a0c เนื้อความ #f3e4c4 รองด้วย #c2a878
+// และหมายเหตุตัวเล็ก #93805a
 //
-// ทองมาจากตัว X ในโลโก้ มังกรทองคำ และเหรียญทองที่ปลิวทั่วแบนเนอร์ จึงคุมโครงสร้าง
-// หลักทั้งขอบและปุ่ม CTA ส่วนเงินโครเมียมมาจากตัวอักษร ONE.BET ใช้เป็นปลายไล่สี
-// ของเส้นใต้หัวคอลัมน์ เพื่อให้ทองล้วนไม่กลืนกันเอง
+// ทองมาจากมงกุฎกับตัวอักษร Queen ในโลโก้ เหรียญทองและผ้าไหมทองในแบนเนอร์ แบรนด์นี้
+// เป็นทองล้วนไม่มีสีที่สอง จึงใช้ทองสว่าง (#fceb83) เป็นปลายไล่สีของเส้นใต้หัวคอลัมน์
+// แทนที่จะหาสีตัดกันมาคั่น
 //
 // บล็อก <address> ด้านล่างวางตามที่ playbook กำหนดแบบคำต่อคำ — ไม่ใส่สีของแบรนด์
 // ลงไป (border-white/15 + bg-black/20 + opacity ทำงานได้กับ footer ทุก variant
 // ซึ่งเป็นพื้นเข้มทั้งหมด) ห้าม retype ข้อความข้างในเอง มาจาก BRAND_ADDRESS
 ---
 
-<footer class="relative mt-32 w-full border-t border-[#5c4301]/35 bg-[#0a0803] pt-64 pb-6 font-sans text-[#f4e6bd] shadow-[0_-10px_30px_rgba(92,67,1,0.25)] md:pt-40">
+<footer class="relative mt-32 w-full border-t border-[#7a5615]/40 bg-[#0b0704] pt-64 pb-6 font-sans text-[#f3e4c4] shadow-[0_-10px_30px_rgba(122,86,21,0.3)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#ebb101]/35 bg-gradient-to-r from-[#161105] via-[#221a08] to-[#0a0803] p-6 shadow-[0_15px_40px_rgba(168,124,2,0.45)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#e4bb53]/40 bg-gradient-to-r from-[#1a1108] via-[#271a0c] to-[#0b0704] p-6 shadow-[0_15px_40px_rgba(195,141,41,0.4)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#fee505] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
-        <span aria-hidden="true">🐉</span> พร้อมเปิดล็อบบี้กับ XONEBET หรือยัง?
+      <p class="text-xl font-black tracking-wide text-[#fceb83] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
+        <span aria-hidden="true">👑</span> พร้อมรับมงกับ QUEEN189 หรือยัง?
       </p>
-      <p class="mt-2 text-sm font-medium text-[#c3ae76] md:text-base">
-        สมัคร XONEBET ยูสเซอร์เดียวจบครบทุกค่ายในแดชบอร์ดเดียว ไม่ต้องสลับเว็บ ไม่ต้องโยกเงินข้ามค่าย คัดเฉพาะค่ายเกรด A อย่าง PG Soft, Pragmatic Play และ Joker Gaming เน้นเกมตัวท็อปที่โครงสร้างการจ่ายเงินโปร่งใส ฝากถอนออโต้ประมวลผลไวใน 3 วินาที
+      <p class="mt-2 text-sm font-medium text-[#c2a878] md:text-base">
+        สมัคร QUEEN189 ยูสเซอร์เดียวจบครบทั้งสล็อตและโต๊ะสดในกระเป๋าเงินเดียว ไม่ต้องสลับเว็บ ไม่ต้องโยกเครดิต คัดค่ายชั้นนำอย่าง PG Soft, Pragmatic Play, SA Gaming
+        และ Evolution มาให้เลือกครบมือ ฝากถอนออโต้ประมวลผลเสร็จใน 3 วินาที
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#ebb101] bg-gradient-to-b from-[#fee505] to-[#ebb101] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#0a0803] shadow-[0_0_15px_rgba(235,177,1,0.5)] transition-all hover:scale-105 md:text-base">
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#e4bb53] bg-gradient-to-b from-[#fceb83] to-[#c38d29] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#0b0704] shadow-[0_0_15px_rgba(228,187,83,0.5)] transition-all hover:scale-105 md:text-base">
       <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🎁</span></span>
-      <div aria-hidden="true" class="absolute inset-0 translate-y-full bg-[#fee505] transition-transform duration-300 group-hover:translate-y-0"></div>
+      <span aria-hidden="true" class="absolute inset-0 block translate-y-full bg-[#fceb83] transition-transform duration-300 group-hover:translate-y-0"></span>
     </a>
   </div>
 
@@ -66,24 +67,25 @@ const LOGO_ALT =
               <Picture
                 src={mainLogo}
                 alt={LOGO_ALT}
-                widths={[101, 202, 303]}
-                sizes="101px"
+                widths={[94, 188, 282]}
+                sizes="94px"
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(168,124,2,0.7)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(195,141,41,0.7)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#fee505] to-[#5c4301] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(168,124,2,0.6)]">XONEBET</p>
+              <p class="bg-gradient-to-b from-[#fceb83] to-[#7a5615] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(195,141,41,0.6)]">QUEEN189</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#c3ae76]">
-          XONEBET เว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลักนอก ไม่ผ่านเอเย่นต์ ค่า RTP โปร่งใสตามมาตรฐานสากล ไม่มีการปรับแต่งเปอร์เซ็นต์การชนะ ยึดโครงสร้าง One-Stop Service เต็มรูปแบบ เชื่อมคลังเกมทุกค่ายชั้นนำและระบบการเงินไว้ในบัญชีเดียว
-          คัดกรองเฉพาะค่ายใหญ่ระดับเกรด A อย่าง PG Soft, Pragmatic Play และ Joker Gaming เน้นเฉพาะเกมตัวท็อปที่โครงสร้างการจ่ายเงินโปร่งใส จังหวะฟรีสปินเข้าไว และมีอัตราคูณสะสมสูง ตัดเกมไร้คุณภาพออกทั้งหมด
-          ระบบฝากถอนออโต้ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ปั่นง่าย ทำกำไรได้จริงและถอนออกได้เต็มจำนวนทุกยอด
+        <p class="text-sm leading-relaxed text-[#c2a878]">
+          QUEEN189 คาสิโนมงลงทุกสปิน เว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์นอก ไม่ผ่านเอเย่นต์ ไม่ล็อกยูส ค่า RTP เป็นมาตรฐานสากลและไร้การดัดแปลงระบบ
+          คัดเฉพาะเกมเด็ดของดีที่ผ่านการทดสอบอัลกอริทึมว่าแจกโบนัสตรงตามมาตรฐานโรงงาน ไม่เอาเกมล้าหลังหรือเปอร์เซ็นต์แตกต่ำมาลงคลัง
+          รวมค่ายใหญ่ระดับโลกอย่าง PG Soft, Pragmatic Play, SA Gaming และ Evolution ครบทั้งสล็อตตัวท็อปที่มีตัวคูณสะสม โหมดซื้อฟรีสปิน และคอมโบแตกต่อเนื่อง Cascading
+          กับโต๊ะสดสัญญาณ Ultra HD ทั้งบาคาร่า รูเล็ต ไฮโล และเสือมังกร อยู่ในกระเป๋าเงินเดียวไม่ต้องโยกเครดิต ระบบฝากถอนออโต้ทำรายการเสร็จใน 3 วินาที ถอนยอดไหนก็เงินเข้าเต็มจำนวนทันที
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -116,16 +118,16 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f4e6bd] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f3e4c4] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#ebb101] to-[#e9e9e9] shadow-[0_0_8px_rgba(235,177,1,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#c38d29] to-[#fceb83] shadow-[0_0_8px_rgba(228,187,83,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#c3ae76] transition-colors hover:text-[#fee505]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#ebb101] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#c2a878] transition-colors hover:text-[#fceb83]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#e4bb53] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -134,40 +136,44 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f4e6bd] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f3e4c4] uppercase">
           ระบบการเงิน
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#ebb101] to-[#e9e9e9] shadow-[0_0_8px_rgba(235,177,1,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#c38d29] to-[#fceb83] shadow-[0_0_8px_rgba(228,187,83,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#c3ae76]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#c2a878]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#161105] transition-colors hover:border-[#a87c02]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#f4e6bd]"><span aria-hidden="true" class="text-lg text-[#ebb101]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#1a1108] transition-colors hover:border-[#c38d29]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#f3e4c4]"><span aria-hidden="true" class="text-lg text-[#e4bb53]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#5c4301]/30" />
+    <hr class="mb-6 border-[#7a5615]/35" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#9a8a5e] md:block">
-      สล็อตวันสต็อปที่ตัดระบบเอเย่นต์และขั้นตอนยุ่งยากออกทั้งหมด กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ สัญญาณเกมยิงตรงจากเซิร์ฟเวอร์หลักนอกผ่าน API แท้ ค่า RTP จึงโปร่งใสตามมาตรฐานสากล ไม่มีใครอยู่ตรงกลางให้ปรับเปอร์เซ็นต์การชนะ รวมเกมสล็อตค่ายใหญ่ครบวงจรไว้ในกระเป๋าเดียว
-      ยึดโครงสร้าง One-Stop Service เต็มรูปแบบ เชื่อมต่อคลังเกมจากทุกค่ายชั้นนำและระบบการเงินไว้ในบัญชีเดียว ไม่ต้องเสียเวลาสมัครหลายยูสเซอร์ ไม่ต้องโยกเงินข้ามค่ายให้สับสน เลือกเล่น สลับเกม และจัดการถอนกำไรได้ทันทีผ่านหน้าแดชบอร์ดเดียว คัดกรองเฉพาะค่ายใหญ่ระดับเกรด A เช่น PG Soft, Pragmatic Play และ Joker Gaming
-      จัดหมวดหมู่หน้าเว็บอย่างเป็นระบบ แยกตามประเภทเกม ค่ายดัง และหมวดเกมกระแสมาแรง ค้นหาเกมที่ใช่ได้ในไม่กี่คลิก ฟีเจอร์ยุคใหม่มาครบ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Wild ซ้อนทับ คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Buy Feature สำหรับสายใจร้อน
-      อัปเกรดเซิร์ฟเวอร์หลังบ้านประมวลผลความเร็วสูง สลับค่ายเกมและโหลดหน้าอินเทอร์เฟซได้ฉับไว ไร้ปัญหาเกมค้าง กระตุก หรือเด้งหลุดกลางทาง วางระบบแสดงผลแบบ Responsive 100% รองรับทั้งมือถือ iOS, Android, แท็บเล็ต และคอมพิวเตอร์ ฝากถอนออโต้ไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ XONEBET
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#93805a] md:block">
+      คาสิโนออนไลน์วันสต็อปที่ตัดระบบเอเย่นต์และขั้นตอนยุ่งยากออกทั้งหมด กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ สัญญาณเกมยิงตรงจากเซิร์ฟเวอร์นอกผ่าน API แท้ ค่า RTP จึงเป็นมาตรฐานสากล
+      ไร้การดัดแปลงระบบ ไม่ผ่านเอเย่นต์ และไม่ล็อกยูส รวมเกมสล็อตกับโต๊ะสดไว้ในกระเป๋าเงินเดียว ไม่ต้องเสียเวลาโยกเครดิตข้ามค่าย
+      คัดเฉพาะเกมเด็ดของดีที่ผ่านการทดสอบอัลกอริทึมว่าแจกโบนัสตรงตามมาตรฐานโรงงาน ตัดเกมล้าหลังและเกมเปอร์เซ็นต์แตกต่ำออกตั้งแต่ก่อนขึ้นคลัง ขนทัพค่ายระดับท็อปของโลกอย่าง PG Soft,
+      Pragmatic Play, SA Gaming และ Evolution มาไว้แบบครบมือ เน้นเกมตัวเด่นที่มีโครงสร้างการจ่ายเงินโปร่งใส ฟีเจอร์แตกโหด และสัญญาณไลฟ์สดความคมชัดสูง
+      ฝั่งสล็อตอัดแน่นด้วยเกมกระแสแรงที่มีระบบ Multipliers ตัวคูณสะสม โหมดซื้อฟรีสปิน และคอมโบแตกต่อเนื่อง Cascading สปินลื่น กราฟิกสมูธ ไม่มีกระตุก เบทเริ่มต้นเบา ๆ
+      แต่พร้อมแตกรางวัลใหญ่ ส่วนฝั่งโต๊ะสดเชื่อมสัญญาณไลฟ์ระดับ Ultra HD ส่งตรงจากคาสิโนจริง ทั้งบาคาร่า รูเล็ต ไฮโล และเสือมังกร ร่วมกับดีลเลอร์มืออาชีพแบบเรียลไทม์
+      สิทธิประโยชน์จัดเต็มให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน ไม่ติดเทิร์นโอเวอร์มหาโหด
+      ระบบออโต้ไฮสปีดทำรายการเสร็จสรรพใน 3 วินาที ตัดขั้นตอนรอแอดมินอนุมัติและการส่งสลิปออกทั้งหมด ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ QUEEN189
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#9a8a5e] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#fee505] uppercase">XONEBET</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#93805a] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#fceb83] uppercase">QUEEN189</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#f4e6bd]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#f4e6bd]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#f3e4c4]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#f3e4c4]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#f4e6bd] transition-all hover:border-[#a87c02] hover:bg-[#161105] hover:shadow-[0_0_15px_rgba(168,124,2,0.6)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#f3e4c4] transition-all hover:border-[#c38d29] hover:bg-[#1a1108] hover:shadow-[0_0_15px_rgba(195,141,41,0.6)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

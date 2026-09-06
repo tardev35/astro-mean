@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion, usesGoogleFonts } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle8.astro";
-import Footer from "../components/FooterPremium.astro";
+import Navbar from "../components/NavbarStyle4Black.astro";
+import Footer from "../components/FooterStyle3.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "HAPPYSUPERWIN | สล็อตรวมตัวจี๊ด เกมดังคัดมาดี โบนัสฟรีรับเลย",
-  description = "HAPPYSUPERWIN สล็อตรวมตัวจี๊ด เกมดังคัดมาดีจากค่ายชั้นนำ เติมเกมใหม่ให้ตามต่อเนื่อง ฟีเจอร์ครบหลายสไตล์ โบนัสฟรีรับเลย พร้อมฝากถอนออโต้ทันใจ เว็บตรง API แท้",
+  title = "QUEEN189 | คาสิโนมงลงทุกสปิน เกมเด็ดของดีมีครบ โปรแน่นต้องลอง",
+  description = "QUEEN189 คาสิโนมงลงทุกสปิน คัดเกมเด็ดของดีมีครบจากค่ายชั้นนำ สล็อตตัวท็อปและโต๊ะสดพร้อมลุย โปรแน่นต้องลอง ระบบออโต้ลั่นไวไม่รอนาน เว็บตรง API แท้ ไม่ผ่านเอเย่นต์",
   robots = "index, follow",
 } = Astro.props;
 
@@ -212,7 +212,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #190430;
+        background-color: #0b0704;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -265,7 +265,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ HAPPYSUPERWIN ภาพแดนลูกกวาดพื้นฟ้าอมชมพู มีรุ้งกินน้ำและปราสาทขนมสีชมพูพาสเทลอยู่ไกล ๆ ฝั่งซ้ายเป็นหญิงสาวผมยาวสวมชุดลายลูกกวาดยื่นอมยิ้มเกลียวสีรุ้งดวงโตออกมาข้างหน้า ข้างหลังเป็นป้ายไม้เขียนว่า SWEET SLOTS BIG WIN กลางภาพเป็นโลโก้ HAPPY SUPERWIN ตัวอักษรลูกกวาดสามมิติ คำว่า HAPPY สีเขียวมะนาว คำว่า SUPERWIN สีเหลืองไล่ส้มขอบม่วง มีอมยิ้มสีรุ้งคั่นอยู่ ใต้ลงมาเป็นข้อความไทยตัวหนาสีเหลืองขอบชมพูว่า สล็อตรวมตัวจี๊ด ถัดมาเป็นบรรทัดว่า เกมดังคัดมาดี ตัวอักษรสีขาว คู่กับ โบนัสฟรีรับเลย ตัวอักษรสีแดง ล่างสุดเป็นปุ่มชมพูมนเขียนว่า สมัครสมาชิก พร้อมลูกศรคู่ ฝั่งขวาเป็นกระต่ายการ์ตูนขนขาวใส่แว่นกันแดดม่วงถือลูกอมสีแดง ข้างตู้สล็อตป้าย BIG WIN และป้ายไม้เขียนว่า เล่นสนุก แตกง่าย จ่ายจริง มีเหรียญทอง กล่องของขวัญ และลูกอมเกลียวกระจายอยู่รอบภาพ"
+          alt="แบนเนอร์ QUEEN189 ภาพห้องโถงพระราชวังสีทองบนพื้นดำ ฝั่งซ้ายเป็นสิงโตทองคำและป้ายแขวนสีดำขอบทองเขียนว่า PLAY BIG WIN BIGGER ถัดมาเป็นหญิงสาวสวมมงกุฎเพชรและชุดราตรีสีทองนอนเอนอยู่บนผ้าไหมทอง มีรอยสักคำว่า Queen189 ที่ต้นแขน กลางภาพเป็นโลโก้ Queen 189 ตัวอักษรทองคำสามมิติใต้มงกุฎประดับเพชร ใต้ลงมาเป็นข้อความไทยตัวหนาสีทองว่า คาสิโนมงลงทุกสปิน ตามด้วยบรรทัด เกมเด็ดของดีมีครบ โปรแน่นต้องลอง ล่างสุดเป็นปุ่มสีดำขอบทองเขียนว่า สมัครสมาชิก พร้อมมงกุฎและลูกศรคู่ ฝั่งขวาเป็นการ์ดเกมสี่ใบป้ายว่า SLOT LIVE CASINO SPORTS และ บาคาร่า ใต้ลงมาเป็นไอคอนวงกลมสี่อันเขียนว่า ระบบปลอดภัย 100% รองรับทุกอุปกรณ์ โปรโมชั่นจัดเต็ม และ บริการตลอด 24 ชม. มุมขวาบนเขียนว่า สวย รวย มงลง ต้อง Queen189 มีเหรียญทอง ลูกเต๋า ไพ่ และวงล้อรูเล็ตกระจายอยู่รอบภาพ"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

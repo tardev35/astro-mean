@@ -6,123 +6,124 @@ import ContentBoxTwo from "./ContentBoxTwo.astro";
 // ไม่ปล่อยหัวข้อออกมาเลย ส่วนอิโมจิของป้ายคอลัมน์ใช้ค่า default ของ ContentBoxTwo
 // (กุญแจ/เพชร) ซึ่งตรงกับแผงเข้าสู่ระบบและตารางอ้างอิงอยู่แล้ว
 //
-// HAPPYSUPERWIN: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด มาที่แคนดี้มาเจนต้าคู่เหลืองลูกอม
-// ที่วัดจากอาร์ตจริง — มาเจนต้า #e11ccc / #ff5ae6 / #fff0fc / #8a1f9e / #4c0d6b
-// คู่เหลือง #ffd83d / #f0b429 บนผิว #190430 / #280747 / #380a5f เนื้อความ #f7e2ff
-// ข้อความรอง #cfa5e6 เขียว LINE กับจุด live สีเขียว Tailwind เป็นสีเชิงความหมาย
-// ไม่ถูกแตะ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
-// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+// QUEEN189: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด มาที่ทองราชสำนักบนดำสนิทที่วัดจาก
+// อาร์ตจริง — ทอง #fdf3d2 / #fceb83 / #e4bb53 / #c38d29 / #7a5615 / #3c2505
+// บนผิว #0b0704 / #1a1108 / #271a0c เนื้อความ #f3e4c4 ข้อความรอง #c2a878 เขียว
+// LINE กับจุด live สีเขียว Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ (ห้ามพิมพ์ hex
+// ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์
+// ดูของเดิมได้จาก git history)
 //
-// เนื้อหาตาม brief ของแบรนด์นี้ ซึ่งเป็นสล็อตรวมตัวจี๊ดเว็บตรง API แท้: ยิงตรงจาก
-// เซิร์ฟนอก ค่า RTP มาตรฐานสากลไม่มีปรับลดอัตราแตก คัดเกมน่าเล่นมาให้ตั้งแต่หน้าแรก
-// ค่ายชั้นนำระดับโลก PG Soft / Pragmatic Play / Joker Gaming เติมเกมใหม่เข้าล็อบบี้
-// ต่อเนื่อง ฟีเจอร์ Cascading / Multiplier / Wild ซ้อนทับ โบนัสฟรีกดรับเองผ่าน
-// แดชบอร์ด และฝากถอนออโต้ที่ทำรายการเสร็จใน 3 วินาที
+// เนื้อหาตาม brief ของแบรนด์นี้ ซึ่งเป็นคาสิโนเว็บตรง API แท้: ยิงตรงจากเซิร์ฟนอก
+// ค่า RTP มาตรฐานสากลไร้การดัดแปลง ไม่ผ่านเอเย่นต์ ไม่ล็อกยูส เกมคัดเกรดแตกง่าย
+// ค่ายระดับท็อป PG Soft / Pragmatic Play / SA Gaming / Evolution สล็อตตัวท็อปที่มี
+// Multipliers ตัวคูณสะสม โหมดซื้อฟรีสปิน และ Cascading โต๊ะสด Ultra HD บาคาร่า
+// รูเล็ต ไฮโล เสือมังกร กระเป๋าเงินเดียวไม่ต้องโยกเครดิต โบนัสต้อนรับ โปรฝากแรก
+// ของวัน Cash Back คืนยอดเสียทุกวัน และฝากถอนออโต้ที่เสร็จใน 3 วินาที
 const menus = [
   {
     icon: "🛡️",
     name: "เว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก",
-    detail: "สัญญาณยิงตรงจากเซิร์ฟเวอร์นอกโดยไม่ผ่านเอเย่นต์ ค่า RTP เป็นมาตรฐานสากล ไม่มีการปรับลดอัตราแตกในเกมไหนของล็อบบี้",
+    detail: "สัญญาณยิงตรงจากเซิร์ฟเวอร์นอกโดยไม่ผ่านเอเย่นต์และไม่ล็อกยูส ค่า RTP เป็นมาตรฐานสากล ไร้การดัดแปลงระบบในเกมไหนของฟลอร์",
     tag: "API แท้",
   },
   {
-    icon: "🍭",
-    name: "คัดเกมน่าเล่นมาให้ตั้งแต่หน้าแรก",
-    detail: "กรองเฉพาะเกมที่มีอัตราการจ่ายรางวัลสูงและโบนัสแตกบ่อยที่สุดมาไว้ในหน้าแรก ไม่ต้องเสียเวลาลองสุ่มเล่นเกมไร้คุณภาพ เบทเริ่มต้นเบาๆ ก็ลุ้นแจ็คพอตได้",
-    tag: "คัดมาดี",
+    icon: "💎",
+    name: "เกมคัดเกรดรวมไว้ในที่เดียว",
+    detail: "รวมเฉพาะสล็อตแตกง่ายและคาสิโนสดอัตราจ่ายสูง ไม่เอาเกมล้าหลังหรือเปอร์เซ็นต์แตกต่ำมาลงคลัง ทุกเกมผ่านการทดสอบอัลกอริทึมก่อนเปิดให้เข้าเล่น",
+    tag: "คัดเกรด",
+  },
+  {
+    icon: "👑",
+    name: "ค่ายระดับท็อปของโลกครบมือ",
+    detail: "ขนทัพ PG Soft, Pragmatic Play, SA Gaming และ Evolution มาไว้ครบ เน้นเกมตัวเด่นที่โครงสร้างการจ่ายเงินโปร่งใสและสัญญาณไลฟ์สดคมชัดสูง",
+    tag: "ครบมือ",
   },
   {
     icon: "🎰",
-    name: "ค่ายเกมชั้นนำระดับโลกครบในที่เดียว",
-    detail: "รวม PG Soft, Pragmatic Play, Joker Gaming และอีกมากมาย ครบทั้งสล็อต 3D ภาพสวย ตัวคูณทวีคูณหนัก สายซื้อฟีเจอร์ฟรีสปิน และคลาสสิกแตกไว",
-    tag: "หลายแนว",
+    name: "สล็อตตัวท็อปฟีเจอร์แน่น",
+    detail: "อัดแน่นด้วยระบบ Multipliers ตัวคูณสะสม โหมดซื้อฟรีสปิน และคอมโบแตกต่อเนื่อง Cascading สปินลื่น กราฟิกสมูธ ไม่มีกระตุก",
+    tag: "แตกโหด",
   },
   {
-    icon: "🆕",
-    name: "เติมเกมเข้าล็อบบี้อย่างต่อเนื่อง",
-    detail: "อัปเดตคลังเกมใหม่ทันทีที่ค่ายผู้พัฒนาปล่อยไฟล์ออกจากสตูดิโอ ได้ทดลองฟีเจอร์เด็ดและอ่านจังหวะโบนัสก่อนใครแบบไม่ตกเทรนด์",
-    tag: "ไม่ต้องรอนาน",
-  },
-  {
-    icon: "✨",
-    name: "ฟีเจอร์ครบหลายสไตล์ในเกมเดียว",
-    detail: "ระบบ Cascading คอมโบสัญลักษณ์แตกต่อเนื่อง Multiplier สุ่มแจกตัวคูณหนัก และสัญลักษณ์ Wild ซ้อนทับ เปลี่ยนการกดสปินธรรมดาให้มีลูกเล่นน่าค้นทุกรอบ",
-    tag: "ไม่ซ้ำฟีล",
+    icon: "🃏",
+    name: "โต๊ะสด Ultra HD พร้อมลุย",
+    detail: "เชื่อมสัญญาณไลฟ์ระดับ Ultra HD ส่งตรงจากคาสิโนจริง ทั้งบาคาร่า รูเล็ต ไฮโล และเสือมังกร ร่วมกับดีลเลอร์มืออาชีพแบบเรียลไทม์",
+    tag: "ไลฟ์สดจริง",
   },
   {
     icon: "🎁",
-    name: "โบนัสฟรีกดรับเองผ่านแดชบอร์ด",
-    detail: "เลือกกดรับสิทธิ์เพิ่มทุนสปิน เครดิตฟรี หรือคืนยอดเสีย Cash Back ได้เองทันทีโดยไม่ต้องรอแอดมิน ยอดเข้าเครดิตไว เงื่อนไขชัดเจน",
-    tag: "ไม่ต้องรอแอดมิน",
+    name: "โปรแน่นกดรับเองผ่านแดชบอร์ด",
+    detail: "ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด",
+    tag: "ไม่ตกคิว",
   },
   {
     icon: "⚡",
     name: "ฝากถอนออโต้ทำรายการใน 3 วินาที",
-    detail: "ระบบการเงินไฮสปีดเชื่อมตรงกับเซิร์ฟเวอร์หลัก ทำรายการเสร็จใน 3 วินาที ปั่นทำกำไรได้โปร่งใส ถอนเงินออกได้เต็มยอด ไร้เงื่อนไขจุกจิก",
-    tag: "ถอนเต็มยอด",
+    detail: "ระบบออโต้ไฮสปีดตัดขั้นตอนรอแอดมินอนุมัติและการส่งสลิปออกทั้งหมด ฝากปุ๊บยอดเข้าเกมปั๊บ ถอนยอดไหนก็เงินเข้าเต็มจำนวนทันที",
+    tag: "ถอนเต็มจำนวน",
   },
 ];
 
-const chips = ["เว็บตรง API แท้", "RTP มาตรฐานสากล", "เกมดังคัดมาดี", "เติมเกมใหม่ต่อเนื่อง", "Cascading", "Multiplier", "Wild ซ้อนทับ", "ออโต้ 3 วินาที"];
+const chips = ["เว็บตรง API แท้", "RTP มาตรฐานสากล", "ไม่ผ่านเอเย่นต์", "Multipliers ตัวคูณสะสม", "ซื้อฟรีสปิน", "Cascading", "โต๊ะสด Ultra HD", "ออโต้ 3 วินาที"];
 ---
 
-<ContentBoxTwo titleleft="เข้าสู่ระบบ HAPPYSUPERWIN" titleright="ระบบและจุดเด่นของ HAPPYSUPERWIN ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ HAPPYSUPERWIN และตารางอ้างอิงระบบกับจุดเด่นภายในเว็บ">
+<ContentBoxTwo titleleft="เข้าสู่ระบบ QUEEN189" titleright="ระบบและจุดเด่นของ QUEEN189 ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ QUEEN189 และตารางอ้างอิงระบบกับจุดเด่นภายในเว็บ">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#8a1f9e]/35 bg-[#280747] p-6 shadow-[0_10px_30px_rgba(76,13,107,0.3)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#380a5f]/90 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#7a5615]/45 bg-[#1a1108] p-6 shadow-[0_10px_30px_rgba(122,86,21,0.3)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#271a0c]/90 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e11ccc]/45 bg-gradient-to-br from-[#fff0fc] via-[#e11ccc] to-[#4c0d6b] text-xl shadow-inner">
-          🍬
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e4bb53]/45 bg-gradient-to-br from-[#fdf3d2] via-[#e4bb53] to-[#3c2505] text-xl shadow-inner">
+          👑
         </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#fff0fc]">ยินดีต้อนรับกลับเข้าล็อบบี้ HAPPYSUPERWIN</p>
-          <span class="text-[11px] text-[#cfa5e6]">
-            กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าเกมดังที่ HAPPYSUPERWIN คัดมาดีได้จากกระเป๋าเดียว สลับเล่นได้หลายแนวโดยไม่ต้องเสียเวลาโยกเงิน พร้อมโบนัสฟรีกดรับเองและระบบฝากถอน
-            ออโต้ที่ทำรายการเสร็จใน 3 วินาที
+          <p class="text-base font-black text-[#fdf3d2]">ยินดีต้อนรับกลับเข้าฟลอร์ QUEEN189</p>
+          <span class="text-[11px] text-[#c2a878]">
+            กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าเกมเด็ดของดีที่ QUEEN189 คัดมาแล้วได้จากกระเป๋าเงินเดียว สลับจากหน้าสปินไปโต๊ะสดได้โดยไม่ต้องโยกเครดิต พร้อมสิทธิ์โปรที่กดรับเอง
+            และระบบฝากถอนออโต้ที่ทำรายการเสร็จใน 3 วินาที
           </span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#e11ccc]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#e4bb53]">👤</span>
           <input
             type="text"
             aria-label="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#4c0d6b] bg-[#190430] py-3 pr-4 pl-12 text-[#f7e2ff] transition-all outline-none placeholder:text-[#cfa5e6] focus:border-[#e11ccc] focus:ring-1 focus:ring-[#e11ccc]/60"
+            class="w-full rounded-xl border border-[#7a5615] bg-[#0b0704] py-3 pr-4 pl-12 text-[#f3e4c4] transition-all outline-none placeholder:text-[#93805a] focus:border-[#e4bb53] focus:ring-1 focus:ring-[#e4bb53]/60"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#e11ccc]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#e4bb53]">🔑</span>
           <input
             type="password"
             aria-label="รหัสผ่าน"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#4c0d6b] bg-[#190430] py-3 pr-4 pl-12 text-[#f7e2ff] transition-all outline-none placeholder:text-[#cfa5e6] focus:border-[#e11ccc] focus:ring-1 focus:ring-[#e11ccc]/60"
+            class="w-full rounded-xl border border-[#7a5615] bg-[#0b0704] py-3 pr-4 pl-12 text-[#f3e4c4] transition-all outline-none placeholder:text-[#93805a] focus:border-[#e4bb53] focus:ring-1 focus:ring-[#e4bb53]/60"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#cfa5e6]">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#4c0d6b] bg-[#190430] accent-[#8a1f9e]" />
+          <label class="flex items-center gap-2 text-[#c2a878]">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#7a5615] bg-[#0b0704] accent-[#c38d29]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#cfa5e6] transition-colors hover:text-[#ff5ae6]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#c2a878] transition-colors hover:text-[#fceb83]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#4c0d6b]/70 bg-gradient-to-r from-[#fff0fc] via-[#ff5ae6] to-[#e11ccc] p-3.5 font-black text-[#190430] shadow-[0_10px_30px_rgba(225,28,204,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(225,28,204,0.45)]">
+          class="mt-1 w-full rounded-xl border border-[#7a5615]/70 bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#c38d29] p-3.5 font-black text-[#0b0704] shadow-[0_10px_30px_rgba(228,187,83,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(228,187,83,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#cfa5e6]">
-          <span class="h-px flex-1 bg-[#380a5f]"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#c2a878]">
+          <span class="h-px flex-1 bg-[#3c2505]"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#380a5f]"></span>
+          <span class="h-px flex-1 bg-[#3c2505]"></span>
         </div>
 
         <a
@@ -133,29 +134,29 @@ const chips = ["เว็บตรง API แท้", "RTP มาตรฐาน
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#4c0d6b]/40 bg-[#190430] px-2.5 py-1 text-[10px] font-bold text-[#ff5ae6]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#ffd83d]/30 bg-[#190430] px-2.5 py-1 text-[10px] font-bold text-[#ffd83d]"><span aria-hidden="true">🕐</span> ออโต้ตลอด 24 ชม.</span>
+            <span class="rounded-full border border-[#7a5615]/40 bg-[#0b0704] px-2.5 py-1 text-[10px] font-bold text-[#e4bb53]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#fceb83]/30 bg-[#0b0704] px-2.5 py-1 text-[10px] font-bold text-[#fceb83]"><span aria-hidden="true">🕐</span> ออโต้ตลอด 24 ชม.</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#fff0fc] transition-colors hover:text-[#ff5ae6]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#fdf3d2] transition-colors hover:text-[#fceb83]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#e11ccc]/30 bg-[#280747] p-5 shadow-[0_10px_30px_rgba(225,28,204,0.18)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#e4bb53]/30 bg-[#1a1108] p-5 shadow-[0_10px_30px_rgba(228,187,83,0.18)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#cfa5e6]">ตารางอ้างอิงระบบและจุดเด่นที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#fff0fc] via-[#ff5ae6] to-[#ffd83d] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">สล็อตรวมตัวจี๊ด เกมดังคัดมาดี โบนัสฟรีรับเลย</div>
+          <span class="text-xs font-bold tracking-wide text-[#c2a878]">ตารางอ้างอิงระบบและจุดเด่นที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#c38d29] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">คาสิโนมงลงทุกสปิน เกมเด็ดของดีมีครบ โปรแน่นต้องลอง</div>
         </div>
-        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#190430] px-2.5 py-1">
+        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#0b0704] px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]"></span>
           <span class="text-[10px] font-bold tracking-widest text-green-300 uppercase">Live</span>
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#cfa5e6]">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#c2a878]">
         <span>ระบบ / จุดเด่นในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -163,28 +164,28 @@ const chips = ["เว็บตรง API แท้", "RTP มาตรฐาน
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#4c0d6b] bg-[#190430] px-3.5 py-2.5 transition-colors hover:border-[#e11ccc]/45 hover:bg-[#380a5f]/90">
+            <div class="rounded-xl border border-[#7a5615] bg-[#0b0704] px-3.5 py-2.5 transition-colors hover:border-[#e4bb53]/45 hover:bg-[#271a0c]/90">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f7e2ff]">
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f3e4c4]">
                   <span aria-hidden="true" class="w-5 shrink-0 text-center">
                     {m.icon}
                   </span>{" "}
                   <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#ff5ae6]/60 bg-[#e11ccc] px-2.5 py-0.5 text-[10px] font-bold text-[#190430]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#fceb83]/60 bg-[#c38d29] px-2.5 py-0.5 text-[10px] font-bold text-[#0b0704]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#cfa5e6]">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#c2a878]">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#4c0d6b]/40 bg-[#190430] px-3 py-1 text-[10px] font-bold text-[#ff5ae6]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#7a5615]/40 bg-[#0b0704] px-3 py-1 text-[10px] font-bold text-[#e4bb53]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#cfa5e6]">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจอัตราจ่ายของแต่ละเกม เงื่อนไขการรับสิทธิ์ และเพดานถอนจากหน้าโปรโมชั่นจริงของ HAPPYSUPERWIN ก่อนกดรับทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#93805a]">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจอัตราจ่ายของแต่ละเกม เงื่อนไขการรับสิทธิ์ และเพดานถอนจากหน้าโปรโมชั่นจริงของ QUEEN189 ก่อนกดรับทุกครั้ง
       </div>
     </div>
   </div>

@@ -8,25 +8,26 @@
 // จริงกลับเข้าไป ไม่งั้น screen reader จะอ่าน "ดาว" ห้าครั้งต่อการ์ดโดยไม่ได้ตัวเลข
 // อิโมจิของอวาตาร์ก็เป็นของตกแต่ง อยู่ใน <span aria-hidden="true"> ของตัวเอง
 //
-// XONEBET: ไฟล์นี้เป็น inventory ที่ค้างชุดสีของแบรนด์ก่อนหน้ามา รอบนี้ถูกเขียนใหม่
-// ทั้งไฟล์มาที่ทองหลอมคู่เงินโครเมียม — ทอง #ebb101 / #fee505 / #fff8d1 / #a87c02 /
-// #5c4301 คู่เงิน #e9e9e9 / #c4c4c4 บนผิว #0a0803 / #161105 / #221a08 เนื้อความ
-// #f4e6bd ข้อความรอง #c3ae76 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกน
-// ไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น
-// CSS ตาย ดูของเดิมได้จาก git history)
+// QUEEN189: ไฟล์นี้เป็น inventory ที่ค้างชุดสีของแบรนด์ก่อนหน้ามา รอบนี้ถูกเขียนใหม่
+// ทั้งไฟล์มาที่ทองราชสำนักบนดำสนิท — ทอง #fdf3d2 / #fceb83 / #e4bb53 / #c38d29 /
+// #7a5615 / #3c2505 บนผิว #0b0704 / #1a1108 / #271a0c เนื้อความ #f3e4c4 ข้อความรอง
+// #c2a878 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
+// ได้จาก git history)
 //
-// เนื้อรีวิวอ้างข้อเท็จจริงชุดเดียวกับ docx ของแบรนด์นี้: เว็บตรง API แท้ยิงสัญญาณ
-// ตรงจากเซิร์ฟเวอร์หลักนอกโดยไม่ผ่านเอเย่นต์, RTP โปร่งใสตามมาตรฐานสากลไม่มีปรับแต่ง
-// เปอร์เซ็นต์การชนะ, โครงสร้าง One-Stop Service บัญชีเดียวไม่ต้องโยกเงินข้ามค่าย,
-// ฝากถอนออโต้ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ถอนเต็มจำนวน และฟีเจอร์
-// Multipliers / Wild ซ้อนทับ / Cascading / Buy Feature
+// เนื้อรีวิวอ้างข้อเท็จจริงชุดเดียวกับ docx ของแบรนด์นี้: เว็บตรง API แท้ยิงตรงจาก
+// เซิร์ฟนอกโดยไม่ผ่านเอเย่นต์และไม่ล็อกยูส, ค่า RTP มาตรฐานสากลไร้การดัดแปลง,
+// ค่าย PG Soft / Pragmatic Play / SA Gaming / Evolution, ฟีเจอร์ Multipliers ตัวคูณ
+// สะสม / โหมดซื้อฟรีสปิน / Cascading, โต๊ะสด Ultra HD บาคาร่า รูเล็ต ไฮโล เสือมังกร
+// ผ่านกระเป๋าเงินเดียว และฝากถอนออโต้ 3 วินาที ถอนเต็มจำนวน ไม่ติดเทิร์นโอเวอร์
+// มหาโหด
 const reviews = [
   {
     name: "ทีม web develop หมีขาว",
     role: "ผู้เชี่ยวชาญด้านระบบเว็บไซต์",
     stars: 4,
     content:
-      "ไล่ดูโครงสร้างหลังบ้านแล้วบอกได้ว่าเป็นเว็บตรง API แท้จริง ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลักนอกโดยไม่ผ่านเอเย่นต์คั่นกลาง เซิร์ฟเวอร์ประมวลผลความเร็วสูงจริงตามที่โฆษณา สลับค่ายเกมกับโหลดหน้าอินเทอร์เฟซแล้วไม่เจอค้างหรือเด้งหลุดเลย หัก 1 ดาวเพราะอยากได้โหมดสว่างเพิ่ม",
+      "ไล่ดูโครงสร้างหลังบ้านแล้วบอกได้ว่าเป็นเว็บตรง API แท้จริง ยิงสัญญาณตรงจากเซิร์ฟนอกโดยไม่ผ่านเอเย่นต์คั่นกลางและไม่ล็อกยูส สลับจากหน้าสปินไปโต๊ะสดแล้วโหลดไว ไม่เจอค้างหรือเด้งหลุดเลย หัก 1 ดาวเพราะอยากได้โหมดสว่างเพิ่ม",
     avatar: "🐻‍❄️",
   },
   {
@@ -34,7 +35,7 @@ const reviews = [
     role: "คอมมูนิตี้รีวิวเว็บตรง",
     stars: 4,
     content:
-      "ทางเพจเทสยาวหนึ่งเดือน คอนเฟิร์มว่าค่า RTP โปร่งใสตามมาตรฐานสากล ไม่มีการปรับแต่งเปอร์เซ็นต์การชนะ คลังเกมคัดเฉพาะค่ายใหญ่ระดับเกรด A ฟีเจอร์อย่าง Multipliers กับ Wild ซ้อนทับมาครบ แถมมี Cascading กับ Buy Feature ให้เลือกใช้ตามจังหวะที่เล่นด้วย",
+      "ทางเพจเทสยาวหนึ่งเดือน คอนเฟิร์มว่าค่า RTP เป็นมาตรฐานสากล ไร้การดัดแปลงระบบ คลังเกมคัดเฉพาะค่ายระดับท็อปอย่าง PG Soft, Pragmatic Play, SA Gaming และ Evolution ฟีเจอร์อย่าง Multipliers ตัวคูณสะสมกับโหมดซื้อฟรีสปินมาครบ แถมมี Cascading ให้เลือกใช้ตามจังหวะที่เล่นด้วย",
     avatar: "🎰",
   },
   {
@@ -42,51 +43,51 @@ const reviews = [
     role: "ผู้เล่นระดับ VIP",
     stars: 5,
     content:
-      "ลองมาหลายเว็บสุดท้ายจบที่ XONEBET ครับ เป็นวันสต็อปจริงตามที่บอก บัญชีเดียวเชื่อมคลังเกมทุกค่าย ไม่ต้องสมัครหลายยูสเซอร์และไม่ต้องโยกเงินข้ามค่ายให้สับสน ฝากถอนออโต้ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ถอนออกได้เต็มจำนวนทุกยอด ให้ไปเลย 5 ดาวเต็ม",
+      "ลองมาหลายเว็บสุดท้ายจบที่ QUEEN189 ครับ โต๊ะสดคมชัดระดับ Ultra HD ทั้งบาคาร่า รูเล็ต ไฮโล และเสือมังกร ใช้กระเป๋าเงินเดียวไม่ต้องโยกเครดิตให้สับสน ฝากถอนออโต้เสร็จใน 3 วินาที ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ ถอนออกได้เต็มจำนวนทุกยอด ให้ไปเลย 5 ดาวเต็ม",
     avatar: "👑",
   },
 ];
 ---
 
-<section aria-label="เสียงตอบรับจากผู้ใช้งานจริงของ XONEBET" class="relative z-10 mx-auto mb-12 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="เสียงตอบรับจากผู้ใช้งานจริงของ QUEEN189" class="relative z-10 mx-auto mb-12 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#fff8d1] via-[#fee505] to-[#e9e9e9] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      เสียงตอบรับจาก <span class="text-[#fee505]">ผู้ใช้งานจริง</span>
+    <p class="bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#c38d29] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      เสียงตอบรับจาก <span class="text-[#fceb83]">ผู้ใช้งานจริง</span>
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ebb101] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e4bb53] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
     {
       reviews.map((review) => (
-        <article class="group relative isolate flex flex-col justify-between rounded-3xl border border-[#5c4301]/40 bg-[#0a0803]/85 p-8 shadow-[0_10px_30px_rgba(10,8,3,0.8)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#fee505]/60 hover:shadow-[0_15px_40px_rgba(235,177,1,0.3)]">
-          <div class="pointer-events-none absolute -top-10 -left-10 -z-10 h-32 w-32 rounded-full bg-[#ebb101]/12 blur-[50px] transition-all duration-500 group-hover:bg-[#ebb101]/25" />
+        <article class="group relative isolate flex flex-col justify-between rounded-3xl border border-[#7a5615]/45 bg-[#0b0704]/85 p-8 shadow-[0_10px_30px_rgba(11,7,4,0.8)] backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-[#fceb83]/60 hover:shadow-[0_15px_40px_rgba(228,187,83,0.3)]">
+          <div class="pointer-events-none absolute -top-10 -left-10 -z-10 h-32 w-32 rounded-full bg-[#e4bb53]/12 blur-[50px] transition-all duration-500 group-hover:bg-[#e4bb53]/25" />
 
           <div class="flex flex-col gap-4">
-            <div class="flex items-center justify-between border-b border-[#5c4301] pb-4">
-              <span aria-hidden="true" class="font-serif text-4xl leading-none text-[#ebb101]/60 drop-shadow-[0_0_5px_rgba(235,177,1,0.5)]">
+            <div class="flex items-center justify-between border-b border-[#7a5615] pb-4">
+              <span aria-hidden="true" class="font-serif text-4xl leading-none text-[#e4bb53]/60 drop-shadow-[0_0_5px_rgba(228,187,83,0.5)]">
                 &ldquo;
               </span>
               <span aria-hidden="true" class="flex gap-1 text-lg">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <span class={i < review.stars ? "text-[#fee505] drop-shadow-[0_0_5px_rgba(254,229,5,0.8)]" : "text-[#221a08]"}>★</span>
+                  <span class={i < review.stars ? "text-[#fceb83] drop-shadow-[0_0_5px_rgba(252,235,131,0.8)]" : "text-[#271a0c]"}>★</span>
                 ))}
               </span>
               <span class="sr-only">ให้คะแนน {review.stars} จาก 5 ดาว</span>
             </div>
 
-            <p class="min-h-[100px] text-sm leading-relaxed text-[#c3ae76] italic">{review.content}</p>
+            <p class="min-h-[100px] text-sm leading-relaxed text-[#c2a878] italic">{review.content}</p>
           </div>
 
-          <div class="mt-6 flex items-center gap-4 border-t border-[#221a08] pt-4">
+          <div class="mt-6 flex items-center gap-4 border-t border-[#271a0c] pt-4">
             <span
               aria-hidden="true"
-              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#ebb101]/40 bg-gradient-to-br from-[#a87c02] to-[#0a0803] text-2xl shadow-inner transition-transform duration-300 group-hover:scale-110">
+              class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#e4bb53]/40 bg-gradient-to-br from-[#c38d29] to-[#0b0704] text-2xl shadow-inner transition-transform duration-300 group-hover:scale-110">
               {review.avatar}
             </span>
             <span class="flex flex-col">
-              <p class="text-base font-black text-[#f4e6bd] transition-colors group-hover:text-[#fee505]">{review.name}</p>
-              <span class="text-[11px] font-bold tracking-wider text-[#e9e9e9]/80 uppercase">{review.role}</span>
+              <p class="text-base font-black text-[#f3e4c4] transition-colors group-hover:text-[#fceb83]">{review.name}</p>
+              <span class="text-[11px] font-bold tracking-wider text-[#c2a878] uppercase">{review.role}</span>
             </span>
           </div>
         </article>
