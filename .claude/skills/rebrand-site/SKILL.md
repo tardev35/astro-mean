@@ -1292,8 +1292,17 @@ inferring them from the docx's main title/H1/H2 the same way you did for
 GROW268.**
 
 **Length rule for any `description` you write yourself: 150–160
-characters.** A description the docx supplies is used verbatim — those
-are already written to length — but the ones you infer have run long
+characters.** A description the brief supplies is used **verbatim, at
+whatever length it arrives** — do not pad it, do not top it up to 150,
+do not reach into the H1/H2 for extra clauses. This covers a
+`content.txt` written by `tools/site-import.mjs` exactly as it covers a
+hand-written `content.docx`: the `Description` line under the old site's
+own meta tag is the brand's copy, not a draft to improve. Short brief descriptions
+are the norm, not the exception (ANDAMAN168 134, NORWAY89 136,
+WINSIAM88 142), and `verify-build` deliberately does not enforce its
+150-character floor on the home page for exactly this reason, so a
+134-character home description is a passing build, not something to
+fix. Upper bounds still bind everywhere — the ones you infer have run long
 every time: on UFAG8 the four sub-pages came out at 234 / 251 / 270 /
 337 characters, roughly double, because each one kept appending another
 clause (`ทั้งแฮนดิแคป สูง–ต่ำ และ 1X2`, `บิลเดี่ยวกับบิลสเต็ป`, …) until
@@ -1448,6 +1457,24 @@ nothing else you do to the page matters much.
 
 Only the LCP image gets `loading="eager" fetchpriority="high"`. The wallpaper
 had `loading="eager" decoding="sync"` and was competing with it.
+
+**`quality={N}` does not mean the same thing to AVIF as it does to WebP, and
+`<Picture>` hands both encoders the same number.** On 2026-08-25, 52 of the 71
+avif/webp pairs in the build were AVIF files LARGER than their own WebP
+fallback — 450 kB of pure loss, because every browser that supports AVIF takes
+the heavier file. On dark artwork with fine grain (the slides especially) it was
+brutal: `slide4` at 600w was 123 kB of AVIF against 72 kB of WebP.
+
+Nothing in the page markup needs to change for this any more.
+`tools/avif-quality-service.mjs` is registered as Astro's image service and
+rescales quality to 0.65× for AVIF only, so `quality={80}` reaches sharp as
+`avif:52 / webp:80`. The factor was measured, not guessed: at 0.65 the AVIF is
+smaller than its WebP sibling on every asset in `src/assets` and scores HIGHER
+PSNR on 12 of 14 of them.
+
+`tools/verify-build.mjs` fails the build if any AVIF outweighs its WebP
+sibling, so this cannot come back quietly. If it does fire, the image needs its
+own lower `quality`, not a bigger one.
 
 **og:image** comes from `src/assets/og.png`, which the uploader writes at
 1200x630 from the slide1 upload (letterboxed on a colour sampled from the

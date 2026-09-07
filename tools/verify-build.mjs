@@ -62,6 +62,12 @@ const EMOJI = /\p{Extended_Pictographic}/u;
 // characters; under ~150 leaves the SERP line half empty. Count CHARACTERS —
 // Thai is 3 bytes per character in UTF-8, so any byte-based measurement reads
 // roughly 3x too long and will send you rewriting descriptions that were fine.
+//
+// DESC_MIN does not apply to the home page: its description is the brand's own
+// copy out of content.docx and ships verbatim. Those keep arriving under 150
+// (ANDAMAN168 134, NORWAY89 136, WINSIAM88 142), and a floor here only forces
+// the docx wording to be padded or rewritten. The upper bounds still apply
+// everywhere — over-length truncates in the SERP whoever wrote it.
 const DESC_MIN = 150;
 const DESC_MAX = 160;
 const DESC_HARD_MAX = 200;
@@ -473,10 +479,13 @@ for (const file of pages) {
     error(where, "empty or missing meta description");
   } else {
     const n = chars(desc);
+    const isHome = path.relative(DIST, file).split(path.sep).join("/") === "index.html";
     if (n > DESC_HARD_MAX) {
       error(where, `meta description ${n} characters — will be truncated in every SERP (max ${DESC_HARD_MAX})`);
-    } else if (n < DESC_MIN || n > DESC_MAX) {
-      error(where, `meta description ${n} characters, outside ${DESC_MIN}–${DESC_MAX} — count CHARACTERS, not bytes`);
+    } else if (n > DESC_MAX) {
+      error(where, `meta description ${n} characters, over ${DESC_MAX} — count CHARACTERS, not bytes`);
+    } else if (n < DESC_MIN && !isHome) {
+      error(where, `meta description ${n} characters, under ${DESC_MIN} — count CHARACTERS, not bytes`);
     }
   }
 
@@ -685,6 +694,39 @@ const imageKey = (filename) => filename.slice(0, filename.indexOf(".")).toLowerC
     }
     for (const [key, bytes] of orphans) {
       error("dist/_astro/", `${key}.* ships ${Math.round(bytes / 1024)} kB but no page or stylesheet renders any version of it — an image imported without being used`);
+    }
+  }
+}
+
+// ── AVIF that came out heavier than its own WebP fallback ──────────────────
+const AVIF_TOLERANCE = 1.1;
+
+{
+  const sizeOf = (url) => {
+    const file = path.join(DIST, url.replace(/^\//, ""));
+    return fs.existsSync(file) ? fs.statSync(file).size : null;
+  };
+
+  const seen = new Set();
+  for (const file of pages) {
+    const html = fs.readFileSync(file, "utf8");
+    for (const [, pic] of html.matchAll(/<picture>([\s\S]*?)<\/picture>/g)) {
+      const avif = new Map();
+      const webp = new Map();
+      for (const [, url, w] of pic.matchAll(/(\/_astro\/[^\s"]+\.avif)\s+(\d+)w/g)) avif.set(w, url);
+      for (const [, url, w] of pic.matchAll(/(\/_astro\/[^\s"]+\.webp)\s+(\d+)w/g)) webp.set(w, url);
+
+      for (const [w, url] of avif) {
+        if (!webp.has(w) || seen.has(url)) continue;
+        seen.add(url);
+        const a = sizeOf(url);
+        const b = sizeOf(webp.get(w));
+        if (a === null || b === null || a <= b * AVIF_TOLERANCE) continue;
+        error(
+          path.relative(DIST, file).split(path.sep).join("/"),
+          `${path.basename(url)} at ${w}w is ${Math.round(a / 1024)} kB of AVIF against ${Math.round(b / 1024)} kB of WebP (+${Math.round((a / b - 1) * 100)}%) — every browser that supports AVIF takes the heavier file. AVIF's quality scale is not WebP's: tools/avif-quality-service.mjs rescales it, so this means the service was bypassed or the image needs its own quality.`,
+        );
+      }
     }
   }
 }
