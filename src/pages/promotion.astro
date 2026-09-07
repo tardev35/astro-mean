@@ -2,54 +2,58 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement3.astro";
 
 import { Picture } from "astro:assets";
 
-// QUEEN189: ticker หมุนมาเป็น AnnouncementPremium ส่วนกล่องหน้าย่อยยังเป็น ContentBox
+// ROSTY59: ticker หมุนมาเป็น Announcement3 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
 // (การ์ดถาวรของหน้าย่อย) เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
 // variant นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
+// สีย้ายจากทองแชมเปญราชสำนักบนดำอมน้ำตาลของแบรนด์ก่อน มาเป็นทองอำพันออกส้ม
+// #ffeec2 / #ffc94a / #f2a01a / #b06a0d / #6b3f07 บนดำสนิท #070505
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
-// This page is an IMAGE page, not an article: the ContentBox title (the single
-// <h1>), ONE short intro paragraph, the promo image grid, one CTA. Nothing else
-// — no <h2>, no section paragraphs. The artwork already prints its own offer in
-// large type, so prose below it re-types what the visitor can already read, in
-// smaller letters. The docx gives this page no body at all.
+// This page is an IMAGE page, not an article: the ContentBox title (the page's
+// single h1), ONE short intro paragraph, the promo image grid, one CTA. Nothing
+// else — no second-level headings, no section paragraphs. The artwork already
+// prints its own offer in large type, so prose below it re-types what the
+// visitor can already read, in smaller letters. The docx gives this page no
+// body at all; the seven article sections a previous rebrand invented here, and
+// every rebrand since faithfully rewrote, were removed on 2026-09-07.
+// Final inventory for this page is h1 ×1, and no headings below it.
 //
-// Named for what each banner ACTUALLY prints, not for its file number. This
-// drop has FOUR slides (2026-09-07) and all four run in the grid:
-//   slide1 = คืน 5% ยอดเสีย · รับได้ทุกวันที่ 1 และ 15
-//   slide2 = สมาชิกใหม่ ฝาก 100 รับ 200
-//   slide3 = วงล้อแห่งโชคลาภ ลุ้นรับเงินโบนัส รับได้ทุกวัน
-//   slide4 = แนะนำเพื่อน รับค่าคอมสูงถึง 1.25%
-// ทั้งสี่ไฟล์เป็นแบนเนอร์แนวนอน 600x252 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
+// ตัวแปรตั้งชื่อตามข้อความที่พิมพ์อยู่บนอาร์ตจริง ไม่ได้ตั้งตามเลขท้ายชื่อไฟล์
+// ดรอปวันที่ 2026-09-07 ให้สไลด์มาสามใบ และลงกริดครบทั้งสามใบ:
+//   ใบที่ 1 = เว็บตรง ลิขสิทธิ์แท้ · ฝาก-ถอน AUTO 3 นาที · ระบบเกมดีสุดใน ASIA
+//   ใบที่ 2 = แนะนำเพื่อน รับค่าคอมมิชชั่น 3% · คืนยอดเสียด้วยระบบ Auto
+//   ใบที่ 3 = สล็อตเว็บตรง ไม่ผ่านเอเยนต์ · จ่ายเต็ม เท่าไหร่ก็ถอนได้
+// ทั้งสามไฟล์เป็นอาร์ตทรงจัตุรัส 600x600 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
 // (ถ้าดรอปหน้าเปลี่ยนสัดส่วนอีก ให้ไล่เช็ก imageSizes กับ widthLadder ใหม่)
 //
-// banner.png / banner2-4.png ไม่ถูก import ที่นี่: เป็นอาร์ตของแบรนด์ก่อน
-// (ลงวันที่ 2026-08-04 และ 2026-08-18 คนละดรอปกับชุดนี้) และรูปที่ import แล้ว
-// คือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render
-// ส่วน banner1 / banner1-mobile เป็นของ <picture> hero ใน MainLayout เท่านั้น
+// สไลด์ใบที่สี่ถูกถอด import ออกเมื่อ 2026-09-07: git ไม่ได้แก้ไฟล์นั้นในดรอปนี้
+// (ยังเป็นอาร์ตแนวนอน 600x252 ของแบรนด์ก่อน สัดส่วนคนละชุดกับสามใบข้างบน) และ
+// รูปที่ import แล้วคือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render
+// ไฟล์ hero ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ก็ห้าม import ที่นี่ด้วยเหตุผล
+// เดียวกัน ส่วนไฟล์ hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
 //
-// Only what is printed on the banner may be stated in its alt — ทั้งสี่ไฟล์
-// ถอดข้อความและองค์ประกอบบนภาพมาเขียน alt ตามอาร์ตดรอปวันที่ 2026-09-07
-import promoCashback from "../assets/slide1.png";
-import promoWelcome from "../assets/slide2.png";
-import promoLuckyWheel from "../assets/slide3.png";
-import promoReferral from "../assets/slide4.png";
+// alt เขียนได้เฉพาะสิ่งที่พิมพ์อยู่บนภาพจริง — ทั้งสามไฟล์ถอดข้อความและองค์ประกอบ
+// บนอาร์ตดรอปวันที่ 2026-09-07 มาเขียนตามนั้น
+import promoLicensed from "../assets/slide1.png";
+import promoReferral from "../assets/slide2.png";
+import promoNoAgent from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 154. It states what the
-// page holds — the offers the banners themselves print — and stops.
+// byte count reads ~3x too long). This one measures 153. It states what the
+// page holds — the offers the promo artwork itself prints — and stops.
 const pageDescription =
-  "รวมโปรโมชั่น QUEEN189 คาสิโนมงลงทุกสปิน ทั้งคืนยอดเสีย 5% ทุกวันที่ 1 และ 15 สมาชิกใหม่ฝาก 100 รับ 200 วงล้อแห่งโชคลาภทุกวัน และแนะนำเพื่อนรับค่าคอม 1.25%";
+  "รวมโปรโมชั่น ROSTY59 สล็อตเว็บตรงลิขสิทธิ์แท้ ไม่ผ่านเอเยนต์ ทั้งสิทธิ์แนะนำเพื่อนรับค่าคอมมิชชั่น 3% คืนยอดเสียด้วยระบบออโต้ และฝากถอนออโต้ไวใน 3 วินาที";
 
-const pageTitle = "โปรโมชั่น QUEEN189 | คืนยอดเสีย สมาชิกใหม่ วงล้อโชคลาภ และแนะนำเพื่อน";
+const pageTitle = "โปรโมชั่น ROSTY59 | เว็บตรงลิขสิทธิ์แท้ แนะนำเพื่อนรับค่าคอม คืนยอดเสียออโต้";
 
-// หัวข้อ <h1> ของหน้า แยกจาก <title> เพราะ <title> มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น QUEEN189 รวมโบนัสและกิจกรรมลุ้นรางวัลไว้ให้เลือกกดรับ";
+// หัวข้อระดับ h1 ของหน้า แยกจากค่า title เพราะ title มีขีดคั่นแบรนด์อยู่
+const pageHeading = "โปรโมชั่น ROSTY59 รวมสิทธิ์และข้อเสนอที่เปิดให้กดรับอยู่ในรอบนี้";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -58,7 +62,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoCashback.src,
+  primaryImagePath: promoLicensed.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -73,12 +77,12 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบสำริดเข้มล้อกับกรอบทองบนแบนเนอร์ แล้วสว่างขึ้นเป็นทองหลักตอน hover
+// ขอบทองมืดล้อกับกรอบทองบนแบนเนอร์ แล้วสว่างขึ้นเป็นทองหลักตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#7a5615]/45 object-contain shadow-[0_10px_30px_rgba(122,86,21,0.32)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e4bb53]/70 hover:shadow-[0_15px_40px_rgba(228,187,83,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#4a2f0d]/70 object-contain shadow-[0_10px_30px_rgba(107,63,7,0.4)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#f2a01a]/70 hover:shadow-[0_15px_40px_rgba(242,160,26,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
-// intrinsic width (600px for all four banners here) so a sharp upscale never
+// intrinsic width (600px for all three promo images here) so a sharp upscale never
 // becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
   const steps = [384, 576, 648].filter((w) => w < img.width);
@@ -87,20 +91,16 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoCashback,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า คืน 5% ยอดเสีย และบรรทัดล่างเขียนว่า รับได้ทุกวันที่ 1 และ 15 ด้านซ้ายเป็นหญิงสาวผมยาวในชุดราตรีสีทองระยิบ ยืนถือป้ายสี่เหลี่ยมสีดำที่มีคำว่า CASH BACK พร้อมลูกศรโค้ง ฉากหลังเป็นก้อนเพชรสีทอง เหรียญทองปลิว และประกายแสง",
-  },
-  {
-    src: promoWelcome,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า สมาชิกใหม่ ฝาก 100 รับ 200 ด้านซ้ายเป็นหญิงสาวผมยาวในชุดราตรีสีทองปาดไหล่ ยิ้มพร้อมชูพัดธนบัตรอยู่ในมือ ล้อมด้วยก้อนเพชรสีทอง เหรียญทองปลิว และประกายแสง",
-  },
-  {
-    src: promoLuckyWheel,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า วงล้อแห่งโชคลาภ ลุ้นรับเงินโบนัส รับได้ทุกวัน ด้านซ้ายเป็นหญิงสาวผมยาวในชุดราตรีสีทองยืนอยู่หน้าวงล้อหมุนลายทองสลับดำ ข้างกันเป็นกองเหรียญทองซ้อนสูงและประกายแสงทั่วภาพ",
+    src: promoLicensed,
+    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัสพื้นดำ ตัวอักษรทองคำเรียงลงมาว่า เว็บตรง ลิขสิทธิ์แท้ ถัดมาเป็น ฝาก-ถอน AUTO 3 นาที และ ระบบเกมดีสุดใน ASIA ใต้ลงไปเป็นป้ายวงรีขอบทองเขียนว่า สมัครฟรี ไม่มีขั้นต่ำ กับบรรทัด การันตีความมั่นคง 100% และแถวไอคอนธนาคารเล็ก ๆ ด้านซ้ายเป็นหญิงสาวผมยาวสวมชุดสีทองเมทัลลิก ฉากหลังมีเหรียญทองปลิวและดวงไฟสีทองเรืองแสง",
   },
   {
     src: promoReferral,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า แนะนำเพื่อน รับค่าคอมสูงถึง 1.25% ด้านซ้ายเป็นหญิงสาวสองคนในชุดราตรีสีทองยืนเคียงกัน คนหนึ่งชูพัดธนบัตร ถัดมาเป็นกองเหรียญทองซ้อนสูงและประกายแสง",
+    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัสพื้นดำ ครึ่งล่างเป็นตัวอักษรทองคำเขียนว่า แนะนำเพื่อน รับค่าคอมมิชชั่น พร้อมเลข 3% ตัวใหญ่เป็นทองสามมิติ ใต้ลงมาเป็นป้ายวงรีขอบทองเขียนว่า คืนยอดเสียด้วยระบบ Auto ครึ่งบนเป็นหญิงสาวผมยาวสวมต่างหูข้าวหลามตัดและชุดสีทองประกาย ล้อมด้วยสัญลักษณ์ไพ่โพแดงกับไพ่ปลิวสีทองบนพื้นมืด",
+  },
+  {
+    src: promoNoAgent,
+    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัสพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า สล็อตเว็บตรง ไม่ผ่านเอเยนต์ ถัดลงมาเป็นป้ายวงรีขอบทองเขียนว่า จ่ายเต็ม เท่าไหร่ก็ถอนได้ และบรรทัดล่างสุดเขียนว่า ฝาก-ถอน ไม่มีขั้นต่ำ ด้วยระบบ AUTO รวดเร็วภายใน 3 วินาที ด้านบนเป็นหญิงสาวผมยาวในชุดสีทอง ล้อมด้วยลูกเต๋าทอง สัญลักษณ์ไพ่โพดำโพแดงดอกจิก และลายสลักทอง",
   },
 ];
 ---
@@ -113,9 +113,10 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#fceb83]">QUEEN189</strong> เปิดให้กดรับอยู่ในรอบนี้ ทั้งสิทธิ์คืนยอดเสีย โบนัสต้อนรับสมาชิกใหม่ วงล้อลุ้นรางวัล และค่าคอมจากการแนะนำเพื่อน
-        อัตราที่ได้รับและกำหนดวันของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว แต่ละรายการมีเงื่อนไขของตัวเอง จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด
-        ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเดียว ไม่ต้องรอแอดมินอนุมัติ ไม่ต้องส่งสลิป ไม่ติดเทิร์นโอเวอร์มหาโหด และถอนออกได้เต็มจำนวน
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ffc94a]">ROSTY59</strong> เปิดให้กดรับอยู่ในรอบนี้ ทั้งสิทธิ์ของเว็บตรงลิขสิทธิ์แท้ ค่าคอมมิชชั่นจากการแนะนำเพื่อน และการคืนยอดเสียด้วยระบบออโต้
+        อัตราที่ได้รับและเงื่อนไขของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด
+        ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเดียว คำนวณตรงไปตรงมา ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ไม่ติดเทิร์นโอเวอร์ซับซ้อน
+        และเมื่อกดถอน ระบบออโต้ผ่าน Gateway ตรงจะทำรายการเสร็จภายใน 3 วินาที เงินเข้าบัญชีเต็มจำนวนตามยอดที่กด
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -141,8 +142,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#fceb83]/60 bg-gradient-to-r from-[#fdf3d2] via-[#e4bb53] to-[#c38d29] px-10 py-3.5 text-xl font-black text-[#0b0704] shadow-[0_10px_30px_rgba(228,187,83,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,235,131,0.5)]">
-          สมัครสมาชิก QUEEN189
+          class="flex items-center justify-center rounded-lg border border-[#ffc94a]/60 bg-gradient-to-r from-[#ffeec2] via-[#f2a01a] to-[#b06a0d] px-10 py-3.5 text-xl font-black text-[#070505] shadow-[0_10px_30px_rgba(242,160,26,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,201,74,0.5)]">
+          สมัครสมาชิก ROSTY59
         </a>
       </div>
     </div>

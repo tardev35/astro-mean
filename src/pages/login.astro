@@ -18,11 +18,10 @@ const targetUrl = "https://yoalink.com/znmz";
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
 // undo half of it. Nothing is lost when they drop — Google Sans covers Thai, so
-// it paints this page on its own on a google-sans brand. QUEEN189 runs KANIT,
-// so this round the Kanit rules RENDER and the CDN query below takes the
-// Oswald-only branch. The flag flips every rebrand, so keep BOTH branches
-// correct — the next google-sans brand needs the rules gone again, and the one
-// after that needs them back.
+// it paints this page on its own on a google-sans brand. ROSTY59 runs
+// GOOGLE SANS, so this round the Kanit rules DO NOT render and the CDN query
+// below takes the Google-Sans-plus-Oswald branch. The flag flips every rebrand,
+// so keep BOTH branches correct — the next Kanit brand needs the rules back.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
@@ -35,27 +34,28 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: QUEEN189 is a royal-gold casino
-// brand painted as ONE GOLD RAMP over near-black warm brown. The logo is a
-// diamond-set gold crown above gold lettering, and the slide art is gold on
-// black throughout — there is no second hue anywhere in the mark.
-// The ramp is #fdf3d2 → #fceb83 → #e4bb53 → #c38d29 → #7a5615 over the surface
-// stack (#0b0704 page / rgba(26,17,8) panel / #271a0c raised) with #f3e4c4 body
-// text and #c2a878 captions. #e4bb53 is THE brand colour — the one that carries
-// borders and the loader; #fceb83 is the highlight above it and #c38d29 the
-// shadow below. If you find yourself reaching for a contrasting hue here, the
-// answer is a brighter or a deeper gold, not another colour family.
+// Palette note for the second <style> block: ROSTY59 is an AMBER-GOLD casino
+// brand with a REAL SECOND HUE. The logo is a raised gold coin: the word
+// "Rosty" is gold, but the "59" is chrome silver — so silver is a colour of the
+// mark, not just a highlight on the gold. Banner and slide art are gold sparkle
+// on flat black.
+// The gold ramp is #ffeec2 → #ffc94a → #f2a01a → #b06a0d → #6b3f07 over the
+// surface stack (#070505 page / rgba(21,14,7) panel / #26180a raised) with
+// #ece0cc body text and #bda98c captions. #f2a01a is THE brand colour — the one
+// that carries borders and the loader; #ffc94a is the highlight above it and
+// #b06a0d the shadow below. #dbe1e8 is the chrome silver, and it is what the
+// second ring is drawn in: that ring is the one place on this page where the
+// two-hue mark is legible at a glance.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
 // no gold in them and a `--brand-red` on a gold one, and a later round shipped a
 // `--gold-light` that held the brand's SECOND accent, not its primary — so the
 // next editor reused it by name and got the wrong role. Rename with the value,
-// and re-check the role when the palette changes shape. (That happened again
-// this round: every name here described the outgoing brand's magenta, the
-// values are gold now, and its second-accent pair had no counterpart in a
-// single-ramp palette, so that pair is gone rather than renamed onto a shade
-// that already has a name.)
+// and re-check the role when the palette changes shape. (This round the palette
+// grew a second hue back, so `--bronze-shadow` became `--gold-dark` — it is the
+// deepest step of the ramp, not a bronze — and a `--chrome-silver` was added
+// rather than smuggling silver into one of the gold names.)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -63,10 +63,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ QUEEN189 | ทางเข้าคาสิโนมงลงทุกสปิน เกมเด็ดของดีมีครบ</title>
+    <title>เข้าสู่ระบบ ROSTY59 | ทางเข้าสล็อตเว็บตรงฟอร์มแรง เกมแท้จัดเต็ม</title>
     <meta
       name="description"
-      content="เข้าสู่ระบบ QUEEN189 ของสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นคาสิโนมงลงทุกสปินที่ยิงตรง API แท้ ไม่ผ่านเอเย่นต์ ฝากถอนออโต้ใน 3 วินาที"
+      content="เข้าสู่ระบบ ROSTY59 สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นสล็อตเว็บตรงสัญญาณ API แท้ ไม่ผ่านเอเย่นต์ ไม่ล็อกยูส ฝากถอนออโต้ใน 3 วินาที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -108,16 +108,17 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #0b0704;
-        --panel-bg: rgba(26, 17, 8, 0.92);
-        --gold-pale: #fdf3d2;
-        --gold-bright: #fceb83;
-        --gold-primary: #e4bb53;
-        --gold-deep: #c38d29;
-        --bronze-shadow: #7a5615;
-        --surface-raised: #271a0c;
-        --text-body: #f3e4c4;
-        --text-muted: #c2a878;
+        --page-bg: #070505;
+        --panel-bg: rgba(21, 14, 7, 0.92);
+        --gold-pale: #ffeec2;
+        --gold-bright: #ffc94a;
+        --gold-primary: #f2a01a;
+        --gold-deep: #b06a0d;
+        --gold-dark: #6b3f07;
+        --chrome-silver: #dbe1e8;
+        --surface-raised: #26180a;
+        --text-body: #ece0cc;
+        --text-muted: #bda98c;
       }
 
       body {
@@ -125,7 +126,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(228, 187, 83, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(195, 141, 41, 0.14) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(242, 160, 26, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(219, 225, 232, 0.12) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -139,11 +140,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(122, 86, 21, 0.55);
+        border: 1px solid rgba(107, 63, 7, 0.55);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(4, 2, 0, 0.65),
-          0 0 2rem rgba(228, 187, 83, 0.18);
+          0 1rem 3rem rgba(3, 2, 2, 0.65),
+          0 0 2rem rgba(242, 160, 26, 0.18);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -158,7 +159,7 @@ const fontHref = usesGoogleFonts
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(60, 37, 5, 0.6));
+        filter: drop-shadow(0 1px 2px rgba(74, 47, 13, 0.6));
       }
 
       .sophisticated-loader {
@@ -174,16 +175,16 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-primary) 45%, var(--bronze-shadow) 100%);
+        background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-primary) 45%, var(--gold-dark) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(228, 187, 83, 0.4);
+        box-shadow: 0 0 2rem rgba(242, 160, 26, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(122, 86, 21, 0.35);
+        border: 3px solid rgba(107, 63, 7, 0.35);
         animation: spin linear infinite;
       }
 
@@ -197,7 +198,7 @@ const fontHref = usesGoogleFonts
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--gold-bright);
+        border-bottom-color: var(--chrome-silver);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -214,11 +215,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(228, 187, 83, 0.4);
+          box-shadow: 0 0 2rem rgba(242, 160, 26, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(252, 235, 131, 0.42);
+          box-shadow: 0 0 3rem rgba(255, 201, 74, 0.42);
         }
       }
 
@@ -242,7 +243,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">QUEEN189</div>
+      <div class="brand-identity">ROSTY59</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -252,7 +253,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ QUEEN189 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ ROSTY59 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

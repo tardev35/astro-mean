@@ -14,22 +14,22 @@ import img6 from "../assets/providers/game6.avif";
 // Play ในบรีฟ ถ้าจะเปลี่ยนชื่อค่ายของช่องไหน ต้องเปลี่ยนไฟล์รูปตามด้วย ห้ามตั้งชื่อ
 // ค่ายที่โฟลเดอร์นี้ไม่มีโลโก้อยู่จริง
 //
-// HAPPYSUPERWIN: กริดนี้มาถึงรอบนี้ในชุดส้มเพลิงของแบรนด์ก่อนหน้า พร้อมชื่อแบรนด์ก่อน
-// ฝังอยู่ใน JSX สามจุด (aria-label ของ section, บรรทัดหัวกระดาน และเทมเพลต alt ของ
-// ทุกช่อง) รอบนี้ย้ายทั้งไฟล์มาที่แคนดี้มาเจนต้าคู่เหลืองลูกอม — มาเจนต้า #e11ccc /
-// #ff5ae6 / #fff0fc / #8a1f9e / #4c0d6b คู่เหลือง #f0b429 / #ffd83d บนผิว #0e0119 /
-// #190430 / #280747 เนื้อความ #f7e2ff ข้อความรอง #cfa5e6
+// ROSTY59: กริดนี้มาถึงรอบนี้ในชุดแคนดี้มาเจนต้าคู่เหลืองลูกอมของแบรนด์ก่อนหน้า
+// พร้อมชื่อแบรนด์ก่อนฝังอยู่ใน JSX สามจุด (aria-label ของ section, บรรทัดหัวกระดาน
+// และเทมเพลต alt ของทุกช่อง) รอบนี้ย้ายทั้งไฟล์มาที่ทองอำพันคู่โครเมียมเงิน — ทอง
+// #ffeec2 / #ffc94a / #f2a01a / #b06a0d / #6b3f07 คู่เงิน #dbe1e8 / #a3adba บนผิว
+// #070505 / #150e07 / #26180a ขอบ #4a2f0d เนื้อความ #ece0cc ข้อความรอง #bda98c
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย)
 //
-// ป้าย HOT ใช้เหลืองลูกอมเป็นพื้น เพราะเป็นจุดเดียวในกริดที่ต้องการตัวหนังสือสีเข้ม
-// บนพื้นสว่าง — มาเจนต้าคอนทราสต์ไม่พอสำหรับตัวหนังสือเข้ม
+// ป้าย HOT ใช้ทองอำพันเป็นพื้น เพราะเป็นจุดเดียวในกริดที่ต้องการตัวหนังสือสีเข้ม
+// บนพื้นสว่าง ส่วนป้ายจำนวนผู้เล่นมุมซ้ายรับเงินโครเมียมซึ่งเป็นสีที่สองของแบรนด์
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อค่ายอยู่ใน alt ของรูป ไม่ใช่หัวข้อ — ห้ามเลื่อนชื่อค่ายขึ้นเป็น
-// <h3> เพราะ inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์ และ h3 สามตัว
+// <h3> เพราะ inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์ และ h3 สี่ตัว
 // เดียวของหน้าแรกเป็นของ FeatureHighlights กริดนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 3
-// เรื่องเกมดังค่ายชั้นนำมีอะไรน่าตาม จึงวางต่อท้ายบล็อกนั้นทันที
+// เรื่องเกมแท้จัดเต็มจากค่ายดัง จึงวางต่อท้ายบล็อกนั้นทันที
 const providers = [
   { alt: "PG Soft (Pocket Games Soft)", users: "4,592", isHot: true, img: img1 },
   { alt: "SexySlot", users: "2,184", isHot: true, img: img2 },
@@ -40,25 +40,25 @@ const providers = [
 ];
 ---
 
-<section aria-label="ค่ายเกมชั้นนำที่ HAPPYSUPERWIN รวมตัวเด่นไว้ในระบบเดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
+<section aria-label="ค่ายเกมลิขสิทธิ์แท้ที่ ROSTY59 คัดตัวเด่นมาไว้ในคลังเดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#8a1f9e]/40 bg-[#280747]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(225,28,204,0.18)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(225,28,204,0.7)]">🍭</span>
-    <p class="bg-gradient-to-r from-[#fff0fc] via-[#ff5ae6] to-[#f0b429] bg-clip-text text-3xl font-black tracking-wide text-transparent">ค่ายเกมชั้นนำที่ HAPPYSUPERWIN รวมตัวเด่นไว้ในระบบเดียว</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#cfa5e6]">
-      รวมค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายไว้ในที่เดียว เชื่อมสัญญาณ API ตรงจากสตูดิโอผู้พัฒนา ค่า RTP จึงเป็นมาตรฐานสากลตามสเปกโรงงาน ครบทั้งสล็อต 3D
-      ภาพสวย ตัวคูณทวีคูณหนัก สล็อตสายซื้อฟีเจอร์ฟรีสปิน และสล็อตคลาสสิกแตกไว สลับเล่นได้หลายแนวในกระเป๋าเดียวโดยไม่ต้องเสียเวลาโยกเงิน
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#4a2f0d]/70 bg-[#150e07]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(242,160,26,0.18)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(242,160,26,0.7)]">🏆</span>
+    <p class="bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#dbe1e8] bg-clip-text text-3xl font-black tracking-wide text-transparent">ค่ายเกมลิขสิทธิ์แท้ที่ ROSTY59 คัดตัวเด่นมาไว้ในคลังเดียว</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#bda98c]">
+      รวมค่ายยักษ์ใหญ่ระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และค่ายชั้นนำอีกหลายเจ้าไว้ในที่เดียว เชื่อมสัญญาณ API ตรงจากสตูดิโอผู้พัฒนา ค่า RTP จึงตรงตามมาตรฐานสากลจากค่ายแม่
+      คลังเกมถูกจัดเรียงเป็นหมวดหมู่และค้นหาง่ายด้วยฟิลเตอร์ค่ายกับประเภทเกม พุ่งตรงเข้าเล่นเกมที่อัตราจ่ายเป็นธรรมตามระบบโรงงานได้ทันที
     </p>
-    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e11ccc] to-transparent"></div>
+    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f2a01a] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
     {
       providers.map((p) => (
-        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#280747] shadow-[0_10px_30px_rgba(76,13,107,0.15)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(225,28,204,0.3)]">
-          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#4c0d6b] transition-all duration-500 group-hover:border-[#e11ccc]/60 group-hover:shadow-[inset_0_0_20px_rgba(225,28,204,0.25)]" />
+        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#150e07] shadow-[0_10px_30px_rgba(107,63,7,0.25)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(242,160,26,0.3)]">
+          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#4a2f0d] transition-all duration-500 group-hover:border-[#f2a01a]/60 group-hover:shadow-[inset_0_0_20px_rgba(242,160,26,0.25)]" />
 
-          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#4c0d6b] bg-[#0e0119]/85 px-3 py-1.5 text-[10px] font-medium text-[#cfa5e6] backdrop-blur-md transition-colors group-hover:text-[#fff0fc]">
+          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#4a2f0d] bg-[#070505]/85 px-3 py-1.5 text-[10px] font-medium text-[#a3adba] backdrop-blur-md transition-colors group-hover:text-[#dbe1e8]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
@@ -66,7 +66,7 @@ const providers = [
           </div>
 
           {p.isHot && (
-            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#8a1f9e]/60 bg-gradient-to-r from-[#ffd83d] to-[#f0b429] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#4c0d6b] shadow-md">
+            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#6b3f07]/70 bg-gradient-to-r from-[#ffc94a] to-[#f2a01a] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#070505] shadow-md">
               <span aria-hidden="true" class="animate-pulse">
                 🔥
               </span>{" "}
@@ -76,7 +76,7 @@ const providers = [
 
           <Picture
             src={p.img}
-            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายลิขสิทธิ์ที่เปิดให้เข้าเล่นบน HAPPYSUPERWIN`}
+            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายลิขสิทธิ์ที่เปิดให้เข้าเล่นบน ROSTY59`}
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="lazy"
@@ -89,7 +89,7 @@ const providers = [
 
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#e11ccc]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#f2a01a]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         </div>
       ))

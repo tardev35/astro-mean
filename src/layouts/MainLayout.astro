@@ -6,8 +6,8 @@ import ogImage from "../assets/slide1.png";
 import "../styles/global.css";
 import { BRAND_NAME, BRAND_TEXT, brandProfile, fontStack, iconVersion } from "../lib/brandProfile";
 import { canonicalFor } from "../lib/schema";
-import Navbar from "../components/NavbarStyle4Black.astro";
-import Footer from "../components/FooterStyle3.astro";
+import Navbar from "../components/NavbarStyle6.astro";
+import Footer from "../components/FooterPremium.astro";
 
 // Only banner1 is ever rendered, so only banner1 is imported.
 //
@@ -56,8 +56,8 @@ const mobileBannerImg = mobileBanner
   : null;
 
 const {
-  title = "QUEEN189 | คาสิโนมงลงทุกสปิน เกมเด็ดของดีมีครบ โปรแน่นต้องลอง",
-  description = "QUEEN189 คาสิโนมงลงทุกสปิน คัดเกมเด็ดของดีมีครบจากค่ายชั้นนำ สล็อตตัวท็อปและโต๊ะสดพร้อมลุย โปรแน่นต้องลอง ระบบออโต้ลั่นไวไม่รอนาน เว็บตรง API แท้ ไม่ผ่านเอเย่นต์",
+  title = "ROSTY59 | สล็อตเว็บตรงฟอร์มแรง เกมแท้จัดเต็ม ฟีเจอร์ใหม่พร้อมลั่น",
+  description = "ROSTY59 สล็อตเว็บตรงฟอร์มแรง เกมแท้จัดเต็มจากค่ายดัง มีหลายหมวดให้เลือก ฟีเจอร์ใหม่พร้อมลั่น โปรอัปเดตต่อเนื่อง ระบบเสถียรพร้อมออโต้ฝากถอน ถอนเต็มจำนวนทันที",
   robots = "index, follow",
 } = Astro.props;
 
@@ -200,7 +200,7 @@ const profile = brandProfile(Astro.site);
         background-attachment: fixed;
         background-repeat: no-repeat;
         margin: 0;
-        background-color: #0b0704;
+        background-color: #070505;
         font-weight: 400;
         font-family: var(--font-sans) !important;
       }
@@ -253,7 +253,7 @@ const profile = brandProfile(Astro.site);
         }
         <Image
           src={mainBanner}
-          alt="แบนเนอร์ QUEEN189 ภาพห้องโถงพระราชวังสีทองบนพื้นดำ ฝั่งซ้ายเป็นสิงโตทองคำและป้ายแขวนสีดำขอบทองเขียนว่า PLAY BIG WIN BIGGER ถัดมาเป็นหญิงสาวสวมมงกุฎเพชรและชุดราตรีสีทองนอนเอนอยู่บนผ้าไหมทอง มีรอยสักคำว่า Queen189 ที่ต้นแขน กลางภาพเป็นโลโก้ Queen 189 ตัวอักษรทองคำสามมิติใต้มงกุฎประดับเพชร ใต้ลงมาเป็นข้อความไทยตัวหนาสีทองว่า คาสิโนมงลงทุกสปิน ตามด้วยบรรทัด เกมเด็ดของดีมีครบ โปรแน่นต้องลอง ล่างสุดเป็นปุ่มสีดำขอบทองเขียนว่า สมัครสมาชิก พร้อมมงกุฎและลูกศรคู่ ฝั่งขวาเป็นการ์ดเกมสี่ใบป้ายว่า SLOT LIVE CASINO SPORTS และ บาคาร่า ใต้ลงมาเป็นไอคอนวงกลมสี่อันเขียนว่า ระบบปลอดภัย 100% รองรับทุกอุปกรณ์ โปรโมชั่นจัดเต็ม และ บริการตลอด 24 ชม. มุมขวาบนเขียนว่า สวย รวย มงลง ต้อง Queen189 มีเหรียญทอง ลูกเต๋า ไพ่ และวงล้อรูเล็ตกระจายอยู่รอบภาพ"
+          alt="แบนเนอร์ ROSTY59 พื้นดำประกายทอง ฝั่งซ้ายเป็นหญิงสาวสวมชุดสีทองยื่นมือออกมาข้างหน้า เหนือขึ้นไปเขียนด้วยลายมือสีทองว่า Play Big Win Bigger กลางภาพเป็นโลโก้เหรียญกลมตัว R ทองคำ ถัดมาเป็นตัวอักษรขนาดใหญ่ Rosty สีทองต่อด้วยเลข 59 สีเงินโครเมียม ใต้ลงมาเป็นข้อความไทยตัวหนาสีทองว่า สล็อตเว็บตรงฟอร์มแรง ตามด้วยบรรทัด เกมแท้จัดเต็ม ฟีเจอร์ใหม่พร้อมลั่น ใต้ลงมาเป็นป้ายสี่เหลี่ยมห้าอันพร้อมไอคอนเขียนว่า ปลอดภัย 100% ฝาก-ถอนออโต้ไว รองรับทุกอุปกรณ์ โปรโมชั่นจัดเต็ม และ เกมแท้ค่ายดัง ล่างสุดเป็นปุ่มสีดำขอบทองเขียนว่า สมัครสมาชิก พร้อมลูกศรคู่ มุมขวาบนเขียนว่า MORE THAN GAMES MORE THAN WIN ฝั่งขวาเป็นสิงโตทองคำสวมมงกุฎ ตัวละครเทพเจ้าสไตล์สล็อต โทรศัพท์มือถือแสดงหน้าเกม และสล็อตแมชชีนเลข 777 มีเหรียญทองและไพ่กระจายอยู่รอบภาพ"
           loading="eager"
           fetchpriority="high"
           widths={[412, 640, 828, 1024, 1280, 1600, 1900]}

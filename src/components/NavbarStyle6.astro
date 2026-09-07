@@ -10,14 +10,18 @@ const currentPath = Astro.url.pathname;
 
 const isActive = (path: string) => isActivePath(currentPath, path);
 
-const logoAlt = "โลโก้ XTOP666 เป็นตัว X สามมิติสีส้มไล่เฉดตัดกับสีขาวเงิน วางทับตัวอักษร TXP สีเทาจาง ใต้ลงมาเป็นคำว่า XTOP ตัวอักษรสีขาว";
+const logoAlt =
+  "โลโก้ ROSTY59 เป็นเหรียญกลมขอบทองคำนูนบนพื้นดำ กลางเหรียญเป็นตัว R ทองคำสามมิติขนาดใหญ่ ใต้ลงมาเป็นคำว่า Rosty ตัวอักษรทองคำเอียงต่อด้วยเลข 59 สีเงินโครเมียม ล่างสุดเป็นปีกรูปตัววีสีทอง";
 
-// XTOP666: ย้ายจากทองคู่เงินโครเมียมของแบรนด์ก่อน มาเป็นส้มไฟคู่แดงเลือดของ
-// แบรนด์นี้ — ส้ม #fc5b03 / #ff8a3d / #ffc9a3 / #ffe4d0 / #a33200 คู่แดง
-// #e11212 / #ff5a4d บนผิว #0a0403 / #1a0603 / #2e0c04 ขอบ #4a1405 เนื้อความ
-// #f6e5dc รอง #c9a394 (วัดจาก palette.json: vivid ของโลโก้เป็นส้ม #fc5b03 /
-// #fc6303 / #fa5302 / #f54c03 ส่วน vivid ของสไลด์เป็นแดงเข้ม #9b0101 / #940101
-// และ dominant ของแบนเนอร์เป็นดำอมแดง #020101 / #1b0201 / #240201)
+// ROSTY59: ย้ายจากทองแชมเปญราชสำนักของแบรนด์ก่อน มาเป็นทองอำพันออกส้มคู่
+// โครเมียมเงินบนดำสนิท — ทอง #ffeec2 / #ffc94a / #f2a01a / #b06a0d / #6b3f07
+// คู่เงิน #dbe1e8 / #a3adba / #5d6773 บนผิว #070505 / #150e07 / #26180a ขอบ
+// #4a2f0d เนื้อความ #ece0cc รอง #bda98c (วัดจาก palette.json: vivid ของโลโก้
+// เด่นสุดคือ #cc841d ทองอำพันออกส้ม ส่วน dominant ของทุกไฟล์เป็นดำอมน้ำตาลซึ่ง
+// คือพื้นหลัง ไม่ใช่สีเน้น)
+//
+// เลข 59 ในโลโก้เป็นโครเมียมเงินจริงๆ ไม่ใช่ไฮไลต์ของทอง เงินจึงถูกใช้เป็นสีที่
+// สองของ chrome ทั้งชุด — เส้นเน้นเมนูเป็นไล่จากเงินไปทอง ไม่ใช่ทองล้วน
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
@@ -31,14 +35,14 @@ const logoAlt = "โลโก้ XTOP666 เป็นตัว X สามมิ
 // "สมัครสมาชิก/เข้าสู่ระบบ ต่อจากโปรโมชั่น" จึงไม่มีผลกับแบรนด์นี้ และ /ทางเข้า
 // ยังอยู่ในเมนูตามปกติ
 //
-// ไอคอนเลือกให้เข้าธีม "สปีดท็อป" ของแบรนด์ — จรวด/สายฟ้า/ธงตาหมากรุก ไม่ใช่ชุด
-// ทองหรูแบบรอบก่อน
+// ไอคอนเลือกให้เข้าธีม "เหรียญทอง/สล็อตฟอร์มแรง" ของแบรนด์นี้ ไม่ใช่ชุดจรวด
+// สายฟ้าแบบสายสปีดของรอบก่อนที่เคยใช้นาวบาร์ตัวนี้
 const links = [
-  { name: "หน้าแรก", path: "/", icon: "🏁" },
+  { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
-  { name: "ทางเข้า", path: "/ทางเข้า", icon: "⚡" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🔑" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🚀" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🦁" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 ---
@@ -46,28 +50,28 @@ const links = [
 <header class="sticky top-0 z-50 w-full font-sans shadow-lg">
   <div class="pointer-events-none absolute top-0 left-0 z-50 hidden h-0 w-full items-start justify-center lg:flex">
     <div
-      class="pointer-events-auto flex h-[65px] w-[120px] items-center justify-center rounded-b-3xl border-x border-b border-[#fc5b03] bg-gradient-to-b from-[#2e0c04] to-[#0a0403] shadow-[0_5px_15px_rgba(252,91,3,0.4)]">
-      <a href="/" class="drop-shadow-[0_0_8px_rgba(252,91,3,0.45)] transition-transform hover:scale-110">
+      class="pointer-events-auto flex h-[65px] w-[120px] items-center justify-center rounded-b-3xl border-x border-b border-[#f2a01a] bg-gradient-to-b from-[#26180a] to-[#070505] shadow-[0_5px_15px_rgba(242,160,26,0.4)]">
+      <a href="/" class="drop-shadow-[0_0_8px_rgba(242,160,26,0.5)] transition-transform hover:scale-110">
         <Picture src={mainLogo!} alt={logoAlt} loading="eager" widths={[110, 220, 330]} sizes="110px" class="h-[35px] w-auto" formats={["avif", "webp"]} fallbackFormat="webp" />
       </a>
     </div>
   </div>
 
   <aside
-    class="fixed top-1/2 left-3 z-40 hidden h-[450px] w-[90px] -translate-y-1/2 flex-col items-center justify-center rounded-2xl border border-[#4a1405]/90 bg-[#0a0403]/95 p-2 shadow-[5px_0_20px_rgba(10,4,3,0.75)] backdrop-blur-md lg:flex">
+    class="fixed top-1/2 left-3 z-40 hidden h-[450px] w-[90px] -translate-y-1/2 flex-col items-center justify-center rounded-2xl border border-[#4a2f0d]/90 bg-[#070505]/95 p-2 shadow-[5px_0_20px_rgba(7,5,5,0.8)] backdrop-blur-md lg:flex">
     <div class="relative flex h-full w-full flex-col gap-2 overflow-hidden rounded-xl">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative w-full h-full flex flex-col items-center justify-center rounded-lg transition-all ${isActive(item.path) ? "bg-[#2e0c04]" : "hover:bg-[#2e0c04]/70"}`}>
+            class={`group relative w-full h-full flex flex-col items-center justify-center rounded-lg transition-all ${isActive(item.path) ? "bg-[#26180a]" : "hover:bg-[#26180a]/70"}`}>
             <span aria-hidden="true" class="mb-1 text-3xl drop-shadow-md transition-transform group-hover:scale-110">
               {item.icon}
             </span>
-            <span class={`text-xs font-bold transition-colors ${isActive(item.path) ? "text-[#ffc9a3]" : "text-[#c9a394] group-hover:text-[#ffc9a3]"}`}>{item.name}</span>
+            <span class={`text-xs font-bold transition-colors ${isActive(item.path) ? "text-[#ffc94a]" : "text-[#bda98c] group-hover:text-[#ffc94a]"}`}>{item.name}</span>
             <span
               aria-hidden="true"
-              class={`absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#e11212] to-[#fc5b03] transition-transform duration-300 origin-top ${isActive(item.path) ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`}
+              class={`absolute left-0 top-0 h-full w-[3px] bg-gradient-to-b from-[#dbe1e8] to-[#f2a01a] transition-transform duration-300 origin-top ${isActive(item.path) ? "scale-y-100" : "scale-y-0 group-hover:scale-y-100"}`}
             />
           </a>
         ))
@@ -75,11 +79,11 @@ const links = [
     </div>
   </aside>
 
-  <nav class="relative z-40 flex h-[60px] items-center justify-between border-b border-[#fc5b03]/45 bg-[#1a0603] px-3 shadow-xl lg:hidden">
+  <nav class="relative z-40 flex h-[60px] items-center justify-between border-b border-[#f2a01a]/45 bg-[#150e07] px-3 shadow-xl lg:hidden">
     <button id="hamburger-btn" class="flex flex-col items-center justify-center space-y-1.5 p-2" aria-label="เปิด-ปิดเมนู">
-      <span class="hamburger-line h-0.5 w-6 origin-center bg-[#f6e5dc] transition-all duration-300"></span>
-      <span class="hamburger-line h-0.5 w-6 bg-[#f6e5dc] transition-all duration-300"></span>
-      <span class="hamburger-line h-0.5 w-6 origin-center bg-[#f6e5dc] transition-all duration-300"></span>
+      <span class="hamburger-line h-0.5 w-6 origin-center bg-[#ece0cc] transition-all duration-300"></span>
+      <span class="hamburger-line h-0.5 w-6 bg-[#ece0cc] transition-all duration-300"></span>
+      <span class="hamburger-line h-0.5 w-6 origin-center bg-[#ece0cc] transition-all duration-300"></span>
     </button>
 
     <a href="/" class="flex-shrink-0 transition-transform hover:scale-105">
@@ -88,7 +92,7 @@ const links = [
 
     <a
       href="/login"
-      class="flex h-[32px] items-center justify-center rounded border border-[#fc5b03]/60 bg-gradient-to-r from-[#ff8a3d] to-[#fc5b03] px-4 text-xs font-bold text-[#0a0403] shadow-[0_0_12px_rgba(252,91,3,0.35)] transition-transform active:scale-95">
+      class="flex h-[32px] items-center justify-center rounded border border-[#f2a01a]/60 bg-gradient-to-r from-[#ffc94a] to-[#b06a0d] px-4 text-xs font-bold text-[#070505] shadow-[0_0_12px_rgba(242,160,26,0.35)] transition-transform active:scale-95">
       เข้าสู่ระบบ
     </a>
   </nav>
@@ -97,13 +101,13 @@ const links = [
 
   <div
     id="mobile-sidebar"
-    class="fixed top-0 left-0 z-50 h-screen w-[260px] -translate-x-full transform overflow-y-auto border-r border-[#fc5b03]/30 bg-[#1a0603] shadow-[10px_0_30px_rgba(10,4,3,0.9)] transition-transform duration-300 ease-out lg:hidden">
+    class="fixed top-0 left-0 z-50 h-screen w-[260px] -translate-x-full transform overflow-y-auto border-r border-[#f2a01a]/30 bg-[#150e07] shadow-[10px_0_30px_rgba(7,5,5,0.9)] transition-transform duration-300 ease-out lg:hidden">
     <div class="flex flex-col space-y-2.5 px-4 pt-16 pb-8">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`sidebar-item flex items-center px-4 py-3 rounded-lg border transition-all ${isActive(item.path) ? "bg-[#2e0c04] border-[#fc5b03] text-[#ffc9a3] shadow-inner" : "bg-white/5 border-transparent text-[#c9a394] hover:bg-white/10 hover:text-[#ffc9a3]"}`}>
+            class={`sidebar-item flex items-center px-4 py-3 rounded-lg border transition-all ${isActive(item.path) ? "bg-[#26180a] border-[#f2a01a] text-[#ffc94a] shadow-inner" : "bg-white/5 border-transparent text-[#bda98c] hover:bg-white/10 hover:text-[#ffc94a]"}`}>
             <span aria-hidden="true" class="mr-3 text-xl">
               {item.icon}
             </span>
@@ -112,10 +116,10 @@ const links = [
         ))
       }
 
-      <div class="mt-5 flex flex-col gap-2 border-t border-[#4a1405] pt-5">
+      <div class="mt-5 flex flex-col gap-2 border-t border-[#4a2f0d] pt-5">
         <a
           href="/register"
-          class="sidebar-item flex justify-center gap-1.5 rounded border border-[#fc5b03]/60 bg-gradient-to-r from-[#ffe4d0] via-[#ff8a3d] to-[#fc5b03] py-3 text-sm font-bold text-[#0a0403] shadow-md transition-transform active:scale-95">
+          class="sidebar-item flex justify-center gap-1.5 rounded border border-[#f2a01a]/60 bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#b06a0d] py-3 text-sm font-bold text-[#070505] shadow-md transition-transform active:scale-95">
           <span aria-hidden="true">⚡</span> สมัครสมาชิกใหม่
         </a>
       </div>
@@ -125,12 +129,12 @@ const links = [
   <div class="fixed top-4 right-6 z-50 hidden items-center gap-3 lg:flex">
     <a
       href="/login"
-      class="group flex items-center gap-1.5 rounded border border-[#fc5b03]/60 bg-[#1a0603]/90 px-6 py-2 text-sm font-bold text-[#f6e5dc] shadow-md backdrop-blur-sm transition-all hover:border-[#ffc9a3] hover:bg-[#2e0c04]/90">
+      class="group flex items-center gap-1.5 rounded border border-[#dbe1e8]/45 bg-[#150e07]/90 px-6 py-2 text-sm font-bold text-[#dbe1e8] shadow-md backdrop-blur-sm transition-all hover:border-[#ffc94a] hover:bg-[#26180a]/90 hover:text-[#ffc94a]">
       <span aria-hidden="true">🔒</span> เข้าสู่ระบบ
     </a>
     <a
       href="/register"
-      class="group flex items-center gap-1.5 rounded border border-[#fc5b03]/60 bg-gradient-to-r from-[#ffe4d0] via-[#ff8a3d] to-[#fc5b03] px-6 py-2 text-sm font-bold text-[#0a0403] shadow-[0_0_15px_rgba(252,91,3,0.35)] transition-all hover:scale-105">
+      class="group flex items-center gap-1.5 rounded border border-[#f2a01a]/60 bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#b06a0d] px-6 py-2 text-sm font-bold text-[#070505] shadow-[0_0_15px_rgba(242,160,26,0.35)] transition-all hover:scale-105">
       <span aria-hidden="true">⚡</span> สมัครสมาชิก
     </a>
   </div>

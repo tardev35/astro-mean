@@ -1,16 +1,28 @@
+---
+// ROSTY59: ย้ายจากทองแชมเปญบนดำอมน้ำตาลของแบรนด์ก่อน มาเป็นทองอำพันออกส้ม
+// คู่โครเมียมเงินบนดำสนิท — ทอง #ffc94a / #f2a01a / #b06a0d บนผิว #070505 /
+// #26180a ขอบ #4a2f0d คู่เงิน #dbe1e8 สำหรับปุ่มรอง
+//
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
+// ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
+//
+// แถบนี้เป็น chrome ล้วน ไม่มีหัวข้อ และ emoji อยู่ใน <span aria-hidden> ที่เป็น
+// พี่น้องของ label ไม่ใช่แทรกอยู่ในข้อความ
+---
+
 <div
-  class="fixed right-0 bottom-0 left-0 z-[100] border-t border-[#7a5615]/60 bg-[#0b0704]/95 font-sans shadow-[0_-5px_25px_rgba(228,187,83,0.3)] backdrop-blur-md lg:hidden">
+  class="fixed right-0 bottom-0 left-0 z-[100] border-t border-[#4a2f0d]/80 bg-[#070505]/95 font-sans shadow-[0_-5px_25px_rgba(242,160,26,0.28)] backdrop-blur-md lg:hidden">
   <div class="flex w-full gap-1.5 p-1.5">
     <a
       href="/register"
-      style="background-image: linear-gradient(in oklab to bottom, #fceb83, #c38d29);"
-      class="flex flex-1 items-center justify-center gap-1.5 rounded-lg py-3.5 text-base font-black text-[#0b0704] shadow-[0_0_12px_rgba(228,187,83,0.55)] transition-transform active:scale-95">
-      <span aria-hidden="true">👑</span> สมัครสมาชิก
+      style="background-image: linear-gradient(in oklab to bottom, #ffc94a, #b06a0d);"
+      class="flex flex-1 items-center justify-center gap-1.5 rounded-lg py-3.5 text-base font-black text-[#070505] shadow-[0_0_12px_rgba(242,160,26,0.55)] transition-transform active:scale-95">
+      <span aria-hidden="true">⚡</span> สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-[#e4bb53]/60 bg-[#271a0c] py-3.5 text-base font-bold text-[#fceb83] shadow-[0_2px_8px_rgba(122,86,21,0.5)] transition-transform hover:bg-[#3c2505] active:scale-95">
+      class="flex flex-1 items-center justify-center gap-1.5 rounded-lg border border-[#dbe1e8]/45 bg-[#26180a] py-3.5 text-base font-bold text-[#dbe1e8] shadow-[0_2px_8px_rgba(107,63,7,0.5)] transition-transform hover:bg-[#3a2410] active:scale-95">
       <span aria-hidden="true">🔒</span> เข้าสู่ระบบ
     </a>
   </div>

@@ -8,27 +8,27 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// HAPPYSUPERWIN: ไฟล์นี้มาถึงรอบนี้ในชุดส้มเพลิงของแบรนด์ก่อนหน้า ย้ายทั้งไฟล์มาเป็น
-// แคนดี้มาเจนต้าคู่เหลืองลูกอม — มาเจนต้า #ff5ae6 / #e11ccc / #fff0fc / #8a1f9e /
-// #4c0d6b คู่เหลือง #f0b429 / #ffd83d บนผิว #280747 / #380a5f / #0e0119
-// เนื้อความ #f7e2ff ข้อความรอง #cfa5e6
+// ROSTY59: ไฟล์นี้มาถึงรอบนี้ในชุดแคนดี้มาเจนต้าคู่เหลืองลูกอมของแบรนด์ก่อนหน้า
+// ย้ายทั้งไฟล์มาเป็นทองอำพันคู่โครเมียมเงิน — ทอง #ffeec2 / #ffc94a / #f2a01a /
+// #b06a0d / #6b3f07 คู่เงิน #dbe1e8 / #a3adba / #5d6773 บนผิว #070505 / #150e07 /
+// #26180a ขอบ #4a2f0d เนื้อความ #ece0cc
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
 // ได้จาก git history)
 //
-// การ์ดใบนี้ออกแบบให้อ่านเป็น "คู่สี" ไม่ใช่แถบสีเดียวกันสองแถบ รอบนี้คู่สีคือ
-// มาเจนต้ากับเหลืองลูกอม: ป้ายคอลัมน์ซ้ายรับมาเจนต้าซึ่งเป็นสีนำ ป้ายคอลัมน์ขวารับ
-// เหลืองซึ่งเป็นสีคู่ ส่วนชมพูขาว (ขอบไฟของ wordmark) ไปอยู่ที่ไล่เฉดหัวข้อกับ
-// แถบขีดหัวข้อ
+// การ์ดใบนี้ออกแบบให้อ่านเป็น "คู่สี" ไม่ใช่แถบสีเดียวกันสองแถบ รอบนี้คู่สีคือทอง
+// อำพันกับเงินโครเมียม: ป้ายคอลัมน์ซ้ายรับทองซึ่งเป็นสีนำ ป้ายคอลัมน์ขวารับเงินซึ่ง
+// เป็นสีคู่ (เลข 59 บนเหรียญโลโก้) ส่วนทองซีดสว่างไปอยู่ที่ไล่เฉดหัวข้อกับแถบขีด
+// หัวข้อ
 //
 // `title` เป็นหัวข้อเดียวที่ component นี้ปล่อยออกมาได้ และมีไว้ให้บล็อกนี้แบก
 // section ของ docx ได้ ส่วนหัวคอลัมน์ทั้งสองยังเป็น <p>: มันตั้งชื่อแผง UI
 // ไม่ใช่ section ของ docx การเลื่อนขึ้นเป็นหัวข้อจะเพิ่มระดับหัวข้อที่ brief
-// ไม่เคยขอ — docx รอบนี้เป็น H1 + H2 ล้วน ส่วน H3 สามตัวเดียวของหน้าแรกอยู่ที่
+// ไม่เคยขอ — docx รอบนี้เป็น H1 + H2 ล้วน ส่วน H3 สี่ตัวเดียวของหน้าแรกอยู่ที่
 // FeatureHighlights
 //
-// รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 7 เรื่องจากเกมดังถึงของใหม่ ทำไมถึงมีตัวเลือก
-// ให้สายสล็อตตามได้เรื่อยๆ
+// รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 6 เรื่องโปรอัปเดตต่อเนื่อง เติมสิทธิ์และข้อเสนอ
+// ใหม่ให้มีอะไรน่าตามเสมอ
 //
 // เมื่อส่ง title มา หัวข้อตั้งชื่อ section ให้แล้ว จึงไม่เพิ่ม aria-label ทับ
 // ถ้าไม่มี title ให้ section ใช้ `label` เป็นชื่อสำหรับ assistive tech แทน
@@ -37,24 +37,24 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#4c0d6b]/60 bg-[#280747]/90 p-8 text-[#f7e2ff] shadow-[0_10px_30px_rgba(138,31,158,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#e11ccc]/55 hover:shadow-[0_15px_40px_rgba(240,180,41,0.24)] md:p-10">
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#380a5f]/70 to-transparent opacity-80"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#4a2f0d]/70 bg-[#150e07]/90 p-8 text-[#ece0cc] shadow-[0_10px_30px_rgba(107,63,7,0.35)] backdrop-blur-xl transition-all duration-500 hover:border-[#f2a01a]/55 hover:shadow-[0_15px_40px_rgba(219,225,232,0.2)] md:p-10">
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-[#26180a]/70 to-transparent opacity-80"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#4c0d6b]/60 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffd83d] via-[#fff0fc] to-[#4c0d6b] shadow-[0_0_10px_rgba(225,28,204,0.55)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fff0fc] via-[#ff5ae6] to-[#f0b429] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#4a2f0d]/70 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dbe1e8] via-[#ffeec2] to-[#6b3f07] shadow-[0_0_10px_rgba(242,160,26,0.55)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#dbe1e8] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e2ff]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0cc]">
         {
           titleleft && (
-            <p class="flex items-center gap-3 border-b border-[#4c0d6b]/50 pb-3 text-xl leading-normal font-black tracking-wide text-[#ff5ae6]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fff0fc] via-[#ff5ae6] to-[#4c0d6b] shadow-[0_0_10px_rgba(225,28,204,0.5)]" />
+            <p class="flex items-center gap-3 border-b border-[#4a2f0d]/60 pb-3 text-xl leading-normal font-black tracking-wide text-[#ffc94a]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffeec2] via-[#f2a01a] to-[#6b3f07] shadow-[0_0_10px_rgba(242,160,26,0.5)]" />
               {titleleft}
             </p>
           )
@@ -62,11 +62,11 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f7e2ff] md:border-l md:border-[#f0b429]/35 md:pl-10">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0cc] md:border-l md:border-[#dbe1e8]/25 md:pl-10">
         {
           titleright && (
-            <p class="flex items-center gap-3 border-b border-[#f0b429]/25 pb-3 text-xl leading-normal font-black tracking-wide text-[#f0b429]">
-              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffd83d] via-[#f0b429] to-[#4c0d6b] shadow-[0_0_10px_rgba(240,180,41,0.45)]" />
+            <p class="flex items-center gap-3 border-b border-[#dbe1e8]/20 pb-3 text-xl leading-normal font-black tracking-wide text-[#dbe1e8]">
+              <span aria-hidden="true" class="h-6 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dbe1e8] via-[#a3adba] to-[#5d6773] shadow-[0_0_10px_rgba(219,225,232,0.45)]" />
               {titleright}
             </p>
           )

@@ -32,16 +32,16 @@ const bankPool = [
 // ตัวเลขทุกตัวที่ใช้ (interval, เพดานแถว, ช่วงยอด, รูปแบบยูสเซอร์) จาก DOM จึงไม่
 // ต้องรู้จักพาเลตของแบรนด์นี้และไม่ต้องเปิด src/lib เลย
 //
-// XONEBET: feed ตัวนี้เป็น inventory ที่ค้างชุดสีและชื่อแบรนด์ก่อนหน้าฝังไว้ใน JSX
-// รอบนี้ย้ายมาที่ทองหลอมคู่เงินโครเมียมของแบรนด์นี้ — ทองแกน #ebb101 / #fee505 /
-// #fff8d1 คู่เงิน #e9e9e9 กับเฉดทองเข้ม #a87c02 / #5c4301 บนผิวเกือบดำ #161105 /
-// #221a08 เนื้อความ #f4e6bd ข้อความรอง #c3ae76 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้
-// — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
-// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) แถบสีธนาคารกับเขียว verified
-// อยู่เหมือนเดิม
+// ROSTY59: feed ตัวนี้เป็น inventory ที่ค้างชุดสีและชื่อแบรนด์ก่อนหน้าฝังไว้ใน JSX
+// รอบนี้ย้ายมาที่ทองอำพันคู่โครเมียมเงินของแบรนด์นี้ — ทองแกน #f2a01a / #ffc94a /
+// #ffeec2 คู่เงิน #dbe1e8 / #a3adba / #5d6773 กับเฉดทองเข้ม #b06a0d / #6b3f07 บนผิว
+// เกือบดำ #070505 / #150e07 / #26180a ขอบ #4a2f0d เนื้อความ #ece0cc ข้อความรอง
+// #bda98c (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
+// ได้จาก git history) แถบสีธนาคารกับเขียว verified อยู่เหมือนเดิม
 //
-// feed นี้วางต่อท้ายหัวข้อ docx ข้อ 7 ที่พูดถึงการเข้าเล่นได้คล่องตลอด 24 ชั่วโมง
-// เป็นหลักฐานว่าระบบฝากถอนออโต้เดินด้วยความเร็วเท่ากันทุกช่วงเวลา
+// feed นี้วางต่อท้ายหัวข้อ docx ข้อ 7 ที่พูดถึงระบบฝากถอนออโต้ผ่าน Gateway ตรง
+// เป็นหลักฐานว่ารายการเดินด้วยความเร็วเท่ากันทุกช่วงเวลา
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const pickFrom = (chars: string, salt: string) => chars.charAt(brandPick(Astro.site, salt, chars.length));
 
@@ -55,16 +55,16 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
 
 <div class="mx-auto w-full max-w-[900px] p-4 font-sans">
   <section
-    aria-label="ประวัติการถอนเงินล่าสุดของสมาชิก XONEBET"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#ebb101]/45 bg-[#161105]/90 px-4 py-8 shadow-[0_10px_30px_rgba(235,177,1,0.25)] backdrop-blur-md md:p-10">
-    <div class="pointer-events-none absolute -top-16 -right-10 h-40 w-40 rounded-full bg-[#5c4301]/60 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-[#ebb101]/35 blur-[60px]"></div>
+    aria-label="ประวัติการถอนเงินล่าสุดของสมาชิก ROSTY59"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#f2a01a]/45 bg-[#150e07]/90 px-4 py-8 shadow-[0_10px_30px_rgba(242,160,26,0.25)] backdrop-blur-md md:p-10">
+    <div class="pointer-events-none absolute -top-16 -right-10 h-40 w-40 rounded-full bg-[#4a2f0d]/70 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 h-40 w-40 rounded-full bg-[#f2a01a]/35 blur-[60px]"></div>
 
     <div class="relative z-10 mb-8 text-center">
-      <p class="bg-gradient-to-b from-[#fff8d1] to-[#ebb101] bg-clip-text text-xl font-black text-transparent md:text-3xl">ประวัติการถอนเงินของสมาชิก XONEBET แบบเรียลไทม์</p>
-      <p class="mt-2 text-base leading-relaxed text-[#f4e6bd]/80">
-        ฝากถอนผ่านระบบออโต้ ประมวลผลไวใน 3 วินาที ไม่ติดเทิร์นจุกจิก ไม่ต้องรอแอดมินอนุมัติ ปั่นได้เท่าไหร่ก็ถอนออกได้เต็มจำนวนทุกยอด และทำงานด้วยความเร็วเท่ากันตลอด 24 ชั่วโมง
-        ตัวเลขด้านล่างเป็นข้อมูลตัวอย่างสำหรับแสดงรูปแบบรายการเท่านั้น
+      <p class="bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#dbe1e8] bg-clip-text text-xl font-black text-transparent md:text-3xl">ประวัติการถอนเงินของสมาชิก ROSTY59 แบบเรียลไทม์</p>
+      <p class="mt-2 text-base leading-relaxed text-[#ece0cc]/80">
+        ฝากถอนผ่านระบบออโต้ไฮสปีด ทำรายการเสร็จสรรพใน 3 วินาทีผ่าน Gateway ตรง รองรับทั้งธนาคารชั้นนำและวอลเล็ท ไม่ต้องส่งสลิปให้แอดมินตรวจ ไม่ต้องรอคิวอนุมัติ ถอนยอดไหนก็เงินเข้าเต็มจำนวนทันที
+        และทำงานด้วยความเร็วเท่ากันตลอด 24 ชั่วโมง ตัวเลขด้านล่างเป็นข้อมูลตัวอย่างสำหรับแสดงรูปแบบรายการเท่านั้น
       </p>
     </div>
 
@@ -77,25 +77,25 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
       data-pending-chance="0.4"
       data-user-style="letters"
       data-user-digits="4"
-      class="relative z-10 ml-4 border-l-2 border-[#ebb101]/55 pl-6 md:ml-8 md:pl-8">
+      class="relative z-10 ml-4 border-l-2 border-[#f2a01a]/55 pl-6 md:ml-8 md:pl-8">
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-row relative mb-6 transition-all duration-500 ease-out">
-            <div class="absolute top-2 -left-[35px] h-4 w-4 rounded-full border-2 border-[#161105] bg-[#ebb101] shadow-[0_0_10px_rgba(235,177,1,0.8)] md:-left-[43px]" />
+            <div class="absolute top-2 -left-[35px] h-4 w-4 rounded-full border-2 border-[#070505] bg-[#f2a01a] shadow-[0_0_10px_rgba(242,160,26,0.8)] md:-left-[43px]" />
 
-            <div class="flex items-center gap-4 rounded-[20px] bg-gradient-to-r from-[#221a08]/70 to-transparent p-4 transition-colors hover:from-[#5c4301]/50">
+            <div class="flex items-center gap-4 rounded-[20px] bg-gradient-to-r from-[#26180a]/70 to-transparent p-4 transition-colors hover:from-[#4a2f0d]/60">
               <div data-winner-bank class={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full ${row.bank.color}`}>
                 <img data-winner-icon src={row.bank.icon} alt="" width="24" height="24" loading="lazy" decoding="async" class="h-6 w-6 object-contain" />
               </div>
 
               <div class="min-w-0 flex-1">
-                <div class="text-sm text-[#c3ae76]">
+                <div class="text-sm text-[#bda98c]">
                   ยูสเซอร์:{" "}
-                  <span data-winner-user class="font-bold text-[#f4e6bd]">
+                  <span data-winner-user class="font-bold text-[#ece0cc]">
                     {row.user}
                   </span>
                 </div>
-                <div class="text-xl font-black text-[#fee505]">
+                <div class="text-xl font-black text-[#ffc94a]">
                   <span data-winner-amount>{row.amount}</span> THB
                 </div>
               </div>
@@ -131,11 +131,12 @@ const initialRows = Array.from({ length: 5 }, (_, i) => ({
 <style>
   /* สีของสถานะสองตัวเป็นคลาสแทนที่จะเป็นสตริงในโค้ด เพื่อให้ JS ใน
      src/lib/winnersFeed.ts ไม่ต้องรู้ว่าพาเลตของแบรนด์นี้คืออะไร
-     เขียว verified เป็นสัญญาณความสำเร็จ ไม่ใช่สีแบรนด์ — มันเป็นเขียวเหมือนกัน
+     สถานะ "กำลังโอน" รับเงินโครเมียมซึ่งเป็นสีที่สองของแบรนด์นี้ ส่วนเขียว
+     verified เป็นสัญญาณความสำเร็จ ไม่ใช่สีแบรนด์ — มันเป็นเขียวเหมือนกัน
      ทุกแบรนด์ */
   .winner-status.is-pending {
-    color: #f4e6bd;
-    border-color: #5c4301;
+    color: #ece0cc;
+    border-color: #5d6773;
   }
   .winner-status.is-verified {
     color: oklch(79.2% 0.209 151.711);

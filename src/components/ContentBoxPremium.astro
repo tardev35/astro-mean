@@ -6,15 +6,15 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// HAPPYSUPERWIN: ไฟล์นี้มาถึงรอบนี้ในชุดส้มเพลิงคู่ทองหลอมของแบรนด์ก่อนหน้า ตอนนี้
-// ย้ายทั้งไฟล์มาเป็นแคนดี้มาเจนต้าคู่เหลืองลูกอม — มาเจนต้า #ff5ae6 / #e11ccc /
-// #8a1f9e / #4c0d6b คู่เหลือง #ffd83d / #f0b429 บนผิวม่วงองุ่น #0e0119 / #190430 /
-// #280747 เนื้อความ #f7e2ff ตัวอักษรสว่าง #fff0fc
+// ROSTY59: ไฟล์นี้มาถึงรอบนี้ในชุดแคนดี้มาเจนต้าคู่เหลืองลูกอมของแบรนด์ก่อนหน้า
+// ตอนนี้ย้ายทั้งไฟล์มาเป็นทองอำพันคู่โครเมียมเงินบนดำสนิท — ทอง #ffeec2 / #ffc94a /
+// #f2a01a / #b06a0d / #6b3f07 คู่เงิน #dbe1e8 / #a3adba บนผิว #070505 / #150e07 /
+// #26180a ขอบ #4a2f0d เนื้อความ #ece0cc
 //
-// เหลืองลูกอมเป็น "สีคู่" ไม่ใช่สีนำ — มันคือตัวอักษร SUPERWIN บนอาร์ตของแบรนด์
-// จึงถูกวางไว้ท้ายไล่เฉดหัวข้อและออร่ามุมขวาล่างตอน hover ส่วนมาเจนต้าคือสีของ
-// ปุ่มสมัครกับปราสาทพาสเทลบนแบนเนอร์ ซึ่งเป็นแกนกลางของแบรนด์ จึงถือทั้งขอบการ์ด
-// เงา และสต็อปกลางของไล่เฉด
+// เงินโครเมียมเป็น "สีที่สอง" จริงของแบรนด์นี้ ไม่ใช่แค่เงา — มันคือเลข 59 บนเหรียญ
+// โลโก้ จึงถูกวางไว้ที่สต็อปท้ายของไล่เฉดหัวข้อ ที่หัวแถบขีดหัวข้อ และที่ออร่ามุมขวา
+// ล่างตอน hover ส่วนทองอำพันคือตัว R นูนกับคำว่า Rosty ซึ่งเป็นแกนกลางของแบรนด์
+// จึงถือขอบการ์ด เงา และสต็อปกลางของไล่เฉด
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
@@ -29,15 +29,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#8a1f9e]/45 bg-gradient-to-br from-[#280747]/92 to-[#0e0119]/88 p-8 text-left text-base leading-relaxed text-[#f7e2ff] shadow-[0_10px_30px_rgba(225,28,204,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#e11ccc]/70 hover:shadow-[0_15px_40px_rgba(240,180,41,0.22)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#190430]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#e11ccc]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#4c0d6b]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#f0b429]/30"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#4a2f0d]/70 bg-gradient-to-br from-[#26180a]/92 to-[#070505]/88 p-8 text-left text-base leading-relaxed text-[#ece0cc] shadow-[0_10px_30px_rgba(242,160,26,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#f2a01a]/70 hover:shadow-[0_15px_40px_rgba(219,225,232,0.22)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#150e07]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#f2a01a]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#4a2f0d]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#dbe1e8]/30"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#8a1f9e]/40 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffd83d] via-[#ff5ae6] to-[#4c0d6b] shadow-[0_0_10px_rgba(225,28,204,0.6)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#fff0fc] via-[#ff5ae6] to-[#ffd83d] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#4a2f0d]/70 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#dbe1e8] via-[#f2a01a] to-[#6b3f07] shadow-[0_0_10px_rgba(242,160,26,0.6)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#dbe1e8] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }
