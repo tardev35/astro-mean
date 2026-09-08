@@ -6,21 +6,21 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// QUEEN189: ย้ายชุดสีของ variant นี้มาที่ทองราชสำนักบนดำสนิท — ทอง #fdf3d2 /
-// #fceb83 / #e4bb53 / #c38d29 / #7a5615 บนผิวการ์ด #1a1108 เนื้อความ #f3e4c4
-// (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
-// เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
-// git history)
+// BLACKJACK789: ย้ายชุดสีของ variant นี้มาที่ทองแอนทีค/แชมเปญบนดำเกือบสนิท — ทอง
+// #fdf1ce / #f2cf70 / #d3aa4b / #b8862c / #5c4113 บนผิวการ์ด #100b05 เนื้อความ
+// #ede0c4 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
+// ได้จาก git history)
 //
-// แบรนด์นี้เป็นทองไล่ระดับวรรณะเดียว ไม่มีสีที่สองมาตัด ถ้าอยากได้คอนทราสต์ให้ใช้
-// ทองสว่างขึ้นหรือทองเข้มลง ไม่ใช่ไปหยิบวรรณะสีอื่นมา
+// โลหะที่สองของแบรนด์นี้คือกราไฟต์/กันเมทัล แต่การ์ดใบนี้ไม่หยิบมาใช้ ถ้าอยากได้
+// คอนทราสต์บนการ์ดนี้ให้ใช้ทองสว่างขึ้นหรือทองเข้มลง
 //
 // คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
-// #050301 (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #271a0c (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
+// #050403 (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #1e150a (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
 // ไปใช้ทองสด การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่ variant นี้
 // มีไว้ทำ
 //
-// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 1 ซึ่งเป็น <h1> ตัวเดียวของหน้าแรก
+// รอบนี้ไฟล์นี้ถูกใช้สองครั้งบนหน้าแรก — หัวข้อ docx ข้อ 2 และข้อ 5 ทั้งคู่เป็น <h2>
 //
 // text-center อยู่บน <header> เท่านั้น ไม่ได้อยู่บนการ์ดหรือ <section> ถ้าย้ายขึ้นไป
 // มันจะ inherit ลงไปใน slot แล้วย่อหน้าเนื้อความจะถูกจัดกึ่งกลางตามไปด้วย
@@ -28,11 +28,11 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="w-full max-w-[1400px] rounded-[25px] border border-[#e4bb53]/30 bg-[#1a1108] p-8 text-left text-base leading-relaxed text-[#f3e4c4] shadow-[10px_10px_20px_#050301,-10px_-10px_20px_#271a0c]">
+    class="w-full max-w-[1400px] rounded-[25px] border border-[#d3aa4b]/30 bg-[#100b05] p-8 text-left text-base leading-relaxed text-[#ede0c4] shadow-[10px_10px_20px_#050403,-10px_-10px_20px_#1e150a]">
     {
       title && (
-        <header class="mb-8 border-b border-[#fceb83]/25 pb-4 text-center">
-          <HeadingTag class={`bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#c38d29] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#f2cf70]/25 pb-4 text-center">
+          <HeadingTag class={`bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#b8862c] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

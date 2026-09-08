@@ -2,16 +2,17 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement3.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
-// ROSTY59: ticker หมุนมาเป็น Announcement3 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
+// BLACKJACK789: ticker หมุนมาเป็น Announcement5 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
 // (การ์ดถาวรของหน้าย่อย) เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
 // variant นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
-// สีย้ายจากทองแชมเปญราชสำนักบนดำอมน้ำตาลของแบรนด์ก่อน มาเป็นทองอำพันออกส้ม
-// #ffeec2 / #ffc94a / #f2a01a / #b06a0d / #6b3f07 บนดำสนิท #070505
-// ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// สีย้ายจากทองอำพันออกส้มคู่โครเมียมเงินของแบรนด์ก่อน มาเป็นทองแอนทีคอมน้ำผึ้ง
+// คู่กราไฟต์บนดำสนิท — ทอง #fdf1ce / #f2cf70 / #d3aa4b / #b8862c / #5c4113
+// คู่กราไฟต์ #cfd6e0 บนพื้น #050403 ขอบ #3a2a11
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the page's
 // single h1), ONE short intro paragraph, the promo image grid, one CTA. Nothing
@@ -23,37 +24,37 @@ import { Picture } from "astro:assets";
 // Final inventory for this page is h1 ×1, and no headings below it.
 //
 // ตัวแปรตั้งชื่อตามข้อความที่พิมพ์อยู่บนอาร์ตจริง ไม่ได้ตั้งตามเลขท้ายชื่อไฟล์
-// ดรอปวันที่ 2026-09-07 ให้สไลด์มาสามใบ และลงกริดครบทั้งสามใบ:
-//   ใบที่ 1 = เว็บตรง ลิขสิทธิ์แท้ · ฝาก-ถอน AUTO 3 นาที · ระบบเกมดีสุดใน ASIA
-//   ใบที่ 2 = แนะนำเพื่อน รับค่าคอมมิชชั่น 3% · คืนยอดเสียด้วยระบบ Auto
-//   ใบที่ 3 = สล็อตเว็บตรง ไม่ผ่านเอเยนต์ · จ่ายเต็ม เท่าไหร่ก็ถอนได้
-// ทั้งสามไฟล์เป็นอาร์ตทรงจัตุรัส 600x600 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
+// ดรอปวันที่ 2026-09-09 ให้สไลด์มาสี่ใบ และลงกริดครบทั้งสี่ใบ:
+//   ใบที่ 1 = โปรสมัครใหม่ รับ 100% · ทุกยอดฝาก ถอนไม่อั้น
+//   ใบที่ 2 = ฝากรับเพิ่ม 10% · รับได้ไม่จำกัด · เล่นเพียง 1 เทิร์น ถอนได้ไม่อั้น
+//   ใบที่ 3 = ฝาก 100 รับ 200 · ทำ 2,000 ถอนได้ 200
+//   ใบที่ 4 = ฝาก 300 รับ 700 · ทำ 6,000 ถอนได้ 700
+// ทั้งสี่ไฟล์เป็นอาร์ตทรงจัตุรัส 600x600 เท่ากันหมด กริดจึงเรียงลงตัวไม่มีช่องเตี้ยช่องสูง
 // (ถ้าดรอปหน้าเปลี่ยนสัดส่วนอีก ให้ไล่เช็ก imageSizes กับ widthLadder ใหม่)
 //
-// สไลด์ใบที่สี่ถูกถอด import ออกเมื่อ 2026-09-07: git ไม่ได้แก้ไฟล์นั้นในดรอปนี้
-// (ยังเป็นอาร์ตแนวนอน 600x252 ของแบรนด์ก่อน สัดส่วนคนละชุดกับสามใบข้างบน) และ
-// รูปที่ import แล้วคือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render
-// ไฟล์ hero ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ก็ห้าม import ที่นี่ด้วยเหตุผล
-// เดียวกัน ส่วนไฟล์ hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
+// ไฟล์ banner ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ห้าม import ที่นี่เด็ดขาด —
+// รูปที่ import แล้วคือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render ส่วนไฟล์
+// hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
 //
-// alt เขียนได้เฉพาะสิ่งที่พิมพ์อยู่บนภาพจริง — ทั้งสามไฟล์ถอดข้อความและองค์ประกอบ
-// บนอาร์ตดรอปวันที่ 2026-09-07 มาเขียนตามนั้น
-import promoLicensed from "../assets/slide1.png";
-import promoReferral from "../assets/slide2.png";
-import promoNoAgent from "../assets/slide3.png";
+// alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความที่พิมพ์บนอาร์ตและฉาก — ทั้งสี่ไฟล์
+// เปิดดูแล้วถอดองค์ประกอบมาเขียนตามนั้น
+import promoWelcome100 from "../assets/slide1.png";
+import promoTopup10 from "../assets/slide2.png";
+import promoDeposit100 from "../assets/slide3.png";
+import promoDeposit300 from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 153. It states what the
+// byte count reads ~3x too long). This one measures 159. It states what the
 // page holds — the offers the promo artwork itself prints — and stops.
 const pageDescription =
-  "รวมโปรโมชั่น ROSTY59 สล็อตเว็บตรงลิขสิทธิ์แท้ ไม่ผ่านเอเยนต์ ทั้งสิทธิ์แนะนำเพื่อนรับค่าคอมมิชชั่น 3% คืนยอดเสียด้วยระบบออโต้ และฝากถอนออโต้ไวใน 3 วินาที";
+  "รวมโปรโมชั่น BLACKJACK789 ทั้งโปรสมัครใหม่รับ 100% ฝากรับเพิ่ม 10% ฝาก 100 รับ 200 และฝาก 300 รับ 700 เงื่อนไขพิมพ์อยู่บนภาพครบ กดรับเองได้ ถอนออโต้ใน 3 วินาที";
 
-const pageTitle = "โปรโมชั่น ROSTY59 | เว็บตรงลิขสิทธิ์แท้ แนะนำเพื่อนรับค่าคอม คืนยอดเสียออโต้";
+const pageTitle = "โปรโมชั่น BLACKJACK789 | สมัครใหม่รับ 100% ฝากรับเพิ่ม 10% ถอนไม่อั้น";
 
 // หัวข้อระดับ h1 ของหน้า แยกจากค่า title เพราะ title มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น ROSTY59 รวมสิทธิ์และข้อเสนอที่เปิดให้กดรับอยู่ในรอบนี้";
+const pageHeading = "โปรโมชั่น BLACKJACK789 รวมสิทธิ์และข้อเสนอที่เปิดให้กดรับอยู่ในรอบนี้";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -62,7 +63,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoLicensed.src,
+  primaryImagePath: promoWelcome100.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -77,12 +78,12 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบทองมืดล้อกับกรอบทองบนแบนเนอร์ แล้วสว่างขึ้นเป็นทองหลักตอน hover
+// ขอบทองเข้มล้อกับกรอบทองบนแบนเนอร์ แล้วสว่างขึ้นเป็นทองหลักตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#4a2f0d]/70 object-contain shadow-[0_10px_30px_rgba(107,63,7,0.4)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#f2a01a]/70 hover:shadow-[0_15px_40px_rgba(242,160,26,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#3a2a11]/70 object-contain shadow-[0_10px_30px_rgba(92,65,19,0.4)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#d3aa4b]/70 hover:shadow-[0_15px_40px_rgba(211,170,75,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
-// intrinsic width (600px for all three promo images here) so a sharp upscale never
+// intrinsic width (600px for all four promo images here) so a sharp upscale never
 // becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
   const steps = [384, 576, 648].filter((w) => w < img.width);
@@ -91,16 +92,20 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoLicensed,
-    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัสพื้นดำ ตัวอักษรทองคำเรียงลงมาว่า เว็บตรง ลิขสิทธิ์แท้ ถัดมาเป็น ฝาก-ถอน AUTO 3 นาที และ ระบบเกมดีสุดใน ASIA ใต้ลงไปเป็นป้ายวงรีขอบทองเขียนว่า สมัครฟรี ไม่มีขั้นต่ำ กับบรรทัด การันตีความมั่นคง 100% และแถวไอคอนธนาคารเล็ก ๆ ด้านซ้ายเป็นหญิงสาวผมยาวสวมชุดสีทองเมทัลลิก ฉากหลังมีเหรียญทองปลิวและดวงไฟสีทองเรืองแสง",
+    src: promoWelcome100,
+    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัส ฉากไฟลุกโชนสีส้มบนพื้นมืด มุมซ้ายบนเป็นโลโก้โพดำทอง BLACKJACK789 ตัวอักษรทองเรียงลงมาว่า โปรสมัครใหม่ รับ 100% และบรรทัดล่างว่า ทุกยอดฝาก ถอนไม่อั้น ด้านหน้าเป็นชายหนุ่มสวมเสื้อคลุมมีฮู้ดสีเขียวเข้มที่อกเรืองแสงสีเขียว อัศวินสวมเกราะกระโดดฟันดาบกลางอากาศ และลิงยักษ์ขนน้ำตาลสองตัวกำลังคำราม มีเหรียญทองปลิวเต็มภาพ",
   },
   {
-    src: promoReferral,
-    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัสพื้นดำ ครึ่งล่างเป็นตัวอักษรทองคำเขียนว่า แนะนำเพื่อน รับค่าคอมมิชชั่น พร้อมเลข 3% ตัวใหญ่เป็นทองสามมิติ ใต้ลงมาเป็นป้ายวงรีขอบทองเขียนว่า คืนยอดเสียด้วยระบบ Auto ครึ่งบนเป็นหญิงสาวผมยาวสวมต่างหูข้าวหลามตัดและชุดสีทองประกาย ล้อมด้วยสัญลักษณ์ไพ่โพแดงกับไพ่ปลิวสีทองบนพื้นมืด",
+    src: promoTopup10,
+    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัส ฉากร้านเบอร์เกอร์ริมถนนยามค่ำที่มีป้ายไฟนีออนสีชมพูฟ้า ตัวอักษรขาวทองด้านบนเขียนว่า ฝากรับเพิ่ม พร้อมเลข 10% ตัวใหญ่ มุมล่างขวาเขียนว่า รับได้ไม่จำกัด และ เล่นเพียง 1 เทิร์น ถอนได้ไม่อั้น กลางภาพเป็นพนักงานสาวยิ้มแย้มสวมหมวกแก๊ปสีชมพูและผ้ากันเปื้อนลายทางแดงขาว ยกถาดเบอร์เกอร์สองมือ ป้ายร้านมีโลโก้ PG อยู่มุมขวา มุมซ้ายบนเป็นโลโก้โพดำทอง BLACKJACK789",
   },
   {
-    src: promoNoAgent,
-    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัสพื้นดำ ตัวอักษรทองคำขนาดใหญ่เขียนว่า สล็อตเว็บตรง ไม่ผ่านเอเยนต์ ถัดลงมาเป็นป้ายวงรีขอบทองเขียนว่า จ่ายเต็ม เท่าไหร่ก็ถอนได้ และบรรทัดล่างสุดเขียนว่า ฝาก-ถอน ไม่มีขั้นต่ำ ด้วยระบบ AUTO รวดเร็วภายใน 3 วินาที ด้านบนเป็นหญิงสาวผมยาวในชุดสีทอง ล้อมด้วยลูกเต๋าทอง สัญลักษณ์ไพ่โพดำโพแดงดอกจิก และลายสลักทอง",
+    src: promoDeposit100,
+    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัส กลางภาพเป็นแผ่นป้ายกระดาษสีครีมขอบโค้งผูกริบบิ้นสีส้มไว้ด้านบน พิมพ์ข้อความว่า ฝาก 100 รับ 200 และบรรทัดล่างว่า ทำ 2,000 ถอนได้ 200 ฉากหลังเป็นถ้ำสมบัติลายสลักทองพร้อมลูกโป่งและกระดาษหลากสี ด้านซ้ายเป็นคาวเกิร์ลสวมหมวกปีกกว้างถือปืนลูกโม่ข้างหีบสมบัติ ตรงกลางเป็นกระต่ายขาวสวมหมวกแดงยืนบนสเกตบอร์ด ด้านขวาเป็นนักร้องร็อกสวมแจ็กเก็ตหนังดำถือกีตาร์ไฟฟ้าสีแดงหน้าไมโครโฟน มุมขวาล่างเป็นโลโก้วงกลม PG Pocket Games Soft",
+  },
+  {
+    src: promoDeposit300,
+    alt: "แบนเนอร์โปรโมชั่นทรงจัตุรัส กลางภาพเป็นแผ่นป้ายกระดาษสีครีมผูกริบบิ้นสีส้มไว้ด้านบน พิมพ์ข้อความว่า ฝาก 300 รับ 700 และบรรทัดล่างว่า ทำ 6,000 ถอนได้ 700 ใต้ป้ายเป็นมือสองข้างคลี่แผนที่ขุมทรัพย์บนกระดาษเก่า ฉากหลังเป็นผนังหินในถ้ำพร้อมลูกโป่งและกระดาษหลากสี ด้านซ้ายเป็นแมวกวักสีขาวคอกระพรวนทองข้างหีบสมบัติที่ล้นด้วยเหรียญทองและอัญมณี ด้านขวาเป็นหญิงสาวในชุดเกาะอกสีแดงกำลังขยิบตาและกลุ่มนกการ์ตูนสีแดงเหลือง มุมซ้ายบนเป็นโลโก้ PG Pocket Games Soft มุมขวาบนเป็นโลโก้โพดำทอง BLACKJACK789",
   },
 ];
 ---
@@ -113,10 +118,10 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ffc94a]">ROSTY59</strong> เปิดให้กดรับอยู่ในรอบนี้ ทั้งสิทธิ์ของเว็บตรงลิขสิทธิ์แท้ ค่าคอมมิชชั่นจากการแนะนำเพื่อน และการคืนยอดเสียด้วยระบบออโต้
-        อัตราที่ได้รับและเงื่อนไขของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด
-        ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเดียว คำนวณตรงไปตรงมา ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ไม่ติดเทิร์นโอเวอร์ซับซ้อน
-        และเมื่อกดถอน ระบบออโต้ผ่าน Gateway ตรงจะทำรายการเสร็จภายใน 3 วินาที เงินเข้าบัญชีเต็มจำนวนตามยอดที่กด
+        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#f2cf70]">BLACKJACK789</strong> เปิดให้กดรับอยู่ในรอบนี้ ทั้งโบนัสต้อนรับสำหรับสมาชิกใหม่ โปรฝากรับเพิ่ม และรายการฝากเท่านี้รับเท่านั้นแบบระบุยอดชัดเจน
+        อัตราที่ได้รับและเงื่อนไขเทิร์นของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด เพราะแต่ละใบคิดคนละเงื่อนไขกัน
+        ทุกสิทธิ์เลือกกดรับเองได้จากหน้าแดชบอร์ดเดียว คำนวณตรงไปตรงมา ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ และไม่ติดเทิร์นโอเวอร์มหาโหด
+        เมื่อกดถอน ระบบออโต้ผ่าน Gateway ตรงจะทำรายการเสร็จภายใน 3 วินาที เงินเข้าบัญชีเต็มจำนวนตามยอดที่กด
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -142,8 +147,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffc94a]/60 bg-gradient-to-r from-[#ffeec2] via-[#f2a01a] to-[#b06a0d] px-10 py-3.5 text-xl font-black text-[#070505] shadow-[0_10px_30px_rgba(242,160,26,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,201,74,0.5)]">
-          สมัครสมาชิก ROSTY59
+          class="flex items-center justify-center rounded-lg border border-[#f2cf70]/60 bg-gradient-to-r from-[#fdf1ce] via-[#d3aa4b] to-[#8c6623] px-10 py-3.5 text-xl font-black text-[#050403] shadow-[0_10px_30px_rgba(211,170,75,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(242,207,112,0.5)]">
+          สมัครสมาชิก BLACKJACK789
         </a>
       </div>
     </div>

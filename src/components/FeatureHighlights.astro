@@ -13,22 +13,21 @@ export interface Props {
 const { items } = Astro.props;
 
 // นี่คือที่เดียวบนหน้าแรกที่ได้รับอนุญาตให้มี <h3> — หัวข้อย่อยแบบ bullet ใต้
-// section ของ docx หนึ่งข้อ (ข้อ 5 ของ ROSTY59: Multiplier สะสมตัวคูณ / Cascading
-// สัญลักษณ์แตกต่อเนื่อง / รีลขยาย Wild ซ้อนทับ / Bonus Buy ซื้อฟรีสปิน) ส่วน h2
-// ของ section ยังอยู่ที่ ContentBoxSpecial ที่อยู่เหนือมัน
+// section ของ docx หนึ่งข้อ (ข้อ 4 ของ BLACKJACK789: Multipliers ตัวคูณทวีคูณ /
+// Expanding Wild ขยายเต็มรีล / Cascading คอมโบแตกต่อเนื่อง / Bonus Buy ซื้อฟรีสปิน)
+// ส่วน h2 ของ section ยังอยู่ที่ ContentBoxTwoNeumorphism ที่อยู่เหนือมัน
 //
 // item.icon เป็นอิโมจิ/สัญลักษณ์ตกแต่งล้วน กล่องที่ครอบมันจึงต้องมี
 // aria-hidden="true" เสมอ ไม่งั้น screen reader จะอ่านชื่อ CLDR ของอิโมจินำหน้า
 // หัวข้อจริง และ verify-build จะฟ้องเป็น error ว่ามีอิโมจิอยู่นอก aria-hidden
 //
-// ROSTY59: ย้ายจากทองราชสำนักวรรณะเดียวของแบรนด์ก่อน มาเป็นทองอำพันคู่โครเมียมเงิน
-// บนดำสนิท — ทอง #ffeec2 / #ffc94a / #f2a01a / #b06a0d / #6b3f07 คู่เงิน #dbe1e8 /
-// #a3adba / #5d6773 บนผิว #070505 / #150e07 / #26180a ขอบ #4a2f0d เนื้อความ #ece0cc
-// ข้อความรอง #bda98c
+// BLACKJACK789: ย้ายจากทองอำพันคู่โครเมียมของแบรนด์ก่อน มาเป็นทองแอนทีค/แชมเปญคู่
+// กราไฟต์บนดำเกือบสนิท — ทอง #fdf1ce / #f2cf70 / #d3aa4b / #8c6623 / #5c4113
+// คู่กราไฟต์ #cfd6e0 / #8e97a6 / #454d5c บนผิว #050403 / #100b05 / #1e150a
+// ขอบ #3a2a11 เนื้อความ #ede0c4 ข้อความรอง #c0ab84
 //
-// รอบนี้คีย์ accent สองตัวได้ความหมายจริงคืนมา: "gold" คือทองอำพัน (ตัว R กับคำว่า
-// Rosty บนเหรียญโลโก้) และ "silver" คือเงินโครเมียม (เลข 59) ซึ่งเป็นสีที่สองของ
-// แบรนด์นี้จริงๆ ไม่ใช่ทองที่สว่างขึ้นหนึ่งขั้นเหมือนรอบก่อน
+// คีย์ accent สองตัวตรงกับโลหะสองชนิดบนโลโก้จริง: "gold" คือทองแชมเปญของโพดำและ
+// ขอบตัวอักษร ส่วน "silver" คือกราไฟต์/กันเมทัลของตัวอักษร Black Jack กับเลข 789
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 ---
@@ -39,28 +38,28 @@ const { items } = Astro.props;
       const isGold = item.accent !== "silver";
       return (
         <div
-          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#4a2f0d]/60 bg-[#150e07]/70 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
+          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#3a2a11]/60 bg-[#100b05]/70 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
             isGold
-              ? "hover:border-[#f2a01a]/60 hover:bg-[#26180a] hover:shadow-[0_10px_20px_rgba(242,160,26,0.18)]"
-              : "hover:border-[#dbe1e8]/60 hover:bg-[#26180a] hover:shadow-[0_10px_20px_rgba(219,225,232,0.16)]"
+              ? "hover:border-[#d3aa4b]/60 hover:bg-[#1e150a] hover:shadow-[0_10px_20px_rgba(211,170,75,0.18)]"
+              : "hover:border-[#cfd6e0]/60 hover:bg-[#1e150a] hover:shadow-[0_10px_20px_rgba(207,214,224,0.16)]"
           }`}>
           <div
             aria-hidden="true"
             class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-3xl transition-transform duration-300 group-hover:scale-110 ${
               isGold
-                ? "border border-[#f2a01a]/50 bg-gradient-to-br from-[#f2a01a] to-[#6b3f07] shadow-[0_0_15px_rgba(242,160,26,0.45)] group-hover:rotate-3"
-                : "border border-[#dbe1e8]/50 bg-gradient-to-br from-[#a3adba] to-[#5d6773] shadow-[0_0_15px_rgba(219,225,232,0.35)]"
+                ? "border border-[#d3aa4b]/50 bg-gradient-to-br from-[#d3aa4b] to-[#5c4113] shadow-[0_0_15px_rgba(211,170,75,0.45)] group-hover:rotate-3"
+                : "border border-[#cfd6e0]/50 bg-gradient-to-br from-[#8e97a6] to-[#454d5c] shadow-[0_0_15px_rgba(207,214,224,0.35)]"
             }`}>
             {item.icon}
           </div>
           <div class="flex flex-col gap-2 text-left">
             <h3
               class={`text-xl font-black tracking-wide drop-shadow-sm ${
-                isGold ? "bg-gradient-to-r from-[#ffeec2] to-[#f2a01a] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#dbe1e8] to-[#a3adba] bg-clip-text text-transparent"
+                isGold ? "bg-gradient-to-r from-[#fdf1ce] to-[#d3aa4b] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#cfd6e0] to-[#8e97a6] bg-clip-text text-transparent"
               }`}>
               {item.title}
             </h3>
-            <p class="text-left text-base leading-relaxed text-[#bda98c] transition-colors group-hover:text-[#ece0cc]">{item.description}</p>
+            <p class="text-left text-base leading-relaxed text-[#c0ab84] transition-colors group-hover:text-[#ede0c4]">{item.description}</p>
           </div>
         </div>
       );

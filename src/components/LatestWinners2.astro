@@ -6,13 +6,12 @@ import ktbLogo from "../assets/banks/ktb.png";
 import ttbLogo from "../assets/banks/ttb.png";
 import { brandFlag, brandPick } from "../lib/brandProfile";
 
-// HAPPYSUPERWIN: ฟีดตัวนี้ค้างชุดสีของแบรนด์ก่อนหน้า และยังมีชื่อแบรนด์เก่าอยู่ใน
+// BLACKJACK789: ฟีดตัวนี้ค้างชุดสีของแบรนด์ก่อนหน้า และยังมีชื่อแบรนด์เก่าอยู่ใน
 // บรรทัดหัวกับชื่อ section (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็น
 // ข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS
-// ตาย ดูของเดิมได้จาก git history) แมปมาที่แคนดี้มาเจนต้าคู่เหลืองลูกอมของแบรนด์นี้
-// — มาเจนต้า #e11ccc / #ff5ae6 / #8a1f9e / #4c0d6b คู่เหลือง #ffd83d / #fff0fc
-// บนผิว #0e0119 / #190430 / #280747 เนื้อความ #f7e2ff ข้อความรอง #cfa5e6
-// หมึกบนป้ายเหลือง #4c0d6b
+// ตาย ดูของเดิมได้จาก git history) แมปมาที่ทองแอนทีค/แชมเปญคู่กราไฟต์ของแบรนด์นี้
+// — ทอง #fdf1ce / #f2cf70 / #d3aa4b / #b8862c / #5c4113 คู่กราไฟต์ #cfd6e0 / #8e97a6
+// บนผิว #050403 / #100b05 / #1e150a เนื้อความ #ede0c4 ข้อความรอง #c0ab84
 //
 // สีโลโก้ธนาคารเป็นสีของธนาคารเอง ไม่ใช่พาเลตต์ของเว็บ — คงไว้ทุกรอบรีแบรนด์
 const bankPool = [
@@ -38,22 +37,22 @@ const initialRows = Array.from({ length: 4 }, (_, i) => ({
 }));
 
 // สถานะสองแบบถูกส่งให้โมดูลฟีดเป็นสตริงใน data-* โมดูลจึงไม่ต้องรู้จักพาเลตต์ของ
-// แบรนด์นี้เลย ป้าย "ถอนสำเร็จ" ใช้หมึกม่วงเข้ม #4c0d6b บนไล่สีเหลืองลูกอม — ได้ราว
-// 10:1 (ถ้าปล่อยให้ช่วงกลางของไล่สีเป็นมาเจนต้าสด ตัวหนังสือเข้มจะตกต่ำกว่า 4.5:1)
-// ป้าย "กำลังดำเนินการ" ใช้ #fff0fc บนมาเจนต้าเข้ม #8a1f9e ได้ราว 7:1
-const PENDING_CLASS = "text-[#fff0fc] bg-[#8a1f9e] animate-pulse";
-const DONE_CLASS = "text-[#4c0d6b] bg-gradient-to-r from-[#ffd83d] via-[#fff0fc] to-[#ffd83d] font-black shadow-md";
+// แบรนด์นี้เลย ป้าย "ถอนสำเร็จ" ใช้หมึกดำ #050403 บนไล่สีทองแชมเปญ ได้คอนทราสต์สูง
+// มาก (ถ้าปล่อยให้หมึกเป็นทองเข้ม ตัวหนังสือจะจมลงไปกับพื้นทอง) ป้าย "กำลังดำเนินการ"
+// ใช้ #fdf1ce บนทองเข้ม #5c4113 ซึ่งยังผ่านเกณฑ์สบายๆ
+const PENDING_CLASS = "text-[#fdf1ce] bg-[#5c4113] animate-pulse";
+const DONE_CLASS = "text-[#050403] bg-gradient-to-r from-[#d3aa4b] via-[#fdf1ce] to-[#d3aa4b] font-black shadow-md";
 ---
 
 <div class="mx-auto w-full max-w-[1300px] p-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก HAPPYSUPERWIN"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#e11ccc]/30 bg-[#0e0119]/92 px-4 py-8 shadow-[0_10px_30px_rgba(225,28,204,0.22)] backdrop-blur-md md:p-10">
-    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#e11ccc]/35 blur-[50px]"></div>
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก BLACKJACK789"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#d3aa4b]/30 bg-[#050403]/92 px-4 py-8 shadow-[0_10px_30px_rgba(211,170,75,0.22)] backdrop-blur-md md:p-10">
+    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#d3aa4b]/35 blur-[50px]"></div>
 
     <div class="relative z-10 mb-8 flex items-center justify-center gap-3">
       <span aria-hidden="true" class="text-2xl">🏆</span>
-      <p class="bg-gradient-to-r from-[#fff0fc] via-[#ffd83d] to-[#e11ccc] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">รายการถอนเงินล่าสุดของสมาชิก HAPPYSUPERWIN</p>
+      <p class="bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#cfd6e0] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">รายการถอนเงินล่าสุดของสมาชิก BLACKJACK789</p>
       <span aria-hidden="true" class="text-2xl">🏆</span>
     </div>
 
@@ -70,7 +69,7 @@ const DONE_CLASS = "text-[#4c0d6b] bg-gradient-to-r from-[#ffd83d] via-[#fff0fc]
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-card transition-all duration-500 ease-out">
-            <div class="flex flex-col rounded-[20px] border border-[#e11ccc]/30 bg-[#190430]/95 p-5 shadow-sm transition-all hover:border-[#ff5ae6]/55 hover:bg-[#280747]/90">
+            <div class="flex flex-col rounded-[20px] border border-[#d3aa4b]/30 bg-[#100b05]/95 p-5 shadow-sm transition-all hover:border-[#f2cf70]/55 hover:bg-[#1e150a]/90">
               <div class="mb-4 flex items-start justify-between">
                 <div data-winner-bank class={`flex h-10 w-10 items-center justify-center rounded-full border border-white/10 shadow-inner ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="24" height="24" loading="lazy" decoding="async" class="h-6 w-6 object-contain" />
@@ -86,14 +85,14 @@ const DONE_CLASS = "text-[#4c0d6b] bg-gradient-to-r from-[#ffd83d] via-[#fff0fc]
                 </div>
               </div>
               <div>
-                <div class="text-sm text-[#cfa5e6]">
+                <div class="text-sm text-[#c0ab84]">
                   ยูสเซอร์:{" "}
-                  <span data-winner-user class="font-bold text-[#f7e2ff]">
+                  <span data-winner-user class="font-bold text-[#ede0c4]">
                     {row.user}
                   </span>
                 </div>
-                <div class="mt-1 text-2xl font-black text-[#ffd83d]">
-                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#cfa5e6]">THB</span>
+                <div class="mt-1 text-2xl font-black text-[#f2cf70]">
+                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#c0ab84]">THB</span>
                 </div>
               </div>
             </div>
@@ -102,7 +101,7 @@ const DONE_CLASS = "text-[#4c0d6b] bg-gradient-to-r from-[#ffd83d] via-[#fff0fc]
       }
     </div>
 
-    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#cfa5e6]">
+    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#c0ab84]">
       ระบบฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ทำรายการเสร็จใน 3 วินาที ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ ก่อนทำรายการควรตรวจยอดและชื่อบัญชีรับเงินให้ตรงกับข้อมูลสมาชิก
       หากรายการยังประมวลผลอยู่ไม่ควรกดซ้ำทันที
     </p>

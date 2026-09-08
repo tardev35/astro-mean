@@ -1,19 +1,19 @@
 ---
-// ROSTY59: ชุดสีย้ายจากทองราชสำนักวรรณะเดียวของแบรนด์ก่อน มาเป็นทองอำพันคู่โครเมียม
-// เงินบนดำสนิทตามอาร์ตจริง — ทอง #ffeec2 / #ffc94a / #f2a01a / #b06a0d / #6b3f07
-// คู่เงิน #dbe1e8 / #a3adba / #5d6773 บนผิว #070505 / #150e07 / #26180a ขอบ #4a2f0d
-// เนื้อความ #ece0cc ข้อความรอง #bda98c แถวอันดับหนึ่งรับผิวยกระดับขึ้นหนึ่งขั้นและ
-// ขอบทองสว่างเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว Tailwind เป็นสีเชิงความหมาย
-// ไม่ถูกแตะ
+// BLACKJACK789: ชุดสีย้ายจากทองอำพันคู่โครเมียมของแบรนด์ก่อน มาเป็นทองแอนทีค/แชมเปญ
+// คู่กราไฟต์บนดำเกือบสนิทตามอาร์ตจริง — ทอง #fdf1ce / #f2cf70 / #d3aa4b / #8c6623 /
+// #5c4113 คู่กราไฟต์ #cfd6e0 / #8e97a6 / #454d5c บนผิว #050403 / #100b05 / #1e150a
+// ขอบ #3a2a11 เนื้อความ #ede0c4 ข้อความรอง #c0ab84 แถวอันดับหนึ่งรับผิวยกระดับขึ้น
+// หนึ่งขั้นและขอบทองสว่างเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว Tailwind เป็นสี
+// เชิงความหมาย ไม่ถูกแตะ
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
 // git history)
 //
 // ไม่มีรูปโลโก้ค่ายในแถวไหนเลย และไม่ import src/assets/providers/game* — โลโก้ค่าย
-// อยู่ที่ ProviderGridPremium ซึ่งเป็นที่ของมัน กระดานนี้กางหมวดหมู่ในล็อบบี้ ไม่ใช่
-// รายชื่อค่าย การเอาโลโก้ค่ายมาแปะข้างชื่อหมวดแล้วเขียน alt ให้เป็นอย่างอื่นคือ alt
-// ที่ไม่ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit ลง dist/ ฟรีๆ ช่องรูป
-// จึงเป็นไอคอนกรอบทองที่เป็น aria-hidden แทน
+// อยู่ที่ ProviderGrid ซึ่งเป็นที่ของมัน กระดานนี้กางหมวดหมู่ในล็อบบี้ ไม่ใช่รายชื่อ
+// ค่าย การเอาโลโก้ค่ายมาแปะข้างชื่อหมวดแล้วเขียน alt ให้เป็นอย่างอื่นคือ alt ที่ไม่
+// ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit ลง dist/ ฟรีๆ ช่องรูปจึง
+// เป็นไอคอนกรอบทองที่เป็น aria-hidden แทน
 //
 // ไม่ผูกหมวดกับชื่อค่ายรายแถว: docx เอ่ยค่าย (PG Soft, Pragmatic Play, Joker Gaming)
 // กับคุณสมบัติของเกมไว้คนละประโยค การจับคู่ว่าคุณสมบัติไหนเป็นของค่ายไหนเป็นข้อมูลที่
@@ -29,45 +29,45 @@
 const games = [
   {
     rank: 1,
-    name: "หมวดสล็อตวิดีโอ 3D ภาพสวย",
-    type: "กราฟิกสามมิติเต็มจอจากค่ายลิขสิทธิ์แท้ โหลดหน้าเกมไว ไร้ป๊อปอัปและองค์ประกอบรกตา ทุกการกดสปินลื่นไหลไม่ค้างแม้ช่วงคนเข้าพร้อมกันหนาแน่น",
-    focus: "โหลดไว ไม่มีอาการค้าง",
-    menus: ["ภาพ 3D", "สปินลื่น"],
+    name: "หมวดสล็อต 3D เนื้อเรื่องเข้มข้น",
+    type: "กราฟิกสมูธคมชัดระดับ HD จากค่ายลิขสิทธิ์แท้ที่ยิงสัญญาณเข้าระบบโดยตรง เดินเรื่องยาวได้ทั้งรอบ สปินลื่นไม่มีอาการค้างหรือเด้งหลุดกลางทาง",
+    focus: "คมชัดระดับ HD",
+    menus: ["สล็อต 3D", "สปินลื่น"],
     players: 5124,
     icon: "🎮",
   },
   {
     rank: 2,
-    name: "หมวดสล็อตตัวคูณหนัก",
-    type: "รวมเกมที่วางระบบ Multiplier ให้สะสมตัวคูณทวีคูณระหว่างรอบหมุน ยิ่งต่อคอมโบยาวยิ่งดันยอดรางวัลขึ้นจากเบทเดิมโดยไม่ต้องเพิ่มทุน",
-    focus: "สะสมตัวคูณทวีคูณ",
-    menus: ["Multiplier", "คอมโบยาว"],
+    name: "หมวดสล็อตสายสตรีตตัวคูณโหด",
+    type: "รวมเกมที่วางระบบสุ่มแจกตัวคูณทวีคูณ Multipliers ไว้เต็มมือ ยิ่งต่อคอมโบยาวยิ่งดันยอดรางวัลขึ้นจากเบทเดิมโดยไม่ต้องเพิ่มทุนกลางรอบ",
+    focus: "ตัวคูณทวีคูณ",
+    menus: ["Multipliers", "คอมโบยาว"],
     players: 3842,
     icon: "✖️",
   },
   {
     rank: 3,
-    name: "หมวดสายซื้อฟีเจอร์",
-    type: "โหมด Bonus Buy ให้เลือกซื้อฟรีสปินพุ่งตรงเข้าลุ้นแจ็คพอตใหญ่ได้ทันที ไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อยากเข้าจังหวะโบนัสให้ตรงรอบ",
-    focus: "พุ่งชนโบนัสได้ทันที",
+    name: "หมวดสายซื้อฟีเจอร์ Bonus Buy",
+    type: "โหมด Bonus Buy ให้เลือกซื้อฟรีสปินพุ่งตรงเข้าลุ้นรอบแจ็คพอตได้ทันที ไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อยากคุมงบต่อรอบให้ชัด",
+    focus: "พุ่งเข้ารอบแจ็คพอตทันที",
     menus: ["Bonus Buy", "ฟรีสปิน"],
     players: 3517,
     icon: "🎟️",
   },
   {
     rank: 4,
-    name: "หมวดสล็อตคลาสสิกไลน์จ่าย",
-    type: "ไลน์จ่ายเข้าใจง่ายแบบดั้งเดิม อ่านตารางรางวัลได้ในรอบเดียว เหมาะกับคนที่อยากเล่นยาวโดยไม่ต้องจำเงื่อนไขฟีเจอร์ซับซ้อน",
+    name: "หมวดสล็อตคลาสสิกไลน์จ่ายน้อยแต่แตกหนัก",
+    type: "ไลน์จ่ายอ่านง่ายแบบดั้งเดิม จบตารางรางวัลได้ในรอบเดียว เหมาะกับคนที่วางแผนเดินเงินยาวตั้งแต่เบทหลักบาทไปจนถึงเบทสูง",
     focus: "อ่านไลน์จ่ายได้ในรอบเดียว",
-    menus: ["คลาสสิก", "เข้าใจง่าย"],
+    menus: ["คลาสสิก", "แตกหนัก"],
     players: 2905,
     icon: "🍀",
   },
   {
     rank: 5,
-    name: "หมวดสิทธิ์และโปรโมชัน",
-    type: "กดรับเองผ่านหน้าเว็บ ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรโมชันฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ที่คำนวณยอดตรงไปตรงมา",
-    focus: "ไม่ติดเทิร์นโอเวอร์ซับซ้อน",
+    name: "หมวดโปรเด็ดและสิทธิ์คืนยอดเสีย",
+    type: "กดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และเครดิตคืนยอดเสีย Cash Back ทุกวัน เงื่อนไขโปร่งใส",
+    focus: "ไม่ติดเทิร์นโอเวอร์มหาโหด",
     menus: ["โบนัสต้อนรับ", "Cash Back"],
     players: 2431,
     icon: "🎁",
@@ -75,8 +75,8 @@ const games = [
   {
     rank: 6,
     name: "หมวดฝากถอนออโต้ 3 วินาที",
-    type: "ระบบออโต้ไฮสปีดผ่าน Gateway ตรง รองรับทั้งธนาคารชั้นนำและวอลเล็ท ไม่ต้องส่งสลิปให้แอดมินตรวจ ไม่ต้องรอคิวอนุมัติ",
-    focus: "ถอนเต็มจำนวนทันที",
+    type: "ระบบออโต้ผ่าน Gateway ตรง ทำรายการเสร็จใน 3 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ถอนกำไรได้เต็มทุกยอด",
+    focus: "ถอนเต็มทุกยอด",
     menus: ["Gateway ตรง", "ไม่ต้องส่งสลิป"],
     players: 2108,
     icon: "⚡",
@@ -86,18 +86,18 @@ const games = [
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="หมวดเกมในคลังที่ ROSTY59 แยกไว้ให้เปลี่ยนสไตล์การเล่นได้จากที่เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="หมวดเกมในคลังที่ BLACKJACK789 แยกไว้ให้เปลี่ยนฟีลการเล่นได้จากที่เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#4a2f0d]/70 bg-[#150e07]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(107,63,7,0.35)] backdrop-blur-md">
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#3a2a11]/70 bg-[#100b05]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(92,65,19,0.35)] backdrop-blur-md">
     <span aria-hidden="true" class="text-2xl">🎰</span>
-    <p class="bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#dbe1e8] bg-clip-text text-2xl font-black tracking-wide text-transparent">
-      หมวดเกมในคลังที่ ROSTY59 แยกไว้ให้เปลี่ยนสไตล์การเล่นได้จากที่เดียว
+    <p class="bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#cfd6e0] bg-clip-text text-2xl font-black tracking-wide text-transparent">
+      หมวดเกมในคลังที่ BLACKJACK789 แยกไว้ให้เปลี่ยนฟีลการเล่นได้จากที่เดียว
     </p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#bda98c]">
-      กางให้เห็นครบในหน้าเดียว ทั้งหมวดสล็อตวิดีโอ 3D หมวดสล็อตตัวคูณหนัก หมวดสายซื้อฟีเจอร์ หมวดสล็อตคลาสสิกไลน์จ่าย หมวดสิทธิ์และโปรโมชัน และหมวดฝากถอนออโต้ 3 วินาที
-      ทุกหมวดใช้กระเป๋าเดียวไม่ต้องโยกเงินข้ามค่าย ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราจ่ายและเงื่อนไขของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
+    <p class="max-w-3xl text-base leading-relaxed text-[#c0ab84]">
+      กางให้เห็นครบในหน้าเดียว ทั้งหมวดสล็อต 3D เนื้อเรื่องเข้มข้น หมวดสายสตรีตตัวคูณโหด หมวดสายซื้อฟีเจอร์ หมวดคลาสสิกไลน์จ่ายน้อยแต่แตกหนัก หมวดโปรเด็ดและสิทธิ์คืนยอดเสีย และหมวดฝากถอนออโต้ 3 วินาที
+      ทุกหมวดใช้กระเป๋าเงินเดียวไม่ต้องโยกเงินข้ามค่าย ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราจ่ายและเงื่อนไขของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f2a01a] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#d3aa4b] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -108,10 +108,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#ffc94a]/55 bg-gradient-to-r from-[#26180a]/90 via-[#150e07]/92 to-[#070505]/90 shadow-[0_15px_40px_rgba(242,160,26,0.2)]"
-                : "border-[#4a2f0d]/60 bg-[#150e07]/90 shadow-[0_10px_30px_rgba(107,63,7,0.25)] hover:border-[#f2a01a]/55 hover:shadow-[0_15px_40px_rgba(242,160,26,0.28)]"
+                ? "border-[#f2cf70]/55 bg-gradient-to-r from-[#1e150a]/90 via-[#100b05]/92 to-[#050403]/90 shadow-[0_15px_40px_rgba(211,170,75,0.2)]"
+                : "border-[#3a2a11]/60 bg-[#100b05]/90 shadow-[0_10px_30px_rgba(92,65,19,0.25)] hover:border-[#d3aa4b]/55 hover:shadow-[0_15px_40px_rgba(211,170,75,0.28)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#26180a]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#6b3f07]/50" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#1e150a]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#5c4113]/50" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {medal(g.rank) ? (
@@ -120,39 +120,39 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#f2a01a] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#d3aa4b] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
             <div
               aria-hidden="true"
-              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#070505] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
-                top ? "border-[#ffc94a]/60" : "border-[#4a2f0d]"
+              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#050403] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
+                top ? "border-[#f2cf70]/60" : "border-[#3a2a11]"
               }`}>
               {g.icon}
             </div>
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#ece0cc] sm:text-lg">{g.name}</p>
+                <p class="truncate text-base font-black text-[#ede0c4] sm:text-lg">{g.name}</p>
                 {top && (
-                  <span class="hidden shrink-0 rounded-full border border-[#f2a01a]/70 bg-gradient-to-r from-[#ffc94a] to-[#b06a0d] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#070505] sm:inline">
+                  <span class="hidden shrink-0 rounded-full border border-[#d3aa4b]/70 bg-gradient-to-r from-[#f2cf70] to-[#8c6623] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#050403] sm:inline">
                     หมวดที่คนเข้ามากที่สุด
                   </span>
                 )}
               </div>
-              <p class="truncate text-[11px] text-[#bda98c] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#c0ab84] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
-                <span class="rounded-full border border-[#dbe1e8]/40 bg-[#26180a] px-2.5 py-0.5 text-[10px] font-bold text-[#dbe1e8]">{g.focus}</span>
+                <span class="rounded-full border border-[#cfd6e0]/40 bg-[#1e150a] px-2.5 py-0.5 text-[10px] font-bold text-[#cfd6e0]">{g.focus}</span>
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#4a2f0d] bg-[#26180a] px-2.5 py-0.5 text-[10px] font-bold text-[#ffc94a]">{m}</span>
+                  <span class="rounded-full border border-[#3a2a11] bg-[#1e150a] px-2.5 py-0.5 text-[10px] font-bold text-[#f2cf70]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#bda98c]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#c0ab84]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -163,8 +163,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#ffc94a] to-[#b06a0d] text-[#070505] shadow-[0_10px_30px_rgba(242,160,26,0.35)]"
-                    : "border border-[#4a2f0d] bg-[#26180a] text-[#ffc94a] hover:border-[#f2a01a] hover:bg-[#6b3f07] hover:text-[#ffeec2]"
+                    ? "bg-gradient-to-r from-[#f2cf70] to-[#8c6623] text-[#050403] shadow-[0_10px_30px_rgba(211,170,75,0.35)]"
+                    : "border border-[#3a2a11] bg-[#1e150a] text-[#f2cf70] hover:border-[#d3aa4b] hover:bg-[#5c4113] hover:text-[#fdf1ce]"
                 }`}>
                 เข้าเล่นเกม
               </a>

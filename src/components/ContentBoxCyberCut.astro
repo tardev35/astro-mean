@@ -6,19 +6,19 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
 
-// QUEEN189: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
+// BLACKJACK789: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
 // Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
 // ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
-// รอบนี้เป็นทองราชสำนักบนดำสนิท — ทอง #fdf3d2 / #fceb83 / #e4bb53 / #c38d29 เป็น
-// สีเน้นหลักและถือเส้นมุมฝั่งบนซ้าย ส่วนทองเข้ม #7a5615 / #3c2505 ถือเส้นมุมฝั่ง
-// ล่างขวา บนผิว #1a1108 เนื้อความ #f3e4c4 — แบรนด์นี้เป็นทองวรรณะเดียวไล่ระดับ
-// คอนทราสต์ระหว่างสองมุมจึงมาจากทองสว่าง/ทองเข้ม ไม่ใช่จากสีที่สอง
+// รอบนี้เป็นทองแอนทีค/แชมเปญบนดำเกือบสนิท — ทอง #fdf1ce / #f2cf70 / #d3aa4b /
+// #b8862c เป็นสีเน้นหลักและถือเส้นมุมฝั่งบนซ้าย ส่วนทองเข้ม #5c4113 / #3a2a11 ถือ
+// เส้นมุมฝั่งล่างขวา บนผิว #1e150a เนื้อความ #ede0c4 — คอนทราสต์ระหว่างสองมุมมาจาก
+// ทองสว่าง/ทองเข้ม ส่วนกราไฟต์เป็นโลหะที่สองของแบรนด์ ใช้ที่ component อื่น
 // เก็บไว้แค่ทรงมุมตัดสไตล์ cyber-cut ซึ่งเป็นเอกลักษณ์เดียวของ variant นี้
 //
 // รอบนี้ไฟล์นี้ถูก render จากหน้าแรกหน้าเดียว (หน้าย่อยทุกหน้าใช้ ContentBox.astro
-// ตัวธรรมดาตามที่ brand spec ล็อกไว้) จึง retheme ทับได้เลย และแบกหัวข้อ docx ข้อ 2
-// เรื่องเกมคัดเกรดที่รวมเฉพาะสล็อตแตกง่ายกับคาสิโนสดอัตราจ่ายสูง
+// ตัวธรรมดาตามที่ brand spec ล็อกไว้) จึง retheme ทับได้เลย และแบกหัวข้อ docx ข้อ 1
+// ซึ่งเป็น <h1> ตัวเดียวของหน้าแรก
 //
 // การ์ดเป็น `isolate` และเลเยอร์ตกแต่งทุกชิ้นเป็น `-z-10` เนื้อความจึงลอยอยู่เหนือ
 // เส้นมุมได้เองโดยไม่ต้องมี wrapper `relative z-10` ครอบ slot ห้ามใส่กลับเข้ามา
@@ -26,17 +26,17 @@ const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:t
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#e4bb53]/35 bg-[#1a1108]/92 p-8 text-left text-base leading-relaxed text-[#f3e4c4] shadow-[0_10px_30px_rgba(228,187,83,0.25)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#d3aa4b]/35 bg-[#1e150a]/92 p-8 text-left text-base leading-relaxed text-[#ede0c4] shadow-[0_10px_30px_rgba(211,170,75,0.25)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#e4bb53] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#7a5615] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#e4bb53] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#3c2505] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#d3aa4b] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#5c4113] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#d3aa4b] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#3a2a11] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#c38d29] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#c38d29] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#b8862c] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#b8862c] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

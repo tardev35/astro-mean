@@ -8,21 +8,25 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// QUEEN189: variant นี้ผ่านมาหลายแบรนด์ และมาถึงรอบนี้ในชุดสีของแบรนด์ก่อนหน้า
+// BLACKJACK789: variant นี้ผ่านมาหลายแบรนด์ และมาถึงรอบนี้ในชุดสีของแบรนด์ก่อนหน้า
 // (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
 // คอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git
-// history) รอบนี้ย้ายมาที่ทองราชสำนักบนดำสนิท — ทอง #fdf3d2 / #fceb83 / #e4bb53 /
-// #c38d29 บนผิวยก #271a0c เนื้อความ #f3e4c4
+// history) รอบนี้ย้ายมาที่ทองแอนทีค/แชมเปญบนดำเกือบสนิท — ทอง #fdf1ce / #f2cf70 /
+// #d3aa4b / #b8862c บนผิวยก #1e150a เนื้อความ #ede0c4
 //
 // คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
-// #0b0704 (เข้มกว่าผิวการ์ด) ไฮไลต์ใช้ #3c2505 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าเอา
+// #050403 (เข้มกว่าผิวการ์ด) ไฮไลต์ใช้ #2c2011 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าเอา
 // ทองสดมาใส่ การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน
 //
 // titleleft/titleright เป็น <p> เพราะมันตั้งชื่อคอลัมน์ UI ไม่ใช่ section ของ docx
 // ส่วน prop `title` คือหัวข้อเดียวที่ component นี้ปล่อยได้ และออกมาที่ระดับที่ prop
 // `as` สั่ง — docx รอบนี้แบน H1 + H2 ล้วน ป้ายซ้ายรับทองสว่าง ป้ายขวารับทองเข้ม
-// ลงหนึ่งขั้น (แบรนด์นี้เป็นทองวรรณะเดียว ห้ามหยิบสีที่สองมาแยกคอลัมน์)
-// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 5 เรื่องโต๊ะสดไลฟ์ Ultra HD
+// ลงหนึ่งขั้น (กราไฟต์เป็นโลหะที่สองของแบรนด์แต่ไม่หยิบมาแยกคอลัมน์ตรงนี้)
+// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 4 เรื่องฟีเจอร์ยุคใหม่ แล้วส่งต่อให้
+// FeatureHighlights กางลูกเล่นสี่ตัวที่ย่อหน้าเดียวกันระบุชื่อไว้
+//
+// ไฟล์นี้ยังถูก LoginRtpSection.astro เรียกใช้เป็นโครงสองคอลัมน์ของแผงเข้าสู่ระบบ
+// ด้วย (widget ตัวนั้นไม่ส่ง `title` จึงไม่ปล่อยหัวข้อออกมา ใช้ `label` แทน)
 //
 // text-center อยู่บน <header> เท่านั้น ถ้าย้ายไปวางบนการ์ดมันจะ inherit ลงไปใน
 // slot แล้วย่อหน้าเนื้อความจะถูกจัดกึ่งกลางตามไปด้วย
@@ -31,23 +35,23 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-8 w-full max-w-7xl px-4 font-sans">
   <div
-    class="w-full rounded-[25px] border border-[#e4bb53]/25 bg-[#271a0c] p-8 shadow-[10px_10px_20px_#0b0704,-10px_-10px_20px_#3c2505] transition-all duration-300 hover:shadow-[15px_15px_30px_#0b0704,-15px_-15px_30px_#4a2f07]">
+    class="w-full rounded-[25px] border border-[#d3aa4b]/25 bg-[#1e150a] p-8 shadow-[10px_10px_20px_#050403,-10px_-10px_20px_#2c2011] transition-all duration-300 hover:shadow-[15px_15px_30px_#050403,-15px_-15px_30px_#3a2a11]">
     {
       title && (
-        <header class="mb-8 border-b border-[#e4bb53]/25 pb-4 text-center">
-          <HeadingTag class="bg-gradient-to-r from-[#fdf3d2] via-[#fceb83] to-[#c38d29] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#d3aa4b]/25 pb-4 text-center">
+          <HeadingTag class="bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#b8862c] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e4c4]">
-        {titleleft && <p class="text-2xl leading-normal font-black tracking-wide text-[#fceb83]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ede0c4]">
+        {titleleft && <p class="text-2xl leading-normal font-black tracking-wide text-[#f2cf70]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f3e4c4] md:border-l md:border-[#e4bb53]/20 md:pl-8">
-        {titleright && <p class="text-2xl leading-normal font-black tracking-wide text-[#c38d29]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ede0c4] md:border-l md:border-[#d3aa4b]/20 md:pl-8">
+        {titleright && <p class="text-2xl leading-normal font-black tracking-wide text-[#b8862c]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

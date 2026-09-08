@@ -10,40 +10,50 @@ const currentPath = Astro.url.pathname;
 
 const isActive = (path: string) => isActivePath(currentPath, path);
 
-// QUEEN189: ย้ายจากแดง-ดำของแบรนด์ก่อนที่เคยใช้ไฟล์นี้ มาเป็นทองราชสำนักบนดำสนิท
-// ของแบรนด์นี้ — ทอง #fdf3d2 / #fceb83 / #e4bb53 / #c38d29 / #7a5615 บนผิว
-// #0b0704 / #1a1108 / #271a0c เนื้อความ #f3e4c4 รองด้วย #c2a878
+// BLACKJACK789: ย้ายจากทองราชสำนักสว่างของแบรนด์ก่อนที่เคยใช้ไฟล์นี้ มาเป็นทอง
+// แอนทีคเข้มคู่กราไฟต์บนดำสนิทของแบรนด์นี้ — ทอง #fdf1ce / #f2cf70 / #d3aa4b /
+// #b8862c / #5c4113 คู่กราไฟต์ #cfd6e0 / #8e97a6 / #454d5c บนผิว #050403 /
+// #100b05 / #1e150a / #2c2011 เนื้อความ #ede0c4 รองด้วย #c0ab84
 //
-// ทองมาจากมงกุฎกับตัวอักษร Queen ในโลโก้ และเป็นสีเดียวของแบรนด์ทั้งชุด อาร์ตเวิร์ก
-// ทุกใบเป็นทองบนดำล้วน จึงไม่มีสีที่สองมาตัด ใช้ทองสว่าง/ทองเข้มแทนการเปลี่ยนวรรณะ
+// ทองมาจากตัวโพดำในโลโก้กับกองชิป-ไพ่ทองบนแบนเนอร์ ส่วนกราไฟต์คือตัวอักษร
+// Black Jack ที่เป็นโลหะเทาขอบทอง — เป็นโลหะตัวที่สองจริง ไม่ใช่เงาของทอง
+// ทองรอบนี้อมเหลืองน้ำผึ้ง (โทนแอนทีค) ไม่ใช่ทองส้มสว่างแบบแบรนด์ก่อน
+//
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
+// ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
 //
 // เมนูชุดเดียวใช้ .map ทั้งฝั่งเดสก์ท็อปและลิ้นชักมือถือ — เดิมไฟล์นี้เขียน <a> ซ้ำ
 // สองชุดคนละที่ ทำให้เพิ่ม/ลบเมนูต้องไล่แก้สองรอบและหลุดง่าย
 //
-// QUEEN189 เป็นเว็บคาสิโน/สล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ ห้ามมีลิงก์ถึง
-// ส่วน /register กับ /login รอบนี้ยังเป็นหน้าส่งต่อแบบ noindex (ไม่ได้เปิด toggle
-// หน้าปุ่ม) จึงไม่มีเมนูสองตัวนั้น และ /ทางเข้า ยังอยู่ในเมนูตามเดิม
+// BLACKJACK789 เป็นเว็บสล็อต/คาสิโน หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// src/pages-disabled/) ห้ามมีลิงก์ถึง ส่วน /register กับ /login รอบนี้ยังเป็นหน้า
+// ส่งต่อแบบ noindex (ไม่ได้เปิด toggle หน้าปุ่ม) จึงไม่มีเมนูสองตัวนั้นให้จัดลำดับ
+// ตามกฎ "สมัครสมาชิก/เข้าสู่ระบบ ต่อจากโปรโมชั่น" และ /ทางเข้า ยังอยู่ในเมนูตามเดิม
+//
+// ไอคอนเลือกให้ตรงกับอาร์ตของแบรนด์ — ♠️ คือโพดำทองที่เป็นตัวโลโก้ ใช้แทนหน้า
+// เกี่ยวกับเรา 🃏 คือไพ่ที่นางแบบถือบนแบนเนอร์ ใช้แทนหน้าทดลองเล่น 🎁 แทน
+// โปรโมชั่น และ 🚪 แทนลิงก์ตรงทางเข้าเว็บหลัก
 //
 // ห้ามเขียน isActive เองในไฟล์นี้ — Astro.url.pathname ถูก percent-encode ทำให้
 // /ทดลองเล่น กับ /ทางเข้า ไม่เคยไฮไลต์เลย ตัวที่รู้กติกานั้นคือ isActivePath ใน lib/nav
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
-  { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
-  { name: "ทางเข้า", path: "/ทางเข้า", icon: "👑" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "💎" },
+  { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🃏" },
+  { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "♠️" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "📞" },
 ];
 
 const LOGO_ALT =
-  "โลโก้ QUEEN189 เป็นมงกุฎทองคำประดับเพชรตั้งอยู่เหนือคำว่า Queen ที่เขียนด้วยตัวอักษรทองคำเงาวาวแบบมีหางโค้ง ใต้ลงมาเป็นเลข 189 สีทองขนาบด้วยลายเส้นหัวลูกศรสีทองสองข้าง";
+  "โลโก้ BLACKJACK789 เป็นรูปโพดำทองคำขอบเงาวาว มีคำว่า Black Jack เขียนทับด้วยตัวอักษรโลหะสีเทากราไฟต์ขอบทองแบบมีหางโค้ง ใต้ลงมาเป็นเลข 789 สีเดียวกัน และมีประกายทองสี่แฉกอยู่สองข้าง";
 ---
 
-<nav class="sticky top-0 z-50 w-full border-b border-[#e4bb53]/40 bg-[#0b0704] font-sans shadow-[0_0_20px_rgba(228,187,83,0.18)]">
+<nav class="sticky top-0 z-50 w-full border-b border-[#d3aa4b]/40 bg-[#050403] font-sans shadow-[0_0_20px_rgba(211,170,75,0.18)]">
   <div class="flex h-[75px] w-full items-center justify-between px-4 xl:px-8">
     <div class="z-50 flex items-center">
       <a href="/" class="group relative flex items-center">
-        <div aria-hidden="true" class="absolute inset-0 scale-0 rounded-full bg-[#e4bb53]/20 blur-xl transition-transform duration-500 group-hover:scale-150"></div>
+        <div aria-hidden="true" class="absolute inset-0 scale-0 rounded-full bg-[#d3aa4b]/20 blur-xl transition-transform duration-500 group-hover:scale-150"></div>
         {
           mainLogo ? (
             <Picture
@@ -54,12 +64,12 @@ const LOGO_ALT =
               widths={[94, 188, 282]}
               sizes="94px"
               height={45}
-              class="relative h-[40px] w-auto drop-shadow-[0_0_10px_rgba(252,235,131,0.35)] transition-transform group-hover:scale-105 xl:h-[45px]"
+              class="relative h-[40px] w-auto drop-shadow-[0_0_10px_rgba(242,207,112,0.35)] transition-transform group-hover:scale-105 xl:h-[45px]"
               formats={["avif", "webp"]}
               fallbackFormat="webp"
             />
           ) : (
-            <p class="relative bg-gradient-to-b from-[#fdf3d2] via-[#e4bb53] to-[#7a5615] bg-clip-text text-2xl font-black tracking-wider text-transparent uppercase">QUEEN189</p>
+            <p class="relative bg-gradient-to-b from-[#fdf1ce] via-[#d3aa4b] to-[#5c4113] bg-clip-text text-2xl font-black tracking-wider text-transparent uppercase">BLACKJACK789</p>
           )
         }
       </a>
@@ -70,12 +80,12 @@ const LOGO_ALT =
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative px-5 py-2.5 skew-x-[-15deg] overflow-hidden border transition-all duration-300 ${isActive(item.path) ? "bg-[#e4bb53]/15 border-[#e4bb53] shadow-[0_0_15px_rgba(228,187,83,0.4)]" : "bg-white/5 border-[#7a5615]/40 hover:border-[#e4bb53]/70"}`}>
+            class={`group relative px-5 py-2.5 skew-x-[-15deg] overflow-hidden border transition-all duration-300 ${isActive(item.path) ? "bg-[#d3aa4b]/15 border-[#d3aa4b] shadow-[0_0_15px_rgba(211,170,75,0.4)]" : "bg-white/5 border-[#5c4113]/40 hover:border-[#d3aa4b]/70"}`}>
             <span
               aria-hidden="true"
-              class={`absolute inset-0 block bg-gradient-to-r from-[#c38d29] to-[#e4bb53] translate-y-full transition-transform duration-300 ${isActive(item.path) ? "translate-y-0 opacity-20" : "group-hover:translate-y-0 opacity-30"}`}
+              class={`absolute inset-0 block bg-gradient-to-r from-[#b8862c] to-[#d3aa4b] translate-y-full transition-transform duration-300 ${isActive(item.path) ? "translate-y-0 opacity-20" : "group-hover:translate-y-0 opacity-30"}`}
             />
-            <span class={`block skew-x-[15deg] relative z-10 font-bold tracking-wide transition-colors ${isActive(item.path) ? "text-[#fceb83]" : "text-[#c2a878] group-hover:text-[#fdf3d2]"}`}>
+            <span class={`block skew-x-[15deg] relative z-10 font-bold tracking-wide transition-colors ${isActive(item.path) ? "text-[#f2cf70]" : "text-[#c0ab84] group-hover:text-[#fdf1ce]"}`}>
               <span aria-hidden="true" class="mr-1">
                 {item.icon}
               </span>
@@ -89,11 +99,11 @@ const LOGO_ALT =
     <div class="z-50 flex items-center gap-2">
       <button
         id="hamburger-btn"
-        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center space-y-1.5 rounded-md border border-[#e4bb53]/40 bg-[#271a0c] p-2 transition-all hover:bg-[#3c2505] xl:hidden"
+        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center space-y-1.5 rounded-md border border-[#d3aa4b]/40 bg-[#1e150a] p-2 transition-all hover:bg-[#2c2011] xl:hidden"
         aria-label="เปิด-ปิดเมนู">
-        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#e4bb53] transition-all duration-300"></span>
-        <span class="hamburger-line h-[2px] w-6 bg-[#e4bb53] transition-all duration-300"></span>
-        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#e4bb53] transition-all duration-300"></span>
+        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#d3aa4b] transition-all duration-300"></span>
+        <span class="hamburger-line h-[2px] w-6 bg-[#d3aa4b] transition-all duration-300"></span>
+        <span class="hamburger-line h-[2px] w-6 origin-center bg-[#d3aa4b] transition-all duration-300"></span>
       </button>
     </div>
   </div>
@@ -102,13 +112,13 @@ const LOGO_ALT =
 
   <div
     id="mobile-sidebar"
-    class="fixed top-0 right-0 z-40 h-screen w-[280px] translate-x-full transform overflow-y-auto border-l border-[#e4bb53]/40 bg-[#0b0704] shadow-[-10px_0_30px_rgba(0,0,0,0.8)] transition-transform duration-300 ease-out xl:hidden">
+    class="fixed top-0 right-0 z-40 h-screen w-[280px] translate-x-full transform overflow-y-auto border-l border-[#d3aa4b]/40 bg-[#050403] shadow-[-10px_0_30px_rgba(0,0,0,0.8)] transition-transform duration-300 ease-out xl:hidden">
     <div class="flex flex-col space-y-3 px-6 pt-24 pb-10">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`sidebar-item flex items-center px-4 py-3.5 rounded-lg border transition-all ${isActive(item.path) ? "bg-[#e4bb53]/15 border-[#e4bb53] text-[#fceb83] shadow-[inset_4px_0_0_rgba(228,187,83,1)]" : "bg-white/5 border-transparent text-[#c2a878] hover:bg-[#271a0c] hover:text-[#fdf3d2]"}`}>
+            class={`sidebar-item flex items-center px-4 py-3.5 rounded-lg border transition-all ${isActive(item.path) ? "bg-[#d3aa4b]/15 border-[#d3aa4b] text-[#f2cf70] shadow-[inset_4px_0_0_rgba(211,170,75,1)]" : "bg-white/5 border-transparent text-[#c0ab84] hover:bg-[#1e150a] hover:text-[#fdf1ce]"}`}>
             <span aria-hidden="true" class="mr-3 text-xl">
               {item.icon}
             </span>

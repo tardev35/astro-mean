@@ -22,18 +22,17 @@ import bannerNewGame from "../assets/gamedemo16.webp";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์คือตัวหนังสือกับตัวละครบนรูป สิ่งนั้นจึงเป็น alt
 //
-// ROSTY59: แถบนี้ไม่ใช้ slide* — slide1 กับ slide3 ไปอยู่ในบล็อก
-// ContentBoxSevenThree* บนหน้าแรกแล้ว (เต็มเพดานสองบล็อกของ playbook) ส่วน slide2
-// ปล่อยไม่ใช้บนหน้าแรก ให้หน้า /promotion เอาไปใช้ ส่วนสไลด์ใบที่สี่กับไฟล์ banner
-// ทุกตัวที่ไม่ใช่ banner1 เป็นอาร์ตของแบรนด์ก่อนที่มีชื่อของเขาพิมพ์อยู่บนรูป
-// ห้าม import ที่นี่หรือ
-// ที่ไหนก็ตาม — การ import คือการ emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม แถบนี้
-// จึงชี้ไปที่แบนเนอร์ค่ายพันธมิตร/เกมออกใหม่ที่เป็นกลางกับแบรนด์แทน วางต่อท้ายชุด
-// widget ปลายหน้า ซึ่งอยู่หลังหัวข้อ docx ข้อสุดท้ายทั้งหมด
+// BLACKJACK789: แถบนี้ไม่ใช้ slide* — slide1 กับ slide2 ไปอยู่ในบล็อก
+// ContentBoxSevenThree* บนหน้าแรกแล้ว (เต็มเพดานสองบล็อกของ playbook) ส่วน slide3
+// กับ slide4 ปล่อยไม่ใช้บนหน้าแรก ให้หน้า /promotion เอาไปใช้ ส่วนไฟล์ banner ทุกตัว
+// ที่ไม่ใช่ banner1 เป็นอาร์ตของแบรนด์ก่อนที่มีชื่อของเขาพิมพ์อยู่บนรูป ห้าม import
+// ที่นี่หรือที่ไหนก็ตาม — การ import คือการ emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม
+// แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายพันธมิตร/เกมออกใหม่ที่เป็นกลางกับแบรนด์แทน วางต่อท้าย
+// ชุด widget ปลายหน้า ซึ่งอยู่หลังหัวข้อ docx ข้อสุดท้ายทั้งหมด
 //
-// ชุดสีรอบนี้ย้ายจากทองราชสำนักวรรณะเดียวของแบรนด์ก่อน มาเป็นทองอำพันคู่โครเมียม
-// เงินบนดำสนิท — ขอบสไลด์ #4a2f0d เงา rgba(242,160,26,X) และปุ่มหยุดที่โผล่ตอน
-// focus รับทอง #f2a01a / #ffc94a คู่เงิน #dbe1e8 บนผิว #26180a
+// ชุดสีรอบนี้ย้ายจากทองอำพันคู่โครเมียมของแบรนด์ก่อน มาเป็นทองแอนทีค/แชมเปญคู่
+// กราไฟต์บนดำเกือบสนิท — ขอบสไลด์ #3a2a11 เงา rgba(211,170,75,X) และปุ่มหยุดที่โผล่
+// ตอน focus รับทอง #d3aa4b / #f2cf70 บนผิว #1e150a
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 //
@@ -41,10 +40,9 @@ import bannerNewGame from "../assets/gamedemo16.webp";
 // ของแบรนด์ — นั่นคือ alt ที่ไม่ตรงกับรูป ถ้าวันไหนต้องการให้แถบนี้อ่านเป็นชุดอื่น
 // ต้องเปลี่ยนไฟล์รูปก่อน แล้วค่อยเปลี่ยน alt ตาม
 //
-// แบนเนอร์ชุดนี้เป็นภาพแนวนอน (อัตราส่วนราว 1.58:1) ไม่ใช่จัตุรัสเหมือนสไลด์ชุดก่อน
-// จำนวนช่องที่เห็นยังเท่าเดิม (2 ช่องบนมือถือ / 3 ช่องบนเดสก์ท็อป ที่ max-w-[820px])
-// ความกว้างของช่องจึงไม่เปลี่ยน sizes ยังเป็นค่าเดิม แต่ความสูงเตี้ยลงตามสัดส่วนจริง
-// ซึ่ง width/height ที่ส่งจาก src ของแต่ละไฟล์จัดการให้เอง
+// แบนเนอร์ชุดนี้เป็นภาพแนวนอน (อัตราส่วนราว 1.58:1) จำนวนช่องที่เห็นคือ 2 ช่องบน
+// มือถือ / 3 ช่องบนเดสก์ท็อป ที่ max-w-[820px] ความกว้างของช่องจึงคงที่ sizes ตาม
+// ค่านั้น ส่วนความสูงมาจาก width/height ที่ส่งจาก src ของแต่ละไฟล์เอง
 //
 // ค่า --shift ใน stylesheet ข้างล่างคำนวณจากจำนวนรูปต้นฉบับ (หกใบรอบนี้) เทียบกับ
 // จำนวนช่องที่เห็น: หนึ่งชุดเต็ม = 6 × basis + 6 × gap ถ้าเปลี่ยนจำนวนรูปหรือจำนวน
@@ -98,7 +96,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#f2a01a]/60 peer-focus-visible:bg-[#26180a] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#ffc94a]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#d3aa4b]/60 peer-focus-visible:bg-[#1e150a] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#f2cf70]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -111,7 +109,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#4a2f0d]/70 object-cover shadow-[0_10px_30px_rgba(242,160,26,0.3)]"
+              class="block w-full rounded-xl border border-[#3a2a11]/70 object-cover shadow-[0_10px_30px_rgba(211,170,75,0.3)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"
