@@ -1,54 +1,59 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import Announcement from "../components/Announcement3.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
+import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxSevenThreeFloatingBadge from "../components/ContentBoxSevenThreeFloatingBadge.astro";
 import FeatureHighlights from "../components/FeatureHighlights.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
+import ProviderGridPremium from "../components/ProviderGridPremium.astro";
 import SmoothCarousel from "../components/SmoothCarousel.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners2 from "../components/LatestWinners2.astro";
+import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ReviewCardSumo from "../components/ReviewCardSumo.astro";
-import Faq3 from "../components/Faq3.astro";
+import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
+import Faq4 from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgWelcomeBonus from "../assets/slide1.png";
-import imgOneTurnWithdraw from "../assets/slide2.png";
+import imgInviteFriend from "../assets/slide4.png";
+import imgCashback from "../assets/slide3.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxCyberCut as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   3 → ContentBox3ThreeCyberCut as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับ
-//       ประโยคเดิม: ไม่ได้วัดที่จำนวนเกม → ค่าย A-List สามเจ้าและการทดสอบอัตราจ่าย →
-//       กราฟิก HD) แล้วต่อด้วย ProviderGrid ซึ่งกางโลโก้ค่ายที่ย่อหน้าเดียวกัน
-//       เอ่ยชื่อไว้ (PG Soft, Pragmatic Play, Joker Gaming)
-//   4 → ContentBoxTwoNeumorphism as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: Multipliers/
-//       Expanding Wild/Cascading → Bonus Buy และผลลัพธ์) แล้วต่อด้วย
-//       FeatureHighlights ซึ่งกางลูกเล่นสี่ตัวที่ย่อหน้านี้ระบุชื่อไว้ตรงๆ → h3 สี่
-//       ตัว ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบนหน้านี้ คำอธิบายเขียนขยายความใหม่
-//       ไม่ได้ก๊อบประโยคด้านบนซ้ำ
-//   5 → ContentBoxNeumorphism as="h2" (ใช้ซ้ำจากข้อ 2 ได้ และเลือกทรงกลมมนตรงนี้
-//       เพื่อไม่ให้ชนกับมุมตัดของ SevenThreeCyberCut ที่ตามมาเป็นข้อ 6)
-//   6 → ContentBoxSevenThreeCyberCut as="h2" + slide1 (อาร์ตสไลด์เขียนว่า
-//       "โปรสมัครใหม่ รับ 100% / ทุกยอดฝาก ถอนไม่อั้น" ตรงกับย่อหน้าโบนัสต้อนรับ)
-//   7 → ContentBoxSevenThreeNeumorphism as="h2" + slide2 (อาร์ตสไลด์เขียนว่า
-//       "ฝากรับเพิ่ม 10% / รับได้ไม่จำกัด / เล่นเพียง 1 เทิร์น ถอนได้ไม่อั้น" ตรงกับ
-//       มุมถอน/เทิร์นโอเวอร์ของย่อหน้าระบบเสถียร)
+//   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxFloatingBadge as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   3 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
+//       ความน่าเชื่อถือกับโครงสร้างแพลตฟอร์มที่ป้องกันการล็อคยูสเซอร์ → การเก็บ
+//       ข้อมูลส่วนตัวและประวัติธุรกรรมเป็นความลับ) แล้วต่อด้วย ProviderGridPremium
+//       ซึ่งกางค่ายลิขสิทธิ์แท้ที่ส่งตรงจากเซิร์ฟเวอร์หลัก อันเป็นรูปธรรมของหัวข้อ
+//       ความน่าเชื่อถือข้อเดียวกัน
+//   4 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งสองครึ่ง: เลิกส่งสลิป/ระบบ AI
+//       ประมวลผลไม่กี่วินาที → ฝากดึกถอนเช้าตรู่ก็ไม่สะดุด) แล้วต่อด้วย
+//       FeatureHighlights ซึ่งกางสี่จุดย่อยของระบบออโต้ที่ย่อหน้านี้ระบุไว้ตรงๆ →
+//       h3 สี่ตัว ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบนหน้านี้ คำอธิบายเขียนขยาย
+//       ความใหม่ ไม่ได้ก๊อบประโยคด้านบนซ้ำ
+//   5 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับ
+//       ประโยคเดิม: ทุนหลักสิบหรือหลักหมื่นลุ้นเท่ากัน → บริหารเงินทุนเองได้อิสระ
+//       ผ่านเงื่อนไขไม่มีขั้นต่ำ → ฝาก 1 บาทหรือถอนยอดเล็กก็ทำเองได้ทันที)
+//   6 → ContentBoxSevenThreePremium as="h2" + slide4 (อาร์ตสไลด์เขียนว่า "ชวนเพื่อน
+//       รับทันที 20% จากยอดเสียเพื่อน" — สิทธิ์ที่มีให้เฉพาะสมาชิกที่ปักหลักเล่นยาว
+//       ตรงกับย่อหน้าเรื่องเซียนพนันที่เลือกทำกำไรต่อเนื่องกับที่นี่)
+//   7 → ContentBoxSevenThreeFloatingBadge as="h2" + slide3 (อาร์ตสไลด์เขียนว่า
+//       "คืนยอดเสีย รับเครดิตคืนสูงสุด 10% ทุกวัน เล่นได้ ไม่ต้องกลัวเสีย" ตรงกับ
+//       ย่อหน้าเรื่องการโอนจ่ายจริงทุกบิลโดยไม่หักเปอร์เซ็นต์)
 //
 // variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจากชุด
-// Premium ×3 + FloatingBadge ×2 + 3ThreePremium + Special มาเป็น CyberCut ×3
-// (เดี่ยว/สามคอลัมน์/เจ็ดสาม) + Neumorphism ×3 (เดี่ยว ×2 + เจ็ดสาม) +
-// TwoNeumorphism ส่วน Announcement เป็น Announcement5, LatestWinners เป็น
-// LatestWinners2, ProviderGrid เป็นตัวธรรมดา, ReviewCard เป็น ReviewCardSumo และ
-// Faq เป็น Faq3 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน MainLayout กับ brandProfile
-// หน้านี้จึงไม่ใช้ ContentBox ตัวธรรมดาเลยรอบนี้ (มันยังถูกใช้อยู่ที่ terms/privacy)
+// CyberCut ×3 + Neumorphism ×3 + TwoNeumorphism มาเป็น Premium ×3 (เดี่ยว/สอง
+// คอลัมน์/เจ็ดสาม) + FloatingBadge ×2 (เดี่ยว + เจ็ดสาม) + Special ×1 +
+// 3ThreePremium ×1 ส่วน Announcement เป็น Announcement3, LatestWinners เป็น
+// LatestWinnersPremium, ProviderGrid เป็น ProviderGridPremium, ReviewCard เป็น
+// ReviewCardSumo2 และ Faq เป็น Faq4 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน
+// MainLayout กับ brandProfile หน้านี้จึงไม่ใช้ ContentBox ตัวธรรมดาเลยรอบนี้
+// (มันยังถูกใช้อยู่ที่ terms/privacy)
 //
 // ContentBoxSevenThree* ทั้งสองตัวปล่อยหัวข้อจาก prop `title` ตัวเดียว ส่วน
 // titleleft เป็นป้ายคอลัมน์รูปที่ยังเป็น <p> — ห้ามส่ง titleright เข้าไป เพราะจะเพิ่ม
@@ -56,64 +61,65 @@ import imgOneTurnWithdraw from "../assets/slide2.png";
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
 // สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงตัวต่อตัวกับ default ของ
-// Announcement5.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ
+// Announcement3.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ
 // วิ่งข้อความเดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความ
 // ซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide2 ซึ่งเป็นสไลด์ที่
-// อาร์ตตรงกับหัวข้อ docx ข้อ 6 กับข้อ 7 พอดี — slide3 (ฝาก 100 รับ 200) กับ slide4
-// (ฝาก 300 รับ 700) ไม่มีหัวข้อ docx ไหนรองรับและเพดาน SevenThree เต็มแล้ว จึงปล่อย
-// ไว้ให้หน้า /promotion ใช้ ส่วนไฟล์ banner ทุกตัว (ทั้งตัวเปล่า ตัวที่มีเลขต่อท้าย
-// ตั้งแต่สองขึ้นไป และตัวมือถือ) ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import
-// คือรูปที่ถูก emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม — banner1 กับ banner1-mobile
-// เป็นของ MainLayout จัดการเอง และรูปในหน้านี้ไม่มีตัวไหนใส่ loading="eager"/
-// fetchpriority="high" เพราะ LCP เป็นของ hero ใน MainLayout
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide4/slide3 ซึ่งเป็นสไลด์ที่
+// อาร์ตตรงกับหัวข้อ docx ข้อ 6 กับข้อ 7 พอดี — slide1 (สมาชิกใหม่ รับโบนัสเพิ่ม
+// 100%) กับ slide2 (ฝากติดต่อกัน 7 วัน รับเครดิตฟรี 100 บาท) เป็นโปรสำหรับสมาชิก
+// ใหม่/สายฝากประจำ ซึ่งไม่มีหัวข้อ docx ไหนรองรับ และเพดาน SevenThree เต็มแล้ว จึง
+// ปล่อยไว้ให้หน้า /promotion ใช้ ส่วนไฟล์ banner ทุกตัว (ทั้งตัวที่มีเลขต่อท้ายและ
+// ตัวมือถือ) ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่ถูก emit
+// ลง dist/ ถึงจะไม่มีใคร render ก็ตาม — banner1 เป็นของ MainLayout จัดการเอง และ
+// รูปในหน้านี้ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP เป็นของ
+// hero ใน MainLayout
 //
-// widget ที่ไม่ได้มาจาก docx (SmoothCarousel, GameRankingBoard, LatestWinners2,
-// LoginRtpSection, ReviewCardSumo, แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้าย
+// widget ที่ไม่ได้มาจาก docx (SmoothCarousel, GameRankingBoard, LatestWinnersPremium,
+// LoginRtpSection, ReviewCardSumo2, แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้าย
 // เป็น <p>/<span> + aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้าย
 // ทั้งชุด ยกเว้นสองตัวที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง
-// (ProviderGrid → ข้อ 3, FeatureHighlights → ข้อ 4) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// (ProviderGridPremium → ข้อ 3, FeatureHighlights → ข้อ 4) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
 // h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×4 จาก FeatureHighlights ซึ่งเป็นรายการ
 // ย่อยของหัวข้อข้อ 4 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
-// Faq3.astro คำถามเป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
+// Faq4.astro คำถามเป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
 // เป็น <p>
 //
 // title กับ description ใช้บรรทัดที่ brief ให้มาตรงๆ ทั้งคู่ ห้ามเติมหรือตัด และเป็น
 // สตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
-const pageTitle = "BLACKJACK789 | สล็อตเกมดีมีเชิง ค่ายดังเกมแท้ โปรเด็ดมีจังหวะ";
-const pageDescription = "BLACKJACK789 สล็อตเกมดีมีเชิง คัดค่ายดังเกมแท้เน้นคุณภาพ พร้อมฟีเจอร์และเกมหลายรูปแบบ โปรเด็ดมีจังหวะให้ตาม ระบบเสถียรที่สุดในตอนนี้";
+const pageTitle = "CK1968 สล็อตเว็บตรง แบรนด์แท้ 100% ปลอดภัย จ่ายจริง ไม่มีขั้นต่ำ";
+const pageDescription = "CK1968 สล็อตเว็บตรง แบรนด์แท้ 100% ที่นักปั่นไว้วางใจ หมดปัญหาโดนโกง! การันตีความปลอดภัย เล่นได้เท่าไหร่เราจ่ายจริง ระบบออโต้ ฝากถอนไม่มีขั้นต่ำ";
 
 const announcementMessage =
-  "BLACKJACK789 สล็อตเกมดีมีเชิง ค่ายดังเกมแท้ โปรเด็ดมีจังหวะ • สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ค่า RTP มาตรฐานยุติธรรมตรงตามสเปกโรงงาน ไม่มีปรับลดเปอร์เซ็นต์ชนะ ไร้ประวัติล็อกยูส • วางระบบคลังเกมอย่างมีเชิงชั้น ไม่เน้นอัดเกมขยะมาให้รกหน้าเว็บ คัดเฉพาะเกมที่มีโครงสร้างการจ่ายรางวัลโปร่งใส และจังหวะแจ็คพอตแตกจริงตามอัลกอริทึมสากล • ดึงเฉพาะสัญญาณเกมลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ระดับ A-List ทั้ง PG Soft, Pragmatic Play และ Joker Gaming เข้าสู่ระบบโดยตรง กราฟิกสมูธ คมชัดระดับ HD ลื่นไหลทุกการสปิน • ฟีเจอร์ยุคใหม่ครบมือ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Expanding Wild ขยายเต็มรีล คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy ซื้อฟรีสปินพุ่งตรงเข้าลุ้นรอบแจ็คพอต • คลังเกมหลากหลายสไตล์ ตั้งแต่สล็อต 3D เนื้อเรื่องเข้มข้น สายสตรีตเน้นตัวคูณโหด ไปจนถึงคลาสสิกไลน์จ่ายน้อยแต่แตกหนัก สลับเปลี่ยนฟีลได้ทันทีผ่านกระเป๋าเงินเดียว • โปรเด็ดมีจังหวะให้ตาม ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และเครดิตคืนยอดเสีย Cash Back ทุกวัน กดรับเองผ่านหน้าแดชบอร์ด ไม่ติดเทิร์นโอเวอร์มหาโหด • ระบบเสถียรที่สุดในตอนนี้ ฝากถอนออโต้ผ่าน Gateway ตรง ทำรายการเสร็จใน 3 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ถอนกำไรได้เต็มทุกยอด";
+  "CK1968 สล็อตเว็บตรง แบรนด์แท้ 100% ปลอดภัย จ่ายจริง ไม่มีขั้นต่ำ • ผู้ให้บริการลิขสิทธิ์แท้ที่ส่งตรงเกมจากค่ายดังทั่วโลกมาให้สัมผัสด้วยตัวเอง การันตีทุกการสปินโปร่งใสยุติธรรม พร้อมระบบซัพพอร์ตที่ยอดเยี่ยมที่สุดในตอนนี้ • นำเข้าระบบ API แท้จากเซิร์ฟเวอร์หลักของค่ายเกมโดยตรง อัตราการแตก RTP เป็นมาตรฐานสากลจริง ไม่มีการแอบปรับลดเปอร์เซ็นต์การชนะ เล่นลื่นไหลไม่กระตุกไม่หลุดออกจากเกมในจังหวะเข้าฟรีสปิน • วางโครงสร้างแพลตฟอร์มด้วยระบบรักษาความปลอดภัยระดับสูง ข้อมูลส่วนตัวและประวัติการทำธุรกรรมของสมาชิกถูกเก็บเป็นความลับทั้งหมด ไม่มีการล็อคยูสเซอร์เมื่อเล่นได้กำไรก้อนโต • ระบบ AI จัดการธุรกรรมการเงินแบบอัตโนมัติเต็มรูปแบบ กดทำรายการแล้วยอดเงินเข้ากระเป๋าภายในเวลาไม่กี่วินาที จะฝากตอนดึกหรือถอนช่วงเช้าตรู่ก็ลื่นไหลไม่มีสะดุด • ฝากถอนไม่มีขั้นต่ำ ทุนหลักสิบหรือหลักหมื่นก็ร่วมลุ้นรางวัลใหญ่ได้เท่าเทียมกัน อยากฝาก 1 บาทเพื่อปั่นเล่นขำๆ หรือถอนยอดเล็กๆ ออกไปใช้ก่อน ก็ทำรายการเองได้ทันทีโดยไม่มีเงื่อนไขผูกมัด • เกมที่นี่แตกง่ายจริงตามสถิติ มีฟีเจอร์ตัวเกมใหม่ๆ อัปเดตให้เล่นก่อนใคร ระบบหลังบ้านเสถียรสูงมาก รองรับผู้ใช้งานพร้อมกันนับหมื่นคนได้โดยที่เว็บไม่อืด • ชนะเท่าไหร่โอนจ่ายจริงเต็มจำนวนทุกบาททุกสตางค์ ไม่มีการหักค่าธรรมเนียม ไม่มีการแบ่งจ่ายเป็นงวดๆ และไม่ต้องทำเทิร์นโอเวอร์ซ้ำซ้อนให้วุ่นวาย";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
 // คำถามที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq3> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
-// Faq3 ใช้ค่า default ของตัวเอง เพราะ default ของทุก variant ในตระกูลนี้เป็นคำถาม
+// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
+// Faq4 ใช้ค่า default ของตัวเอง เพราะ default ของทุก variant ในตระกูลนี้เป็นคำถาม
 // ของแบรนด์เก่า
 const faqs = [
   {
-    q: "BLACKJACK789 ต่อเกมมาจากไหน แล้วค่า RTP ถูกปรับลดหรือเปล่า",
-    a: "BLACKJACK789 เป็นสล็อตเว็บตรง API แท้ที่ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลักโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงเป็นมาตรฐานยุติธรรมตรงตามสเปกโรงงาน ไม่มีการปรับลดเปอร์เซ็นต์ชนะระหว่างทาง และไม่มีประวัติล็อกยูสให้ต้องกังวลตอนกำลังทำกำไร",
+    q: "CK1968 เป็นเว็บตรงจริงไหม ต่างจากเว็บเอเย่นต์ตรงไหน",
+    a: "CK1968 เป็นผู้ให้บริการลิขสิทธิ์แท้ที่ส่งตรงเกมจากค่ายดังทั่วโลกมาให้ผู้เล่นสัมผัสด้วยตัวเอง และนำเข้าระบบ API แท้จากเซิร์ฟเวอร์หลักของค่ายเกมโดยตรง จึงต่างจากเว็บเอเย่นต์ที่ปรับอัตราการชนะหรือฝากถอนล่าช้า อัตราการแตก RTP ที่นี่เป็นมาตรฐานสากลจริง ไม่มีการแอบปรับลดเปอร์เซ็นต์การชนะระหว่างทาง",
   },
   {
-    q: "คลังเกมคัดมาอย่างไร แล้วมีค่ายอะไรบ้าง",
-    a: "คลังเกมวางอย่างมีเชิงชั้น ไม่อัดเกมขยะมาให้รกหน้าเว็บ แต่คัดเฉพาะเกมที่โครงสร้างการจ่ายรางวัลโปร่งใสและจังหวะแจ็คพอตแตกจริงตามอัลกอริทึมสากล โดยดึงสัญญาณลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ระดับ A-List ทั้ง PG Soft, Pragmatic Play และ Joker Gaming เข้าระบบโดยตรง ทุกเกมผ่านการทดสอบอัตราจ่ายก่อนลงคลัง",
+    q: "เล่นได้กำไรก้อนโตแล้วจะโดนล็อคยูสเซอร์ไหม",
+    a: "ไม่มีการล็อคยูสเซอร์เมื่อสมาชิกเล่นได้กำไรก้อนโต เพราะแพลตฟอร์มถูกวางโครงสร้างด้วยระบบรักษาความปลอดภัยระดับสูงตั้งแต่ต้น ข้อมูลส่วนตัวและประวัติการทำธุรกรรมของสมาชิกทั้งหมดถูกเก็บเป็นความลับ ผู้เล่นจึงโฟกัสกับการปั่นสล็อตได้เต็มที่โดยไม่ต้องระแวงเรื่องตุกติกใดๆ",
   },
   {
-    q: "มีฟีเจอร์อะไรให้ใช้ในเกมบ้าง",
-    a: "ฟีเจอร์ยุคใหม่มาครบมือ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers, สัญลักษณ์ Expanding Wild ที่ขยายเต็มรีล, คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy ที่ซื้อฟรีสปินพุ่งตรงเข้าลุ้นรอบแจ็คพอตได้ทันที เปลี่ยนการกดหมุนธรรมดาให้เป็นจังหวะทำกำไรได้ทุกวินาที",
+    q: "ฝากถอนต้องส่งสลิปให้แอดมินตรวจไหม ใช้เวลานานแค่ไหน",
+    a: "ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินตรวจ เพราะที่นี่พัฒนาระบบ AI สำหรับจัดการธุรกรรมการเงินแบบอัตโนมัติเต็มรูปแบบ ทุกครั้งที่กดทำรายการ ระบบจะประมวลผลยอดเงินให้เข้ากระเป๋าภายในเวลาไม่กี่วินาที ไม่ว่าจะฝากเข้าเล่นตอนดึกหรือถอนเงินช่วงเช้าตรู่ก็ลื่นไหลไม่มีสะดุด",
   },
   {
-    q: "อยากเปลี่ยนแนวเกมกลางคัน ต้องโยกเงินข้ามค่ายไหม",
-    a: "ไม่ต้องโยกเลย ทุกหมวดใช้กระเป๋าเงินเดียวร่วมกัน สลับจากสล็อต 3D เนื้อเรื่องเข้มข้น ไปสล็อตสายสตรีตเน้นตัวคูณโหด หรือสล็อตคลาสสิกไลน์จ่ายน้อยแต่แตกหนักได้ทันที คลังเกมจัดหมวดหมู่ชัดเจนและค้นหาง่าย จึงเปลี่ยนฟีลได้โดยไม่เสียเวลา",
+    q: "ต้องมีทุนขั้นต่ำเท่าไหร่ถึงจะเล่นและถอนได้",
+    a: "ไม่มีข้อจำกัดขั้นต่ำทั้งการฝากและการถอน จะมีทุนหลักสิบหรือหลักหมื่นก็ร่วมสนุกและลุ้นรางวัลใหญ่ได้เท่าเทียมกัน อยากฝากแค่ 1 บาทเพื่อปั่นสล็อตเล่นขำๆ หรืออยากถอนเงินยอดเล็กๆ ออกไปใช้ก่อน ก็ทำรายการได้ด้วยตัวเองทันทีโดยไม่มีเงื่อนไขผูกมัด",
   },
   {
-    q: "รับโปรต้องส่งสลิปไหม แล้วฝากถอนใช้เวลานานแค่ไหน",
-    a: "ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ สิทธิ์ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และเครดิตคืนยอดเสีย Cash Back ทุกวัน กดรับเองได้จากหน้าแดชบอร์ด เงื่อนไขโปร่งใสไม่ติดเทิร์นโอเวอร์มหาโหด ส่วนระบบฝากถอนออโต้ทำรายการเสร็จใน 3 วินาทีผ่าน Gateway ตรง ถอนกำไรได้เต็มทุกยอด",
+    q: "ถ้าแจ็คพอตแตกหลักล้าน จะได้เงินเต็มจำนวนหรือถูกหักเปอร์เซ็นต์",
+    a: "ได้เต็มจำนวนทุกบาททุกสตางค์ ไม่ว่าจะแจ็คพอตแตกหลักหมื่น หลักแสน หรือทะลุถึงหลักล้าน เพราะที่นี่มีทุนสำรองมหาศาลพร้อมโอนจ่าย ไม่มีการหักค่าธรรมเนียม ไม่มีการแบ่งจ่ายเป็นงวดๆ และไม่ต้องทำเทิร์นโอเวอร์ซ้ำซ้อนให้วุ่นวาย ชนะปุ๊บรับเงินเข้าบัญชีไปเลย",
   },
 ];
 
@@ -131,143 +137,148 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="BLACKJACK789 สล็อตเกมดีมีเชิง ค่ายดังเกมแท้ โปรเด็ดมีจังหวะ">
+  <ContentBoxPremium as="h1" title="CK1968 สล็อตเว็บตรง แบรนด์แท้ 100% ที่นักปั่นไว้วางใจ">
     <p class="text-left text-base leading-relaxed">
-      BLACKJACK789 สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ค่า RTP มาตรฐานยุติธรรมตรงตามสเปกโรงงาน ไม่มีปรับลดเปอร์เซ็นต์ชนะ ไร้ประวัติล็อกยูส มาพร้อมระบบฝากถอนออโต้ประมวลผลไวใน
-      3 วินาที ถอนกำไรได้เต็มทุกยอด ไร้เงื่อนไขเทิร์นโอเวอร์จุกจิก ปั่นง่าย ได้เงินจริง
+      วงการเดิมพันออนไลน์ในปัจจุบันมีเว็บไซต์เปิดใหม่มากมาย แต่ปัญหาที่นักปั่นส่วนใหญ่ต้องเจอคือการหลงไปเล่นเว็บเอเย่นต์ที่ปรับอัตราการชนะหรือฝากถอนล่าช้า หากคุณกำลังมองหาแหล่งทำเงินที่มั่นคง ปลอดภัย
+      และเล่นได้อย่างสบายใจ แพลตฟอร์มของเราคือคำตอบที่ตรงจุดที่สุด เพราะที่นี่คือผู้ให้บริการลิขสิทธิ์แท้ที่ส่งตรงเกมจากค่ายดังทั่วโลกมาให้คุณสัมผัสด้วยตัวเอง การันตีทุกการสปินโปร่งใสยุติธรรม
+      พร้อมระบบซัพพอร์ตที่ยอดเยี่ยมที่สุดในตอนนี้
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxPremium>
 
-  <ContentBoxNeumorphism as="h2" title="BLACKJACK789 สล็อตเกมดีมีเชิง เลือกของน่าเล่นให้ทุกจังหวะมีอะไรให้ค้น">
+  <ContentBoxFloatingBadge as="h2" title="CK1968 สล็อตเว็บตรง มาตรฐานแบรนด์แท้ที่ตอบโจทย์การเดิมพันยุคใหม่">
     <p class="text-left text-base leading-relaxed">
-      BLACKJACK789 วางระบบคลังเกมอย่างมีเชิงชั้น ไม่เน้นอัดเกมขยะมาให้รกหน้าเว็บ แต่คัดเฉพาะเกมสล็อตที่มีโครงสร้างการจ่ายรางวัลโปร่งใส และจังหวะแจ็คพอตแตกจริงตามอัลกอริทึมสากล
-      ให้ผู้เล่นวางแผนการเดินเงินได้อย่างมีเชิง ไม่ว่าจะเบทเริ่มต้นหลักบาทหรือปรับยอดขึ้นสูง ทุกสปินล้วนมีโอกาสลุ้นรางวัลใหญ่ทะลุเพดาน
+      การเล่นเกมสล็อตยุคนี้ แค่ภาพสวยอย่างเดียวคงไม่พอ แต่ต้องอาศัยระบบหลังบ้านที่เสถียรด้วย เว็บไซต์ CK1968 ได้นำเข้าระบบ API แท้จากเซิร์ฟเวอร์หลักของค่ายเกมโดยตรง ทำให้ผู้เล่นได้สัมผัสกับอัตราการแตก
+      (RTP) ที่เป็นมาตรฐานสากลจริงๆ ไม่มีการแอบปรับลดเปอร์เซ็นต์การชนะ เล่นลื่นไหลไม่มีอาการกระตุกหรือหลุดออกจากเกมในจังหวะเข้าฟรีสปิน ให้คุณสนุกกับการทำกำไรได้อย่างเต็มประสิทธิภาพ
     </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxFloatingBadge>
 
-  <ContentBox3ThreeCyberCut
-    as="h2"
-    title="คัดค่ายดังเกมแท้เน้นคุณภาพ ไม่ได้มีดีแค่จำนวนเกม"
-    titleleft="ไม่ได้วัดกันที่จำนวนเกม"
-    titlecenter="ค่ายยักษ์ใหญ่ระดับ A-List"
-    titleright="กราฟิก HD ลื่นทุกสปิน">
-    <p slot="left" class="text-left text-base leading-relaxed">ไม่ใช่แค่รวมเกมไว้เยอะ แต่ BLACKJACK789 ดึงเฉพาะสัญญาณเกมลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ระดับ A-List</p>
-    <p slot="center" class="text-left text-base leading-relaxed">ทั้ง PG Soft, Pragmatic Play และ Joker Gaming เข้าสู่ระบบโดยตรง ทุกเกมผ่านการทดสอบอัตราจ่าย จ่ายเงินตรงตามมาตรฐานผู้พัฒนา</p>
-    <p slot="right" class="text-left text-base leading-relaxed">กราฟิกสมูธ คมชัดระดับ HD ลื่นไหลทุกการสปิน</p>
-  </ContentBox3ThreeCyberCut>
-
-  <ProviderGrid />
-
-  <ContentBoxTwoNeumorphism as="h2" title="ฟีเจอร์พร้อมเปลี่ยนเกมธรรมดา BLACKJACK789 ให้มีลูกเล่นน่าจับตามากขึ้น" titleleft="ลูกเล่นยุคใหม่ที่ใส่มาเต็ม" titleright="เปลี่ยนทุกสปินให้มีจังหวะทำกำไร">
+  <ContentBoxSpecial as="h2" title="หมดความกังวลเรื่องโดนโกงด้วยระบบรักษาความปลอดภัยขั้นสูงสุด">
     <p slot="left" class="text-left text-base leading-relaxed">
-      เพิ่มมิติการทำเงินให้เข้มข้นยิ่งขึ้นด้วยฟีเจอร์ยุคใหม่บน BLACKJACK789 ทั้งระบบสุ่มแจกตัวคูณทวีคูณ (Multipliers), สัญลักษณ์ Expanding Wild ขยายเต็มรีล, คอมโบแตกต่อเนื่อง Cascading
+      สิ่งสำคัญที่สุดที่ทำให้นักลงทุนกล้าตัดสินใจลงเงินคือความน่าเชื่อถือ เราเข้าใจดีว่าทุกคนไม่อยากเจอเหตุการณ์ถูกล็อคยูสเซอร์เมื่อเล่นได้กำไรก้อนโต
+      ที่นี่จึงวางโครงสร้างแพลตฟอร์มด้วยระบบรักษาความปลอดภัยระดับสูง
     </p>
-    <p slot="right" class="text-left text-base leading-relaxed">และโหมด Bonus Buy ซื้อฟรีสปินพุ่งตรงเข้าลุ้นรอบแจ็คพอตทันที เปลี่ยนการกดหมุนธรรมดาให้เป็นจังหวะทำกำไรได้ทุกวินาที</p>
-  </ContentBoxTwoNeumorphism>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ข้อมูลส่วนตัวและประวัติการทำธุรกรรมของสมาชิกจะถูกเก็บเป็นความลับทั้งหมด คุณสามารถโฟกัสกับการปั่นสล็อตได้อย่างเต็มที่ โดยไม่ต้องระแวงเรื่องตุกติกใดๆ ทั้งสิ้น
+    </p>
+  </ContentBoxSpecial>
+
+  <ProviderGridPremium />
+
+  <ContentBoxTwoPremium as="h2" title="นวัตกรรมระบบออโต้บน CK1968 ที่ออกแบบมาเพื่อความรวดเร็วทันใจ" titleleft="ระบบ AI จัดการธุรกรรมแทนแอดมิน" titleright="ฝากดึกถอนเช้าตรู่ก็ไม่เสียจังหวะ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ลืมภาพจำการฝากถอนแบบเก่าที่ต้องคอยส่งสลิปให้แอดมินตรวจไปได้เลย เพราะเราได้พัฒนาระบบ AI สำหรับจัดการธุรกรรมการเงินแบบอัตโนมัติเต็มรูปแบบ ทุกครั้งที่คุณกดทำรายการ
+      ระบบจะประมวลผลยอดเงินให้เข้ากระเป๋าภายในเวลาไม่กี่วินาที
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ไม่ว่าจะฝากเข้าเล่นตอนดึกหรือถอนเงินช่วงเช้าตรู่ ก็ลื่นไหลไม่มีสะดุด ช่วยให้จังหวะการเดิมพันของคุณต่อเนื่องและไม่เสียอรรถรส</p>
+  </ContentBoxTwoPremium>
 
   <FeatureHighlights
     items={[
       {
-        icon: "✖️",
-        title: "Multipliers ตัวคูณทวีคูณ",
-        description: "ตัวคูณถูกสุ่มแจกเข้ามาระหว่างรอบแล้วไต่ขึ้นทีละขั้น ยิ่งจังหวะต่อยาว ยอดรางวัลก็ทบขึ้นจากเบทเดิมโดยไม่ต้องเติมเงินเดิมพันเพิ่มกลางทาง",
+        icon: "🧾",
+        title: "ตัดขั้นตอนส่งสลิปให้แอดมินตรวจ",
+        description: "ไม่ต้องแคปหน้าจอ ไม่ต้องแปะสลิปในแชทแล้วรอคิว การยืนยันยอดเป็นหน้าที่ของระบบ ผู้เล่นเพียงกดทำรายการจากหน้าเว็บแล้วกลับไปปั่นต่อได้ทันที",
         accent: "gold",
       },
       {
-        icon: "🃏",
-        title: "Expanding Wild ขยายเต็มรีล",
-        description: "สัญลักษณ์ Wild แผ่ครอบทั้งรีลแล้วซ้อนทับสัญลักษณ์เดิม ทำให้ไลน์ที่เกือบครบกลายเป็นไลน์ที่จ่ายจริง และมักลากรางวัลมาพร้อมกันหลายไลน์ในตาเดียว",
-        accent: "silver",
+        icon: "🤖",
+        title: "ระบบ AI จัดการธุรกรรมอัตโนมัติเต็มรูปแบบ",
+        description: "ทั้งฝากและถอนถูกจับคู่ ตรวจสอบ และอนุมัติด้วยระบบชุดเดียวกันตลอดเวลา ไม่มีช่วงที่ต้องรอแอดมินเข้าเวร ทุกคำสั่งจึงถูกประมวลผลตามลำดับที่กดจริง",
+        accent: "red",
       },
       {
-        icon: "🔁",
-        title: "Cascading คอมโบแตกต่อเนื่อง",
-        description: "สัญลักษณ์ที่ชนะแล้วจะร่วงหายไปและมีตัวใหม่ไหลลงมาแทนที่ทันที เปิดโอกาสให้ชนะซ้ำได้อีกหลายรอบจากการกดหมุนเพียงครั้งเดียว",
+        icon: "⚡",
+        title: "ยอดเงินเข้ากระเป๋าภายในไม่กี่วินาที",
+        description: "ตั้งแต่กดยืนยันจนยอดขึ้นในกระเป๋าใช้เวลาเพียงไม่กี่วินาที ทำให้เติมทุนกลางรอบที่กำลังมาแรงหรือถอนกำไรออกทันทีที่ต้องการได้โดยไม่ต้องหยุดเกม",
         accent: "gold",
       },
       {
-        icon: "🎟️",
-        title: "Bonus Buy ซื้อฟรีสปิน",
-        description: "เลือกจ่ายเพื่อเข้าโหมดฟรีสปินได้เลยโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อยากคุมงบต่อรอบและเข้าจังหวะลุ้นรอบแจ็คพอตให้ตรงเวลา",
-        accent: "silver",
+        icon: "🕐",
+        title: "ทำรายการได้ทั้งกลางดึกและเช้าตรู่",
+        description: "ระบบเปิดรับคำสั่งตลอดทั้งวันโดยไม่มีช่วงปิดปรับปรุงรายวัน จะฝากเข้าเล่นตอนตีสามหรือถอนเงินตอนหกโมงเช้าก็ลื่นไหลเท่ากัน จังหวะเดิมพันจึงต่อเนื่องไม่เสียอรรถรส",
+        accent: "red",
       },
     ]}
   />
 
-  <ContentBoxNeumorphism as="h2" title="เกมหลายรูปแบบเลือกยังไงให้ตรงฟีล BLACKJACK789 มีแนวไหนให้ลองบ้าง">
-    <p class="text-left text-base leading-relaxed">
-      ตอบโจทย์สายสปินทุกสายด้วยคลังเกมหลากหลายสไตล์บน BLACKJACK789 ตั้งแต่สล็อต 3D เนื้อเรื่องเข้มข้น, สล็อตสายสตรีตเน้นตัวคูณโหด ไปจนถึงสล็อตแนวคลาสสิกไลน์จ่ายน้อยแต่แตกหนัก จัดหมวดหมู่ชัดเจน
-      ค้นหาง่าย สลับเปลี่ยนฟีลได้ทันทีผ่านกระเป๋าเงินเดียวโดยไม่ต้องโยกเงินข้ามค่าย
-    </p>
-  </ContentBoxNeumorphism>
+  <ContentBox3ThreePremium
+    as="h2"
+    title="อิสระทางการเงินอย่างแท้จริงพร้อมเงื่อนไขฝากถอนไม่มีขั้นต่ำ"
+    titleleft="ทุนหลักสิบก็ลุ้นเท่ากัน"
+    titlecenter="บริหารเงินทุนได้อย่างอิสระ"
+    titleright="ฝาก 1 บาทก็ทำรายการได้">
+    <p slot="left" class="text-left text-base leading-relaxed">ไม่ว่าคุณจะมีทุนหลักสิบหรือหลักหมื่น แค่เข้ามาที่ CK1968 ก็สามารถร่วมสนุกและลุ้นรางวัลใหญ่ได้เท่าเทียมกัน</p>
+    <p slot="center" class="text-left text-base leading-relaxed">เราเปิดกว้างให้ผู้เล่นทุกคนสามารถบริหารจัดการเงินทุนของตัวเองได้อย่างอิสระผ่านเงื่อนไขการฝากถอนที่ไม่มีข้อจำกัดขั้นต่ำ</p>
+    <p slot="right" class="text-left text-base leading-relaxed">อยากฝากแค่ 1 บาทเพื่อปั่นสล็อตเล่นขำๆ หรืออยากถอนเงินยอดเล็กๆ ออกไปใช้ก่อน ก็สามารถทำรายการได้ด้วยตัวเองทันทีโดยไม่มีเงื่อนไขผูกมัด</p>
+  </ContentBox3ThreePremium>
 
-  <ContentBoxSevenThreeCyberCut as="h2" title="โปรเด็ดมีจังหวะให้ตามเติมสิทธิ์น่าสนใจแบบไม่มาแค่รอบเดียว" titleleft="โปรสมัครใหม่ รับ 100%">
+  <ContentBoxSevenThreePremium as="h2" title="เปิดเหตุผลที่ทำไมเซียนพนันต่างยกความไว้วางใจให้กับ CK1968" titleleft="ชวนเพื่อน รับทันที 20%">
     <Picture
       slot="left"
-      src={imgWelcomeBonus}
+      src={imgInviteFriend}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 355px"
+      sizes="(max-width: 767px) 92vw, 380px"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="ภาพโปรโมชันฉากแฟนตาซีมืดมีเปลวไฟ ด้านหน้าเป็นนักรบสวมเกราะถือดาบยืนคู่กับนักเวทสวมเสื้อคลุมมีฮู้ด ด้านหลังมีอสูรลิงยักษ์สองตัวกำลังคำราม มีเหรียญทองร่วงกระจายทั่วภาพ ตัวอักษรบนภาพเขียนว่า โปรสมัครใหม่ รับ 100% และ ทุกยอดฝาก ถอนไม่อั้น มุมซ้ายบนเป็นโลโก้โพดำทองของ BLACKJACK789"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#d3aa4b]/45 shadow-[0_10px_30px_rgba(211,170,75,0.28)]"
+      alt="แบนเนอร์โปรโมชันพื้นดำ-ทอง มุมซ้ายบนเป็นโลโก้ CK1968 ตัวอักษรทองคำ ใต้โลโก้เขียนว่า SPORT BETTING & CASINO ONLINE กลางภาพเป็นข้อความไทยตัวหนาสีทองว่า ชวนเพื่อน รับทันที คู่กับเลข 20% ตัวใหญ่ และบรรทัดว่า จากยอดเสียเพื่อน ฝั่งขวาเป็นหญิงสาวสองคนชุดดำ คนหนึ่งชูมือถือ อีกคนถือกล่องของขวัญสีทอง มุมขวาบนเขียนว่า ยิ่งชวนเยอะ ยิ่งได้เยอะ แถบล่างเป็นป้ายสี่อันว่า ชวนง่ายแค่บอกต่อ กับ รับเลย 20% จากยอดเสียเพื่อน กับ รับรายได้ไม่จำกัด และ ยิ่งชวนมากยิ่งรวยมาก ถัดไปเป็นป้ายเขียว LINE เขียนว่า แอดไลน์เลย @435syski"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f0a80c]/45 shadow-[0_10px_30px_rgba(240,168,12,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      จัดสรรสิทธิประโยชน์ให้คุ้มค่าตลอดการใช้งาน BLACKJACK789 ออกโปรเด็ดมีจังหวะที่ตรงใจสายเล่นจริง ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และสิทธิ์รับเครดิตคืนยอดเสีย Cash Back ทุกวัน
-      กดรับเองง่ายๆ ผ่านหน้าแดชบอร์ด เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด นำไปหมุนต่อยอดเป็นเงินถอนได้จริง
+      กลุ่มคนที่มีประสบการณ์ในวงการสล็อตมานาน มักจะรู้ดีว่าเว็บไหนคือของจริงและเว็บไหนคือของปลอม เหตุผลหลักที่เหล่ามืออาชีพเลือกปักหลักทำกำไรกับเราอย่างต่อเนื่อง เป็นเพราะความซื่อตรงในการให้บริการ
+      เกมที่นี่แตกง่ายจริงตามสถิติ แถมยังมีฟีเจอร์ตัวเกมใหม่ๆ อัปเดตให้เล่นก่อนใคร ที่สำคัญคือระบบหลังบ้านมีความเสถียรสูงมาก รองรับผู้ใช้งานพร้อมกันนับหมื่นคนได้โดยที่เว็บไม่อืด
     </p>
-  </ContentBoxSevenThreeCyberCut>
+  </ContentBoxSevenThreePremium>
 
-  <ContentBoxSevenThreeNeumorphism as="h2" title="ระบบเสถียรที่สุดในตอนนี้ จุดที่ช่วยให้เล่นต่อได้แบบไม่เสียจังหวะที่ BLACKJACK789" titleleft="เล่นเพียง 1 เทิร์น ถอนได้ไม่อั้น">
+  <ContentBoxSevenThreeFloatingBadge as="h2" title="ทำกำไรได้มากแค่ไหน CK1968 ก็พร้อมโอนจ่ายจริงทุกบิลไม่มีหักเปอร์เซ็นต์" titleleft="คืนยอดเสียสูงสุด 10% ทุกวัน">
     <Picture
       slot="left"
-      src={imgOneTurnWithdraw}
+      src={imgCashback}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
-      sizes="(max-width: 767px) 92vw, 386px"
+      sizes="(max-width: 767px) 92vw, 345px"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="ภาพโปรโมชันฉากถนนกลางคืนแสงนีออน มีร้านฟาสต์ฟู้ดริมทางที่ป้ายร้านติดโลโก้ PG และพนักงานเสิร์ฟหญิงยิ้มสวมหมวกแก๊ปสีแดงกับผ้ากันเปื้อนลายทางกำลังยกถาดเบอร์เกอร์ ตัวอักษรบนภาพเขียนว่า ฝากรับเพิ่ม 10% รับได้ไม่จำกัด และ เล่นเพียง 1 เทิร์น ถอนได้ไม่อั้น"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#d3aa4b]/45 shadow-[0_10px_30px_rgba(211,170,75,0.28)]"
+      alt="แบนเนอร์โปรโมชันพื้นดำ-ทอง มุมซ้ายบนเป็นโลโก้ CK1968 ตัวอักษรทองคำ ใต้โลโก้เขียนว่า SPORT BETTING & CASINO ONLINE กลางภาพเป็นข้อความไทยตัวหนาสีทองว่า คืนยอดเสีย และ รับเครดิตคืนสูงสุด คู่กับเลข 10% ตัวใหญ่ที่มีป้าย ทุกวัน กำกับ ใต้ลงมาเขียนว่า เล่นได้ ไม่ต้องกลัวเสีย ฝั่งขวาเป็นไพ่เอสี่ใบเรียงกัน มงกุฎทองประดับทับทิมแดง และเลข 777 ทองบนกองเหรียญ แถบล่างเป็นป้ายสี่อันว่า คืนยอดเสียอัตโนมัติ กับ รับได้ทุกวัน กับ เล่นมากคืนมาก และ ถอนจริงไม่มีอั้น ถัดไปเป็นป้ายเขียว LINE เขียนว่า แอดไลน์เลย @435syski"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#d4090f]/50 shadow-[0_10px_30px_rgba(212,9,15,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ยกระดับความมั่นใจด้วยโครงสร้างเซิร์ฟเวอร์ความเร็วสูง BLACKJACK789 การันตีระบบเสถียรที่สุดในตอนนี้ สปินลื่น ไร้ปัญหาเกมค้างหรือเด้งหลุดกลางทาง พร้อมระบบฝากถอนออโต้ผ่าน Gateway ตรง ทำรายการเสร็จใน
-      3 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ให้คุณปั่นต่อและรับเงินกำไรได้ต่อเนื่องแบบไม่เสียอารมณ์
+      เป้าหมายสูงสุดของการเล่นสล็อตคือการถอนเงินรางวัลออกมาใช้ได้จริง และนี่คือคำมั่นสัญญาที่เรามีให้กับสมาชิกของ CK1968 ทุกคน ไม่ว่าคุณจะแจ็คพอตแตกหลักหมื่น หลักแสน หรือทะลุถึงหลักล้าน
+      เราก็มีทุนสำรองมหาศาลพร้อมโอนจ่ายให้คุณเต็มจำนวนทุกบาททุกสตางค์ ไม่มีการหักค่าธรรมเนียม ไม่มีการแบ่งจ่ายเป็นงวดๆ และไม่ต้องทำเทิร์นโอเวอร์ซ้ำซ้อนให้วุ่นวาย ชนะปุ๊บรับเงินเข้าบัญชีไปเลย
     </p>
-  </ContentBoxSevenThreeNeumorphism>
+  </ContentBoxSevenThreeFloatingBadge>
 
   <SmoothCarousel />
 
   <GameRankingBoard />
 
-  <LatestWinners2 />
+  <LatestWinnersPremium />
 
   <LoginRtpSection />
 
-  <ReviewCardSumo />
+  <ReviewCardSumo2 />
 
-  <div class="relative z-10 mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
+  <div class="mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#8c6623] px-4 py-3 text-sm font-black whitespace-nowrap text-[#050403] shadow-[0_10px_30px_rgba(211,170,75,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(211,170,75,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#a76806] px-4 py-3 text-sm font-black whitespace-nowrap text-[#090302] shadow-[0_10px_30px_rgba(240,168,12,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(240,168,12,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#cfd6e0]/45 bg-[#050403]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#cfd6e0] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#f2cf70] hover:bg-[#1e150a] hover:text-[#fdf1ce] hover:shadow-[0_15px_40px_rgba(207,214,224,0.28)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#d4090f]/60 bg-[#3d0203]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ff4b52] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ffd45c] hover:bg-[#8c0206] hover:text-[#ffefc4] hover:shadow-[0_15px_40px_rgba(212,9,15,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq3 title="คำถามที่พบบ่อยเกี่ยวกับ BLACKJACK789" faqs={faqs} />
+  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ CK1968" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

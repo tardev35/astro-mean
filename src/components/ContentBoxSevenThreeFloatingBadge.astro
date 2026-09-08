@@ -7,46 +7,44 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
 
-// ROSTY59: ไฟล์นี้ค้างชุดแคนดี้มาเจนต้าคู่เหลืองลูกอมของแบรนด์ก่อนหน้ามา (ค่า hex
-// เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์
+// CK1968: ไฟล์นี้ค้างชุดทองอำพันคู่โครเมียมเงินของแบรนด์ก่อนหน้ามา (ค่า hex เดิม
+// ไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์
 // จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
-// รอบนี้ย้ายมาทองอำพันคู่โครเมียมเงิน — ทอง #ffeec2 / #ffc94a / #f2a01a / #b06a0d /
-// #6b3f07 คู่เงิน #dbe1e8 / #a3adba บนผิว #070505 / #150e07 / #26180a ขอบ #4a2f0d
-// เนื้อความ #ece0cc — การ์ดถือทอง ป้ายห้อยถือเงินเพื่อให้แยกชั้นกันชัด
+// รอบนี้ย้ายมาทองคำคู่แดงเลือดหมู — ทอง #ffefc4 / #ffd45c / #f0a80c / #a76806 /
+// #5d3a05 คู่แดง #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 / #2a100a
+// ขอบ #4d1f0d เนื้อความ #f6e4c0 — การ์ดถือทอง ป้ายห้อยถือแดงเพื่อให้แยกชั้นกันชัด
 //
 // `as` มีมาเพื่อให้หน้าเรียกกำหนดระดับหัวข้อได้เหมือน ContentBox* ตัวอื่น ส่วน
 // titleleft/titleright เป็น <p> ป้ายคอลัมน์: มันตั้งชื่อคอลัมน์ UI ไม่ใช่ section
 // ของ docx ถ้าปล่อยเป็นหัวข้อ docx หัวข้อเดียวจะกลายเป็นสามหัวข้อบนหน้าเว็บ
 //
-// pt-40/md:pt-34 คำนวณใหม่รอบนี้ให้พอดีกับหัวข้อ docx ข้อ 7 ของ ROSTY59 ที่บล็อกนี้
-// รับ ("ระบบเสถียรพร้อมออโต้ฝากถอน ROSTY59 ช่วยให้ทำรายการคล่องไม่ขัดจังหวะ" — 67
-// ตัวอักษร ยาวกว่าหัวข้อของรอบก่อนที่ตั้ง pt-36/md:pt-28 ไว้อยู่ 18 ตัว)
+// pt-40/md:pt-34 คำนวณกับหัวข้อ docx ข้อ 7 ของ CK1968 ที่บล็อกนี้รับ ("ทำกำไรได้มาก
+// แค่ไหน CK1968 ก็พร้อมโอนจ่ายจริงทุกบิลไม่มีหักเปอร์เซ็นต์" — 69 ตัวอักษร)
 // ป้ายห้อยอยู่ที่ -top-6 ขอบล่างของมันจึงอยู่ต่ำจากขอบบนการ์ดเท่ากับ
 // (ความสูงป้าย − 24px) chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) เหลือพื้นที่
 //   ข้อความ ~270px, text-lg/tracking-tight ≈ 8.5px ต่อตัวอักษร → ~31 ตัวต่อบรรทัด
-//   → 67 ตัวได้ 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด: leading-normal ที่ 18px = 27px
+//   → 69 ตัวได้ 3 บรรทัด เผื่อแบบแย่สุด 4 บรรทัด: leading-normal ที่ 18px = 27px
 //   ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่ 108px เทียบกับ pt-40 (160px)
-//   → เหลือ 52px (ถ้าคง pt-36 ไว้จะเหลือแค่ 36px)
+//   → เหลือ 52px (ถ้าลดเป็น pt-36 จะเหลือแค่ 36px)
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) เหลือ ~608px,
-//   text-2xl/leading-normal = 36px ต่อบรรทัด และ ~52 ตัวต่อบรรทัด → 67 ตัวได้
+//   text-2xl/leading-normal = 36px ต่อบรรทัด และ ~52 ตัวต่อบรรทัด → 69 ตัวได้
 //   2 บรรทัด เผื่อแย่สุด 3 บรรทัด = 108px + 24px = 132px ขอบล่าง 108px เทียบกับ
-//   md:pt-34 (136px) → เหลือ 28px (ถ้าคง md:pt-28 (112px) ไว้จะเหลือแค่ 4px คือทับ)
+//   md:pt-34 (136px) → เหลือ 28px (ถ้าลดเป็น md:pt-28 (112px) จะติดลบคือทับ)
 // ป้ายเป็น w-[92%] max-w-2xl text-center เสมอ ห้ามใส่ whitespace-nowrap กลับมา
 // และให้ตื้นกว่า ContentBoxFloatingBadge.astro (pt-44/md:pt-36) เสมอ เพราะไฟล์นั้น
 // เสียความกว้างป้ายไปกับไอคอนตกแต่งสองตัว
 ---
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
-  <div
-    class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#4a2f0d]/70 bg-gradient-to-b from-[#26180a]/95 to-[#070505]/95 p-8 pt-40 shadow-[0_10px_30px_rgba(107,63,7,0.38)] md:pt-34">
-    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#4a2f0d]/65 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f2a01a]/30 blur-[60px]"></div>
+  <div class="relative isolate w-full max-w-7xl rounded-2xl border-2 border-[#4d1f0d]/70 bg-gradient-to-b from-[#2a100a]/95 to-[#090302]/95 p-8 pt-40 shadow-[0_10px_30px_rgba(93,58,5,0.38)] md:pt-34">
+    <div class="pointer-events-none absolute -right-10 -bottom-16 -z-10 h-40 w-40 rounded-full bg-[#8c0206]/45 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -top-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#f0a80c]/30 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#dbe1e8]/45 bg-[#070505] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(219,225,232,0.24)] sm:px-8">
-          <HeadingTag class="bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#dbe1e8] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
+        <div class="absolute -top-6 left-1/2 w-[92%] max-w-2xl -translate-x-1/2 rounded-lg border-2 border-[#d4090f]/60 bg-[#090302] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(212,9,15,0.32)] sm:px-8">
+          <HeadingTag class="bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#ff4b52] bg-clip-text text-lg leading-normal font-black tracking-tight text-transparent sm:text-xl md:text-2xl">
             {title}
           </HeadingTag>
         </div>
@@ -54,13 +52,13 @@ const { title, as: HeadingTag = "h2", titleleft, titleright } = Astro.props;
     }
 
     <div class="grid grid-cols-1 gap-10 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0cc]">
-        {titleleft && <p class="text-2xl leading-normal font-bold text-[#ffc94a]">{titleleft}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6e4c0]">
+        {titleleft && <p class="text-2xl leading-normal font-bold text-[#ffd45c]">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ece0cc] md:border-l md:border-[#4a2f0d] md:pl-10">
-        {titleright && <p class="text-2xl leading-normal font-bold text-[#dbe1e8]">{titleright}</p>}
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#f6e4c0] md:border-l md:border-[#4d1f0d] md:pl-10">
+        {titleright && <p class="text-2xl leading-normal font-bold text-[#ff4b52]">{titleright}</p>}
         <slot name="right" />
       </article>
     </div>

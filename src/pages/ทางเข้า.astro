@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/Announcement3.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
@@ -10,27 +10,27 @@ import { pageGraph } from "../lib/schema";
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 // h2 and h3 counts on this page must both stay 0.
 //
-// The <h1> names what the page IS ("ทางเข้า BLACKJACK789 เว็บหลัก"). Do not give
-// it a title that previews an article; there is no article and there never was.
+// The <h1> names what the page IS ("ทางเข้า CK1968 เว็บหลัก"). Do not give it a
+// title that previews an article; there is no article and there never was.
 //
-// BLACKJACK789: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox
+// CK1968: ticker หมุนมาเป็น Announcement3 และกล่องหน้าย่อยใช้ ContentBox
 // (เรียก <Announcement /> เปล่าๆ เพื่อใช้ default message ของ variant ซึ่งเป็น
 // ข้อความของแบรนด์นี้แล้ว และตรงกับหน้าแรก)
 //
-// พาเลตต์ย้ายจากทองอำพันออกส้มคู่โครเมียมเงินของแบรนด์ก่อน มาเป็น "ทองแอนทีค
-// อมน้ำผึ้ง + กราไฟต์ บนดำสนิท" — ปุ่มเข้าสู่ระบบเป็นผิว #1e150a ขอบ #d3aa4b
-// เนื้อความ #f2cf70 hover ลึกลงเป็น #050403 ส่วนปุ่มสมัครสมาชิกไล่สี #fdf1ce /
-// #d3aa4b / #8c6623 ขอบ #f2cf70 ตัวอักษรผิวเข้ม #050403
+// พาเลตต์รอบนี้เป็น "ทองคำ + แดงเลือดหมู บนดำอมน้ำตาล" และแดงต้องถูกใช้จริง
+// ไม่ใช่เป็นแค่เงาของทอง — ปุ่มเข้าสู่ระบบไล่สีแดง #d4090f / #8c0206 ขอบ
+// #ff4b52 เนื้อความ #ffefc4 ส่วนปุ่มสมัครสมาชิกไล่สีทอง #ffefc4 / #f0a80c /
+// #a76806 ขอบ #ffd45c ตัวอักษรผิวเข้ม #090302
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 160.
+// count reads about three times too long. This one measures 153.
 const pageDescription =
-  "ทางเข้า BLACKJACK789 เว็บหลัก ลิงก์ตรงอัปเดต ไม่ผ่านเอเย่นต์ ไม่ล็อกยูส กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตเกมดีมีเชิง ค่ายดังเกมแท้ ฝากถอนออโต้ 3 วินาที";
+  "ทางเข้า CK1968 เว็บหลัก ลิงก์ตรงอัปเดตล่าสุด ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตเว็บตรงแบรนด์แท้ 100% ระบบออโต้ ฝากถอนไม่มีขั้นต่ำ";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า BLACKJACK789 เว็บหลัก",
+  name: "ทางเข้า CK1968 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -39,40 +39,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า BLACKJACK789 | เว็บหลักลิงก์ตรง สล็อตเกมดีมีเชิง ฝากถอนออโต้" description={pageDescription}>
+<MainLayout title="ทางเข้า CK1968 | เว็บหลักลิงก์ตรง สล็อตเว็บตรงแบรนด์แท้ ระบบออโต้ไม่มีขั้นต่ำ" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า BLACKJACK789 เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า CK1968 เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ BLACKJACK789"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#d3aa4b]/60 bg-[#1e150a] px-6 py-4 shadow-[0_10px_30px_rgba(92,65,19,0.35)] transition-all duration-300 hover:scale-105 hover:border-[#f2cf70] hover:bg-[#050403] hover:shadow-[0_15px_40px_rgba(211,170,75,0.45)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#5c4113]/35 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ CK1968"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ff4b52]/60 bg-gradient-to-r from-[#d4090f] to-[#8c0206] px-6 py-4 shadow-[0_10px_30px_rgba(140,2,6,0.45)] transition-all duration-300 hover:scale-105 hover:border-[#ffd45c] hover:shadow-[0_15px_40px_rgba(212,9,15,0.5)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#ff4b52]/35 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#f2cf70]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#ffefc4]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#f2cf70]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#ffefc4]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก BLACKJACK789"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#f2cf70]/60 bg-gradient-to-r from-[#fdf1ce] via-[#d3aa4b] to-[#8c6623] px-6 py-4 shadow-[0_10px_30px_rgba(211,170,75,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(242,207,112,0.5)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#fdf1ce]/40 to-transparent"></div>
+          aria-label="สมัครสมาชิก CK1968"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#ffd45c]/70 bg-gradient-to-r from-[#ffefc4] via-[#f0a80c] to-[#a76806] px-6 py-4 shadow-[0_10px_30px_rgba(240,168,12,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,212,92,0.5)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#ffefc4]/40 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#050403]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#090302]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#050403]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#090302]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

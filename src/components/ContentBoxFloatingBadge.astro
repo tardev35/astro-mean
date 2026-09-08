@@ -16,12 +16,12 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // ใหญ่กว่าอีกหนึ่งสเต็ป จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
 // *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ docx ข้อ 2 ของ ROSTY59 ที่ไฟล์นี้รับรอบนี้ในระดับ h2 (71 ตัวอักษร
-// — "ROSTY59 สล็อตเว็บตรงฟอร์มแรง จุดเด่นที่ทำให้ระบบและเกมไปด้วยกันได้คล่อง")
+// คำนวณกับหัวข้อ docx ข้อ 2 ของ CK1968 ที่ไฟล์นี้รับรอบนี้ในระดับ h2 (64 ตัวอักษร
+// — "CK1968 สล็อตเว็บตรง มาตรฐานแบรนด์แท้ที่ตอบโจทย์การเดิมพันยุคใหม่")
 // chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
 //   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 8.5px ต่อตัวอักษร
-//   → ~27 ตัวต่อบรรทัด หัวข้อ 71 ตัวจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
+//   → ~27 ตัวต่อบรรทัด หัวข้อ 64 ตัวจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
 //   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
 //   108px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 68px ไม่ต้องดัน pt ขึ้น
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ไอคอน เหลือ ~566px,
@@ -30,11 +30,11 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
 // ตัวที่เคยดันป้ายทะลุขอบจอ
 //
-// ROSTY59: ย้ายจากชุดแคนดี้มาเจนต้าคู่เหลืองลูกอมของแบรนด์ก่อนมาเป็นทองอำพันคู่
-// โครเมียมเงินบนดำสนิท — ทอง #ffeec2 / #ffc94a / #f2a01a / #b06a0d / #6b3f07
-// คู่เงิน #dbe1e8 / #a3adba บนผิว #070505 / #150e07 / #26180a ขอบ #4a2f0d
-// เนื้อความ #ece0cc ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามเดิม แต่รับเงินโครเมียม
-// ซึ่งเป็นสีเน้นที่สองของแบรนด์นี้ (เลข 59 บนเหรียญโลโก้)
+// CK1968: ย้ายจากชุดทองอำพันคู่โครเมียมเงินของแบรนด์ก่อนมาเป็นทองคำคู่แดงเลือดหมู
+// บนดำอมน้ำตาล — ทอง #ffefc4 / #ffd45c / #f0a80c / #a76806 / #5d3a05 คู่แดง
+// #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 / #2a100a ขอบ #4d1f0d
+// เนื้อความ #f6e4c0 ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามเดิม แต่รับสีแดงซึ่งตรงกับ
+// ข้าวหลามตัดแดงข้างโลโก้จริงและเป็นสีเน้นที่สองของแบรนด์นี้ (ตัว K กับทับทิมบนมงกุฎ)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
@@ -46,18 +46,18 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#4a2f0d]/75 bg-[#150e07]/90 p-8 pt-44 text-left text-base leading-relaxed text-[#ece0cc] shadow-[0_10px_30px_rgba(107,63,7,0.42)] backdrop-blur-md md:pt-36">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#f2a01a]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#26180a]/80 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#4d1f0d]/75 bg-[#170806]/90 p-8 pt-44 text-left text-base leading-relaxed text-[#f6e4c0] shadow-[0_10px_30px_rgba(93,58,5,0.42)] backdrop-blur-md md:pt-36">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#f0a80c]/30 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#8c0206]/45 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#dbe1e8]/45 bg-[#070505] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(219,225,232,0.22)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#dbe1e8]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#d4090f]/60 bg-[#090302] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(212,9,15,0.3)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#ff4b52]">
             ◆
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffeec2] via-[#ffc94a] to-[#dbe1e8] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#dbe1e8]">
+          <HeadingTag class={`bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#ff4b52] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#ff4b52]">
             ◆
           </span>
         </div>

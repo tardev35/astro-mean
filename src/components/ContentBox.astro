@@ -5,16 +5,16 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h1" } = Astro.props;
 
-// BLACKJACK789: ย้ายจากทองอำพันออกส้มคู่โครเมียมเงินของแบรนด์ก่อน มาเป็นทอง
-// แอนทีคอมน้ำผึ้งคู่กราไฟต์บนดำสนิท — ทอง #fdf1ce / #f2cf70 / #d3aa4b /
-// #b8862c / #5c4113 คู่กราไฟต์ #cfd6e0 / #8e97a6 / #454d5c บนผิว #050403 /
-// #100b05 / #1e150a ขอบ #3a2a11 เนื้อความ #ede0c4
+// CK1968: ย้ายจากทองแอนทีคอมน้ำผึ้งคู่กราไฟต์ของแบรนด์ก่อน มาเป็นทองคำคู่แดง
+// เลือดหมูบนดำอมน้ำตาล — ทอง #ffefc4 / #ffd45c / #f0a80c / #a76806 / #5d3a05
+// คู่แดง #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 / #2a100a ขอบ
+// #4d1f0d เนื้อความ #f6e4c0
 //
-// อาร์ตเวิร์กรอบนี้เป็นโพดำทองคำ: ตัวโพเป็นทองแอนทีค ส่วนคำว่า Black Jack กับ
-// เลข 789 เป็นโลหะเทากราไฟต์ขอบทอง — กราไฟต์จึงเป็นสีที่สองจริง ไม่ใช่เงาของทอง
-// ค่า vivid ของโลโก้เป็นทองอมเหลืองน้ำผึ้ง ส่วนค่า dominant ของแบนเนอร์กับสไลด์
-// เป็นดำอมน้ำตาลซึ่งคือพื้นหลัง ไม่ใช่สีเน้น — palette.json จัดอันดับให้ แต่ไม่ได้
-// ตีความให้
+// อาร์ตเวิร์กรอบนี้เป็นวงแหวนทองคำ: ตัว C เป็นทองคำสามมิติ ส่วนตัว K เป็นแดง
+// เลือดหมูขอบทอง มงกุฎประดับทับทิมแดง ไพ่ K Q J เป็นชุดแดง — แดงจึงเป็นสีที่สอง
+// จริง ไม่ใช่เงาของทอง ค่า vivid ของโลโก้เด่นสุดคือแดง #a40205 กับ #c3020a ส่วน
+// ค่า dominant ของแบนเนอร์กับสไลด์เป็นดำอมน้ำตาลซึ่งคือพื้นหลัง ไม่ใช่สีเน้น —
+// palette.json จัดอันดับให้ แต่ไม่ได้ตีความให้
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
@@ -23,7 +23,7 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 // สีเนื้อความจึงต้องอยู่บนการ์ดใบนี้เสมอ ห้ามย้ายออก และนี่คือเหตุผลที่สองหน้านั้น
 // หมุน variant ตาม index ไม่ได้ในรอบไหนก็ตาม รอบนี้หน้าย่อยอื่น (promotion /
 // about-us / contact-us / ทางเข้า / ทดลองเล่น) ใช้การ์ดใบนี้ด้วย ส่วนหน้าแรกหมุน
-// ไปใช้ทรง CyberCut / Neumorphism ทั้งหมดจึงไม่ได้เรียกใบนี้รอบนี้
+// ไปใช้ทรง Premium / FloatingBadge / Special ทั้งหมดจึงไม่ได้เรียกใบนี้รอบนี้
 //
 // การ์ดใบนี้ flatten แล้ว (isolate บนการ์ด + -z-10 บนเลเยอร์ตกแต่ง) ห้ามใส่
 // wrapper <div class="relative z-10"> กลับเข้ามา
@@ -31,15 +31,15 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#3a2a11]/70 bg-[#100b05]/90 p-8 text-left text-base leading-relaxed text-[#ede0c4] shadow-[0_10px_30px_rgba(92,65,19,0.4)] backdrop-blur-xl transition-all duration-500 hover:border-[#d3aa4b]/60 hover:shadow-[0_15px_40px_rgba(211,170,75,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#1e150a]/75 blur-[60px] transition-all duration-500 group-hover:bg-[#d3aa4b]/35"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#100b05]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#cfd6e0]/20"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#4d1f0d]/75 bg-[#170806]/90 p-8 text-left text-base leading-relaxed text-[#f6e4c0] shadow-[0_10px_30px_rgba(93,58,5,0.4)] backdrop-blur-xl transition-all duration-500 hover:border-[#f0a80c]/60 hover:shadow-[0_15px_40px_rgba(240,168,12,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#2a100a]/75 blur-[60px] transition-all duration-500 group-hover:bg-[#f0a80c]/35"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#3d0203]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#d4090f]/30"></div>
 
     {
       title && (
-        <header class="mb-6 flex items-center gap-4 border-b border-[#3a2a11]/70 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fdf1ce] via-[#d3aa4b] to-[#5c4113] shadow-[0_0_10px_rgba(211,170,75,0.6)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#8c6623] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-6 flex items-center gap-4 border-b border-[#4d1f0d]/75 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffefc4] via-[#f0a80c] to-[#8c0206] shadow-[0_0_10px_rgba(240,168,12,0.6)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#a76806] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }

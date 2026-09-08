@@ -1,133 +1,133 @@
 ---
-import ContentBoxTwo from "./ContentBoxTwoNeumorphism.astro";
+import ContentBoxTwo from "./ContentBoxTwo.astro";
 
 // Widget ไม่ใช่ article — ทุกหัวข้อในนี้เป็น <p>/<span> และชื่อสำหรับ assistive
 // tech มาจาก prop `label` ที่ส่งให้กล่องสองคอลัมน์ ไม่มีการส่ง `title` บล็อกนี้จึง
 // ไม่ปล่อยหัวข้อออกมาเลย
 //
-// รอบนี้โครงสองคอลัมน์ถูกย้ายจาก ContentBoxTwo.astro ตัวธรรมดามาที่
-// ContentBoxTwoNeumorphism ตาม variant rotation ที่ brand spec ล็อกไว้ — กล่องนั้น
-// รับ props ชุดเดียวกัน (title/as/titleleft/titleright/label) จึงเปลี่ยนแค่ import
+// รอบนี้โครงสองคอลัมน์ถูกย้ายจาก ContentBoxTwoNeumorphism ซึ่งเป็นทรงของแบรนด์ก่อน
+// กลับมาที่ ContentBoxTwo.astro ตัวธรรมดา ตาม variant rotation ที่ brand spec ล็อกไว้
+// — กล่องนั้นรับ props ชุดเดียวกัน (title/as/titleleft/titleright/label) จึงเปลี่ยน
+// แค่ import
 //
-// BLACKJACK789: ย้ายชุดทองอำพันคู่โครเมียมของแบรนด์ก่อนออกทั้งหมด มาที่ทองแอนทีค/
-// แชมเปญคู่กราไฟต์ที่วัดจากอาร์ตจริง — ทอง #fdf1ce / #f2cf70 / #d3aa4b / #8c6623 /
-// #5c4113 คู่กราไฟต์ #cfd6e0 / #8e97a6 / #454d5c บนผิว #050403 / #100b05 / #1e150a
-// ขอบ #3a2a11 เนื้อความ #ede0c4 ข้อความรอง #c0ab84 ตัวหนังสือจาง #8b7c5c เขียว LINE
+// CK1968: ย้ายชุดทองแอนทีคคู่กราไฟต์ของแบรนด์ก่อนออกทั้งหมด มาที่ทองคำคู่แดง
+// เลือดหมูที่วัดจากอาร์ตจริง — ทอง #ffefc4 / #ffd45c / #f0a80c / #a76806 / #5d3a05
+// คู่แดง #ff4b52 / #d4090f / #8c0206 / #3d0203 บนผิว #090302 / #170806 / #2a100a
+// ขอบ #4d1f0d เนื้อความ #f6e4c0 ข้อความรอง #cdb494 ตัวหนังสือจาง #9c7f5a เขียว LINE
 // กับจุด live สีเขียว Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ (ห้ามพิมพ์ hex ของแบรนด์
 // ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้
 // จาก git history)
 //
-// เนื้อหาตาม brief ของแบรนด์นี้ ซึ่งเป็นสล็อตเว็บตรง API แท้: ยิงตรงจากเซิร์ฟเวอร์
-// หลักไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงาน ไร้ประวัติล็อกยูส คลังเกมคัดเฉพาะที่
-// โครงสร้างจ่ายรางวัลโปร่งใส เกมลิขสิทธิ์แท้จาก PG Soft / Pragmatic Play / Joker
-// Gaming กราฟิก HD ฟีเจอร์ Multipliers / Expanding Wild / Cascading / Bonus Buy
-// คลังเกมหลายสไตล์ผ่านกระเป๋าเงินเดียว โปรเด็ดกดรับเองผ่านแดชบอร์ด และฝากถอนออโต้
-// ผ่าน Gateway ตรงที่เสร็จใน 3 วินาที
+// เนื้อหาตาม brief ของแบรนด์นี้ ซึ่งเป็นสล็อตเว็บตรงแบรนด์แท้: ผู้ให้บริการลิขสิทธิ์
+// แท้ที่ส่งตรงเกมจากค่ายดังทั่วโลก ระบบ API แท้จากเซิร์ฟเวอร์หลักที่ RTP เป็นมาตรฐาน
+// สากล ระบบรักษาความปลอดภัยระดับสูงที่ไม่ล็อคยูสเซอร์ ระบบ AI ทำธุรกรรมอัตโนมัติ
+// ฝากถอนไม่มีขั้นต่ำ ฟีเจอร์เกมใหม่อัปเดตก่อนใคร ระบบหลังบ้านรองรับนับหมื่นคน และ
+// การโอนจ่ายเต็มจำนวนทุกบิลโดยไม่หักค่าธรรมเนียม
 const menus = [
   {
+    icon: "🏅",
+    name: "ผู้ให้บริการลิขสิทธิ์แท้ 100%",
+    detail: "ส่งตรงเกมจากค่ายดังทั่วโลกมาให้สัมผัสด้วยตัวเอง การันตีทุกการสปินโปร่งใสยุติธรรม ไม่ใช่เว็บเอเย่นต์ที่คอยปรับอัตราการชนะหรือฝากถอนล่าช้า",
+    tag: "แบรนด์แท้",
+  },
+  {
+    icon: "🎰",
+    name: "ระบบ API แท้จากเซิร์ฟเวอร์หลัก",
+    detail: "นำเข้าระบบ API แท้จากเซิร์ฟเวอร์หลักของค่ายเกมโดยตรง อัตราการแตก RTP จึงเป็นมาตรฐานสากลจริง ไม่มีการแอบปรับลดเปอร์เซ็นต์การชนะ",
+    tag: "RTP สากล",
+  },
+  {
     icon: "🛡️",
-    name: "เว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก",
-    detail: "สัญญาณเชื่อมตรงจากเซิร์ฟเวอร์หลักโดยไม่ผ่านเอเย่นต์ ค่า RTP มาตรฐานยุติธรรมตรงตามสเปกโรงงาน ไม่มีปรับลดเปอร์เซ็นต์ชนะ และไร้ประวัติล็อกยูส",
-    tag: "API แท้",
+    name: "ความปลอดภัยระดับสูง ไม่ล็อคยูสเซอร์",
+    detail: "วางโครงสร้างแพลตฟอร์มด้วยระบบรักษาความปลอดภัยระดับสูง ข้อมูลส่วนตัวและประวัติการทำธุรกรรมของสมาชิกถูกเก็บเป็นความลับทั้งหมด",
+    tag: "เก็บเป็นความลับ",
   },
   {
-    icon: "🗂️",
-    name: "คลังเกมคัดมาอย่างมีเชิงชั้น",
-    detail: "ไม่เน้นอัดเกมขยะมาให้รกหน้าเว็บ คัดเฉพาะเกมที่โครงสร้างการจ่ายรางวัลโปร่งใส และจังหวะแจ็คพอตแตกจริงตามอัลกอริทึมสากล",
-    tag: "คัดเกรดก่อนลงคลัง",
+    icon: "🤖",
+    name: "ระบบ AI จัดการธุรกรรมอัตโนมัติ",
+    detail: "ไม่ต้องคอยส่งสลิปให้แอดมินตรวจอีกต่อไป กดทำรายการแล้วระบบประมวลผลยอดเงินให้เข้ากระเป๋าภายในเวลาไม่กี่วินาที",
+    tag: "ไม่กี่วินาที",
   },
   {
-    icon: "💎",
-    name: "ค่ายดังเกมแท้ระดับ A-List",
-    detail: "ดึงสัญญาณเกมลิขสิทธิ์แท้จาก PG Soft, Pragmatic Play และ Joker Gaming เข้าระบบโดยตรง ทุกเกมผ่านการทดสอบอัตราจ่าย กราฟิกสมูธคมชัดระดับ HD",
-    tag: "ลิขสิทธิ์แท้",
+    icon: "💰",
+    name: "ฝากถอนไม่มีขั้นต่ำ",
+    detail: "ทุนหลักสิบหรือหลักหมื่นก็ร่วมลุ้นรางวัลใหญ่ได้เท่าเทียมกัน อยากฝาก 1 บาทหรือถอนยอดเล็กๆ ออกไปใช้ก่อน ก็ทำรายการเองได้ทันทีโดยไม่มีเงื่อนไขผูกมัด",
+    tag: "อิสระเต็มที่",
   },
   {
-    icon: "✖️",
-    name: "ฟีเจอร์ยุคใหม่ครบมือ",
-    detail: "ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Expanding Wild ขยายเต็มรีล คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy ซื้อฟรีสปิน",
-    tag: "ลูกเล่นแน่น",
+    icon: "🃏",
+    name: "ฟีเจอร์เกมใหม่อัปเดตให้เล่นก่อนใคร",
+    detail: "เกมที่นี่แตกง่ายจริงตามสถิติ พร้อมฟีเจอร์ตัวเกมใหม่ๆ ทยอยเข้าคลัง และระบบหลังบ้านเสถียรสูงรองรับผู้ใช้งานพร้อมกันนับหมื่นคนได้โดยที่เว็บไม่อืด",
+    tag: "อัปเดตก่อนใคร",
   },
   {
-    icon: "🎮",
-    name: "หลายสไตล์ในกระเป๋าเงินเดียว",
-    detail: "ตั้งแต่สล็อต 3D เนื้อเรื่องเข้มข้น สายสตรีตเน้นตัวคูณโหด ไปจนถึงคลาสสิกไลน์จ่ายน้อยแต่แตกหนัก สลับเปลี่ยนฟีลได้ทันทีโดยไม่ต้องโยกเงินข้ามค่าย",
-    tag: "สลับฟีลได้ทันที",
-  },
-  {
-    icon: "🎁",
-    name: "โปรเด็ดมีจังหวะกดรับเอง",
-    detail: "โบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และเครดิตคืนยอดเสีย Cash Back ทุกวัน กดรับเองผ่านหน้าแดชบอร์ด ไม่ติดเทิร์นโอเวอร์มหาโหด",
-    tag: "กดรับเอง",
-  },
-  {
-    icon: "⚡",
-    name: "ฝากถอนออโต้เสร็จใน 3 วินาที",
-    detail: "ทำรายการผ่าน Gateway ตรง ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ปั่นต่อได้ไม่เสียจังหวะ และถอนกำไรได้เต็มทุกยอด",
-    tag: "ถอนเต็มทุกยอด",
+    icon: "👑",
+    name: "โอนจ่ายจริงทุกบิลไม่หักเปอร์เซ็นต์",
+    detail: "แจ็คพอตแตกหลักหมื่นถึงหลักล้านก็มีทุนสำรองมหาศาลพร้อมโอนจ่ายเต็มจำนวน ไม่หักค่าธรรมเนียม ไม่แบ่งจ่ายเป็นงวด และไม่ต้องทำเทิร์นโอเวอร์ซ้ำซ้อน",
+    tag: "จ่ายเต็มจำนวน",
   },
 ];
 
-const chips = ["เว็บตรง API แท้", "RTP ตามสเปกโรงงาน", "ไม่ผ่านเอเย่นต์", "Multipliers", "Expanding Wild", "Cascading", "Bonus Buy", "ออโต้ 3 วินาที"];
+const chips = ["สล็อตเว็บตรง", "แบรนด์แท้ 100%", "ไม่ผ่านเอเย่นต์", "ปลอดภัย จ่ายจริง", "ระบบออโต้", "ฝากถอนไม่มีขั้นต่ำ", "ไม่ล็อคยูสเซอร์", "ไม่หักค่าธรรมเนียม"];
 ---
 
-<ContentBoxTwo titleleft="เข้าสู่ระบบ BLACKJACK789" titleright="ระบบและจุดเด่นของ BLACKJACK789 ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ BLACKJACK789 และตารางอ้างอิงระบบกับจุดเด่นภายในเว็บ">
+<ContentBoxTwo titleleft="เข้าสู่ระบบ CK1968" titleright="ระบบและจุดเด่นของ CK1968 ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ CK1968 และตารางอ้างอิงระบบกับจุดเด่นภายในเว็บ">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#3a2a11]/70 bg-[#100b05] p-6 shadow-[0_10px_30px_rgba(92,65,19,0.35)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#1e150a]/90 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#4d1f0d]/70 bg-[#170806] p-6 shadow-[0_10px_30px_rgba(93,58,5,0.35)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#2a100a]/90 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#d3aa4b]/45 bg-gradient-to-br from-[#fdf1ce] via-[#d3aa4b] to-[#5c4113] text-xl shadow-inner">
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#f0a80c]/45 bg-gradient-to-br from-[#ffefc4] via-[#f0a80c] to-[#5d3a05] text-xl shadow-inner">
           🎰
         </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#fdf1ce]">ยินดีต้อนรับกลับเข้าคลังเกม BLACKJACK789</p>
-          <span class="text-[11px] text-[#c0ab84]">
-            กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าเล่นเกมลิขสิทธิ์แท้ที่ BLACKJACK789 คัดมาแล้วได้จากกระเป๋าเงินเดียว สลับเปลี่ยนฟีลข้ามหมวดได้โดยไม่ต้องโยกเงินข้ามค่าย
-            พร้อมสิทธิ์โปรที่กดรับเองผ่านหน้าแดชบอร์ด และระบบฝากถอนออโต้ที่ทำรายการเสร็จใน 3 วินาที
+          <p class="text-base font-black text-[#ffefc4]">ยินดีต้อนรับกลับเข้าคลังเกม CK1968</p>
+          <span class="text-[11px] text-[#cdb494]">
+            กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าเล่นเกมลิขสิทธิ์แท้ที่ส่งตรงจากค่ายดังทั่วโลกได้ทันที ข้อมูลส่วนตัวและประวัติการทำธุรกรรมถูกเก็บเป็นความลับทั้งหมด พร้อมระบบ AI
+            ที่ทำรายการฝากถอนให้เสร็จภายในไม่กี่วินาทีโดยไม่ต้องส่งสลิป
           </span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#d3aa4b]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#f0a80c]">👤</span>
           <input
             type="text"
             aria-label="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#3a2a11] bg-[#050403] py-3 pr-4 pl-12 text-[#ede0c4] transition-all outline-none placeholder:text-[#8b7c5c] focus:border-[#d3aa4b] focus:ring-1 focus:ring-[#d3aa4b]/60"
+            class="w-full rounded-xl border border-[#4d1f0d] bg-[#090302] py-3 pr-4 pl-12 text-[#f6e4c0] transition-all outline-none placeholder:text-[#9c7f5a] focus:border-[#f0a80c] focus:ring-1 focus:ring-[#f0a80c]/60"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#d3aa4b]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#f0a80c]">🔑</span>
           <input
             type="password"
             aria-label="รหัสผ่าน"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#3a2a11] bg-[#050403] py-3 pr-4 pl-12 text-[#ede0c4] transition-all outline-none placeholder:text-[#8b7c5c] focus:border-[#d3aa4b] focus:ring-1 focus:ring-[#d3aa4b]/60"
+            class="w-full rounded-xl border border-[#4d1f0d] bg-[#090302] py-3 pr-4 pl-12 text-[#f6e4c0] transition-all outline-none placeholder:text-[#9c7f5a] focus:border-[#f0a80c] focus:ring-1 focus:ring-[#f0a80c]/60"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#c0ab84]">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#3a2a11] bg-[#050403] accent-[#8c6623]" />
+          <label class="flex items-center gap-2 text-[#cdb494]">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#4d1f0d] bg-[#090302] accent-[#d4090f]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#c0ab84] transition-colors hover:text-[#f2cf70]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#cdb494] transition-colors hover:text-[#ffd45c]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#5c4113]/80 bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#8c6623] p-3.5 font-black text-[#050403] shadow-[0_10px_30px_rgba(211,170,75,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(211,170,75,0.45)]">
+          class="mt-1 w-full rounded-xl border border-[#5d3a05]/80 bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#a76806] p-3.5 font-black text-[#090302] shadow-[0_10px_30px_rgba(240,168,12,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(240,168,12,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#c0ab84]">
-          <span class="h-px flex-1 bg-[#3a2a11]"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#cdb494]">
+          <span class="h-px flex-1 bg-[#4d1f0d]"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#3a2a11]"></span>
+          <span class="h-px flex-1 bg-[#4d1f0d]"></span>
         </div>
 
         <a
@@ -138,29 +138,29 @@ const chips = ["เว็บตรง API แท้", "RTP ตามสเปก
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#3a2a11] bg-[#050403] px-2.5 py-1 text-[10px] font-bold text-[#f2cf70]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#cfd6e0]/30 bg-[#050403] px-2.5 py-1 text-[10px] font-bold text-[#cfd6e0]"><span aria-hidden="true">🕐</span> ออโต้ตลอด 24 ชม.</span>
+            <span class="rounded-full border border-[#4d1f0d] bg-[#090302] px-2.5 py-1 text-[10px] font-bold text-[#ffd45c]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#d4090f]/40 bg-[#090302] px-2.5 py-1 text-[10px] font-bold text-[#ff4b52]"><span aria-hidden="true">🕐</span> ออโต้ตลอด 24 ชม.</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#fdf1ce] transition-colors hover:text-[#f2cf70]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#ffefc4] transition-colors hover:text-[#ffd45c]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#d3aa4b]/30 bg-[#100b05] p-5 shadow-[0_10px_30px_rgba(211,170,75,0.18)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#f0a80c]/30 bg-[#170806] p-5 shadow-[0_10px_30px_rgba(240,168,12,0.18)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#c0ab84]">ตารางอ้างอิงระบบและจุดเด่นที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#cfd6e0] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">สล็อตเกมดีมีเชิง ค่ายดังเกมแท้ โปรเด็ดมีจังหวะ</div>
+          <span class="text-xs font-bold tracking-wide text-[#cdb494]">ตารางอ้างอิงระบบและจุดเด่นที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#ff4b52] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">สล็อตเว็บตรง แบรนด์แท้ 100% ปลอดภัย จ่ายจริง</div>
         </div>
-        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#050403] px-2.5 py-1">
+        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#090302] px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]"></span>
           <span class="text-[10px] font-bold tracking-widest text-green-300 uppercase">Live</span>
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#c0ab84]">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#cdb494]">
         <span>ระบบ / จุดเด่นในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -168,28 +168,28 @@ const chips = ["เว็บตรง API แท้", "RTP ตามสเปก
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#3a2a11] bg-[#050403] px-3.5 py-2.5 transition-colors hover:border-[#d3aa4b]/45 hover:bg-[#1e150a]/90">
+            <div class="rounded-xl border border-[#4d1f0d] bg-[#090302] px-3.5 py-2.5 transition-colors hover:border-[#f0a80c]/45 hover:bg-[#2a100a]/90">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#ede0c4]">
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f6e4c0]">
                   <span aria-hidden="true" class="w-5 shrink-0 text-center">
                     {m.icon}
                   </span>{" "}
                   <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#f2cf70]/60 bg-[#8c6623] px-2.5 py-0.5 text-[10px] font-bold text-[#050403]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#ffd45c]/60 bg-[#a76806] px-2.5 py-0.5 text-[10px] font-bold text-[#090302]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#c0ab84]">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#cdb494]">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#cfd6e0]/30 bg-[#050403] px-3 py-1 text-[10px] font-bold text-[#cfd6e0]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#d4090f]/40 bg-[#090302] px-3 py-1 text-[10px] font-bold text-[#ff4b52]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#8b7c5c]">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจอัตราจ่ายของแต่ละเกม เงื่อนไขการรับสิทธิ์ และเพดานถอนจากหน้าโปรโมชันจริงของ BLACKJACK789 ก่อนกดรับทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#9c7f5a]">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับผู้เล่น ควรตรวจอัตราจ่ายของแต่ละเกม เงื่อนไขการรับสิทธิ์ และเพดานถอนจากหน้าโปรโมชันจริงของ CK1968 ก่อนกดรับทุกครั้ง
       </div>
     </div>
   </div>

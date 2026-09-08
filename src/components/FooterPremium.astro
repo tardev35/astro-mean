@@ -6,21 +6,21 @@ const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
-// ROSTY59: ย้ายจากชมพูบานเย็นคู่เหลืองลูกกวาดบนพื้นองุ่นเข้มของแบรนด์ก่อนที่เคยใช้
-// footer ตัวนี้ มาเป็นทองอำพันออกส้มคู่โครเมียมเงินบนดำสนิท — ทอง #ffeec2 /
-// #ffc94a / #f2a01a / #b06a0d / #6b3f07 คู่เงิน #dbe1e8 / #a3adba / #5d6773
-// บนผิว #070505 / #150e07 / #26180a ขอบ #4a2f0d เนื้อความ #ece0cc
+// CK1968: ย้ายจากทองอำพันออกส้มคู่โครเมียมเงินของแบรนด์ก่อนที่เคยใช้ footer ตัวนี้
+// มาเป็นทองคำคู่แดงเลือดหมูบนดำอมน้ำตาล — ทอง #ffefc4 / #ffd45c / #f0a80c /
+// #a76806 / #5d3a05 คู่แดง #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 /
+// #2a100a ขอบ #4d1f0d เนื้อความ #f6e4c0
 //
-// อาร์ตเวิร์กรอบนี้เป็นเหรียญทองนูนบนดำสนิท: โลโก้เป็นตัว R ทองคำสามมิติในวงแหวน
-// ทอง คำว่า Rosty เป็นทอง ส่วนเลข 59 เป็นโครเมียมเงิน (vivid ของโลโก้เด่นสุดคือ
-// #cc841d ทองอำพันออกส้ม) เงินจึงเป็นสีที่สองจริง ไม่ใช่แค่เงาของทอง ส่วนค่า
-// dominant ของทุกไฟล์เป็นดำอมน้ำตาลซึ่งคือ "พื้น" — palette.json จัดอันดับให้
-// แต่ไม่ตีความให้
+// อาร์ตเวิร์กรอบนี้เป็นวงแหวนทองคำบนดำ: ตัว C เป็นทองคำสามมิติ ส่วนตัว K เป็นแดง
+// เลือดหมูขอบทอง มงกุฎด้านบนประดับทับทิมแดง และไพ่ในโลโก้เป็นชุดแดงทั้งหมด แดงจึง
+// เป็นสีที่สองจริง ไม่ใช่แค่เงาของทอง (vivid ของโลโก้เด่นสุดคือ #a40205 กับ #c3020a
+// ซึ่งเป็นแดง ส่วน dominant ของทุกไฟล์เป็นดำอมน้ำตาลซึ่งคือ "พื้น" — palette.json
+// จัดอันดับให้ แต่ไม่ตีความให้)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
 //
-// ROSTY59 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// CK1968 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
 // src/pages-disabled/) ห้ามมีลิงก์ถึงทั้งสองหน้าในไฟล์นี้
 //
 // โลโก้ตรง fallback เป็น <p>/<span> ไม่ใช่หัวข้อ และป้ายหัวคอลัมน์ก็เป็น <p> —
@@ -33,11 +33,11 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 // อีเมลมาจาก BRAND_ADDRESS ซึ่งผูกกับ BRAND_NAME และ site: ห้ามพิมพ์ทับเอง
 
 const LOGO_ALT =
-  "โลโก้ ROSTY59 เป็นเหรียญกลมขอบทองคำนูนบนพื้นดำ กลางเหรียญเป็นตัว R ทองคำสามมิติขนาดใหญ่ ใต้ลงมาเป็นคำว่า Rosty ตัวอักษรทองคำเอียงต่อด้วยเลข 59 สีเงินโครเมียม ล่างสุดเป็นปีกรูปตัววีสีทอง";
+  "โลโก้ CK1968 เป็นวงกลมขอบทองคำนูนบนพื้นดำ กลางวงเป็นตัวอักษร C ทองคำสามมิติคู่กับตัว K สีแดงเลือดหมูขอบทอง ใต้ลงมาเป็นเลข 1968 ทองคำนูน ด้านบนเป็นมงกุฎทองประดับทับทิมแดง ขวาบนเป็นไพ่ K Q J สีแดงเรียงซ้อนกัน ข้างวงมีข้าวหลามตัดแดงและโพดำดำ ล่างสุดเป็นชิปคาสิโนดำ-ทองสองใบกับลูกเต๋าแดงสองลูก";
 ---
 
-<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#f2a01a]/40 bg-[#070505] pt-16 pb-8 font-sans text-[#ece0cc] shadow-[0_-15px_40px_rgba(242,160,26,0.22)]">
-  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#6b3f07]/50 blur-[100px]"></div>
+<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#f0a80c]/40 bg-[#090302] pt-16 pb-8 font-sans text-[#f6e4c0] shadow-[0_-15px_40px_rgba(240,168,12,0.22)]">
+  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#8c0206]/45 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-12">
@@ -50,46 +50,46 @@ const LOGO_ALT =
                 alt={LOGO_ALT}
                 widths={[130, 260, 390]}
                 sizes="130px"
-                class="h-[65px] w-auto drop-shadow-[0_5px_15px_rgba(242,160,26,0.45)]"
+                class="h-[65px] w-auto drop-shadow-[0_5px_15px_rgba(240,168,12,0.45)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="bg-gradient-to-r from-[#ffeec2] to-[#b06a0d] bg-clip-text text-3xl font-black tracking-widest text-transparent">
-                ROSTY<span class="bg-gradient-to-r from-[#dbe1e8] to-[#5d6773] bg-clip-text text-transparent">59</span>
+              <span class="bg-gradient-to-r from-[#ffefc4] to-[#a76806] bg-clip-text text-3xl font-black tracking-widest text-transparent">
+                C<span class="bg-gradient-to-r from-[#ff4b52] to-[#8c0206] bg-clip-text text-transparent">K</span>1968
               </span>
             )
           }
         </a>
-        <p class="border-l-2 border-[#f2a01a]/50 pl-4 text-sm leading-relaxed text-[#ece0cc]/75">
-          ROSTY59 สล็อตเว็บตรงฟอร์มแรง สัญญาณ API แท้เชื่อมตรงเซิร์ฟนอกโดยไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามมาตรฐานสากลจากค่ายแม่ ไม่มีปรับลดเปอร์เซ็นต์ชนะ ไร้ประวัติล็อกยูส
-          คัดเฉพาะเกมสล็อตลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่อย่าง PG Soft, Pragmatic Play และ Joker Gaming จัดคลังเป็นหมวดหมู่ให้ค้นหาง่าย เปลี่ยนสไตล์การเล่นได้ในกระเป๋าเดียวโดยไม่ต้องโยกเงิน
-          พร้อมโปรที่กดรับสิทธิ์เองผ่านหน้าเว็บ และระบบฝากถอนออโต้ที่ทำรายการเสร็จใน 3 วินาที ถอนยอดไหนก็เงินเข้าเต็มจำนวนทันที
+        <p class="border-l-2 border-[#d4090f]/60 pl-4 text-sm leading-relaxed text-[#f6e4c0]/75">
+          CK1968 สล็อตเว็บตรงแบรนด์แท้ 100% ผู้ให้บริการลิขสิทธิ์แท้ที่ส่งตรงเกมจากค่ายดังทั่วโลก นำเข้าระบบ API แท้จากเซิร์ฟเวอร์หลักของค่ายเกมโดยตรง อัตราการแตก RTP
+          จึงเป็นมาตรฐานสากลจริง ไม่มีการแอบปรับลดเปอร์เซ็นต์การชนะ วางโครงสร้างแพลตฟอร์มด้วยระบบรักษาความปลอดภัยระดับสูง ข้อมูลส่วนตัวและประวัติการทำธุรกรรมของสมาชิกถูกเก็บเป็นความลับทั้งหมด
+          พร้อมระบบ AI จัดการธุรกรรมการเงินอัตโนมัติที่ประมวลผลให้เสร็จภายในไม่กี่วินาที ฝากถอนไม่มีขั้นต่ำ ชนะเท่าไหร่โอนจ่ายเต็มจำนวนทุกบาททุกสตางค์
         </p>
         <div class="mt-4 flex flex-wrap gap-3">
-          <span class="rounded-full border border-[#f2a01a]/40 bg-[#26180a]/70 px-4 py-1 text-xs font-medium text-[#ffc94a] backdrop-blur-sm">เกมแท้จัดเต็ม ค่ายดังลิขสิทธิ์</span>
-          <span class="rounded-full border border-[#dbe1e8]/35 bg-[#dbe1e8]/10 px-4 py-1 text-xs font-medium text-[#dbe1e8] backdrop-blur-sm">AUTO 3 SEC</span>
+          <span class="rounded-full border border-[#f0a80c]/40 bg-[#2a100a]/70 px-4 py-1 text-xs font-medium text-[#ffd45c] backdrop-blur-sm">แบรนด์แท้ลิขสิทธิ์ 100%</span>
+          <span class="rounded-full border border-[#d4090f]/45 bg-[#d4090f]/12 px-4 py-1 text-xs font-medium text-[#ff4b52] backdrop-blur-sm">AUTO ไม่มีขั้นต่ำ</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#ffc94a] uppercase drop-shadow-sm">QUICK LINKS</p>
-        <div class="h-[1px] w-12 bg-[#f2a01a]"></div>
-        <ul class="flex flex-col gap-3 text-sm font-medium text-[#ece0cc]/70">
-          <li><a href="/" class="transition-colors hover:text-[#ffc94a]">หน้าหลัก (Home)</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#ffc94a]">โปรโมชั่น (Promotions)</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ffc94a]">ทางเข้า (Access)</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ffc94a]">ทดลองเล่น (Demo)</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#ffc94a]">เกี่ยวกับเรา (About Us)</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#ffc94a]">ติดต่อเรา (Contact)</a></li>
-          <li><a href="/register" class="transition-colors hover:text-[#ffc94a]">สมัครสมาชิก (Join Us)</a></li>
-          <li><a href="/login" class="transition-colors hover:text-[#ffc94a]">เข้าสู่ระบบ (Login)</a></li>
+        <p class="text-lg font-black tracking-widest text-[#ffd45c] uppercase drop-shadow-sm">QUICK LINKS</p>
+        <div class="h-[1px] w-12 bg-gradient-to-r from-[#d4090f] to-[#f0a80c]"></div>
+        <ul class="flex flex-col gap-3 text-sm font-medium text-[#f6e4c0]/70">
+          <li><a href="/" class="transition-colors hover:text-[#ffd45c]">หน้าหลัก (Home)</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#ffd45c]">โปรโมชั่น (Promotions)</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ffd45c]">ทางเข้า (Access)</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ffd45c]">ทดลองเล่น (Demo)</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#ffd45c]">เกี่ยวกับเรา (About Us)</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#ffd45c]">ติดต่อเรา (Contact)</a></li>
+          <li><a href="/register" class="transition-colors hover:text-[#ffd45c]">สมัครสมาชิก (Join Us)</a></li>
+          <li><a href="/login" class="transition-colors hover:text-[#ffd45c]">เข้าสู่ระบบ (Login)</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#ffc94a] uppercase drop-shadow-sm">CUSTOMER SUPPORT</p>
-        <div class="h-[1px] w-12 bg-[#f2a01a]"></div>
+        <p class="text-lg font-black tracking-widest text-[#ffd45c] uppercase drop-shadow-sm">CUSTOMER SUPPORT</p>
+        <div class="h-[1px] w-12 bg-gradient-to-r from-[#d4090f] to-[#f0a80c]"></div>
 
         <a
           href="/line"
@@ -121,17 +121,17 @@ const LOGO_ALT =
           )
         }
 
-        <div class="mt-4 text-xs font-medium tracking-widest text-[#dbe1e8]/80 uppercase">Supported Payments</div>
+        <div class="mt-4 text-xs font-medium tracking-widest text-[#cdb494] uppercase">Supported Payments</div>
         <BankStrip size={30} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#4a2f0d]/70 pt-8 text-xs font-medium tracking-wide text-[#ece0cc]/55 md:flex-row">
-      <p>COPYRIGHT &copy; {new Date().getFullYear()} ROSTY59. ALL RIGHTS RESERVED.</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#4d1f0d]/80 pt-8 text-xs font-medium tracking-wide text-[#f6e4c0]/55 md:flex-row">
+      <p>COPYRIGHT &copy; {new Date().getFullYear()} CK1968. ALL RIGHTS RESERVED.</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="transition-colors hover:text-[#ffc94a]">TERMS &amp; CONDITIONS</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#ffc94a]">PRIVACY POLICY</a>
-        <a href="#top" class="transition-colors hover:text-[#ffc94a]">BACK TO TOP</a>
+        <a href="/terms/" class="transition-colors hover:text-[#ffd45c]">TERMS &amp; CONDITIONS</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#ffd45c]">PRIVACY POLICY</a>
+        <a href="#top" class="transition-colors hover:text-[#ffd45c]">BACK TO TOP</a>
       </div>
     </div>
   </div>
