@@ -88,7 +88,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.ck-1968.com",
+  site: "https://www.room89plus.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

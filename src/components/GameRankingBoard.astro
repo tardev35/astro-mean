@@ -1,24 +1,24 @@
 ---
-// CK1968: ชุดสีย้ายจากทองแอนทีคคู่กราไฟต์ของแบรนด์ก่อน มาเป็นทองคำคู่แดงเลือดหมู
-// บนดำอมน้ำตาลตามอาร์ตจริง — ทอง #ffefc4 / #ffd45c / #f0a80c / #a76806 / #5d3a05
-// คู่แดง #ff4b52 / #d4090f / #8c0206 / #3d0203 บนผิว #090302 / #170806 / #2a100a
-// ขอบ #4d1f0d เนื้อความ #f6e4c0 ข้อความรอง #cdb494 แถวอันดับหนึ่งรับผิวยกระดับขึ้น
-// หนึ่งขั้นและขอบทองสว่างเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว Tailwind เป็นสี
-// เชิงความหมาย ไม่ถูกแตะ
+// ROOM89: ชุดสีย้ายจากทองคำคู่แดงเลือดหมูของแบรนด์ก่อน มาเป็นทองคำขัดเงาคู่เงิน
+// แพลตินัมบนดำอมน้ำตาลตามอาร์ตจริง — ทอง #f7edc4 / #e6cf72 / #c9a227 / #6b5424 /
+// #3b2c10 คู่เงิน #e8ebef / #b9c2cc / #7c8794 / #2a2f36 บนผิว #0b0805 / #161009 /
+// #1a1208 ขอบ #4a3a18 เนื้อความ #f0e6cf ข้อความรอง #c2b493 แถวอันดับหนึ่งรับผิว
+// ยกระดับขึ้นหนึ่งขั้นและขอบทองสว่างเพื่อให้ตัดกับแถวที่เหลือ จุด live สีเขียว
+// Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
 // git history)
 //
 // ไม่มีรูปโลโก้ค่ายในแถวไหนเลย และไม่ import src/assets/providers/game* — โลโก้ค่าย
-// อยู่ที่ ProviderGridPremium ซึ่งเป็นที่ของมัน กระดานนี้กางหมวดหมู่ในล็อบบี้ ไม่ใช่
-// รายชื่อค่าย การเอาโลโก้ค่ายมาแปะข้างชื่อหมวดแล้วเขียน alt ให้เป็นอย่างอื่นคือ alt
-// ที่ไม่ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit ลง dist/ ฟรีๆ ช่องรูป
-// จึงเป็นไอคอนกรอบทองที่เป็น aria-hidden แทน
+// อยู่ที่ ProviderGrid ซึ่งเป็นที่ของมัน กระดานนี้กางหมวดหมู่ในล็อบบี้ ไม่ใช่รายชื่อ
+// ค่าย การเอาโลโก้ค่ายมาแปะข้างชื่อหมวดแล้วเขียน alt ให้เป็นอย่างอื่นคือ alt ที่ไม่
+// ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit ลง dist/ ฟรีๆ ช่องรูปจึง
+// เป็นไอคอนกรอบทองที่เป็น aria-hidden แทน
 //
-// เนื้อของทุกแถวมาจากข้อเท็จจริงที่ docx รอบนี้ให้ไว้ตรงๆ (API แท้จากเซิร์ฟเวอร์หลัก,
-// RTP มาตรฐานสากล, ไม่ล็อคยูสเซอร์, ระบบ AI ทำธุรกรรมอัตโนมัติ, ฝากถอนไม่มีขั้นต่ำ,
-// ฟีเจอร์ใหม่อัปเดตก่อนใคร, โอนจ่ายเต็มจำนวนไม่หักค่าธรรมเนียม) ไม่ผูกหมวดกับชื่อค่าย
-// รายแถว เพราะ brief ไม่ได้ให้ข้อมูลว่าคุณสมบัติไหนเป็นของค่ายไหน
+// เนื้อของทุกแถวมาจากข้อเท็จจริงที่ docx รอบนี้ให้ไว้ตรงๆ (ล็อกเป้าคัดเกมเด่นมาไว้
+// บนล็อบบี้, ค่ายลิขสิทธิ์แท้ยกค่าย, สายคอมโบแตกนอก, สายซื้อฟีเจอร์ฟรีสปิน, แนว
+// คลาสสิกตัวคูณหนัก, โบนัสกับ Cash Back ที่กดรับเองได้) ไม่ผูกหมวดกับชื่อค่ายราย
+// แถว เพราะ brief ไม่ได้ให้ข้อมูลว่าคุณสมบัติไหนเป็นของค่ายไหน
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
@@ -29,55 +29,55 @@
 const games = [
   {
     rank: 1,
-    name: "หมวดเกมลิขสิทธิ์แท้จากค่ายดังทั่วโลก",
-    type: "นำเข้าระบบ API แท้จากเซิร์ฟเวอร์หลักของค่ายเกมโดยตรง อัตราการแตก RTP จึงเป็นมาตรฐานสากลจริง ไม่มีการแอบปรับลดเปอร์เซ็นต์การชนะระหว่างทาง",
-    focus: "RTP มาตรฐานสากล",
-    menus: ["API แท้", "ลิขสิทธิ์แท้"],
+    name: "หมวดเกมเด็ดที่ล็อกเป้าคัดมาให้แล้ว",
+    type: "เลิกเสียเวลาสุ่มเล่นเกมขยะ คัดเฉพาะเกมสล็อตตัวเด่นที่มีทรงโบนัสแตกโหดมาไว้บนหน้าล็อบบี้ ไม่ต้องเลื่อนหาจนนิ้วล็อค อยากปั่นเกมไหนเข้าถึงได้ในคลิกเดียว",
+    focus: "คลิกเดียวถึงเกม",
+    menus: ["ล็อกเป้าเกมเด่น", "จัดหมวดชัดๆ"],
     players: 5124,
-    icon: "🎰",
+    icon: "🎯",
   },
   {
     rank: 2,
-    name: "หมวดเกมที่เล่นลื่นไม่หลุดจังหวะฟรีสปิน",
-    type: "ระบบหลังบ้านเสถียรสูงมาก รองรับผู้ใช้งานพร้อมกันนับหมื่นคนได้โดยที่เว็บไม่อืด เล่นลื่นไหลไม่มีอาการกระตุกหรือหลุดออกจากเกมในจังหวะเข้าฟรีสปิน",
-    focus: "รองรับนับหมื่นคนพร้อมกัน",
-    menus: ["ไม่กระตุก", "ไม่หลุดเกม"],
+    name: "หมวดเกมลิขสิทธิ์แท้ยกค่าย",
+    type: "ขนทัพค่ายสล็อตตัวแม่ระดับโลกอย่าง PG Soft, Pragmatic Play และ Joker Gaming มาไว้แบบยกค่าย กราฟิกภาพคมชัด 3D ลื่นๆ ไม่มีกระตุก อัลกอริทึมการจ่ายเงินโปร่งใส 100%",
+    focus: "โปร่งใส 100%",
+    menus: ["ยกค่ายมาให้เลือก", "กราฟิก 3D"],
     players: 3842,
-    icon: "⚡",
+    icon: "🏅",
   },
   {
     rank: 3,
-    name: "หมวดฝากถอนออโต้ด้วยระบบ AI",
-    type: "ลืมการส่งสลิปให้แอดมินตรวจไปได้เลย กดทำรายการแล้วระบบประมวลผลยอดเงินให้เข้ากระเป๋าภายในเวลาไม่กี่วินาที จะฝากตอนดึกหรือถอนช่วงเช้าตรู่ก็ไม่มีสะดุด",
-    focus: "เข้ากระเป๋าในไม่กี่วินาที",
-    menus: ["ระบบ AI", "ไม่ต้องส่งสลิป"],
+    name: "หมวดสล็อตสายคอมโบแตกนอก",
+    type: "ระบบ Cascading แตกต่อเนื่องในสปินเดียว ไล่เก็บคอมโบไปเรื่อยๆ จนจบรอบ เหมาะกับสายที่ชอบลุ้นยาวในสปินเดียวมากกว่านั่งรอฟีเจอร์",
+    focus: "แตกต่อเนื่องสปินเดียว",
+    menus: ["Cascading", "คอมโบแตกนอก"],
     players: 3517,
-    icon: "🤖",
+    icon: "💥",
   },
   {
     rank: 4,
-    name: "หมวดฝากถอนไม่มีขั้นต่ำ",
-    type: "ทุนหลักสิบหรือหลักหมื่นก็ร่วมสนุกและลุ้นรางวัลใหญ่ได้เท่าเทียมกัน อยากฝากแค่ 1 บาทเพื่อปั่นเล่นขำๆ หรือถอนยอดเล็กๆ ออกไปใช้ก่อนก็ทำรายการเองได้ทันที",
-    focus: "ไม่มีเงื่อนไขผูกมัด",
-    menus: ["ฝาก 1 บาท", "ถอนยอดเล็ก"],
+    name: "หมวดสล็อตสายซื้อฟีเจอร์พุ่งชนฟรีสปิน",
+    type: "โหมด Bonus Buy กดซื้อฟรีสปินเข้าไปลุ้นแจ็คพอตใหญ่ได้ทันทีแบบไม่ต้องนั่งรอ เลือกจังหวะกดเองได้ตามทุนที่วางไว้",
+    focus: "ไม่ต้องนั่งรอ",
+    menus: ["Bonus Buy", "ฟรีสปิน"],
     players: 2905,
-    icon: "💰",
+    icon: "🎟️",
   },
   {
     rank: 5,
-    name: "หมวดฟีเจอร์เกมใหม่ที่อัปเดตก่อนใคร",
-    type: "เกมที่นี่แตกง่ายจริงตามสถิติ แถมยังมีฟีเจอร์ตัวเกมใหม่ๆ ทยอยอัปเดตเข้าคลังให้สมาชิกได้เล่นก่อนใคร เป็นเหตุผลหลักที่มืออาชีพเลือกปักหลักทำกำไรต่อเนื่อง",
-    focus: "แตกง่ายจริงตามสถิติ",
-    menus: ["ฟีเจอร์ใหม่", "เล่นก่อนใคร"],
+    name: "หมวดสล็อตแนวคลาสสิกตัวคูณหนัก",
+    type: "Multipliers ตัวคูณสะสมโหดๆ กับสัญลักษณ์ Expanding Wild ที่ยืดเต็มรีล เป็นทรงที่สายคลาสสิกไลน์จ่ายน้อยแต่หนักหน่วงคุ้นมือที่สุด",
+    focus: "ตัวคูณสะสม",
+    menus: ["Multipliers", "Expanding Wild"],
     players: 2431,
-    icon: "🃏",
+    icon: "🎰",
   },
   {
     rank: 6,
-    name: "หมวดถอนจริงเต็มจำนวนทุกบิล",
-    type: "แจ็คพอตแตกหลักหมื่น หลักแสน หรือทะลุหลักล้าน ก็มีทุนสำรองมหาศาลพร้อมโอนจ่ายเต็มจำนวนทุกบาททุกสตางค์ ไม่หักค่าธรรมเนียมและไม่แบ่งจ่ายเป็นงวดๆ",
-    focus: "ไม่หักเปอร์เซ็นต์",
-    menus: ["จ่ายเต็มจำนวน", "ไม่แบ่งงวด"],
+    name: "หมวดโบนัสและคืนยอดเสียให้ตามเก็บ",
+    type: "โปรฝากแรกของวันสำหรับสายลุย และระบบคืนยอดเสีย Cash Back ให้เก็บเครดิตกลับมาแก้ตัว กดรับเองได้เลยผ่านหน้าเว็บ ไม่ติดเทิร์นจุกจิก",
+    focus: "กดรับเองได้เลย",
+    menus: ["ฝากแรกของวัน", "Cash Back"],
     players: 2108,
     icon: "👑",
   },
@@ -86,16 +86,16 @@ const games = [
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="หมวดเกมและบริการในคลังที่ CK1968 แยกไว้ให้ดูครบจากที่เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="หมวดเกมและบริการในคลังที่ ROOM89 แยกไว้ให้ดูครบจากที่เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#4d1f0d]/70 bg-[#170806]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(93,58,5,0.35)] backdrop-blur-md">
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#4a3a18]/70 bg-[#161009]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(59,44,16,0.4)] backdrop-blur-md">
     <span aria-hidden="true" class="text-2xl">🎰</span>
-    <p class="bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#ff4b52] bg-clip-text text-2xl font-black tracking-wide text-transparent">หมวดเกมและบริการในคลังที่ CK1968 แยกไว้ให้ดูครบจากที่เดียว</p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#cdb494]">
-      กางให้เห็นครบในหน้าเดียว ทั้งหมวดเกมลิขสิทธิ์แท้จากค่ายดังทั่วโลก หมวดเกมที่เล่นลื่นไม่หลุดจังหวะฟรีสปิน หมวดฝากถอนออโต้ด้วยระบบ AI หมวดฝากถอนไม่มีขั้นต่ำ หมวดฟีเจอร์เกมใหม่ที่อัปเดตก่อนใคร
-      และหมวดถอนจริงเต็มจำนวนทุกบิล ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราจ่ายและเงื่อนไขของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
+    <p class="bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#b9c2cc] bg-clip-text text-2xl font-black tracking-wide text-transparent">หมวดเกมและบริการในคลังที่ ROOM89 แยกไว้ให้ดูครบจากที่เดียว</p>
+    <p class="max-w-3xl text-base leading-relaxed text-[#c2b493]">
+      กางให้เห็นครบในหน้าเดียว ทั้งหมวดเกมเด็ดที่ล็อกเป้าคัดมาให้แล้ว หมวดเกมลิขสิทธิ์แท้ยกค่าย หมวดสล็อตสายคอมโบแตกนอก หมวดสล็อตสายซื้อฟีเจอร์พุ่งชนฟรีสปิน หมวดสล็อตแนวคลาสสิกตัวคูณหนัก
+      และหมวดโบนัสกับคืนยอดเสียให้ตามเก็บ ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราจ่ายและเงื่อนไขของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f0a80c] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#c9a227] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -106,10 +106,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#ffd45c]/55 bg-gradient-to-r from-[#2a100a]/90 via-[#170806]/92 to-[#090302]/90 shadow-[0_15px_40px_rgba(240,168,12,0.2)]"
-                : "border-[#4d1f0d]/60 bg-[#170806]/90 shadow-[0_10px_30px_rgba(93,58,5,0.25)] hover:border-[#f0a80c]/55 hover:shadow-[0_15px_40px_rgba(240,168,12,0.28)]"
+                ? "border-[#e6cf72]/55 bg-gradient-to-r from-[#1a1208]/90 via-[#161009]/92 to-[#0b0805]/90 shadow-[0_15px_40px_rgba(201,162,39,0.2)]"
+                : "border-[#4a3a18]/60 bg-[#161009]/90 shadow-[0_10px_30px_rgba(59,44,16,0.3)] hover:border-[#c9a227]/55 hover:shadow-[0_15px_40px_rgba(201,162,39,0.28)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#2a100a]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#8c0206]/50" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#1a1208]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#2a2f36]/60" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {medal(g.rank) ? (
@@ -118,39 +118,39 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#f0a80c] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#c9a227] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
             <div
               aria-hidden="true"
-              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#090302] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
-                top ? "border-[#ffd45c]/60" : "border-[#4d1f0d]"
+              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#0b0805] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
+                top ? "border-[#e6cf72]/60" : "border-[#4a3a18]"
               }`}>
               {g.icon}
             </div>
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#f6e4c0] sm:text-lg">{g.name}</p>
+                <p class="truncate text-base font-black text-[#f0e6cf] sm:text-lg">{g.name}</p>
                 {top && (
-                  <span class="hidden shrink-0 rounded-full border border-[#f0a80c]/70 bg-gradient-to-r from-[#ffd45c] to-[#a76806] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#090302] sm:inline">
+                  <span class="hidden shrink-0 rounded-full border border-[#c9a227]/70 bg-gradient-to-r from-[#e6cf72] to-[#6b5424] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#0b0805] sm:inline">
                     หมวดที่คนเข้ามากที่สุด
                   </span>
                 )}
               </div>
-              <p class="truncate text-[11px] text-[#cdb494] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#c2b493] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
-                <span class="rounded-full border border-[#d4090f]/50 bg-[#2a100a] px-2.5 py-0.5 text-[10px] font-bold text-[#ff4b52]">{g.focus}</span>
+                <span class="rounded-full border border-[#b9c2cc]/50 bg-[#2a2f36] px-2.5 py-0.5 text-[10px] font-bold text-[#e8ebef]">{g.focus}</span>
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#4d1f0d] bg-[#2a100a] px-2.5 py-0.5 text-[10px] font-bold text-[#ffd45c]">{m}</span>
+                  <span class="rounded-full border border-[#4a3a18] bg-[#1a1208] px-2.5 py-0.5 text-[10px] font-bold text-[#e6cf72]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#cdb494]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#c2b493]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -161,8 +161,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#ffd45c] to-[#a76806] text-[#090302] shadow-[0_10px_30px_rgba(240,168,12,0.35)]"
-                    : "border border-[#4d1f0d] bg-[#2a100a] text-[#ffd45c] hover:border-[#d4090f] hover:bg-[#8c0206] hover:text-[#ffefc4]"
+                    ? "bg-gradient-to-r from-[#e6cf72] to-[#6b5424] text-[#0b0805] shadow-[0_10px_30px_rgba(201,162,39,0.35)]"
+                    : "border border-[#4a3a18] bg-[#1a1208] text-[#e6cf72] hover:border-[#b9c2cc] hover:bg-[#2a2f36] hover:text-[#e8ebef]"
                 }`}>
                 เข้าเล่นเกม
               </a>

@@ -9,7 +9,7 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 // ลิงก์ด่วนชุดเดียว ใช้ .map ด้านล่าง — เดิมเขียน <a> ซ้ำหกก้อน ทำให้เพิ่ม/ลบหน้า
 // ต้องไล่แก้ทีละอัน (และเป็นที่ที่ลิงก์หน้าหวยของแบรนด์ก่อนเคยค้างอยู่)
-// BLACKJACK789 เป็นเว็บสล็อต/คาสิโน หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// ROOM89 เป็นเว็บสล็อต/คาสิโน หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
 // src/pages-disabled/) ห้ามมีลิงก์ถึง
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
@@ -22,16 +22,16 @@ const quickLinks = [
 ];
 
 const LOGO_ALT =
-  "โลโก้ BLACKJACK789 เป็นรูปโพดำทองคำขอบเงาวาว มีคำว่า Black Jack เขียนทับด้วยตัวอักษรโลหะสีเทากราไฟต์ขอบทองแบบมีหางโค้ง ใต้ลงมาเป็นเลข 789 สีเดียวกัน และมีประกายทองสี่แฉกอยู่สองข้าง";
+  "โลโก้ ROOM89 เป็นตัวอักษรทรงเหลี่ยมนูนสามมิติ คำว่า ROOM เป็นทองคำขัดเงาขอบเข้ม ต่อด้วยเลข 89 สีเงินแพลตินัมไล่เงา และมีมงกุฎทองห้าแฉกประดับอยู่เหนือเลข 8";
 
-// BLACKJACK789: ย้ายจากทองราชสำนักสว่างของแบรนด์ก่อนที่เคยใช้ไฟล์นี้ มาเป็นทอง
-// แอนทีคอมน้ำผึ้งคู่กราไฟต์บนดำสนิทของแบรนด์นี้ — ทอง #fdf1ce / #f2cf70 /
-// #d3aa4b / #b8862c / #5c4113 คู่กราไฟต์ #cfd6e0 / #8e97a6 / #454d5c บนผิว
-// #050403 / #100b05 / #1e150a เนื้อความ #ede0c4 รองด้วย #c0ab84 และหมายเหตุ
-// ตัวเล็ก #8b7c5c
+// ROOM89: ย้ายจากทองแอนทีคคู่กราไฟต์ของแบรนด์ก่อนที่เคยใช้ไฟล์นี้ มาเป็นทองคำ
+// ขัดเงาคู่เงินแพลตินัมบนดำอมน้ำตาลของแบรนด์นี้ — ทอง #f7edc4 / #e6cf72 /
+// #c9a227 / #8f7420 / #3b2c10 คู่เงิน #e8ebef / #b9c2cc / #2a2f36 บนผิว
+// #0b0805 / #161009 / #1a1208 เนื้อความ #f0e6cf รองด้วย #c4b696 และหมายเหตุ
+// ตัวเล็ก #8a7d63
 //
-// ทองมาจากตัวโพดำในโลโก้ กองชิปและไพ่ทองบนแบนเนอร์ ส่วนกราไฟต์คือตัวอักษร
-// Black Jack ที่เป็นโลหะเทาขอบทอง จึงเป็นโลหะตัวที่สองจริง ใช้เป็นสีตัดของปุ่มรอง
+// คู่สีมาจากโลโก้ตรงๆ: คำว่า ROOM เป็นทองคำ ส่วนเลข 89 เป็นเงินแพลตินัม จึงเป็น
+// โลหะสองตัวจริงของแบรนด์ ใช้เงินเป็นสีตัดของปุ่มรองและป้ายกำกับ
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
@@ -45,24 +45,24 @@ const LOGO_ALT =
 // ซึ่งผูกกับ BRAND_NAME และ site:
 ---
 
-<footer class="relative mt-32 w-full border-t border-[#5c4113]/40 bg-[#050403] pt-64 pb-6 font-sans text-[#ede0c4] shadow-[0_-10px_30px_rgba(92,65,19,0.3)] md:pt-40">
+<footer class="relative mt-32 w-full border-t border-[#3b2c10]/40 bg-[#0b0805] pt-64 pb-6 font-sans text-[#f0e6cf] shadow-[0_-10px_30px_rgba(59,44,16,0.3)] md:pt-40">
   <div
-    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#d3aa4b]/40 bg-gradient-to-r from-[#100b05] via-[#1e150a] to-[#050403] p-6 shadow-[0_15px_40px_rgba(184,134,44,0.4)] md:-top-16 md:flex-row md:p-8">
+    class="absolute -top-14 left-1/2 z-20 flex w-[92%] max-w-5xl -translate-x-1/2 flex-col items-center justify-between rounded-2xl border border-[#c9a227]/40 bg-gradient-to-r from-[#161009] via-[#1a1208] to-[#0b0805] p-6 shadow-[0_15px_40px_rgba(143,116,32,0.4)] md:-top-16 md:flex-row md:p-8">
     <div class="mb-5 flex flex-col text-center md:mb-0 md:text-left">
-      <p class="text-xl font-black tracking-wide text-[#f2cf70] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
-        <span aria-hidden="true">♠️</span> พร้อมลงสนามกับ BLACKJACK789 หรือยัง?
+      <p class="text-xl font-black tracking-wide text-[#e6cf72] uppercase italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] md:text-3xl">
+        <span aria-hidden="true">👑</span> พร้อมล็อกเป้าเกมเด็ดกับ ROOM89 หรือยัง?
       </p>
-      <p class="mt-2 text-sm font-medium text-[#c0ab84] md:text-base">
-        สมัคร BLACKJACK789 ยูสเซอร์เดียวจบ ครบทุกค่ายในกระเป๋าเงินเดียว ไม่ต้องโยกเครดิตข้ามค่าย คัดค่ายดังเกมแท้ระดับ A-List อย่าง PG Soft, Pragmatic Play และ Joker
-        Gaming มาให้เลือกครบมือ ฝากถอนออโต้ประมวลผลเสร็จใน 3 วินาที
+      <p class="mt-2 text-sm font-medium text-[#c4b696] md:text-base">
+        สมัคร ROOM89 ยูสเซอร์เดียวจบ ครบทุกค่ายในกระเป๋าเดียว ไม่ต้องโยกเงินให้วุ่นวาย ล็อกเป้าคัดเฉพาะเกมตัวเด่นที่มีทรงโบนัสแตกโหดมาไว้บนหน้าล็อบบี้ ยกค่ายลิขสิทธิ์แท้ทั้ง PG Soft, Pragmatic Play
+        และ Joker Gaming มาให้เลือกครบมือ ฝากถอนออโต้ไฮสปีดทำรายการเสร็จใน 3 วินาที
       </p>
     </div>
 
     <a
       href="/register"
-      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#d3aa4b] bg-gradient-to-b from-[#f2cf70] to-[#b8862c] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#050403] shadow-[0_0_15px_rgba(211,170,75,0.5)] transition-all hover:scale-105 md:text-base">
+      class="group relative flex items-center justify-center overflow-hidden rounded-full border border-[#c9a227] bg-gradient-to-b from-[#e6cf72] to-[#8f7420] px-8 py-3.5 text-sm font-extrabold whitespace-nowrap text-[#0b0805] shadow-[0_0_15px_rgba(201,162,39,0.5)] transition-all hover:scale-105 md:text-base">
       <span class="relative z-10">สมัครสมาชิกเลย <span aria-hidden="true">🎁</span></span>
-      <span aria-hidden="true" class="absolute inset-0 block translate-y-full bg-[#f2cf70] transition-transform duration-300 group-hover:translate-y-0"></span>
+      <span aria-hidden="true" class="absolute inset-0 block translate-y-full bg-[#e6cf72] transition-transform duration-300 group-hover:translate-y-0"></span>
     </a>
   </div>
 
@@ -80,20 +80,20 @@ const LOGO_ALT =
                 height={45}
                 loading="lazy"
                 decoding="async"
-                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(184,134,44,0.7)]"
+                class="h-[45px] w-auto drop-shadow-[0_0_12px_rgba(143,116,32,0.7)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="bg-gradient-to-b from-[#f2cf70] to-[#5c4113] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(184,134,44,0.6)]">BLACKJACK789</p>
+              <p class="bg-gradient-to-b from-[#e6cf72] to-[#3b2c10] bg-clip-text text-3xl font-black text-transparent drop-shadow-[0_0_8px_rgba(143,116,32,0.6)]">ROOM89</p>
             )
           }
         </a>
-        <p class="text-sm leading-relaxed text-[#c0ab84]">
-          BLACKJACK789 สล็อตเกมดีมีเชิง เว็บตรง API แท้ ยิงสัญญาณตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ไร้ประวัติล็อกยูส ค่า RTP เป็นมาตรฐานยุติธรรมตรงตามสเปกโรงงาน
-          ไม่มีปรับลดเปอร์เซ็นต์ชนะ วางระบบคลังเกมอย่างมีเชิงชั้น ไม่อัดเกมขยะมาให้รกหน้าเว็บ คัดเฉพาะเกมที่มีโครงสร้างการจ่ายรางวัลโปร่งใสและจังหวะแจ็คพอตแตกจริงตามอัลกอริทึมสากล
-          รวมค่ายดังระดับ A-List อย่าง PG Soft, Pragmatic Play และ Joker Gaming ครบทั้งสล็อต 3D เนื้อเรื่องเข้มข้น สายสตรีตตัวคูณโหด และคลาสสิกไลน์จ่ายน้อยแต่แตกหนัก
-          พร้อมฟีเจอร์ยุคใหม่ทั้ง Multipliers, Expanding Wild, Cascading และ Bonus Buy อยู่ในกระเป๋าเงินเดียวไม่ต้องโยกเครดิต ระบบฝากถอนออโต้ทำรายการเสร็จใน 3 วินาที ถอนกำไรได้เต็มทุกยอด
+        <p class="text-sm leading-relaxed text-[#c4b696]">
+          ROOM89 สล็อตเว็บตรงตัวตึง API แท้ ยิงตรงจากเซิร์ฟนอกแบบไม่ผ่านเอเย่นต์ ค่า RTP เป๊ะตามสเปกโรงงาน ไม่มีปรับลดเปอร์เซ็นต์แตก ไม่ล็อกยูส ปั่นยังไงก็มีทรง บวกเท่าไหร่ก็ถอนได้เต็ม
+          ล็อกเป้าคัดเฉพาะเกมสล็อตตัวเด่นที่มีทรงโบนัสแตกโหดมาไว้บนหน้าล็อบบี้ จัดหมวดหมู่เกมแตกง่ายไว้ให้ชัด ไม่ต้องเลื่อนหาจนนิ้วล็อค ขนทัพค่ายตัวแม่ระดับโลกอย่าง PG Soft, Pragmatic Play
+          และ Joker Gaming มาแบบยกค่าย เสิร์ฟเฉพาะเกมลิขสิทธิ์แท้ของจริง กราฟิกคมชัด 3D ลื่นไม่มีกระตุก อัลกอริทึมการจ่ายเงินโปร่งใส 100% เบทเริ่มต้นแค่บาทเดียวก็มีสิทธิ์คว้าโบนัสก้อนโต
+          อัดแน่นด้วยฟีเจอร์ตัวตึงทั้ง Multipliers, Expanding Wild, Cascading และโหมด Bonus Buy อยู่ในกระเป๋าเดียว ระบบฝากถอนออโต้ไฮสปีดทำรายการเสร็จใน 3 วินาที ถอนปุ๊บเงินเด้งเข้าแอปปั๊บ
         </p>
 
         <div class="mt-2 flex flex-wrap gap-3">
@@ -126,16 +126,16 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-5">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#ede0c4] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f0e6cf] uppercase">
           ลิงก์ด่วน (Quick Links)
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#b8862c] to-[#f2cf70] shadow-[0_0_8px_rgba(211,170,75,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#8f7420] to-[#e6cf72] shadow-[0_0_8px_rgba(201,162,39,0.6)]"></span>
         </p>
 
         <div class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
           {
             quickLinks.map((item) => (
-              <a href={item.path} class="group flex items-center text-[#c0ab84] transition-colors hover:text-[#f2cf70]">
-                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#d3aa4b] transition-transform group-hover:rotate-45" />
+              <a href={item.path} class="group flex items-center text-[#c4b696] transition-colors hover:text-[#e6cf72]">
+                <span aria-hidden="true" class="mr-2 h-1.5 w-1.5 rounded-sm bg-[#c9a227] transition-transform group-hover:rotate-45" />
                 {item.name}
               </a>
             ))
@@ -144,45 +144,45 @@ const LOGO_ALT =
       </div>
 
       <div class="md:col-span-6 lg:col-span-3">
-        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#ede0c4] uppercase">
+        <p class="relative mb-5 inline-block text-lg font-bold tracking-wider text-[#f0e6cf] uppercase">
           ระบบการเงิน
-          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#b8862c] to-[#f2cf70] shadow-[0_0_8px_rgba(211,170,75,0.6)]"></span>
+          <span aria-hidden="true" class="absolute -bottom-2 left-0 h-1 w-1/2 rounded-full bg-gradient-to-r from-[#8f7420] to-[#e6cf72] shadow-[0_0_8px_rgba(201,162,39,0.6)]"></span>
         </p>
 
-        <p class="mb-4 text-xs text-[#c0ab84]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
+        <p class="mb-4 text-xs text-[#c4b696]">รองรับการฝาก-ถอนผ่านแอปธนาคารชั้นนำและ TrueMoney Wallet โดยควรใช้บัญชีชื่อเดียวกับข้อมูลที่สมัครไว้</p>
 
         <BankStrip size={30} />
 
-        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#100b05] transition-colors hover:border-[#b8862c]/50" title="ตรวจบิลย้อนหลัง">
-          <span class="flex items-center gap-1 text-xs font-bold text-[#ede0c4]"><span aria-hidden="true" class="text-lg text-[#d3aa4b]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
+        <div class="mt-3 flex h-10 items-center justify-center rounded border border-white/5 bg-[#161009] transition-colors hover:border-[#8f7420]/50" title="ตรวจบิลย้อนหลัง">
+          <span class="flex items-center gap-1 text-xs font-bold text-[#f0e6cf]"><span aria-hidden="true" class="text-lg text-[#c9a227]">🧾</span> เก็บเลขรายการไว้ตรวจสอบได้</span>
         </div>
       </div>
     </div>
 
-    <hr class="mb-6 border-[#5c4113]/35" />
+    <hr class="mb-6 border-[#3b2c10]/35" />
 
-    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#8b7c5c] md:block">
-      สล็อตออนไลน์วันสต็อปที่ตัดระบบเอเย่นต์และขั้นตอนยุ่งยากออกทั้งหมด กดเข้าหน้าเว็บปุ๊บก็พร้อมลุยปั๊บ สัญญาณเกมยิงตรงจากเซิร์ฟเวอร์หลักผ่าน API แท้ ค่า RTP จึงเป็นมาตรฐานยุติธรรม
-      ตรงตามสเปกโรงงาน ไม่มีปรับลดเปอร์เซ็นต์ชนะ ไม่ผ่านเอเย่นต์ และไร้ประวัติล็อกยูส วางระบบคลังเกมอย่างมีเชิงชั้น ไม่เน้นอัดเกมขยะมาให้รกหน้าเว็บ
-      คัดเฉพาะเกมสล็อตที่มีโครงสร้างการจ่ายรางวัลโปร่งใสและจังหวะแจ็คพอตแตกจริงตามอัลกอริทึมสากล ผู้เล่นจึงวางแผนการเดินเงินได้อย่างมีเชิง ไม่ว่าจะเบทเริ่มต้นหลักบาทหรือปรับยอดขึ้นสูง
-      ขนทัพค่ายยักษ์ใหญ่ระดับ A-List อย่าง PG Soft, Pragmatic Play และ Joker Gaming มาไว้แบบครบมือ ทุกเกมผ่านการทดสอบอัตราจ่าย จ่ายเงินตรงตามมาตรฐานผู้พัฒนา กราฟิกสมูธคมชัดระดับ HD
-      ลื่นไหลทุกการสปิน อัดแน่นด้วยฟีเจอร์ยุคใหม่ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Expanding Wild ขยายเต็มรีล คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy
-      ซื้อฟรีสปินพุ่งตรงเข้าลุ้นรอบแจ็คพอต คลังเกมหลากหลายสไตล์ตั้งแต่สล็อต 3D เนื้อเรื่องเข้มข้น สายสตรีตเน้นตัวคูณโหด ไปจนถึงคลาสสิกไลน์จ่ายน้อยแต่แตกหนัก จัดหมวดหมู่ชัดเจน ค้นหาง่าย
-      สลับเปลี่ยนฟีลได้ทันทีผ่านกระเป๋าเงินเดียว สิทธิประโยชน์จัดเต็มให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับเพิ่มทุนสปิน โปรฝากแรกของวัน และเครดิตคืนยอดเสีย Cash Back ทุกวัน
-      เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด ระบบออโต้ไฮสปีดผ่าน Gateway ตรงทำรายการเสร็จใน 3 วินาที ไม่ต้องส่งสลิป ไม่ต้องรอแอดมินอนุมัติ ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี
-      สมัครสมาชิกใหม่ BLACKJACK789
+    <div class="mb-6 hidden text-justify text-[10px] leading-relaxed text-[#8a7d63] md:block">
+      สล็อตออนไลน์วันสต็อปที่ตัดระบบเอเย่นต์และขั้นตอนยุ่งยากออกทั้งหมด เปิดเข้าเว็บมาปุ๊บ ล็อคเป้าแล้วกดลั่นสปินทำกำไรได้ทันที สัญญาณเกมยิงตรงจากเซิร์ฟเวอร์นอกผ่าน API แท้ ค่า RTP
+      จึงเป๊ะตามสเปกโรงงาน ไม่มีการปรับลดเปอร์เซ็นต์แตก ไม่ผ่านเอเย่นต์ และไม่ล็อกยูส ปั่นยังไงก็มีทรง บวกเท่าไหร่ก็ถอนได้เต็มระบบ เลิกเสียเวลาสุ่มเล่นเกมขยะ เพราะที่นี่ล็อกเป้าคัดเฉพาะ
+      เกมสล็อตตัวเด่นที่มีทรงโบนัสแตกโหดมาไว้บนหน้าล็อบบี้ จัดหมวดหมู่เกมแตกง่ายไว้ให้ชัดๆ อยากปั่นเกมไหนเข้าถึงได้ในคลิกเดียว ไม่ต้องเลื่อนหาจนนิ้วล็อค ขนทัพค่ายสล็อตตัวแม่ระดับโลก
+      อย่าง PG Soft, Pragmatic Play และ Joker Gaming มาไว้แบบยกค่าย เสิร์ฟเฉพาะเกมลิขสิทธิ์แท้ของจริง กราฟิกภาพคมชัด 3D ลื่นๆ ไม่มีกระตุก อัลกอริทึมการจ่ายเงินโปร่งใส 100%
+      เบทเริ่มต้นเบาๆ แค่บาทเดียวก็มีสิทธิ์คว้าโบนัสก้อนโตได้จริง คลังเกมมีให้สลับเล่นหลายสไตล์ ทั้งสล็อตสายคอมโบแตกนอก สายซื้อฟีเจอร์พุ่งชนฟรีสปิน และแนวคลาสสิกตัวคูณหนัก
+      สลับค่ายเล่นได้ยั่วๆ ในกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงิน ทุกเกมอัดแน่นด้วยฟีเจอร์ตัวตึงทั้ง Multipliers ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ยืดเต็มรีล ระบบ Cascading
+      แตกต่อเนื่องในสปินเดียว และโหมด Bonus Buy ให้กดซื้อฟรีสปินเข้าไปลุ้นแจ็คพอตใหญ่ได้ทันที โบนัสฟรีจัดให้ตามเก็บกันตลอดวัน ทั้งโปรฝากแรกของวันสำหรับสายลุย และระบบคืนยอดเสีย
+      Cash Back ให้เก็บเครดิตกลับมาแก้ตัว กดรับเองได้เลยผ่านหน้าเว็บ เงื่อนไขโปร่งใส ถอนได้จริง ไม่ติดเทิร์นจุกจิก รันระบบบนเซิร์ฟเวอร์ความเร็วสูง เล่นได้ยาวๆ 24 ชั่วโมง ไม่มีค้าง
+      ไม่มีเด้งหลุดกลางทาง ฝากถอนออโต้ทำรายการเสร็จใน 3 วินาที ทางเข้าลิงก์ตรงอัปเดตใหม่ ทดลองเล่นฟรี สมัครสมาชิกใหม่ ROOM89
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#8b7c5c] md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#f2cf70] uppercase">BLACKJACK789</span>. All Rights Reserved.</p>
+    <div class="flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-6 text-xs text-[#8a7d63] md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold tracking-wider text-[#e6cf72] uppercase">ROOM89</span>. All Rights Reserved.</p>
 
       <div class="flex items-center gap-6">
-        <a href="/terms/" class="transition-colors hover:text-[#ede0c4]">เงื่อนไขและข้อตกลง</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#ede0c4]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#f0e6cf]">เงื่อนไขและข้อตกลง</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#f0e6cf]">นโยบายความเป็นส่วนตัว</a>
 
         <a
           href="#top"
-          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#ede0c4] transition-all hover:border-[#b8862c] hover:bg-[#100b05] hover:shadow-[0_0_15px_rgba(184,134,44,0.6)]"
+          class="flex h-8 w-8 items-center justify-center rounded border border-white/10 bg-white/5 text-[#f0e6cf] transition-all hover:border-[#8f7420] hover:bg-[#161009] hover:shadow-[0_0_15px_rgba(143,116,32,0.6)]"
           aria-label="กลับขึ้นด้านบนสุดของหน้า">
           <span aria-hidden="true">↑</span>
         </a>

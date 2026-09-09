@@ -18,10 +18,10 @@ const targetUrl = "https://yoalink.com/znmz";
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
 // undo half of it. Nothing is lost when they drop — Google Sans covers Thai, so
-// it paints this page on its own on a google-sans brand. CK1968 runs
-// GOOGLE SANS, so this round the Kanit rules do NOT render and the CDN query
-// below takes the Google Sans + Oswald branch. The flag flips every rebrand, so
-// keep BOTH branches correct — the next Kanit brand needs the other one.
+// it paints this page on its own on a google-sans brand. ROOM89 runs KANIT, so
+// this round the Kanit rules DO render and the CDN query below takes the
+// Oswald-only branch. The flag flips every rebrand, so keep BOTH branches
+// correct — the next Google Sans brand needs the other one.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
@@ -34,19 +34,19 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: CK1968 is a GOLD casino brand with
-// a REAL SECOND COLOUR — oxblood red. The mark is a gold "C" beside an oxblood
-// "K" over gold 1968 numerals, under a gold crown set with a red ruby; the
-// banner and slide art are gold chips, red dice and red K/Q/J cards on a
-// brown-black ground. So red is a colour OF the mark, not a highlight on the
-// gold, and this page has to show both or it reads as a plain gold page.
-// The gold ramp is #ffefc4 → #ffd45c → #f0a80c → #a76806 → #5d3a05 and the red
-// ramp is #ff4b52 → #d4090f → #8c0206, over the surface stack (#090302 page /
-// rgba(23,8,6) panel / #2a100a raised, #4d1f0d borders) with #f6e4c0 body text
-// and #cdb494 captions. #f0a80c is THE brand colour — the one that carries the
-// borders and the loader's outer ring; #d4090f is the second, and it is what
-// the inner ring is drawn in: that ring is the one place on this page where the
-// two-colour mark is legible at a glance.
+// Palette note for the second <style> block: ROOM89 is a GOLD casino brand with
+// a REAL SECOND COLOUR — brushed silver. The mark is the word ROOM in gold
+// letters beside the numerals 89 in silver/platinum, with a gold crown resting
+// on the 8; the banner and slide art are gold chips, coins and a roulette wheel
+// in a near-black room. So silver is a colour OF the mark, not a highlight on
+// the gold, and this page has to show both or it reads as a plain gold page.
+// The gold ramp is #f7edc4 → #e6cf72 → #c9a227 → #6b5424 → #3b2c10 and the
+// silver ramp is #e8ebef → #b9c2cc → #7c8794, over the surface stack (#0b0805
+// page / rgba(26,18,8) warm panel / #2a2f36 raised, rgba(59,44,16) borders)
+// with #f0e6cf body text and #b9c2cc captions. #e6cf72 is THE brand colour —
+// the one that carries the borders and the loader's outer ring; #b9c2cc is the
+// second, and it is what the inner ring is drawn in: that ring is the one place
+// on this page where the two-colour mark is legible at a glance.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
@@ -54,9 +54,10 @@ const fontHref = usesGoogleFonts
 // `--gold-light` that held the brand's SECOND accent, not its primary — so the
 // next editor reused it by name and got the wrong role. Rename with the value,
 // and re-check the role when the palette changes shape. (This round the second
-// colour moved from a grey graphite to oxblood red, so `--graphite-pale` became
-// the `--red-*` trio rather than keeping a name that no longer describes what it
-// holds.)
+// colour moved from an oxblood red to brushed silver, so the `--red-*` trio
+// became `--silver-*` rather than keeping a name that no longer describes what
+// it holds, and `--gold-primary` now holds the brand accent itself with
+// `--gold-mid` carrying the darker step it used to sit on.)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -64,10 +65,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ CK1968 | ทางเข้าสล็อตเว็บตรง แบรนด์แท้ 100% ระบบออโต้</title>
+    <title>เข้าสู่ระบบ ROOM89 | ทางเข้าสล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ของจริง</title>
     <meta
       name="description"
-      content="เข้าสู่ระบบ CK1968 สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นสล็อตเว็บตรงแบรนด์แท้ 100% API แท้จากค่ายเกม ระบบออโต้ ฝากถอนไม่มีขั้นต่ำ"
+      content="เข้าสู่ระบบ ROOM89 สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นสล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ของจริงยกค่าย ฝากถอนออโต้เสร็จใน 3 วินาที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -109,20 +110,20 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #090302;
-        --panel-bg: rgba(23, 8, 6, 0.92);
-        --gold-pale: #ffefc4;
-        --gold-bright: #ffd45c;
-        --gold-primary: #f0a80c;
-        --gold-deep: #a76806;
-        --gold-dark: #5d3a05;
-        --red-bright: #ff4b52;
-        --red-primary: #d4090f;
-        --red-deep: #8c0206;
-        --surface-raised: #2a100a;
-        --border-warm: #4d1f0d;
-        --text-body: #f6e4c0;
-        --text-muted: #cdb494;
+        --page-bg: #0b0805;
+        --panel-bg: rgba(26, 18, 8, 0.92);
+        --gold-pale: #f7edc4;
+        --gold-primary: #e6cf72;
+        --gold-mid: #c9a227;
+        --gold-deep: #6b5424;
+        --gold-dark: #3b2c10;
+        --silver-bright: #e8ebef;
+        --silver-primary: #b9c2cc;
+        --silver-deep: #7c8794;
+        --surface-raised: #2a2f36;
+        --border-gold: #3b2c10;
+        --text-body: #f0e6cf;
+        --text-muted: #b9c2cc;
       }
 
       body {
@@ -130,7 +131,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(240, 168, 12, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(212, 9, 15, 0.16) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(230, 207, 114, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(185, 194, 204, 0.16) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -144,11 +145,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(77, 31, 13, 0.75);
+        border: 1px solid rgba(59, 44, 16, 0.75);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(3, 1, 1, 0.7),
-          0 0 2rem rgba(240, 168, 12, 0.18);
+          0 1rem 3rem rgba(2, 2, 3, 0.7),
+          0 0 2rem rgba(230, 207, 114, 0.18);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -157,13 +158,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--gold-pale) 0%, var(--gold-bright) 35%, var(--gold-primary) 70%, var(--gold-deep) 100%);
+        background: linear-gradient(180deg, var(--gold-pale) 0%, var(--gold-primary) 35%, var(--gold-mid) 70%, var(--gold-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(93, 58, 5, 0.6));
+        filter: drop-shadow(0 1px 2px rgba(59, 44, 16, 0.6));
       }
 
       .sophisticated-loader {
@@ -181,14 +182,14 @@ const fontHref = usesGoogleFonts
         height: 40px;
         background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-primary) 45%, var(--gold-dark) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(240, 168, 12, 0.4);
+        box-shadow: 0 0 2rem rgba(230, 207, 114, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(77, 31, 13, 0.55);
+        border: 3px solid rgba(59, 44, 16, 0.55);
         animation: spin linear infinite;
       }
 
@@ -202,7 +203,7 @@ const fontHref = usesGoogleFonts
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--red-primary);
+        border-bottom-color: var(--silver-primary);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -219,11 +220,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(240, 168, 12, 0.4);
+          box-shadow: 0 0 2rem rgba(230, 207, 114, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(255, 212, 92, 0.42);
+          box-shadow: 0 0 3rem rgba(247, 237, 196, 0.42);
         }
       }
 
@@ -247,7 +248,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">CK1968</div>
+      <div class="brand-identity">ROOM89</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -257,7 +258,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ CK1968 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ ROOM89 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

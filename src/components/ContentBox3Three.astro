@@ -9,44 +9,44 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright, label } = Astro.props;
 
-// AWIN8: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
+// ROOM89: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
 // Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
-// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่น้ำเงินรอยัลคู่ทองส้ม
-// บนกรมท่าเกือบดำ — น้ำเงิน #1f6fea / #7fb2ff / #0d3f9e / #07265e คู่ทองส้ม
-// #fca311 / #ffd27a บนผิว #02081c / #040e22 / #08172f เนื้อความ #d8e6fb ข้อความรอง
-// #9db4d6 ตัวอักษรสว่าง #e8f1ff
+// ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่ทองคำขัดเงาคู่เงิน
+// แพลตินัมบนดำอมน้ำตาล — ทอง #f7edc4 / #e6cf72 / #c9a227 / #6b5424 / #3b2c10
+// คู่เงิน #e8ebef / #b9c2cc / #7c8794 / #2a2f36 บนผิว #0b0805 / #161009 / #1a1208
+// เนื้อความ #f0e6cf ข้อความรอง #c2b493
 //
 // HEADINGS: หัวคอลัมน์ทั้งสามเป็น <p> ไม่ใช่หัวข้อ — มันตั้งชื่อคอลัมน์ ไม่ใช่
 // section ของ docx ส่วน prop `title` คือหัวข้อเดียวที่ component นี้ปล่อยออกมาได้
 //
-// รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 5 เรื่องฟีเจอร์ใหม่น่าลอง ไอคอนสามใบจึงตรงกับ
-// สามฟีเจอร์ในย่อหน้านั้น: ตัวคูณทวีคูณที่สุ่มตกลงมา สัญลักษณ์ไวลด์/ซื้อฟรีสปิน
-// และการฉีกกฎการหมุนแบบเดิม
+// รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 4 เรื่องเกมหลายสไตล์ให้สลับเล่น ไอคอนสามใบจึงตรง
+// กับสามสไตล์ที่ย่อหน้านั้นเอ่ยชื่อไว้: สายคอมโบแตกนอก สายซื้อฟีเจอร์พุ่งชนฟรีสปิน
+// และแนวคลาสสิกตัวคูณหนัก
 const sectionLabel = title ? undefined : (label ?? titleleft ?? titlecenter ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#0d3f9e]/35 bg-[#040e22]/90 p-8 text-[#d8e6fb] shadow-[0_10px_30px_rgba(7,38,94,0.2)] backdrop-blur-xl transition-all duration-500 hover:border-[#1f6fea]/55 md:p-10">
-    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#08172f]/80 blur-[60px] transition-all duration-500 group-hover:bg-[#0d3f9e]/45"></div>
-    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#040e22]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#07265e]/50"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#6b5424]/35 bg-[#161009]/90 p-8 text-[#f0e6cf] shadow-[0_10px_30px_rgba(59,44,16,0.4)] backdrop-blur-xl transition-all duration-500 hover:border-[#c9a227]/55 md:p-10">
+    <div class="pointer-events-none absolute -top-24 -left-24 -z-10 h-48 w-48 rounded-full bg-[#1a1208]/80 blur-[60px] transition-all duration-500 group-hover:bg-[#c9a227]/35"></div>
+    <div class="pointer-events-none absolute -right-24 -bottom-24 -z-10 h-48 w-48 rounded-full bg-[#2a2f36]/70 blur-[60px] transition-all duration-500 group-hover:bg-[#7c8794]/40"></div>
 
     {
       title && (
-        <header class="relative z-10 mb-8 flex items-center gap-4 border-b border-[#0d3f9e]/35 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#e8f1ff] via-[#1f6fea] to-[#07265e] shadow-[0_0_10px_rgba(31,111,234,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#e8f1ff] via-[#7fb2ff] to-[#fca311] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="relative z-10 mb-8 flex items-center gap-4 border-b border-[#6b5424]/35 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f7edc4] via-[#c9a227] to-[#7c8794] shadow-[0_0_10px_rgba(201,162,39,0.5)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#b9c2cc] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-3">
       <article
-        class="flex flex-col gap-3 border-b border-[#07265e]/70 pb-8 text-left text-base leading-relaxed text-[#d8e6fb] transition-all hover:-translate-y-1 md:border-r md:border-b-0 md:pr-8 md:pb-0">
+        class="flex flex-col gap-3 border-b border-[#3b2c10]/70 pb-8 text-left text-base leading-relaxed text-[#f0e6cf] transition-all hover:-translate-y-1 md:border-r md:border-b-0 md:pr-8 md:pb-0">
         {
           titleleft && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#7fb2ff] uppercase">
-              <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_8px_rgba(31,111,234,0.8)]">
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#e6cf72] uppercase">
+              <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_8px_rgba(230,207,114,0.8)]">
                 💥
               </span>
               {titleleft}
@@ -57,12 +57,12 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titlecenter ?? t
       </article>
 
       <article
-        class="flex flex-col gap-3 border-b border-[#07265e]/70 pb-8 text-left text-base leading-relaxed text-[#d8e6fb] transition-all hover:-translate-y-1 md:border-r md:border-b-0 md:px-4 md:pb-0">
+        class="flex flex-col gap-3 border-b border-[#3b2c10]/70 pb-8 text-left text-base leading-relaxed text-[#f0e6cf] transition-all hover:-translate-y-1 md:border-r md:border-b-0 md:px-4 md:pb-0">
         {
           titlecenter && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#7fb2ff] uppercase">
-              <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_8px_rgba(31,111,234,0.8)]">
-                🃏
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#e6cf72] uppercase">
+              <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_8px_rgba(230,207,114,0.8)]">
+                🎟️
               </span>
               {titlecenter}
             </p>
@@ -71,12 +71,12 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titlecenter ?? t
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#d8e6fb] transition-all hover:-translate-y-1 md:pl-8">
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f0e6cf] transition-all hover:-translate-y-1 md:pl-8">
         {
           titleright && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#7fb2ff] uppercase">
-              <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_8px_rgba(31,111,234,0.8)]">
-                🚀
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#b9c2cc] uppercase">
+              <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_8px_rgba(185,194,204,0.8)]">
+                🎰
               </span>
               {titleright}
             </p>

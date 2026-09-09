@@ -5,16 +5,17 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h1" } = Astro.props;
 
-// CK1968: ย้ายจากทองแอนทีคอมน้ำผึ้งคู่กราไฟต์ของแบรนด์ก่อน มาเป็นทองคำคู่แดง
-// เลือดหมูบนดำอมน้ำตาล — ทอง #ffefc4 / #ffd45c / #f0a80c / #a76806 / #5d3a05
-// คู่แดง #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 / #2a100a ขอบ
-// #4d1f0d เนื้อความ #f6e4c0
+// ROOM89: ย้ายจากทองคำคู่แดงเลือดหมูของแบรนด์ก่อน มาเป็นทองคำขัดเงาคู่เงิน
+// แพลตินัมบนดำอมน้ำตาล — ทอง #f7edc4 / #e6cf72 / #c9a227 / #6b5424 / #3b2c10
+// คู่เงิน #e8ebef / #b9c2cc / #7c8794 บนผิว #0b0805 / #161009 / #1a1208 ขอบ
+// #4a3a18 เนื้อความ #f0e6cf
 //
-// อาร์ตเวิร์กรอบนี้เป็นวงแหวนทองคำ: ตัว C เป็นทองคำสามมิติ ส่วนตัว K เป็นแดง
-// เลือดหมูขอบทอง มงกุฎประดับทับทิมแดง ไพ่ K Q J เป็นชุดแดง — แดงจึงเป็นสีที่สอง
-// จริง ไม่ใช่เงาของทอง ค่า vivid ของโลโก้เด่นสุดคือแดง #a40205 กับ #c3020a ส่วน
-// ค่า dominant ของแบนเนอร์กับสไลด์เป็นดำอมน้ำตาลซึ่งคือพื้นหลัง ไม่ใช่สีเน้น —
-// palette.json จัดอันดับให้ แต่ไม่ได้ตีความให้
+// อาร์ตเวิร์กรอบนี้คือโลโก้ที่คำว่า ROOM เป็นทองคำสามมิติ ส่วนเลข 89 เป็นเงิน
+// แพลตินัม มีมงกุฎทองประดับเหนือเลข 8 — เงินจึงเป็นสีที่สองจริง ไม่ใช่เงาของทอง
+// ค่า vivid ของโลโก้เด่นสุดคือทอง #f6ebbc / #ebdd93 / #e3d36c / #6b5424 ส่วน
+// ค่า dominant ของโลโก้เป็นเทาเงิน #ebebeb / #e4e4e4 และ dominant ของแบนเนอร์
+// เป็นดำอมน้ำตาลซึ่งคือพื้นหลัง ไม่ใช่สีเน้น — palette.json จัดอันดับให้ แต่ไม่ได้
+// ตีความให้
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
@@ -22,8 +23,9 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 // ไฟล์นี้เป็นการ์ดถาวรของ terms/privacy — ข้างในสองหน้านั้นไม่ระบุสีเลยโดยตั้งใจ
 // สีเนื้อความจึงต้องอยู่บนการ์ดใบนี้เสมอ ห้ามย้ายออก และนี่คือเหตุผลที่สองหน้านั้น
 // หมุน variant ตาม index ไม่ได้ในรอบไหนก็ตาม รอบนี้หน้าย่อยอื่น (promotion /
-// about-us / contact-us / ทางเข้า / ทดลองเล่น) ใช้การ์ดใบนี้ด้วย ส่วนหน้าแรกหมุน
-// ไปใช้ทรง Premium / FloatingBadge / Special ทั้งหมดจึงไม่ได้เรียกใบนี้รอบนี้
+// about-us / contact-us / ทางเข้า / ทดลองเล่น) ใช้การ์ดใบนี้ด้วย และหน้าแรกก็เรียก
+// ใบนี้หนึ่งครั้ง (หัวข้อ docx ข้อ 6) เพราะรอบนี้ทรงหน้าแรกหมุนเป็นชุด CyberCut /
+// Neumorphism / plain
 //
 // การ์ดใบนี้ flatten แล้ว (isolate บนการ์ด + -z-10 บนเลเยอร์ตกแต่ง) ห้ามใส่
 // wrapper <div class="relative z-10"> กลับเข้ามา
@@ -31,15 +33,15 @@ const { title, as: HeadingTag = "h1" } = Astro.props;
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#4d1f0d]/75 bg-[#170806]/90 p-8 text-left text-base leading-relaxed text-[#f6e4c0] shadow-[0_10px_30px_rgba(93,58,5,0.4)] backdrop-blur-xl transition-all duration-500 hover:border-[#f0a80c]/60 hover:shadow-[0_15px_40px_rgba(240,168,12,0.3)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#2a100a]/75 blur-[60px] transition-all duration-500 group-hover:bg-[#f0a80c]/35"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#3d0203]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#d4090f]/30"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#4a3a18]/75 bg-[#161009]/90 p-8 text-left text-base leading-relaxed text-[#f0e6cf] shadow-[0_10px_30px_rgba(59,44,16,0.4)] backdrop-blur-xl transition-all duration-500 hover:border-[#c9a227]/60 hover:shadow-[0_15px_40px_rgba(201,162,39,0.3)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#1a1208]/75 blur-[60px] transition-all duration-500 group-hover:bg-[#c9a227]/35"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#2a2f36]/60 blur-[60px] transition-all duration-500 group-hover:bg-[#b9c2cc]/30"></div>
 
     {
       title && (
-        <header class="mb-6 flex items-center gap-4 border-b border-[#4d1f0d]/75 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#ffefc4] via-[#f0a80c] to-[#8c0206] shadow-[0_0_10px_rgba(240,168,12,0.6)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#a76806] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-6 flex items-center gap-4 border-b border-[#4a3a18]/75 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f7edc4] via-[#c9a227] to-[#7c8794] shadow-[0_0_10px_rgba(201,162,39,0.6)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#6b5424] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }

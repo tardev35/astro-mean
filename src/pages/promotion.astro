@@ -2,47 +2,46 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement3.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
-// CK1968: ticker หมุนมาเป็น Announcement3 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
+// ROOM89: ticker หมุนมาเป็น Announcement5 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
 // (การ์ดถาวรของหน้าย่อย) เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
 // variant นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
-// สีย้ายจากทองแอนทีคอมน้ำผึ้งคู่กราไฟต์ของแบรนด์ก่อน มาเป็นทองคำคู่แดงเลือดหมูบน
-// ดำอมน้ำตาล — ทอง #ffefc4 / #ffd45c / #f0a80c / #a76806 / #5d3a05 คู่แดง
-// #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 / #2a100a ขอบ #4d1f0d
+// สีย้ายจากทองคำคู่แดงเลือดหมูของแบรนด์ก่อน มาเป็นทองคำขัดเงาคู่เงินแพลตินัมบน
+// ดำอมน้ำตาล — ทอง #f7edc4 / #e6cf72 / #c9a227 / #6b5424 / #3b2c10 คู่เงิน
+// #e8ebef / #b9c2cc / #7c8794 / #2a2f36 บนผิว #0b0805 / #161009 ขอบ #4a3a18
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the page's
 // single h1), ONE short intro paragraph, the promo image grid, one CTA. Nothing
 // else — no second-level headings, no section paragraphs. The artwork already
-// prints its own offer in large type, so prose below it re-types what the
+// prints its own message in large type, so prose below it re-types what the
 // visitor can already read, in smaller letters. The docx gives this page no
 // body at all; the seven article sections a previous rebrand invented here, and
 // every rebrand since faithfully rewrote, were removed on 2026-09-07.
 // Final inventory for this page is h1 ×1, and no headings below it.
 //
-// ตัวแปรตั้งชื่อตามข้อความที่พิมพ์อยู่บนอาร์ตจริง ไม่ได้ตั้งตามเลขท้ายชื่อไฟล์
-// ดรอปวันที่ 2026-09-09 ให้สไลด์มาสี่ใบ และลงกริดครบทั้งสี่ใบ:
-//   ใบที่ 1 = สมาชิกใหม่ รับโบนัสเพิ่ม 100% · ฝากขั้นต่ำ 100 · ทำเทิร์น 3 เท่า
-//   ใบที่ 2 = ฝากติดต่อกัน 7 วัน รับเครดิตฟรี 100 บาท
-//   ใบที่ 3 = คืนยอดเสีย รับเครดิตคืนสูงสุด 10% ทุกวัน
-//   ใบที่ 4 = ชวนเพื่อน รับทันที 20% จากยอดเสียเพื่อน
-// ดรอปรอบนี้เป็นอาร์ตแนวนอน 600x270 (ใบแรก) และ 600x240 (อีกสามใบ) ไม่ใช่จัตุรัส
-// เหมือนดรอปก่อน กริดสองคอลัมน์จึงยังเรียงลงตัว แต่ถ้าดรอปหน้าเปลี่ยนสัดส่วนอีก
-// ให้ไล่เช็ก imageSizes กับ widthLadder ใหม่ทุกครั้ง
+// ดรอปวันที่ 2026-09-10 ให้สไลด์ที่ใช้ได้สามใบ (slide1-3) ทั้งหมด 600x300
+// ลงกริดครบทั้งสามใบ ตั้งชื่อตัวแปรตามสิ่งที่พิมพ์อยู่บนอาร์ตจริง:
+//   slide1 = เกม PG SLOT ผ่านการรับรอง + โลโก้หน่วยรับรองสี่อัน
+//   slide2 = คำชมจากลูกค้า + ใบรับรองเปิดคาสิโนออนไลน์ถูกกฎหมาย
+//   slide3 = เว็บพนันออนไลน์ที่เดียวครบวงจร แหล่งรวมสล็อต บาคาร่า หวย กีฬา
+// slide4.png เป็นอาร์ตของแบรนด์ก่อน (ลงวันที่ 2026-09-09 พิมพ์โลโก้แบรนด์เก่าไว้บน
+// ภาพ) จึงถอด import ออกจากหน้านี้แล้ว — รูปที่ import คือรูปที่ถูก emit ลง dist
+// เสมอ ต่อให้ไม่มีใคร render
 //
-// ไฟล์ banner ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ห้าม import ที่นี่เด็ดขาด —
-// รูปที่ import แล้วคือรูปที่ถูก emit ลง dist เสมอ ต่อให้ไม่มีใคร render ส่วนไฟล์
-// hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
+// ไฟล์ banner ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ห้าม import ที่นี่เด็ดขาด
+// ส่วนไฟล์ hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
 //
-// alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความที่พิมพ์บนอาร์ตและฉาก — ทั้งสี่ไฟล์
-// เปิดดูแล้วถอดองค์ประกอบมาเขียนตามนั้น
-import promoWelcome100 from "../assets/slide1.png";
-import promoDeposit7Days from "../assets/slide2.png";
-import promoCashback10 from "../assets/slide3.png";
-import promoReferral20 from "../assets/slide4.png";
+// alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความที่พิมพ์บนอาร์ตและฉาก — เปิดดูทั้ง
+// สามไฟล์แล้วถอดองค์ประกอบมาเขียนตามนั้น ข้อยกเว้นเดียวคือชื่อโดเมนที่พิมพ์ตัวใหญ่
+// อยู่ท้าย slide3 ซึ่งไม่ตรงกับโดเมนจริงของแบรนด์ จึงเขียนว่า "ชื่อเว็บไซต์ตัวใหญ่
+// สีทอง" แทนการพิมพ์ข้อความนั้นลงไป
+import promoCertifiedPgSlot from "../assets/slide1.png";
+import promoCustomerPraise from "../assets/slide2.png";
+import promoAllInOne from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
@@ -50,12 +49,12 @@ import { pageGraph } from "../lib/schema";
 // byte count reads ~3x too long). This one measures 156. It says what the page
 // is for in one sentence and stops — it is not a table of contents.
 const pageDescription =
-  "หน้ารวมโปรโมชั่นทั้งหมดของ CK1968 ที่เปิดให้สมาชิกกดรับเองได้ในรอบนี้ ดูอัตราโบนัส เงื่อนไขเทิร์น และยอดที่ถอนได้ของแต่ละรายการได้ครบจากภาพก่อนตัดสินใจสมัคร";
+  "รวมโปรโมชั่นของ ROOM89 ที่เปิดให้สมาชิกกดรับเองได้ในรอบนี้ ทั้งโบนัสฝากแรกของวันและเครดิตคืนยอดเสีย Cash Back เงื่อนไขอ่านจบได้ก่อนกด ถอนได้จริงไม่ติดเทิร์น";
 
-const pageTitle = "โปรโมชั่น CK1968 | สมาชิกใหม่รับ 100% คืนยอดเสีย 10% ชวนเพื่อนรับ 20%";
+const pageTitle = "โปรโมชั่น ROOM89 | โบนัสฝากแรกของวันและเครดิตคืนยอดเสีย Cash Back";
 
 // หัวข้อระดับ h1 ของหน้า แยกจากค่า title เพราะ title มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น CK1968 รวมสิทธิ์และข้อเสนอที่เปิดให้กดรับอยู่ในรอบนี้";
+const pageHeading = "โปรโมชั่น ROOM89 รวมสิทธิ์และโบนัสที่เปิดให้กดรับเองอยู่ในรอบนี้";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -64,7 +63,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoWelcome100.src,
+  primaryImagePath: promoCertifiedPgSlot.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -79,12 +78,12 @@ const graph = pageGraph(Astro, {
 const imageSizes =
   "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบน้ำตาลแดงล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นทองหลักตอน hover
+// ขอบทองเข้มล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นทองหลักตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#4d1f0d]/80 object-contain shadow-[0_10px_30px_rgba(93,58,5,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#f0a80c]/70 hover:shadow-[0_15px_40px_rgba(240,168,12,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#4a3a18]/80 object-contain shadow-[0_10px_30px_rgba(59,44,16,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e6cf72]/70 hover:shadow-[0_15px_40px_rgba(230,207,114,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
-// intrinsic width (600px for all four promo images here) so a sharp upscale never
+// intrinsic width (600px for all three promo images here) so a sharp upscale never
 // becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
   const steps = [384, 576, 648].filter((w) => w < img.width);
@@ -93,20 +92,16 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoWelcome100,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำอมน้ำตาล มุมซ้ายเป็นโลโก้วงแหวนทอง CK1968 ตัว C ทองคู่ตัว K แดงใต้มงกุฎและไพ่ ตัวอักษรทองตรงกลางเขียนว่า สมาชิกใหม่ รับโบนัสเพิ่ม 100% ด้านขวาเป็นหญิงสาวสองคนกำลังคลี่ปึกธนบัตรออกให้ดู ครึ่งล่างเป็นตารางทองสองฝั่งไล่ว่า ฝาก 100 โบนัส 200 ถอนได้ 400 · ฝาก 200 โบนัส 400 ถอนได้ 800 · ฝาก 300 โบนัส 600 ถอนได้ 1200 · ฝาก 400 โบนัส 800 ถอนได้ 1600 · ฝาก 500 โบนัส 1000 ถอนได้ 2000 พร้อมช่อง ฝากเงินขั้นต่ำ 100 บาท และแถบล่างสุดว่า ทำยอดเทิร์น 3 เท่า ถอนได้ทันที",
+    src: promoCertifiedPgSlot,
+    alt: "แบนเนอร์แนวนอนพื้นดำลายทอง ด้านบนเป็นโลโก้ ROOM89 ตัวอักษร ROOM สีทองคู่เลข 89 สีเงินใต้มงกุฎทอง พร้อมบรรทัดว่า THE BEST ONLINE BETTING COMPANY ตัวอักษรทองกลางภาพเขียนว่า เกม PG SLOT ผ่านการรับรอง ใต้ลงมาเป็นป้ายสีขาวสี่อันของหน่วยรับรอง bmm testlabs · MGA · Gambling Commission · Gaming Associates ซ้ายภาพเป็นรูปปั้นพระพิฆเนศทองนั่งบนดอกบัว ขวาภาพเป็นเสือขาวยืนถือถุงเงิน แถบล่างสุดเป็นป้ายไลน์สีเขียวเขียนไอดี @744itjuf คู่กับป้าย truemoney wallet",
   },
   {
-    src: promoDeposit7Days,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำอมน้ำตาล มุมซ้ายบนเป็นโลโก้ CK1968 พร้อมบรรทัดว่า SPORT BETTING และ CASINO ONLINE ตัวอักษรทองขนาดใหญ่เขียนว่า ฝากติดต่อกัน 7 วัน รับเครดิตฟรี 100 บาท ใต้ลงมาเป็นช่องวันที่ 1 ถึงวันที่ 7 เรียงกันโดยแต่ละช่องมีเครื่องหมายถูกสีทอง ถัดไปเป็นป้ายสามอันว่า ฝากขั้นต่ำ 100 บาท · ติดต่อกัน 7 วัน · รับเครดิตฟรี 100 บาท ฉากขวาเป็นกองเหรียญทองล้นหีบสมบัติใต้โคมระย้า มุมขวาบนเป็นป้ายว่า ยิ่งฝาก ยิ่งได้ รับไปเลย และมุมขวาล่างเป็นป้ายไลน์สีเขียวเขียนว่า แอดไลน์เลย @435syski",
+    src: promoCustomerPraise,
+    alt: "แบนเนอร์แนวนอนพื้นดำลายทอง ด้านบนเป็นโลโก้ ROOM89 ตัวอักษร ROOM สีทองคู่เลข 89 สีเงินใต้มงกุฎทอง ซ้ายภาพเป็นตัวอักษรทองขนาดใหญ่เขียนว่า คำชม!! จากลูกค้ากว่าหมื่นคน++ ล้อมด้วยภาพแคปหน้าจอแชตรีวิวของสมาชิกหลายอัน กลางภาพเป็นหญิงสาวในชุดราตรีสีแดงยืนคู่กับพนักงานหญิงในชุดกัปตันสีขาว มีวงล้อรูเล็ตอยู่ด้านหลัง ขวาภาพเป็นใบรับรองสองใบพร้อมข้อความว่า ได้รับใบรับรอง · เปิดคาสิโนออนไลน์ถูกกฎหมาย · การันตี ไม่มีโกง ถอนได้ทุกยอด · มีใบเซอร์การันตี การเงินมั่นคง",
   },
   {
-    src: promoCashback10,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำอมน้ำตาล มุมซ้ายบนเป็นโลโก้ CK1968 พร้อมบรรทัดว่า SPORT BETTING และ CASINO ONLINE ตัวอักษรทองเรียงลงมาว่า คืนยอดเสีย รับเครดิตคืนสูงสุด และ เล่นได้ ไม่ต้องกลัวเสีย คู่กับเลข 10% ตัวใหญ่กลางภาพและป้ายมุมว่า ทุกวัน ฉากขวาเป็นไพ่เอสี่ดอกเรียงกันใต้มงกุฎทองประดับอัญมณีแดง ข้างเลข 777 สีทองบนกองเหรียญ แถบล่างเป็นป้ายสี่อันว่า คืนยอดเสียอัตโนมัติ · รับได้ทุกวัน · เล่นมาก คืนมาก · ถอนจริงไม่มีอั้น และมุมขวาล่างเป็นป้ายไลน์สีเขียวเขียนว่า แอดไลน์เลย @435syski",
-  },
-  {
-    src: promoReferral20,
-    alt: "แบนเนอร์โปรโมชั่นแนวนอนพื้นดำอมน้ำตาล มุมซ้ายบนเป็นโลโก้ CK1968 พร้อมบรรทัดว่า SPORT BETTING และ CASINO ONLINE ตัวอักษรทองเรียงลงมาว่า ชวนเพื่อน รับทันที และ จากยอดเสียเพื่อน คู่กับเลข 20% ตัวใหญ่กลางภาพ ฉากขวาเป็นหญิงสาวสองคนในชุดดำยืนคู่กัน คนหนึ่งชูโทรศัพท์มือถือและอีกคนถือกล่องของขวัญผูกโบว์ทอง มุมขวาบนเป็นป้ายว่า ยิ่งชวนเยอะ ยิ่งได้เยอะ แถบล่างเป็นป้ายสี่อันว่า ชวนง่ายแค่บอกต่อ · รับเลย 20% จากยอดเสียเพื่อน · รับรายได้ไม่จำกัด · ยิ่งชวนมาก ยิ่งรวยมาก และมุมขวาล่างเป็นป้ายไลน์สีเขียวเขียนว่า แอดไลน์เลย @435syski",
+    src: promoAllInOne,
+    alt: "แบนเนอร์แนวนอนพื้นดำลายทอง ด้านบนเป็นโลโก้ ROOM89 ตัวอักษร ROOM สีทองคู่เลข 89 สีเงินใต้มงกุฎทอง ซ้ายภาพเป็นโทรศัพท์มือถือแสดงหน้าเข้าสู่ระบบของเว็บ กลางภาพเป็นตัวการ์ตูนหมูป่า แมวกวักทอง และไก่ ท่ามกลางเหรียญทองที่ปลิวอยู่ ตัวอักษรทางขวาเขียนว่า เว็บพนันออนไลน์ที่เดียวครบวงจร · เติมง่าย ถอนคล่อง กระเป๋าเดียวไม่ต้องโยกเงิน และตัวอักษรทองกลางล่างเขียนว่า แหล่งรวม สล็อต บาคาร่า หวย กีฬา แถบล่างสุดเป็นชื่อเว็บไซต์ตัวใหญ่สีทอง",
   },
 ];
 ---
@@ -119,10 +114,10 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        แบนเนอร์ด้านล่างคือโปรโมชั่นที่ <strong class="text-[#ffd45c]">CK1968</strong> เปิดให้กดรับอยู่ในรอบนี้ ทั้งโบนัสต้อนรับสำหรับสมาชิกใหม่ โปรฝากติดต่อกันรับเครดิตฟรี เครดิตคืนยอดเสียรายวัน และรายได้จากการชวนเพื่อน
-        อัตราที่ได้รับ ยอดฝากขั้นต่ำ และเงื่อนไขเทิร์นของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด เพราะแต่ละใบคิดคนละเงื่อนไขกัน
-        ทุกสิทธิ์เลือกกดรับเองได้จากหน้าแดชบอร์ดเดียว ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ ส่วนการฝากถอนเป็นงานของระบบออโต้ที่ทำรายการเสร็จในไม่กี่วินาที
-        และเมื่อถอน เราโอนจ่ายเต็มจำนวนตามยอดที่กด ไม่หักค่าธรรมเนียมและไม่แบ่งจ่ายเป็นงวด
+        ภาพด้านล่างคือสิ่งที่ <strong class="text-[#e6cf72]">ROOM89</strong> เปิดให้สมาชิกกดรับและใช้งานอยู่ในรอบนี้ ทั้งโบนัสฝากแรกของวันสำหรับสายลุย และระบบคืนยอดเสีย Cash Back ที่เก็บเครดิตกลับมาแก้ตัวได้
+        รายละเอียดของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด เพราะแต่ละใบคิดคนละเงื่อนไขกัน
+        ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเว็บโดยตรง ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ ส่วนการฝากถอนเป็นงานของระบบออโต้ไฮสปีดที่ทำรายการเสร็จภายใน 3 วินาที
+        เงื่อนไขทุกข้อเขียนไว้ให้อ่านจบได้ก่อนกด ถอนได้จริง และไม่ติดเทิร์นจุกจิกให้เสียอารมณ์
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -148,8 +143,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#ffd45c]/60 bg-gradient-to-r from-[#ffefc4] via-[#f0a80c] to-[#8c0206] px-10 py-3.5 text-xl font-black text-[#090302] shadow-[0_10px_30px_rgba(240,168,12,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(212,9,15,0.5)]">
-          สมัครสมาชิก CK1968
+          class="flex items-center justify-center rounded-lg border border-[#e6cf72]/60 bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#7c8794] px-10 py-3.5 text-xl font-black text-[#0b0805] shadow-[0_10px_30px_rgba(230,207,114,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(185,194,204,0.5)]">
+          สมัครสมาชิก ROOM89
         </a>
       </div>
     </div>
