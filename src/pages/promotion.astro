@@ -2,16 +2,16 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 
 import { Picture } from "astro:assets";
 
-// ROOM89: ticker หมุนมาเป็น Announcement5 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
+// JAICHUA: ticker หมุนมาเป็น AnnouncementPremium ส่วนกล่องหน้าย่อยยังเป็น ContentBox
 // (การ์ดถาวรของหน้าย่อย) เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
 // variant นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
-// สีย้ายจากทองคำคู่แดงเลือดหมูของแบรนด์ก่อน มาเป็นทองคำขัดเงาคู่เงินแพลตินัมบน
-// ดำอมน้ำตาล — ทอง #f7edc4 / #e6cf72 / #c9a227 / #6b5424 / #3b2c10 คู่เงิน
-// #e8ebef / #b9c2cc / #7c8794 / #2a2f36 บนผิว #0b0805 / #161009 ขอบ #4a3a18
+// สีย้ายจากน้ำเงินธงชาติคู่แดงบนกรมท่าเข้มของแบรนด์ก่อน มาเป็นทองคำคู่น้ำเงินรอยัล
+// บนกรมท่าเกือบดำ — ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 / #6d4a12 คู่น้ำเงิน
+// #cfe0fb / #5b8ede / #2f5fb0 / #16336b บนผิว #040915 / #0a1226 เนื้อความ #dce6f8
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the page's
@@ -19,42 +19,36 @@ import { Picture } from "astro:assets";
 // else — no second-level headings, no section paragraphs. The artwork already
 // prints its own message in large type, so prose below it re-types what the
 // visitor can already read, in smaller letters. The docx gives this page no
-// body at all; the seven article sections a previous rebrand invented here, and
-// every rebrand since faithfully rewrote, were removed on 2026-09-07.
-// Final inventory for this page is h1 ×1, and no headings below it.
+// body at all. Final inventory for this page is h1 ×1, and no headings below it.
 //
-// ดรอปวันที่ 2026-09-10 ให้สไลด์ที่ใช้ได้สามใบ (slide1-3) ทั้งหมด 600x300
-// ลงกริดครบทั้งสามใบ ตั้งชื่อตัวแปรตามสิ่งที่พิมพ์อยู่บนอาร์ตจริง:
-//   slide1 = เกม PG SLOT ผ่านการรับรอง + โลโก้หน่วยรับรองสี่อัน
-//   slide2 = คำชมจากลูกค้า + ใบรับรองเปิดคาสิโนออนไลน์ถูกกฎหมาย
-//   slide3 = เว็บพนันออนไลน์ที่เดียวครบวงจร แหล่งรวมสล็อต บาคาร่า หวย กีฬา
-// slide4.png เป็นอาร์ตของแบรนด์ก่อน (ลงวันที่ 2026-09-09 พิมพ์โลโก้แบรนด์เก่าไว้บน
-// ภาพ) จึงถอด import ออกจากหน้านี้แล้ว — รูปที่ import คือรูปที่ถูก emit ลง dist
-// เสมอ ต่อให้ไม่มีใคร render
+// ดรอปรอบนี้มีสไลด์สี่ใบ แต่กริดลงได้แค่สามใบ ตั้งชื่อตัวแปรตามสิ่งที่พิมพ์บนอาร์ตจริง:
+//   slide1 = รับยอดเสีย 5% ทุกวัน
+//   slide2 = ระบบสร้างรายได้ แนะนำเพื่อน รับค่าคอมมิชชั่น
+//   slide3 = รองรับ TrueMoney Wallet
+// slide4 (ทุกยอดฝาก 500 ขึ้นไป รับสิทธิ์หมุนวงล้อ) ถูกตัดออกทั้ง import และกริด
+// เพราะอาร์ตใบนั้นมีลายน้ำโลโก้ของแบรนด์อื่นอยู่มุมซ้ายบน — ห้ามส่งขึ้นเว็บนี้
+// และ import คือการ emit ปล่อยบรรทัด import ค้างไว้ก็เท่ากับอัปโหลดไฟล์นั้นอยู่ดี
 //
 // ไฟล์ banner ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ห้าม import ที่นี่เด็ดขาด
 // ส่วนไฟล์ hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
 //
 // alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความที่พิมพ์บนอาร์ตและฉาก — เปิดดูทั้ง
-// สามไฟล์แล้วถอดองค์ประกอบมาเขียนตามนั้น ข้อยกเว้นเดียวคือชื่อโดเมนที่พิมพ์ตัวใหญ่
-// อยู่ท้าย slide3 ซึ่งไม่ตรงกับโดเมนจริงของแบรนด์ จึงเขียนว่า "ชื่อเว็บไซต์ตัวใหญ่
-// สีทอง" แทนการพิมพ์ข้อความนั้นลงไป
-import promoCertifiedPgSlot from "../assets/slide1.png";
-import promoCustomerPraise from "../assets/slide2.png";
-import promoAllInOne from "../assets/slide3.png";
+// สามไฟล์แล้วถอดองค์ประกอบมาเขียนตามนั้น
+import promoCashback from "../assets/slide1.png";
+import promoReferral from "../assets/slide2.png";
+import promoTrueMoney from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 156. It says what the page
+// byte count reads ~3x too long). This one measures 158. It says what the page
 // is for in one sentence and stops — it is not a table of contents.
-const pageDescription =
-  "รวมโปรโมชั่นของ ROOM89 ที่เปิดให้สมาชิกกดรับเองได้ในรอบนี้ ทั้งโบนัสฝากแรกของวันและเครดิตคืนยอดเสีย Cash Back เงื่อนไขอ่านจบได้ก่อนกด ถอนได้จริงไม่ติดเทิร์น";
+const pageDescription = "รวมโปรโมชั่น JAICHUA สล็อตเว็บตรง ที่เปิดให้สมาชิกกดรับเองผ่านแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน";
 
-const pageTitle = "โปรโมชั่น ROOM89 | โบนัสฝากแรกของวันและเครดิตคืนยอดเสีย Cash Back";
+const pageTitle = "โปรโมชั่น JAICHUA | โบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และ Cash Back ทุกวัน";
 
 // หัวข้อระดับ h1 ของหน้า แยกจากค่า title เพราะ title มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น ROOM89 รวมสิทธิ์และโบนัสที่เปิดให้กดรับเองอยู่ในรอบนี้";
+const pageHeading = "โปรโมชั่น JAICHUA รวมสิทธิ์และโบนัสที่กดรับเองได้ผ่านหน้าแดชบอร์ด";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -63,7 +57,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoCertifiedPgSlot.src,
+  primaryImagePath: promoCashback.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -75,12 +69,11 @@ const graph = pageGraph(Astro, {
 //   640–767  : 2 คอลัมน์ + gap-6 ยังเป็น p-8         → (100vw - 7.5rem) / 2
 //   768–1431 : 2 คอลัมน์ + gap-6 ขยับเป็น p-10       → (100vw - 8.5rem) / 2
 //   ≥ 1432px : การ์ดชนเพดาน 1400px                   → (1400 - 5rem - 1.5rem) / 2 = 648px
-const imageSizes =
-  "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
+const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบทองเข้มล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นทองหลักตอน hover
+// ขอบทองเข้มล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นทองอ่อนตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#4a3a18]/80 object-contain shadow-[0_10px_30px_rgba(59,44,16,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#e6cf72]/70 hover:shadow-[0_15px_40px_rgba(230,207,114,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#a97722]/80 object-contain shadow-[0_10px_30px_rgba(22,39,78,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#f6d67e]/70 hover:shadow-[0_15px_40px_rgba(216,168,63,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
 // intrinsic width (600px for all three promo images here) so a sharp upscale never
@@ -92,16 +85,16 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoCertifiedPgSlot,
-    alt: "แบนเนอร์แนวนอนพื้นดำลายทอง ด้านบนเป็นโลโก้ ROOM89 ตัวอักษร ROOM สีทองคู่เลข 89 สีเงินใต้มงกุฎทอง พร้อมบรรทัดว่า THE BEST ONLINE BETTING COMPANY ตัวอักษรทองกลางภาพเขียนว่า เกม PG SLOT ผ่านการรับรอง ใต้ลงมาเป็นป้ายสีขาวสี่อันของหน่วยรับรอง bmm testlabs · MGA · Gambling Commission · Gaming Associates ซ้ายภาพเป็นรูปปั้นพระพิฆเนศทองนั่งบนดอกบัว ขวาภาพเป็นเสือขาวยืนถือถุงเงิน แถบล่างสุดเป็นป้ายไลน์สีเขียวเขียนไอดี @744itjuf คู่กับป้าย truemoney wallet",
+    src: promoCashback,
+    alt: "แบนเนอร์แนวนอนพื้นน้ำเงินไล่เฉดสว่างกลางภาพ ตัวอักษรขนาดใหญ่สีขาวเขียนว่า รับยอดเสีย บรรทัดถัดมาเป็นเลข 5% สีทองคู่กับคำว่า ทุกวัน ฝั่งขวาเป็นหญิงสาวผมยาวสวมชุดสีน้ำเงินยิ้มพลางถือพัดธนบัตรไว้ข้างหน้า ด้านล่างเป็นตู้สล็อตที่หน้าปัดขึ้นเลข 777 รอบภาพมีสัญลักษณ์ดอลลาร์สีทอง ลูกเต๋าและชิปคาสิโนสีฟ้าลอยอยู่",
   },
   {
-    src: promoCustomerPraise,
-    alt: "แบนเนอร์แนวนอนพื้นดำลายทอง ด้านบนเป็นโลโก้ ROOM89 ตัวอักษร ROOM สีทองคู่เลข 89 สีเงินใต้มงกุฎทอง ซ้ายภาพเป็นตัวอักษรทองขนาดใหญ่เขียนว่า คำชม!! จากลูกค้ากว่าหมื่นคน++ ล้อมด้วยภาพแคปหน้าจอแชตรีวิวของสมาชิกหลายอัน กลางภาพเป็นหญิงสาวในชุดราตรีสีแดงยืนคู่กับพนักงานหญิงในชุดกัปตันสีขาว มีวงล้อรูเล็ตอยู่ด้านหลัง ขวาภาพเป็นใบรับรองสองใบพร้อมข้อความว่า ได้รับใบรับรอง · เปิดคาสิโนออนไลน์ถูกกฎหมาย · การันตี ไม่มีโกง ถอนได้ทุกยอด · มีใบเซอร์การันตี การเงินมั่นคง",
+    src: promoReferral,
+    alt: "แบนเนอร์แนวนอนพื้นน้ำเงินเข้มไล่เฉด ตัวอักษรสีขาวเขียนว่า ระบบสร้างรายได้ ใต้ลงมาเป็นตัวอักษรสีทองสองบรรทัดว่า แนะนำเพื่อน และ รับค่าคอมมิชชั่น ฝั่งขวาเป็นหญิงสาวผมยาวสวมชุดสีฟ้ายืนอยู่ข้างตู้สล็อตที่มีเหรียญทองล้นออกมาจากหน้าปัด รอบภาพมีสัญลักษณ์ดอลลาร์สีทองและเหรียญเงินปลิวอยู่",
   },
   {
-    src: promoAllInOne,
-    alt: "แบนเนอร์แนวนอนพื้นดำลายทอง ด้านบนเป็นโลโก้ ROOM89 ตัวอักษร ROOM สีทองคู่เลข 89 สีเงินใต้มงกุฎทอง ซ้ายภาพเป็นโทรศัพท์มือถือแสดงหน้าเข้าสู่ระบบของเว็บ กลางภาพเป็นตัวการ์ตูนหมูป่า แมวกวักทอง และไก่ ท่ามกลางเหรียญทองที่ปลิวอยู่ ตัวอักษรทางขวาเขียนว่า เว็บพนันออนไลน์ที่เดียวครบวงจร · เติมง่าย ถอนคล่อง กระเป๋าเดียวไม่ต้องโยกเงิน และตัวอักษรทองกลางล่างเขียนว่า แหล่งรวม สล็อต บาคาร่า หวย กีฬา แถบล่างสุดเป็นชื่อเว็บไซต์ตัวใหญ่สีทอง",
+    src: promoTrueMoney,
+    alt: "แบนเนอร์แนวนอนพื้นน้ำเงินเข้ม ตัวอักษรสีขาวเขียนว่า รองรับ ใต้ลงมาเป็นตัวอักษรสีทองสองบรรทัดว่า TrueMoney Wallet ฝั่งขวาเป็นโทรศัพท์มือถือที่เปิดหน้าแอป TrueMoney Wallet โดยมีตัวการ์ตูนโจ๊กเกอร์ แมวดำสวมหมวกโจรสลัด และหมาชิบะสีเหลืองในถุงเหรียญยืนอยู่หน้าจอ มุมซ้ายล่างเป็นโลโก้ TrueMoney Wallet คู่กับป้าย Available on the App Store",
   },
 ];
 ---
@@ -114,10 +107,9 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        ภาพด้านล่างคือสิ่งที่ <strong class="text-[#e6cf72]">ROOM89</strong> เปิดให้สมาชิกกดรับและใช้งานอยู่ในรอบนี้ ทั้งโบนัสฝากแรกของวันสำหรับสายลุย และระบบคืนยอดเสีย Cash Back ที่เก็บเครดิตกลับมาแก้ตัวได้
-        รายละเอียดของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด เพราะแต่ละใบคิดคนละเงื่อนไขกัน
-        ทุกสิทธิ์เลือกกดรับเองได้จากหน้าเว็บโดยตรง ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ ส่วนการฝากถอนเป็นงานของระบบออโต้ไฮสปีดที่ทำรายการเสร็จภายใน 3 วินาที
-        เงื่อนไขทุกข้อเขียนไว้ให้อ่านจบได้ก่อนกด ถอนได้จริง และไม่ติดเทิร์นจุกจิกให้เสียอารมณ์
+        ภาพด้านล่างคือโปรโมชั่นที่ JAICHUA เปิดให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ดอยู่ในรอบนี้ ทั้งสิทธิ์คืนยอดเสีย Cash Back ทุกวัน ระบบแนะนำเพื่อนที่จ่ายค่าคอมมิชชั่นให้ต่อเนื่อง
+        และช่องทางเติมเงินที่รองรับ TrueMoney Wallet เต็มรูปแบบ รายละเอียดของแต่ละรายการ พิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด เพราะแต่ละใบคิดคนละเงื่อนไขกัน
+        ทุกสิทธิ์เลือกรับเองได้จากหน้าเว็บโดยตรง เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด และฝากถอนเป็นงานของระบบออโต้ที่ทำรายการเสร็จภายใน 3 วินาที ไม่ต้องส่งสลิปและไม่ต้องรอแอดมิน
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -143,8 +135,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#e6cf72]/60 bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#7c8794] px-10 py-3.5 text-xl font-black text-[#0b0805] shadow-[0_10px_30px_rgba(230,207,114,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(185,194,204,0.5)]">
-          สมัครสมาชิก ROOM89
+          class="flex items-center justify-center rounded-lg border border-[#f6d67e]/60 bg-gradient-to-r from-[#f6d67e] via-[#d8a83f] to-[#a97722] px-10 py-3.5 text-xl font-black text-[#040915] shadow-[0_10px_30px_rgba(216,168,63,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(246,214,126,0.5)]">
+          สมัครสมาชิก JAICHUA
         </a>
       </div>
     </div>

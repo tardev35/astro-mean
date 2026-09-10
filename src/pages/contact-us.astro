@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 
 import { Picture } from "astro:assets";
 import imgLine from "../assets/contact-line.webp";
@@ -15,7 +15,7 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // has ever appeared here was invented by a rebrand and pushed the buttons
 // further down. h2 and h3 here must both stay 0.
 //
-// The <h1> names what the page IS ("ติดต่อทีมงาน ROOM89"), not what an article
+// The <h1> names what the page IS ("ติดต่อทีมงาน JAICHUA"), not what an article
 // on it would argue. A title that previews a body reads as a broken promise
 // once the body is (correctly) absent.
 //
@@ -25,14 +25,14 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // the inherited text colour): that is what stops the previous brand's colour
 // being left behind here on the next launch.
 //
-// ROOM89: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox ตาม
+// JAICHUA: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยใช้ ContentBox ตาม
 // สเปกรอบนี้ (เรียก <Announcement /> เปล่าๆ เพราะ default message ของ variant
 // นี้เป็นข้อความของแบรนด์นี้แล้ว และตรงกับหน้าแรก)
 //
-// พาเลตต์รอบนี้เป็น "ทอง + เงิน บนพื้นเกือบดำ" และเงินคือสีที่สองจริง ไม่ใช่
-// เงาของทอง ปุ่มสมัครสมาชิกไล่สีทอง #f7edc4 / #e6cf72 / #6b5424 ขอบ #e6cf72
-// ตัวอักษรพื้นมืด #0b0805 · ปุ่มเข้าสู่ระบบไล่สีเงิน #7c8794 / #2a2f36 ขอบ
-// #b9c2cc เนื้อความ #e8ebef
+// พาเลตต์รอบนี้เป็น "ทองคำ + น้ำเงินรอยัล บนพื้นกรมท่าเกือบดำ" ทองเป็นสีนำและ
+// น้ำเงินเป็นสีรอง ปุ่มสมัครสมาชิกซึ่งเป็นปุ่มหลักไล่สีทอง #f6d67e / #d8a83f /
+// #a97722 ขอบ #f6d67e เนื้อความ #040915 · ปุ่มเข้าสู่ระบบไล่สีน้ำเงิน #2f5fb0 /
+// #16336b ขอบ #5b8ede เนื้อความ #fdf8ec
 // เขียว LINE คงเดิมเพราะเป็นสีแบรนด์ของ LINE ไม่ใช่สีของเว็บนี้
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
@@ -44,12 +44,11 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // reread. 150–160 CHARACTERS (Thai is 3 bytes/char, so a byte count reads ~3x
 // too long and will send you rewriting a description that was fine). This one
 // measures 156.
-const pageDescription =
-  "ช่องทางติดต่อทีมงาน ROOM89 สล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ ทักแอดมินผ่าน LINE Official สอบถามการเข้าเล่น แจ้งปัญหาฝากถอนออโต้ หรือขอรับสิทธิ์โปรโมชั่นใหม่";
+const pageDescription = "ช่องทางติดต่อทีมงาน JAICHUA สล็อตเว็บตรง ทักแอดมินผ่าน LINE Official สอบถามวิธีเข้าเกม แจ้งปัญหาฝากถอนออโต้ หรือขอรับสิทธิ์โปรโมชั่น มีทีมงานดูแลตลอด 24 ชม.";
 
 const graph = pageGraph(Astro, {
   type: "ContactPage",
-  name: "ติดต่อทีมงาน ROOM89",
+  name: "ติดต่อทีมงาน JAICHUA",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -57,7 +56,7 @@ const graph = pageGraph(Astro, {
   ],
   org: {
     alternateName:
-      "ROOM89 สล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ของจริง บวกกำไรเพลิน เว็บตรง API แท้ยิงตรงจากเซิร์ฟเวอร์หลักของค่ายเกมโดยไม่ผ่านเอเย่นต์ ค่า RTP เป๊ะตามสเปกโรงงาน ไม่มีการปรับลดเปอร์เซ็นต์แตกและไม่ล็อกยูสเซอร์ ขนค่ายระดับโลกอย่าง PG Soft, Pragmatic Play และ Joker Gaming มาให้เลือกแบบยกค่ายทุกหมวด พร้อมระบบฝากถอนออโต้ไฮสปีดที่ทำรายการเสร็จภายใน 3 วินาที รันบนเซิร์ฟเวอร์ความเร็วสูงต่อเนื่องตลอด 24 ชั่วโมง",
+      "JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เว็บตรง API แท้ ยิงตรงจากคลังเกมหลัก ไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงาน ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ด ไม่ล็อกยูส ขนค่ายเกมชั้นนำระดับโลกมาครบทั้ง PG Soft, Pragmatic Play และ Joker Gaming ทั้งสล็อตวิดีโอ 3D สล็อตตัวคูณสะสมโหด และสายซื้อฟีเจอร์ฟรีสปิน สลับเล่นได้ผ่านกระเป๋าเดียว อัดแน่นลูกเล่นแจกโบนัสทั้งตัวคูณ Multiplier สัญลักษณ์ Expanding Wild และคอมโบแตกต่อเนื่อง Cascading พร้อมสิทธิ์คืนยอดเสีย Cash Back ทุกวัน และระบบฝากถอนออโต้ไฮสปีดผ่าน Gateway ตรง รองรับทั้งธนาคารและ TrueMoney Wallet ทำรายการเสร็จใน 3 วินาที",
     contactPoints: [
       {
         contactType: "customer service",
@@ -79,21 +78,21 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ติดต่อ ROOM89 | ศูนย์บริการสมาชิกสล็อตล็อกเป้าเกมเด็ด ทักแอดมินผ่าน LINE" description={pageDescription}>
+<MainLayout title="ติดต่อ JAICHUA | ศูนย์บริการสมาชิกสล็อตเว็บตรง ทักแอดมินผ่าน LINE" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ติดต่อทีมงาน ROOM89" as="h1">
+  <ContentBox title="ติดต่อทีมงาน JAICHUA" as="h1">
     <div>
       <Picture
         src={imgLine}
-        alt="หญิงสาวผมยาวสีน้ำตาลยิ้ม สวมชุดเลื่อมสีชมพูคอวีและต่างหูระย้า ยืนกอดอกอยู่หลังแถบสีขาวที่มีไอคอน LINE สีเขียวและคำว่า Support ช่องทางแชตกับทีมงาน ROOM89"
+        alt="หญิงสาวผมยาวสีน้ำตาลยิ้ม สวมชุดเลื่อมสีชมพูคอวีและต่างหูระย้า ยืนกอดอกอยู่หลังแถบสีขาวที่มีไอคอน LINE สีเขียวและคำว่า Support ช่องทางแชตกับทีมงาน JAICHUA"
         loading="lazy"
         fetchpriority="low"
         widths={[200, 400, 600]}
         sizes="(max-width: 495px) calc(100vw - 6rem), 400px"
-        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(230,207,114,0.35)]"
+        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(216,168,63,0.35)]"
         decoding="async"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
@@ -128,15 +127,15 @@ const graph = pageGraph(Astro, {
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก ROOM89"
-          class="flex items-center justify-center rounded-lg border border-[#e6cf72]/70 bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#6b5424] px-8 py-3 font-extrabold text-[#0b0805] shadow-[0_10px_30px_rgba(230,207,114,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(247,237,196,0.5)]">
+          aria-label="สมัครสมาชิก JAICHUA"
+          class="flex items-center justify-center rounded-lg border border-[#f6d67e]/70 bg-gradient-to-r from-[#f6d67e] via-[#d8a83f] to-[#a97722] px-8 py-3 font-extrabold text-[#040915] shadow-[0_10px_30px_rgba(216,168,63,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(246,214,126,0.5)]">
           สมัครสมาชิก
         </a>
 
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ ROOM89"
-          class="flex items-center justify-center rounded-lg border border-[#b9c2cc]/60 bg-gradient-to-r from-[#7c8794] to-[#2a2f36] px-8 py-3 font-bold text-[#e8ebef] shadow-[0_4px_14px_rgba(124,135,148,0.45)] transition-transform hover:scale-105 hover:border-[#e6cf72] hover:shadow-[0_10px_30px_rgba(185,194,204,0.5)]">
+          aria-label="เข้าสู่ระบบ JAICHUA"
+          class="flex items-center justify-center rounded-lg border border-[#5b8ede]/60 bg-gradient-to-r from-[#2f5fb0] to-[#16336b] px-8 py-3 font-bold text-[#fdf8ec] shadow-[0_4px_14px_rgba(47,95,176,0.45)] transition-transform hover:scale-105 hover:border-[#cfe0fb] hover:shadow-[0_10px_30px_rgba(91,142,222,0.5)]">
           เข้าสู่ระบบ
         </a>
 

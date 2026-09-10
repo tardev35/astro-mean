@@ -3,7 +3,7 @@ export interface FeatureItem {
   icon: string;
   title: string;
   description: string;
-  accent?: "gold" | "silver";
+  accent?: "gold" | "blue";
 }
 
 export interface Props {
@@ -13,22 +13,23 @@ export interface Props {
 const { items } = Astro.props;
 
 // นี่คือที่เดียวบนหน้าแรกที่ได้รับอนุญาตให้มี <h3> — หัวข้อย่อยแบบ bullet ใต้
-// section ของ docx หนึ่งข้อ (ข้อ 5 ของ ROOM89: Multipliers ตัวคูณสะสม / Expanding
-// Wild ยืดเต็มรีล / Cascading แตกต่อเนื่องในสปินเดียว / Bonus Buy กดซื้อฟรีสปิน)
-// ส่วน h2 ของ section ยังอยู่ที่ ContentBoxTwoCyberCut ที่อยู่เหนือมัน
+// section ของ docx หนึ่งข้อ (ข้อ 5 ของ JAICHUA: ตัวคูณสะสม Multiplier /
+// Expanding Wild ขยายเต็มจอ / คอมโบแตกต่อเนื่อง Cascading) ส่วน h2 ของ section
+// ยังอยู่ที่ ContentBoxNeumorphism ที่อยู่เหนือมัน
 //
 // item.icon เป็นอิโมจิ/สัญลักษณ์ตกแต่งล้วน กล่องที่ครอบมันจึงต้องมี
 // aria-hidden="true" เสมอ ไม่งั้น screen reader จะอ่านชื่อ CLDR ของอิโมจินำหน้า
 // หัวข้อจริง และ verify-build จะฟ้องเป็น error ว่ามีอิโมจิอยู่นอก aria-hidden
 //
-// ROOM89: ย้ายจากทองคำคู่แดงเลือดหมูของแบรนด์ก่อน มาเป็นทองคำขัดเงาคู่เงิน
-// แพลตินัมบนดำอมน้ำตาล — ทอง #f7edc4 / #e6cf72 / #c9a227 / #6b5424 / #3b2c10
-// คู่เงิน #e8ebef / #b9c2cc / #7c8794 / #2a2f36 บนผิว #0b0805 / #161009 / #1a1208
-// ขอบ #4a3a18 เนื้อความ #f0e6cf ข้อความรอง #c2b493
+// JAICHUA: ย้ายจากชุดสีของแบรนด์ก่อน มาเป็นทองคำคู่น้ำเงินรอยัลบนกรมท่าเกือบดำ —
+// ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 / #6d4a12 คู่น้ำเงิน #cfe0fb / #5b8ede /
+// #2f5fb0 / #16336b บนผิว #040915 / #0a1226 / #0e1a33 / #132244 ขอบ #6d4a12
+// เนื้อความ #dce6f8 ข้อความรอง #a9b7d4
 //
-// คีย์ accent สองตัวตรงกับสองโลหะบนโลโก้จริง: "gold" คือคำว่า ROOM ตัวอักษรทองคำ
-// กับมงกุฎเหนือเลข 8 ส่วน "silver" คือเลข 89 ที่เป็นเงิน/แพลตินัม — คีย์เดิมของ
-// แบรนด์ก่อนเป็นสีที่ไม่มีอยู่ในพาเลตรอบนี้แล้ว จึงถูกเปลี่ยนชื่อไปพร้อมกับสี
+// คีย์ accent สองตัวตรงกับสองสีบนโลโก้จริง: "gold" คือป้ายทองสามมิติ จ่ายชัวร์888
+// กับ JAI CHUA ดาวเข็มทิศ และเหรียญจีนสองข้าง ส่วน "blue" คือโล่กรมท่าที่รองอยู่ —
+// คีย์เดิมของแบรนด์ก่อนเป็นชื่อสีที่ไม่มีอยู่ในพาเลตรอบนี้แล้ว จึงถูกเปลี่ยนชื่อไป
+// พร้อมกับสี
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 ---
@@ -36,31 +37,31 @@ const { items } = Astro.props;
 <div class="mt-4 flex flex-col gap-5">
   {
     items.map((item) => {
-      const isGold = item.accent !== "silver";
+      const isGold = item.accent !== "blue";
       return (
         <div
-          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#4a3a18]/60 bg-[#161009]/70 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
+          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#6d4a12]/60 bg-[#0a1226]/70 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
             isGold
-              ? "hover:border-[#c9a227]/60 hover:bg-[#1a1208] hover:shadow-[0_10px_20px_rgba(201,162,39,0.2)]"
-              : "hover:border-[#b9c2cc]/60 hover:bg-[#1a1208] hover:shadow-[0_10px_20px_rgba(185,194,204,0.22)]"
+              ? "hover:border-[#d8a83f]/60 hover:bg-[#132244] hover:shadow-[0_10px_20px_rgba(216,168,63,0.22)]"
+              : "hover:border-[#2f5fb0]/60 hover:bg-[#132244] hover:shadow-[0_10px_20px_rgba(47,95,176,0.22)]"
           }`}>
           <div
             aria-hidden="true"
             class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-3xl transition-transform duration-300 group-hover:scale-110 ${
               isGold
-                ? "border border-[#c9a227]/50 bg-gradient-to-br from-[#e6cf72] to-[#3b2c10] shadow-[0_0_15px_rgba(201,162,39,0.45)] group-hover:rotate-3"
-                : "border border-[#b9c2cc]/50 bg-gradient-to-br from-[#b9c2cc] to-[#2a2f36] shadow-[0_0_15px_rgba(185,194,204,0.45)]"
+                ? "border border-[#d8a83f]/50 bg-gradient-to-br from-[#f6d67e] to-[#6d4a12] shadow-[0_0_15px_rgba(216,168,63,0.45)] group-hover:rotate-3"
+                : "border border-[#2f5fb0]/50 bg-gradient-to-br from-[#5b8ede] to-[#16336b] shadow-[0_0_15px_rgba(47,95,176,0.45)]"
             }`}>
             {item.icon}
           </div>
           <div class="flex flex-col gap-2 text-left">
             <h3
               class={`text-xl font-black tracking-wide drop-shadow-sm ${
-                isGold ? "bg-gradient-to-r from-[#f7edc4] to-[#c9a227] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#e8ebef] to-[#7c8794] bg-clip-text text-transparent"
+                isGold ? "bg-gradient-to-r from-[#fbeec9] to-[#d8a83f] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#cfe0fb] to-[#2f5fb0] bg-clip-text text-transparent"
               }`}>
               {item.title}
             </h3>
-            <p class="text-left text-base leading-relaxed text-[#c2b493] transition-colors group-hover:text-[#f0e6cf]">{item.description}</p>
+            <p class="text-left text-base leading-relaxed text-[#a9b7d4] transition-colors group-hover:text-[#dce6f8]">{item.description}</p>
           </div>
         </div>
       );

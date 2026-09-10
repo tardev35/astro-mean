@@ -1,39 +1,86 @@
 ---
-const { titleleft, titlecenter, titleright } = Astro.props;
+export interface Props {
+  title?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  titleleft?: string;
+  titlecenter?: string;
+  titleright?: string;
+  label?: string;
+}
+const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright, label } = Astro.props;
+
+// ไฟล์นี้เป็น inventory ที่เพิ่งถูกดึงกลับมาใช้ ของเดิมไม่มี prop `title`/`as` และ
+// ปล่อยป้ายสามคอลัมน์ออกมาเป็น <h3> ทั้งสามใบ — chrome ที่แย่งระดับหัวข้อไปจาก docx
+// (docx รอบนี้แบน H1 + H2 ล้วน ไม่มี H3 เลย และ H3 ชุดเดียวที่หน้าแรกอนุญาตมาจาก
+// FeatureHighlights) รอบนี้จึงเพิ่ม prop `title` + `as` ให้บล็อกปล่อยหัวข้อเดียว
+// แล้วลดป้ายสามคอลัมน์ลงเป็น <p> ที่ถือคลาสเดิมไว้ครบ
+//
+// สามคอลัมน์ flatten แล้ว: คลาสข้อความอยู่บน <article> และ slot เป็นลูกโดยตรง
+// ผู้เรียกจึงส่ง "หนึ่ง element ต่อหนึ่ง slot" เท่านั้น
+//
+// LOTTOTAX: ย้ายจากโทนแดงเลือดหมู/เหลืองอำพันของแบรนด์หวยเจ้าก่อนมาที่น้ำเงินธงชาติ
+// คู่แดง — น้ำเงิน #dbeafe / #5c9bf0 / #1e63d8 / #12357e คู่แดง #e63c28 / #a81c04
+// บนผิว #04091a / #0b1b3a / #0f2246 เนื้อความ #e6eefb ข้อความรอง #9db4d8
+// (ค่า hex กับคลาส hue เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+//
+// รอบนี้บล็อกนี้แบกหัวข้อ docx ข้อ 6 เรื่องเช็กผลคล่องหลังประกาศ ไอคอนสามใบจึงเป็น
+// แว่นขยาย (ตรวจผลออโต้) เหรียญ (สรุปยอดเงินรางวัลเข้าเครดิต) และแฟ้ม (ตารางผล
+// ย้อนหลังกับคลังโพย) — อิโมจิทุกตัวอยู่ใน <span aria-hidden="true"> ที่เป็นพี่น้อง
+// กับข้อความป้าย ไม่ได้ฝังอยู่ในข้อความ
+const sectionLabel = title ? undefined : (label ?? titleleft ?? titlecenter ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
-<section class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-red-500/30 bg-[#5f0914]/60 p-8 text-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl transition-all duration-500 hover:border-yellow-400/40 hover:shadow-[0_15px_40px_rgba(250,204,21,0.15)] md:p-10">
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#1e63d8]/30 bg-[#0b1b3a]/85 p-8 text-[#e6eefb] shadow-[0_10px_30px_rgba(4,9,26,0.5)] backdrop-blur-xl transition-all duration-500 hover:border-[#5c9bf0]/50 hover:shadow-[0_15px_40px_rgba(30,99,216,0.2)] md:p-10">
+    {
+      title && (
+        <header class="mb-8 flex items-center gap-4 border-b border-[#1e63d8]/30 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#5c9bf0] via-[#1e63d8] to-[#a81c04] shadow-[0_0_10px_rgba(30,99,216,0.55)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#e63c28] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        </header>
+      )
+    }
+
     <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-      <article class="flex flex-col gap-3 border-b border-red-500/30 pb-8 text-left text-base leading-relaxed text-red-100/80 md:border-r md:border-b-0 md:pr-8 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#1e63d8]/30 pb-8 text-left text-base leading-relaxed text-[#9db4d8] md:border-r md:border-b-0 md:pr-8 md:pb-0">
         {
           titleleft && (
-            <h3 class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-yellow-400 uppercase">
-              <span aria-hidden="true" class="text-xl drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]">💸</span> {titleleft}
-            </h3>
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#5c9bf0] uppercase">
+              <span aria-hidden="true" class="text-xl drop-shadow-[0_0_5px_rgba(30,99,216,0.8)]">
+                🔍
+              </span>{" "}
+              {titleleft}
+            </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 border-b border-red-500/30 pb-8 text-left text-base leading-relaxed text-red-100/80 md:border-r md:border-b-0 md:px-4 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#1e63d8]/30 pb-8 text-left text-base leading-relaxed text-[#9db4d8] md:border-r md:border-b-0 md:px-4 md:pb-0">
         {
           titlecenter && (
-            <h3 class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-yellow-400 uppercase">
-              <span aria-hidden="true" class="text-xl drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]">⚡</span> {titlecenter}
-            </h3>
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#5c9bf0] uppercase">
+              <span aria-hidden="true" class="text-xl drop-shadow-[0_0_5px_rgba(30,99,216,0.8)]">
+                💰
+              </span>{" "}
+              {titlecenter}
+            </p>
           )
         }
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-red-100/80 md:pl-8">
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#9db4d8] md:pl-8">
         {
           titleright && (
-            <h3 class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-yellow-400 uppercase">
-              <span aria-hidden="true" class="text-xl drop-shadow-[0_0_5px_rgba(250,204,21,0.8)]">💎</span> {titleright}
-            </h3>
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#5c9bf0] uppercase">
+              <span aria-hidden="true" class="text-xl drop-shadow-[0_0_5px_rgba(30,99,216,0.8)]">
+                🗂️
+              </span>{" "}
+              {titleright}
+            </p>
           )
         }
         <slot name="right" />

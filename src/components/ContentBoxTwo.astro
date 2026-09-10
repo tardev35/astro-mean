@@ -8,14 +8,14 @@ export interface Props {
   iconright?: string;
   label?: string;
 }
-const { title, as: HeadingTag = "h2", titleleft, titleright, iconleft = "🔐", iconright = "💎", label } = Astro.props;
+const { title, as: HeadingTag = "h2", titleleft, titleright, iconleft = "🔑", iconright = "📊", label } = Astro.props;
 
-// ROOM89: ย้ายชุดทองคำคู่แดงเลือดหมูของแบรนด์ก่อนออกทั้งหมด มาที่ทองคำขัดเงาคู่เงิน
-// แพลตินัมบนดำอมน้ำตาล — ทอง #f7edc4 / #e6cf72 / #c9a227 / #6b5424 / #3b2c10
-// คู่เงิน #e8ebef / #b9c2cc / #7c8794 / #2a2f36 บนผิว #0b0805 / #161009 / #1a1208
-// ขอบ #4a3a18 เนื้อความ #f0e6cf ข้อความรอง #c2b493
-// สองคอลัมน์แยกกันด้วยคู่โลหะจริงของแบรนด์รอบนี้ (ซ้ายรับทองคำซึ่งคือคำว่า ROOM กับ
-// มงกุฎเหนือเลข 8 ขวารับเงินแพลตินัมซึ่งคือเลข 89) ไม่ใช่ด้วยทองสองน้ำหนัก
+// JAICHUA: ย้ายชุดน้ำเงินธงชาติคู่แดงของแบรนด์ก่อนออกทั้งหมด มาที่ทองคำคู่น้ำเงิน
+// รอยัล — ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 / #6d4a12 คู่น้ำเงิน #cfe0fb /
+// #5b8ede / #2f5fb0 / #16336b บนผิว #040915 / #0a1226 / #0e1a33 / #132244
+// ขอบ #6d4a12 เนื้อความ #dce6f8 ข้อความรอง #a9b7d4
+// สองคอลัมน์แยกกันด้วยคู่สีจริงของแบรนด์รอบนี้ (ซ้ายรับทองซึ่งคือป้ายจ่ายชัวร์888
+// ขวารับน้ำเงินซึ่งคือโล่ที่รองอยู่) ไม่ใช่ด้วยทองสองน้ำหนัก
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
 // git history)
@@ -25,7 +25,7 @@ const { title, as: HeadingTag = "h2", titleleft, titleright, iconleft = "🔐", 
 // การเลื่อนขึ้นเป็นหัวข้อจะเพิ่มระดับหัวข้อที่ brief ไม่เคยขอ
 //
 // รอบนี้มีผู้เรียกรายเดียวคือ LoginRtpSection ซึ่งเป็น widget — ส่งแค่ `label` แล้ว
-// ใช้ค่า default กุญแจ/เพชร บล็อกนี้จึงไม่ปล่อยหัวข้อออกมาเลยบนหน้าแรกรอบนี้
+// ใช้ค่า default กุญแจ/ตารางสถิติ บล็อกนี้จึงไม่ปล่อยหัวข้อออกมาเลยบนหน้าแรกรอบนี้
 // อิโมจิอยู่ใน <span aria-hidden="true"> แยกจากข้อความป้ายเสมอ
 //
 // เมื่อส่ง title มา หัวข้อตั้งชื่อ section ให้แล้ว จึงไม่เพิ่ม aria-label ทับ ถ้าไม่มี
@@ -35,18 +35,18 @@ const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "�
 // ใส่ chrome ของการ์ดเฉพาะตอนบล็อกนี้แบก section ของ docx (`title`) เท่านั้น เวลา
 // ถูกใช้เป็นโครงสองคอลัมน์เปล่าๆ — LoginRtpSection ส่งแผงของตัวเองเข้า slot —
 // คอลัมน์จะแบนราบไว้ ไม่งั้นหน้าเว็บจะได้การ์ดซ้อนการ์ด
-const columnBase = "flex flex-col gap-4 text-left text-base leading-relaxed text-[#f0e6cf]";
+const columnBase = "flex flex-col gap-4 text-left text-base leading-relaxed text-[#dce6f8]";
 const columnCard =
-  "rounded-3xl border border-[#4a3a18]/70 bg-[#161009]/90 p-6 shadow-[0_10px_30px_rgba(59,44,16,0.4)] backdrop-blur-xl transition-all duration-500 hover:border-[#c9a227]/60 hover:shadow-[0_15px_40px_rgba(201,162,39,0.3)] md:p-8";
+  "rounded-3xl border border-[#6d4a12]/70 bg-[#0a1226]/90 p-6 shadow-[0_10px_30px_rgba(22,39,78,0.45)] backdrop-blur-xl transition-all duration-500 hover:border-[#d8a83f]/60 hover:shadow-[0_15px_40px_rgba(216,168,63,0.3)] md:p-8";
 const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   {
     title && (
-      <header class="mb-6 flex items-center gap-4 border-b border-[#4a3a18]/70 pb-4">
-        <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f7edc4] via-[#c9a227] to-[#3b2c10] shadow-[0_0_10px_rgba(201,162,39,0.55)]" />
-        <HeadingTag class="bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#b9c2cc] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+      <header class="mb-6 flex items-center gap-4 border-b border-[#6d4a12]/70 pb-4">
+        <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fbeec9] via-[#d8a83f] to-[#16336b] shadow-[0_0_10px_rgba(216,168,63,0.55)]" />
+        <HeadingTag class="bg-gradient-to-r from-[#fbeec9] via-[#f6d67e] to-[#5b8ede] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
       </header>
     )
   }
@@ -55,10 +55,10 @@ const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
     <article class={columnClass}>
       {
         titleleft && (
-          <p class="flex items-center gap-3 border-b border-[#4a3a18]/60 pb-3 text-xl leading-normal font-black tracking-widest text-[#e6cf72] uppercase">
+          <p class="flex items-center gap-3 border-b border-[#6d4a12]/60 pb-3 text-xl leading-normal font-black tracking-widest text-[#f6d67e] uppercase">
             <span
               aria-hidden="true"
-              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#c9a227]/55 bg-gradient-to-br from-[#f7edc4] via-[#c9a227] to-[#3b2c10] text-sm text-[#0b0805] shadow-[0_5px_15px_rgba(201,162,39,0.4)]">
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#d8a83f]/55 bg-gradient-to-br from-[#fbeec9] via-[#d8a83f] to-[#6d4a12] text-sm text-[#040915] shadow-[0_5px_15px_rgba(216,168,63,0.4)]">
               {iconleft}
             </span>
             {titleleft}
@@ -71,10 +71,10 @@ const columnClass = title ? `${columnBase} ${columnCard}` : columnBase;
     <article class={columnClass}>
       {
         titleright && (
-          <p class="flex items-center gap-3 border-b border-[#b9c2cc]/30 pb-3 text-xl leading-normal font-black tracking-widest text-[#e8ebef] uppercase">
+          <p class="flex items-center gap-3 border-b border-[#2f5fb0]/30 pb-3 text-xl leading-normal font-black tracking-widest text-[#cfe0fb] uppercase">
             <span
               aria-hidden="true"
-              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#b9c2cc]/60 bg-gradient-to-br from-[#e8ebef] via-[#b9c2cc] to-[#2a2f36] text-sm text-[#0b0805] shadow-[0_5px_15px_rgba(185,194,204,0.4)]">
+              class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-[#2f5fb0]/60 bg-gradient-to-br from-[#cfe0fb] via-[#2f5fb0] to-[#16336b] text-sm text-[#040915] shadow-[0_5px_15px_rgba(47,95,176,0.4)]">
               {iconright}
             </span>
             {titleright}

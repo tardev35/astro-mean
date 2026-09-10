@@ -1,37 +1,56 @@
 ---
+// Widget ไม่ใช่ article: ของเดิมปล่อยชื่อกริดออกมาเป็น <h2> hardcode (พร้อมชื่อ
+// แบรนด์หวยเจ้าก่อนติดมาด้วย) ซึ่งเป็น chrome ที่แย่งระดับหัวข้อไปจาก docx รอบนี้
+// ลดลงเป็น <p> ที่ถือคลาสเดิม แล้วย้ายหน้าที่ตั้งชื่อ region ไปที่ aria-label ของ
+// <section> ห้ามเลื่อนกลับขึ้นเป็นหัวข้อเพื่อ "แก้" เรื่องชื่อ section
+//
+// กริดนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 5 โดยตรง (รวมหลายตลาดไว้ในที่เดียว) จึงถูก
+// วางต่อท้ายบล็อกนั้น ไม่ใช่รวมอยู่กับชุด widget ปลายหน้า รายชื่อตลาดตรงกับที่ย่อหน้า
+// เดียวกันเอ่ยไว้เป๊ะ: หวยรัฐบาลไทย หวยลาว หวยฮานอย (ปกติ/พิเศษ/VIP) หวยหุ้นไทยและ
+// ต่างประเทศ และยี่กีที่ออกผลทุก 15 นาที — ตัวเลขอัตราจ่ายของหวยรัฐบาลไทยมาจากอาร์ต
+// slide1 ของ drop นี้ (3 ตัว 1,000 บาท / 2 ตัว 90 บาท) ไม่ได้ตั้งขึ้นเอง ส่วนตลาด
+// อื่นไม่มีตัวเลขใน brief จึงไม่เขียนตัวเลขให้
+//
+// LOTTOTAX: ย้ายจากโทนแดงเลือดหมู/เหลืองอำพันของแบรนด์หวยเจ้าก่อนมาที่น้ำเงินธงชาติ
+// คู่แดง — น้ำเงิน #dbeafe / #5c9bf0 / #1e63d8 / #12357e คู่แดง #ffd9d1 / #e63c28 /
+// #a81c04 บนผิว #04091a / #081530 / #0b1b3a / #0f2246 เนื้อความ #e6eefb ข้อความรอง
+// #9db4d8 (ค่า hex กับคลาส hue เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความ
+// ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+//
+// ไอคอนธงชาติ/สัญลักษณ์เป็นของตกแต่งล้วน ชื่อตลาดอยู่ในข้อความอยู่แล้ว กล่องไอคอน
+// จึงเป็น aria-hidden="true" และเป็นพี่น้องกับชื่อ ไม่ได้อยู่ในข้อความ
 const lottos = [
-  { name: "หวยรัฐบาลไทย", close: "15:00 น.", reward: "บาทละ 1000", icon: "🇹🇭" },
-  { name: "หวยฮานอย", close: "18:00 น.", reward: "บาทละ 95", icon: "🇻🇳" },
-  { name: "หวยลาวพัฒนา", close: "20:00 น.", reward: "บาทละ 95", icon: "🇱🇦" },
-  { name: "หวยยี่กี 88 รอบ", close: "ทุก 15 นาที", reward: "บาทละ 95", icon: "⏱️" },
-  { name: "หวยมาเลย์", close: "18:00 น.", reward: "บาทละ 95", icon: "🇲🇾" },
-  { name: "หวยหุ้นไทย", close: "16:40 น.", reward: "บาทละ 95", icon: "📈" },
+  { name: "หวยรัฐบาลไทย", detail: "3 ตัวบน · 3 ตัวโต๊ด · 2 ตัวบน-ล่าง", reward: "3 ตัว 1,000 / 2 ตัว 90", icon: "🇹🇭" },
+  { name: "หวยลาว", detail: "3 ตัวบน · 2 ตัวบน-ล่าง · เลขวิ่ง", reward: "เปิดรับตามรอบ", icon: "🇱🇦" },
+  { name: "หวยฮานอย", detail: "ครบทั้งรอบปกติ พิเศษ และ VIP", reward: "หลายรอบต่อวัน", icon: "🇻🇳" },
+  { name: "หวยหุ้นไทย", detail: "อ้างอิงดัชนีตลาดหุ้นไทยรอบเช้า-บ่าย", reward: "ตามรอบตลาด", icon: "📈" },
+  { name: "หวยหุ้นต่างประเทศ", detail: "ตามดัชนีตลาดหุ้นต่างประเทศหลายตลาด", reward: "ครอบคลุมหลายตลาด", icon: "🌏" },
+  { name: "หวยยี่กี", detail: "ออกผลทุก 15 นาที คีย์โพยได้ทั้งวันทั้งคืน", reward: "ทุก 15 นาที", icon: "⏱️" },
 ];
 ---
 
-<div class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ตลาดหวยออนไลน์ที่ LOTTOTAX เปิดรับแทง" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <h2 class="bg-gradient-to-r from-amber-200 via-amber-300 to-amber-500 bg-clip-text text-3xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm">
-      ตลาดหวยออนไลน์ที่เปิดรับกับ MAHORANLOTTO
-    </h2>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-amber-400 to-transparent"></div>
+    <p class="bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#e63c28] bg-clip-text text-3xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm">
+      ตลาดหวยออนไลน์ที่เปิดรับกับ LOTTOTAX
+    </p>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#1e63d8] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-5">
     {
       lottos.map((lotto) => (
-        <div class="group relative flex cursor-pointer flex-col items-center justify-center overflow-hidden rounded-2xl border border-amber-500/20 bg-[#1a0409]/70 p-5 shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/60 hover:bg-[#5f0914] hover:shadow-[0_10px_30px_rgba(251,191,36,0.25)]">
-          <div class="mb-3 text-5xl drop-shadow-[0_0_15px_rgba(251,191,36,0.4)] transition-transform duration-300 group-hover:scale-110">{lotto.icon}</div>
-          <p class="text-center text-sm font-bold text-white transition-colors group-hover:text-amber-300">{lotto.name}</p>
-          <p class="mt-1 text-[11px] text-amber-100/70">
-            ปิดรับ: <span class="font-mono text-amber-300">{lotto.close}</span>
-          </p>
-          <div class="mt-3 rounded-full bg-gradient-to-r from-amber-500 to-amber-300 px-4 py-1.5 text-[11px] font-bold text-[#5f0914] shadow-md transition-transform duration-300 group-hover:scale-105">
+        <article class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#1e63d8]/25 bg-[#081530]/80 p-5 shadow-lg backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#5c9bf0]/60 hover:bg-[#0f2246] hover:shadow-[0_10px_30px_rgba(30,99,216,0.28)]">
+          <div aria-hidden="true" class="mb-3 text-5xl drop-shadow-[0_0_15px_rgba(30,99,216,0.45)] transition-transform duration-300 group-hover:scale-110">
+            {lotto.icon}
+          </div>
+          <p class="text-center text-sm font-bold text-[#e6eefb] transition-colors group-hover:text-[#5c9bf0]">{lotto.name}</p>
+          <p class="mt-1 text-center text-[11px] text-[#9db4d8]">{lotto.detail}</p>
+          <div class="mt-3 rounded-full bg-gradient-to-r from-[#1e63d8] to-[#5c9bf0] px-4 py-1.5 text-center text-[11px] font-bold text-[#f2f7ff] shadow-md transition-transform duration-300 group-hover:scale-105">
             {lotto.reward}
           </div>
-        </div>
+        </article>
       ))
     }
   </div>
-</div>
-
+</section>

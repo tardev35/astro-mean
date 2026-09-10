@@ -22,17 +22,21 @@ import bannerNewGame from "../assets/gamedemo16.webp";
 // "…ภาพที่ 1" "…ภาพที่ 2" ไม่ได้บอกอะไรผู้ใช้ screen reader นอกจากว่ามีรูปอีก
 // เนื้อหาทั้งใบของแบนเนอร์คือตัวหนังสือกับตัวละครบนรูป สิ่งนั้นจึงเป็น alt
 //
-// ROOM89: แถบนี้ไม่ใช้ slide* — slide1 กับ slide2 ไปอยู่ในบล็อก
-// ContentBoxSevenThree* บนหน้าแรกแล้ว (เต็มเพดานสองบล็อกของ playbook) ส่วน slide3
-// ปล่อยไม่ใช้บนหน้าแรก ให้หน้า /promotion เอาไปใช้ ส่วนไฟล์ banner ทุกตัวและ slide4
-// ของแบรนด์ก่อน เป็นอาร์ตที่มีชื่อของแบรนด์อื่นพิมพ์อยู่บนรูป ห้าม import ที่นี่หรือ
-// ที่ไหนก็ตาม — การ import คือการ emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม
-// แถบนี้จึงชี้ไปที่แบนเนอร์ค่ายพันธมิตร/เกมออกใหม่ที่เป็นกลางกับแบรนด์แทน วางต่อท้าย
-// ชุด widget ปลายหน้า ซึ่งอยู่หลังหัวข้อ docx ข้อสุดท้ายทั้งหมด
+// LOTTOTAX: แถบนี้ไม่ใช้ slide* — slide1 กับ slide3 ไปอยู่ในบล็อก
+// ContentBoxSevenThree* บนหน้าแรกแล้ว (เต็มเพดานสองบล็อกของ playbook) ส่วน slide2
+// กับ slide4 เป็นของหน้า /promotion และไฟล์ banner ทุกตัว (รวมตัวมือถือ) เป็นของ
+// MainLayout ห้าม import ที่นี่หรือที่ไหนก็ตาม — การ import คือการ emit ลง dist/
+// ถึงจะไม่มีใคร render ก็ตาม แถบนี้จึงชี้ไปที่แบนเนอร์พันธมิตรที่เป็นกลางกับแบรนด์
+// แทน วางรวมกับชุด widget ปลายหน้า ซึ่งอยู่หลังหัวข้อ docx ข้อสุดท้ายทั้งหมด
 //
-// ชุดสีรอบนี้ย้ายจากทองคำคู่แดงเลือดหมูของแบรนด์ก่อน มาเป็นทองคำขัดเงาคู่เงิน
-// แพลตินัมบนดำอมน้ำตาล — ขอบสไลด์ #4a3a18 เงา rgba(201,162,39,X) และปุ่มหยุดที่
-// โผล่ตอน focus รับทอง #c9a227 / #e6cf72 บนผิว #1a1208
+// แบรนด์รอบนี้เป็นเว็บหวย แต่ alt ของแต่ละใบยังบรรยาย "ตัวหนังสือที่พิมพ์อยู่บนรูป
+// จริง" ตามเดิม ไม่ได้เขียนใหม่ให้เป็นเรื่องตลาดหวย เพราะไฟล์รูปยังเป็นแบนเนอร์ชุด
+// เดิมและ src/assets ไม่มีอาร์ตแนวหวยที่ใช้แทนได้ alt ที่ไม่ตรงกับรูปคือ alt ที่ผิด
+// ถ้าวันไหนอยากให้แถบนี้อ่านเป็นชุดหวย ต้องเปลี่ยนไฟล์รูปก่อน แล้วค่อยเปลี่ยน alt ตาม
+//
+// ชุดสีรอบนี้ย้ายจากทองคำขัดเงาคู่เงินแพลตินัมบนดำอมน้ำตาลของแบรนด์ก่อน มาเป็น
+// น้ำเงินธงชาติคู่แดงบนผิวกรมท่าเข้ม — ขอบสไลด์ #12357e เงา rgba(30,99,216,X) และ
+// ปุ่มหยุดที่โผล่ตอน focus รับน้ำเงิน #1e63d8 / #5c9bf0 บนผิว #0b1b3a
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 //
@@ -96,7 +100,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
   <input id="carousel-pause" type="checkbox" class="peer sr-only" />
   <label
     for="carousel-pause"
-    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#c9a227]/60 peer-focus-visible:bg-[#1a1208] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#e6cf72]">
+    class="sr-only cursor-pointer peer-focus-visible:not-sr-only peer-focus-visible:mb-3 peer-focus-visible:inline-block peer-focus-visible:rounded-full peer-focus-visible:border peer-focus-visible:border-[#1e63d8]/60 peer-focus-visible:bg-[#0b1b3a] peer-focus-visible:px-4 peer-focus-visible:py-2 peer-focus-visible:text-sm peer-focus-visible:font-bold peer-focus-visible:text-[#5c9bf0]">
     หยุด / เล่นสไลด์ภาพ
   </label>
 
@@ -109,7 +113,7 @@ const slides = Array.from({ length: COPIES }, () => images).flat();
             <Picture
               src={slide.src}
               alt={isDuplicate ? "" : slide.alt}
-              class="block w-full rounded-xl border border-[#4a3a18]/70 object-cover shadow-[0_10px_30px_rgba(201,162,39,0.3)]"
+              class="block w-full rounded-xl border border-[#12357e]/70 object-cover shadow-[0_10px_30px_rgba(30,99,216,0.3)]"
               width={slide.src.width}
               height={slide.src.height}
               loading="lazy"

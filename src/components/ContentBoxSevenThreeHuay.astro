@@ -1,24 +1,61 @@
 ---
-const { titleleft, titleright } = Astro.props;
+export interface Props {
+  title?: string;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  titleleft?: string;
+  titleright?: string;
+  label?: string;
+}
+const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
+
+// ไฟล์นี้เป็น inventory ที่เพิ่งถูกดึงกลับมาใช้ ของเดิมไม่มี prop `title`/`as` เลย
+// และปล่อย titleleft/titleright ออกมาเป็น <h2> ทั้งคู่ — นั่นคือ chrome ที่แย่ง
+// หัวข้อของ docx ไป (สองหัวข้อต่อหนึ่ง section) รอบนี้จึงเพิ่ม prop `title` + `as`
+// ให้เป็นหัวข้อเดียวของบล็อก แล้วลด titleleft/titleright ลงเป็น <p> ที่ถือคลาสเดิม
+// ส่วนหน้าที่ตั้งชื่อ section ให้ assistive tech ย้ายไปที่ aria-label ของ <section>
+// ตอนที่บล็อกนี้ไม่ได้แบกหัวข้อ docx
+//
+// สองคอลัมน์ flatten แล้ว: คลาสข้อความอยู่บน <article> และ slot เป็นลูกโดยตรง
+// ผู้เรียกจึงต้องส่ง "หนึ่ง element ต่อหนึ่ง slot" เท่านั้น (ฝั่ง 3 ส่วนรอบนี้รับ
+// <Picture> ใบเดียว)
+//
+// LOTTOTAX: ไฟล์นี้มาถึงรอบนี้ในโทนแดงเลือดหมู/อำพันของแบรนด์หวยเจ้าก่อน ย้ายทั้ง
+// ไฟล์มาที่น้ำเงินธงชาติคู่แดงบนผิวกรมท่าเข้ม — น้ำเงิน #dbeafe / #5c9bf0 /
+// #1e63d8 / #12357e / #0d2559 คู่แดง #ffd9d1 / #e63c28 / #a81c04 บนผิว #04091a /
+// #081530 / #0b1b3a / #0f2246 ขอบ #12357e เนื้อความ #e6eefb ข้อความรอง #9db4d8
+// (ค่า hex กับคลาส hue เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+//
+// รอบนี้บล็อกนี้เป็น SevenThree ใบที่สองในสองใบของเพดาน playbook คู่กับ slide3
+// (อาร์ต "ถ่ายทอดสด 24 ชั่วโมง หวย 30 วิ / หวย 1 นาที") กับหัวข้อ docx ข้อ 5
+// เรื่องรวมหลายตลาดไว้ในที่เดียว แล้วส่งต่อให้ LottoGrid กางรายชื่อตลาดต่อท้าย
+const sectionLabel = title ? undefined : (label ?? titleright ?? titleleft ?? "ข้อมูลประกอบ");
 ---
 
-<section class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-amber-500/30 bg-[#5f0914]/60 p-8 text-white/90 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-xl transition-all duration-500 hover:border-amber-400/50 hover:shadow-[0_15px_40px_rgba(251,191,36,0.18)] md:p-10">
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#1e63d8]/30 bg-[#0b1b3a]/85 p-8 text-[#e6eefb] shadow-[0_10px_30px_rgba(4,9,26,0.5)] backdrop-blur-xl transition-all duration-500 hover:border-[#5c9bf0]/55 hover:shadow-[0_15px_40px_rgba(30,99,216,0.22)] md:p-10">
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#0f2246]/85 blur-[60px]"></div>
+
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-2 border-b border-amber-500/30 pb-6 text-left text-base leading-relaxed font-medium text-amber-100/80 md:border-r md:border-b-0 md:pr-6 md:pb-0">
+      <article class="flex flex-col gap-3 border-b border-[#1e63d8]/30 pb-6 text-left text-base leading-relaxed text-[#9db4d8] md:border-r md:border-b-0 md:pr-6 md:pb-0">
         {
           titleleft && (
-            <h2 class="bg-gradient-to-r from-amber-200 via-amber-300 to-amber-500 bg-clip-text text-center text-3xl leading-normal font-black tracking-wider text-transparent uppercase drop-shadow-sm md:text-left">
-              {titleleft}
-            </h2>
+            <p class="bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#e63c28] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent drop-shadow-sm">{titleleft}</p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-amber-50/85 md:pl-6">
-        {titleright && <h2 class="flex items-center gap-2 text-xl leading-normal font-black text-white drop-shadow-[0_0_5px_rgba(251,191,36,0.55)]">{titleright}</h2>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#e6eefb] md:pl-6">
+        {title && <HeadingTag class="bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#1e63d8] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>}
+        {
+          titleright && (
+            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#5c9bf0]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#e63c28] shadow-[0_0_5px_rgba(230,60,40,0.9)]" /> {titleright}
+            </p>
+          )
+        }
         <slot name="right" />
       </article>
     </div>

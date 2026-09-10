@@ -12,41 +12,50 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // ข้อความ ไม่ใช่แทรกอยู่ในตัวข้อความ
 //
 // ลำดับ: หน้าแรก → โปรโมชั่น → (สมัคร/เข้าสู่ระบบ ถ้าเปิด cta toggle) → ที่เหลือ
-// TITANWIN168 ปิด cta toggle เหมือนแบรนด์ก่อน (/login กับ /register ยังเป็นหน้า
+// JAICHUA ปิด cta toggle เหมือนแบรนด์ก่อน (/login กับ /register ยังเป็นหน้า
 // interstitial แบบ noindex) จึงไม่มีสองรายการนั้นในเมนู เหลือปุ่ม CTA มุมขวา
 // ตามที่ variant นี้วางไว้ และ /ทางเข้า ยังอยู่ในเมนูตามปกติ
 //
-// ไม่มี /ตรวจหวย กับ /แนวทาง เพราะ TITANWIN168 เป็นเว็บสล็อต ไม่ใช่เว็บหวย —
-// สองหน้านั้นอยู่ใน src/pages-disabled/ จึงไม่มี route ให้ลิงก์ไปหา
+// ไม่มี /ตรวจหวย กับ /แนวทาง เพราะ JAICHUA เป็นเว็บสล็อต ไม่ใช่เว็บหวย — สองหน้า
+// นั้นถูกย้ายกลับไป src/pages-disabled/ รอบนี้ จึงไม่มี route ให้ลิงก์ไปหา
 //
-// TITANWIN168: ย้ายจากทองคลับคู่แพลทินัมของแบรนด์ก่อน มาเป็นม่วงไททันคู่มงกุฎทอง
-// ของแบรนด์นี้ — ม่วง #a855f7 / #c084fc / #ede4ff / #7c3aed / #6d28d9 / #3b0d73
-// คู่ทองมงกุฎ #e3c176 / #f2dda3 / #a9803a และโครเมียมเงิน #dfe4f0 / #b9c0d0 บนผิว
-// #07030f / #160a2b / #22104a เนื้อความ #ddd2f5 (อ่านจากอาร์ตเวิร์กจริง: ตัวอักษร
-// โลโก้เป็นโครเมียมเงิน มงกุฎเป็นทองประดับอัญมณีม่วง ส่วนแสงและควันรอบตัวอักษรกับ
-// พื้นหลังทั้งใบเป็นม่วงนีออนบนดำสนิท ม่วงจึงเป็นสีนำ ทองเป็นสีคู่ที่ใช้กับปุ่ม
-// conversion ให้ล้อมงกุฎบนโลโก้)
+// JAICHUA: ย้ายจากม่วงไททันคู่มงกุฎทองของแบรนด์ก่อนที่เคยใช้ไฟล์นี้ มาเป็นทองคำ
+// คู่น้ำเงินรอยัลบนกรมท่าเกือบดำ — ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 /
+// #6d4a12 คู่น้ำเงิน #cfe0fb / #5b8ede / #2f5fb0 / #16336b บนผิว #040915 /
+// #0a1226 / #132244 เนื้อความ #dce6f8
 //
-// ไอคอนเลือกตามแนวไททัน/มงกุฎ — บ้าน/ของขวัญ/สล็อต/ประตู/มงกุฎ/แชท
+// อ่านจากอาร์ตเวิร์กจริง: ตัวอักษรโลโก้เป็นทองคำนูนทั้งชุด ดาวเข็มทิศด้านบนกับ
+// เหรียญจีนสองข้างก็ทอง ส่วนโล่ที่รองตัวอักษรและพื้นแบนเนอร์เป็นน้ำเงินกรมท่า —
+// ทองจึงเป็นสีนำ น้ำเงินเป็นสีที่สองจริง ไม่ใช่แค่เงาของทอง (vivid ของ logo.webp
+// เด่นสุดคือ #946335 กับ #533c25 ซึ่งเป็นทอง ส่วน dominant ของ banner1 เป็นน้ำตาล
+// เข้ม/ดำอมน้ำเงินซึ่งคือ "พื้น" — palette.json จัดอันดับให้ แต่ไม่ตีความให้)
+//
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
+// ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
+//
+// ไอคอนเลือกตามแนวคาสิโนทอง — บ้าน/ของขวัญ/สล็อต/ประตู/ชิป/แชท
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
   { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "👑" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🪙" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
+
+const LOGO_ALT =
+  "โลโก้ JAICHUA เป็นป้ายทองคำสามมิติบนโล่สีน้ำเงินกรมท่า ตัวอักษรไทยทองนูนอ่านว่า จ่ายชัวร์888 ใต้ลงมาเป็นตัวอักษรละติน JAI CHUA คั่นกลางด้วยดาวประกายทอง และแถบล่างสุดเขียนว่า CASINO ONLINE ด้านบนป้ายเป็นดาวเข็มทิศทองบนวงกลมน้ำเงิน มุมล่างสองข้างเป็นเหรียญจีนทองรูสี่เหลี่ยม";
 ---
 
 <header class="sticky top-0 z-[100] w-full font-sans">
   <nav
-    class="relative mx-auto flex h-[85px] w-full items-center justify-between rounded-b-2xl border-b border-[#a855f7]/40 bg-[#07030f]/85 px-4 shadow-[0_10px_30px_rgba(168,85,247,0.3)] backdrop-blur-xl xl:px-8">
-    <a href="/" class="z-[110] flex-shrink-0 transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(192,132,252,0.5)]">
+    class="relative mx-auto flex h-[85px] w-full items-center justify-between rounded-b-2xl border-b border-[#d8a83f]/40 bg-[#040915]/85 px-4 shadow-[0_10px_30px_rgba(216,168,63,0.3)] backdrop-blur-xl xl:px-8">
+    <a href="/" class="z-[110] flex-shrink-0 transition-transform duration-300 hover:scale-105 hover:drop-shadow-[0_0_15px_rgba(246,214,126,0.5)]">
       {
         mainLogo ? (
           <Picture
             src={mainLogo}
-            alt="โลโก้ TITANWIN168 ตัวอักษรโลหะโครเมียมเงินทรงเหลี่ยมคมแบบตราศึกอ่านว่า TITANWIN มีมงกุฎทองประดับอัญมณีสีม่วงวางอยู่ด้านบนตรงกลาง ขนาบด้วยปีกโลหะสีดำเงาขอบม่วงแผ่ออกสองข้าง ใต้ตัวอักษรเป็นเลข 168 สีเงินไล่เป็นม่วง วางอยู่บนลวดลายโลหะโค้งประดับอัญมณีม่วง"
+            alt={LOGO_ALT}
             loading="eager"
             widths={[140, 280, 420]}
             sizes="(max-width: 1279px) 140px, 180px"
@@ -55,9 +64,8 @@ const links = [
             fallbackFormat="webp"
           />
         ) : (
-          <span class="bg-gradient-to-r from-[#dfe4f0] to-[#8d93a8] bg-clip-text text-4xl font-black tracking-widest text-transparent drop-shadow-md">
-            TITAN<span class="bg-gradient-to-r from-[#ede4ff] to-[#a855f7] bg-clip-text text-transparent">WIN</span><span
-              class="bg-gradient-to-r from-[#f2dda3] to-[#a9803a] bg-clip-text text-transparent">168</span>
+          <span class="bg-gradient-to-r from-[#fbeec9] to-[#a97722] bg-clip-text text-4xl font-black tracking-widest text-transparent drop-shadow-md">
+            JAI<span class="bg-gradient-to-r from-[#cfe0fb] to-[#2f5fb0] bg-clip-text text-transparent">CHUA</span>
           </span>
         )
       }
@@ -68,13 +76,13 @@ const links = [
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative flex h-full items-center gap-2 px-2 text-sm font-bold tracking-widest uppercase transition-colors duration-300 xl:text-base ${isActive(item.path) ? "text-[#c084fc]" : "text-[#ddd2f5]/60 hover:text-white"}`}>
+            class={`group relative flex h-full items-center gap-2 px-2 text-sm font-bold tracking-widest uppercase transition-colors duration-300 xl:text-base ${isActive(item.path) ? "text-[#f6d67e]" : "text-[#dce6f8]/60 hover:text-white"}`}>
             <span aria-hidden="true" class="text-base leading-none">
               {item.icon}
             </span>
             <span>{item.name}</span>
             <div
-              class={`absolute bottom-0 left-0 h-[3px] w-full rounded-t-full bg-gradient-to-r from-[#ede4ff] via-[#a855f7] to-[#e3c176] shadow-[0_-2px_10px_rgba(168,85,247,0.8)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+              class={`absolute bottom-0 left-0 h-[3px] w-full rounded-t-full bg-gradient-to-r from-[#fbeec9] via-[#d8a83f] to-[#2f5fb0] shadow-[0_-2px_10px_rgba(216,168,63,0.8)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
             />
           </a>
         ))
@@ -84,35 +92,35 @@ const links = [
     <div class="z-[110] flex items-center gap-4">
       <a
         href="/login"
-        class="hidden items-center justify-center rounded-full border border-[#b9c0d0]/50 bg-[#07030f]/60 px-7 py-2.5 text-sm font-bold text-[#ddd2f5] backdrop-blur-md transition-all duration-300 hover:bg-[#22104a]/70 hover:text-white hover:shadow-[0_0_15px_rgba(185,192,208,0.4)] lg:flex">
+        class="hidden items-center justify-center rounded-full border border-[#5b8ede]/50 bg-[#040915]/60 px-7 py-2.5 text-sm font-bold text-[#dce6f8] backdrop-blur-md transition-all duration-300 hover:bg-[#132244]/70 hover:text-white hover:shadow-[0_0_15px_rgba(91,142,222,0.4)] lg:flex">
         เข้าสู่ระบบ
       </a>
       <a
         href="/register"
-        class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#f2dda3] via-[#e3c176] to-[#a9803a] px-7 py-2.5 text-sm font-black text-[#07030f] shadow-[0_4px_15px_rgba(227,193,118,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(242,221,163,0.6)] lg:flex">
+        class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#fbeec9] via-[#d8a83f] to-[#a97722] px-7 py-2.5 text-sm font-black text-[#040915] shadow-[0_4px_15px_rgba(216,168,63,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(251,238,201,0.6)] lg:flex">
         สมัครสมาชิก
       </a>
 
       <button
         id="hamburger-btn"
-        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] rounded-full border border-[#a855f7]/30 bg-[#07030f]/60 lg:hidden"
+        class="relative flex h-[45px] w-[45px] flex-col items-center justify-center gap-[6px] rounded-full border border-[#d8a83f]/30 bg-[#040915]/60 lg:hidden"
         aria-label="เปิดเมนู">
-        <span class="line-1 h-[2px] w-5 origin-center rounded-full bg-[#c084fc] transition-all duration-300"></span>
-        <span class="line-2 h-[2px] w-5 origin-center rounded-full bg-[#c084fc] transition-all duration-300"></span>
-        <span class="line-3 h-[2px] w-5 origin-center rounded-full bg-[#c084fc] transition-all duration-300"></span>
+        <span class="line-1 h-[2px] w-5 origin-center rounded-full bg-[#f6d67e] transition-all duration-300"></span>
+        <span class="line-2 h-[2px] w-5 origin-center rounded-full bg-[#f6d67e] transition-all duration-300"></span>
+        <span class="line-3 h-[2px] w-5 origin-center rounded-full bg-[#f6d67e] transition-all duration-300"></span>
       </button>
     </div>
   </nav>
 
   <div
     id="mobile-menu"
-    class="pointer-events-none absolute top-[85px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col rounded-b-3xl border-b border-[#a855f7]/40 bg-[#07030f]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-400 lg:hidden">
+    class="pointer-events-none absolute top-[85px] left-0 w-full origin-top -translate-y-4 scale-y-95 flex-col rounded-b-3xl border-b border-[#d8a83f]/40 bg-[#040915]/98 px-6 pt-4 pb-8 opacity-0 shadow-2xl backdrop-blur-2xl transition-all duration-400 lg:hidden">
     <div class="flex flex-col gap-2">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`flex items-center gap-3 rounded-xl px-5 py-3.5 text-lg font-bold tracking-widest uppercase transition-colors ${isActive(item.path) ? "bg-[#22104a]/70 text-[#c084fc] shadow-inner" : "text-[#ddd2f5]/60 hover:bg-white/5 hover:text-white"}`}>
+            class={`flex items-center gap-3 rounded-xl px-5 py-3.5 text-lg font-bold tracking-widest uppercase transition-colors ${isActive(item.path) ? "bg-[#132244]/70 text-[#f6d67e] shadow-inner" : "text-[#dce6f8]/60 hover:bg-white/5 hover:text-white"}`}>
             <span aria-hidden="true" class="text-xl leading-none">
               {item.icon}
             </span>
@@ -124,10 +132,10 @@ const links = [
     <div class="mt-6 flex flex-col gap-4">
       <a
         href="/register"
-        class="flex w-full justify-center rounded-full bg-gradient-to-r from-[#f2dda3] to-[#a9803a] py-3.5 text-lg font-black text-[#07030f] shadow-[0_5px_15px_rgba(227,193,118,0.35)]">
+        class="flex w-full justify-center rounded-full bg-gradient-to-r from-[#fbeec9] to-[#a97722] py-3.5 text-lg font-black text-[#040915] shadow-[0_5px_15px_rgba(216,168,63,0.35)]">
         สมัครสมาชิก
       </a>
-      <a href="/login" class="flex w-full justify-center rounded-full border border-[#b9c0d0]/50 bg-[#07030f]/60 py-3.5 text-lg font-bold text-[#ddd2f5]">เข้าสู่ระบบ</a>
+      <a href="/login" class="flex w-full justify-center rounded-full border border-[#5b8ede]/50 bg-[#040915]/60 py-3.5 text-lg font-bold text-[#dce6f8]">เข้าสู่ระบบ</a>
     </div>
   </div>
 </header>

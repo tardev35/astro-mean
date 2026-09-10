@@ -6,21 +6,20 @@ const images = import.meta.glob<{ default: ImageMetadata }>("../assets/logo.{png
 const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
-// CK1968: ย้ายจากทองอำพันออกส้มคู่โครเมียมเงินของแบรนด์ก่อนที่เคยใช้ footer ตัวนี้
-// มาเป็นทองคำคู่แดงเลือดหมูบนดำอมน้ำตาล — ทอง #ffefc4 / #ffd45c / #f0a80c /
-// #a76806 / #5d3a05 คู่แดง #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 /
-// #2a100a ขอบ #4d1f0d เนื้อความ #f6e4c0
+// JAICHUA: ย้ายจากทองคำคู่แดงเลือดหมูบนดำอมน้ำตาลของแบรนด์ก่อนที่เคยใช้ footer
+// ตัวนี้ มาเป็นทองคำคู่น้ำเงินรอยัลบนกรมท่าเกือบดำ — ทอง #fbeec9 / #f6d67e /
+// #d8a83f / #a97722 / #6d4a12 คู่น้ำเงิน #cfe0fb / #5b8ede / #2f5fb0 / #16336b
+// บนผิว #040915 / #0a1226 / #132244 เนื้อความ #dce6f8
 //
-// อาร์ตเวิร์กรอบนี้เป็นวงแหวนทองคำบนดำ: ตัว C เป็นทองคำสามมิติ ส่วนตัว K เป็นแดง
-// เลือดหมูขอบทอง มงกุฎด้านบนประดับทับทิมแดง และไพ่ในโลโก้เป็นชุดแดงทั้งหมด แดงจึง
-// เป็นสีที่สองจริง ไม่ใช่แค่เงาของทอง (vivid ของโลโก้เด่นสุดคือ #a40205 กับ #c3020a
-// ซึ่งเป็นแดง ส่วน dominant ของทุกไฟล์เป็นดำอมน้ำตาลซึ่งคือ "พื้น" — palette.json
-// จัดอันดับให้ แต่ไม่ตีความให้)
+// อาร์ตเวิร์กรอบนี้เป็นป้ายทองคำบนโล่น้ำเงินกรมท่า: ตัวอักษร จ่ายชัวร์888 กับ
+// JAI CHUA เป็นทองคำนูนทั้งชุด ดาวเข็มทิศด้านบนและเหรียญจีนสองข้างก็ทอง ส่วนโล่
+// ที่รองตัวอักษรและฉากหลังแบนเนอร์เป็นน้ำเงินกรมท่า — ทองจึงเป็นสีนำ น้ำเงินเป็น
+// สีที่สองจริง ไม่ใช่แค่เงาของทอง
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
 //
-// CK1968 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// JAICHUA เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
 // src/pages-disabled/) ห้ามมีลิงก์ถึงทั้งสองหน้าในไฟล์นี้
 //
 // โลโก้ตรง fallback เป็น <p>/<span> ไม่ใช่หัวข้อ และป้ายหัวคอลัมน์ก็เป็น <p> —
@@ -33,11 +32,11 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 // อีเมลมาจาก BRAND_ADDRESS ซึ่งผูกกับ BRAND_NAME และ site: ห้ามพิมพ์ทับเอง
 
 const LOGO_ALT =
-  "โลโก้ CK1968 เป็นวงกลมขอบทองคำนูนบนพื้นดำ กลางวงเป็นตัวอักษร C ทองคำสามมิติคู่กับตัว K สีแดงเลือดหมูขอบทอง ใต้ลงมาเป็นเลข 1968 ทองคำนูน ด้านบนเป็นมงกุฎทองประดับทับทิมแดง ขวาบนเป็นไพ่ K Q J สีแดงเรียงซ้อนกัน ข้างวงมีข้าวหลามตัดแดงและโพดำดำ ล่างสุดเป็นชิปคาสิโนดำ-ทองสองใบกับลูกเต๋าแดงสองลูก";
+  "โลโก้ JAICHUA เป็นป้ายทองคำสามมิติบนโล่สีน้ำเงินกรมท่า ตัวอักษรไทยทองนูนอ่านว่า จ่ายชัวร์888 ใต้ลงมาเป็นตัวอักษรละติน JAI CHUA คั่นกลางด้วยดาวประกายทอง และแถบล่างสุดเขียนว่า CASINO ONLINE ด้านบนป้ายเป็นดาวเข็มทิศทองบนวงกลมน้ำเงิน มุมล่างสองข้างเป็นเหรียญจีนทองรูสี่เหลี่ยม";
 ---
 
-<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#f0a80c]/40 bg-[#090302] pt-16 pb-8 font-sans text-[#f6e4c0] shadow-[0_-15px_40px_rgba(240,168,12,0.22)]">
-  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#8c0206]/45 blur-[100px]"></div>
+<footer class="relative mt-16 w-full overflow-hidden rounded-t-[3rem] border-t border-[#d8a83f]/40 bg-[#040915] pt-16 pb-8 font-sans text-[#dce6f8] shadow-[0_-15px_40px_rgba(216,168,63,0.22)]">
+  <div class="pointer-events-none absolute inset-x-0 -top-20 mx-auto h-[250px] w-full max-w-4xl rounded-full bg-[#16336b]/55 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-12 md:grid-cols-12">
@@ -50,46 +49,45 @@ const LOGO_ALT =
                 alt={LOGO_ALT}
                 widths={[130, 260, 390]}
                 sizes="130px"
-                class="h-[65px] w-auto drop-shadow-[0_5px_15px_rgba(240,168,12,0.45)]"
+                class="h-[65px] w-auto drop-shadow-[0_5px_15px_rgba(216,168,63,0.45)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="bg-gradient-to-r from-[#ffefc4] to-[#a76806] bg-clip-text text-3xl font-black tracking-widest text-transparent">
-                C<span class="bg-gradient-to-r from-[#ff4b52] to-[#8c0206] bg-clip-text text-transparent">K</span>1968
+              <span class="bg-gradient-to-r from-[#fbeec9] to-[#a97722] bg-clip-text text-3xl font-black tracking-widest text-transparent">
+                JAI<span class="bg-gradient-to-r from-[#cfe0fb] to-[#2f5fb0] bg-clip-text text-transparent">CHUA</span>
               </span>
             )
           }
         </a>
-        <p class="border-l-2 border-[#d4090f]/60 pl-4 text-sm leading-relaxed text-[#f6e4c0]/75">
-          CK1968 สล็อตเว็บตรงแบรนด์แท้ 100% ผู้ให้บริการลิขสิทธิ์แท้ที่ส่งตรงเกมจากค่ายดังทั่วโลก นำเข้าระบบ API แท้จากเซิร์ฟเวอร์หลักของค่ายเกมโดยตรง อัตราการแตก RTP
-          จึงเป็นมาตรฐานสากลจริง ไม่มีการแอบปรับลดเปอร์เซ็นต์การชนะ วางโครงสร้างแพลตฟอร์มด้วยระบบรักษาความปลอดภัยระดับสูง ข้อมูลส่วนตัวและประวัติการทำธุรกรรมของสมาชิกถูกเก็บเป็นความลับทั้งหมด
-          พร้อมระบบ AI จัดการธุรกรรมการเงินอัตโนมัติที่ประมวลผลให้เสร็จภายในไม่กี่วินาที ฝากถอนไม่มีขั้นต่ำ ชนะเท่าไหร่โอนจ่ายเต็มจำนวนทุกบาททุกสตางค์
+        <p class="border-l-2 border-[#2f5fb0]/60 pl-4 text-sm leading-relaxed text-[#dce6f8]/75">
+          JAICHUA สล็อตเว็บตรง API แท้ ยิงตรงจากคลังเกมหลัก ไม่ผ่านเอเย่นต์ การันตีอัตราการจ่ายเงินรางวัลตามมาตรฐานสากล ค่า RTP ตรงตามสเปกโรงงาน ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ด ไม่ล็อกยูส
+          ปั่นได้สบายใจด้วยระบบฝากถอนออโต้ไฮสปีด ทำรายการไวใน 3 วินาที รองรับทั้งธนาคารและ TrueMoney Wallet ยอดเงินอัปเดตเข้าเกมทันที จ่ายจริงจ่ายไว สมชื่อจ่ายชัวร์แบบไม่ต้องเดา
         </p>
         <div class="mt-4 flex flex-wrap gap-3">
-          <span class="rounded-full border border-[#f0a80c]/40 bg-[#2a100a]/70 px-4 py-1 text-xs font-medium text-[#ffd45c] backdrop-blur-sm">แบรนด์แท้ลิขสิทธิ์ 100%</span>
-          <span class="rounded-full border border-[#d4090f]/45 bg-[#d4090f]/12 px-4 py-1 text-xs font-medium text-[#ff4b52] backdrop-blur-sm">AUTO ไม่มีขั้นต่ำ</span>
+          <span class="rounded-full border border-[#d8a83f]/40 bg-[#132244]/70 px-4 py-1 text-xs font-medium text-[#f6d67e] backdrop-blur-sm">เว็บตรง API แท้ 100%</span>
+          <span class="rounded-full border border-[#2f5fb0]/45 bg-[#2f5fb0]/12 px-4 py-1 text-xs font-medium text-[#5b8ede] backdrop-blur-sm">ออโต้ไว 3 วินาที</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#ffd45c] uppercase drop-shadow-sm">QUICK LINKS</p>
-        <div class="h-[1px] w-12 bg-gradient-to-r from-[#d4090f] to-[#f0a80c]"></div>
-        <ul class="flex flex-col gap-3 text-sm font-medium text-[#f6e4c0]/70">
-          <li><a href="/" class="transition-colors hover:text-[#ffd45c]">หน้าหลัก (Home)</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#ffd45c]">โปรโมชั่น (Promotions)</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ffd45c]">ทางเข้า (Access)</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ffd45c]">ทดลองเล่น (Demo)</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#ffd45c]">เกี่ยวกับเรา (About Us)</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#ffd45c]">ติดต่อเรา (Contact)</a></li>
-          <li><a href="/register" class="transition-colors hover:text-[#ffd45c]">สมัครสมาชิก (Join Us)</a></li>
-          <li><a href="/login" class="transition-colors hover:text-[#ffd45c]">เข้าสู่ระบบ (Login)</a></li>
+        <p class="text-lg font-black tracking-widest text-[#f6d67e] uppercase drop-shadow-sm">QUICK LINKS</p>
+        <div class="h-[1px] w-12 bg-gradient-to-r from-[#2f5fb0] to-[#d8a83f]"></div>
+        <ul class="flex flex-col gap-3 text-sm font-medium text-[#dce6f8]/70">
+          <li><a href="/" class="transition-colors hover:text-[#f6d67e]">หน้าหลัก (Home)</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#f6d67e]">โปรโมชั่น (Promotions)</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#f6d67e]">ทางเข้า (Access)</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#f6d67e]">ทดลองเล่น (Demo)</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#f6d67e]">เกี่ยวกับเรา (About Us)</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#f6d67e]">ติดต่อเรา (Contact)</a></li>
+          <li><a href="/register" class="transition-colors hover:text-[#f6d67e]">สมัครสมาชิก (Join Us)</a></li>
+          <li><a href="/login" class="transition-colors hover:text-[#f6d67e]">เข้าสู่ระบบ (Login)</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#ffd45c] uppercase drop-shadow-sm">CUSTOMER SUPPORT</p>
-        <div class="h-[1px] w-12 bg-gradient-to-r from-[#d4090f] to-[#f0a80c]"></div>
+        <p class="text-lg font-black tracking-widest text-[#f6d67e] uppercase drop-shadow-sm">CUSTOMER SUPPORT</p>
+        <div class="h-[1px] w-12 bg-gradient-to-r from-[#2f5fb0] to-[#d8a83f]"></div>
 
         <a
           href="/line"
@@ -121,17 +119,17 @@ const LOGO_ALT =
           )
         }
 
-        <div class="mt-4 text-xs font-medium tracking-widest text-[#cdb494] uppercase">Supported Payments</div>
+        <div class="mt-4 text-xs font-medium tracking-widest text-[#a9b7d4] uppercase">Supported Payments</div>
         <BankStrip size={30} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#4d1f0d]/80 pt-8 text-xs font-medium tracking-wide text-[#f6e4c0]/55 md:flex-row">
-      <p>COPYRIGHT &copy; {new Date().getFullYear()} CK1968. ALL RIGHTS RESERVED.</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#6d4a12]/80 pt-8 text-xs font-medium tracking-wide text-[#dce6f8]/55 md:flex-row">
+      <p>COPYRIGHT &copy; {new Date().getFullYear()} JAICHUA. ALL RIGHTS RESERVED.</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="transition-colors hover:text-[#ffd45c]">TERMS &amp; CONDITIONS</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#ffd45c]">PRIVACY POLICY</a>
-        <a href="#top" class="transition-colors hover:text-[#ffd45c]">BACK TO TOP</a>
+        <a href="/terms/" class="transition-colors hover:text-[#f6d67e]">TERMS &amp; CONDITIONS</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#f6d67e]">PRIVACY POLICY</a>
+        <a href="#top" class="transition-colors hover:text-[#f6d67e]">BACK TO TOP</a>
       </div>
     </div>
   </div>

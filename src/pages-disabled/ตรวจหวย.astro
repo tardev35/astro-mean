@@ -3,136 +3,141 @@ import MainLayout from "../layouts/MainLayout.astro";
 import Announcement from "../components/AnnouncementHuay.astro";
 import ContentBoxHuay from "../components/ContentBoxHuay.astro";
 import Navfoot from "../components/Navfoot.astro";
+import { pageGraph } from "../lib/schema";
+
+// LOTTOTAX: หน้านี้เป็นบทความอ่าน ไม่ใช่หน้าปุ่มและไม่ใช่วิดเจ็ตกดเล่น ของเดิม
+// มีช่องกรอกเลข + ปุ่ม "ตรวจหวย" ที่ตอบว่า "ถูกรางวัล" ทุกครั้งไม่ว่ากรอกอะไร
+// ซึ่งเป็นคำกล่าวอ้างที่ไม่จริง จึงถอดออกทั้งชุดพร้อม <script> ของมัน
+//
+// สีย้ายจากทอง/แดงเลือดหมูของแบรนด์หวยก่อนหน้า มาที่น้ำเงินธงชาติเป็นสีนำและ
+// แดงเป็นสีรอง — #dbeafe / #5c9bf0 / #1e63d8 / #12357e / #0d2559 คู่ #e63c28 /
+// #a81c04 บนผิว #04091a / #081530 / #0b1b3a เนื้อความ #e6eefb
+// สีเขียว success ของแถบสถานะไม่แตะ
+//
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+
+// 150–160 ตัวอักษร (ไทย 1 ตัว = 3 ไบต์ ห้ามวัดด้วย wc -c)
+const pageDescription = "ตรวจหวยกับ LOTTOTAX ระบบตรวจผลรางวัลออโต้ รู้ผลไวหลังประกาศ สรุปยอดเงินรางวัลเข้าเครดิตให้เอง พร้อมตารางผลย้อนหลังแยกหมวดหมู่และคลังโพยที่ย้อนดูได้ทุกรายการ";
+
+const pageTitle = "ตรวจหวย LOTTOTAX | ระบบตรวจผลรางวัลออโต้ รู้ผลไวทุกงวด";
+
+const pageHeading = "ตรวจหวย LOTTOTAX ระบบตรวจผลรางวัลออโต้ รู้ผลไวทันทีหลังประกาศ";
+
+const graph = pageGraph(Astro, {
+  name: pageHeading,
+  description: pageDescription,
+  breadcrumb: [
+    { name: "หน้าแรก", path: "/" },
+    { name: "ตรวจหวย", path: "/ตรวจหวย" },
+  ],
+});
+
+// เขียนคลาสเต็มไว้เป็นค่าคงที่เพื่อให้ Tailwind สแกนเจอ (สแกนเป็นข้อความดิบ
+// ไม่ได้ประเมิน template)
+const headingClass = "bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#1e63d8] bg-clip-text text-xl leading-normal font-bold text-transparent md:text-2xl";
+
+// ตัวอย่างรูปแบบการแสดงผลของตาราง ไม่ได้ผูกกับงวดใดงวดหนึ่ง จึงไม่มีคอลัมน์วันที่
+const resultRows = [
+  { market: "หวยรัฐบาลไทย", top3: "417", top2: "17", bottom2: "58" },
+  { market: "หวยฮานอย (รอบพิเศษ)", top3: "236", top2: "36", bottom2: "04" },
+  { market: "หวยลาวพัฒนา", top3: "905", top2: "05", bottom2: "72" },
+  { market: "หวยยี่กี (รอบล่าสุด)", top3: "681", top2: "81", bottom2: "29" },
+];
 ---
 
-<MainLayout
-  title="ตรวจหวย MAHORANLOTTO ผลรางวัลล่าสุด หวยรัฐบาล ลาว ฮานอย อัปเดตเรียลไทม์"
-  description="ตรวจหวยออนไลน์กับ MAHORANLOTTO ดูผลรางวัลล่าสุดของหวยรัฐบาล หวยฮานอย หวยลาว และหวยยี่กี ตรวจเลขที่ส่งโพยไว้ได้ทันทีหลังประกาศผล พร้อมสถานะการจ่ายรางวัล">
+<MainLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={graph} />
+
   <Announcement />
 
-  <section class="mx-auto my-8 w-full max-w-5xl px-4 font-sans">
-    <div class="relative overflow-hidden rounded-3xl border border-amber-500/40 bg-[#1a0409]/90 p-8 shadow-[0_15px_40px_rgba(251,191,36,0.22)] backdrop-blur-xl md:p-12">
-      <div class="pointer-events-none absolute -top-20 -left-20 h-64 w-64 rounded-full bg-amber-500/15 blur-[60px]"></div>
+  <ContentBoxHuay title={pageHeading} as="h1">
+    <div>
+      <p class="mb-8 text-left text-base leading-relaxed text-[#e6eefb]">
+        หวยออกปุ๊บ รู้ผลปั๊บ คือสิ่งที่คอหวยอยากได้มากที่สุดหลังปิดรับของแต่ละงวด <strong class="text-[#5c9bf0]">LOTTOTAX</strong> จึงวางระบบตรวจผลรางวัลไว้ให้ทำงานเองแบบออโต้ ทั้งรวดเร็วและแม่นยำ สมาชิกไม่ต้องนั่งไล่เทียบเลขทีละใบให้เสียเวลาและเสี่ยงอ่านพลาด
+        หน้านี้อธิบายว่าระบบตรวจผลของเราทำงานอย่างไร ตารางผลรางวัลย้อนหลังจัดหมวดหมู่ไว้แบบไหน และคลังโพยย้อนหลังตรวจย้อนกลับได้ละเอียดถึงระดับใด
+      </p>
 
-      <div class="relative z-10 flex flex-col items-center justify-center text-center">
-        <span class="mb-4 text-5xl drop-shadow-[0_0_15px_rgba(251,191,36,0.8)]">🏆</span>
-        <h1 class="mb-2 bg-gradient-to-r from-amber-200 via-amber-300 to-amber-600 bg-clip-text text-4xl font-black tracking-widest text-transparent uppercase">ตรวจหวย MAHORANLOTTO</h1>
-        <p class="mb-8 text-amber-100/70">เลือกตลาดหวยและกรอกตัวเลขที่ส่งโพยไว้ เพื่อตรวจผลรางวัลของคุณ</p>
+      <h2 class={`mb-6 ${headingClass}`}>ระบบตรวจผลรางวัลออโต้ ไม่ต้องนั่งไล่ตรวจโพยทีละใบ</h2>
 
-        <div class="flex w-full max-w-2xl flex-col gap-4 md:flex-row">
-          <select
-            class="h-14 w-full rounded-xl border border-amber-500/30 bg-[#5f0914] px-4 font-bold text-amber-300 transition-all outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-500/30 md:w-1/3">
-            <option>หวยรัฐบาลไทย</option>
-            <option>หวยฮานอย</option>
-            <option>หวยลาวพัฒนา</option>
-            <option>หวยยี่กี</option>
-          </select>
+      <p class="mb-4 text-left text-base leading-relaxed text-[#e6eefb]">
+        ทันทีที่ผลของตลาดนั้นประกาศออกมา ระบบจะดึงผลรางวัลเข้ามาเทียบกับโพยทุกใบที่คีย์ไว้ในงวดเดียวกันให้เอง
+        <strong class="text-[#5c9bf0]">แล้วสรุปยอดเงินรางวัลเข้าเครดิตทันทีหลังผลออกเสร็จสิ้น</strong>
+        ไม่ต้องกดขอตรวจ ไม่ต้องส่งภาพโพยให้แอดมินไล่ดูทีละรายการ และไม่ต้องรอรอบสรุปประจำวันเหมือนการจดโพยแบบเดิม
+      </p>
 
-          <input
-            type="text"
-            id="lotto-input"
-            placeholder="ระบุตัวเลขที่ต้องการตรวจ..."
-            maxlength="6"
-            class="h-14 w-full flex-1 rounded-xl border border-amber-500/30 bg-[#5f0914] px-6 text-center text-xl font-bold tracking-widest text-white transition-all outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-500/30 md:text-left"
-          />
+      <p class="mb-4 text-left text-base leading-relaxed text-[#e6eefb]">
+        สิ่งที่ประหยัดไปจริง ๆ คือเวลาที่เคยหมดไปกับการนั่งเทียบเลขเอง เพราะการแทงแต่ละแบบใช้เกณฑ์ตัดสินคนละอย่าง ทั้ง 3 ตัวบน 3 ตัวโต๊ดที่สลับหลักได้ 2 ตัวบน 2 ตัวล่าง
+        ไปจนถึงเลขวิ่งและเลขรูดที่นับจากหลักไหนก็ต่างกันอีก เมื่อให้ระบบเป็นฝ่ายเทียบ ผลที่ได้จึงออกมาเหมือนกันทุกใบ และไม่ขึ้นกับว่าคืนนั้นเราตาลายแค่ไหน
+      </p>
 
-          <button
-            id="check-btn"
-            class="flex h-14 w-full items-center justify-center rounded-xl bg-gradient-to-r from-amber-500 via-amber-300 to-amber-500 px-8 font-black text-[#1a0409] shadow-[0_5px_15px_rgba(251,191,36,0.4)] transition-all hover:scale-105 hover:shadow-[0_8px_25px_rgba(251,191,36,0.6)] md:w-auto">
-            ตรวจหวย
-          </button>
-        </div>
+      <p class="mb-8 text-left text-base leading-relaxed text-[#e6eefb]">
+        อัตราจ่ายที่ใช้คำนวณคืออัตราที่ล็อกไว้ตั้งแต่ตอนกดยืนยันโพย ไม่ใช่ค่าที่มาปรับทีหลัง ยอดที่ขึ้นในหน้าสรุปจึงตรงกับที่เห็นตอนคีย์ และเป็นตัวเลขเดียวกับที่เข้าเครดิต ไม่มีการหักเพิ่มระหว่างทาง
+      </p>
 
-        <div
-          id="result-box"
-          class="mt-8 hidden w-full max-w-2xl transform flex-col items-center justify-center rounded-2xl border border-green-500/50 bg-green-900/20 p-6 opacity-0 transition-all duration-500">
-          <p class="text-2xl font-black text-green-400">🎉 ยินดีด้วย! คุณถูกรางวัล</p>
-          <p class="mt-2 text-lg text-white">หมายเลข <span id="show-number" class="font-bold tracking-widest text-amber-300"></span> ถูกรางวัลเลขท้าย 2 ตัว</p>
-          <p class="mt-1 text-sm text-green-200">ระบบจะแสดงสถานะโพยและเครดิตรางวัลในบัญชีของคุณ หลังการตรวจสอบผลเสร็จสิ้น</p>
-        </div>
+      <h2 class={`mb-6 ${headingClass}`}>ตารางผลรางวัลย้อนหลังแยกหมวดหมู่ ตามผลได้ครบทุกตลาด</h2>
+
+      <p class="mb-6 text-left text-base leading-relaxed text-[#e6eefb]">
+        LOTTOTAX รวมผลของทุกตลาดที่เปิดรับไว้ในที่เดียว ทั้งหวยรัฐบาลไทย หวยลาว หวยฮานอยทั้งรอบปกติ รอบพิเศษและรอบ VIP หวยหุ้นไทยและต่างประเทศ รวมถึงยี่กีที่ออกผลทุก 15 นาที
+        แต่ละตลาดแยกหมวดหมู่ของตัวเองและเรียงตามรอบประกาศผล ย้อนกลับไปดูงวดก่อนหน้าได้โดยไม่ต้องสลับแอปหรือไล่หาจากหลายเว็บให้ปวดหัว
+      </p>
+
+      <div class="mb-6 overflow-x-auto rounded-xl border border-[#1e63d8]/25 bg-[#04091a]">
+        <table class="w-full min-w-[600px] text-left text-sm">
+          <caption class="caption-top border-b border-[#1e63d8]/20 p-4 text-left text-xs leading-relaxed text-[#9db4d8]">
+            ตัวอย่างรูปแบบตารางผลรางวัลที่ LOTTOTAX จัดไว้ให้อ่านง่าย ตัวเลขในตารางเป็นตัวอย่างการแสดงผลเท่านั้น ไม่ใช่ผลรางวัลของงวดใดงวดหนึ่ง
+          </caption>
+          <thead class="bg-gradient-to-r from-[#12357e] to-[#0d2559]">
+            <tr class="text-[#dbeafe]">
+              <th scope="col" class="p-4 font-bold">ตลาดหวย</th>
+              <th scope="col" class="p-4 text-center font-bold">3 ตัวบน</th>
+              <th scope="col" class="p-4 text-center font-bold">2 ตัวบน</th>
+              <th scope="col" class="p-4 text-center font-bold">2 ตัวล่าง</th>
+              <th scope="col" class="p-4 text-right font-bold">สถานะการจ่ายรางวัล</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-[#1e63d8]/15 text-[#e6eefb]">
+            {
+              resultRows.map((row) => (
+                <tr class="transition-colors hover:bg-[#12357e]/40">
+                  <th scope="row" class="p-4 text-left font-bold text-[#dbeafe]">
+                    {row.market}
+                  </th>
+                  <td class="p-4 text-center text-xl font-black tracking-wider text-[#5c9bf0]">{row.top3}</td>
+                  <td class="p-4 text-center font-bold">{row.top2}</td>
+                  <td class="p-4 text-center font-bold">{row.bottom2}</td>
+                  <td class="p-4 text-right">
+                    <span class="rounded-full bg-green-900/50 px-3 py-1 text-[10px] font-bold text-green-400">สรุปยอดเข้าเครดิตแล้ว</span>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
       </div>
+
+      <p class="mb-8 text-left text-base leading-relaxed text-[#e6eefb]">
+        ที่ต้องดูให้ตรงคือประเภทที่แทงไว้ เพราะเลขชุดเดียวกันอาจถูกในหมวดหนึ่งแต่ไม่ถูกในอีกหมวด และแต่ละตลาดปิดรับกับประกาศผลคนละรอบกัน การเทียบผลข้ามงวดหรือข้ามตลาดจึงเป็นสาเหตุ
+        ของความเข้าใจผิดบ่อยที่สุด ตารางจึงล็อกหมวดหมู่และรอบไว้ให้เห็นตั้งแต่แถวแรก
+      </p>
+
+      <h2 class={`mb-6 ${headingClass}`}>คลังโพยย้อนหลังตรวจได้ทุกรายการ โปร่งใสตั้งแต่ตอนคีย์จนถึงตอนจ่าย</h2>
+
+      <p class="mb-4 text-left text-base leading-relaxed text-[#e6eefb]">
+        โพยทุกใบที่คีย์เข้ามาถูกเก็บไว้ในคลังโพยของบัญชีตัวเอง เปิดย้อนดูได้ทุกรายการว่าแทงตลาดไหน งวดใด เลขอะไร ประเภทไหน ยอดเท่าไร และล็อกอัตราจ่ายไว้ที่เท่าไร
+        พร้อมผลการตรวจของใบนั้นกำกับอยู่ในบรรทัดเดียวกัน ทำให้ย้อนดูสถิติการเดินเงินของตัวเองได้ ไม่ใช่แค่รู้ว่ารอบนี้ได้หรือเสีย
+      </p>
+
+      <p class="mb-4 text-left text-base leading-relaxed text-[#e6eefb]">
+        กรณีที่ควรรู้ไว้คือรายการที่สถานะยังไม่ขยับหลังผลประกาศไปแล้ว ซึ่งมักเกิดกับตลาดที่ผลออกช้ากว่ากำหนดหรือรอบที่มีการยืนยันผลซ้ำ ให้แจ้งเลขที่โพยของใบนั้นให้แอดมินตรวจได้ทันที
+        <strong class="text-[#5c9bf0]">ทีมงาน LOTTOTAX สแตนด์บายตลอด 24 ชั่วโมง</strong>
+        มีเลขที่โพยเป็นตัวอ้างอิงก็ไล่กลับไปดูรายการเดียวกันได้เลย ไม่ต้องเล่าใหม่ทั้งงวด
+      </p>
+
+      <p class="text-left text-base leading-relaxed text-[#e6eefb]">
+        ระบบตรวจผลที่ดีไม่ได้แปลว่าเลขจะเข้าบ่อยขึ้น มันแค่ทำให้ส่วนที่เป็นข้อเท็จจริง คือผลออกอะไรและโพยของเราตรงหรือไม่ตรง จบเร็วและตรวจสอบย้อนกลับได้ เหลือเวลาไปคิดเรื่องงวดหน้าแทน
+      </p>
     </div>
-  </section>
-
-  <ContentBoxHuay title="ผลรางวัลล่าสุด (อัปเดตวันนี้)" as="h2">
-    <div class="overflow-x-auto rounded-xl border border-amber-500/20 bg-[#0f0206]">
-      <table class="w-full min-w-[600px] text-left text-sm">
-        <thead class="bg-gradient-to-r from-[#5f0914] to-[#2a0408]">
-          <tr class="text-amber-300">
-            <th class="p-4 font-bold">ประเภทหวย</th>
-            <th class="p-4 text-center font-bold">รางวัลที่ 1 / 3 ตัวบน</th>
-            <th class="p-4 text-center font-bold">2 ตัวบน</th>
-            <th class="p-4 text-center font-bold">2 ตัวล่าง</th>
-            <th class="p-4 text-right font-bold">สถานะ</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-amber-500/15 text-white">
-          <tr class="transition-colors hover:bg-[#5f0914]/40">
-            <td class="p-4 font-bold text-amber-100">🇹🇭 หวยรัฐบาล (16 พ.ค.)</td>
-            <td class="p-4 text-center text-xl font-black tracking-wider text-amber-300">205690</td>
-            <td class="p-4 text-center font-bold">90</td>
-            <td class="p-4 text-center font-bold">60</td>
-            <td class="p-4 text-right"><span class="rounded-full bg-green-900/50 px-3 py-1 text-[10px] font-bold text-green-400">จ่ายแล้ว</span></td>
-          </tr>
-          <tr class="transition-colors hover:bg-[#5f0914]/40">
-            <td class="p-4 font-bold text-amber-100">🇻🇳 หวยฮานอย (พิเศษ)</td>
-            <td class="p-4 text-center text-xl font-black tracking-wider text-amber-300">842</td>
-            <td class="p-4 text-center font-bold">42</td>
-            <td class="p-4 text-center font-bold">11</td>
-            <td class="p-4 text-right"><span class="rounded-full bg-green-900/50 px-3 py-1 text-[10px] font-bold text-green-400">จ่ายแล้ว</span></td>
-          </tr>
-          <tr class="transition-colors hover:bg-[#5f0914]/40">
-            <td class="p-4 font-bold text-amber-100">🇱🇦 หวยลาวพัฒนา</td>
-            <td class="p-4 text-center text-xl font-black tracking-wider text-amber-300">4781</td>
-            <td class="p-4 text-center font-bold">81</td>
-            <td class="p-4 text-center font-bold">03</td>
-            <td class="p-4 text-right"><span class="rounded-full bg-green-900/50 px-3 py-1 text-[10px] font-bold text-green-400">จ่ายแล้ว</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 class="mt-10 mb-4 text-2xl font-bold text-amber-300">ตรวจผลรางวัลกับ MAHORANLOTTO ต้องดูอะไรบ้าง</h2>
-
-    <p class="text-left text-base leading-relaxed text-amber-50/85">
-      หลังประกาศผลของแต่ละตลาด ควรเทียบเลขที่ส่งโพยไว้กับผลรางวัลตามประเภทที่แทง ทั้งรางวัลที่ 1 สามตัวบน สองตัวบน และสองตัวล่าง เพราะแต่ละตลาดหวยประกาศผลคนละรอบและมีเวลาปิดรับไม่เท่ากัน สมาชิก
-      MAHORANLOTTO สามารถตรวจสถานะโพยของตัวเองย้อนหลังได้จากบัญชีผู้ใช้งาน พร้อมดูอัตราจ่ายที่ใช้จริงในรอบนั้น หากพบรายการที่สถานะยังไม่อัปเดตหลังประกาศผล ให้แจ้งทีมงานพร้อมเลขที่โพยเพื่อให้ตรวจสอบได้เร็วขึ้น
-    </p>
   </ContentBoxHuay>
 
   <Navfoot />
 </MainLayout>
-
-<script>
-  const checkBtn = document.getElementById("check-btn");
-  const input = document.getElementById("lotto-input") as HTMLInputElement;
-  const resultBox = document.getElementById("result-box");
-  const showNumber = document.getElementById("show-number");
-
-  checkBtn?.addEventListener("click", () => {
-    if (!input.value || input.value.length < 2) {
-      alert("กรุณากรอกตัวเลขอย่างน้อย 2 หลักครับ");
-      return;
-    }
-
-    checkBtn.innerHTML = "กำลังตรวจสอบ...";
-
-    setTimeout(() => {
-      checkBtn.innerHTML = "ตรวจหวย";
-      if (showNumber) showNumber.innerText = input.value;
-      if (resultBox) {
-        resultBox.classList.remove("hidden");
-
-        setTimeout(() => {
-          resultBox.classList.remove("opacity-0", "translate-y-4");
-          resultBox.classList.add("opacity-100", "translate-y-0");
-        }, 50);
-      }
-    }, 800);
-  });
-</script>
-<style>
-  .font-sans {
-    font-family: var(--font-sans);
-  }
-</style>

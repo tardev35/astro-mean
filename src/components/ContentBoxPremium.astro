@@ -6,16 +6,14 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// CK1968: ไฟล์นี้มาถึงรอบนี้ในชุดทองอำพันคู่โครเมียมเงินของแบรนด์ก่อนหน้า ตอนนี้ย้าย
-// ทั้งไฟล์มาเป็นทองคำคู่แดงเลือดหมูบนดำอมน้ำตาล — ทอง #ffefc4 / #ffd45c / #f0a80c /
-// #a76806 / #5d3a05 คู่แดง #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 /
-// #2a100a ขอบ #4d1f0d เนื้อความ #f6e4c0
+// LOTTOTAX: ไฟล์นี้เป็น inventory ที่มาถึงรอบนี้ในชุดทองคำคู่แดงเลือดหมูบนดำอมน้ำตาล
+// ของแบรนด์ก่อนคนละเจ้า รอบนี้ย้ายทั้งไฟล์มาเป็นน้ำเงินธงชาติคู่แดงบนผิวกรมท่าเข้ม —
+// น้ำเงิน #dbeafe / #5c9bf0 / #1e63d8 / #12357e / #0d2559 คู่แดง #ffd9d1 / #e63c28 /
+// #a81c04 บนผิว #04091a / #081530 / #0b1b3a / #0f2246 ขอบ #12357e เนื้อความ #e6eefb
 //
-// แดงเลือดหมูเป็น "สีที่สอง" จริงของแบรนด์นี้ ไม่ใช่แค่เงาของทอง — มันคือตัว K ใน
-// โลโก้ ทับทิมบนมงกุฎ ไพ่ชุดแดง และลูกเต๋าแดง จึงถูกวางไว้ที่สต็อปท้ายของไล่เฉด
-// หัวข้อ ที่หัวแถบขีดหัวข้อ และที่ออร่ามุมขวาล่างตอน hover ส่วนทองคำคือตัว C กับเลข
-// 1968 และวงแหวนรอบโลโก้ ซึ่งเป็นแกนกลางของแบรนด์ จึงถือขอบการ์ด เงา และสต็อปกลาง
-// ของไล่เฉด
+// น้ำเงินเป็นสีนำ แดงเป็นสีรอง ตามโลโก้จริงที่คำว่า LOTTO เป็นน้ำเงินไล่เฉดและ TAX
+// เป็นแดงไล่เฉด — แดงจึงถูกวางไว้ที่สต็อปท้ายของไล่เฉดหัวข้อ ที่ปลายล่างของแถบขีด
+// หัวข้อ และที่ออร่ามุมขวาล่างตอน hover ส่วนน้ำเงินถือขอบการ์ด เงา และสต็อปต้น-กลาง
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
@@ -30,15 +28,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#4d1f0d]/70 bg-gradient-to-br from-[#2a100a]/92 to-[#090302]/88 p-8 text-left text-base leading-relaxed text-[#f6e4c0] shadow-[0_10px_30px_rgba(240,168,12,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#f0a80c]/70 hover:shadow-[0_15px_40px_rgba(212,9,15,0.28)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#170806]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#f0a80c]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#4d1f0d]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#d4090f]/40"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#12357e]/70 bg-gradient-to-br from-[#0f2246]/92 to-[#04091a]/88 p-8 text-left text-base leading-relaxed text-[#e6eefb] shadow-[0_10px_30px_rgba(30,99,216,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#1e63d8]/70 hover:shadow-[0_15px_40px_rgba(230,60,40,0.28)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#0b1b3a]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#1e63d8]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#12357e]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#e63c28]/40"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#4d1f0d]/70 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#d4090f] via-[#f0a80c] to-[#5d3a05] shadow-[0_0_10px_rgba(240,168,12,0.6)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#ff4b52] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#12357e]/70 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#5c9bf0] via-[#1e63d8] to-[#a81c04] shadow-[0_0_10px_rgba(30,99,216,0.6)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#e63c28] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

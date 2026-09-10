@@ -1,73 +1,150 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import Announcement from "../components/AnnouncementHuay.astro";
+import ContentBoxHuay from "../components/ContentBoxHuay.astro";
 import Navfoot from "../components/Navfoot.astro";
+import { pageGraph } from "../lib/schema";
 
-const tips = [
-  { title: "แนวทางหวยรัฐบาล งวดล่าสุด", desc: "รวมเลขเด่น เลขรอง พร้อมรอบปิดรับของงวดนี้ ตรวจเลขอั้นก่อนส่งโพยได้เลย", type: "หวยรัฐบาล", date: "วันนี้", hot: true },
-  { title: "เจาะเลขฮานอยพิเศษ", desc: "วิเคราะห์สถิติฮานอยย้อนหลัง เข้ามาแล้ว 3 งวดติด รีบส่งโพยก่อนเลขเต็ม", type: "หวยฮานอย", date: "วันนี้", hot: true },
-  { title: "แนวทางหวยลาว แม่น้ำหนึ่ง", desc: "สรุปเลขธูปและเลขดังของงวดนี้ จดไว้ก่อนรอบปิดรับหวยลาว", type: "หวยลาว", date: "เมื่อวาน", hot: false },
-  { title: "รวมเลขเด็ด สำนักดัง", desc: "สรุปเลขเด็ดจาก 5 สำนักดังทั่วไทย มัดรวมไว้ให้ที่นี่ที่เดียว", type: "ข่าวสาร", date: "เมื่อวาน", hot: false },
-  { title: "เทคนิคเดินเงินหวยยี่กี", desc: "สอนวางแผนเดินเงินรายรอบ ทุนน้อยก็บริหารโพยได้ครบทั้ง 88 รอบ", type: "เทคนิค", date: "2 วันที่แล้ว", hot: false },
-  { title: "แนวทางหุ้นนิเคอิ เช้า-บ่าย", desc: "วิเคราะห์กราฟหวยหุ้นต่างประเทศ พร้อมเลขเด่นรูด 19 ประตู", type: "หวยหุ้น", date: "2 วันที่แล้ว", hot: false },
+// LOTTOTAX: หน้านี้เป็นบทความอ่านเรื่องการคัดเลขและวางโพย ของเดิมเป็นกริดการ์ด
+// "บทความ" ปลอมที่กดไม่ได้ (cursor-pointer + ลิงก์ "อ่านเพิ่มเติม" ที่ไม่ไปไหน)
+// กับปุ่ม "โหลดบทความเพิ่มเติม" ที่ไม่มี handler — ถอดออกทั้งชุด เหลือกริดเป็น
+// รายการข้อมูลที่ใช้คัดเลขจริงในแต่ละตลาด ป้ายการ์ดเป็น <p>/<span> ไม่ใช่ heading
+//
+// สีย้ายจากทอง/แดงเลือดหมูของแบรนด์หวยก่อนหน้า มาที่น้ำเงินธงชาติเป็นสีนำและ
+// แดงเป็นสีรอง — #dbeafe / #5c9bf0 / #1e63d8 / #12357e / #0d2559 คู่ #e63c28 /
+// #a81c04 บนผิว #04091a / #081530 / #0b1b3a เนื้อความ #e6eefb
+//
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+
+// 150–160 ตัวอักษร (ไทย 1 ตัว = 3 ไบต์ ห้ามวัดด้วย wc -c)
+const pageDescription = "แนวทางหวย LOTTOTAX รวมสถิติเลขรางวัลย้อนหลัง แนวทางคัดเกรด สำนักเลขดังและกระแสเลขเด็ดของทุกตลาด ช่วยจัดชุดตัวเลขเข้าโพยและกระจายความเสี่ยงได้ทันก่อนรอบปิดรับ";
+
+const pageTitle = "แนวทางหวย LOTTOTAX | สถิติเลขย้อนหลัง คัดเกรดก่อนวางโพย";
+
+const pageHeading = "แนวทางหวย LOTTOTAX คัดเลขจากสถิติแล้ววางโพยอย่างมีทรง";
+
+const graph = pageGraph(Astro, {
+  name: pageHeading,
+  description: pageDescription,
+  breadcrumb: [
+    { name: "หน้าแรก", path: "/" },
+    { name: "แนวทาง", path: "/แนวทาง" },
+  ],
+});
+
+const headingClass = "bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#1e63d8] bg-clip-text text-xl leading-normal font-bold text-transparent md:text-2xl";
+
+// ข้อมูลที่ LOTTOTAX เปิดให้ดูก่อนคีย์โพย แยกตามตลาด — เป็นป้ายข้อมูล ไม่ใช่ลิงก์
+// จึงไม่มี href และไม่มีคำว่า "อ่านเพิ่มเติม"
+const sources = [
+  {
+    icon: "📊",
+    name: "หวยรัฐบาลไทย",
+    desc: "สถิติเลขรางวัลย้อนหลังรายงวด ทั้งเลขท้าย 2 ตัวและ 3 ตัวบน ใช้ดูความถี่ของเลขซ้ำและช่วงที่เลขห่างหายไปนาน",
+  },
+  {
+    icon: "🗓️",
+    name: "หวยลาว",
+    desc: "ผลย้อนหลังแยกตามรอบที่ออก พร้อมเวลาปิดรับของแต่ละรอบ ใช้ไล่ดูจังหวะเลขซ้ำที่มักตามกันมาเป็นชุด",
+  },
+  {
+    icon: "⏱️",
+    name: "หวยฮานอย",
+    desc: "แยกให้เห็นทั้งรอบปกติ รอบพิเศษ และรอบ VIP เพราะทั้งสามรอบมีสถิติของตัวเองและไม่ควรเอามาเทียบรวมกัน",
+  },
+  {
+    icon: "📈",
+    name: "หวยหุ้นไทยและต่างประเทศ",
+    desc: "ผลอิงตัวเลขปิดตลาดของแต่ละรอบ เช้า บ่าย และรอบต่างประเทศ ดูย้อนหลังได้ว่าหลักไหนขยับบ่อยในช่วงนั้น",
+  },
+  {
+    icon: "🔁",
+    name: "ยี่กี",
+    desc: "ออกผลทุก 15 นาที จึงมีตัวอย่างให้ดูเยอะที่สุด เหมาะกับการฝึกอ่านการกระจายเลขและซ้อมเดินเงินรายรอบ",
+  },
+  {
+    icon: "📰",
+    name: "สำนักเลขดังและกระแสเลขเด็ด",
+    desc: "รวมเลขเด่น เลขวิ่ง และเลขที่กำลังเป็นกระแสจากหลายทิศ มาไว้ให้เทียบกันในที่เดียวก่อนตัดสินใจคัดเข้าโพย",
+  },
 ];
 ---
 
-<MainLayout
-  title="แนวทางหวย MAHORANLOTTO เลขเด็ด เลขดัง ทุกตลาด อัปเดตทุกวัน"
-  description="รวมแนวทางหวยและเลขเด็ดจากสำนักดังบน MAHORANLOTTO ครบทั้งหวยรัฐบาล หวยลาว หวยฮานอย หวยหุ้น และยี่กี พร้อมรอบปิดรับและข้อมูลเลขอั้นก่อนส่งโพย">
+<MainLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={graph} />
+
   <Announcement />
 
-  <section class="mx-auto my-8 w-full max-w-7xl px-4 font-sans">
-    <div class="mb-10 flex flex-col items-center text-center">
-      <span class="mb-2 text-4xl drop-shadow-[0_0_10px_rgba(251,191,36,0.8)]">🔮</span>
-      <h1 class="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-600 bg-clip-text text-4xl font-black tracking-widest text-transparent uppercase">แนวทางหวย MAHORANLOTTO</h1>
-      <p class="mt-3 max-w-2xl text-left text-base leading-relaxed text-amber-100/75">
-        รวบรวมเลขเด็ด เลขดัง จากทุกสำนักทั่วประเทศ พร้อมสถิติของหวยรัฐบาล หวยลาว หวยฮานอย หวยหุ้น และยี่กี ให้สมาชิก MAHORANLOTTO วางแผนโพยได้ก่อนรอบปิดรับของแต่ละตลาด
+  <ContentBoxHuay title={pageHeading} as="h1">
+    <div>
+      <p class="mb-8 text-left text-base leading-relaxed text-[#e6eefb]">
+        สายตามเลขที่ได้เปรียบ ไม่ใช่คนที่เดาแม่นกว่า แต่คือคนที่มีข้อมูลอยู่ตรงหน้าก่อนถึงรอบปิดรับ <strong class="text-[#5c9bf0]">LOTTOTAX</strong> จึงเปิดสถิติเลขรางวัลย้อนหลัง แนวทางคัดเกรด และกระแสเลขเด็ดจากสำนักดังไว้ให้เช็กได้ก่อนคีย์โพย
+        หน้านี้สรุปว่าข้อมูลชุดไหนใช้ทำอะไร ควรอ่านตามลำดับใด แล้วแปลงออกมาเป็นชุดตัวเลขที่ลงจริงได้อย่างไร
+      </p>
+
+      <h2 class={`mb-6 ${headingClass}`}>อ่านสถิติเลขรางวัลย้อนหลังก่อน แล้วค่อยคัดเกรดเลขเข้าโพย</h2>
+
+      <p class="mb-4 text-left text-base leading-relaxed text-[#e6eefb]">
+        จุดเริ่มที่ใช้ได้จริงคือสถิติของตลาดที่เราจะลง ไม่ใช่เลขที่ลอยมาจากที่อื่น เปิดผลย้อนหลังของตลาดนั้นแล้วดูสามอย่าง คือเลขที่วนกลับมาบ่อยในช่วงหลัง เลขที่หายไปนานจนผิดปกติ
+        และหลักที่ขยับบ่อยกว่าหลักอื่นในรอบเดียวกัน สามอย่างนี้ให้ตัวเลือกที่มีที่มา แทนที่จะสุ่มเองให้เสียทุนไปเปล่า ๆ
+      </p>
+
+      <p class="mb-6 text-left text-base leading-relaxed text-[#e6eefb]">
+        จากนั้นค่อย<strong class="text-[#5c9bf0]">คัดเกรด</strong>ว่าเลขไหนเป็นตัวหลักที่ยอมลงหนักได้ เลขไหนเป็นตัวรองที่ลงพอเป็นพิธี และเลขไหนตัดทิ้งไปเลย การแบ่งชั้นตั้งแต่ตอนนี้สำคัญกว่าที่คิด
+        เพราะถ้าไม่แบ่ง สุดท้ายจะกลายเป็นลงเท่ากันหมดทุกตัว ซึ่งเท่ากับไม่ได้ใช้สถิติที่อุตส่าห์ไล่ดูมาเลย
+      </p>
+
+      <section aria-label="ข้อมูลที่ LOTTOTAX เปิดให้ดูก่อนคีย์โพย แยกตามตลาด" class="mb-8">
+        <p class="mb-4 text-left text-base leading-relaxed text-[#9db4d8]">ข้อมูลที่เปิดให้ดูก่อนคีย์โพย แยกตามตลาดที่เปิดรับ</p>
+
+        <ul class="grid list-none grid-cols-1 gap-5 p-0 md:grid-cols-2 lg:grid-cols-3">
+          {
+            sources.map((item) => (
+              <li class="group/card relative flex flex-col gap-2 overflow-hidden rounded-2xl border border-[#1e63d8]/25 bg-[#081530]/85 p-6 shadow-[0_10px_24px_rgba(4,9,26,0.45)] transition-all duration-300 hover:-translate-y-1 hover:border-[#1e63d8]/50 hover:shadow-[0_15px_30px_rgba(30,99,216,0.22)]">
+                <p class="flex items-center gap-3 text-lg font-bold text-[#dbeafe]">
+                  <span aria-hidden="true" class="text-2xl">
+                    {item.icon}
+                  </span>
+                  {item.name}
+                </p>
+                <p class="text-left text-base leading-relaxed text-[#e6eefb]">{item.desc}</p>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <h2 class={`mb-6 ${headingClass}`}>ตามสำนักเลขดังและกระแสเลขเด็ดให้ทันก่อนรอบปิดรับ</h2>
+
+      <p class="mb-4 text-left text-base leading-relaxed text-[#e6eefb]">
+        สายคีย์โพยไวได้เปรียบเสมอ เพราะเลขที่เป็นกระแสจะถูกลงกันหนักในช่วงท้าย และเป็นช่วงเดียวกับที่บางเลขเริ่มถูกอั้นหรือปิดรับ LOTTOTAX จึงรวบรวมเลขเด่น เลขวิ่งสายตรง
+        และเลขที่กำลังถูกพูดถึงจากหลายทิศมาไว้ให้เทียบกันในที่เดียว งวดไหนมีเลขข่าวดังหรือเลขที่มาจากประเด็นเฉพาะกิจ ระบบก็อัปเดตให้ตามได้แบบไม่ตกข่าว
+      </p>
+
+      <p class="mb-8 text-left text-base leading-relaxed text-[#e6eefb]">
+        วิธีใช้กระแสให้เป็นประโยชน์คือใช้เป็นตัวยืนยัน ไม่ใช่ใช้เป็นตัวตั้ง ถ้าเลขที่กระแสมาบังเอิญตรงกับตัวที่เราคัดจากสถิติไว้อยู่แล้ว นั่นคือเหตุผลให้ขยับน้ำหนักขึ้น แต่ถ้ามาแบบไม่มีอะไรรองรับเลย
+        การไล่ตามทุกเลขที่ดังจะทำให้โพยบวมขึ้นเรื่อย ๆ จนเงินที่ลงต่อตัวเหลือน้อยเกินกว่าจะคุ้มตอนถูก
+      </p>
+
+      <h2 class={`mb-6 ${headingClass}`}>จัดชุดตัวเลขและกระจายความเสี่ยงให้พอดีกับทุนของงวดนั้น</h2>
+
+      <p class="mb-4 text-left text-base leading-relaxed text-[#e6eefb]">
+        ขั้นสุดท้ายคือแปลงเลขที่คัดไว้ให้กลายเป็นโพยจริง LOTTOTAX เปิดให้คีย์ได้ครบทั้ง <strong class="text-[#5c9bf0]">3 ตัวบน</strong>, <strong class="text-[#5c9bf0]">3 ตัวโต๊ด</strong>,
+        <strong class="text-[#5c9bf0]">2 ตัวบน-ล่าง</strong> และ<strong class="text-[#5c9bf0]">เลขวิ่ง-รูด</strong> ซึ่งแต่ละแบบมีหน้าที่ต่างกัน สามตัวบนคือไม้หนักที่จ่ายสูงแต่แคบที่สุด สามตัวโต๊ดช่วยรับกรณีเลขถูกแต่สลับหลัก
+        สองตัวบน-ล่างเป็นฐานที่เข้าง่ายกว่า ส่วนเลขวิ่ง-รูดเอาไว้คลุมเลขเด่นตัวเดียวให้กว้างขึ้น
+      </p>
+
+      <p class="mb-4 text-left text-base leading-relaxed text-[#e6eefb]">
+        การกระจายความเสี่ยงคือการเลือกว่าจะลงกี่แบบและแบบละเท่าไร ตั้งงบรวมของงวดนั้นก่อนเป็นอันดับแรก แล้วค่อยแบ่งลงตามเกรดที่คัดไว้ ให้ตัวหลักได้น้ำหนักมากที่สุด เหลือส่วนที่ยอมเสียได้ไว้กับตัวรอง
+        วิธีนี้ทำให้งวดที่พลาดยังเหลือทุนไว้ลงงวดถัดไป ซึ่งสำคัญกว่าการทุ่มหมดหน้าตักในงวดที่มั่นใจเป็นพิเศษ
+      </p>
+
+      <p class="text-left text-base leading-relaxed text-[#e6eefb]">
+        และเมื่อประเด็นของงวดเปลี่ยนกลางทาง โพยก็ควรปรับตามได้ทัน ไม่ใช่ล็อกไว้ตั้งแต่ต้นสัปดาห์แล้วปล่อยเลยตามเลย แนวทางทั้งหมดในหน้านี้ช่วยให้ตัดสินใจได้เร็วขึ้นและมีเหตุผลรองรับ
+        แต่ไม่มีชุดข้อมูลไหนรับประกันงวดหน้าได้ ทุกงวดยังตัดสินกันที่ผลที่ออกมาจริงเสมอ
       </p>
     </div>
-
-    <h2 class="mb-6 text-center text-2xl font-black tracking-widest text-amber-300 uppercase">รวมแนวทางหวยล่าสุด ครบทุกตลาดที่เปิดรับ</h2>
-
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      {
-        tips.map((tip) => (
-          <div class="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-amber-500/25 bg-[#1a0409]/85 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:border-amber-400/50 hover:shadow-[0_15px_30px_rgba(251,191,36,0.22)]">
-            <div class="pointer-events-none absolute inset-0 bg-gradient-to-br from-[#7f1d1d]/25 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-            <div class="relative z-10 mb-4 flex items-center justify-between">
-              <span class="rounded-full border border-amber-500/40 bg-[#5f0914] px-3 py-1 text-xs font-bold text-amber-300">{tip.type}</span>
-              {tip.hot && <span class="flex animate-pulse items-center gap-1 text-xs font-black text-amber-300">🔥 มาแรง</span>}
-              {!tip.hot && <span class="text-xs font-medium text-amber-100/50">{tip.date}</span>}
-            </div>
-
-            <span class="relative z-10 mb-2 line-clamp-1 block text-xl font-bold text-white transition-colors group-hover:text-amber-300">{tip.title}</span>
-
-            <p class="relative z-10 mb-6 line-clamp-2 text-left text-base leading-relaxed text-amber-50/75">{tip.desc}</p>
-
-            <div class="relative z-10 mt-auto flex items-center gap-2 text-sm font-bold text-amber-400 transition-transform group-hover:translate-x-2">
-              อ่านเพิ่มเติม
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-
-    <div class="mt-12 flex justify-center">
-      <button
-        class="rounded-full border border-amber-500/50 bg-[#2a0408] px-8 py-3 font-bold text-amber-300 shadow-[0_0_15px_rgba(251,191,36,0.12)] transition-all hover:bg-amber-500/10 hover:shadow-[0_0_20px_rgba(251,191,36,0.3)]">
-        โหลดบทความเพิ่มเติม
-      </button>
-    </div>
-  </section>
+  </ContentBoxHuay>
 
   <Navfoot />
 </MainLayout>
-<style>
-  .font-sans {
-    font-family: var(--font-sans);
-  }
-</style>

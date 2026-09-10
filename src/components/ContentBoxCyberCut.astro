@@ -6,15 +6,16 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:text-2xl";
 
-// ROOM89: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
+// JAICHUA: การ์ดใบนี้ผ่านมือมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ
 // Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
 // ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
-// รอบนี้เป็นทองคำขัดเงาคู่เงินแพลตินัมบนดำอมน้ำตาล — ทอง #f7edc4 / #e6cf72 /
-// #c9a227 / #6b5424 / #3b2c10 เป็นสีเน้นหลักและถือเส้นมุมฝั่งบนซ้าย ส่วนเงิน
-// #e8ebef / #b9c2cc / #7c8794 / #2a2f36 เป็นโลหะที่สองของแบรนด์และถือเส้นมุมฝั่ง
-// ล่างขวา บนผิว #1a1208 เนื้อความ #f0e6cf — คอนทราสต์สองมุมจึงมาจากคู่ทอง/เงิน
-// ตรงตามโลโก้ที่คำว่า ROOM เป็นทองและเลข 89 เป็นเงิน
+// รอบนี้เป็นทองคำสามมิติคู่น้ำเงินรอยัลบนกรมท่าเกือบดำ ตามโล่ในโลโก้ที่ตัวอักษร
+// จ่ายชัวร์888 ดาวเข็มทิศ และเหรียญจีนสองข้างเป็นทองคำ ส่วนโล่ที่รองอยู่เป็นน้ำเงิน
+// กรมท่า — ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 / #6d4a12 เป็นสีเน้นหลักและ
+// ถือเส้นมุมฝั่งบนซ้าย ส่วนน้ำเงิน #cfe0fb / #5b8ede / #2f5fb0 / #16336b เป็นสีที่
+// สองของแบรนด์และถือเส้นมุมฝั่งล่างขวา บนผิว #0a1226 เนื้อความ #dce6f8 —
+// คอนทราสต์สองมุมจึงมาจากคู่ทอง/น้ำเงินจริงของอาร์ตเวิร์ก
 // เก็บไว้แค่ทรงมุมตัดสไตล์ cyber-cut ซึ่งเป็นเอกลักษณ์เดียวของ variant นี้
 //
 // รอบนี้ไฟล์นี้ถูก render จากหน้าแรกหน้าเดียว (หน้าย่อยทุกหน้าใช้ ContentBox.astro
@@ -27,17 +28,17 @@ const headingSize = HeadingTag === "h1" ? "text-2xl md:text-3xl" : "text-xl md:t
 
 <section class="my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-7xl border border-[#c9a227]/35 bg-[#1a1208]/92 p-8 text-left text-base leading-relaxed text-[#f0e6cf] shadow-[0_10px_30px_rgba(201,162,39,0.25)] backdrop-blur-md"
+    class="relative isolate w-full max-w-7xl border border-[#d8a83f]/35 bg-[#0a1226]/92 p-8 text-left text-base leading-relaxed text-[#dce6f8] shadow-[0_10px_30px_rgba(216,168,63,0.25)] backdrop-blur-md"
     style="clip-path: polygon(40px 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%, 0 40px);">
-    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#e6cf72] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#7c8794] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#e6cf72] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#2a2f36] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-1 w-32 bg-gradient-to-r from-[#f6d67e] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-1 w-32 bg-gradient-to-l from-[#5b8ede] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-32 w-1 bg-gradient-to-b from-[#f6d67e] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-32 w-1 bg-gradient-to-t from-[#16336b] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#c9a227] pl-6">
-          <HeadingTag class={`bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#b9c2cc] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#d8a83f] pl-6">
+          <HeadingTag class={`bg-gradient-to-r from-[#fbeec9] via-[#f6d67e] to-[#5b8ede] bg-clip-text ${headingSize} leading-normal font-black text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

@@ -1,121 +1,121 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBox3Three from "../components/ContentBox3Three.astro";
-import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
+import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
+import ContentBox3ThreeNeumorphism from "../components/ContentBox3ThreeNeumorphism.astro";
 import ContentBox from "../components/ContentBox.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
 import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
 import FeatureHighlights from "../components/FeatureHighlights.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
-import SmoothCarousel from "../components/SmoothCarousel.astro";
+import ProviderGridPremium from "../components/ProviderGridPremium.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners3 from "../components/LatestWinners3.astro";
+import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ReviewCardSumo from "../components/ReviewCardSumo.astro";
-import Faq2 from "../components/Faq2.astro";
+import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
+import Faq3 from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgCertified from "../assets/slide1.png";
-import imgTestimonial from "../assets/slide2.png";
+import imgCashback from "../assets/slide1.png";
+import imgTrueMoney from "../assets/slide3.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
 //   1 → ContentBoxCyberCut as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   3 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (อาร์ตสไลด์เป็นโลโก้หน่วย
-//       รับรอง bmm testlabs / MGA / Gambling Commission / Gaming Associates คู่
-//       ข้อความ "เกม PG SLOT ผ่านการรับรอง" ซึ่งตรงกับหัวข้อเรื่องลิขสิทธิ์แท้ของจริง)
-//       แล้วต่อด้วย ProviderGrid ซึ่งกางค่ายลิขสิทธิ์แท้ที่ย่อหน้าเดียวกันเอ่ยชื่อไว้
-//   4 → ContentBox3Three as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับประโยคเดิม:
-//       สายคอมโบแตกนอก → สายซื้อฟีเจอร์พุ่งชนฟรีสปิน → แนวคลาสสิกตัวคูณหนักและการ
-//       สลับค่ายในกระเป๋าเดียว)
-//   5 → ContentBoxTwoCyberCut as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
-//       Multipliers / Expanding Wild / Cascading → โหมด Bonus Buy) แล้วต่อด้วย
-//       FeatureHighlights ซึ่งกางสี่ฟีเจอร์ที่ย่อหน้านี้ระบุชื่อไว้ตรงๆ → h3 สี่ตัว
-//       ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบนหน้านี้ คำอธิบายเขียนขยายความใหม่ ไม่ได้
-//       ก๊อบประโยคด้านบนซ้ำ
-//   6 → ContentBox as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   7 → ContentBoxSevenThreeCyberCut as="h2" + slide2 (อาร์ตสไลด์เป็นคำชมจากลูกค้า
-//       กว่าหมื่นคนคู่ใบรับรอง "การันตี ไม่มีโกง ถอนได้ทุกยอด" ซึ่งเป็นรูปธรรมของ
-//       หัวข้อเรื่องระบบเสถียรที่รันต่อเนื่องได้ทั้งวัน)
+//   2 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
+//       วางโครงสร้างหลังบ้านให้เสถียรและเคลียร์ขั้นตอนยุ่งยาก → ประมวลผลแม่นยำ
+//       คำนวณเรียลไทม์ เปิดฟอร์มความพร้อมให้กดลุยต่อ)
+//   3 → ContentBox3ThreeNeumorphism as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับ
+//       ประโยคเดิม ตามชื่อสามแนวเกมที่ย่อหน้านั้นเอ่ยไว้ตรงๆ: สล็อตวิดีโอ 3D →
+//       สล็อตตัวคูณสะสม → สายซื้อฟีเจอร์ฟรีสปิน) แล้วต่อด้วย ProviderGridPremium
+//       ซึ่งกางรายชื่อค่ายที่ย่อหน้าเดียวกันระบุไว้ (PG Soft / Pragmatic Play /
+//       Joker Gaming)
+//   4 → ContentBox as="h2" ตัวธรรมดา (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   5 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ) แล้วต่อด้วย
+//       FeatureHighlights ซึ่งกางสามลูกเล่นแจกโบนัสที่ย่อหน้าเดียวกันระบุชื่อไว้
+//       ตรงๆ (Multiplier / Expanding Wild / Cascading) → h3 สามตัว ซึ่งเป็น h3
+//       ชุดเดียวที่ได้รับอนุญาตบนหน้านี้ คำอธิบายเขียนขยายความใหม่ ไม่ได้ก๊อบประโยค
+//       ด้านบนซ้ำ
+//   6 → ContentBoxSevenThree as="h2" + slide1 (อาร์ตสไลด์เขียนว่า รับยอดเสีย 5%
+//       ทุกวัน ซึ่งเป็นรูปธรรมของหัวข้อเรื่องโปรมีของที่มีสิทธิ์คืนยอดเสีย Cash Back
+//       ทุกวัน)
+//   7 → ContentBoxSevenThreeCyberCut as="h2" + slide3 (อาร์ตสไลด์เขียนว่า รองรับ
+//       TrueMoney Wallet ซึ่งตรงกับหัวข้อเรื่องออโต้ไฮสปีดที่ฝากถอนผ่าน Gateway ตรง
+//       รองรับทั้งธนาคารและ TrueMoney Wallet)
 //
-// variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจากชุด
-// Premium ×3 + FloatingBadge ×2 + Special + 3ThreePremium มาเป็น CyberCut ×2
-// (เดี่ยว + สองคอลัมน์) + Neumorphism ×2 (เดี่ยว + เจ็ดสาม) + plain ×1 +
-// SevenThreeCyberCut ×1 + 3Three ตัวธรรมดา ส่วน Announcement เป็น Announcement5,
-// LatestWinners เป็น LatestWinners3, ProviderGrid เป็นตัวธรรมดา, ReviewCard เป็น
-// ReviewCardSumo และ Faq เป็น Faq2 — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน MainLayout
-// กับ brandProfile
+// variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจาก
+// Premium + FloatingBadge + SevenThreePremium + TwoNeumorphism + SevenThreeHuay +
+// 3ThreeHuay + Special มาเป็น CyberCut + TwoPremium + 3ThreeNeumorphism + plain +
+// Neumorphism + SevenThree + SevenThreeCyberCut ส่วน Announcement เป็น
+// AnnouncementPremium, LatestWinners เป็น LatestWinnersPremium, กริดค่ายเกมเป็น
+// ProviderGridPremium (ค่ายสล็อต ไม่ใช่ตลาดหวย) และ Faq เป็น Faq3 —
+// Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน MainLayout กับ brandProfile
 //
-// ContentBoxSevenThree* ทั้งสองตัวปล่อยหัวข้อจาก prop `title` ตัวเดียว ส่วน
-// titleleft เป็นป้ายคอลัมน์รูปที่ยังเป็น <p> — ห้ามส่ง titleright เข้าไป เพราะจะเพิ่ม
-// ป้ายซ้อนใต้หัวข้อเดียวกัน
+// ContentBoxSevenThree ปล่อยหัวข้อผ่าน rightHeading (= titleright ?? title) จึงส่ง
+// title ตัวเดียวเข้าไป ส่วน titleleft เป็นป้ายคอลัมน์รูปที่เป็น <p> — ห้ามส่งทั้ง
+// title และ titleright พร้อมกัน เพราะจะได้หัวข้อเกินมาหนึ่งตัวที่ไม่มี docx รองรับ
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
 // สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงตัวต่อตัวกับ default ของ
-// Announcement5.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ
-// วิ่งข้อความเดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความ
-// ซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
+// AnnouncementPremium.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement />
+// เปล่าๆ วิ่งข้อความเดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render
+// ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide2 ซึ่งเป็นสไลด์ที่
-// อาร์ตตรงกับหัวข้อ docx ข้อ 3 กับข้อ 7 พอดี — slide3 (เว็บพนันออนไลน์ที่เดียว
-// ครบวงจร) ไม่มีหัวข้อ docx ไหนรองรับและเพดาน SevenThree เต็มแล้ว จึงปล่อยไว้ให้หน้า
-// /promotion ใช้ ส่วน slide4 เป็นอาร์ตของแบรนด์ก่อนที่พิมพ์โลโก้ของเขาไว้บนรูป จึงถูก
-// ถอด import ออกทั้งหมด และไฟล์ banner ทุกตัว (ทั้งตัวที่มีเลขต่อท้ายและตัวมือถือ)
-// ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่ถูก emit ลง dist/
-// ถึงจะไม่มีใคร render ก็ตาม — banner1 เป็นของ MainLayout จัดการเอง และรูปในหน้านี้
-// ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP เป็นของ hero ใน
-// MainLayout
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide3 ซึ่งเป็นสไลด์ที่
+// อาร์ตตรงกับหัวข้อ docx ข้อ 6 กับข้อ 7 พอดี — slide2 (ระบบแนะนำเพื่อนรับค่า
+// คอมมิชชั่น) กับ slide4 เป็นอาร์ตโปรโมชัน ไม่มีหัวข้อ docx ไหนรองรับและเพดาน
+// SevenThree เต็มแล้ว จึงไม่ถูกใช้ที่นี่ ส่วนไฟล์ banner ทุกตัว (ทั้งตัวที่มีเลข
+// ต่อท้ายและตัวมือถือ) ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่
+// ถูก emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม — banner1 เป็นของ MainLayout จัดการ
+// เอง และรูปในหน้านี้ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP
+// เป็นของ hero ใน MainLayout
 //
-// widget ที่ไม่ได้มาจาก docx (SmoothCarousel, GameRankingBoard, LatestWinners3,
-// LoginRtpSection, ReviewCardSumo, แถวปุ่ม login/register, FAQ, Navfoot) ใช้ป้าย
+// widget ที่ไม่ได้มาจาก docx (GameRankingBoard, LatestWinnersPremium,
+// LoginRtpSection, ReviewCardSumo2, แถวปุ่ม login/register, Faq3, Navfoot) ใช้ป้าย
 // เป็น <p>/<span> + aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้าย
 // ทั้งชุด ยกเว้นสองตัวที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง
-// (ProviderGrid → ข้อ 3, FeatureHighlights → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// (ProviderGridPremium → ข้อ 3, FeatureHighlights → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
-// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×4 จาก FeatureHighlights ซึ่งเป็นรายการ
+// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×3 จาก FeatureHighlights ซึ่งเป็นรายการ
 // ย่อยของหัวข้อข้อ 5 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
-// Faq2.astro คำถามเป็น <span> ใน <summary> และป้ายคอลัมน์ของทุก ContentBox variant
-// เป็น <p>
+// Faq3.astro คำถามเป็น <span> ใน <summary> ชื่อกริดค่ายใน ProviderGridPremium.astro
+// เป็น <p> และป้ายคอลัมน์ของทุก ContentBox variant เป็น <p>
 //
 // title กับ description ใช้บรรทัดที่ brief ให้มาตรงๆ ทั้งคู่ ห้ามเติมหรือตัด และเป็น
 // สตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
-const pageTitle = "ROOM89 | สล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ของจริง บวกกำไรเพลิน";
-const pageDescription = "ROOM89 สล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ของจริงยกค่ายมาให้เลือก เกมหลายสไตล์พร้อมฟีเจอร์น่าลอง โบนัสมีให้ตาม บวกกำไรเพลิน ระบบเสถียรตลอดวัน";
+const pageTitle = "JAICHUA | สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีล ออโต้ไวไม่เสียจังหวะ";
+const pageDescription = "JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีลมีให้เลือกหลายสไตล์ ของใหม่น่าลองเติมมาเรื่อย ๆ โบนัสมีจังหวะ โปรมีของ พร้อมออโต้ไวไม่เสียจังหวะ";
 
 const announcementMessage =
-  "ROOM89 สล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ของจริง บวกกำไรเพลิน • สล็อตเว็บตรงตัวตึง API แท้ ยิงตรงจากเซิร์ฟนอกแบบไม่ผ่านเอเย่นต์ ค่า RTP เป๊ะตามสเปกโรงงาน ไม่มีปรับลดเปอร์เซ็นต์แตก ไม่ล็อกยูส ปั่นยังไงก็มีทรง บวกเท่าไหร่ก็ถอนได้เต็ม • เลิกเสียเวลาสุ่มเล่นเกมขยะ ล็อกเป้าคัดเฉพาะเกมสล็อตตัวเด่นที่มีทรงโบนัสแตกโหดมาไว้บนหน้าล็อบบี้ จัดหมวดหมู่เกมแตกง่ายไว้ให้ชัดๆ อยากปั่นเกมไหนเข้าถึงได้ในคลิกเดียว • ขนทัพค่ายสล็อตตัวแม่ระดับโลกอย่าง PG Soft, Pragmatic Play และ Joker Gaming มาไว้แบบยกค่าย เสิร์ฟเฉพาะเกมลิขสิทธิ์แท้ของจริง กราฟิกภาพคมชัด 3D ลื่นๆ ไม่มีกระตุก อัลกอริทึมการจ่ายเงินโปร่งใส 100% • สายเบื่อง่ายต้องเลิฟ ขนเกมสล็อตมาให้สลับเล่นหลายสไตล์ ทั้งสายคอมโบแตกนอก สายซื้อฟีเจอร์พุ่งชนฟรีสปิน และแนวคลาสสิกตัวคูณหนัก สลับค่ายเล่นได้ยั่วๆ ในกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงิน • ทุกเกมอัดแน่นด้วยฟีเจอร์ตัวตึง ทั้ง Multipliers ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ยืดเต็มรีล ระบบ Cascading แตกต่อเนื่องในสปินเดียว แถมมีโหมด Bonus Buy กดซื้อฟรีสปินลุ้นแจ็คพอตใหญ่ได้ทันที • เติมทุนปั่นได้แบบมีทรง จัดโปรโมชันโบนัสฟรีให้ตามเก็บกันตลอดวัน ทั้งโปรฝากแรกของวันสำหรับสายลุย และระบบคืนยอดเสีย Cash Back ให้เก็บเครดิตกลับมาแก้ตัว เงื่อนไขโปร่งใส ถอนได้จริง ไม่ติดเทิร์นจุกจิก • รันระบบบนเซิร์ฟเวอร์ความเร็วสูง การันตีความลื่นไหลระดับสปีดติดปีก เล่นได้ยาวๆ 24 ชั่วโมง ไม่มีค้าง ไม่มีเด้งหลุดกลางทาง ฝากถอนออโต้ทำรายการเสร็จใน 3 วินาที ถอนปุ๊บเงินเด้งเข้าแอปปั๊บ";
+  "JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีล ออโต้ไวไม่เสียจังหวะ • เว็บตรง API แท้ ยิงตรงจากคลังเกมหลัก ไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงาน ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ด ไม่ล็อกยูส • วางโครงสร้างระบบหลังบ้านให้เสถียรระดับสูงสุด ประมวลผลแม่นยำ ไร้ปัญหาเกมค้างหรือสลีปหลุด ทุกยอดชนะคำนวณเงินให้แบบเรียลไทม์ • ขนทัพค่ายเกมชั้นนำระดับโลกมาครบครัน ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ครบทั้งสล็อตวิดีโอ 3D สล็อตตัวคูณสะสมโหด และสายซื้อฟีเจอร์ฟรีสปิน สลับเล่นได้ผ่านกระเป๋าเดียว • อัปเดตรายชื่อเกมใหม่เข้าคลังต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมออกมา คัดเฉพาะตัวเด็ดแตกง่ายมาเติมคลังให้ค้นหาต่อได้ไม่รู้จบ • ลูกเล่นแจกโบนัสอัดแน่นทุกเกม ทั้งระบบสุ่มแจกตัวคูณ Multiplier สัญลักษณ์ Expanding Wild ขยายเต็มจอ และคอมโบแตกต่อเนื่อง Cascading • โปรมีของให้กดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด • ฝาก-ถอนผ่าน Gateway ตรง รองรับทั้งธนาคารและ TrueMoney Wallet ทำรายการเสร็จใน 3 วินาที ไม่ต้องส่งสลิป ไม่ต้องผ่านแอดมิน";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
-// คำถามที่ผู้เล่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq2> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
-// Faq2 ใช้ค่า default ของตัวเอง เพราะ default ของทุก variant ในตระกูลนี้เป็นคำถาม
-// ของแบรนด์เก่า
+// คำถามที่สายปั่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
+// <Faq3> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
+// Faq3 ใช้ค่า default ของตัวเอง เพราะ default เป็นลิสต์ว่างโดยตั้งใจ
 const faqs = [
   {
-    q: "ROOM89 เป็นเว็บตรงจริงไหม ต่างจากเว็บที่ผ่านเอเย่นต์ตรงไหน",
-    a: "เป็นเว็บตรงตัวตึงที่ใช้ระบบ API แท้ ยิงสัญญาณตรงจากเซิร์ฟนอกโดยไม่มีเอเย่นต์มาคั่นกลาง ความต่างที่เห็นได้จริงคือค่า RTP เป๊ะตามสเปกโรงงาน ไม่มีการปรับลดเปอร์เซ็นต์แตกระหว่างทาง และไม่มีการล็อกยูสเมื่อผู้เล่นบวกหนัก ปั่นยังไงก็มีทรง บวกเท่าไหร่ก็ถอนได้เต็ม",
+    q: "JAICHUA เป็นเว็บตรงจริงไหม แล้วค่า RTP ตรงตามสเปกหรือเปล่า",
+    a: "เป็นสล็อตเว็บตรงที่เชื่อมต่อ API แท้ ยิงตรงจากคลังเกมหลักโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงตรงตามสเปกโรงงานที่ค่ายผู้พัฒนากำหนดไว้จริง ไม่มีการปรับลดเปอร์เซ็นต์การชนะระหว่างทาง การันตีอัตราการจ่ายเงินรางวัลตามมาตรฐานสากล ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ดและไม่ล็อกยูส",
   },
   {
-    q: "ต้องไล่หาเกมเองไหม หรือมีการคัดเกมมาให้แล้ว",
-    a: "ไม่ต้องสุ่มหาเอง เพราะหน้าล็อบบี้ถูกล็อกเป้าคัดเฉพาะเกมสล็อตตัวเด่นที่มีทรงโบนัสแตกโหดมาวางไว้ให้แล้ว พร้อมจัดหมวดหมู่เกมแตกง่ายแยกไว้ชัดเจน อยากปั่นเกมไหนก็เข้าถึงได้ในคลิกเดียวโดยไม่ต้องเลื่อนหาจนนิ้วล็อค เปิดเว็บมาก็กดลั่นสปินได้ทันที",
+    q: "มีค่ายเกมอะไรบ้าง แล้วต้องโยกเงินข้ามค่ายไหม",
+    a: "ขนทัพค่ายเกมชั้นนำระดับโลกมาไว้แบบครบครัน ทั้ง PG Soft, Pragmatic Play และ Joker Gaming เสิร์ฟเกมดังหลากแนวทั้งสล็อตวิดีโอ 3D ภาพสวย สล็อตตัวคูณสะสมโหด และสล็อตสายซื้อฟีเจอร์ฟรีสปิน สลับเปลี่ยนอารมณ์การเดิมพันข้ามค่ายได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องโยกเงินและไม่ต้องสลับแอป",
   },
   {
-    q: "มีค่ายอะไรให้เล่นบ้าง แล้วต้องโยกเงินข้ามค่ายไหม",
-    a: "ยกค่ายตัวแม่ระดับโลกมาให้เลือกทั้ง PG Soft, Pragmatic Play และ Joker Gaming เสิร์ฟเฉพาะเกมลิขสิทธิ์แท้ของจริง กราฟิกภาพคมชัด 3D ลื่นๆ ไม่มีกระตุก และอัลกอริทึมการจ่ายเงินโปร่งใส 100% ทุกค่ายเล่นผ่านกระเป๋าเดียว สลับค่ายได้ทันทีโดยไม่ต้องเสียเวลาโยกเงิน",
+    q: "เกมใหม่เข้าคลังบ่อยแค่ไหน หรือมีแต่เกมเดิมวนไปมา",
+    a: "ล็อบบี้ไม่หยุดอยู่แค่เกมเดิม ระบบอัปเดตรายชื่อเกมใหม่เข้าคลังอย่างต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมออกมา คัดเฉพาะตัวเด็ดแตกง่ายมาเติม สมาชิกจึงได้ทดลองฟีเจอร์สดใหม่ อ่านจังหวะโบนัส และสัมผัสประสบการณ์เดิมพันใหม่ๆ ก่อนใคร มีตัวเลือกให้ค้นหาต่อได้ไม่รู้จบ",
   },
   {
-    q: "ฟีเจอร์ Multipliers, Expanding Wild, Cascading และ Bonus Buy คืออะไร",
-    a: "Multipliers คือตัวคูณที่สะสมเพิ่มขึ้นระหว่างรอบ Expanding Wild คือสัญลักษณ์ไวลด์ที่ยืดออกจนเต็มรีล Cascading คือระบบที่ตัวเบี้ยชนะหายไปแล้วเติมของใหม่ลงมาให้แตกต่อเนื่องในสปินเดียว ส่วน Bonus Buy คือโหมดที่กดซื้อฟรีสปินเข้าไปลุ้นแจ็คพอตใหญ่ได้ทันทีแบบไม่ต้องนั่งรอ",
+    q: "ลูกเล่นแจกโบนัสในเกมมีอะไรบ้าง",
+    a: "แต่ละรอบมีอะไรน่าลุ้นมากกว่าแค่หน้าสปิน ทั้งระบบสุ่มแจกตัวคูณ Multiplier ที่ยิ่งหมุนยิ่งคูณหนัก สัญลักษณ์ Expanding Wild ที่ขยายเต็มจอ และคอมโบแตกต่อเนื่อง Cascading ที่ลากผลลัพธ์ได้หลายชั้นในตาเดียว ส่วนโปรก็มีของจริงให้กดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับ โปรฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน",
   },
   {
-    q: "ฝากถอนใช้เวลานานแค่ไหน แล้วมีโบนัสอะไรให้เก็บบ้าง",
-    a: "ฝากถอนเป็นระบบออโต้ไฮสปีดที่ทำรายการเสร็จใน 3 วินาที ถอนปุ๊บเงินเด้งเข้าแอปปั๊บ ทำงานเท่ากันตลอด 24 ชั่วโมงบนเซิร์ฟเวอร์ความเร็วสูงที่ไม่ค้างและไม่เด้งหลุดกลางทาง ส่วนโบนัสมีให้ตามเก็บทั้งโปรฝากแรกของวันและระบบคืนยอดเสีย Cash Back กดรับเองได้ผ่านหน้าเว็บ ไม่ติดเทิร์นจุกจิก",
+    q: "ฝากถอนใช้เวลานานไหม รองรับช่องทางอะไรบ้าง",
+    a: "ระบบการเงินขับเคลื่อนด้วยออโต้ไฮสปีดผ่าน Gateway ตรง รองรับทั้งบัญชีธนาคารและ TrueMoney Wallet ทำรายการเสร็จภายใน 3 วินาที ยอดเงินอัปเดตเข้าเกมทันทีและถอนเข้าบัญชีได้ทันที ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินตรวจ เงื่อนไขโปรก็โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด",
   },
 ];
 
@@ -133,147 +133,143 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="ROOM89 สล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ของจริง บวกกำไรเพลิน">
+  <ContentBoxCyberCut as="h1" title="JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีล ออโต้ไวไม่เสียจังหวะ">
     <p class="text-left text-base leading-relaxed">
-      ROOM89 สล็อตเว็บตรงตัวตึง API แท้ ยิงตรงจากเซิร์ฟนอกแบบไม่ผ่านเอเย่นต์ ค่า RTP เป๊ะตามสเปกโรงงาน ไม่มีปรับลดเปอร์เซ็นต์แตก ไม่ล็อกยูส ปั่นยังไงก็มีทรง
-      บวกเท่าไหร่ก็ถอนได้เต็มระบบด้วยโหมดออโต้ไฮสปีดใน 3 วิ ถอนปุ๊บเงินเด้งเข้าแอปปั๊บ สายสปินยุคใหม่บอกเลยว่าต้องโดน
+      JAICHUA สล็อตเว็บตรง API แท้ ยิงตรงจากคลังเกมหลัก ไม่ผ่านเอเย่นต์ การันตีอัตราการจ่ายเงินรางวัลตามมาตรฐานสากล ค่า RTP ตรงตามสเปกโรงงาน ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ด ไม่ล็อกยูส
+      ปั่นได้สบายใจด้วยระบบฝากถอนออโต้ไฮสปีด ทำรายการไวใน 3 วินาที จ่ายจริงจ่ายไว สมชื่อจ่ายชัวร์แบบไม่ต้องเดา
     </p>
   </ContentBoxCyberCut>
 
-  <ContentBoxNeumorphism as="h2" title="ROOM89 สล็อตล็อกเป้าเกมเด็ด คัดตัวน่าเล่นมาให้เจอง่ายแบบไม่ต้องสุ่มหา">
+  <ContentBoxTwoPremium
+    as="h2"
+    title="JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เปิดฟอร์มความพร้อมให้ทุกจังหวะไปต่อได้คล่อง"
+    titleleft="โครงสร้างหลังบ้านเสถียรระดับสูงสุด"
+    titleright="ประมวลผลแม่นยำ คำนวณแบบเรียลไทม์">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      วางโครงสร้างระบบหลังบ้านให้มีความเสถียรระดับสูงสุด JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เคลียร์ทุกขั้นตอนยุ่งยากออกทั้งหมด ให้ผู้เล่นเข้าถึงการทำกำไรได้รวดเร็วทันใจ
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ระบบประมวลผลแม่นยำ ไร้ปัญหาเกมค้างหรือสลีปหลุด ทุกยอดชนะคำนวณเงินให้แบบเรียลไทม์ เปิดฟอร์มความพร้อมให้สายปั่นกดลุยต่อได้อย่างคล่องตัวทุกวินาที
+    </p>
+  </ContentBoxTwoPremium>
+
+  <ContentBox3ThreeNeumorphism
+    as="h2"
+    title="เกมดังเข้าฟีลหลายสไตล์ JAICHUA เลือกเปลี่ยนอารมณ์ได้โดยไม่ต้องวนอยู่แนวเดิม"
+    titleleft="สล็อตวิดีโอ 3D ภาพสวย"
+    titlecenter="สล็อตตัวคูณสะสมโหด"
+    titleright="สล็อตสายซื้อฟีเจอร์ฟรีสปิน">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      ขนทัพค่ายเกมชั้นนำระดับโลกมาไว้แบบครบครัน ทั้ง PG Soft, Pragmatic Play และ Joker Gaming JAICHUA เสิร์ฟเกมดังเข้าฟีลหลากแนว ทั้งสล็อตวิดีโอ 3D ภาพสวย
+    </p>
+    <p slot="center" class="text-left text-base leading-relaxed">สล็อตตัวคูณสะสมโหด</p>
+    <p slot="right" class="text-left text-base leading-relaxed">และสล็อตสายซื้อฟีเจอร์ฟรีสปิน ให้คุณสลับเปลี่ยนอารมณ์การเดิมพันได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องวนเล่นอยู่แค่แนวเดิมให้เบื่อ</p>
+  </ContentBox3ThreeNeumorphism>
+
+  <ProviderGridPremium />
+
+  <ContentBox as="h2" title="ของใหม่น่าลองเติมมาเรื่อย ๆ ล็อบบี้ไม่หยุดแค่เกมเดิม มีตัวสดให้ค้นต่อ">
     <p class="text-left text-base leading-relaxed">
-      เลิกเสียเวลาสุ่มเล่นเกมขยะ ROOM89 ล็อกเป้าคัดเฉพาะเกมสล็อตตัวเด่นที่มีทรงโบนัสแตกโหดมาไว้บนหน้าล็อบบี้ ไม่ต้องเลื่อนหาจนนิ้วล็อค อยากปั่นเกมไหนเข้าถึงได้ในคลิกเดียว
-      จัดหมวดหมู่เกมแตกง่ายไว้ให้ชัดๆ เปิดเข้าเว็บมาปุ๊บ ล็อคเป้าแล้วกดลั่นสปินทำกำไรได้ทันที
+      ไม่ปล่อยให้ล็อบบี้ซ้ำซาก JAICHUA อัปเดตรายชื่อเกมใหม่เข้าคลังอย่างต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมออกมา ให้สมาชิกได้ทดลองฟีเจอร์สดใหม่ อ่านจังหวะโบนัส และสัมผัสประสบการณ์เดิมพันใหม่ๆ
+      ก่อนใคร คัดเฉพาะตัวเด็ดแตกง่ายมาเติมคลัง ให้คุณมีตัวเลือกทำเงินให้ค้นหาต่อได้ไม่รู้จบ
+    </p>
+  </ContentBox>
+
+  <ContentBoxNeumorphism as="h2" title="โบนัสมีจังหวะ JAICHUA เติมลูกเล่นให้แต่ละรอบมีอะไรน่าลุ้นมากกว่าแค่หน้าสปิน">
+    <p class="text-left text-base leading-relaxed">
+      ฉีกกฎการกดสปินแบบเดิมด้วยระบบฟีเจอร์สุดล้ำ JAICHUA อัดแน่นลูกเล่นแจกโบนัสในทุกเกม ทั้งระบบสุ่มแจกตัวคูณ Multiplier ยิ่งหมุนยิ่งคูณหนัก, สัญลักษณ์ Expanding Wild ขยายเต็มจอ และคอมโบแตกต่อเนื่อง
+      Cascading เปลี่ยนการกดหมุนธรรมดาให้กลายเป็นจังหวะทำเงินทะลุเพดานที่น่าลุ้นในทุกวินาที
     </p>
   </ContentBoxNeumorphism>
-
-  <ContentBoxSevenThreeNeumorphism as="h2" title="ลิขสิทธิ์แท้ของจริง ยกค่ายมาให้เลือกแบบเน้นคุณภาพทุกหมวด" titleleft="เกม PG SLOT ผ่านการรับรอง">
-    <Picture
-      slot="left"
-      src={imgCertified}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600, 780]}
-      sizes="(max-width: 767px) 92vw, 391px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์พื้นดำ-ทอง ด้านบนเป็นโลโก้ ROOM89 ที่คำว่า ROOM เป็นตัวอักษรทองคำและเลข 89 เป็นสีเงิน กลางภาพเขียนว่า เกม PG SLOT ผ่านการรับรอง พร้อมโลโก้หน่วยรับรองสี่อันคือ bmm testlabs, MGA, Gambling Commission และ Gaming Associates ฝั่งซ้ายเป็นรูปปั้นพระพิฆเนศทอง ฝั่งขวาเป็นเสือขาวถือถุงเงิน แถบล่างเป็นป้าย LINE และป้าย truemoney wallet"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#c9a227]/45 shadow-[0_10px_30px_rgba(201,162,39,0.28)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ขนทัพค่ายสล็อตตัวแม่ระดับโลกอย่าง PG Soft, Pragmatic Play และ Joker Gaming มาไว้แบบยกค่าย ROOM89 เสิร์ฟเฉพาะเกมลิขสิทธิ์แท้ของจริง กราฟิกภาพคมชัด 3D ลื่นๆ ไม่มีกระตุก
-      อัลกอริทึมการจ่ายเงินโปร่งใส 100% เบทเริ่มต้นเบาๆ แค่บาทเดียวก็มีสิทธิ์คว้าโบนัสก้อนโตได้จริง
-    </p>
-  </ContentBoxSevenThreeNeumorphism>
-
-  <ProviderGrid />
-
-  <ContentBox3Three
-    as="h2"
-    title="เกมหลายสไตล์มีอะไรให้ลอง เปลี่ยนฟีลบน ROOM89 ได้มากกว่าแค่เกมเดิม ๆ"
-    titleleft="คอมโบแตกนอก"
-    titlecenter="ซื้อฟีเจอร์ฟรีสปิน"
-    titleright="คลาสสิกตัวคูณหนัก">
-    <p slot="left" class="text-left text-base leading-relaxed">สายเบื่อง่ายต้องเลิฟ เพราะ ROOM89 ขนเกมสล็อตมาให้สลับเล่นหลายสไตล์ ทั้งสล็อตสายคอมโบแตกนอก</p>
-    <p slot="center" class="text-left text-base leading-relaxed">สล็อตสายซื้อฟีเจอร์พุ่งชนฟรีสปิน</p>
-    <p slot="right" class="text-left text-base leading-relaxed">หรือสล็อตแนวคลาสสิกตัวคูณหนัก สลับค่ายเล่นได้ยั่วๆ ในกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงินให้วุ่นวาย เปลี่ยนฟีลปั่นได้เรื่อยๆ ไม่มีซ้ำ</p>
-  </ContentBox3Three>
-
-  <ContentBoxTwoCyberCut
-    as="h2"
-    title="ฟีเจอร์น่าลองซ่อนอะไรไว้ เจาะลูกเล่นที่ช่วยเพิ่มจังหวะให้แต่ละเกมสนุกขึ้น"
-    titleleft="ฟีเจอร์ตัวตึงที่อัดมาในทุกเกม"
-    titleright="โหมด Bonus Buy กดซื้อฟรีสปิน">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      กดสปินที่นี่ไม่มีคำว่ากริบ ทุกเกมบน ROOM89 อัดแน่นด้วยฟีเจอร์ตัวตึง ทั้ง Multipliers ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ยืดเต็มรีล และระบบ Cascading แตกต่อเนื่องในสปินเดียว
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">แถมมีโหมด Bonus Buy ให้กดซื้อฟรีสปินเข้าไปลุ้นแจ็คพอตใหญ่ได้ทันทีแบบไม่ต้องนั่งรอ</p>
-  </ContentBoxTwoCyberCut>
 
   <FeatureHighlights
     items={[
       {
         icon: "✖️",
-        title: "Multipliers ตัวคูณสะสม",
-        description: "ตัวคูณไม่ได้รีเซ็ตทุกสปิน แต่ไต่ขึ้นไปเรื่อยๆ ตามจังหวะที่ทำเงื่อนไขได้ ยิ่งรอบยาวเท่าไหร่ยอดปลายทางก็ยิ่งบวกหนักขึ้นเท่านั้น",
+        title: "Multiplier ตัวคูณสะสม",
+        description: "ตัวคูณถูกสุ่มแจกระหว่างรอบแล้วสะสมทบขึ้นไปเรื่อยๆ แทนที่จะรีเซ็ตทุกตา ยิ่งอยู่ในจังหวะยาวเท่าไหร่ ยอดที่ได้ตอนสัญลักษณ์เข้าคู่ก็ยิ่งถูกคูณหนักขึ้นเท่านั้น",
         accent: "gold",
       },
       {
         icon: "🃏",
-        title: "Expanding Wild ยืดเต็มรีล",
-        description: "ไวลด์ที่ลงมาแล้วขยายคลุมทั้งแถวแทนที่จะกินแค่ช่องเดียว ทำให้หนึ่งสัญลักษณ์เปลี่ยนหน้าตาของทั้งรีลและปิดไลน์ที่เกือบพลาดให้กลายเป็นรางวัล",
-        accent: "silver",
+        title: "Expanding Wild ขยายเต็มจอ",
+        description: "ไวลด์ที่ลงมาแล้วไม่ได้อยู่แค่ช่องเดียว แต่ยืดคลุมทั้งวงล้อจนเต็มจอ เปิดโอกาสให้เส้นที่กำลังจะพลาดกลับมาต่อติดพร้อมกันหลายเส้นในตาเดียว",
+        accent: "blue",
       },
       {
-        icon: "🌊",
-        title: "Cascading แตกต่อเนื่องในสปินเดียว",
-        description: "ตัวที่ชนะแล้วหายไปและมีของใหม่ร่วงลงมาแทนที่ในรอบเดิม สปินเดียวจึงลุ้นได้หลายต่อโดยไม่ต้องกดใหม่ เหมาะกับสายที่ชอบไล่เก็บคอมโบยาวๆ",
+        icon: "🔁",
+        title: "Cascading คอมโบแตกต่อเนื่อง",
+        description: "สัญลักษณ์ที่ชนะแล้วจะหายไปให้ตัวใหม่ร่วงลงมาแทนที่ในตาเดิม ถ้าเข้าคู่อีกก็นับเป็นรางวัลเพิ่มต่อเนื่อง หนึ่งการกดหมุนจึงลุ้นได้หลายชั้นกว่าสล็อตทั่วไป",
         accent: "gold",
-      },
-      {
-        icon: "🎟️",
-        title: "Bonus Buy กดซื้อฟรีสปิน",
-        description: "เลือกเข้ารอบฟรีสปินได้เองตามทุนที่วางไว้ ไม่ต้องนั่งปั่นรอให้ฟีเจอร์มาเอง คุมจังหวะและงบต่อรอบได้ชัดกว่าการรอลุ้นแบบสุ่ม",
-        accent: "silver",
       },
     ]}
   />
 
-  <ContentBox as="h2" title="โบนัสมีให้ตาม บวกกำไรเพลินกับ ROOM89 ด้วยสิทธิ์ที่เติมความคุ้มได้ทุกช่วง">
-    <p class="text-left text-base leading-relaxed">
-      เติมทุนปั่นได้แบบมีทรง ROOM89 จัดโปรโมชันโบนัสฟรีให้ตามเก็บกันตลอดวัน ทั้งโปรฝากแรกของวันสำหรับสายลุย และระบบคืนยอดเสีย Cash Back ให้เก็บเครดิตกลับมาแก้ตัว กดรับเองได้เลยผ่านหน้าเว็บ
-      เงื่อนไขโปร่งใส ถอนได้จริง ไม่ติดเทิร์นจุกจิกให้เสียอารมณ์
-    </p>
-  </ContentBox>
-
-  <ContentBoxSevenThreeCyberCut as="h2" title="ระบบเสถียรตลอดวัน ROOM89 พร้อมรันทุกจังหวะให้ใช้งานต่อเนื่องได้คล่อง" titleleft="การันตี ไม่มีโกง ถอนได้ทุกยอด">
+  <ContentBoxSevenThree as="h2" title="โปรมีของไม่ได้มาแค่ให้เห็น คัดสิทธิ์น่าสนใจให้เลือกใช้ได้ตรงจังหวะ" titleleft="รับยอดเสีย 5% ทุกวัน">
     <Picture
       slot="left"
-      src={imgTestimonial}
+      src={imgCashback}
       loading="lazy"
       fetchpriority="low"
-      widths={[300, 450, 600, 700]}
-      sizes="(max-width: 767px) 92vw, 346px"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) calc(100vw - 96px), 386px"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์พื้นดำ-ทอง ด้านบนเป็นโลโก้ ROOM89 ที่คำว่า ROOM เป็นตัวอักษรทองคำและเลข 89 เป็นสีเงิน ฝั่งซ้ายเขียนว่า คำชม!! จากลูกค้ากว่าหมื่นคน++ พร้อมภาพแคปหน้าจอแชทรีวิวหลายอัน กลางภาพเป็นหญิงสาวชุดแดงยืนคู่กับพนักงานชุดกัปตันสีขาวข้างวงล้อรูเล็ต ฝั่งขวาเป็นใบรับรองพร้อมข้อความว่า ได้รับใบรับรอง เปิดคาสิโนออนไลน์ถูกกฎหมาย การันตี ไม่มีโกง ถอนได้ทุกยอด และ มีใบเซอร์การันตี การเงินมั่นคง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#b9c2cc]/50 shadow-[0_10px_30px_rgba(185,194,204,0.28)]"
+      alt="แบนเนอร์พื้นน้ำเงินสดมีลูกเต๋าและสัญลักษณ์ดอลลาร์สีขาว-ฟ้าลอยกระจายอยู่ทั่วภาพ ข้อความตัวใหญ่เขียนว่า รับยอดเสีย โดยบรรทัดล่างเป็นตัวเลข 5% สีทองต่อด้วยคำว่า ทุกวัน ฝั่งขวาเป็นหญิงสาวชุดสีน้ำเงินยิ้มถือพัดธนบัตรดอลลาร์ไว้ข้างหน้า และมีตู้สล็อตแมชชีนหน้าปัดเลข 777 วางอยู่มุมขวาล่าง"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#d8a83f]/45 shadow-[0_10px_30px_rgba(216,168,63,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      รันระบบบนเซิร์ฟเวอร์ความเร็วสูง ROOM89 การันตีความลื่นไหลระดับสปีดติดปีก เล่นได้ยาวๆ 24 ชั่วโมง ไม่มีค้าง ไม่มีเด้งหลุดกลางทาง บวกกับระบบฝากถอนออโต้ที่ทำงานโคตรไว
-      ทำรายการเสร็จใน 3 วินาที ให้คุณลุยปั่นสล็อตบวกกำไรเพลินๆ ได้แบบต่อเนื่องไม่มีขัดจังหวะ
+      แจกสิทธิประโยชน์อย่างตรงไปตรงมา JAICHUA คัดโปรเด็ดแบบมีของให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน
+      เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด เลือกรับสิทธิ์ได้ตรงจังหวะการเล่น นำไปขยายทุนทำกำไรได้จริง
+    </p>
+  </ContentBoxSevenThree>
+
+  <ContentBoxSevenThreeCyberCut as="h2" title="ออโต้ไวไม่เสียจังหวะ JAICHUA ลดช่วงรอให้การทำรายการเดินต่อได้แบบไม่สะดุด" titleleft="รองรับ TrueMoney Wallet">
+    <Picture
+      slot="left"
+      src={imgTrueMoney}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 600]}
+      sizes="(max-width: 767px) calc(100vw - 96px), 386px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์พื้นน้ำเงินเข้มมีสัญลักษณ์ดอลลาร์สีทองลอยกระจายอยู่ ข้อความสีขาวเขียนว่า รองรับ และบรรทัดถัดมาเป็นตัวอักษรสีทองว่า TrueMoney Wallet ฝั่งขวาเป็นโทรศัพท์มือถือที่เปิดหน้าแอป TrueMoney Wallet ด้านหน้ามีตัวการ์ตูนโจ๊กเกอร์ แมวดำใส่หมวกโจรสลัด และสุนัขชิบะกอดถุงเงิน มุมซ้ายล่างเป็นโลโก้ TrueMoney Wallet คู่กับป้าย Available on the App Store"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#d8a83f]/45 shadow-[0_10px_30px_rgba(216,168,63,0.28)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ระบบการเงินขับเคลื่อนด้วยออโต้ไฮสปีด JAICHUA ลดช่วงเวลาการรอคอยให้เหลือศูนย์ ฝาก-ถอนเงินผ่าน Gateway ตรง รองรับทั้งธนาคารและ TrueMoney Wallet ทำรายการเสร็จใน 3 วินาที ยอดเงินอัปเดตเข้าเกมทันที
+      ถอนปุ๊บเงินเข้าบัญชีปั๊บ ไม่ต้องส่งสลิป ไม่ต้องผ่านแอดมิน ให้คุณเดินหน้าเดิมพันได้อย่างลื่นไหลไม่เสียจังหวะ
     </p>
   </ContentBoxSevenThreeCyberCut>
 
-  <SmoothCarousel />
-
   <GameRankingBoard />
 
-  <LatestWinners3 />
+  <LatestWinnersPremium />
 
   <LoginRtpSection />
 
-  <ReviewCardSumo />
+  <ReviewCardSumo2 />
 
   <div class="mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#6b5424] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0b0805] shadow-[0_10px_30px_rgba(201,162,39,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(201,162,39,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fbeec9] via-[#d8a83f] to-[#a97722] px-4 py-3 text-sm font-black whitespace-nowrap text-[#040915] shadow-[0_10px_30px_rgba(216,168,63,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(216,168,63,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#b9c2cc]/60 bg-[#2a2f36]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e8ebef] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#e6cf72] hover:bg-[#7c8794] hover:text-[#f7edc4] hover:shadow-[0_15px_40px_rgba(185,194,204,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#2f5fb0]/60 bg-[#0e1a33]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#cfe0fb] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#5b8ede] hover:bg-[#16336b] hover:text-[#fdf8ec] hover:shadow-[0_15px_40px_rgba(47,95,176,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq2 title="คำถามที่พบบ่อยเกี่ยวกับ ROOM89" faqs={faqs} />
+  <Faq3 title="คำถามที่พบบ่อยเกี่ยวกับ JAICHUA" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

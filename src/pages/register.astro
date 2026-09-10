@@ -18,9 +18,9 @@ const targetUrl = "https://yoalink.com/znmz";
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
 // undo half of it. Nothing is lost when they drop — Google Sans covers Thai, so
-// it paints this page on its own on a google-sans brand. ROOM89 runs KANIT, so
-// this round the Kanit rules DO render and the CDN query below takes the
-// Oswald-only branch. The flag flips every rebrand, so keep BOTH branches
+// it paints this page on its own on a google-sans brand. JAICHUA runs KANIT, so
+// this round the Kanit @font-face rules DO render and the CDN query below takes
+// the Oswald-only branch. The flag flips every rebrand, so keep BOTH branches
 // correct — the next Google Sans brand needs the other one.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
@@ -34,30 +34,31 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: ROOM89 is a GOLD casino brand with
-// a REAL SECOND COLOUR — brushed silver. The mark is the word ROOM in gold
-// letters beside the numerals 89 in silver/platinum, with a gold crown resting
-// on the 8; the banner and slide art are gold chips, coins and a roulette wheel
-// in a near-black room. So silver is a colour OF the mark, not a highlight on
-// the gold, and this page has to show both or it reads as a plain gold page.
-// The gold ramp is #f7edc4 → #e6cf72 → #c9a227 → #6b5424 → #3b2c10 and the
-// silver ramp is #e8ebef → #b9c2cc → #7c8794, over the surface stack (#0b0805
-// page / rgba(26,18,8) warm panel / #2a2f36 raised, rgba(59,44,16) borders)
-// with #f0e6cf body text and #b9c2cc captions. #e6cf72 is THE brand colour —
-// the one that carries the borders and the loader's outer ring; #b9c2cc is the
-// second, and it is what the inner ring is drawn in: that ring is the one place
-// on this page where the two-colour mark is legible at a glance.
+// Palette note for the second <style> block: JAICHUA is a GOLD-ON-NAVY brand
+// with a REAL SECOND COLOUR — the mark is three-dimensional gold lettering
+// (จ่ายชัวร์888 over JAI CHUA) with a gold compass-star and two Chinese coin
+// ornaments, all sitting on a deep royal-navy shield. So navy is a colour OF the
+// mark, not merely the paper it is printed on, and this page has to show both or
+// it reads as a flat gold page.
+// The gold ramp is #fbeec9 → #f6d67e → #d8a83f → #a97722 and the royal-blue trio
+// is #cfe0fb → #2f5fb0 → #16336b, over the surface stack (#040915 page /
+// rgba(10,18,38) navy panel / #132244 raised, rgba(22,39,78) borders) with
+// #dce6f8 body text and #a9b7d4 captions. #f6d67e is THE brand colour — the one
+// that carries the borders and the loader's outer ring; #2f5fb0 is the second,
+// and it is what the inner ring is drawn in: that ring is the one place on this
+// page where the two-colour mark is legible at a glance.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
 // no gold in them and a `--brand-red` on a gold one, and a later round shipped a
 // `--gold-light` that held the brand's SECOND accent, not its primary — so the
 // next editor reused it by name and got the wrong role. Rename with the value,
-// and re-check the role when the palette changes shape. (This round the second
-// colour moved from an oxblood red to brushed silver, so the `--red-*` trio
-// became `--silver-*` rather than keeping a name that no longer describes what
-// it holds, and `--gold-primary` now holds the brand accent itself with
-// `--gold-mid` carrying the darker step it used to sit on.)
+// and re-check the role when the palette changes shape. (This round the primary
+// moved from flag blue back to gold and the second colour from flag red to royal
+// blue, so the previous `--blue-*` ramp became `--gold-*` and the `--red-*` trio
+// became `--blue-*` rather than keeping names that no longer describe what they
+// hold — a `--blue-primary` holding a gold is exactly the trap this rule exists
+// to stop.)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -65,10 +66,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก ROOM89 | เปิดยูสเดียวเล่นครบทุกค่าย ฝากถอนออโต้ใน 3 วินาที</title>
+    <title>สมัครสมาชิก JAICHUA | เปิดยูสเดียวเล่นสล็อตได้ครบทุกค่าย</title>
     <meta
       name="description"
-      content="สมัครสมาชิก ROOM89 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นเกมลิขสิทธิ์แท้ของจริงครบทุกค่าย ฝากถอนออโต้เสร็จภายใน 3 วินาที"
+      content="สมัครสมาชิก JAICHUA ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นสล็อตได้ครบทุกค่าย ค่า RTP ตรงสเปกโรงงาน ฝากถอนออโต้ใน 3 วินาที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -110,20 +111,20 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #0b0805;
-        --panel-bg: rgba(26, 18, 8, 0.92);
-        --gold-pale: #f7edc4;
-        --gold-primary: #e6cf72;
-        --gold-mid: #c9a227;
-        --gold-deep: #6b5424;
-        --gold-dark: #3b2c10;
-        --silver-bright: #e8ebef;
-        --silver-primary: #b9c2cc;
-        --silver-deep: #7c8794;
-        --surface-raised: #2a2f36;
-        --border-gold: #3b2c10;
-        --text-body: #f0e6cf;
-        --text-muted: #b9c2cc;
+        --page-bg: #040915;
+        --panel-bg: rgba(10, 18, 38, 0.92);
+        --gold-pale: #fbeec9;
+        --gold-light: #f6d67e;
+        --gold-primary: #d8a83f;
+        --gold-deep: #a97722;
+        --navy-deep: #16274e;
+        --blue-pale: #cfe0fb;
+        --blue-royal: #2f5fb0;
+        --blue-deep: #16336b;
+        --surface-raised: #132244;
+        --border-gold: #a97722;
+        --text-body: #dce6f8;
+        --text-muted: #a9b7d4;
       }
 
       body {
@@ -131,7 +132,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(230, 207, 114, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(185, 194, 204, 0.16) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(216, 168, 63, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(47, 95, 176, 0.16) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -145,11 +146,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(59, 44, 16, 0.75);
+        border: 1px solid rgba(22, 39, 78, 0.75);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(2, 2, 3, 0.7),
-          0 0 2rem rgba(230, 207, 114, 0.18);
+          0 1rem 3rem rgba(2, 4, 12, 0.7),
+          0 0 2rem rgba(216, 168, 63, 0.18);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -158,13 +159,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--gold-pale) 0%, var(--gold-primary) 35%, var(--gold-mid) 70%, var(--gold-deep) 100%);
+        background: linear-gradient(180deg, var(--gold-pale) 0%, var(--gold-light) 35%, var(--gold-primary) 70%, var(--gold-deep) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(59, 44, 16, 0.6));
+        filter: drop-shadow(0 1px 2px rgba(22, 39, 78, 0.6));
       }
 
       .sophisticated-loader {
@@ -180,30 +181,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-primary) 45%, var(--gold-dark) 100%);
+        background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-light) 45%, var(--navy-deep) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(230, 207, 114, 0.4);
+        box-shadow: 0 0 2rem rgba(216, 168, 63, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(59, 44, 16, 0.55);
+        border: 3px solid rgba(22, 39, 78, 0.55);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--gold-primary);
+        border-top-color: var(--gold-light);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--silver-primary);
+        border-bottom-color: var(--blue-royal);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -220,11 +221,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(230, 207, 114, 0.4);
+          box-shadow: 0 0 2rem rgba(216, 168, 63, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(247, 237, 196, 0.42);
+          box-shadow: 0 0 3rem rgba(251, 238, 201, 0.42);
         }
       }
 
@@ -248,7 +249,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">ROOM89</div>
+      <div class="brand-identity">JAICHUA</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -258,7 +259,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก ROOM89 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก JAICHUA ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

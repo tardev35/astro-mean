@@ -13,28 +13,30 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 // ไฟล์นี้ลึกกว่า ContentBoxSevenThreeFloatingBadge (pt-40/md:pt-34) กับ
 // ContentBox3ThreeFloatingBadge (pt-40/md:pt-32) โดยตั้งใจ — ป้ายในไฟล์นี้เสีย
 // ความกว้างให้ไอคอนตกแต่งสองตัวข้างหัวข้ออีก ~42px และรองรับกรณี h1 ที่หัวข้อ
-// ใหญ่กว่าอีกหนึ่งสเต็ป จึงคง pt-44/md:pt-36 ไว้ ให้ไฟล์นี้ลึกกว่าอีกสอง
-// *FloatingBadge เสมอ อย่าทำให้เท่ากัน
+// ใหญ่กว่าอีกหนึ่งสเต็ป ให้ไฟล์นี้ลึกกว่าอีกสอง *FloatingBadge เสมอ อย่าทำให้เท่ากัน
 //
-// คำนวณกับหัวข้อ docx ข้อ 2 ของ CK1968 ที่ไฟล์นี้รับรอบนี้ในระดับ h2 (64 ตัวอักษร
-// — "CK1968 สล็อตเว็บตรง มาตรฐานแบรนด์แท้ที่ตอบโจทย์การเดิมพันยุคใหม่")
+// คำนวณใหม่กับหัวข้อ docx ข้อ 2 ของ LOTTOTAX ที่ไฟล์นี้รับรอบนี้ในระดับ h2 — หัวข้อ
+// ยาว 77 ตัวอักษร ("LOTTOTAX คลังหวยออนไลน์ตัวเลือกแน่น เปิดมาครบทั้งโพยและข้อมูล
+// ที่สายตามเลขอยากรู้") ยาวกว่าหัวข้อที่ pt-44/md:pt-36 ของรอบก่อนถูกคำนวณไว้ (64
+// ตัวอักษร) จึงดัน pt ขึ้นหนึ่งสเต็ปทั้งสอง breakpoint
 // chrome ของป้าย = py-2.5 (20px) + border-2 (4px) = 24px:
 //   จอ 360px — การ์ด 328px, ป้าย w-[92%] = 302px, หัก px-4 (32px) กับไอคอนสองตัว
-//   บวก gap-2 (~42px) เหลือพื้นที่ข้อความ ~228px, text-lg ≈ 8.5px ต่อตัวอักษร
-//   → ~27 ตัวต่อบรรทัด หัวข้อ 64 ตัวจึงตัดเป็น 3 บรรทัด เผื่อแย่สุด 4 บรรทัด:
-//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 108px + 24px = 132px ขอบล่างอยู่ที่
-//   108px เทียบกับ pt-44 (176px) → เหลือช่องว่าง 68px ไม่ต้องดัน pt ขึ้น
+//   บวก gap-2 (~48px) เหลือพื้นที่ข้อความ ~222px, text-lg ไทยเฉลี่ย ~9.9px ต่อตัว
+//   → ~22 ตัวต่อบรรทัด หัวข้อ 77 ตัวจึงตัดเป็น 4 บรรทัด เผื่อแย่สุด 6 บรรทัด:
+//   leading-normal ที่ 18px = 27px ต่อบรรทัด → 162px + 24px = 186px ขอบล่างอยู่ที่
+//   162px เทียบกับ pt-48 (192px) → เหลือช่องว่าง 30px ไม่ทับเนื้อความ
 //   md — ป้ายถูกจำกัดที่ max-w-2xl (672px) หัก px-8 (64px) กับคู่ไอคอน เหลือ ~566px,
 //   md:text-2xl/leading-normal = 36px ต่อบรรทัด และ ~44 ตัวต่อบรรทัด → 2 บรรทัด
-//   = 72px + 24px = 96px ขอบล่างอยู่ที่ 72px เทียบกับ md:pt-36 (144px) → เหลือ 72px
+//   เผื่อแย่สุด 3 บรรทัด = 108px + 24px = 132px ขอบล่างอยู่ที่ 108px เทียบกับ
+//   md:pt-40 (160px) → เหลือ 52px
 // ตัวป้ายเองเป็น w-[92%] max-w-2xl text-center — ห้ามใส่ whitespace-nowrap ซึ่งเป็น
-// ตัวที่เคยดันป้ายทะลุขอบจอ
+// ตัวที่เคยดันป้ายทะลุขอบจอบนมือถือ
 //
-// CK1968: ย้ายจากชุดทองอำพันคู่โครเมียมเงินของแบรนด์ก่อนมาเป็นทองคำคู่แดงเลือดหมู
-// บนดำอมน้ำตาล — ทอง #ffefc4 / #ffd45c / #f0a80c / #a76806 / #5d3a05 คู่แดง
-// #ff4b52 / #d4090f / #8c0206 บนผิว #090302 / #170806 / #2a100a ขอบ #4d1f0d
-// เนื้อความ #f6e4c0 ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามเดิม แต่รับสีแดงซึ่งตรงกับ
-// ข้าวหลามตัดแดงข้างโลโก้จริงและเป็นสีเน้นที่สองของแบรนด์นี้ (ตัว K กับทับทิมบนมงกุฎ)
+// LOTTOTAX: ย้ายจากชุดทองคำคู่แดงเลือดหมูบนดำอมน้ำตาลของแบรนด์ก่อนมาเป็นน้ำเงิน
+// ธงชาติคู่แดงบนผิวกรมท่าเข้ม — น้ำเงิน #dbeafe / #5c9bf0 / #1e63d8 / #12357e /
+// #0d2559 คู่แดง #ffd9d1 / #e63c28 / #a81c04 บนผิว #04091a / #081530 / #0b1b3a
+// ขอบ #12357e เนื้อความ #e6eefb ไอคอนสองข้างป้ายยังเป็นข้าวหลามตัดตามเดิม แต่รับ
+// สีแดงซึ่งตรงกับคำว่า TAX บนโลโก้จริงและเป็นสีเน้นที่สองของแบรนด์นี้
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
@@ -46,18 +48,18 @@ const headingSize = HeadingTag === "h1" ? "text-xl sm:text-2xl md:text-3xl" : "t
 
 <section class="my-10 flex w-full justify-center px-4 font-sans">
   <div
-    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#4d1f0d]/75 bg-[#170806]/90 p-8 pt-44 text-left text-base leading-relaxed text-[#f6e4c0] shadow-[0_10px_30px_rgba(93,58,5,0.42)] backdrop-blur-md md:pt-36">
-    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#f0a80c]/30 blur-[60px]"></div>
-    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#8c0206]/45 blur-[60px]"></div>
+    class="relative isolate w-full max-w-[1400px] rounded-2xl border-2 border-[#12357e]/75 bg-[#0b1b3a]/90 p-8 pt-48 text-left text-base leading-relaxed text-[#e6eefb] shadow-[0_10px_30px_rgba(13,37,89,0.5)] backdrop-blur-md md:pt-40">
+    <div class="pointer-events-none absolute -top-16 -right-10 -z-10 h-40 w-40 rounded-full bg-[#1e63d8]/30 blur-[60px]"></div>
+    <div class="pointer-events-none absolute -bottom-16 -left-10 -z-10 h-40 w-40 rounded-full bg-[#a81c04]/45 blur-[60px]"></div>
 
     {
       title && (
-        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#d4090f]/60 bg-[#090302] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(212,9,15,0.3)] sm:px-8">
-          <span aria-hidden="true" class="shrink-0 text-[#ff4b52]">
+        <div class="absolute -top-6 left-1/2 flex w-[92%] max-w-2xl -translate-x-1/2 items-center justify-center gap-2 rounded-lg border-2 border-[#e63c28]/60 bg-[#04091a] px-4 py-2.5 text-center shadow-[0_10px_30px_rgba(230,60,40,0.3)] sm:px-8">
+          <span aria-hidden="true" class="shrink-0 text-[#e63c28]">
             ◆
           </span>
-          <HeadingTag class={`bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#ff4b52] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
-          <span aria-hidden="true" class="shrink-0 text-[#ff4b52]">
+          <HeadingTag class={`bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#e63c28] bg-clip-text ${headingSize} leading-normal font-black tracking-tight text-transparent`}>{title}</HeadingTag>
+          <span aria-hidden="true" class="shrink-0 text-[#e63c28]">
             ◆
           </span>
         </div>

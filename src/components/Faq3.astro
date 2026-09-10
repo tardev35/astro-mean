@@ -25,21 +25,22 @@ const { title, faqs = [] } = Astro.props;
 // faqs ไม่มีค่า default เป็นเนื้อหา — หน้าเรียกต้องส่ง prop มาเสมอ ลิสต์ว่างเปล่า
 // ปลอดภัยกว่าคำถามของแบรนด์ก่อนที่หลุดขึ้นหน้าเว็บ
 //
-// BLACKJACK789: ย้ายจากชุดสีของแบรนด์ก่อนหน้ามาที่ทองแอนทีค/แชมเปญบนดำเกือบสนิท —
-// ทอง #fdf1ce / #f2cf70 / #d3aa4b / #b8862c / #5c4113 บนผิว #050403 / #100b05 /
-// #1e150a เนื้อความ #ede0c4 ไอคอนตอนกางคำตอบและเส้นคั่นใต้หัวข้อรับทองสว่างเพื่อให้
-// มีน้ำหนักต่างจากทองหลักของการ์ด (ค่า hex ของแบรนด์เก่าไม่พิมพ์ไว้ตรงนี้ — Tailwind
-// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+// JAICHUA: ย้ายจากชุดสีของแบรนด์ก่อนหน้ามาที่ทองคำคู่น้ำเงินรอยัลบนกรมท่าเกือบดำ —
+// ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 / #6d4a12 คู่น้ำเงิน #5b8ede / #2f5fb0
+// บนผิว #040915 / #0a1226 / #132244 เนื้อความ #dce6f8 ไอคอนตอนกางคำตอบและเส้นคั่น
+// ใต้หัวข้อรับทองสว่างเพื่อให้มีน้ำหนักต่างจากทองหลักของการ์ด (ค่า hex ของแบรนด์เก่า
+// ไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิม
+// ได้จาก git history)
 ---
 
 <section aria-label={title} class="relative z-10 mx-auto mb-10 w-full max-w-[950px] px-4 font-sans">
   {
     title && (
       <header class="mb-8 text-center">
-        <p class="bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#b8862c] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
+        <p class="bg-gradient-to-r from-[#fbeec9] via-[#f6d67e] to-[#5b8ede] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm md:text-3xl">
           {title}
         </p>
-        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#d3aa4b] to-transparent" />
+        <div class="mx-auto mt-3 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#d8a83f] to-transparent" />
       </header>
     )
   }
@@ -47,8 +48,8 @@ const { title, faqs = [] } = Astro.props;
   <div class="space-y-3">
     {
       faqs.map((faq) => (
-        <details class="faq-item rounded-3xl border border-[#5c4113]/40 bg-[#100b05]/90 p-2 shadow-[0_10px_30px_rgba(5,4,3,0.8)] backdrop-blur-xl transition-all hover:border-[#d3aa4b]/60 hover:bg-[#1e150a]/90">
-          <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left text-[#ede0c4] transition-colors hover:text-[#f2cf70]">
+        <details class="faq-item rounded-3xl border border-[#6d4a12]/40 bg-[#0a1226]/90 p-2 shadow-[0_10px_30px_rgba(4,9,21,0.8)] backdrop-blur-xl transition-all hover:border-[#d8a83f]/60 hover:bg-[#132244]/90">
+          <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left text-[#dce6f8] transition-colors hover:text-[#f6d67e]">
             <span class="flex-1 text-left text-sm leading-normal font-bold md:text-base">{faq.q}</span>
             <span aria-hidden="true" class="faq-icon ml-4 flex h-6 w-6 shrink-0 items-center justify-center text-2xl transition-transform duration-300 ease-in-out">
               +
@@ -56,7 +57,7 @@ const { title, faqs = [] } = Astro.props;
           </summary>
 
           <div class="faq-answer overflow-hidden">
-            <p class="px-4 pb-4 text-left text-base leading-relaxed text-[#ede0c4]">{faq.a}</p>
+            <p class="px-4 pb-4 text-left text-base leading-relaxed text-[#dce6f8]">{faq.a}</p>
           </div>
         </details>
       ))
@@ -75,7 +76,7 @@ const { title, faqs = [] } = Astro.props;
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    color: #f2cf70;
+    color: #f6d67e;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;

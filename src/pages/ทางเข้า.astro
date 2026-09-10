@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementPremium.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
@@ -10,27 +10,26 @@ import { pageGraph } from "../lib/schema";
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 // h2 and h3 counts on this page must both stay 0.
 //
-// The <h1> names what the page IS ("ทางเข้า ROOM89 เว็บหลัก"). Do not give it a
-// title that previews an article; there is no article and there never was.
+// The <h1> names what the page IS ("ทางเข้า JAICHUA เว็บหลัก"). Do not give it
+// a title that previews an article; there is no article and there never was.
 //
-// ROOM89: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox
+// JAICHUA: ticker หมุนมาเป็น AnnouncementPremium และกล่องหน้าย่อยใช้ ContentBox
 // (เรียก <Announcement /> เปล่าๆ เพื่อใช้ default message ของ variant ซึ่งเป็น
 // ข้อความของแบรนด์นี้แล้ว และตรงกับหน้าแรก)
 //
-// พาเลตต์รอบนี้เป็น "ทอง + เงิน บนพื้นเกือบดำ" และเงินต้องถูกใช้จริง ไม่ใช่
-// เป็นแค่เงาของทอง — ปุ่มเข้าสู่ระบบไล่สีเงิน #7c8794 / #2a2f36 ขอบ #b9c2cc
-// เนื้อความ #e8ebef ส่วนปุ่มสมัครสมาชิกไล่สีทอง #f7edc4 / #e6cf72 / #6b5424
-// ขอบ #e6cf72 ตัวอักษรพื้นมืด #0b0805
+// พาเลตต์รอบนี้เป็น "ทองคำ + น้ำเงินรอยัล บนพื้นกรมท่าเกือบดำ" ทองเป็นสีนำและ
+// น้ำเงินเป็นสีรอง — ปุ่มสมัครสมาชิกซึ่งเป็นปุ่มหลักไล่สีทอง #f6d67e / #d8a83f /
+// #a97722 ขอบ #f6d67e เนื้อความ #040915 ส่วนปุ่มเข้าสู่ระบบไล่สีน้ำเงิน #2f5fb0 /
+// #16336b ขอบ #5b8ede เนื้อความ #fdf8ec
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 156.
-const pageDescription =
-  "ทางเข้า ROOM89 เว็บหลัก ลิงก์ตรงอัปเดตล่าสุด ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตล็อกเป้าเกมเด็ด ลิขสิทธิ์แท้ของจริง ระบบเสถียรตลอดวัน";
+// count reads about three times too long. This one measures 152.
+const pageDescription = "ทางเข้า JAICHUA เว็บหลัก ลิงก์ตรงอัปเดตล่าสุด ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตเว็บตรง API แท้ ระบบเสถียรเปิดให้ปั่นตลอด 24 ชม.";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า ROOM89 เว็บหลัก",
+  name: "ทางเข้า JAICHUA เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -39,40 +38,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า ROOM89 | เว็บหลักลิงก์ตรง สล็อตลิขสิทธิ์แท้ของจริง ระบบเสถียรตลอดวัน" description={pageDescription}>
+<MainLayout title="ทางเข้า JAICHUA | เว็บหลักลิงก์ตรง สล็อตเว็บตรง API แท้ เข้าเล่นได้ 24 ชม." description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า ROOM89 เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า JAICHUA เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ ROOM89"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#b9c2cc]/60 bg-gradient-to-r from-[#7c8794] to-[#2a2f36] px-6 py-4 shadow-[0_10px_30px_rgba(124,135,148,0.45)] transition-all duration-300 hover:scale-105 hover:border-[#e6cf72] hover:shadow-[0_15px_40px_rgba(185,194,204,0.5)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#e8ebef]/35 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ JAICHUA"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#5b8ede]/60 bg-gradient-to-r from-[#2f5fb0] to-[#16336b] px-6 py-4 shadow-[0_10px_30px_rgba(47,95,176,0.45)] transition-all duration-300 hover:scale-105 hover:border-[#cfe0fb] hover:shadow-[0_15px_40px_rgba(91,142,222,0.5)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#cfe0fb]/30 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#e8ebef]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#fdf8ec]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#e8ebef]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#fdf8ec]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก ROOM89"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#e6cf72]/70 bg-gradient-to-r from-[#f7edc4] via-[#e6cf72] to-[#6b5424] px-6 py-4 shadow-[0_10px_30px_rgba(230,207,114,0.35)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(247,237,196,0.5)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#f7edc4]/40 to-transparent"></div>
+          aria-label="สมัครสมาชิก JAICHUA"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#f6d67e]/70 bg-gradient-to-r from-[#f6d67e] via-[#d8a83f] to-[#a97722] px-6 py-4 shadow-[0_10px_30px_rgba(216,168,63,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(246,214,126,0.5)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#fbeec9]/40 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#0b0805]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#040915]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#0b0805]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#040915]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

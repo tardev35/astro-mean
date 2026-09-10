@@ -13,53 +13,57 @@ import img6 from "../assets/providers/game6.avif";
 // game6 = PP SLOT ซึ่งก็คือ Pragmatic Play ถ้าจะเปลี่ยนชื่อค่ายของช่องไหน ต้อง
 // เปลี่ยนไฟล์รูปตามด้วย ห้ามตั้งชื่อค่ายที่โฟลเดอร์นี้ไม่มีโลโก้อยู่จริง
 //
-// CK1968: กริดนี้มาถึงรอบนี้ในชุดทองอำพันคู่โครเมียมเงินของแบรนด์ก่อนหน้า พร้อมชื่อ
-// แบรนด์ก่อนฝังอยู่ใน JSX สามจุด (aria-label ของ section, บรรทัดหัวกระดาน และ
-// เทมเพลต alt ของทุกช่อง) รอบนี้ย้ายทั้งไฟล์มาที่ทองคำคู่แดงเลือดหมู — ทอง #ffefc4
-// / #ffd45c / #f0a80c / #a76806 / #5d3a05 คู่แดง #ff4b52 / #d4090f / #8c0206 บนผิว
-// #090302 / #170806 / #2a100a ขอบ #4d1f0d เนื้อความ #f6e4c0 ข้อความรอง #cdb494
+// docx ข้อ 3 เอ่ยชื่อ PG Soft, Pragmatic Play และ Joker Gaming ไว้ตรงๆ สามช่องนั้น
+// จึงถูกจัดขึ้นมาไว้หัวแถวให้ตรงกับย่อหน้าที่อยู่เหนือกริด ส่วนอีกสามค่ายที่เหลือ
+// เป็นโลโก้ที่มีอยู่จริงในโฟลเดอร์เดียวกัน
+//
+// JAICHUA: กริดนี้มาถึงรอบนี้ในชุดสีของแบรนด์ก่อนหน้า พร้อมชื่อแบรนด์ก่อนฝังอยู่ใน
+// JSX สามจุด (aria-label ของ section, บรรทัดหัวกระดาน และเทมเพลต alt ของทุกช่อง)
+// รอบนี้ย้ายทั้งไฟล์มาที่ทองคำคู่น้ำเงินรอยัล — ทอง #fbeec9 / #f6d67e / #d8a83f /
+// #a97722 / #6d4a12 คู่น้ำเงิน #cfe0fb / #5b8ede / #2f5fb0 บนผิว #040915 / #0a1226 /
+// #0e1a33 ขอบ #6d4a12 เนื้อความ #dce6f8 ข้อความรอง #a9b7d4
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย)
 //
 // ป้าย HOT ใช้ทองคำเป็นพื้น เพราะเป็นจุดเดียวในกริดที่ต้องการตัวหนังสือสีเข้ม
-// บนพื้นสว่าง ส่วนป้ายจำนวนผู้เล่นมุมซ้ายรับแดงเลือดหมูซึ่งเป็นสีที่สองของแบรนด์
+// บนพื้นสว่าง ส่วนป้ายจำนวนผู้เล่นมุมซ้ายรับน้ำเงินรอยัลซึ่งเป็นสีที่สองของแบรนด์
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อค่ายอยู่ใน alt ของรูป ไม่ใช่หัวข้อ — ห้ามเลื่อนชื่อค่ายขึ้นเป็น
-// <h3> เพราะ inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์ และ h3 สี่ตัว
-// เดียวของหน้าแรกเป็นของ FeatureHighlights กริดนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 3
-// เรื่องระบบรักษาความปลอดภัยและความน่าเชื่อถือของแพลตฟอร์ม จึงวางต่อท้ายบล็อกนั้นทันที
+// หัวข้อระดับสาม เพราะ inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์ และ
+// h3 สามตัวเดียวของหน้าแรกเป็นของ FeatureHighlights กริดนี้เป็นภาพประกอบของหัวข้อ
+// docx ข้อ 3 เรื่องค่ายเกมชั้นนำที่ขนมาไว้ครบครัน จึงวางต่อท้ายบล็อกนั้นทันที
 const providers = [
   { alt: "PG Soft (Pocket Games Soft)", users: "4,592", isHot: true, img: img1 },
-  { alt: "SexySlot", users: "2,184", isHot: true, img: img2 },
-  { alt: "SlotXO", users: "3,845", isHot: false, img: img3 },
-  { alt: "Joker Gaming", users: "2,901", isHot: true, img: img4 },
-  { alt: "JILI", users: "1,754", isHot: false, img: img5 },
-  { alt: "Pragmatic Play", users: "3,245", isHot: true, img: img6 },
+  { alt: "Pragmatic Play", users: "3,845", isHot: true, img: img6 },
+  { alt: "Joker Gaming", users: "3,245", isHot: true, img: img4 },
+  { alt: "SlotXO", users: "2,901", isHot: false, img: img3 },
+  { alt: "JILI", users: "2,184", isHot: true, img: img5 },
+  { alt: "SexySlot", users: "1,754", isHot: false, img: img2 },
 ];
 ---
 
-<section aria-label="ค่ายเกมลิขสิทธิ์แท้ที่ CK1968 ส่งตรงจากเซิร์ฟเวอร์หลักมาไว้ในคลังเดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
+<section aria-label="ค่ายเกมลิขสิทธิ์แท้ที่ JAICHUA ยิงตรงจากคลังเกมหลักมาไว้ในกระเป๋าเดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#4d1f0d]/70 bg-[#170806]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(240,168,12,0.18)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(240,168,12,0.7)]">🏆</span>
-    <p class="bg-gradient-to-r from-[#ffefc4] via-[#ffd45c] to-[#ff4b52] bg-clip-text text-3xl font-black tracking-wide text-transparent">
-      ค่ายเกมลิขสิทธิ์แท้ที่ CK1968 ส่งตรงจากเซิร์ฟเวอร์หลักมาไว้ในคลังเดียว
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#6d4a12]/70 bg-[#0a1226]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(216,168,63,0.18)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(216,168,63,0.7)]">🏆</span>
+    <p class="bg-gradient-to-r from-[#fbeec9] via-[#f6d67e] to-[#5b8ede] bg-clip-text text-3xl font-black tracking-wide text-transparent">
+      ค่ายเกมลิขสิทธิ์แท้ที่ JAICHUA ยิงตรงจากคลังเกมหลักมาไว้ในกระเป๋าเดียว
     </p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#cdb494]">
-      รวมค่ายดังระดับโลกไว้ในที่เดียวและนำเข้าระบบ API แท้จากเซิร์ฟเวอร์หลักของค่ายเกมโดยตรง อัตราการแตก RTP จึงเป็นมาตรฐานสากลจริงตามที่ค่ายแม่กำหนด ไม่มีการแอบปรับลดเปอร์เซ็นต์การชนะระหว่างทาง
-      คลังเกมจัดเป็นหมวดหมู่และค้นหาง่าย เล่นลื่นไหลไม่มีอาการกระตุกหรือหลุดออกจากเกมในจังหวะเข้าฟรีสปิน
+    <p class="max-w-3xl text-base leading-relaxed text-[#a9b7d4]">
+      ขนทัพค่ายเกมชั้นนำระดับโลกมาไว้แบบครบครัน เชื่อมต่อ API แท้ยิงตรงจากคลังเกมหลักโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงตรงตามสเปกโรงงานที่ค่ายแม่กำหนดไว้จริง ไม่มีการปรับลดเปอร์เซ็นต์ระหว่างทาง
+      สลับเปลี่ยนอารมณ์การเดิมพันข้ามค่ายได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องโยกเงินและไม่มีอาการเกมค้างหรือสลีปหลุดกลางฟรีสปิน
     </p>
-    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f0a80c] to-transparent"></div>
+    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#d8a83f] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
     {
       providers.map((p) => (
-        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#170806] shadow-[0_10px_30px_rgba(93,58,5,0.25)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(240,168,12,0.3)]">
-          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#4d1f0d] transition-all duration-500 group-hover:border-[#f0a80c]/60 group-hover:shadow-[inset_0_0_20px_rgba(240,168,12,0.25)]" />
+        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#0a1226] shadow-[0_10px_30px_rgba(22,39,78,0.35)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(216,168,63,0.3)]">
+          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#6d4a12] transition-all duration-500 group-hover:border-[#d8a83f]/60 group-hover:shadow-[inset_0_0_20px_rgba(216,168,63,0.25)]" />
 
-          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#4d1f0d] bg-[#090302]/85 px-3 py-1.5 text-[10px] font-medium text-[#d4090f] backdrop-blur-md transition-colors group-hover:text-[#ff4b52]">
+          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#6d4a12] bg-[#040915]/85 px-3 py-1.5 text-[10px] font-medium text-[#5b8ede] backdrop-blur-md transition-colors group-hover:text-[#cfe0fb]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
@@ -67,7 +71,7 @@ const providers = [
           </div>
 
           {p.isHot && (
-            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#5d3a05]/70 bg-gradient-to-r from-[#ffd45c] to-[#f0a80c] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#090302] shadow-md">
+            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#6d4a12]/70 bg-gradient-to-r from-[#f6d67e] to-[#d8a83f] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#040915] shadow-md">
               <span aria-hidden="true" class="animate-pulse">
                 🔥
               </span>{" "}
@@ -77,7 +81,7 @@ const providers = [
 
           <Picture
             src={p.img}
-            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายลิขสิทธิ์ที่เปิดให้เข้าเล่นบน CK1968`}
+            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายลิขสิทธิ์ที่เปิดให้เข้าเล่นบน JAICHUA`}
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="lazy"
@@ -90,7 +94,7 @@ const providers = [
 
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#d4090f]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#2f5fb0]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         </div>
       ))

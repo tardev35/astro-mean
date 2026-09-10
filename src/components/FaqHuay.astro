@@ -8,6 +8,26 @@ export interface Props {
   faqs?: FAQ[];
 }
 
+// บรรทัดหัว FAQ เป็น <p> ไม่ใช่ <h2> (คลาสเดิมทั้งชุด) และคำถามเป็น <span> ไม่ใช่
+// <h3> — FAQ เป็น widget ไม่ใช่ section ของ docx และ docx รอบนี้มี H2 ครบหกข้อไป
+// แล้ว inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์ หัวข้อที่งอกจาก
+// widget คือสิ่งที่ทำให้การเทียบนั้นไม่ตรง ชื่อ section สำหรับ assistive tech จึงอยู่
+// ที่ aria-label ของ <section> แทน ห้ามเลื่อนกลับขึ้นเป็นหัวข้อเพื่อ "แก้" เรื่องชื่อ
+// section อีกอย่าง <span> เป็นตัวเลือกเดียวที่ปลอดภัยใน <summary> ซึ่ง content model
+// เป็น phrasing content — <p> ตรงนั้นไม่ถูกต้องตามสเปก
+//
+// ค่า default ด้านล่างเป็นคำถามของแบรนด์หวยเจ้าก่อน เก็บไว้เป็น fallback เท่านั้น
+// ผู้เรียกต้องส่ง `faqs` เข้ามาเสมอ และต้องเป็นอาร์เรย์เดียวกับที่ส่งให้ pageGraph
+// เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน
+//
+// LOTTOTAX: ย้ายจากโทนแดงเลือดหมู/เหลืองอำพันของแบรนด์หวยเจ้าก่อนมาที่น้ำเงินธงชาติ
+// คู่แดง — น้ำเงิน #dbeafe / #5c9bf0 / #1e63d8 / #12357e คู่แดง #ffd9d1 / #e63c28 /
+// #a81c04 บนผิว #04091a / #081530 / #0b1b3a เนื้อความ #e6eefb
+// (ค่า hex กับคลาส hue เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
+//
+// ค่า `name` ของ <details> ผูกกลุ่ม accordion เข้าด้วยกัน (เปิดได้ทีละใบ) และต้อง
+// เป็นชื่อของแบรนด์ปัจจุบัน ไม่ใช่ของแบรนด์ก่อน เพราะมันติดไปกับ HTML ที่ ship
 const {
   title = "คำถามที่พบบ่อย (FAQ)",
   faqs = [
@@ -24,26 +44,26 @@ const {
 } = Astro.props;
 ---
 
-<section class="mx-auto mb-12 w-full max-w-4xl px-4 font-sans">
+<section aria-label={title} class="mx-auto mb-12 w-full max-w-4xl px-4 font-sans">
   <div class="mb-6 text-center">
-    <h2 class="bg-gradient-to-r from-amber-200 via-amber-300 to-amber-500 bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm">{title}</h2>
+    <p class="bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#e63c28] bg-clip-text text-2xl leading-normal font-black tracking-widest text-transparent uppercase drop-shadow-sm">{title}</p>
   </div>
 
   <div class="flex flex-col gap-3">
     {
       faqs.map((faq) => (
         <details
-          name="faq-huay"
-          class="faq-item group overflow-hidden rounded-xl border border-amber-500/25 bg-[#1a0409]/85 backdrop-blur-md transition-all duration-300 hover:border-amber-400/60 hover:shadow-[0_10px_25px_rgba(251,191,36,0.15)]">
+          name="faq-lottotax"
+          class="faq-item group overflow-hidden rounded-xl border border-[#1e63d8]/25 bg-[#0b1b3a]/85 backdrop-blur-md transition-all duration-300 hover:border-[#5c9bf0]/60 hover:shadow-[0_10px_25px_rgba(30,99,216,0.18)]">
           <summary class="flex w-full cursor-pointer items-center justify-between gap-4 p-5 text-left">
-            <h3 class="text-base leading-normal font-bold text-white transition-colors group-hover:text-amber-300">{faq.q}</h3>
+            <span class="text-base leading-normal font-bold text-[#e6eefb] transition-colors group-hover:text-[#5c9bf0]">{faq.q}</span>
             <span
               aria-hidden="true"
-              class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-amber-500/40 bg-[#5f0914] text-sm font-bold text-amber-200 transition-all duration-300 group-hover:bg-[#fbbf24] group-hover:text-[#1a0409]">
+              class="faq-icon flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-[#1e63d8]/40 bg-[#12357e] text-sm font-bold text-[#dbeafe] transition-all duration-300 group-hover:bg-[#1e63d8] group-hover:text-[#f2f7ff]">
               +
             </span>
           </summary>
-          <p class="faq-answer border-t border-amber-500/20 bg-[#0f0206]/70 p-5 text-left text-base leading-relaxed text-amber-50/85">{faq.a}</p>
+          <p class="faq-answer border-t border-[#1e63d8]/20 bg-[#04091a]/70 p-5 text-left text-base leading-relaxed text-[#e6eefb]/85">{faq.a}</p>
         </details>
       ))
     }
@@ -63,12 +83,12 @@ const {
     display: none;
   }
   .faq-item[open] {
-    border-color: rgba(251, 191, 36, 0.6);
+    border-color: rgba(92, 155, 240, 0.6);
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    background-color: #fbbf24;
-    color: #1a0409;
+    background-color: #1e63d8;
+    color: #f2f7ff;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;
