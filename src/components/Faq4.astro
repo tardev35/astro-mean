@@ -11,20 +11,19 @@ export interface Props {
 
 const { title, faqs = [] } = Astro.props;
 
-// CK1968: variant นี้ผ่านมาแล้วหลายชุดสี รอบนี้ย้ายมาที่ทองคำคู่แดงเลือดหมูบนดำ
-// อมน้ำตาลของแบรนด์นี้ที่วัดจากอาร์ตจริง — ทอง #ffefc4 / #ffd45c / #f0a80c /
-// #a76806 / #5d3a05 คู่แดง #ff4b52 / #d4090f / #8c0206 / #3d0203 บนผิว #090302 /
-// #170806 / #2a100a ขอบ #4d1f0d เนื้อความ #f6e4c0
+// SETH88: variant นี้ผ่านมาแล้วหลายชุดสี รอบนี้ย้ายมาที่ทองคำอียิปต์คู่บรอนซ์บนดำ
+// อมน้ำตาลของหินวิหารที่วัดจากอาร์ตจริง — ทอง #fdf3d4 / #f7d774 / #e0a92b / #a9711a
+// คู่บรอนซ์ #6b4210 บนผิว #0c0703 / #1b1109 / #2a1a0d เนื้อความ #f0e3cd
 // ไม่มีสีของแบรนด์ก่อนเหลืออยู่ในไฟล์นี้ (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ —
 // Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มี
 // ใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 // accordion เป็น <details>/<summary> ไม่มี <script> และให้เป็นแบบนี้ต่อไป
 //
-// สัญลักษณ์ ◈ หน้าคำถามล้อกับข้าวหลามตัดแดงข้างโลโก้ของแบรนด์นี้ มันเป็นของตกแต่ง
-// จึงอยู่ใน <span aria-hidden="true"> ของตัวเอง ไม่ปนกับข้อความ
+// สัญลักษณ์ ◈ หน้าคำถามล้อกับข้าวหลามตัดทองในลายเครื่องประดับอียิปต์ของแบรนด์นี้
+// มันเป็นของตกแต่งจึงอยู่ใน <span aria-hidden="true"> ของตัวเอง ไม่ปนกับข้อความ
 //
 // คำถามเป็น <span> ไม่ใช่ <h3> — เป็นระดับเดิมที่ variant นี้ ship มา และห้าม
-// เลื่อนขึ้นเป็นหัวข้อ h3 สี่ตัวเดียวที่หน้าแรกรอบนี้มีได้เป็นของ FeatureHighlights
+// เลื่อนขึ้นเป็นหัวข้อ h3 สามตัวเดียวที่หน้าแรกรอบนี้มีได้เป็นของ FeatureHighlights
 // ตัว <summary> เองเป็น disclosure control ที่มีชื่อให้ assistive tech อยู่แล้ว
 //
 // บรรทัดหัวของบล็อกเป็น <p> ไม่ใช่ <h2>: docx มี H2 หกข้อพอดี และหกข้อนั้นถูกใช้
@@ -38,9 +37,9 @@ const { title, faqs = [] } = Astro.props;
   {
     title && (
       <div
-        class="mb-8 flex items-center gap-3 border-l-4 border-[#d4090f] bg-gradient-to-r from-[#2a100a] via-[#170806]/70 to-transparent px-4 py-2.5"
+        class="mb-8 flex items-center gap-3 border-l-4 border-[#e0a92b] bg-gradient-to-r from-[#2a1a0d] via-[#1b1109]/70 to-transparent px-4 py-2.5"
         style="clip-path: polygon(0 0, 100% 0, calc(100% - 15px) 100%, 0 100%);">
-        <p class="text-xl leading-normal font-black tracking-widest text-[#ffefc4] uppercase md:text-2xl">{title}</p>
+        <p class="text-xl leading-normal font-black tracking-widest text-[#fdf3d4] uppercase md:text-2xl">{title}</p>
       </div>
     )
   }
@@ -50,13 +49,13 @@ const { title, faqs = [] } = Astro.props;
       faqs.map((faq) => (
         <details
           name="faq-terminal"
-          class="faq-item group relative overflow-hidden border border-[#f0a80c]/30 bg-[#170806]/92 backdrop-blur-sm transition-all duration-300 hover:border-[#f0a80c]/55 hover:shadow-[0_15px_40px_rgba(240,168,12,0.25)]"
+          class="faq-item group relative overflow-hidden border border-[#e0a92b]/30 bg-[#1b1109]/92 backdrop-blur-sm transition-all duration-300 hover:border-[#e0a92b]/55 hover:shadow-[0_15px_40px_rgba(224,169,43,0.25)]"
           style="clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);">
-          <div aria-hidden="true" class="absolute top-0 left-0 h-[2px] w-16 bg-gradient-to-r from-[#ffd45c] to-transparent" />
+          <div aria-hidden="true" class="absolute top-0 left-0 h-[2px] w-16 bg-gradient-to-r from-[#f7d774] to-transparent" />
 
           <summary class="flex w-full cursor-pointer items-center justify-between p-5 text-left transition-all">
-            <span class="flex items-center gap-2 text-base leading-normal font-bold text-[#f6e4c0] transition-colors group-hover:text-[#ffefc4] md:text-lg">
-              <span aria-hidden="true" class="text-[#ff4b52]">
+            <span class="flex items-center gap-2 text-base leading-normal font-bold text-[#f0e3cd] transition-colors group-hover:text-[#fdf3d4] md:text-lg">
+              <span aria-hidden="true" class="text-[#e0a92b]">
                 ◈
               </span>
               {faq.q}
@@ -64,13 +63,13 @@ const { title, faqs = [] } = Astro.props;
 
             <span
               aria-hidden="true"
-              class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center border border-[#d4090f]/45 bg-[#090302] text-lg font-black text-[#f0a80c] transition-all duration-300 group-hover:border-[#ff4b52]/60 group-hover:text-[#ffd45c]"
+              class="faq-icon ml-4 flex h-8 w-8 shrink-0 items-center justify-center border border-[#a9711a]/55 bg-[#0c0703] text-lg font-black text-[#e0a92b] transition-all duration-300 group-hover:border-[#f7d774]/60 group-hover:text-[#f7d774]"
               style="clip-path: polygon(25% 0, 100% 0, 100% 75%, 75% 100%, 0 100%, 0 25%);">
               +
             </span>
           </summary>
 
-          <div class="faq-answer border-t border-[#4d1f0d] p-5 pt-4 text-left text-base leading-relaxed text-[#f6e4c0]">{faq.a}</div>
+          <div class="faq-answer border-t border-[#6b4210] p-5 pt-4 text-left text-base leading-relaxed text-[#f0e3cd]">{faq.a}</div>
         </details>
       ))
     }
@@ -78,11 +77,9 @@ const { title, faqs = [] } = Astro.props;
 </section>
 
 <style>
-  /* The removed <style> redefined `.rotate-45` with !important — a hand-written
-     rule whose selector is also a Tailwind utility, so anything in this
-     component using rotate-45 for its own reasons silently got a border and a
-     colour change too. Keying the open state off [open] removes both the script
-     and the collision. */
+  /* สถานะเปิดผูกกับ [open] แทนที่จะใช้ <script> และห้ามนิยาม .rotate-45 ทับ —
+     ชื่อนั้นเป็น utility ของ Tailwind การเขียนกฎชนจะไปเปลี่ยนสีกับขอบของทุก
+     element ที่บังเอิญใช้คลาสนี้ด้วยเหตุผลอื่น */
   .faq-item > summary {
     list-style: none;
   }
@@ -90,13 +87,13 @@ const { title, faqs = [] } = Astro.props;
     display: none;
   }
   .faq-item[open] {
-    border-color: rgba(240, 168, 12, 0.6);
-    box-shadow: 0 15px 40px rgba(212, 9, 15, 0.35);
+    border-color: rgba(224, 169, 43, 0.6);
+    box-shadow: 0 15px 40px rgba(107, 66, 16, 0.45);
   }
   .faq-item[open] .faq-icon {
     transform: rotate(45deg);
-    border-color: #d4090f;
-    color: #ffd45c;
+    border-color: #e0a92b;
+    color: #f7d774;
   }
   .faq-item[open] .faq-answer {
     animation: faq-reveal 0.25s ease-out;

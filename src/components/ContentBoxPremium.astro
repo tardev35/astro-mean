@@ -6,14 +6,13 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// LOTTOTAX: ไฟล์นี้เป็น inventory ที่มาถึงรอบนี้ในชุดทองคำคู่แดงเลือดหมูบนดำอมน้ำตาล
-// ของแบรนด์ก่อนคนละเจ้า รอบนี้ย้ายทั้งไฟล์มาเป็นน้ำเงินธงชาติคู่แดงบนผิวกรมท่าเข้ม —
-// น้ำเงิน #dbeafe / #5c9bf0 / #1e63d8 / #12357e / #0d2559 คู่แดง #ffd9d1 / #e63c28 /
-// #a81c04 บนผิว #04091a / #081530 / #0b1b3a / #0f2246 ขอบ #12357e เนื้อความ #e6eefb
+// SETH88: ไฟล์นี้เป็น inventory ที่ค้างชุดสีของแบรนด์ก่อนคนละเจ้ามา รอบนี้ย้ายทั้งไฟล์
+// มาเป็นทองคำอียิปต์คู่บรอนซ์บนดำอมน้ำตาลของหินวิหาร — ทอง #fdf3d4 / #f7d774 /
+// #e0a92b / #a9711a คู่บรอนซ์ #6b4210 บนผิว #0c0703 / #1b1109 / #2a1a0d
+// ขอบ #6b4210 เนื้อความ #f0e3cd
 //
-// น้ำเงินเป็นสีนำ แดงเป็นสีรอง ตามโลโก้จริงที่คำว่า LOTTO เป็นน้ำเงินไล่เฉดและ TAX
-// เป็นแดงไล่เฉด — แดงจึงถูกวางไว้ที่สต็อปท้ายของไล่เฉดหัวข้อ ที่ปลายล่างของแถบขีด
-// หัวข้อ และที่ออร่ามุมขวาล่างตอน hover ส่วนน้ำเงินถือขอบการ์ด เงา และสต็อปต้น-กลาง
+// แบรนด์นี้ไม่มีสีน้ำเงินอยู่เลย แกนสีที่สองจึงเป็นบรอนซ์เข้ม ไม่ใช่คู่สีตรงข้าม —
+// ทองสว่างถือสต็อปต้นของไล่เฉดหัวข้อ ทองหลักถือกลาง และบรอนซ์ถือปลาย
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
@@ -28,15 +27,15 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-8 flex w-full justify-center px-4 font-sans">
   <div
-    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#12357e]/70 bg-gradient-to-br from-[#0f2246]/92 to-[#04091a]/88 p-8 text-left text-base leading-relaxed text-[#e6eefb] shadow-[0_10px_30px_rgba(30,99,216,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#1e63d8]/70 hover:shadow-[0_15px_40px_rgba(230,60,40,0.28)] md:p-10">
-    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#0b1b3a]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#1e63d8]/45"></div>
-    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#12357e]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#e63c28]/40"></div>
+    class="group relative isolate w-full max-w-[1400px] overflow-hidden rounded-3xl border border-[#6b4210]/70 bg-gradient-to-br from-[#1b1109]/92 to-[#0c0703]/88 p-8 text-left text-base leading-relaxed text-[#f0e3cd] shadow-[0_10px_30px_rgba(224,169,43,0.26)] backdrop-blur-xl transition-all duration-500 hover:border-[#e0a92b]/70 hover:shadow-[0_15px_40px_rgba(247,215,116,0.28)] md:p-10">
+    <div class="pointer-events-none absolute -top-20 -left-20 -z-10 h-40 w-40 rounded-full bg-[#2a1a0d]/70 blur-[55px] transition-all duration-500 group-hover:bg-[#e0a92b]/45"></div>
+    <div class="pointer-events-none absolute -right-20 -bottom-20 -z-10 h-40 w-40 rounded-full bg-[#6b4210]/60 blur-[55px] transition-all duration-500 group-hover:bg-[#f7d774]/40"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#12357e]/70 pb-4">
-          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#5c9bf0] via-[#1e63d8] to-[#a81c04] shadow-[0_0_10px_rgba(30,99,216,0.6)]" />
-          <HeadingTag class={`bg-gradient-to-r from-[#dbeafe] via-[#5c9bf0] to-[#e63c28] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#6b4210]/70 pb-4">
+          <div class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#f7d774] via-[#e0a92b] to-[#6b4210] shadow-[0_0_10px_rgba(224,169,43,0.6)]" />
+          <HeadingTag class={`bg-gradient-to-r from-[#fdf3d4] via-[#f7d774] to-[#a9711a] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

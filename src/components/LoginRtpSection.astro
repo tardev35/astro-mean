@@ -9,124 +9,123 @@ import ContentBoxTwo from "./ContentBoxTwo.astro";
 // ล็อกไว้ให้รอบนี้ — กล่องนั้นรับ props ชุดเดียวกัน (title/as/titleleft/titleright/
 // label) ถ้าจะหมุนไปตัวอื่นในรอบหน้าให้เปลี่ยนแค่ import
 //
-// JAICHUA: ย้ายชุดน้ำเงินธงชาติคู่แดงของแบรนด์ก่อนออกทั้งหมด มาที่ทองคำคู่น้ำเงิน
-// รอยัลที่วัดจากอาร์ตจริง — ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 / #6d4a12
-// คู่น้ำเงิน #cfe0fb / #5b8ede / #2f5fb0 / #16336b บนผิว #040915 / #0a1226 /
-// #0e1a33 / #132244 ขอบ #6d4a12 เนื้อความ #dce6f8 ข้อความรอง #a9b7d4 ตัวหนังสือจาง
-// #7d8bab เขียว LINE กับจุด live สีเขียว Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ
+// SETH88: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด มาที่ทองคำอียิปต์คู่บรอนซ์ที่วัดจากอาร์ต
+// จริง — ทอง #fdf3d4 / #f7d774 / #e0a92b / #a9711a คู่บรอนซ์ #6b4210 บนผิว #0c0703 /
+// #1b1109 / #2a1a0d ขอบ #6b4210 เนื้อความ #f0e3cd ข้อความรอง #d6c2a0 ตัวหนังสือจาง
+// #a8916d เขียว LINE กับจุด live สีเขียว Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 //
-// เนื้อหาเขียนใหม่ทั้งชุดตาม brief ของแบรนด์นี้ ซึ่งเป็นสล็อตเว็บตรง API แท้ ไม่ใช่
-// เว็บหวย: ยิงตรงจากคลังเกมหลักไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงาน ระบบหลังบ้าน
-// เสถียรไม่มีเกมค้าง ค่ายดัง PG Soft / Pragmatic Play / Joker Gaming ในกระเป๋าเดียว
-// เกมใหม่เข้าคลังต่อเนื่อง ลูกเล่นโบนัส Multiplier / Expanding Wild / Cascading
-// โปรที่กดรับเองผ่านแดชบอร์ด และออโต้ไฮสปีดที่รองรับธนาคารกับ TrueMoney Wallet
+// เนื้อหาเขียนใหม่ทั้งชุดตาม brief ของแบรนด์นี้ ซึ่งเป็นสล็อตเว็บตรง API แท้: ยิงตรง
+// จากเซิร์ฟเวอร์หลักไม่ผ่านเอเย่นต์ ค่า RTP มาตรฐานสากลจากค่ายแม่ ไม่ปรับลดอัตราแตก
+// ไม่ล็อกยูส เกมคัดเกรด A-List ค่าย PG Soft / Pragmatic Play / Joker Gaming ใน
+// กระเป๋าเดียว ลูกเล่น Multiplier / Expanding Wild / ซื้อฟรีสปิน โปรที่กดรับเองผ่าน
+// แดชบอร์ด ออโต้ไฮสปีด 3 วินาที และ SSL กับการตรวจสอบประวัติแบบเรียลไทม์
 const menus = [
   {
     icon: "🏅",
     name: "เว็บตรง API แท้ ไม่ผ่านเอเย่นต์",
-    detail: "ยิงตรงจากคลังเกมหลัก ค่า RTP ตรงตามสเปกโรงงานตามมาตรฐานสากล ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ด ไม่ล็อกยูส",
-    tag: "จ่ายชัวร์ไม่ต้องเดา",
+    detail: "ยิงตรงจากเซิร์ฟเวอร์หลัก ค่า RTP มาตรฐานสากลจากค่ายแม่ ไม่มีปรับลดอัตราแตก ไม่ล็อกยูส ถอนกำไรได้ครบเต็มจำนวนทุกบาท",
+    tag: "ปลอดภัยชัวร์ 100%",
   },
   {
-    icon: "🛡️",
-    name: "ระบบหลังบ้านเสถียรระดับสูงสุด",
-    detail: "ประมวลผลแม่นยำ ไร้ปัญหาเกมค้างหรือสลีปหลุดกลางรอบ ทุกยอดชนะคำนวณเงินให้แบบเรียลไทม์ กดลุยต่อได้คล่องตัวทุกวินาที",
-    tag: "ไม่ค้างไม่หลุด",
+    icon: "🎯",
+    name: "เกมคัดเกรดคุณภาพระดับ A-List",
+    detail: "คัดสรรเฉพาะตัวเกมโบนัสแตกง่ายเข้าระบบ ตัดเกมคุณภาพต่ำและเกมล้าหลังออกทั้งหมด พุ่งตรงเข้าเกมทำเงินได้โดยไม่ต้องเสียเวลาวนหา",
+    tag: "เกมคัดมาแล้ว",
   },
   {
     icon: "🎮",
-    name: "ค่ายเกมชั้นนำระดับโลกครบครัน",
-    detail: "ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ครบทั้งสล็อตวิดีโอ 3D สล็อตตัวคูณสะสม และสายซื้อฟีเจอร์ฟรีสปิน สลับอารมณ์ได้ผ่านกระเป๋าเดียว",
+    name: "คลังเกมลิขสิทธิ์แท้จากค่ายระดับโลก",
+    detail: "ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลตามมาตรฐานโรงงานผู้พัฒนา",
+    tag: "ลิขสิทธิ์แน่น",
+  },
+  {
+    icon: "🗂️",
+    name: "ล็อบบี้จัดระเบียบ เข้าถึงง่าย",
+    detail: "เลือกสปินเกมที่ชอบตามไลฟ์สไตล์การเดิมพันได้อย่างแม่นยำ สลับเปลี่ยนเกมข้ามค่ายได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องโยกเงินให้วุ่นวาย",
     tag: "กระเป๋าเดียวจบ",
   },
   {
-    icon: "🆕",
-    name: "ของใหม่น่าลองเติมมาเรื่อยๆ",
-    detail: "อัปเดตรายชื่อเกมใหม่เข้าคลังทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมออกมา คัดเฉพาะตัวเด็ดแตกง่ายมาเติม ให้ได้ลองฟีเจอร์สดใหม่ก่อนใคร",
-    tag: "ล็อบบี้ไม่ซ้ำซาก",
-  },
-  {
     icon: "✖️",
-    name: "ลูกเล่นแจกโบนัสอัดแน่นทุกเกม",
-    detail: "ระบบสุ่มแจกตัวคูณ Multiplier ยิ่งหมุนยิ่งคูณหนัก สัญลักษณ์ Expanding Wild ขยายเต็มจอ และคอมโบแตกต่อเนื่อง Cascading ให้ลุ้นได้ทุกวินาที",
-    tag: "โบนัสมีจังหวะ",
+    name: "หลายค่ายลูกเล่นเยอะทุกสไตล์",
+    detail: "ทั้งระบบ Multiplier ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ขยายเต็มรีล และโหมดซื้อฟรีสปินพุ่งตรงเข้าลุ้นโบนัสได้ทันที",
+    tag: "เปลี่ยนเกมเจอของใหม่",
   },
   {
     icon: "🎁",
-    name: "โปรมีของ กดรับเองผ่านแดชบอร์ด",
-    detail: "ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด",
-    tag: "เลือกใช้ได้ตรงจังหวะ",
+    name: "โปรน่าสนใจ กดรับเองผ่านแดชบอร์ด",
+    detail: "ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน ไม่ติดเทิร์นโอเวอร์มหาโหด",
+    tag: "เติมสิทธิ์ต่อเนื่อง",
   },
   {
     icon: "⚡",
     name: "ออโต้ไฮสปีดผ่าน Gateway ตรง",
-    detail: "รองรับทั้งธนาคารและ TrueMoney Wallet ทำรายการเสร็จใน 3 วินาที ยอดเงินอัปเดตเข้าเกมทันที ถอนปุ๊บเงินเข้าบัญชีปั๊บ ไม่ต้องส่งสลิป",
+    detail: "รองรับทั้งสถาบันการเงินชั้นนำและ TrueMoney Wallet ทำรายการเสร็จสิ้นใน 3 วินาที ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ",
     tag: "เสร็จใน 3 วิ",
   },
 ];
 
-const chips = ["สล็อตเว็บตรง API แท้", "RTP ตรงสเปกโรงงาน", "ไม่ล็อกยูส", "สล็อตวิดีโอ 3D", "ตัวคูณสะสม", "ซื้อฟีเจอร์ฟรีสปิน", "Cash Back ทุกวัน", "ออโต้ 3 วินาที"];
+const chips = ["สล็อตเว็บตรง API แท้", "RTP มาตรฐานค่ายแม่", "ไม่ล็อกยูส", "เกมคัดเกรด A-List", "Multiplier", "Expanding Wild", "Cash Back ทุกวัน", "ออโต้ 3 วินาที", "เข้ารหัส SSL"];
 ---
 
-<ContentBoxTwo titleleft="เข้าสู่ระบบ JAICHUA" titleright="ระบบและจุดเด่นของ JAICHUA ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ JAICHUA และตารางอ้างอิงระบบกับจุดเด่นภายในเว็บ">
+<ContentBoxTwo titleleft="เข้าสู่ระบบ SETH88" titleright="ระบบและจุดเด่นของ SETH88 ที่รวมไว้ในบัญชีเดียว" label="เข้าสู่ระบบ SETH88 และตารางอ้างอิงระบบกับจุดเด่นภายในเว็บ">
   <div slot="left" class="flex h-full flex-col gap-4">
-    <div class="relative overflow-hidden rounded-2xl border border-[#6d4a12]/70 bg-[#0a1226] p-6 shadow-[0_10px_30px_rgba(22,39,78,0.45)] backdrop-blur-md">
-      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#132244]/90 blur-[50px]"></div>
+    <div class="relative overflow-hidden rounded-2xl border border-[#6b4210]/70 bg-[#1b1109] p-6 shadow-[0_10px_30px_rgba(107,66,16,0.45)] backdrop-blur-md">
+      <div class="pointer-events-none absolute -top-10 -right-10 h-32 w-32 rounded-full bg-[#2a1a0d]/90 blur-[50px]"></div>
 
       <div class="relative z-10 mb-5 flex items-center gap-3">
         <span
           aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#d8a83f]/45 bg-gradient-to-br from-[#fbeec9] via-[#d8a83f] to-[#6d4a12] text-xl shadow-inner">
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#e0a92b]/45 bg-gradient-to-br from-[#fdf3d4] via-[#e0a92b] to-[#6b4210] text-xl shadow-inner">
           🎰
         </span>
         <div class="flex flex-col">
-          <p class="text-base font-black text-[#fbeec9]">ยินดีต้อนรับกลับเข้าล็อบบี้ JAICHUA</p>
-          <span class="text-[11px] text-[#a9b7d4]">
-            กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าเล่นได้ครบทั้งสล็อตวิดีโอ 3D สล็อตตัวคูณสะสม และสายซื้อฟีเจอร์ฟรีสปินจากทุกค่ายในกระเป๋าเดียว พร้อมระบบฝากถอนออโต้ที่ทำรายการเสร็จใน 3 วินาที
-            โดยไม่ต้องส่งสลิป
+          <p class="text-base font-black text-[#fdf3d4]">ยินดีต้อนรับกลับเข้าล็อบบี้ SETH88</p>
+          <span class="text-[11px] text-[#d6c2a0]">
+            กรอกเบอร์โทรศัพท์และรหัสผ่านที่ตั้งไว้ ก็เข้าเล่นเกมคัดเกรดคุณภาพระดับ A-List จากค่าย PG Soft, Pragmatic Play และ Joker Gaming ได้ครบในกระเป๋าเดียว
+            พร้อมระบบฝากถอนออโต้ที่ทำรายการเสร็จสิ้นใน 3 วินาที โดยไม่ต้องส่งสลิปยืนยัน
           </span>
         </div>
       </div>
 
       <div class="relative z-10 flex flex-col gap-3.5">
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#d8a83f]">👤</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#e0a92b]">👤</span>
           <input
             type="text"
             aria-label="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
             placeholder="เบอร์โทรศัพท์ / ยูสเซอร์เนม"
-            class="w-full rounded-xl border border-[#6d4a12] bg-[#040915] py-3 pr-4 pl-12 text-[#dce6f8] transition-all outline-none placeholder:text-[#7d8bab] focus:border-[#d8a83f] focus:ring-1 focus:ring-[#d8a83f]/60"
+            class="w-full rounded-xl border border-[#6b4210] bg-[#0c0703] py-3 pr-4 pl-12 text-[#f0e3cd] transition-all outline-none placeholder:text-[#a8916d] focus:border-[#e0a92b] focus:ring-1 focus:ring-[#e0a92b]/60"
           />
         </div>
         <div class="relative">
-          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#d8a83f]">🔑</span>
+          <span aria-hidden="true" class="absolute top-3.5 left-4 text-[#e0a92b]">🔑</span>
           <input
             type="password"
             aria-label="รหัสผ่าน"
             placeholder="รหัสผ่าน"
-            class="w-full rounded-xl border border-[#6d4a12] bg-[#040915] py-3 pr-4 pl-12 text-[#dce6f8] transition-all outline-none placeholder:text-[#7d8bab] focus:border-[#d8a83f] focus:ring-1 focus:ring-[#d8a83f]/60"
+            class="w-full rounded-xl border border-[#6b4210] bg-[#0c0703] py-3 pr-4 pl-12 text-[#f0e3cd] transition-all outline-none placeholder:text-[#a8916d] focus:border-[#e0a92b] focus:ring-1 focus:ring-[#e0a92b]/60"
           />
         </div>
 
         <div class="flex items-center justify-between px-1 text-xs">
-          <label class="flex items-center gap-2 text-[#a9b7d4]">
-            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#6d4a12] bg-[#040915] accent-[#d8a83f]" />
+          <label class="flex items-center gap-2 text-[#d6c2a0]">
+            <input type="checkbox" class="h-3.5 w-3.5 rounded border-[#6b4210] bg-[#0c0703] accent-[#e0a92b]" />
             จดจำฉันไว้
           </label>
-          <a href="/login" class="text-[#a9b7d4] transition-colors hover:text-[#f6d67e]">ลืมรหัสผ่าน?</a>
+          <a href="/login" class="text-[#d6c2a0] transition-colors hover:text-[#f7d774]">ลืมรหัสผ่าน?</a>
         </div>
 
         <button
-          class="mt-1 w-full rounded-xl border border-[#6d4a12]/80 bg-gradient-to-r from-[#fbeec9] via-[#d8a83f] to-[#a97722] p-3.5 font-black text-[#040915] shadow-[0_10px_30px_rgba(216,168,63,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(216,168,63,0.45)]">
+          class="mt-1 w-full rounded-xl border border-[#6b4210]/80 bg-gradient-to-r from-[#fdf3d4] via-[#e0a92b] to-[#a9711a] p-3.5 font-black text-[#0c0703] shadow-[0_10px_30px_rgba(224,169,43,0.35)] transition-all hover:scale-[1.02] hover:shadow-[0_15px_40px_rgba(224,169,43,0.45)]">
           เข้าสู่ระบบ
         </button>
 
-        <div class="flex items-center gap-3 py-1 text-[11px] text-[#a9b7d4]">
-          <span class="h-px flex-1 bg-[#6d4a12]"></span>
+        <div class="flex items-center gap-3 py-1 text-[11px] text-[#d6c2a0]">
+          <span class="h-px flex-1 bg-[#6b4210]"></span>
           หรือ
-          <span class="h-px flex-1 bg-[#6d4a12]"></span>
+          <span class="h-px flex-1 bg-[#6b4210]"></span>
         </div>
 
         <a
@@ -137,31 +136,31 @@ const chips = ["สล็อตเว็บตรง API แท้", "RTP ตร
 
         <div class="mt-1 flex items-center justify-between px-1">
           <div class="flex gap-2">
-            <span class="rounded-full border border-[#6d4a12] bg-[#040915] px-2.5 py-1 text-[10px] font-bold text-[#f6d67e]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
-            <span class="rounded-full border border-[#2f5fb0]/40 bg-[#040915] px-2.5 py-1 text-[10px] font-bold text-[#cfe0fb]"><span aria-hidden="true">🕐</span> ออโต้ตลอด 24 ชม.</span>
+            <span class="rounded-full border border-[#6b4210] bg-[#0c0703] px-2.5 py-1 text-[10px] font-bold text-[#f7d774]"><span aria-hidden="true">🔒</span> HTTPS + SSL</span>
+            <span class="rounded-full border border-[#a9711a]/50 bg-[#0c0703] px-2.5 py-1 text-[10px] font-bold text-[#fdf3d4]"><span aria-hidden="true">🕐</span> ออโต้ตลอด 24 ชม.</span>
           </div>
-          <a href="/register" class="text-xs font-bold text-[#fbeec9] transition-colors hover:text-[#f6d67e]">สมัครสมาชิกใหม่</a>
+          <a href="/register" class="text-xs font-bold text-[#fdf3d4] transition-colors hover:text-[#f7d774]">สมัครสมาชิกใหม่</a>
         </div>
       </div>
     </div>
   </div>
 
   <div slot="right" class="h-full">
-    <div class="flex h-full flex-col rounded-2xl border border-[#d8a83f]/30 bg-[#0a1226] p-5 shadow-[0_10px_30px_rgba(216,168,63,0.18)] backdrop-blur-md">
+    <div class="flex h-full flex-col rounded-2xl border border-[#e0a92b]/30 bg-[#1b1109] p-5 shadow-[0_10px_30px_rgba(224,169,43,0.18)] backdrop-blur-md">
       <div class="mb-5 flex items-center justify-between gap-3">
         <div>
-          <span class="text-xs font-bold tracking-wide text-[#a9b7d4]">ตารางอ้างอิงระบบและจุดเด่นที่รวมไว้ในบัญชีเดียว</span>
-          <div class="bg-gradient-to-r from-[#fbeec9] via-[#f6d67e] to-[#5b8ede] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
-            สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีล ออโต้ไวไม่เสียจังหวะ
+          <span class="text-xs font-bold tracking-wide text-[#d6c2a0]">ตารางอ้างอิงระบบและจุดเด่นที่รวมไว้ในบัญชีเดียว</span>
+          <div class="bg-gradient-to-r from-[#fdf3d4] via-[#f7d774] to-[#a9711a] bg-clip-text text-3xl font-black text-transparent sm:text-4xl">
+            สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่น ออโต้ทันใจ ปลอดภัยชัวร์
           </div>
         </div>
-        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#040915] px-2.5 py-1">
+        <span class="flex items-center gap-1.5 self-start rounded-full border border-green-400/40 bg-[#0c0703] px-2.5 py-1">
           <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]"></span>
           <span class="text-[10px] font-bold tracking-widest text-green-300 uppercase">Live</span>
         </span>
       </div>
 
-      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#a9b7d4]">
+      <div class="mb-2 flex items-center justify-between text-[11px] font-bold tracking-widest text-[#d6c2a0]">
         <span>ระบบ / จุดเด่นในเว็บ</span>
         <span>จุดที่ต้องดู</span>
       </div>
@@ -169,28 +168,28 @@ const chips = ["สล็อตเว็บตรง API แท้", "RTP ตร
       <div class="flex flex-1 flex-col gap-2.5">
         {
           menus.map((m) => (
-            <div class="rounded-xl border border-[#6d4a12] bg-[#040915] px-3.5 py-2.5 transition-colors hover:border-[#d8a83f]/45 hover:bg-[#132244]/90">
+            <div class="rounded-xl border border-[#6b4210] bg-[#0c0703] px-3.5 py-2.5 transition-colors hover:border-[#e0a92b]/45 hover:bg-[#2a1a0d]/90">
               <div class="flex items-center justify-between gap-2 text-sm">
-                <span class="flex min-w-0 items-center gap-2 font-bold text-[#dce6f8]">
+                <span class="flex min-w-0 items-center gap-2 font-bold text-[#f0e3cd]">
                   <span aria-hidden="true" class="w-5 shrink-0 text-center">
                     {m.icon}
                   </span>{" "}
                   <span class="truncate">{m.name}</span>
                 </span>
-                <span class="shrink-0 rounded-full border border-[#d8a83f]/60 bg-[#6d4a12] px-2.5 py-0.5 text-[10px] font-bold text-[#fbeec9]">{m.tag}</span>
+                <span class="shrink-0 rounded-full border border-[#e0a92b]/60 bg-[#6b4210] px-2.5 py-0.5 text-[10px] font-bold text-[#fdf3d4]">{m.tag}</span>
               </div>
-              <div class="mt-1.5 text-[11px] tracking-wide text-[#a9b7d4]">{m.detail}</div>
+              <div class="mt-1.5 text-[11px] tracking-wide text-[#d6c2a0]">{m.detail}</div>
             </div>
           ))
         }
       </div>
 
       <div class="mt-4 flex flex-wrap items-center justify-center gap-2">
-        {chips.map((c) => <span class="rounded-full border border-[#2f5fb0]/40 bg-[#040915] px-3 py-1 text-[10px] font-bold text-[#cfe0fb]">{c}</span>)}
+        {chips.map((c) => <span class="rounded-full border border-[#a9711a]/50 bg-[#0c0703] px-3 py-1 text-[10px] font-bold text-[#fdf3d4]">{c}</span>)}
       </div>
 
-      <div class="mt-3 text-center text-[10px] tracking-wide text-[#7d8bab]">
-        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับสมาชิก ควรตรวจอัตราจ่ายของแต่ละเกม เงื่อนไขการซื้อฟีเจอร์ และเงื่อนไขการรับโปรของรอบนั้นจากหน้าเกมและหน้าแดชบอร์ดจริงของ JAICHUA ก่อนลงเดิมพันทุกครั้ง
+      <div class="mt-3 text-center text-[10px] tracking-wide text-[#a8916d]">
+        รายละเอียดทั้งหมดเป็นข้อมูลอ้างอิงสำหรับสมาชิก ควรตรวจอัตราจ่ายของแต่ละเกม เงื่อนไขการซื้อฟรีสปิน และเงื่อนไขการรับโปรของรอบนั้นจากหน้าเกมและหน้าแดชบอร์ดจริงของ SETH88 ก่อนลงเดิมพันทุกครั้ง
       </div>
     </div>
   </div>

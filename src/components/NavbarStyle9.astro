@@ -20,19 +20,19 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // (/login กับ /register ยังเป็นหน้า forward แบบ noindex) เมนูจึงไม่มีรายการ
 // สมัครสมาชิก/เข้าสู่ระบบ ให้จัดลำดับ และ /ทางเข้า ยังอยู่ในเมนูตามเดิม
 //
-// ROOM89 เป็นเว็บสล็อต/คาสิโน หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// SETH88 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
 // src/pages-disabled/) ห้ามมีลิงก์ถึง
 //
-// ไอคอนเลือกให้ตรงกับอาร์ตของแบรนด์ — 👑 คือมงกุฎทองที่ประดับอยู่เหนือเลข 8
-// ในโลโก้และบนศีรษะนางแบบในแบนเนอร์ ใช้แทนหน้าเกี่ยวกับเรา 🎰 คือตู้สล็อตเลข
-// 777 สีทองมุมขวาของแบนเนอร์ ใช้แทนหน้าทดลองเล่น 🎁 แทนหน้าโปรโมชั่น ส่วน 🚪
-// แทนลิงก์ตรงทางเข้าเว็บหลัก
+// ไอคอนเลือกให้ตรงกับอาร์ตของแบรนด์ซึ่งเป็นชุดอียิปต์โบราณ — 🐺 คือหัวเทพอนูบิส
+// หมาจิ้งจอกดำประดับทองที่อยู่เหนือโลโก้และซ้ำอีกสองจุดในแบนเนอร์ ใช้แทนหน้า
+// เกี่ยวกับเรา 🎰 คือตู้สล็อตทองขึ้นเลข 777 มุมขวาของแบนเนอร์ ใช้แทนหน้าทดลองเล่น
+// 🎁 แทนหน้าโปรโมชั่น ส่วน 🚪 แทนลิงก์ตรงทางเข้าเว็บหลัก
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
   { name: "ทดลองเล่น", path: "/ทดลองเล่น", icon: "🎰" },
   { name: "ทางเข้า", path: "/ทางเข้า", icon: "🚪" },
-  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "👑" },
+  { name: "เกี่ยวกับเรา", path: "/about-us", icon: "🐺" },
   { name: "ติดต่อเรา", path: "/contact-us", icon: "💬" },
 ];
 
@@ -41,32 +41,32 @@ const links = [
 const LOGO_WIDTHS = [112, 224, 336];
 
 const LOGO_ALT =
-  "โลโก้ ROOM89 เป็นตัวอักษรทรงเหลี่ยมนูนสามมิติ คำว่า ROOM เป็นทองคำขัดเงาขอบเข้ม ต่อด้วยเลข 89 สีเงินแพลตินัมไล่เงา และมีมงกุฎทองห้าแฉกประดับอยู่เหนือเลข 8";
+  "โลโก้ SETH88 เป็นตัวอักษรทรงเหลี่ยมนูนสามมิติ คำว่า SETH เป็นทองคำขัดเงาขอบดำ ต่อด้วยเลข 88 สีเงินขาวขอบทอง ด้านบนเป็นหัวเทพอนูบิสหมาจิ้งจอกสีดำสวมเครื่องประดับทองลายริ้วและดวงตาเรืองแสงสีทอง ด้านล่างเป็นสัญลักษณ์อังค์ทองมีปีกกางออกสองข้าง";
 
-// ROOM89: ย้ายจากส้มเพลิงคู่ทองของแบรนด์ก่อน (ดูค่าเดิมได้จาก git history —
-// ห้ามพิมพ์ hex ของแบรนด์ก่อนทิ้งไว้ในคอมเมนต์ Tailwind สแกนไฟล์เป็นข้อความดิบ
-// ไม่รู้ว่าเป็นคอมเมนต์) มาเป็นทองคำคู่เงินแพลตินัมบนดำอมน้ำตาล ตามโลโก้ที่คำว่า
-// ROOM เป็นทองและเลข 89 เป็นเงิน — ทอง #c9a227 / #e6cf72 / #f7edc4 / #6b5424
-// คู่เงิน #b9c2cc / #e8ebef / #7c8794 บนผิว #0b0805 / #161009 / #1a1208
-// เนื้อความ #f0e6cf รอง #c4b696
-// (วัดจาก palette.json: vivid ของโลโก้คือ #f6ebbc / #ebdd93 / #e3d36c / #6b5424
-// ส่วน dominant ของแบนเนอร์เป็นดำอมน้ำตาล #030201 / #140b04 และ dominant ของ
-// โลโก้ให้เทาเงิน #ebebeb / #e4e4e4 ซึ่งเป็นที่มาของคู่เงิน)
+// SETH88: ย้ายจากทองคู่น้ำเงินรอยัลบนกรมท่าเกือบดำของแบรนด์ก่อน (ดูค่าเดิมได้จาก
+// git history — ห้ามพิมพ์ hex ของแบรนด์ก่อนทิ้งไว้ในคอมเมนต์ Tailwind สแกนไฟล์
+// เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์) มาเป็นทองคำอียิปต์คู่เงินขาวบนดำอมน้ำตาล
+// ตามโลโก้ที่คำว่า SETH เป็นทองและเลข 88 เป็นเงินขาว — ทอง #e0a92b / #f7d774 /
+// #fdf3d4 / #a9711a / #6b4210 คู่เงิน #d8dade / #f2f3f5 บนผิว #0c0703 / #1b1109
+// เนื้อความ #f0e3cd รอง #d6c2a0
+// (วัดจาก palette.json: vivid ของโลโก้คือ #643b0c / #532c0b / #63340b / #6b3b0b
+// ซึ่งเป็นเงาบรอนซ์ของทอง ส่วน dominant ของแบนเนอร์เป็นดำอมน้ำตาล #1b0c03 /
+// #0d0301 ซึ่งคือพื้นหลัง และ vivid ของ slide1 ให้ทองสว่างสุดที่ #935111)
 ---
 
 <header class="sticky top-0 z-50 w-full font-sans">
-  <nav class="relative z-50 w-full border-b border-[#c9a227]/35 bg-gradient-to-r from-[#0b0805] via-[#1a1208] to-[#0b0805] shadow-[0_4px_25px_rgba(0,0,0,0.75)]">
+  <nav class="relative z-50 w-full border-b border-[#e0a92b]/35 bg-gradient-to-r from-[#0c0703] via-[#1b1109] to-[#0c0703] shadow-[0_4px_25px_rgba(0,0,0,0.75)]">
     <div class="mx-auto flex h-[70px] w-full max-w-[1600px] items-center justify-between px-4 lg:h-[85px] lg:px-8">
       <div class="flex items-center">
         <a href="/" class="relative flex-shrink-0 transition-transform hover:scale-105">
-          <div aria-hidden="true" class="absolute inset-0 rounded-full bg-[#c9a227]/25 blur-xl"></div>
+          <div aria-hidden="true" class="absolute inset-0 rounded-full bg-[#e0a92b]/25 blur-xl"></div>
           <Picture
             src={mainLogo!}
             alt={LOGO_ALT}
             loading="eager"
             widths={LOGO_WIDTHS}
             sizes="112px"
-            class="relative h-[40px] w-auto drop-shadow-[0_0_8px_rgba(201,162,39,0.6)] lg:h-[50px]"
+            class="relative h-[40px] w-auto drop-shadow-[0_0_8px_rgba(224,169,43,0.6)] lg:h-[50px]"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
           />
@@ -78,17 +78,17 @@ const LOGO_ALT =
           links.map((link) => (
             <a
               href={link.path}
-              class={`group relative flex h-full items-center gap-2 px-4 text-sm font-bold transition-all duration-300 xl:px-6 xl:text-base ${isActive(link.path) ? "text-[#f7edc4]" : "text-[#f0e6cf]/80 hover:text-[#f7edc4]"}`}>
+              class={`group relative flex h-full items-center gap-2 px-4 text-sm font-bold transition-all duration-300 xl:px-6 xl:text-base ${isActive(link.path) ? "text-[#fdf3d4]" : "text-[#f0e3cd]/80 hover:text-[#fdf3d4]"}`}>
               <div
                 aria-hidden="true"
-                class={`absolute inset-0 bg-gradient-to-b from-transparent to-[#6b5424]/45 transition-opacity duration-300 ${isActive(link.path) ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
+                class={`absolute inset-0 bg-gradient-to-b from-transparent to-[#6b4210]/45 transition-opacity duration-300 ${isActive(link.path) ? "opacity-100" : "opacity-0 group-hover:opacity-100"}`}
               />
               <span aria-hidden="true" class="relative z-10 text-base">
                 {link.icon}
               </span>
               <span class="relative z-10">{link.name}</span>
               <div
-                class={`absolute bottom-0 left-1/2 h-[3px] -translate-x-1/2 bg-gradient-to-r from-[#c9a227] to-[#f7edc4] transition-all duration-300 ${isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"}`}
+                class={`absolute bottom-0 left-1/2 h-[3px] -translate-x-1/2 bg-gradient-to-r from-[#e0a92b] to-[#fdf3d4] transition-all duration-300 ${isActive(link.path) ? "w-full" : "w-0 group-hover:w-full"}`}
               />
             </a>
           ))
@@ -98,28 +98,28 @@ const LOGO_ALT =
       <div class="flex items-center gap-3 md:gap-4">
         <a
           href="/login"
-          class="hidden items-center justify-center rounded-full border border-[#b9c2cc]/70 px-6 py-2.5 text-sm font-bold text-[#e8ebef] shadow-[0_0_10px_rgba(185,194,204,0.3)] transition-all hover:bg-[#e8ebef] hover:text-[#0b0805] lg:flex">
+          class="hidden items-center justify-center rounded-full border border-[#d8dade]/70 px-6 py-2.5 text-sm font-bold text-[#f2f3f5] shadow-[0_0_10px_rgba(216,218,222,0.3)] transition-all hover:bg-[#f2f3f5] hover:text-[#0c0703] lg:flex">
           เข้าสู่ระบบ
         </a>
         <a
           href="/register"
-          class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#e6cf72] via-[#c9a227] to-[#6b5424] px-6 py-2.5 text-sm font-extrabold text-[#0b0805] shadow-[0_0_20px_rgba(201,162,39,0.5)] transition-all hover:scale-105 hover:brightness-110 lg:flex">
+          class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#f7d774] via-[#e0a92b] to-[#6b4210] px-6 py-2.5 text-sm font-extrabold text-[#0c0703] shadow-[0_0_20px_rgba(224,169,43,0.5)] transition-all hover:scale-105 hover:brightness-110 lg:flex">
           สมัครสมาชิก
         </a>
 
         <button
           id="hamburger-btn"
-          class="relative z-[60] flex h-10 w-10 flex-col items-center justify-center overflow-hidden rounded-full border-2 border-[#1a1208] bg-gradient-to-tr from-[#c9a227] to-[#f7edc4] shadow-[0_0_15px_rgba(201,162,39,0.55)] lg:hidden"
+          class="relative z-[60] flex h-10 w-10 flex-col items-center justify-center overflow-hidden rounded-full border-2 border-[#1b1109] bg-gradient-to-tr from-[#e0a92b] to-[#fdf3d4] shadow-[0_0_15px_rgba(224,169,43,0.55)] lg:hidden"
           aria-label="Menu">
-          <span class="hamburger-line absolute h-[2px] w-5 -translate-y-1.5 transform rounded-full bg-[#0b0805] transition-all duration-300"></span>
-          <span class="hamburger-line absolute h-[2px] w-5 rounded-full bg-[#0b0805] transition-all duration-300"></span>
-          <span class="hamburger-line absolute h-[2px] w-5 translate-y-1.5 transform rounded-full bg-[#0b0805] transition-all duration-300"></span>
+          <span class="hamburger-line absolute h-[2px] w-5 -translate-y-1.5 transform rounded-full bg-[#0c0703] transition-all duration-300"></span>
+          <span class="hamburger-line absolute h-[2px] w-5 rounded-full bg-[#0c0703] transition-all duration-300"></span>
+          <span class="hamburger-line absolute h-[2px] w-5 translate-y-1.5 transform rounded-full bg-[#0c0703] transition-all duration-300"></span>
         </button>
       </div>
     </div>
   </nav>
 
-  <div id="mobile-circular-menu" class="pointer-events-none fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#0b0805]/98 backdrop-blur-2xl lg:hidden">
+  <div id="mobile-circular-menu" class="pointer-events-none fixed inset-0 z-40 flex flex-col items-center justify-center bg-[#0c0703]/98 backdrop-blur-2xl lg:hidden">
     <div class="flex w-full flex-col items-center space-y-6 px-6">
       <Picture
         src={mainLogo!}
@@ -128,7 +128,7 @@ const LOGO_ALT =
         sizes="112px"
         loading="lazy"
         decoding="async"
-        class="menu-item mb-6 h-[50px] w-auto opacity-0 drop-shadow-[0_0_15px_rgba(201,162,39,0.6)]"
+        class="menu-item mb-6 h-[50px] w-auto opacity-0 drop-shadow-[0_0_15px_rgba(224,169,43,0.6)]"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
       />
@@ -137,7 +137,7 @@ const LOGO_ALT =
         links.map((link) => (
           <a
             href={link.path}
-            class={`menu-item flex items-center gap-3 text-3xl font-black tracking-wider uppercase opacity-0 transition-all duration-300 ${isActive(link.path) ? "text-[#f7edc4] drop-shadow-[0_0_8px_rgba(247,237,196,0.85)]" : "text-[#f0e6cf]/80 hover:text-[#f7edc4]"}`}>
+            class={`menu-item flex items-center gap-3 text-3xl font-black tracking-wider uppercase opacity-0 transition-all duration-300 ${isActive(link.path) ? "text-[#fdf3d4] drop-shadow-[0_0_8px_rgba(253,243,212,0.85)]" : "text-[#f0e3cd]/80 hover:text-[#fdf3d4]"}`}>
             <span aria-hidden="true" class="text-2xl">
               {link.icon}
             </span>
@@ -146,13 +146,13 @@ const LOGO_ALT =
         ))
       }
 
-      <div class="menu-item mt-4 flex w-full max-w-[280px] flex-col gap-4 border-t border-[#c9a227]/40 pt-8 opacity-0">
+      <div class="menu-item mt-4 flex w-full max-w-[280px] flex-col gap-4 border-t border-[#e0a92b]/40 pt-8 opacity-0">
         <a
           href="/register"
-          class="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#e6cf72] via-[#c9a227] to-[#6b5424] py-3.5 text-lg font-extrabold text-[#0b0805] shadow-[0_0_20px_rgba(201,162,39,0.5)]">
+          class="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#f7d774] via-[#e0a92b] to-[#6b4210] py-3.5 text-lg font-extrabold text-[#0c0703] shadow-[0_0_20px_rgba(224,169,43,0.5)]">
           <span aria-hidden="true">🎁</span> สมัครสมาชิก
         </a>
-        <a href="/login" class="flex w-full items-center justify-center rounded-full border border-[#b9c2cc]/50 py-3.5 text-lg font-bold text-[#e8ebef] hover:bg-[#b9c2cc]/10">เข้าสู่ระบบ</a>
+        <a href="/login" class="flex w-full items-center justify-center rounded-full border border-[#d8dade]/50 py-3.5 text-lg font-bold text-[#f2f3f5] hover:bg-[#d8dade]/10">เข้าสู่ระบบ</a>
       </div>
     </div>
   </div>

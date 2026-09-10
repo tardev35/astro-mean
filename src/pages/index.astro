@@ -1,121 +1,121 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
-import ContentBox3ThreeNeumorphism from "../components/ContentBox3ThreeNeumorphism.astro";
-import ContentBox from "../components/ContentBox.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import Announcement from "../components/Announcement5.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
+import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
+import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
 import FeatureHighlights from "../components/FeatureHighlights.astro";
-import ProviderGridPremium from "../components/ProviderGridPremium.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinnersPremium from "../components/LatestWinnersPremium.astro";
+import LatestWinners3 from "../components/LatestWinners3.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import Faq3 from "../components/Faq3.astro";
+import ReviewCardSumo from "../components/ReviewCardSumo.astro";
+import Faq4 from "../components/Faq4.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgCashback from "../assets/slide1.png";
-import imgTrueMoney from "../assets/slide3.png";
+import imgCashback from "../assets/slide3.png";
+import imgAutoBanking from "../assets/slide2.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxCyberCut as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
-//       วางโครงสร้างหลังบ้านให้เสถียรและเคลียร์ขั้นตอนยุ่งยาก → ประมวลผลแม่นยำ
-//       คำนวณเรียลไทม์ เปิดฟอร์มความพร้อมให้กดลุยต่อ)
-//   3 → ContentBox3ThreeNeumorphism as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับ
-//       ประโยคเดิม ตามชื่อสามแนวเกมที่ย่อหน้านั้นเอ่ยไว้ตรงๆ: สล็อตวิดีโอ 3D →
-//       สล็อตตัวคูณสะสม → สายซื้อฟีเจอร์ฟรีสปิน) แล้วต่อด้วย ProviderGridPremium
-//       ซึ่งกางรายชื่อค่ายที่ย่อหน้าเดียวกันระบุไว้ (PG Soft / Pragmatic Play /
-//       Joker Gaming)
-//   4 → ContentBox as="h2" ตัวธรรมดา (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   5 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ) แล้วต่อด้วย
-//       FeatureHighlights ซึ่งกางสามลูกเล่นแจกโบนัสที่ย่อหน้าเดียวกันระบุชื่อไว้
-//       ตรงๆ (Multiplier / Expanding Wild / Cascading) → h3 สามตัว ซึ่งเป็น h3
-//       ชุดเดียวที่ได้รับอนุญาตบนหน้านี้ คำอธิบายเขียนขยายความใหม่ ไม่ได้ก๊อบประโยค
-//       ด้านบนซ้ำ
-//   6 → ContentBoxSevenThree as="h2" + slide1 (อาร์ตสไลด์เขียนว่า รับยอดเสีย 5%
-//       ทุกวัน ซึ่งเป็นรูปธรรมของหัวข้อเรื่องโปรมีของที่มีสิทธิ์คืนยอดเสีย Cash Back
-//       ทุกวัน)
-//   7 → ContentBoxSevenThreeCyberCut as="h2" + slide3 (อาร์ตสไลด์เขียนว่า รองรับ
-//       TrueMoney Wallet ซึ่งตรงกับหัวข้อเรื่องออโต้ไฮสปีดที่ฝากถอนผ่าน Gateway ตรง
-//       รองรับทั้งธนาคารและ TrueMoney Wallet)
+//   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxTwoCyberCut as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
+//       คัดเกมโบนัสแตกง่าย ตัดเกมคุณภาพต่ำและเกมล้าหลังออก → จัดระเบียบล็อบบี้
+//       เลือกสปินตามไลฟ์สไตล์ได้แม่นยำ)
+//   3 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับประโยค
+//       เดิม: คลังลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ → ทดสอบอัลกอริทึมการจ่ายรางวัล →
+//       ปั่นเบทไหนก็ลุ้นแตกเท่ากัน) แล้วต่อด้วย ProviderGrid ซึ่งกางรายชื่อค่ายที่
+//       ย่อหน้าเดียวกันระบุไว้ตรงๆ (PG Soft / Pragmatic Play / Joker Gaming)
+//   4 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม) แล้ว
+//       ต่อด้วย FeatureHighlights ซึ่งกางสามลูกเล่นที่ย่อหน้าเดียวกันเอ่ยชื่อไว้ตรงๆ
+//       (Multiplier / Expanding Wild / ซื้อฟรีสปิน) → h3 สามตัว ซึ่งเป็น h3 ชุดเดียว
+//       ที่ได้รับอนุญาตบนหน้านี้ คำอธิบายเขียนขยายความใหม่ ไม่ได้ก๊อบประโยคด้านบนซ้ำ
+//   5 → ContentBoxSevenThreePremium as="h2" + slide3 (อาร์ตสไลด์เขียนว่า ยอดเสีย
+//       คืนสูงสุด 10% / เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น ซึ่งเป็นรูปธรรมของหัวข้อ
+//       เรื่องโปรน่าสนใจที่มีสิทธิ์คืนยอดเสีย Cash Back ทุกวัน)
+//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide2 (อาร์ตสไลด์เขียนว่า ฝาก-ถอน
+//       ระบบอัตโนมัติ รวดเร็ว / ปลอดภัย มั่นใจ 100% ซึ่งตรงกับหัวข้อเรื่องออโต้ทันใจ
+//       ที่ตัดช่วงรออนุมัติออกทั้งหมด)
+//   7 → ContentBoxFloatingBadge as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว) — ป้ายลอย
+//       ของ variant นี้ถูกคำนวณ clearance ใหม่กับหัวข้อจริงยาว 71 ตัวอักษรแล้วในไฟล์
+//       component: pt-48/md:pt-40 เหลือช่องว่าง 30px บนจอ 360px และ 52px บน md
 //
 // variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจาก
-// Premium + FloatingBadge + SevenThreePremium + TwoNeumorphism + SevenThreeHuay +
-// 3ThreeHuay + Special มาเป็น CyberCut + TwoPremium + 3ThreeNeumorphism + plain +
-// Neumorphism + SevenThree + SevenThreeCyberCut ส่วน Announcement เป็น
-// AnnouncementPremium, LatestWinners เป็น LatestWinnersPremium, กริดค่ายเกมเป็น
-// ProviderGridPremium (ค่ายสล็อต ไม่ใช่ตลาดหวย) และ Faq เป็น Faq3 —
-// Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน MainLayout กับ brandProfile
+// CyberCut + TwoPremium + 3ThreeNeumorphism + plain + Neumorphism + SevenThree +
+// SevenThreeCyberCut มาเป็น Premium + TwoCyberCut + 3ThreePremium + Special +
+// SevenThreePremium + SevenThreeNeumorphism + FloatingBadge ส่วน Announcement เป็น
+// Announcement5, LatestWinners เป็น LatestWinners3, กริดค่ายเกมเป็น ProviderGrid,
+// การ์ดรีวิวเป็น ReviewCardSumo และ Faq เป็น Faq4 — Navbar/Footer/ฟอนต์ ถูกสลับไว้
+// แล้วใน MainLayout กับ brandProfile
 //
-// ContentBoxSevenThree ปล่อยหัวข้อผ่าน rightHeading (= titleright ?? title) จึงส่ง
-// title ตัวเดียวเข้าไป ส่วน titleleft เป็นป้ายคอลัมน์รูปที่เป็น <p> — ห้ามส่งทั้ง
-// title และ titleright พร้อมกัน เพราะจะได้หัวข้อเกินมาหนึ่งตัวที่ไม่มี docx รองรับ
+// ContentBoxSevenThree* ปล่อยหัวข้อผ่าน `title` ตัวเดียว ส่วน titleleft เป็นป้าย
+// คอลัมน์รูปที่เป็น <p> — ห้ามส่ง titleright เพิ่ม เพราะจะได้ป้ายเกินมาโดยไม่มี
+// ต้นทางใน docx
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
 // สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงตัวต่อตัวกับ default ของ
-// AnnouncementPremium.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement />
-// เปล่าๆ วิ่งข้อความเดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render
-// ข้อความซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
+// Announcement5.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ
+// วิ่งข้อความเดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความ
+// ซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide1/slide3 ซึ่งเป็นสไลด์ที่
-// อาร์ตตรงกับหัวข้อ docx ข้อ 6 กับข้อ 7 พอดี — slide2 (ระบบแนะนำเพื่อนรับค่า
-// คอมมิชชั่น) กับ slide4 เป็นอาร์ตโปรโมชัน ไม่มีหัวข้อ docx ไหนรองรับและเพดาน
-// SevenThree เต็มแล้ว จึงไม่ถูกใช้ที่นี่ ส่วนไฟล์ banner ทุกตัว (ทั้งตัวที่มีเลข
-// ต่อท้ายและตัวมือถือ) ห้าม import ที่นี่หรือที่ไหนก็ตาม เพราะรูปที่ import คือรูปที่
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide3/slide2 ซึ่งเป็นสไลด์ที่
+// อาร์ตตรงกับหัวข้อ docx ข้อ 5 กับข้อ 6 พอดี — slide1 (ชวนเพื่อนรับค่าคอมมิชชั่น)
+// ไม่มีหัวข้อ docx รองรับและเพดาน SevenThree เต็มแล้ว จึงไม่ถูกใช้ที่นี่ ส่วน slide4
+// เป็นของแบรนด์อื่นที่มีลายน้ำติดมา ห้าม import ที่ไหนทั้งสิ้น และไฟล์ banner ทุกตัว
+// (ทั้งตัวที่มีเลขต่อท้ายและตัวมือถือ) ห้าม import ที่นี่ เพราะรูปที่ import คือรูปที่
 // ถูก emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม — banner1 เป็นของ MainLayout จัดการ
 // เอง และรูปในหน้านี้ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP
 // เป็นของ hero ใน MainLayout
 //
-// widget ที่ไม่ได้มาจาก docx (GameRankingBoard, LatestWinnersPremium,
-// LoginRtpSection, ReviewCardSumo2, แถวปุ่ม login/register, Faq3, Navfoot) ใช้ป้าย
-// เป็น <p>/<span> + aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้าย
-// ทั้งชุด ยกเว้นสองตัวที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง
-// (ProviderGridPremium → ข้อ 3, FeatureHighlights → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// widget ที่ไม่ได้มาจาก docx (GameRankingBoard, LatestWinners3, LoginRtpSection,
+// ReviewCardSumo, แถวปุ่ม login/register, Faq4, Navfoot) ใช้ป้ายเป็น <p>/<span> +
+// aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสองตัว
+// ที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 3,
+// FeatureHighlights → ข้อ 4) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
 // h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×3 จาก FeatureHighlights ซึ่งเป็นรายการ
-// ย่อยของหัวข้อข้อ 5 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
-// Faq3.astro คำถามเป็น <span> ใน <summary> ชื่อกริดค่ายใน ProviderGridPremium.astro
-// เป็น <p> และป้ายคอลัมน์ของทุก ContentBox variant เป็น <p>
+// ย่อยของหัวข้อข้อ 4 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
+// Faq4.astro คำถามเป็น <span> ใน <summary> ชื่อกริดค่ายใน ProviderGrid.astro เป็น <p>
+// และป้ายคอลัมน์ของทุก ContentBox variant เป็น <p>
 //
 // title กับ description ใช้บรรทัดที่ brief ให้มาตรงๆ ทั้งคู่ ห้ามเติมหรือตัด และเป็น
 // สตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
-const pageTitle = "JAICHUA | สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีล ออโต้ไวไม่เสียจังหวะ";
-const pageDescription = "JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีลมีให้เลือกหลายสไตล์ ของใหม่น่าลองเติมมาเรื่อย ๆ โบนัสมีจังหวะ โปรมีของ พร้อมออโต้ไวไม่เสียจังหวะ";
+const pageTitle = "SETH88 | สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่น ออโต้ทันใจ ปลอดภัยชัวร์";
+const pageDescription = "SETH88 สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่นแบบเลือกแล้วไม่เสียฟีล หลายค่ายลูกเล่นเยอะ โปรน่าสนใจเติมต่อเนื่อง ออโต้ทันใจ ระบบปลอดภัยชัวร์";
 
 const announcementMessage =
-  "JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีล ออโต้ไวไม่เสียจังหวะ • เว็บตรง API แท้ ยิงตรงจากคลังเกมหลัก ไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงาน ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ด ไม่ล็อกยูส • วางโครงสร้างระบบหลังบ้านให้เสถียรระดับสูงสุด ประมวลผลแม่นยำ ไร้ปัญหาเกมค้างหรือสลีปหลุด ทุกยอดชนะคำนวณเงินให้แบบเรียลไทม์ • ขนทัพค่ายเกมชั้นนำระดับโลกมาครบครัน ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ครบทั้งสล็อตวิดีโอ 3D สล็อตตัวคูณสะสมโหด และสายซื้อฟีเจอร์ฟรีสปิน สลับเล่นได้ผ่านกระเป๋าเดียว • อัปเดตรายชื่อเกมใหม่เข้าคลังต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมออกมา คัดเฉพาะตัวเด็ดแตกง่ายมาเติมคลังให้ค้นหาต่อได้ไม่รู้จบ • ลูกเล่นแจกโบนัสอัดแน่นทุกเกม ทั้งระบบสุ่มแจกตัวคูณ Multiplier สัญลักษณ์ Expanding Wild ขยายเต็มจอ และคอมโบแตกต่อเนื่อง Cascading • โปรมีของให้กดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด • ฝาก-ถอนผ่าน Gateway ตรง รองรับทั้งธนาคารและ TrueMoney Wallet ทำรายการเสร็จใน 3 วินาที ไม่ต้องส่งสลิป ไม่ต้องผ่านแอดมิน";
+  "SETH88 สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่น ออโต้ทันใจ ปลอดภัยชัวร์ • สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ค่า RTP มาตรฐานสากลจากค่ายแม่ ไม่มีปรับลดอัตราแตก ไม่ล็อกยูส รวมเกมคัดเกรดคุณภาพระดับ A-List ไว้ในกระเป๋าเดียว ถอนกำไรได้ครบเต็มจำนวนทุกบาท ปลอดภัยชัวร์ 100% • คัดสรรเฉพาะตัวเกมโบนัสแตกง่าย ตัดเกมคุณภาพต่ำและเกมล้าหลังออกทั้งหมด จัดระเบียบหน้าล็อบบี้ให้เข้าถึงง่าย เลือกสปินเกมที่ชอบตามไลฟ์สไตล์การเดิมพันได้อย่างแม่นยำ ไม่ต้องเสียเวลาวนหา • คลังเกมลิขสิทธิ์แท้ส่งตรงจากค่ายยักษ์ใหญ่ระดับโลก ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลตามมาตรฐานโรงงานผู้พัฒนา ปั่นเบทไหนก็มีสิทธิ์ลุ้นแตกหนักเท่ากันทุกรอบ • หลายค่ายลูกเล่นเยอะ สลับเปลี่ยนเกมเมื่อไหร่ก็เจอฟีเจอร์และสไตล์ที่ต่างกัน ทั้งระบบ Multiplier ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ขยายเต็มรีล และโหมดซื้อฟรีสปินพุ่งตรงเข้าลุ้นโบนัส • โปรน่าสนใจเติมต่อเนื่อง เลือกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด • ออโต้ทันใจ ฝากถอนเสร็จสิ้นใน 3 วินาทีผ่าน Gateway ตรง รองรับทั้งสถาบันการเงินชั้นนำและ TrueMoney Wallet ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ ฝากปุ๊บเครดิตเข้าเกมปั๊บ • ระบบปลอดภัยชัวร์ เข้ารหัสปกป้องข้อมูลสมาชิกแน่นหนาด้วยระบบ SSL พร้อมระบบตรวจสอบประวัติการทำรายการแบบเรียลไทม์ กดถอนกำไรได้แบบสบายใจตั้งแต่วันแรก";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
 // คำถามที่สายปั่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq3> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
-// Faq3 ใช้ค่า default ของตัวเอง เพราะ default เป็นลิสต์ว่างโดยตั้งใจ
+// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
+// Faq4 ใช้ค่า default ของตัวเอง เพราะ default เป็นลิสต์ว่างโดยตั้งใจ
 const faqs = [
   {
-    q: "JAICHUA เป็นเว็บตรงจริงไหม แล้วค่า RTP ตรงตามสเปกหรือเปล่า",
-    a: "เป็นสล็อตเว็บตรงที่เชื่อมต่อ API แท้ ยิงตรงจากคลังเกมหลักโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงตรงตามสเปกโรงงานที่ค่ายผู้พัฒนากำหนดไว้จริง ไม่มีการปรับลดเปอร์เซ็นต์การชนะระหว่างทาง การันตีอัตราการจ่ายเงินรางวัลตามมาตรฐานสากล ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ดและไม่ล็อกยูส",
+    q: "SETH88 เป็นเว็บตรงจริงไหม แล้วค่า RTP ถูกปรับลดหรือเปล่า",
+    a: "เป็นสล็อตเว็บตรงที่เชื่อมต่อ API แท้ ยิงตรงจากเซิร์ฟเวอร์หลักโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงเป็นมาตรฐานสากลที่ค่ายแม่กำหนดไว้จริง ไม่มีการปรับลดอัตราแตกระหว่างทางและไม่ล็อกยูส ถอนกำไรได้ครบเต็มจำนวนทุกบาท พร้อมโครงสร้างความปลอดภัยที่เข้ารหัสข้อมูลสมาชิกด้วยระบบ SSL",
   },
   {
-    q: "มีค่ายเกมอะไรบ้าง แล้วต้องโยกเงินข้ามค่ายไหม",
-    a: "ขนทัพค่ายเกมชั้นนำระดับโลกมาไว้แบบครบครัน ทั้ง PG Soft, Pragmatic Play และ Joker Gaming เสิร์ฟเกมดังหลากแนวทั้งสล็อตวิดีโอ 3D ภาพสวย สล็อตตัวคูณสะสมโหด และสล็อตสายซื้อฟีเจอร์ฟรีสปิน สลับเปลี่ยนอารมณ์การเดิมพันข้ามค่ายได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องโยกเงินและไม่ต้องสลับแอป",
+    q: "เกมคัดหมายความว่าอย่างไร ต่างจากเว็บที่มีเกมเยอะๆ ตรงไหน",
+    a: "คัดสรรเฉพาะตัวเกมโบนัสแตกง่ายเข้าสู่ระบบ แล้วตัดเกมคุณภาพต่ำกับเกมล้าหลังออกทั้งหมด หน้าล็อบบี้จึงถูกจัดระเบียบให้เข้าถึงง่าย ผู้เล่นพุ่งตรงเข้าเกมทำเงินได้ทันทีโดยไม่ต้องเสียเวลาวนหา และเลือกสปินเกมที่ชอบตามไลฟ์สไตล์การเดิมพันได้อย่างแม่นยำตั้งแต่วินาทีแรกที่กดเข้าเล่น",
   },
   {
-    q: "เกมใหม่เข้าคลังบ่อยแค่ไหน หรือมีแต่เกมเดิมวนไปมา",
-    a: "ล็อบบี้ไม่หยุดอยู่แค่เกมเดิม ระบบอัปเดตรายชื่อเกมใหม่เข้าคลังอย่างต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมออกมา คัดเฉพาะตัวเด็ดแตกง่ายมาเติม สมาชิกจึงได้ทดลองฟีเจอร์สดใหม่ อ่านจังหวะโบนัส และสัมผัสประสบการณ์เดิมพันใหม่ๆ ก่อนใคร มีตัวเลือกให้ค้นหาต่อได้ไม่รู้จบ",
+    q: "มีค่ายเกมอะไรบ้าง แล้วรู้ได้อย่างไรว่าเป็นลิขสิทธิ์แท้",
+    a: "คลังเกมส่งตรงจากค่ายยักษ์ใหญ่ระดับโลก ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลว่ามีความยุติธรรมตามมาตรฐานโรงงานผู้พัฒนา ไม่ว่าจะปั่นเบทระดับไหนก็มีสิทธิ์ลุ้นแตกหนักเท่ากันทุกรอบ และสลับเล่นข้ามค่ายได้จากกระเป๋าเดียว",
   },
   {
-    q: "ลูกเล่นแจกโบนัสในเกมมีอะไรบ้าง",
-    a: "แต่ละรอบมีอะไรน่าลุ้นมากกว่าแค่หน้าสปิน ทั้งระบบสุ่มแจกตัวคูณ Multiplier ที่ยิ่งหมุนยิ่งคูณหนัก สัญลักษณ์ Expanding Wild ที่ขยายเต็มจอ และคอมโบแตกต่อเนื่อง Cascading ที่ลากผลลัพธ์ได้หลายชั้นในตาเดียว ส่วนโปรก็มีของจริงให้กดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับ โปรฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน",
+    q: "ลูกเล่นในเกมมีอะไรให้ลุ้นบ้าง",
+    a: "แต่ละค่ายมีเอกลักษณ์เฉพาะตัว สลับเปลี่ยนเกมเมื่อไหร่ก็เจอฟีเจอร์ใหม่ให้ลุ้น ทั้งระบบ Multiplier ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ที่ขยายเต็มรีล และโหมดซื้อฟรีสปินที่พุ่งตรงเข้าลุ้นโบนัสได้ทันที ส่วนโปรก็อัปเดตต่อเนื่อง ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน",
   },
   {
-    q: "ฝากถอนใช้เวลานานไหม รองรับช่องทางอะไรบ้าง",
-    a: "ระบบการเงินขับเคลื่อนด้วยออโต้ไฮสปีดผ่าน Gateway ตรง รองรับทั้งบัญชีธนาคารและ TrueMoney Wallet ทำรายการเสร็จภายใน 3 วินาที ยอดเงินอัปเดตเข้าเกมทันทีและถอนเข้าบัญชีได้ทันที ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินตรวจ เงื่อนไขโปรก็โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด",
+    q: "ฝากถอนนานไหม ต้องส่งสลิปให้แอดมินหรือเปล่า",
+    a: "ระบบการเงินเป็นออโต้ไฮสปีดผ่าน Gateway ตรง ทำรายการเสร็จสิ้นใน 3 วินาที รองรับทั้งสถาบันการเงินชั้นนำและ TrueMoney Wallet ตัดช่วงเวลารออนุมัติจากแอดมินออกทั้งหมด ไม่ต้องส่งสลิปยืนยัน ฝากปุ๊บเครดิตเข้าเกมปั๊บ ถอนปุ๊บเงินเด้งเข้าบัญชีทันที พร้อมระบบตรวจสอบประวัติการทำรายการแบบเรียลไทม์",
   },
 ];
 
@@ -133,79 +133,70 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เกมดังเข้าฟีล ออโต้ไวไม่เสียจังหวะ">
+  <ContentBoxPremium as="h1" title="SETH88 สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่น ออโต้ทันใจ ปลอดภัยชัวร์">
     <p class="text-left text-base leading-relaxed">
-      JAICHUA สล็อตเว็บตรง API แท้ ยิงตรงจากคลังเกมหลัก ไม่ผ่านเอเย่นต์ การันตีอัตราการจ่ายเงินรางวัลตามมาตรฐานสากล ค่า RTP ตรงตามสเปกโรงงาน ชนะเท่าไหร่ถอนได้เท่านั้น ไม่มีหมกเม็ด ไม่ล็อกยูส
-      ปั่นได้สบายใจด้วยระบบฝากถอนออโต้ไฮสปีด ทำรายการไวใน 3 วินาที จ่ายจริงจ่ายไว สมชื่อจ่ายชัวร์แบบไม่ต้องเดา
+      SETH88 สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ชูจุดเด่นเรื่องความโปร่งใสด้วยค่า RTP มาตรฐานสากลจากค่ายแม่ ไม่มีปรับลดอัตราแตก ไม่ล็อกยูส รวบรวมเกมคัดเกรดคุณภาพระดับ A-List
+      มาไว้ในกระเป๋าเดียว ทำรายการการเงินด้วยระบบออโต้ไฮสปีดประมวลผลไวใน 3 วินาที ถอนกำไรได้ครบเต็มจำนวนทุกบาท ปลอดภัยชัวร์ 100%
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxPremium>
 
-  <ContentBoxTwoPremium
+  <ContentBoxTwoCyberCut
     as="h2"
-    title="JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เปิดฟอร์มความพร้อมให้ทุกจังหวะไปต่อได้คล่อง"
-    titleleft="โครงสร้างหลังบ้านเสถียรระดับสูงสุด"
-    titleright="ประมวลผลแม่นยำ คำนวณแบบเรียลไทม์">
+    title="SETH88 สล็อตเว็บตรงเกมคัด เลือกของดีให้ตรงฟีลโดยไม่ต้องเสียเวลาวนหา"
+    titleleft="คัดเกมโบนัสแตกง่าย ตัดเกมล้าหลังออก"
+    titleright="ล็อบบี้จัดระเบียบ เลือกสปินได้แม่นยำ">
     <p slot="left" class="text-left text-base leading-relaxed">
-      วางโครงสร้างระบบหลังบ้านให้มีความเสถียรระดับสูงสุด JAICHUA สล็อตจ่ายชัวร์ไม่ต้องเดา เคลียร์ทุกขั้นตอนยุ่งยากออกทั้งหมด ให้ผู้เล่นเข้าถึงการทำกำไรได้รวดเร็วทันใจ
+      คัดสรรเฉพาะตัวเกมโบนัสแตกง่ายเข้าสู่ระบบ SETH88 สล็อตเว็บตรงเกมคัด ตัดเกมคุณภาพต่ำและเกมล้าหลังออกทั้งหมด เพื่อให้ผู้เล่นพุ่งตรงเข้าสู่เกมทำเงินได้ทันทีโดยไม่ต้องเสียเวลาวนหา
     </p>
     <p slot="right" class="text-left text-base leading-relaxed">
-      ระบบประมวลผลแม่นยำ ไร้ปัญหาเกมค้างหรือสลีปหลุด ทุกยอดชนะคำนวณเงินให้แบบเรียลไทม์ เปิดฟอร์มความพร้อมให้สายปั่นกดลุยต่อได้อย่างคล่องตัวทุกวินาที
+      จัดระเบียบหน้าล็อบบี้ให้เข้าถึงง่าย เลือกสปินเกมที่ชอบตามไลฟ์สไตล์การเดิมพันได้อย่างแม่นยำ เพิ่มโอกาสคว้าแจ็คพอตใหญ่ได้ตั้งแต่วินาทีแรกที่กดเข้าเล่น
     </p>
-  </ContentBoxTwoPremium>
+  </ContentBoxTwoCyberCut>
 
-  <ContentBox3ThreeNeumorphism
+  <ContentBox3ThreePremium
     as="h2"
-    title="เกมดังเข้าฟีลหลายสไตล์ JAICHUA เลือกเปลี่ยนอารมณ์ได้โดยไม่ต้องวนอยู่แนวเดิม"
-    titleleft="สล็อตวิดีโอ 3D ภาพสวย"
-    titlecenter="สล็อตตัวคูณสะสมโหด"
-    titleright="สล็อตสายซื้อฟีเจอร์ฟรีสปิน">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ขนทัพค่ายเกมชั้นนำระดับโลกมาไว้แบบครบครัน ทั้ง PG Soft, Pragmatic Play และ Joker Gaming JAICHUA เสิร์ฟเกมดังเข้าฟีลหลากแนว ทั้งสล็อตวิดีโอ 3D ภาพสวย
-    </p>
-    <p slot="center" class="text-left text-base leading-relaxed">สล็อตตัวคูณสะสมโหด</p>
-    <p slot="right" class="text-left text-base leading-relaxed">และสล็อตสายซื้อฟีเจอร์ฟรีสปิน ให้คุณสลับเปลี่ยนอารมณ์การเดิมพันได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องวนเล่นอยู่แค่แนวเดิมให้เบื่อ</p>
-  </ContentBox3ThreeNeumorphism>
+    title="เกมลิขสิทธิ์แน่นแค่ไหน SETH88 คัดตัวน่าเล่นมาให้เลือกแบบเน้นคุณภาพ"
+    titleleft="คลังลิขสิทธิ์แท้จากค่ายระดับโลก"
+    titlecenter="ทดสอบอัลกอริทึมการจ่ายรางวัล"
+    titleright="ปั่นเบทไหนก็ลุ้นแตกเท่ากัน">
+    <p slot="left" class="text-left text-base leading-relaxed">การันตีความโปร่งใสด้วยคลังเกมลิขสิทธิ์แท้ส่งตรงจากค่ายยักษ์ใหญ่ระดับโลก ทั้ง PG Soft, Pragmatic Play และ Joker Gaming</p>
+    <p slot="center" class="text-left text-base leading-relaxed">SETH88 เน้นย้ำเรื่องคุณภาพของตัวเกมเป็นหลัก ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลว่ามีความยุติธรรมตามมาตรฐานโรงงานผู้พัฒนา</p>
+    <p slot="right" class="text-left text-base leading-relaxed">ปั่นเบทไหนก็มีสิทธิ์ลุ้นแตกหนักเท่ากันทุกรอบ</p>
+  </ContentBox3ThreePremium>
 
-  <ProviderGridPremium />
+  <ProviderGrid />
 
-  <ContentBox as="h2" title="ของใหม่น่าลองเติมมาเรื่อย ๆ ล็อบบี้ไม่หยุดแค่เกมเดิม มีตัวสดให้ค้นต่อ">
-    <p class="text-left text-base leading-relaxed">
-      ไม่ปล่อยให้ล็อบบี้ซ้ำซาก JAICHUA อัปเดตรายชื่อเกมใหม่เข้าคลังอย่างต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมออกมา ให้สมาชิกได้ทดลองฟีเจอร์สดใหม่ อ่านจังหวะโบนัส และสัมผัสประสบการณ์เดิมพันใหม่ๆ
-      ก่อนใคร คัดเฉพาะตัวเด็ดแตกง่ายมาเติมคลัง ให้คุณมีตัวเลือกทำเงินให้ค้นหาต่อได้ไม่รู้จบ
+  <ContentBoxSpecial as="h2" title="หลายค่ายลูกเล่นเยอะ เปลี่ยนเกมเมื่อไหร่ก็เจอฟีเจอร์และสไตล์ที่ต่างกัน">
+    <p slot="left" class="text-left text-base leading-relaxed">ฉีกความซ้ำซากด้วยตัวเลือกเกมจากหลากหลายค่ายที่มีเอกลักษณ์เฉพาะตัว สลับเปลี่ยนเกมเมื่อไหร่ก็เจอลูกเล่นและฟีเจอร์ใหม่ๆ ให้ลุ้นตลอดเวลา</p>
+    <p slot="right" class="text-left text-base leading-relaxed">
+      ไม่ว่าจะเป็นระบบ Multiplier ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ขยายเต็มรีล หรือโหมดซื้อฟรีสปินพุ่งตรงเข้าลุ้นโบนัส SETH88 พร้อมเปลี่ยนฟีลการปั่นสล็อตของคุณให้ตื่นเต้นไม่มีเบื่อ
     </p>
-  </ContentBox>
-
-  <ContentBoxNeumorphism as="h2" title="โบนัสมีจังหวะ JAICHUA เติมลูกเล่นให้แต่ละรอบมีอะไรน่าลุ้นมากกว่าแค่หน้าสปิน">
-    <p class="text-left text-base leading-relaxed">
-      ฉีกกฎการกดสปินแบบเดิมด้วยระบบฟีเจอร์สุดล้ำ JAICHUA อัดแน่นลูกเล่นแจกโบนัสในทุกเกม ทั้งระบบสุ่มแจกตัวคูณ Multiplier ยิ่งหมุนยิ่งคูณหนัก, สัญลักษณ์ Expanding Wild ขยายเต็มจอ และคอมโบแตกต่อเนื่อง
-      Cascading เปลี่ยนการกดหมุนธรรมดาให้กลายเป็นจังหวะทำเงินทะลุเพดานที่น่าลุ้นในทุกวินาที
-    </p>
-  </ContentBoxNeumorphism>
+  </ContentBoxSpecial>
 
   <FeatureHighlights
     items={[
       {
         icon: "✖️",
         title: "Multiplier ตัวคูณสะสม",
-        description: "ตัวคูณถูกสุ่มแจกระหว่างรอบแล้วสะสมทบขึ้นไปเรื่อยๆ แทนที่จะรีเซ็ตทุกตา ยิ่งอยู่ในจังหวะยาวเท่าไหร่ ยอดที่ได้ตอนสัญลักษณ์เข้าคู่ก็ยิ่งถูกคูณหนักขึ้นเท่านั้น",
+        description: "ตัวคูณถูกแจกระหว่างรอบแล้วสะสมทบขึ้นไปเรื่อยๆ แทนที่จะรีเซ็ตทุกตา ยิ่งอยู่ในจังหวะยาวเท่าไหร่ ยอดที่ได้ตอนสัญลักษณ์เข้าคู่ก็ยิ่งถูกคูณหนักขึ้นเท่านั้น",
         accent: "gold",
       },
       {
         icon: "🃏",
-        title: "Expanding Wild ขยายเต็มจอ",
-        description: "ไวลด์ที่ลงมาแล้วไม่ได้อยู่แค่ช่องเดียว แต่ยืดคลุมทั้งวงล้อจนเต็มจอ เปิดโอกาสให้เส้นที่กำลังจะพลาดกลับมาต่อติดพร้อมกันหลายเส้นในตาเดียว",
-        accent: "blue",
+        title: "Expanding Wild ขยายเต็มรีล",
+        description: "ไวลด์ที่ลงมาแล้วไม่ได้อยู่แค่ช่องเดียว แต่ยืดคลุมทั้งรีลจนเต็มแนว เปิดโอกาสให้เส้นที่กำลังจะพลาดกลับมาต่อติดพร้อมกันหลายเส้นในตาเดียว",
+        accent: "bronze",
       },
       {
-        icon: "🔁",
-        title: "Cascading คอมโบแตกต่อเนื่อง",
-        description: "สัญลักษณ์ที่ชนะแล้วจะหายไปให้ตัวใหม่ร่วงลงมาแทนที่ในตาเดิม ถ้าเข้าคู่อีกก็นับเป็นรางวัลเพิ่มต่อเนื่อง หนึ่งการกดหมุนจึงลุ้นได้หลายชั้นกว่าสล็อตทั่วไป",
+        icon: "🛒",
+        title: "โหมดซื้อฟรีสปิน",
+        description: "กดซื้อเพื่อพุ่งตรงเข้าโหมดฟรีสปินได้ทันทีโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อ่านจังหวะโบนัสออกแล้วอยากลัดเข้าไปเก็บรอบแจกด้วยตัวเอง",
         accent: "gold",
       },
     ]}
   />
 
-  <ContentBoxSevenThree as="h2" title="โปรมีของไม่ได้มาแค่ให้เห็น คัดสิทธิ์น่าสนใจให้เลือกใช้ได้ตรงจังหวะ" titleleft="รับยอดเสีย 5% ทุกวัน">
+  <ContentBoxSevenThreePremium as="h2" title="โปรน่าสนใจเติมต่อเนื่อง SETH88 มีสิทธิ์ใหม่ให้ตามแบบไม่ปล่อยล็อบบี้เงียบ" titleleft="ยอดเสีย คืนสูงสุด 10%">
     <Picture
       slot="left"
       src={imgCashback}
@@ -217,19 +208,19 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์พื้นน้ำเงินสดมีลูกเต๋าและสัญลักษณ์ดอลลาร์สีขาว-ฟ้าลอยกระจายอยู่ทั่วภาพ ข้อความตัวใหญ่เขียนว่า รับยอดเสีย โดยบรรทัดล่างเป็นตัวเลข 5% สีทองต่อด้วยคำว่า ทุกวัน ฝั่งขวาเป็นหญิงสาวชุดสีน้ำเงินยิ้มถือพัดธนบัตรดอลลาร์ไว้ข้างหน้า และมีตู้สล็อตแมชชีนหน้าปัดเลข 777 วางอยู่มุมขวาล่าง"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#d8a83f]/45 shadow-[0_10px_30px_rgba(216,168,63,0.28)]"
+      alt="แบนเนอร์โปรโมชันพื้นทองในห้องเก็บสมบัติอียิปต์ ข้อความไทยตัวใหญ่บรรทัดบนเขียนว่า ยอดเสีย บรรทัดถัดมาเขียนว่า คืนสูงสุด คู่กับตัวเลข 10% ขนาดใหญ่สีขาว ใต้ลงมาเขียนว่า เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น ฝั่งขวาเป็นหญิงสาวชุดอียิปต์สวมเครื่องประดับทองยืนคู่กับเทพหัวหมาจิ้งจอกอนูบิส มีธนบัตรดอลลาร์ปลิวและกองเหรียญทองอยู่ด้านล่าง แถบล่างเป็นโลโก้ SETH88 พร้อมข้อความ มั่นคงปลอดภัย 100% บริการตลอด 24 ชม. แถวโลโก้ธนาคาร และป้ายดาวน์โหลดแอปจาก App Store กับ Google Play"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e0a92b]/45 shadow-[0_10px_30px_rgba(224,169,43,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      แจกสิทธิประโยชน์อย่างตรงไปตรงมา JAICHUA คัดโปรเด็ดแบบมีของให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน
-      เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด เลือกรับสิทธิ์ได้ตรงจังหวะการเล่น นำไปขยายทุนทำกำไรได้จริง
+      อัปเดตสิทธิประโยชน์ใหม่ๆ เข้าสู่ระบบอย่างต่อเนื่อง SETH88 จัดเต็มโปรโมชันสุดคุ้มให้สมาชิกเลือกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash
+      Back ทุกวัน เงื่อนไขชัดเจน โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด ช่วยเพิ่มทุนสปินและต่อยอดกำไรได้ยาวนานขึ้น
     </p>
-  </ContentBoxSevenThree>
+  </ContentBoxSevenThreePremium>
 
-  <ContentBoxSevenThreeCyberCut as="h2" title="ออโต้ไวไม่เสียจังหวะ JAICHUA ลดช่วงรอให้การทำรายการเดินต่อได้แบบไม่สะดุด" titleleft="รองรับ TrueMoney Wallet">
+  <ContentBoxSevenThreeNeumorphism as="h2" title="ออโต้ทันใจ ตัดช่วงรอให้ฝากถอนและทำรายการเดินต่อได้คล่องทุกจังหวะ" titleleft="ฝาก-ถอน ระบบอัตโนมัติ รวดเร็ว">
     <Picture
       slot="left"
-      src={imgTrueMoney}
+      src={imgAutoBanking}
       loading="lazy"
       fetchpriority="low"
       widths={[300, 450, 600]}
@@ -238,38 +229,45 @@ const graph = pageGraph(Astro, {
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์พื้นน้ำเงินเข้มมีสัญลักษณ์ดอลลาร์สีทองลอยกระจายอยู่ ข้อความสีขาวเขียนว่า รองรับ และบรรทัดถัดมาเป็นตัวอักษรสีทองว่า TrueMoney Wallet ฝั่งขวาเป็นโทรศัพท์มือถือที่เปิดหน้าแอป TrueMoney Wallet ด้านหน้ามีตัวการ์ตูนโจ๊กเกอร์ แมวดำใส่หมวกโจรสลัด และสุนัขชิบะกอดถุงเงิน มุมซ้ายล่างเป็นโลโก้ TrueMoney Wallet คู่กับป้าย Available on the App Store"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#d8a83f]/45 shadow-[0_10px_30px_rgba(216,168,63,0.28)]"
+      alt="แบนเนอร์โปรโมชันในวิหารอียิปต์เสาหินสีทอง ข้อความไทยตัวใหญ่เขียนว่า ฝาก-ถอน บรรทัดถัดมาเขียนว่า ระบบอัตโนมัติ ตามด้วยคำว่า รวดเร็ว ตัวใหญ่สีทอง และบรรทัดล่างเขียนว่า ปลอดภัย มั่นใจ 100% ฝั่งซ้ายเป็นเทพหัวหมาจิ้งจอกอนูบิสในชุดเกราะทองถือเหรียญทองสัญลักษณ์ดอลลาร์ ฝั่งขวาเป็นฟาโรห์ทองคำยืนกอดอก มีธนบัตรดอลลาร์ปลิวอยู่รอบภาพ แถบล่างเป็นโลโก้ SETH88 พร้อมข้อความ มั่นคงปลอดภัย 100% บริการตลอด 24 ชม. ทำรายการไม่เกิน 3 นาที แถวโลโก้ธนาคาร และป้ายดาวน์โหลดแอปจาก App Store กับ Google Play"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#e0a92b]/45 shadow-[0_10px_30px_rgba(224,169,43,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ระบบการเงินขับเคลื่อนด้วยออโต้ไฮสปีด JAICHUA ลดช่วงเวลาการรอคอยให้เหลือศูนย์ ฝาก-ถอนเงินผ่าน Gateway ตรง รองรับทั้งธนาคารและ TrueMoney Wallet ทำรายการเสร็จใน 3 วินาที ยอดเงินอัปเดตเข้าเกมทันที
-      ถอนปุ๊บเงินเข้าบัญชีปั๊บ ไม่ต้องส่งสลิป ไม่ต้องผ่านแอดมิน ให้คุณเดินหน้าเดิมพันได้อย่างลื่นไหลไม่เสียจังหวะ
+      ยกระดับความคล่องตัวด้วยระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จสิ้นใน 3 วินาทีผ่าน Gateway ตรง รองรับทั้งสถาบันการเงินชั้นนำและ TrueMoney Wallet SETH88 ตัดช่วงเวลารอคอยอนุมัติจากแอดมินออกทั้งหมด
+      ไม่ต้องส่งสลิปยืนยัน ฝากปุ๊บเครดิตเข้าเกมปั๊บ ถอนปุ๊บเงินเด้งเข้าบัญชีทันที ให้ทุกจังหวะการทำเงินเดินหน้าได้อย่างสมูธ
     </p>
-  </ContentBoxSevenThreeCyberCut>
+  </ContentBoxSevenThreeNeumorphism>
+
+  <ContentBoxFloatingBadge as="h2" title="ระบบปลอดภัยชัวร์ของ SETH88 วางความพร้อมให้ใช้งานได้มั่นใจตั้งแต่ต้นจนจบ">
+    <p class="text-left text-base leading-relaxed">
+      สร้างความมั่นใจในทุกการเดิมพันด้วยโครงสร้างความปลอดภัยระดับสากล SETH88 เข้ารหัสปกป้องข้อมูลสมาชิกแน่นหนาด้วยระบบ SSL ไร้ปัญหาข้อมูลรั่วไหลหรือการแทรกแซงจากภายนอก
+      พร้อมระบบตรวจสอบประวัติการทำรายการแบบเรียลไทม์ วางความพร้อมทางการเงินให้สมาชิกเข้าใช้งานและกดถอนกำไรได้แบบสบายใจตั้งแต่วันแรกจนถึงทุกการใช้งาน
+    </p>
+  </ContentBoxFloatingBadge>
 
   <GameRankingBoard />
 
-  <LatestWinnersPremium />
+  <LatestWinners3 />
 
   <LoginRtpSection />
 
-  <ReviewCardSumo2 />
+  <ReviewCardSumo />
 
   <div class="mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fbeec9] via-[#d8a83f] to-[#a97722] px-4 py-3 text-sm font-black whitespace-nowrap text-[#040915] shadow-[0_10px_30px_rgba(216,168,63,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(216,168,63,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fdf3d4] via-[#e0a92b] to-[#a9711a] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0c0703] shadow-[0_10px_30px_rgba(224,169,43,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(224,169,43,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#2f5fb0]/60 bg-[#0e1a33]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#cfe0fb] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#5b8ede] hover:bg-[#16336b] hover:text-[#fdf8ec] hover:shadow-[0_15px_40px_rgba(47,95,176,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#a9711a]/60 bg-[#1b1109]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f0e3cd] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#f7d774] hover:bg-[#6b4210] hover:text-[#fdf3d4] hover:shadow-[0_15px_40px_rgba(169,113,26,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq3 title="คำถามที่พบบ่อยเกี่ยวกับ JAICHUA" faqs={faqs} />
+  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ SETH88" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

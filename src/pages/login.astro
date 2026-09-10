@@ -18,10 +18,10 @@ const targetUrl = "https://yoalink.com/znmz";
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
 // undo half of it. Nothing is lost when they drop — Google Sans covers Thai, so
-// it paints this page on its own on a google-sans brand. JAICHUA runs KANIT, so
-// this round the Kanit @font-face rules DO render and the CDN query below takes
-// the Oswald-only branch. The flag flips every rebrand, so keep BOTH branches
-// correct — the next Google Sans brand needs the other one.
+// it paints this page on its own on a google-sans brand. SETH88 runs
+// GOOGLE SANS, so this round the Kanit @font-face rules do NOT render and the
+// CDN query below takes the Google-Sans-plus-Oswald branch. The flag flips every
+// rebrand, so keep BOTH branches correct — the next Kanit brand needs the other.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
@@ -34,17 +34,17 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: JAICHUA is a GOLD-ON-NAVY brand
-// with a REAL SECOND COLOUR — the mark is three-dimensional gold lettering
-// (จ่ายชัวร์888 over JAI CHUA) with a gold compass-star and two Chinese coin
-// ornaments, all sitting on a deep royal-navy shield. So navy is a colour OF the
-// mark, not merely the paper it is printed on, and this page has to show both or
-// it reads as a flat gold page.
-// The gold ramp is #fbeec9 → #f6d67e → #d8a83f → #a97722 and the royal-blue trio
-// is #cfe0fb → #2f5fb0 → #16336b, over the surface stack (#040915 page /
-// rgba(10,18,38) navy panel / #132244 raised, rgba(22,39,78) borders) with
-// #dce6f8 body text and #a9b7d4 captions. #f6d67e is THE brand colour — the one
-// that carries the borders and the loader's outer ring; #2f5fb0 is the second,
+// Palette note for the second <style> block: SETH88 is an EGYPTIAN-GOLD brand
+// with a REAL SECOND COLOUR — the mark is three-dimensional gold lettering with
+// an Anubis jackal headdress above it and a winged ankh below, and the word SETH
+// is polished gold while the numerals 88 are white silver rimmed in gold. So
+// silver is a colour OF the mark, not a highlight on the gold, and this page has
+// to show both or it reads as a flat gold page.
+// The gold ramp is #fdf3d4 → #f7d774 → #e0a92b → #a9711a → #6b4210 and the
+// silver pair is #f2f3f5 → #d8dade, over the surface stack (#0c0703 page /
+// rgba(27,17,9) tomb-stone panel / #2a1a0d raised, rgba(107,66,16) borders) with
+// #f0e3cd body text and #d6c2a0 captions. #f7d774 is THE brand colour — the one
+// that carries the borders and the loader's outer ring; #d8dade is the second,
 // and it is what the inner ring is drawn in: that ring is the one place on this
 // page where the two-colour mark is legible at a glance.
 //
@@ -54,11 +54,11 @@ const fontHref = usesGoogleFonts
 // `--gold-light` that held the brand's SECOND accent, not its primary — so the
 // next editor reused it by name and got the wrong role. Rename with the value,
 // and re-check the role when the palette changes shape. (This round the primary
-// moved from flag blue back to gold and the second colour from flag red to royal
-// blue, so the previous `--blue-*` ramp became `--gold-*` and the `--red-*` trio
-// became `--blue-*` rather than keeping names that no longer describe what they
-// hold — a `--blue-primary` holding a gold is exactly the trap this rule exists
-// to stop.)
+// stayed gold but shifted warmer, and the second colour moved from royal blue to
+// white silver — so the previous `--blue-*` trio became `--silver-*` and the
+// `--navy-deep` became `--bronze-deep` rather than keeping names that no longer
+// describe what they hold. There is NO blue anywhere in this brand; a
+// `--blue-royal` holding a silver is exactly the trap this rule exists to stop.)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -66,10 +66,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>เข้าสู่ระบบ JAICHUA | ทางเข้าเว็บตรง สล็อตจ่ายชัวร์ไม่ต้องเดา ออโต้ไวไม่เสียจังหวะ</title>
+    <title>เข้าสู่ระบบ SETH88 | ทางเข้าเว็บตรงเกมคัด ออโต้ทันใจไม่เสียจังหวะ</title>
     <meta
       name="description"
-      content="เข้าสู่ระบบ JAICHUA สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นสล็อตได้ครบทั้ง PG Soft Pragmatic Play และ Joker Gaming ออโต้ไวใน 3 วินาที"
+      content="เข้าสู่ระบบ SETH88 สำหรับสมาชิก ระบบจะพาไปหน้าล็อกอินของเว็บหลักอัตโนมัติ เข้าเล่นสล็อตเกมคัดครบทั้ง PG Soft Pragmatic Play และ Joker Gaming ออโต้ไวใน 3 วินาที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -111,20 +111,19 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #040915;
-        --panel-bg: rgba(10, 18, 38, 0.92);
-        --gold-pale: #fbeec9;
-        --gold-light: #f6d67e;
-        --gold-primary: #d8a83f;
-        --gold-deep: #a97722;
-        --navy-deep: #16274e;
-        --blue-pale: #cfe0fb;
-        --blue-royal: #2f5fb0;
-        --blue-deep: #16336b;
-        --surface-raised: #132244;
-        --border-gold: #a97722;
-        --text-body: #dce6f8;
-        --text-muted: #a9b7d4;
+        --page-bg: #0c0703;
+        --panel-bg: rgba(27, 17, 9, 0.92);
+        --gold-pale: #fdf3d4;
+        --gold-light: #f7d774;
+        --gold-primary: #e0a92b;
+        --gold-deep: #a9711a;
+        --bronze-deep: #6b4210;
+        --silver-bright: #f2f3f5;
+        --silver: #d8dade;
+        --surface-raised: #2a1a0d;
+        --border-gold: #a9711a;
+        --text-body: #f0e3cd;
+        --text-muted: #d6c2a0;
       }
 
       body {
@@ -132,7 +131,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(216, 168, 63, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(47, 95, 176, 0.16) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(224, 169, 43, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(107, 66, 16, 0.22) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -146,11 +145,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(22, 39, 78, 0.75);
+        border: 1px solid rgba(107, 66, 16, 0.75);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(2, 4, 12, 0.7),
-          0 0 2rem rgba(216, 168, 63, 0.18);
+          0 1rem 3rem rgba(4, 2, 1, 0.7),
+          0 0 2rem rgba(224, 169, 43, 0.18);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -165,7 +164,7 @@ const fontHref = usesGoogleFonts
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(22, 39, 78, 0.6));
+        filter: drop-shadow(0 1px 2px rgba(107, 66, 16, 0.6));
       }
 
       .sophisticated-loader {
@@ -181,16 +180,16 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-light) 45%, var(--navy-deep) 100%);
+        background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-light) 45%, var(--bronze-deep) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(216, 168, 63, 0.4);
+        box-shadow: 0 0 2rem rgba(224, 169, 43, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(22, 39, 78, 0.55);
+        border: 3px solid rgba(107, 66, 16, 0.55);
         animation: spin linear infinite;
       }
 
@@ -204,7 +203,7 @@ const fontHref = usesGoogleFonts
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--blue-royal);
+        border-bottom-color: var(--silver);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -221,11 +220,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(216, 168, 63, 0.4);
+          box-shadow: 0 0 2rem rgba(224, 169, 43, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(251, 238, 201, 0.42);
+          box-shadow: 0 0 3rem rgba(253, 243, 212, 0.42);
         }
       }
 
@@ -235,7 +234,7 @@ const fontHref = usesGoogleFonts
         font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--text-body);
+        color: var(--silver-bright);
         text-shadow: 0 1px 1px var(--surface-raised);
         margin: 0;
       }
@@ -249,7 +248,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">JAICHUA</div>
+      <div class="brand-identity">SETH88</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -259,7 +258,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">AUTHENTICATING SECURE ACCESS...</h1>
-        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ JAICHUA ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าเข้าสู่ระบบ SETH88 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

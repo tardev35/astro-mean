@@ -2,16 +2,16 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementPremium.astro";
+import Announcement from "../components/Announcement5.astro";
 
 import { Picture } from "astro:assets";
 
-// JAICHUA: ticker หมุนมาเป็น AnnouncementPremium ส่วนกล่องหน้าย่อยยังเป็น ContentBox
+// SETH88: ticker หมุนมาเป็น Announcement5 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
 // (การ์ดถาวรของหน้าย่อย) เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
 // variant นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
-// สีย้ายจากน้ำเงินธงชาติคู่แดงบนกรมท่าเข้มของแบรนด์ก่อน มาเป็นทองคำคู่น้ำเงินรอยัล
-// บนกรมท่าเกือบดำ — ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 / #6d4a12 คู่น้ำเงิน
-// #cfe0fb / #5b8ede / #2f5fb0 / #16336b บนผิว #040915 / #0a1226 เนื้อความ #dce6f8
+// สีย้ายจากทองคำคู่น้ำเงินรอยัลบนกรมท่าเกือบดำของแบรนด์ก่อน มาเป็นทองคำอียิปต์บน
+// ดำอมน้ำตาลของหินวิหาร — ทอง #fdf3d4 / #f7d774 / #e0a92b / #a9711a / #6b4210
+// บนผิว #0c0703 / #1b1109 เนื้อความ #f0e3cd แบรนด์นี้ไม่มีแกนสีน้ำเงินเหลืออยู่เลย
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the page's
@@ -22,33 +22,34 @@ import { Picture } from "astro:assets";
 // body at all. Final inventory for this page is h1 ×1, and no headings below it.
 //
 // ดรอปรอบนี้มีสไลด์สี่ใบ แต่กริดลงได้แค่สามใบ ตั้งชื่อตัวแปรตามสิ่งที่พิมพ์บนอาร์ตจริง:
-//   slide1 = รับยอดเสีย 5% ทุกวัน
-//   slide2 = ระบบสร้างรายได้ แนะนำเพื่อน รับค่าคอมมิชชั่น
-//   slide3 = รองรับ TrueMoney Wallet
-// slide4 (ทุกยอดฝาก 500 ขึ้นไป รับสิทธิ์หมุนวงล้อ) ถูกตัดออกทั้ง import และกริด
-// เพราะอาร์ตใบนั้นมีลายน้ำโลโก้ของแบรนด์อื่นอยู่มุมซ้ายบน — ห้ามส่งขึ้นเว็บนี้
-// และ import คือการ emit ปล่อยบรรทัด import ค้างไว้ก็เท่ากับอัปโหลดไฟล์นั้นอยู่ดี
+//   slide1 = ชวนเพื่อนเล่น ค่าคอมมิชชั่นจุกๆ รับ 5%
+//   slide2 = ฝาก-ถอน ระบบอัตโนมัติ รวดเร็ว ปลอดภัย มั่นใจ 100%
+//   slide3 = ยอดเสีย คืนสูงสุด 10% เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น
+// slide4 ถูกตัดออกทั้ง import และกริด เพราะเป็นอาร์ตของดรอปเก่าและมีลายน้ำโลโก้
+// ของแบรนด์อื่นติดอยู่ — ห้ามส่งขึ้นเว็บนี้ และ import คือการ emit ปล่อยบรรทัด
+// import ค้างไว้ก็เท่ากับอัปโหลดไฟล์นั้นอยู่ดี ต่อให้ไม่มีกริดใบไหนเรียกใช้
 //
 // ไฟล์ banner ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ห้าม import ที่นี่เด็ดขาด
 // ส่วนไฟล์ hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
 //
-// alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความที่พิมพ์บนอาร์ตและฉาก — เปิดดูทั้ง
-// สามไฟล์แล้วถอดองค์ประกอบมาเขียนตามนั้น
-import promoCashback from "../assets/slide1.png";
-import promoReferral from "../assets/slide2.png";
-import promoTrueMoney from "../assets/slide3.png";
+// alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความที่พิมพ์บนอาร์ตและฉาก — อาร์ตรอบนี้
+// เป็นชุดอียิปต์ทั้งหมด (อนูบิส ฟาโรห์ ราชินี วิหารทอง) เปิดดูทั้งสามไฟล์แล้วถอด
+// องค์ประกอบมาเขียนตามนั้น ไม่ได้แก้จากของรอบก่อน
+import promoReferral from "../assets/slide1.png";
+import promoAutoBanking from "../assets/slide2.png";
+import promoCashback from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 158. It says what the page
+// byte count reads ~3x too long). This one measures 157. It says what the page
 // is for in one sentence and stops — it is not a table of contents.
-const pageDescription = "รวมโปรโมชั่น JAICHUA สล็อตเว็บตรง ที่เปิดให้สมาชิกกดรับเองผ่านแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน";
+const pageDescription = "รวมโปรโมชั่น SETH88 สล็อตเว็บตรง ที่สมาชิกกดรับเองได้ผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน";
 
-const pageTitle = "โปรโมชั่น JAICHUA | โบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และ Cash Back ทุกวัน";
+const pageTitle = "โปรโมชั่น SETH88 | โบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และ Cash Back ทุกวัน";
 
 // หัวข้อระดับ h1 ของหน้า แยกจากค่า title เพราะ title มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น JAICHUA รวมสิทธิ์และโบนัสที่กดรับเองได้ผ่านหน้าแดชบอร์ด";
+const pageHeading = "โปรโมชั่น SETH88 รวมสิทธิ์และโบนัสที่กดรับเองได้ผ่านหน้าแดชบอร์ด";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -57,7 +58,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoCashback.src,
+  primaryImagePath: promoReferral.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -73,7 +74,7 @@ const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) ca
 
 // ขอบทองเข้มล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นทองอ่อนตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#a97722]/80 object-contain shadow-[0_10px_30px_rgba(22,39,78,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#f6d67e]/70 hover:shadow-[0_15px_40px_rgba(216,168,63,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#a9711a]/80 object-contain shadow-[0_10px_30px_rgba(107,66,16,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#f7d774]/70 hover:shadow-[0_15px_40px_rgba(224,169,43,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
 // intrinsic width (600px for all three promo images here) so a sharp upscale never
@@ -85,16 +86,16 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoCashback,
-    alt: "แบนเนอร์แนวนอนพื้นน้ำเงินไล่เฉดสว่างกลางภาพ ตัวอักษรขนาดใหญ่สีขาวเขียนว่า รับยอดเสีย บรรทัดถัดมาเป็นเลข 5% สีทองคู่กับคำว่า ทุกวัน ฝั่งขวาเป็นหญิงสาวผมยาวสวมชุดสีน้ำเงินยิ้มพลางถือพัดธนบัตรไว้ข้างหน้า ด้านล่างเป็นตู้สล็อตที่หน้าปัดขึ้นเลข 777 รอบภาพมีสัญลักษณ์ดอลลาร์สีทอง ลูกเต๋าและชิปคาสิโนสีฟ้าลอยอยู่",
-  },
-  {
     src: promoReferral,
-    alt: "แบนเนอร์แนวนอนพื้นน้ำเงินเข้มไล่เฉด ตัวอักษรสีขาวเขียนว่า ระบบสร้างรายได้ ใต้ลงมาเป็นตัวอักษรสีทองสองบรรทัดว่า แนะนำเพื่อน และ รับค่าคอมมิชชั่น ฝั่งขวาเป็นหญิงสาวผมยาวสวมชุดสีฟ้ายืนอยู่ข้างตู้สล็อตที่มีเหรียญทองล้นออกมาจากหน้าปัด รอบภาพมีสัญลักษณ์ดอลลาร์สีทองและเหรียญเงินปลิวอยู่",
+    alt: "แบนเนอร์แนวนอนพื้นวิหารอียิปต์โทนดำอมน้ำตาลใต้แสงทอง ตัวอักษรสีขาวขนาดใหญ่เขียนว่า ชวนเพื่อนเล่น ถัดลงมาเป็นตัวอักษรสีทองว่า ค่าคอมมิชชั่นจุกๆ แล้วเป็นคำว่า รับ สีทองคู่กับเลข 5% สีขาวตัวโตเต็มกลางภาพ ใต้ลงมาเป็นแถบโค้งสีทองเขียนว่า ทุกยอดเล่นรับไปเลย สูงสุด 5% ฝั่งขวาเป็นหญิงสาวสองคนแต่งชุดราชินีอียิปต์ประดับเครื่องทอง คนหน้าถือธนบัตรดอลลาร์ไว้ในมือ ข้างกันเป็นโทรศัพท์มือถือที่เปิดหน้าแอปของเว็บ มีธนบัตรดอลลาร์ปลิวรอบภาพ ขอบล่างเป็นแถบโลโก้ SETH88 รูปหัวอนูบิส พร้อมแถวโลโก้ธนาคารและปุ่มดาวน์โหลดจาก App Store และ Google Play",
   },
   {
-    src: promoTrueMoney,
-    alt: "แบนเนอร์แนวนอนพื้นน้ำเงินเข้ม ตัวอักษรสีขาวเขียนว่า รองรับ ใต้ลงมาเป็นตัวอักษรสีทองสองบรรทัดว่า TrueMoney Wallet ฝั่งขวาเป็นโทรศัพท์มือถือที่เปิดหน้าแอป TrueMoney Wallet โดยมีตัวการ์ตูนโจ๊กเกอร์ แมวดำสวมหมวกโจรสลัด และหมาชิบะสีเหลืองในถุงเหรียญยืนอยู่หน้าจอ มุมซ้ายล่างเป็นโลโก้ TrueMoney Wallet คู่กับป้าย Available on the App Store",
+    src: promoAutoBanking,
+    alt: "แบนเนอร์แนวนอนในโถงวิหารอียิปต์โทนดำอมน้ำตาล ตัวอักษรสีขาวขนาดใหญ่เขียนว่า ฝาก-ถอน ถัดลงมาเป็นบรรทัดว่า ระบบอัตโนมัติ แล้วเป็นคำว่า รวดเร็ว ตัวโต ปิดท้ายด้วยบรรทัดเล็กว่า ปลอดภัย มั่นใจ 100% ฝั่งซ้ายเป็นรูปปั้นทองของเทพอนูบิสหัวหมาป่ากำลังยกเหรียญทองสัญลักษณ์ดอลลาร์ ฝั่งขวาเป็นรูปปั้นทองของฟาโรห์สวมผ้าคลุมศีรษะลายทองสลับน้ำเงินยืนกอดอก มีธนบัตรดอลลาร์ปลิวรอบภาพ ขอบล่างเป็นแถบโลโก้ SETH88 รูปหัวอนูบิส พร้อมแถวโลโก้ธนาคารและปุ่มดาวน์โหลดจาก App Store และ Google Play",
+  },
+  {
+    src: promoCashback,
+    alt: "แบนเนอร์แนวนอนพื้นทองฉายรัศมีออกจากกลางภาพภายในวิหารอียิปต์ ตัวอักษรสีขาวขนาดใหญ่เขียนว่า ยอดเสีย ถัดลงมาเป็นคำว่า คืนสูงสุด สีทองคู่กับเลข 10% สีขาวตัวโต ใต้ลงมาเป็นแถบสีเข้มเขียนด้วยตัวอักษรสีทองว่า เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น ฝั่งขวาเป็นหญิงสาวสวมชุดอียิปต์สีขาวประดับเครื่องทอง โดยมีเทพอนูบิสหัวหมาป่าสีทองยืนอยู่ด้านหลัง ด้านล่างเป็นกองเหรียญทองและธนบัตรดอลลาร์ ขอบล่างเป็นแถบโลโก้ SETH88 รูปหัวอนูบิส พร้อมแถวโลโก้ธนาคารและปุ่มดาวน์โหลดจาก App Store และ Google Play",
   },
 ];
 ---
@@ -107,9 +108,9 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        ภาพด้านล่างคือโปรโมชั่นที่ JAICHUA เปิดให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ดอยู่ในรอบนี้ ทั้งสิทธิ์คืนยอดเสีย Cash Back ทุกวัน ระบบแนะนำเพื่อนที่จ่ายค่าคอมมิชชั่นให้ต่อเนื่อง
-        และช่องทางเติมเงินที่รองรับ TrueMoney Wallet เต็มรูปแบบ รายละเอียดของแต่ละรายการ พิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด เพราะแต่ละใบคิดคนละเงื่อนไขกัน
-        ทุกสิทธิ์เลือกรับเองได้จากหน้าเว็บโดยตรง เงื่อนไขโปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด และฝากถอนเป็นงานของระบบออโต้ที่ทำรายการเสร็จภายใน 3 วินาที ไม่ต้องส่งสลิปและไม่ต้องรอแอดมิน
+        ภาพด้านล่างคือโปรโมชั่นที่ SETH88 เปิดให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ดอยู่ในรอบนี้ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน
+        รายละเอียดของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด เพราะแต่ละใบคิดคนละเงื่อนไขกัน ทุกสิทธิ์เลือกรับเองได้จากหน้าเว็บโดยตรง เงื่อนไขชัดเจน
+        โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด ส่วนการฝากถอนเป็นงานของระบบออโต้ไฮสปีดที่ทำรายการเสร็จภายใน 3 วินาที ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -135,8 +136,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#f6d67e]/60 bg-gradient-to-r from-[#f6d67e] via-[#d8a83f] to-[#a97722] px-10 py-3.5 text-xl font-black text-[#040915] shadow-[0_10px_30px_rgba(216,168,63,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(246,214,126,0.5)]">
-          สมัครสมาชิก JAICHUA
+          class="flex items-center justify-center rounded-lg border border-[#f7d774]/60 bg-gradient-to-r from-[#f7d774] via-[#e0a92b] to-[#a9711a] px-10 py-3.5 text-xl font-black text-[#0c0703] shadow-[0_10px_30px_rgba(224,169,43,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(247,215,116,0.5)]">
+          สมัครสมาชิก SETH88
         </a>
       </div>
     </div>
