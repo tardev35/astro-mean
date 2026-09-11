@@ -88,7 +88,7 @@ export default defineConfig({
     "/line": "https://tinyurl.com/suhng",
   },
 
-  site: "https://www.seth88plus.com",
+  site: "https://www.vipsand356-play.com",
   integrations: [
     pruneUnusedBackground(),
     sitemap({

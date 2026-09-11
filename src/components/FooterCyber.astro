@@ -15,32 +15,32 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 // รอบหน้า ป้ายชื่อเป็น <p> ไม่ใช่หัวข้อด้วยเหตุผลเดียวกัน ที่อยู่กับอีเมลมาจาก
 // BRAND_ADDRESS ซึ่งผูกกับ BRAND_NAME และ site: ห้ามพิมพ์ทับเอง
 //
-// AWIN8 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย กับ
-// /แนวทาง (สองหน้านั้นอยู่ใน src/pages-disabled/ ไม่มี route จริง)
+// VIPSAND356 เป็นเว็บสล็อต ไม่ใช่เว็บหวย — DIRECTORY ด้านล่างจึงไม่มี /ตรวจหวย
+// กับ /แนวทาง (สองหน้านั้นอยู่ใน src/pages-disabled/ ไม่มี route จริง)
 //
-// AWIN8: ย้ายจากนีออนบานเย็นคู่ฟ้าของแบรนด์ที่เคยใช้ footer ตัวนี้ มาเป็นน้ำเงิน
-// รอยัลคู่ทองส้มของแบรนด์นี้ — น้ำเงิน #1f6fea / #7fb2ff / #0d3f9e / #07265e
-// คู่ทอง #fca311 / #ffd27a บนผิวกรมท่าเกือบดำ #02081c / #0c2247 เนื้อความ
-// #d8e6fb เมนูรอง #9db4d6
+// VIPSAND356: ย้ายจากน้ำเงินรอยัลคู่ทองส้มของแบรนด์ที่เคยใช้ footer ตัวนี้ มาเป็น
+// ฟ้าอะซูร์คู่ทองส้มของแบรนด์นี้ — ฟ้า #2a93e0 / #5dbcfe / #a2d2ef / #1465a8 /
+// #0b3f70 คู่ทอง #eba554 / #fcde61 / #c07c20 บนผิวกรมท่าเข้ม #061c33 / #103a5f
+// เนื้อความ #e6f2ff เมนูรอง #a2d2ef หัวคอลัมน์ #eaf6ff
 //
-// อาร์ตเวิร์กรอบนี้เป็นโลโก้ตัวอักษรโครเมียมขอบน้ำเงิน มีมงกุฎทองกับเปลวไฟส้มที่
-// เลข 8 — vivid ของโลโก้ (#fc8b02 คู่ #041d43) กับ vivid ของแบนเนอร์ (#ba7b01)
-// จึงเป็นสีเน้นจริงทั้งคู่ ส่วน dominant ของแบนเนอร์ที่เป็นกรมท่าเข้มคือ "พื้น"
+// อาร์ตเวิร์กรอบนี้เป็นป้ายโลโก้ในกรอบทองที่คำว่า VIP เป็นฟ้าใสและ SANDS เป็น
+// ส้มทอง — vivid ของ logo.webp (#4aa8eb คู่ #eba554) จึงเป็นสีเน้นจริงทั้งคู่
+// ส่วน dominant ของ banner1 ที่เป็นน้ำตาลเข้มคือไม้กับเงาในฉาก ไม่ใช่สีแบรนด์
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
 // ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
 
 const LOGO_ALT =
-  "โลโก้ AWIN8 เป็นตัวอักษร AWIN สีขาวโครเมียมตัดขอบน้ำเงินเข้ม ต่อด้วยเลข 8 สีส้มทองที่มีเปลวไฟพุ่งออกทางขวา ด้านบนมีมงกุฎทองห้าแฉกวางอยู่ ใต้ตัวอักษรเป็นแถบสี่เหลี่ยมมนสีน้ำเงินขอบส้มเขียนว่า ARE YOU READVE NONSTOP FUINIS JUST AROUND";
+  "โลโก้ VIPSAND356 เป็นป้ายสามมิติในกรอบทองหนา พื้นในเป็นแผ่นไม้สีน้ำตาล ตัวอักษร VIP เป็นสีฟ้าใสไล่ขาวขอบเข้ม ใต้ลงมาเป็นคำว่า SANDS สีส้มทอง มีไพ่ข้าวหลามตัดกับไพ่ดอกจิกเสียบอยู่ที่ตัว D และล่างสุดเป็นเลข 356 สีฟ้าขาว ด้านบนกรอบมีอัญมณีทรงข้าวหลามตัดสีฟ้า ด้านล่างมีใบปาล์มเขียวและเหรียญทองวางประกอบสองข้าง";
 ---
 
 <footer
-  class="relative mt-10 w-full overflow-hidden border-t border-[#1f6fea]/40 bg-[#02081c] pt-16 pb-8 font-sans text-[#d8e6fb]"
+  class="relative mt-10 w-full overflow-hidden border-t border-[#2a93e0]/40 bg-[#061c33] pt-16 pb-8 font-sans text-[#e6f2ff]"
   style="clip-path: polygon(0 30px, 50vw 0, 100% 30px, 100% 100%, 0 100%);">
   <div
     aria-hidden="true"
     class="pointer-events-none absolute inset-0 opacity-[0.14]"
-    style="background-image: linear-gradient(#0d3f9e 1px, transparent 1px), linear-gradient(90deg, #1f6fea 1px, transparent 1px); background-size: 30px 30px;">
+    style="background-image: linear-gradient(#1465a8 1px, transparent 1px), linear-gradient(90deg, #2a93e0 1px, transparent 1px); background-size: 30px 30px;">
   </div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
@@ -56,39 +56,39 @@ const LOGO_ALT =
                 decoding="async"
                 widths={[150, 300, 450]}
                 sizes="150px"
-                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(31,111,234,0.5)]"
+                class="h-[52px] w-auto drop-shadow-[0_4px_12px_rgba(42,147,224,0.5)]"
                 formats={["avif", "webp"]}
                 fallbackFormat="webp"
               />
             ) : (
-              <p class="text-3xl font-black tracking-widest text-[#7fb2ff]">AWIN8</p>
+              <p class="text-3xl font-black tracking-widest text-[#a2d2ef]">VIPSAND356</p>
             )
           }
         </a>
-        <p class="border-l-2 border-[#fca311] pl-4 text-sm leading-relaxed text-[#9db4d6]">
-          AWIN8 เชื่อมต่อสัญญาณ API ตรงจากสตูดิโอผู้พัฒนาสล็อตระดับโลก ไม่ผ่านเอเย่นต์ ค่า RTP เป็นมาตรฐานยุติธรรมตามสเปกโรงงาน ไม่มีการปรับแต่งเปอร์เซ็นต์แพ้ชนะ
-          รันบนเซิร์ฟเวอร์เสถียรสูงที่รองรับการเดิมพันทุกระดับ พร้อมไลน์อัปโปรโมชันสุดคุ้มและระบบทำรายการออโต้ที่ประมวลผลไวในไม่กี่วินาที
+        <p class="border-l-2 border-[#eba554] pl-4 text-sm leading-relaxed text-[#a2d2ef]">
+          VIPSAND356 เว็บตรงสล็อตพรีเมียมที่เชื่อม API แท้ยิงตรงจากคลังเกมหลักสากล ไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงานผู้พัฒนา ไร้การดัดแปลงระบบ ไม่ล็อกยูส
+          คัดเฉพาะเกมเกรด A-List มาจัดหมวดหมู่ไว้ในล็อบบี้เดียว พร้อมฝากถอนออโต้ที่ประมวลผลไวใน 3 วินาที และทีมงานดูแลระดับ VIP ตลอด 24 ชั่วโมง
         </p>
         <div class="mt-4 flex gap-3">
-          <span class="border border-[#fca311]/50 bg-[#0c2247] px-3 py-1 font-mono text-xs text-[#ffd27a]">RTP_TRUE_API</span>
-          <span class="border border-[#1f6fea]/50 bg-[#0c2247] px-3 py-1 font-mono text-xs text-[#7fb2ff]">AUTO_GATEWAY</span>
+          <span class="border border-[#eba554]/50 bg-[#103a5f] px-3 py-1 font-mono text-xs text-[#fcde61]">RTP_TRUE_API</span>
+          <span class="border border-[#2a93e0]/50 bg-[#103a5f] px-3 py-1 font-mono text-xs text-[#a2d2ef]">AUTO_3_SEC</span>
         </div>
       </div>
 
       <nav class="flex flex-col gap-4 md:col-span-3 lg:pl-8">
-        <p class="text-lg font-black tracking-widest text-[#e8f1ff] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
-        <ul class="flex flex-col gap-3 font-mono text-sm text-[#9db4d6]">
-          <li><a href="/" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
-          <li><a href="/promotion" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
-          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
-          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
-          <li><a href="/about-us" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
-          <li><a href="/contact-us" class="transition-colors hover:text-[#ffd27a]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
+        <p class="text-lg font-black tracking-widest text-[#eaf6ff] uppercase"><span aria-hidden="true">///</span> DIRECTORY</p>
+        <ul class="flex flex-col gap-3 font-mono text-sm text-[#a2d2ef]">
+          <li><a href="/" class="transition-colors hover:text-[#fcde61]"><span aria-hidden="true">&gt;</span> หน้าแรก</a></li>
+          <li><a href="/promotion" class="transition-colors hover:text-[#fcde61]"><span aria-hidden="true">&gt;</span> โปรโมชั่น</a></li>
+          <li><a href="/ทางเข้า" class="transition-colors hover:text-[#fcde61]"><span aria-hidden="true">&gt;</span> ทางเข้า</a></li>
+          <li><a href="/ทดลองเล่น" class="transition-colors hover:text-[#fcde61]"><span aria-hidden="true">&gt;</span> ทดลองเล่น</a></li>
+          <li><a href="/about-us" class="transition-colors hover:text-[#fcde61]"><span aria-hidden="true">&gt;</span> เกี่ยวกับเรา</a></li>
+          <li><a href="/contact-us" class="transition-colors hover:text-[#fcde61]"><span aria-hidden="true">&gt;</span> ติดต่อเรา</a></li>
         </ul>
       </nav>
 
       <div class="flex flex-col gap-5 md:col-span-4">
-        <p class="text-lg font-black tracking-widest text-[#e8f1ff] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
+        <p class="text-lg font-black tracking-widest text-[#eaf6ff] uppercase"><span aria-hidden="true">///</span> SUPPORT_LINK</p>
 
         <a
           href="/line"
@@ -119,22 +119,22 @@ const LOGO_ALT =
 
         <a
           href="/register"
-          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#0d3f9e] via-[#1f6fea] to-[#fca311] py-3 font-black text-[#02081c] transition-all hover:brightness-110"
+          class="flex w-full items-center justify-center gap-2 bg-gradient-to-r from-[#fcde61] via-[#eba554] to-[#c07c20] py-3 font-black text-[#061c33] transition-all hover:brightness-110"
           style="clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);">
           สมัครสมาชิก
         </a>
 
-        <div class="mt-2 font-mono text-xs text-[#9db4d6]">ACCEPTED_PAYMENTS</div>
+        <div class="mt-2 font-mono text-xs text-[#a2d2ef]">ACCEPTED_PAYMENTS</div>
         <BankStrip size={28} />
       </div>
     </div>
 
-    <div class="flex flex-col items-center justify-between border-t border-[#1f6fea]/30 pt-6 font-mono text-xs text-[#9db4d6] md:flex-row">
-      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} AWIN8</p>
+    <div class="flex flex-col items-center justify-between border-t border-[#2a93e0]/30 pt-6 font-mono text-xs text-[#a2d2ef] md:flex-row">
+      <p>SYSTEM_COPYRIGHT &copy; {new Date().getFullYear()} VIPSAND356</p>
       <div class="mt-4 flex gap-4 md:mt-0">
-        <a href="/terms/" class="hover:text-[#ffd27a]">TERMS_OF_SERVICE</a>
-        <a href="/privacy/" class="hover:text-[#ffd27a]">PRIVACY_POLICY</a>
-        <a href="#top" class="hover:text-[#ffd27a]">BACK_TO_TOP</a>
+        <a href="/terms/" class="hover:text-[#fcde61]">TERMS_OF_SERVICE</a>
+        <a href="/privacy/" class="hover:text-[#fcde61]">PRIVACY_POLICY</a>
+        <a href="#top" class="hover:text-[#fcde61]">BACK_TO_TOP</a>
       </div>
     </div>
   </div>

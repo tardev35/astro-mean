@@ -2,54 +2,56 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 
 import { Picture } from "astro:assets";
 
-// SETH88: ticker หมุนมาเป็น Announcement5 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
+// VIPSAND356: ticker หมุนมาเป็น AnnouncementCyber ส่วนกล่องหน้าย่อยยังเป็น ContentBox
 // (การ์ดถาวรของหน้าย่อย) เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
 // variant นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
-// สีย้ายจากทองคำคู่น้ำเงินรอยัลบนกรมท่าเกือบดำของแบรนด์ก่อน มาเป็นทองคำอียิปต์บน
-// ดำอมน้ำตาลของหินวิหาร — ทอง #fdf3d4 / #f7d774 / #e0a92b / #a9711a / #6b4210
-// บนผิว #0c0703 / #1b1109 เนื้อความ #f0e3cd แบรนด์นี้ไม่มีแกนสีน้ำเงินเหลืออยู่เลย
+// สีย้ายจากทองคำอียิปต์บนดำอมน้ำตาลของแบรนด์ก่อน มาเป็นฟ้าอะซูร์คู่ทองส้มบนกรมท่าเข้ม
+// — ฟ้า #eaf6ff / #a2d2ef / #5dbcfe / #2a93e0 / #1465a8 / #0b3f70 คู่ทอง #fcde61 /
+// #eba554 / #c07c20 บนผิว #061c33 / #0a2b4a / #103a5f เนื้อความ #e6f2ff
+// วอลเปเปอร์รอบนี้เป็นฟ้าสว่าง การ์ดจึงเป็นกรมท่าเข้มลอยอยู่ข้างบน
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the page's
 // single h1), ONE short intro paragraph, the promo image grid, one CTA. Nothing
 // else — no second-level headings, no section paragraphs. The artwork already
 // prints its own message in large type, so prose below it re-types what the
-// visitor can already read, in smaller letters. The docx gives this page no
+// visitor can already read, in smaller letters. The brief gives this page no
 // body at all. Final inventory for this page is h1 ×1, and no headings below it.
 //
-// ดรอปรอบนี้มีสไลด์สี่ใบ แต่กริดลงได้แค่สามใบ ตั้งชื่อตัวแปรตามสิ่งที่พิมพ์บนอาร์ตจริง:
-//   slide1 = ชวนเพื่อนเล่น ค่าคอมมิชชั่นจุกๆ รับ 5%
-//   slide2 = ฝาก-ถอน ระบบอัตโนมัติ รวดเร็ว ปลอดภัย มั่นใจ 100%
-//   slide3 = ยอดเสีย คืนสูงสุด 10% เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น
-// slide4 ถูกตัดออกทั้ง import และกริด เพราะเป็นอาร์ตของดรอปเก่าและมีลายน้ำโลโก้
-// ของแบรนด์อื่นติดอยู่ — ห้ามส่งขึ้นเว็บนี้ และ import คือการ emit ปล่อยบรรทัด
-// import ค้างไว้ก็เท่ากับอัปโหลดไฟล์นั้นอยู่ดี ต่อให้ไม่มีกริดใบไหนเรียกใช้
+// ดรอปรอบนี้มีสไลด์สามใบที่ยังใช้ได้ กริดลงได้ครบทั้งสาม ตั้งชื่อตัวแปรตามของรางวัล
+// ที่พิมพ์อยู่บนอาร์ตจริง:
+//   slide1 = ชนะ 15 ไม้ รับ TOYOTA ALPHARD มูลค่า 4,091,000.-
+//   slide2 = ชนะ 11 ไม้ รับ iPhone 17 Pro Max มูลค่า 48,900.-
+//   slide3 = ชนะ 11 ไม้ รับ KAWASAKI NINJA H2 มูลค่า 1,299,000.-
+// slide4 เป็นอาร์ตของดรอปเก่า (ลงวันที่ก่อนชุดของแบรนด์นี้) จึงไม่มีทั้งบรรทัด import
+// และช่องในกริด — import คือการ emit ปล่อยบรรทัด import ค้างไว้ก็เท่ากับอัปโหลด
+// ไฟล์ของแบรนด์อื่นขึ้นเว็บนี้อยู่ดี ต่อให้ไม่มีกริดใบไหนเรียกใช้
 //
 // ไฟล์ banner ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ห้าม import ที่นี่เด็ดขาด
 // ส่วนไฟล์ hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
 //
 // alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความที่พิมพ์บนอาร์ตและฉาก — อาร์ตรอบนี้
-// เป็นชุดอียิปต์ทั้งหมด (อนูบิส ฟาโรห์ ราชินี วิหารทอง) เปิดดูทั้งสามไฟล์แล้วถอด
-// องค์ประกอบมาเขียนตามนั้น ไม่ได้แก้จากของรอบก่อน
-import promoReferral from "../assets/slide1.png";
-import promoAutoBanking from "../assets/slide2.png";
-import promoCashback from "../assets/slide3.png";
+// เป็นชุดของรางวัลวางบนแท่นวงกลมสีฟ้ากลางท้องฟ้าเมฆขาว ทั้งสามใบเป็นภาพจัตุรัส
+// 600×600 ไม่ใช่แบนเนอร์แนวนอนเหมือนดรอปก่อน
+import promoAlphard from "../assets/slide1.png";
+import promoIphone from "../assets/slide2.png";
+import promoNinja from "../assets/slide3.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 157. It says what the page
+// byte count reads ~3x too long). This one measures 156. It says what the page
 // is for in one sentence and stops — it is not a table of contents.
-const pageDescription = "รวมโปรโมชั่น SETH88 สล็อตเว็บตรง ที่สมาชิกกดรับเองได้ผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน";
+const pageDescription = "รวมโปรโมชั่นแจกรางวัลใหญ่ของ VIPSAND356 สล็อตเว็บตรง ทั้ง TOYOTA ALPHARD, KAWASAKI NINJA H2 และ iPhone 17 Pro Max พร้อมเงื่อนไขยอดเดิมพันของแต่ละรายการบนภาพ";
 
-const pageTitle = "โปรโมชั่น SETH88 | โบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และ Cash Back ทุกวัน";
+const pageTitle = "โปรโมชั่น VIPSAND356 | แจก TOYOTA ALPHARD, KAWASAKI NINJA H2 และ iPhone 17 Pro Max";
 
 // หัวข้อระดับ h1 ของหน้า แยกจากค่า title เพราะ title มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น SETH88 รวมสิทธิ์และโบนัสที่กดรับเองได้ผ่านหน้าแดชบอร์ด";
+const pageHeading = "โปรโมชั่น VIPSAND356 รวมกิจกรรมแจกรางวัลใหญ่ที่เปิดให้สมาชิกร่วมในรอบนี้";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -58,7 +60,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoReferral.src,
+  primaryImagePath: promoAlphard.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -72,9 +74,9 @@ const graph = pageGraph(Astro, {
 //   ≥ 1432px : การ์ดชนเพดาน 1400px                   → (1400 - 5rem - 1.5rem) / 2 = 648px
 const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบทองเข้มล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นทองอ่อนตอน hover
+// ขอบฟ้าอะซูร์ล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นทองอ่อนตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#a9711a]/80 object-contain shadow-[0_10px_30px_rgba(107,66,16,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#f7d774]/70 hover:shadow-[0_15px_40px_rgba(224,169,43,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#2a93e0]/80 object-contain shadow-[0_10px_30px_rgba(11,63,112,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#fcde61]/70 hover:shadow-[0_15px_40px_rgba(42,147,224,0.45)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
 // intrinsic width (600px for all three promo images here) so a sharp upscale never
@@ -86,16 +88,16 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoReferral,
-    alt: "แบนเนอร์แนวนอนพื้นวิหารอียิปต์โทนดำอมน้ำตาลใต้แสงทอง ตัวอักษรสีขาวขนาดใหญ่เขียนว่า ชวนเพื่อนเล่น ถัดลงมาเป็นตัวอักษรสีทองว่า ค่าคอมมิชชั่นจุกๆ แล้วเป็นคำว่า รับ สีทองคู่กับเลข 5% สีขาวตัวโตเต็มกลางภาพ ใต้ลงมาเป็นแถบโค้งสีทองเขียนว่า ทุกยอดเล่นรับไปเลย สูงสุด 5% ฝั่งขวาเป็นหญิงสาวสองคนแต่งชุดราชินีอียิปต์ประดับเครื่องทอง คนหน้าถือธนบัตรดอลลาร์ไว้ในมือ ข้างกันเป็นโทรศัพท์มือถือที่เปิดหน้าแอปของเว็บ มีธนบัตรดอลลาร์ปลิวรอบภาพ ขอบล่างเป็นแถบโลโก้ SETH88 รูปหัวอนูบิส พร้อมแถวโลโก้ธนาคารและปุ่มดาวน์โหลดจาก App Store และ Google Play",
+    src: promoAlphard,
+    alt: "ภาพโปรโมชั่นทรงจัตุรัสพื้นท้องฟ้าสีฟ้าสดใสกับเมฆขาว รถตู้ TOYOTA ALPHARD สีขาวจอดอยู่บนแท่นวงกลมสีฟ้า ล้อมด้วยกองเหรียญทองและผีเสื้อสีฟ้าที่บินอยู่รอบตัวรถ ตัวอักษรบนภาพเขียนว่า ชนะ 15 ไม้ ถัดลงมาเป็นบรรทัด รับ TOYOTA ALPHARD มูลค่า 4,091,000.- และบรรทัดล่างสุดว่า เดิมพันขั้นต่ำ 200,000 ขึ้นไป มุมซ้ายบนเป็นป้ายโลโก้ VIPSANDS356",
   },
   {
-    src: promoAutoBanking,
-    alt: "แบนเนอร์แนวนอนในโถงวิหารอียิปต์โทนดำอมน้ำตาล ตัวอักษรสีขาวขนาดใหญ่เขียนว่า ฝาก-ถอน ถัดลงมาเป็นบรรทัดว่า ระบบอัตโนมัติ แล้วเป็นคำว่า รวดเร็ว ตัวโต ปิดท้ายด้วยบรรทัดเล็กว่า ปลอดภัย มั่นใจ 100% ฝั่งซ้ายเป็นรูปปั้นทองของเทพอนูบิสหัวหมาป่ากำลังยกเหรียญทองสัญลักษณ์ดอลลาร์ ฝั่งขวาเป็นรูปปั้นทองของฟาโรห์สวมผ้าคลุมศีรษะลายทองสลับน้ำเงินยืนกอดอก มีธนบัตรดอลลาร์ปลิวรอบภาพ ขอบล่างเป็นแถบโลโก้ SETH88 รูปหัวอนูบิส พร้อมแถวโลโก้ธนาคารและปุ่มดาวน์โหลดจาก App Store และ Google Play",
+    src: promoIphone,
+    alt: "ภาพโปรโมชั่นทรงจัตุรัสพื้นท้องฟ้าสีฟ้าสดใสกับเมฆขาว โทรศัพท์ iPhone 17 Pro Max สีส้มสองเครื่องตั้งคู่กันอยู่บนแท่นวงกลมสีฟ้า ตัวอักษรบนภาพเขียนว่า ชนะ 11 ไม้ ถัดลงมาเป็นบรรทัด รับ iPhone 17 Pro Max มูลค่า 48,900.- และบรรทัดล่างสุดว่า เดิมพันขั้นต่ำ 3,000 ขึ้นไป มุมซ้ายบนเป็นป้ายโลโก้ VIPSANDS356",
   },
   {
-    src: promoCashback,
-    alt: "แบนเนอร์แนวนอนพื้นทองฉายรัศมีออกจากกลางภาพภายในวิหารอียิปต์ ตัวอักษรสีขาวขนาดใหญ่เขียนว่า ยอดเสีย ถัดลงมาเป็นคำว่า คืนสูงสุด สีทองคู่กับเลข 10% สีขาวตัวโต ใต้ลงมาเป็นแถบสีเข้มเขียนด้วยตัวอักษรสีทองว่า เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น ฝั่งขวาเป็นหญิงสาวสวมชุดอียิปต์สีขาวประดับเครื่องทอง โดยมีเทพอนูบิสหัวหมาป่าสีทองยืนอยู่ด้านหลัง ด้านล่างเป็นกองเหรียญทองและธนบัตรดอลลาร์ ขอบล่างเป็นแถบโลโก้ SETH88 รูปหัวอนูบิส พร้อมแถวโลโก้ธนาคารและปุ่มดาวน์โหลดจาก App Store และ Google Play",
+    src: promoNinja,
+    alt: "ภาพโปรโมชั่นทรงจัตุรัสพื้นท้องฟ้าสีฟ้าสดใสกับเมฆขาว มอเตอร์ไซค์ KAWASAKI NINJA H2 สีเทาอมเขียวจอดอยู่บนแท่นวงกลมสีฟ้า ตัวอักษรบนภาพเขียนว่า ชนะ 11 ไม้ ถัดลงมาเป็นบรรทัด รับ KAWASAKI NINJA H2 มูลค่า 1,299,000.- และบรรทัดล่างสุดว่า เดิมพันขั้นต่ำ 65,000 ขึ้นไป มุมซ้ายบนเป็นป้ายโลโก้ VIPSANDS356",
   },
 ];
 ---
@@ -108,9 +110,9 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        ภาพด้านล่างคือโปรโมชั่นที่ SETH88 เปิดให้สมาชิกกดรับเองผ่านหน้าแดชบอร์ดอยู่ในรอบนี้ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน
-        รายละเอียดของแต่ละรายการพิมพ์อยู่บนภาพครบแล้ว จึงควรอ่านใบที่จะรับอีกครั้งก่อนกด เพราะแต่ละใบคิดคนละเงื่อนไขกัน ทุกสิทธิ์เลือกรับเองได้จากหน้าเว็บโดยตรง เงื่อนไขชัดเจน
-        โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด ส่วนการฝากถอนเป็นงานของระบบออโต้ไฮสปีดที่ทำรายการเสร็จภายใน 3 วินาที ไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ
+        ภาพด้านล่างคือกิจกรรมแจกรางวัลใหญ่ที่ VIPSAND356 เปิดให้สมาชิกร่วมอยู่ในรอบนี้ ทั้งรถตู้ TOYOTA ALPHARD มอเตอร์ไซค์ KAWASAKI NINJA H2 และ iPhone 17 Pro Max รายละเอียดพิมพ์อยู่บนภาพครบแล้ว
+        ทั้งจำนวนไม้ที่ต้องชนะ มูลค่าของรางวัล และยอดเดิมพันขั้นต่ำ จึงควรอ่านใบที่จะร่วมอีกครั้งก่อนเริ่ม เพราะแต่ละใบคิดคนละเงื่อนไขกัน นอกจากนี้ยังมีโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน
+        และคืนยอดเสีย Cash Back ทุกวัน ให้กดรับเองผ่านหน้าเว็บได้เรื่อย ๆ เงื่อนไขชัดเจน ไม่ติดเทิร์นโอเวอร์ซับซ้อน
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -136,8 +138,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#f7d774]/60 bg-gradient-to-r from-[#f7d774] via-[#e0a92b] to-[#a9711a] px-10 py-3.5 text-xl font-black text-[#0c0703] shadow-[0_10px_30px_rgba(224,169,43,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(247,215,116,0.5)]">
-          สมัครสมาชิก SETH88
+          class="flex items-center justify-center rounded-lg border border-[#fcde61]/60 bg-gradient-to-r from-[#fcde61] via-[#eba554] to-[#c07c20] px-10 py-3.5 text-xl font-black text-[#061c33] shadow-[0_10px_30px_rgba(235,165,84,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,222,97,0.5)]">
+          สมัครสมาชิก VIPSAND356
         </a>
       </div>
     </div>

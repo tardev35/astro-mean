@@ -17,22 +17,22 @@ import img6 from "../assets/providers/game6.avif";
 // จึงถูกจัดขึ้นมาไว้หัวแถวให้ตรงกับย่อหน้าที่อยู่เหนือกริด ส่วนอีกสามค่ายที่เหลือ
 // เป็นโลโก้ที่มีอยู่จริงในโฟลเดอร์เดียวกัน
 //
-// JAICHUA: กริดนี้มาถึงรอบนี้ในชุดสีของแบรนด์ก่อนหน้า พร้อมชื่อแบรนด์ก่อนฝังอยู่ใน
-// JSX สามจุด (aria-label ของ section, บรรทัดหัวกระดาน และเทมเพลต alt ของทุกช่อง)
-// รอบนี้ย้ายทั้งไฟล์มาที่ทองคำคู่น้ำเงินรอยัล — ทอง #fbeec9 / #f6d67e / #d8a83f /
-// #a97722 / #6d4a12 คู่น้ำเงิน #cfe0fb / #5b8ede / #2f5fb0 บนผิว #040915 / #0a1226 /
-// #0e1a33 ขอบ #6d4a12 เนื้อความ #dce6f8 ข้อความรอง #a9b7d4
+// VIPSAND356: กริดนี้เป็น inventory ที่ถูกธีมไว้ให้แบรนด์เก่าคนละเจ้า พร้อมชื่อแบรนด์
+// นั้นฝังอยู่ใน JSX สามจุด (aria-label ของ section, บรรทัดหัวกระดาน และเทมเพลต alt
+// ของทุกช่อง) รอบนี้ย้ายทั้งไฟล์มาที่ฟ้าอะซูร์คู่ทองส้ม — ฟ้า #eaf6ff / #a2d2ef /
+// #5dbcfe / #2a93e0 / #1465a8 / #0b3f70 คู่ทอง #fcde61 / #eba554 / #c07c20 / #8d520c
+// บนผิว #061c33 / #0a2b4a / #103a5f ขอบ #1465a8 เนื้อความ #e6f2ff ข้อความรอง #b6d3ee
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย)
 //
-// ป้าย HOT ใช้ทองคำเป็นพื้น เพราะเป็นจุดเดียวในกริดที่ต้องการตัวหนังสือสีเข้ม
-// บนพื้นสว่าง ส่วนป้ายจำนวนผู้เล่นมุมซ้ายรับน้ำเงินรอยัลซึ่งเป็นสีที่สองของแบรนด์
+// ป้าย HOT ใช้ทองส้มเป็นพื้น เพราะเป็นจุดเดียวในกริดที่ต้องการตัวหนังสือสีเข้ม
+// บนพื้นสว่าง ส่วนป้ายจำนวนผู้เล่นมุมซ้ายรับฟ้าอะซูร์ซึ่งเป็นสีนำของแบรนด์
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อค่ายอยู่ใน alt ของรูป ไม่ใช่หัวข้อ — ห้ามเลื่อนชื่อค่ายขึ้นเป็น
 // หัวข้อระดับสาม เพราะ inventory หัวข้อบนหน้าถูกไล่เทียบกับ brief ทุกรอบรีแบรนด์ และ
-// h3 สามตัวเดียวของหน้าแรกเป็นของ FeatureHighlights กริดนี้เป็นภาพประกอบของหัวข้อ
-// docx ข้อ 3 เรื่องค่ายเกมชั้นนำที่ขนมาไว้ครบครัน จึงวางต่อท้ายบล็อกนั้นทันที
+// h3 สี่ตัวเดียวของหน้าแรกเป็นของ FeatureHighlights กริดนี้เป็นภาพประกอบของหัวข้อ
+// docx ข้อ 3 เรื่องคัดเกมเด็ดมาเต็มหลายสไตล์ จึงวางต่อท้ายบล็อกนั้นทันที
 const providers = [
   { alt: "PG Soft (Pocket Games Soft)", users: "4,592", isHot: true, img: img1 },
   { alt: "Pragmatic Play", users: "3,845", isHot: true, img: img6 },
@@ -43,27 +43,27 @@ const providers = [
 ];
 ---
 
-<section aria-label="ค่ายเกมลิขสิทธิ์แท้ที่ JAICHUA ยิงตรงจากคลังเกมหลักมาไว้ในกระเป๋าเดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
+<section aria-label="ค่ายเกมชั้นนำระดับโลกที่ VIPSAND356 ขนมารวมไว้ในระบบกระเป๋าเดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans sm:px-6 lg:px-8">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#6d4a12]/70 bg-[#0a1226]/88 px-6 py-6 text-center shadow-[0_10px_30px_rgba(216,168,63,0.18)] backdrop-blur-md">
-    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(216,168,63,0.7)]">🏆</span>
-    <p class="bg-gradient-to-r from-[#fbeec9] via-[#f6d67e] to-[#5b8ede] bg-clip-text text-3xl font-black tracking-wide text-transparent">
-      ค่ายเกมลิขสิทธิ์แท้ที่ JAICHUA ยิงตรงจากคลังเกมหลักมาไว้ในกระเป๋าเดียว
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#2a93e0]/60 bg-[#0a2b4a]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(11,63,112,0.4)] backdrop-blur-md">
+    <span aria-hidden="true" class="text-2xl drop-shadow-[0_0_10px_rgba(252,222,97,0.7)]">🏆</span>
+    <p class="bg-gradient-to-r from-[#eaf6ff] via-[#a2d2ef] to-[#5dbcfe] bg-clip-text text-3xl font-black tracking-wide text-transparent">
+      ค่ายเกมชั้นนำระดับโลกที่ VIPSAND356 ขนมารวมไว้ในระบบกระเป๋าเดียว
     </p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#a9b7d4]">
-      ขนทัพค่ายเกมชั้นนำระดับโลกมาไว้แบบครบครัน เชื่อมต่อ API แท้ยิงตรงจากคลังเกมหลักโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงตรงตามสเปกโรงงานที่ค่ายแม่กำหนดไว้จริง ไม่มีการปรับลดเปอร์เซ็นต์ระหว่างทาง
-      สลับเปลี่ยนอารมณ์การเดิมพันข้ามค่ายได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องโยกเงินและไม่มีอาการเกมค้างหรือสลีปหลุดกลางฟรีสปิน
+    <p class="max-w-3xl text-base leading-relaxed text-[#b6d3ee]">
+      ขนทัพค่ายเกมชั้นนำระดับโลกมาไว้แบบครบครัน เชื่อมต่อ API แท้ยิงตรงจากคลังเกมหลักสากลโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงตรงตามสเปกโรงงานผู้พัฒนา ไร้การดัดแปลงระบบและไม่ล็อกยูส มีเกมเด็ดครบทุกแนว
+      ทั้งสล็อตวิดีโอ 3D ภาพสวยสมจริง สล็อตคลาสสิกตัวคูณหนัก และสล็อตสายซื้อฟรีสปิน สลับเปลี่ยนแนวการปั่นได้ตลอดเวลาผ่านระบบกระเป๋าเดียวที่ไม่ต้องเสียเวลาโยกเงิน
     </p>
-    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#d8a83f] to-transparent"></div>
+    <div class="mt-2 h-[2px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#eba554] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6 lg:gap-6">
     {
       providers.map((p) => (
-        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#0a1226] shadow-[0_10px_30px_rgba(22,39,78,0.35)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(216,168,63,0.3)]">
-          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#6d4a12] transition-all duration-500 group-hover:border-[#d8a83f]/60 group-hover:shadow-[inset_0_0_20px_rgba(216,168,63,0.25)]" />
+        <div class="group relative flex flex-col overflow-hidden rounded-2xl bg-[#0a2b4a] shadow-[0_10px_30px_rgba(6,28,51,0.4)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(42,147,224,0.35)]">
+          <div class="pointer-events-none absolute inset-0 z-20 rounded-2xl border border-[#1465a8] transition-all duration-500 group-hover:border-[#5dbcfe]/65 group-hover:shadow-[inset_0_0_20px_rgba(93,188,254,0.25)]" />
 
-          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#6d4a12] bg-[#040915]/85 px-3 py-1.5 text-[10px] font-medium text-[#5b8ede] backdrop-blur-md transition-colors group-hover:text-[#cfe0fb]">
+          <div class="absolute top-0 left-0 z-10 flex items-center gap-1.5 rounded-br-xl border-r border-b border-[#1465a8] bg-[#061c33]/85 px-3 py-1.5 text-[10px] font-medium text-[#5dbcfe] backdrop-blur-md transition-colors group-hover:text-[#eaf6ff]">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
             </svg>
@@ -71,7 +71,7 @@ const providers = [
           </div>
 
           {p.isHot && (
-            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#6d4a12]/70 bg-gradient-to-r from-[#f6d67e] to-[#d8a83f] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#040915] shadow-md">
+            <div class="absolute top-0 right-0 z-10 flex items-center gap-1 rounded-bl-xl border-b border-l border-[#eba554]/70 bg-gradient-to-r from-[#fcde61] to-[#eba554] px-3 py-1.5 text-[10px] font-black tracking-wide text-[#061c33] shadow-md">
               <span aria-hidden="true" class="animate-pulse">
                 🔥
               </span>{" "}
@@ -81,7 +81,7 @@ const providers = [
 
           <Picture
             src={p.img}
-            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายลิขสิทธิ์ที่เปิดให้เข้าเล่นบน JAICHUA`}
+            alt={`โลโก้ค่ายเกม ${p.alt} ค่ายลิขสิทธิ์ที่เปิดให้เข้าเล่นบน VIPSAND356`}
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="lazy"
@@ -89,12 +89,13 @@ const providers = [
             widths={[200, 400]}
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 200px"
             decoding="async"
+            quality={80}
             class="block aspect-square w-full object-cover opacity-95 transition-transform duration-700 group-hover:scale-110 group-hover:opacity-100"
           />
 
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#2f5fb0]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            class="pointer-events-none absolute -bottom-10 left-0 h-20 w-full bg-gradient-to-t from-[#2a93e0]/45 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
           />
         </div>
       ))

@@ -8,66 +8,66 @@ export interface Props {
 }
 const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.props;
 
-// JAICHUA: ไฟล์นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind
+// VIPSAND356: ไฟล์นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ เพราะ Tailwind
 // สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
 // ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
-// รอบนี้เป็นทองคำคู่น้ำเงินรอยัลที่วัดจากอาร์ตของแบรนด์นี้เอง — ทอง #fbeec9 /
-// #f6d67e / #d8a83f / #a97722 / #6d4a12 คู่น้ำเงิน #cfe0fb / #5b8ede / #2f5fb0 /
-// #16336b บนผิว #040915 เนื้อความ #dce6f8 ข้อความรอง #a9b7d4
-// เส้นมุมฝั่งบนซ้ายรับทอง ฝั่งล่างขวารับน้ำเงิน ทรงเดียวกับ ContentBoxCyberCut ที่
+// รอบนี้เป็นฟ้าอะซูร์คู่ทองส้มที่วัดจากอาร์ตของแบรนด์นี้เอง — ฟ้า #eaf6ff /
+// #a2d2ef / #5dbcfe / #2a93e0 / #1465a8 / #0b3f70 คู่ทอง #fcde61 / #eba554 /
+// #c07c20 / #8d520c บนผิว #061c33 เนื้อความ #e6f2ff ข้อความรอง #b6d3ee
+// เส้นมุมฝั่งบนซ้ายรับฟ้า ฝั่งล่างขวารับทอง ทรงเดียวกับ ContentBoxCyberCut ที่
 // เป็นพี่น้องกัน เก็บมุมตัดสไตล์ cyber-cut ของ variant นี้ไว้
 //
 // titleleft/titleright เป็น <p> เพราะมันตั้งชื่อคอลัมน์ ไม่ใช่ section ของ docx
 // ส่วน prop `title` คือหัวข้อเดียวที่ component นี้ปล่อยได้ (แบบเดียวกับ
-// ContentBox / ContentBoxTwo) รอบนี้แบกหัวข้อ docx ข้อ 7 เรื่องออโต้ไฮสปีดที่ฝากถอน
-// ผ่าน Gateway ตรง รองรับทั้งธนาคารและ TrueMoney Wallet
+// ContentBox / ContentBoxTwo) รอบนี้แบกหัวข้อ docx ข้อ 5 เรื่องโปรน่าตามที่เติม
+// สิทธิ์พิเศษให้สมาชิกมีดีลใหม่รอเช็กเรื่อยๆ
 //
 // คอลัมน์ซ้าย 3fr คือช่องรูป คอลัมน์ขวา 7fr คือเนื้อความ — ส่งรูปหนึ่งใบเข้า
 // slot="left" และย่อหน้าเดียวเข้า slot="right" เป็น SevenThree ใบที่สองในสองใบของ
-// เพดาน playbook คู่กับ slide3
+// เพดาน playbook คู่กับ slide1 (แบนเนอร์ ชนะ 15 ไม้ รับ TOYOTA ALPHARD)
 const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="mx-auto mb-6 w-full max-w-7xl px-4 font-sans">
   <div
-    class="relative isolate w-full border border-[#d8a83f]/35 bg-[#040915]/92 p-8 text-[#dce6f8] shadow-[0_10px_30px_rgba(216,168,63,0.28)] backdrop-blur-md transition-all duration-300 hover:border-[#f6d67e]/55 hover:shadow-[0_15px_40px_rgba(246,214,126,0.22)]"
+    class="relative isolate w-full border border-[#2a93e0]/45 bg-[#061c33]/92 p-8 text-[#e6f2ff] shadow-[0_10px_30px_rgba(42,147,224,0.3)] backdrop-blur-md transition-all duration-300 hover:border-[#eba554]/60 hover:shadow-[0_15px_40px_rgba(235,165,84,0.25)]"
     style="clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);">
-    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#f6d67e] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#5b8ede] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#f6d67e] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#5b8ede] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#5dbcfe] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#eba554] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#5dbcfe] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#eba554] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 border-l-4 border-[#f6d67e] pl-6">
-          <HeadingTag class="bg-gradient-to-r from-[#fbeec9] via-[#f6d67e] to-[#5b8ede] bg-clip-text text-xl leading-normal font-black text-transparent md:text-2xl">{title}</HeadingTag>
+        <header class="mb-8 border-l-4 border-[#5dbcfe] pl-6">
+          <HeadingTag class="bg-gradient-to-r from-[#eaf6ff] via-[#a2d2ef] to-[#5dbcfe] bg-clip-text text-xl leading-normal font-black text-transparent md:text-2xl">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dce6f8]">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e6f2ff]">
         {
           titleleft && (
-            <div class="flex items-baseline gap-2 border-b border-[#6d4a12]/45 pb-2">
-              <span aria-hidden="true" class="font-mono text-[#a9b7d4]">
+            <div class="flex items-baseline gap-2 border-b border-[#1465a8]/50 pb-2">
+              <span aria-hidden="true" class="font-mono text-[#b6d3ee]">
                 &gt;_
               </span>
-              <p class="text-xl leading-normal font-black text-[#fbeec9]">{titleleft}</p>
+              <p class="text-xl leading-normal font-black text-[#fcde61]">{titleleft}</p>
             </div>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#dce6f8] md:border-l md:border-[#6d4a12]/45 md:pl-8">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e6f2ff] md:border-l md:border-[#1465a8]/50 md:pl-8">
         {
           titleright && (
-            <div class="flex items-baseline gap-2 border-b border-[#6d4a12]/45 pb-2">
-              <span aria-hidden="true" class="font-mono text-[#a9b7d4]">
+            <div class="flex items-baseline gap-2 border-b border-[#1465a8]/50 pb-2">
+              <span aria-hidden="true" class="font-mono text-[#b6d3ee]">
                 &gt;_
               </span>
-              <p class="text-xl leading-normal font-black text-[#fbeec9]">{titleright}</p>
+              <p class="text-xl leading-normal font-black text-[#fcde61]">{titleright}</p>
             </div>
           )
         }

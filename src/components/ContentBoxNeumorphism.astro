@@ -6,21 +6,22 @@ export interface Props {
 const { title, as: HeadingTag = "h1" } = Astro.props;
 const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
-// JAICHUA: ย้ายชุดสีของ variant นี้มาที่ทองคำคู่น้ำเงินรอยัลบนกรมท่าเกือบดำ —
-// ทอง #fbeec9 / #f6d67e / #d8a83f / #a97722 / #6d4a12 คู่น้ำเงิน #cfe0fb / #5b8ede /
-// #2f5fb0 บนผิวการ์ด #0a1226 เนื้อความ #dce6f8 (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้
+// VIPSAND356: ย้ายชุดสีของ variant นี้มาที่ฟ้าอะซูร์คู่ทองส้มบนกรมท่าเข้ม —
+// ฟ้า #eaf6ff / #a2d2ef / #5dbcfe / #2a93e0 / #1465a8 คู่ทอง #fcde61 / #eba554 /
+// #c07c20 บนผิวการ์ด #0a2b4a เนื้อความ #e6f2ff (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้
 // ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจาก
 // ค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 //
-// น้ำเงินรอยัลเป็นสีที่สองของแบรนด์นี้จริง (โล่กรมท่าที่รองป้ายทองในโลโก้) จึงถูกใช้
-// ปิดท้าย gradient ของหัวข้อ ส่วนตัวการ์ดยังเป็นผิวกรมท่ามืดเพื่อให้ทรงนูนอ่านออก
+// ทองส้มเป็นสีที่สองของแบรนด์นี้จริง (คำว่า SANDS บนป้ายโลโก้ กรอบทองรอบป้าย และ
+// กองเหรียญทองในอาร์ตเวิร์ก) จึงถูกใช้ปิดท้าย gradient ของหัวข้อ ส่วนตัวการ์ดยังเป็น
+// ผิวกรมท่ามืดเพื่อให้ทรงนูนอ่านออกบนวอลเปเปอร์ฟ้าสว่าง
 //
 // คู่เงา neumorphic ต้องเป็นเฉดอ่อน/เข้มของสีการ์ดเอง ไม่ใช่สีแบรนด์ — เงาทอดใช้
-// #02050d (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #132244 (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
-// ไปใช้ทองสด การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่ variant นี้
-// มีไว้ทำ
+// #041627 (เข้มกว่าพื้นหน้า) และไฮไลต์ใช้ #103a5f (ผิวการ์ดยกขึ้นหนึ่งขั้น) ถ้าสลับ
+// ไปใช้ฟ้าสดหรือทองสด การ์ดจะกลายเป็นแสงเรืองแทนที่จะเป็นผิวนูน ซึ่งไม่ใช่สิ่งที่
+// variant นี้มีไว้ทำ
 //
-// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 5 เรื่องลูกเล่นแจกโบนัส ซึ่งเป็น <h2>
+// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 6 เรื่องระบบออโต้ที่ลดช่วงรอ ซึ่งเป็น <h2>
 //
 // text-center อยู่บน <header> เท่านั้น ไม่ได้อยู่บนการ์ดหรือ <section> ถ้าย้ายขึ้นไป
 // มันจะ inherit ลงไปใน slot แล้วย่อหน้าเนื้อความจะถูกจัดกึ่งกลางตามไปด้วย
@@ -28,11 +29,11 @@ const headingSize = HeadingTag === "h1" ? "text-3xl" : "text-2xl";
 
 <section class="relative z-10 my-6 flex w-full justify-center px-4 font-sans">
   <div
-    class="w-full max-w-[1400px] rounded-[25px] border border-[#d8a83f]/30 bg-[#0a1226] p-8 text-left text-base leading-relaxed text-[#dce6f8] shadow-[10px_10px_20px_#02050d,-10px_-10px_20px_#132244]">
+    class="w-full max-w-[1400px] rounded-[25px] border border-[#2a93e0]/35 bg-[#0a2b4a] p-8 text-left text-base leading-relaxed text-[#e6f2ff] shadow-[10px_10px_20px_#041627,-10px_-10px_20px_#103a5f]">
     {
       title && (
-        <header class="mb-8 border-b border-[#f6d67e]/25 pb-4 text-center">
-          <HeadingTag class={`bg-gradient-to-r from-[#fbeec9] via-[#f6d67e] to-[#5b8ede] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
+        <header class="mb-8 border-b border-[#eba554]/30 pb-4 text-center">
+          <HeadingTag class={`bg-gradient-to-r from-[#eaf6ff] via-[#5dbcfe] to-[#eba554] bg-clip-text ${headingSize} leading-normal font-black tracking-wide text-transparent`}>{title}</HeadingTag>
         </header>
       )
     }

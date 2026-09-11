@@ -1,57 +1,53 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/Announcement5.astro";
-import ContentBoxPremium from "../components/ContentBoxPremium.astro";
-import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
-import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
-import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
-import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
-import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
-import ContentBoxFloatingBadge from "../components/ContentBoxFloatingBadge.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
+import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
+import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
+import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
+import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
+import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
+import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
+import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
 import FeatureHighlights from "../components/FeatureHighlights.astro";
-import ProviderGrid from "../components/ProviderGrid.astro";
+import ProviderGridPremium from "../components/ProviderGridPremium.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinners3 from "../components/LatestWinners3.astro";
+import LatestWinnersCyber from "../components/LatestWinnersCyber.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
-import ReviewCardSumo from "../components/ReviewCardSumo.astro";
-import Faq4 from "../components/Faq4.astro";
+import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
+import Faq from "../components/Faq.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgCashback from "../assets/slide3.png";
-import imgAutoBanking from "../assets/slide2.png";
+import imgIphonePrize from "../assets/slide2.png";
+import imgAlphardPrize from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxTwoCyberCut as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
-//       คัดเกมโบนัสแตกง่าย ตัดเกมคุณภาพต่ำและเกมล้าหลังออก → จัดระเบียบล็อบบี้
-//       เลือกสปินตามไลฟ์สไตล์ได้แม่นยำ)
-//   3 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับประโยค
-//       เดิม: คลังลิขสิทธิ์แท้จากค่ายยักษ์ใหญ่ → ทดสอบอัลกอริทึมการจ่ายรางวัล →
-//       ปั่นเบทไหนก็ลุ้นแตกเท่ากัน) แล้วต่อด้วย ProviderGrid ซึ่งกางรายชื่อค่ายที่
-//       ย่อหน้าเดียวกันระบุไว้ตรงๆ (PG Soft / Pragmatic Play / Joker Gaming)
-//   4 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม) แล้ว
-//       ต่อด้วย FeatureHighlights ซึ่งกางสามลูกเล่นที่ย่อหน้าเดียวกันเอ่ยชื่อไว้ตรงๆ
-//       (Multiplier / Expanding Wild / ซื้อฟรีสปิน) → h3 สามตัว ซึ่งเป็น h3 ชุดเดียว
-//       ที่ได้รับอนุญาตบนหน้านี้ คำอธิบายเขียนขยายความใหม่ ไม่ได้ก๊อบประโยคด้านบนซ้ำ
-//   5 → ContentBoxSevenThreePremium as="h2" + slide3 (อาร์ตสไลด์เขียนว่า ยอดเสีย
-//       คืนสูงสุด 10% / เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น ซึ่งเป็นรูปธรรมของหัวข้อ
-//       เรื่องโปรน่าสนใจที่มีสิทธิ์คืนยอดเสีย Cash Back ทุกวัน)
-//   6 → ContentBoxSevenThreeNeumorphism as="h2" + slide2 (อาร์ตสไลด์เขียนว่า ฝาก-ถอน
-//       ระบบอัตโนมัติ รวดเร็ว / ปลอดภัย มั่นใจ 100% ซึ่งตรงกับหัวข้อเรื่องออโต้ทันใจ
-//       ที่ตัดช่วงรออนุมัติออกทั้งหมด)
-//   7 → ContentBoxFloatingBadge as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว) — ป้ายลอย
-//       ของ variant นี้ถูกคำนวณ clearance ใหม่กับหัวข้อจริงยาว 71 ตัวอักษรแล้วในไฟล์
-//       component: pt-48/md:pt-40 เหลือช่องว่าง 30px บนจอ 360px และ 52px บน md
+//   1 → ContentBoxCyberCut as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
+//       ยกระดับแดชบอร์ดและคัดเกมเกรด A-List → ไม่ต้องสุ่มเกมคุณภาพต่ำ พุ่งตรงเข้าสปิน)
+//   3 → ContentBox3ThreeCyberCut as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับประโยค
+//       เดิม: ขนทัพค่ายชั้นนำระดับโลก → ครบทุกแนวทั้ง 3D คลาสสิก และสายซื้อฟรีสปิน →
+//       สลับแนวได้ตลอดผ่านกระเป๋าเดียว) แล้วต่อด้วย ProviderGridPremium ซึ่งกางรายชื่อ
+//       ค่ายที่ย่อหน้าเดียวกันระบุไว้ตรงๆ (PG Soft / Pragmatic Play / Joker Gaming)
+//   4 → ContentBoxSevenThree as="h2" + slide2 แล้วต่อด้วย FeatureHighlights ซึ่งกาง
+//       สี่ฟีเจอร์ที่ย่อหน้าเดียวกันเอ่ยชื่อไว้ตรงๆ (Multiplier / Expanding Wild /
+//       Cascading / Bonus Buy) → h3 สี่ตัว ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบน
+//       หน้านี้ คำอธิบายเขียนขยายความใหม่ ไม่ได้ก๊อบประโยคด้านบนซ้ำ
+//   5 → ContentBoxSevenThreeCyberCut as="h2" + slide1 (อาร์ตสไลด์เป็นรถ TOYOTA
+//       ALPHARD รางวัลใหญ่สุดของชุดโปร ซึ่งเป็นรูปธรรมของหัวข้อเรื่องโปรน่าตามที่
+//       เติมสิทธิ์พิเศษให้สมาชิก)
+//   6 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   7 → ContentBoxTwoNeumorphism as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม)
 //
 // variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจาก
-// CyberCut + TwoPremium + 3ThreeNeumorphism + plain + Neumorphism + SevenThree +
-// SevenThreeCyberCut มาเป็น Premium + TwoCyberCut + 3ThreePremium + Special +
-// SevenThreePremium + SevenThreeNeumorphism + FloatingBadge ส่วน Announcement เป็น
-// Announcement5, LatestWinners เป็น LatestWinners3, กริดค่ายเกมเป็น ProviderGrid,
-// การ์ดรีวิวเป็น ReviewCardSumo และ Faq เป็น Faq4 — Navbar/Footer/ฟอนต์ ถูกสลับไว้
-// แล้วใน MainLayout กับ brandProfile
+// Premium + TwoCyberCut + 3ThreePremium + Special + SevenThreePremium +
+// SevenThreeNeumorphism + FloatingBadge มาเป็น CyberCut + TwoPremium +
+// 3ThreeCyberCut + SevenThree + SevenThreeCyberCut + Neumorphism + TwoNeumorphism
+// ส่วน Announcement เป็น AnnouncementCyber, LatestWinners เป็น LatestWinnersCyber,
+// กริดค่ายเกมเป็น ProviderGridPremium, การ์ดรีวิวเป็น ReviewCardSumo2 และ Faq เป็น
+// ตัวฐาน — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน MainLayout กับ brandProfile
+// GameRankingBoard เป็นสมาชิกตัวเดียวของตระกูลตัวเอง จึงถูกใช้ซ้ำโดยไม่มีตัวหมุน
 //
 // ContentBoxSevenThree* ปล่อยหัวข้อผ่าน `title` ตัวเดียว ส่วน titleleft เป็นป้าย
 // คอลัมน์รูปที่เป็น <p> — ห้ามส่ง titleright เพิ่ม เพราะจะได้ป้ายเกินมาโดยไม่มี
@@ -59,63 +55,63 @@ import imgAutoBanking from "../assets/slide2.png";
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
 // สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงตัวต่อตัวกับ default ของ
-// Announcement5.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ
+// AnnouncementCyber.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ
 // วิ่งข้อความเดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความ
 // ซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
-// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide3/slide2 ซึ่งเป็นสไลด์ที่
-// อาร์ตตรงกับหัวข้อ docx ข้อ 5 กับข้อ 6 พอดี — slide1 (ชวนเพื่อนรับค่าคอมมิชชั่น)
-// ไม่มีหัวข้อ docx รองรับและเพดาน SevenThree เต็มแล้ว จึงไม่ถูกใช้ที่นี่ ส่วน slide4
-// เป็นของแบรนด์อื่นที่มีลายน้ำติดมา ห้าม import ที่ไหนทั้งสิ้น และไฟล์ banner ทุกตัว
-// (ทั้งตัวที่มีเลขต่อท้ายและตัวมือถือ) ห้าม import ที่นี่ เพราะรูปที่ import คือรูปที่
-// ถูก emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม — banner1 เป็นของ MainLayout จัดการ
-// เอง และรูปในหน้านี้ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP
-// เป็นของ hero ใน MainLayout
+// SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide2/slide1 ซึ่งเป็นสไลด์ที่
+// อาร์ตตรงกับหัวข้อ docx ข้อ 4 กับข้อ 5 — slide3 (KAWASAKI NINJA H2) ถูกปล่อยไม่ใช้
+// ที่นี่โดยตั้งใจ เพราะเพดาน SevenThree เต็มแล้ว และมันไปโผล่ในกริดของหน้า
+// /promotion แทน ส่วน slide4 เป็นของแบรนด์เก่าที่ค้างบนดิสก์ ห้าม import ที่ไหน
+// ทั้งสิ้น และไฟล์ banner ทุกตัว (ทั้งตัวที่มีเลขต่อท้ายและตัวมือถือ) ห้าม import
+// ที่นี่ เพราะรูปที่ import คือรูปที่ถูก emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม —
+// banner1 เป็นของ MainLayout จัดการเอง และรูปในหน้านี้ไม่มีตัวไหนใส่
+// loading="eager"/fetchpriority="high" เพราะ LCP เป็นของ hero ใน MainLayout
 //
-// widget ที่ไม่ได้มาจาก docx (GameRankingBoard, LatestWinners3, LoginRtpSection,
-// ReviewCardSumo, แถวปุ่ม login/register, Faq4, Navfoot) ใช้ป้ายเป็น <p>/<span> +
+// widget ที่ไม่ได้มาจาก docx (GameRankingBoard, LatestWinnersCyber, LoginRtpSection,
+// ReviewCardSumo2, แถวปุ่ม login/register, Faq, Navfoot) ใช้ป้ายเป็น <p>/<span> +
 // aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสองตัว
-// ที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 3,
+// ที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGridPremium → ข้อ 3,
 // FeatureHighlights → ข้อ 4) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
-// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×3 จาก FeatureHighlights ซึ่งเป็นรายการ
+// h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×4 จาก FeatureHighlights ซึ่งเป็นรายการ
 // ย่อยของหัวข้อข้อ 4 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
-// Faq4.astro คำถามเป็น <span> ใน <summary> ชื่อกริดค่ายใน ProviderGrid.astro เป็น <p>
-// และป้ายคอลัมน์ของทุก ContentBox variant เป็น <p>
+// Faq.astro คำถามเป็น <span> ใน <summary> ชื่อกริดค่ายใน ProviderGridPremium.astro
+// เป็น <p> และป้ายคอลัมน์ของทุก ContentBox variant เป็น <p>
 //
 // title กับ description ใช้บรรทัดที่ brief ให้มาตรงๆ ทั้งคู่ ห้ามเติมหรือตัด และเป็น
 // สตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
-const pageTitle = "SETH88 | สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่น ออโต้ทันใจ ปลอดภัยชัวร์";
-const pageDescription = "SETH88 สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่นแบบเลือกแล้วไม่เสียฟีล หลายค่ายลูกเล่นเยอะ โปรน่าสนใจเติมต่อเนื่อง ออโต้ทันใจ ระบบปลอดภัยชัวร์";
+const pageTitle = "VIPSAND356 | สล็อตของพรีเมียม คัดเกมเด็ดมาเต็ม บริการระดับ VIP";
+const pageDescription = "VIPSAND356 สล็อตของพรีเมียม คัดเกมเด็ดมาเต็มหลายสไตล์ ครบทั้งเกมดัง ฟีเจอร์ใหม่ และโปรน่าตาม ระบบออโต้ช่วยให้ทำรายการคล่อง พร้อมบริการระดับ VIP";
 
 const announcementMessage =
-  "SETH88 สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่น ออโต้ทันใจ ปลอดภัยชัวร์ • สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ค่า RTP มาตรฐานสากลจากค่ายแม่ ไม่มีปรับลดอัตราแตก ไม่ล็อกยูส รวมเกมคัดเกรดคุณภาพระดับ A-List ไว้ในกระเป๋าเดียว ถอนกำไรได้ครบเต็มจำนวนทุกบาท ปลอดภัยชัวร์ 100% • คัดสรรเฉพาะตัวเกมโบนัสแตกง่าย ตัดเกมคุณภาพต่ำและเกมล้าหลังออกทั้งหมด จัดระเบียบหน้าล็อบบี้ให้เข้าถึงง่าย เลือกสปินเกมที่ชอบตามไลฟ์สไตล์การเดิมพันได้อย่างแม่นยำ ไม่ต้องเสียเวลาวนหา • คลังเกมลิขสิทธิ์แท้ส่งตรงจากค่ายยักษ์ใหญ่ระดับโลก ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลตามมาตรฐานโรงงานผู้พัฒนา ปั่นเบทไหนก็มีสิทธิ์ลุ้นแตกหนักเท่ากันทุกรอบ • หลายค่ายลูกเล่นเยอะ สลับเปลี่ยนเกมเมื่อไหร่ก็เจอฟีเจอร์และสไตล์ที่ต่างกัน ทั้งระบบ Multiplier ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ขยายเต็มรีล และโหมดซื้อฟรีสปินพุ่งตรงเข้าลุ้นโบนัส • โปรน่าสนใจเติมต่อเนื่อง เลือกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด • ออโต้ทันใจ ฝากถอนเสร็จสิ้นใน 3 วินาทีผ่าน Gateway ตรง รองรับทั้งสถาบันการเงินชั้นนำและ TrueMoney Wallet ไม่ต้องส่งสลิปยืนยัน ไม่ต้องรอแอดมินอนุมัติ ฝากปุ๊บเครดิตเข้าเกมปั๊บ • ระบบปลอดภัยชัวร์ เข้ารหัสปกป้องข้อมูลสมาชิกแน่นหนาด้วยระบบ SSL พร้อมระบบตรวจสอบประวัติการทำรายการแบบเรียลไทม์ กดถอนกำไรได้แบบสบายใจตั้งแต่วันแรก";
+  "VIPSAND356 สล็อตของพรีเมียม คัดเกมเด็ดมาเต็ม บริการระดับ VIP • เว็บตรงสล็อตพรีเมียม API แท้ ยิงตรงจากคลังเกมหลักสากล ไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงานผู้พัฒนา ไร้การดัดแปลงระบบ ไม่ล็อกยูส ฝากถอนออโต้ประมวลผลไวใน 3 วินาที การันตีถอนได้เต็มทุกยอด • ยกระดับหน้าแดชบอร์ดให้หรูหราและใช้งานง่าย จัดหมวดหมู่เกมอย่างเป็นระเบียบ คัดเฉพาะเกมเกรด A-List ที่จ่ายรางวัลโปร่งใสและโบนัสแจ็คพอตแตกง่ายมาไว้ในที่เดียว พุ่งตรงเข้าสปินทำกำไรได้ตั้งแต่เปิดหน้าแรก • ขนทัพค่ายเกมชั้นนำระดับโลก PG Soft, Pragmatic Play, Joker Gaming และอีกมากมาย ครบทุกแนว ทั้งสล็อตวิดีโอ 3D ภาพสวยสมจริง สล็อตคลาสสิกตัวคูณหนัก และสล็อตสายซื้อฟรีสปิน สลับเปลี่ยนแนวได้ตลอดผ่านระบบกระเป๋าเดียว • ฟีเจอร์ยุคใหม่อัปเดตเข้าระบบครบ ทั้ง Multiplier สะสมตัวคูณทวีคูณ Expanding Wild ยืดเต็มรีล คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy พุ่งตรงเข้าลุ้นรอบแจ็คพอตทันที • โปรน่าตามอัปเดตต่อเนื่อง กดรับเองผ่านหน้าเว็บได้เรื่อยๆ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน ไม่ติดเทิร์นโอเวอร์ซับซ้อน • ระบบออโต้ไฮสปีดตัดขั้นตอนรออนุมัติและการส่งสลิปออกทั้งหมด ทำรายการผ่าน Gateway ตรงเสร็จใน 3 วินาที เครดิตเข้าเกมไว ถอนกำไรเด้งเข้าบัญชีทันใจ • บริการระดับ VIP ทีมงานแอดมินมืออาชีพสแตนด์บายตลอด 24 ชั่วโมง ซัพพอร์ตทุกข้อสงสัยรวดเร็ว ทั้งขั้นตอนสมัคร การรับโปรโมชัน และแนะนำระบบการใช้งาน";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
 // คำถามที่สายปั่นถามจริงด้วยข้อเท็จจริงชุดเดียวกัน และอาร์เรย์เดียวกันถูกส่งให้ทั้ง
-// <Faq4> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
-// Faq4 ใช้ค่า default ของตัวเอง เพราะ default เป็นลิสต์ว่างโดยตั้งใจ
+// <Faq> และ pageGraph เพื่อไม่ให้ FAQPage กับหน้าจริงหลุดออกจากกัน — ห้ามปล่อยให้
+// Faq ใช้ค่า default ของตัวเอง เพราะ default เป็นลิสต์ว่างโดยตั้งใจ
 const faqs = [
   {
-    q: "SETH88 เป็นเว็บตรงจริงไหม แล้วค่า RTP ถูกปรับลดหรือเปล่า",
-    a: "เป็นสล็อตเว็บตรงที่เชื่อมต่อ API แท้ ยิงตรงจากเซิร์ฟเวอร์หลักโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงเป็นมาตรฐานสากลที่ค่ายแม่กำหนดไว้จริง ไม่มีการปรับลดอัตราแตกระหว่างทางและไม่ล็อกยูส ถอนกำไรได้ครบเต็มจำนวนทุกบาท พร้อมโครงสร้างความปลอดภัยที่เข้ารหัสข้อมูลสมาชิกด้วยระบบ SSL",
+    q: "VIPSAND356 เป็นเว็บตรงจริงไหม แล้วค่า RTP ถูกดัดแปลงหรือเปล่า",
+    a: "เป็นเว็บตรงสล็อตพรีเมียมที่เชื่อมต่อ API แท้ ยิงตรงจากคลังเกมหลักสากลโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงตรงตามสเปกที่โรงงานผู้พัฒนากำหนดไว้จริง ไร้การดัดแปลงระบบระหว่างทางและไม่ล็อกยูส เมื่อทำเงื่อนไขครบก็การันตีถอนได้เต็มทุกยอดตามมาตรฐานการบริการระดับ VIP",
   },
   {
-    q: "เกมคัดหมายความว่าอย่างไร ต่างจากเว็บที่มีเกมเยอะๆ ตรงไหน",
-    a: "คัดสรรเฉพาะตัวเกมโบนัสแตกง่ายเข้าสู่ระบบ แล้วตัดเกมคุณภาพต่ำกับเกมล้าหลังออกทั้งหมด หน้าล็อบบี้จึงถูกจัดระเบียบให้เข้าถึงง่าย ผู้เล่นพุ่งตรงเข้าเกมทำเงินได้ทันทีโดยไม่ต้องเสียเวลาวนหา และเลือกสปินเกมที่ชอบตามไลฟ์สไตล์การเดิมพันได้อย่างแม่นยำตั้งแต่วินาทีแรกที่กดเข้าเล่น",
+    q: "เกมเยอะขนาดนี้ หาเกมที่อยากเล่นยากไหม",
+    a: "หน้าแดชบอร์ดถูกยกระดับให้หรูหราและใช้งานง่าย จัดหมวดหมู่เกมไว้อย่างเป็นระเบียบ และคัดเฉพาะเกมเกรด A-List ที่จ่ายรางวัลโปร่งใสและโบนัสแจ็คพอตแตกง่ายมารวมไว้ในที่เดียว ผู้เล่นจึงไม่ต้องเสียเวลานั่งสุ่มเล่นเกมคุณภาพต่ำ และพุ่งตรงเข้าสปินทำกำไรได้ตั้งแต่เปิดหน้าแรก",
   },
   {
-    q: "มีค่ายเกมอะไรบ้าง แล้วรู้ได้อย่างไรว่าเป็นลิขสิทธิ์แท้",
-    a: "คลังเกมส่งตรงจากค่ายยักษ์ใหญ่ระดับโลก ทั้ง PG Soft, Pragmatic Play และ Joker Gaming ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลว่ามีความยุติธรรมตามมาตรฐานโรงงานผู้พัฒนา ไม่ว่าจะปั่นเบทระดับไหนก็มีสิทธิ์ลุ้นแตกหนักเท่ากันทุกรอบ และสลับเล่นข้ามค่ายได้จากกระเป๋าเดียว",
+    q: "มีค่ายเกมอะไรบ้าง แล้วสลับเล่นข้ามค่ายต้องโยกเงินไหม",
+    a: "ขนทัพค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายมารวมไว้ในคลังเดียว มีเกมเด็ดครบทุกแนว ทั้งสล็อตวิดีโอ 3D ภาพสวยสมจริง สล็อตคลาสสิกตัวคูณหนัก และสล็อตสายซื้อฟรีสปิน สลับเปลี่ยนแนวการปั่นได้ตลอดเวลาผ่านระบบกระเป๋าเดียวที่ไม่ต้องเสียเวลาโยกเงิน",
   },
   {
-    q: "ลูกเล่นในเกมมีอะไรให้ลุ้นบ้าง",
-    a: "แต่ละค่ายมีเอกลักษณ์เฉพาะตัว สลับเปลี่ยนเกมเมื่อไหร่ก็เจอฟีเจอร์ใหม่ให้ลุ้น ทั้งระบบ Multiplier ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ที่ขยายเต็มรีล และโหมดซื้อฟรีสปินที่พุ่งตรงเข้าลุ้นโบนัสได้ทันที ส่วนโปรก็อัปเดตต่อเนื่อง ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน",
+    q: "ฟีเจอร์ในเกมมีอะไรให้ลุ้นบ้าง แล้วโปรของสมาชิกมีอะไรต่อเนื่องไหม",
+    a: "ฟีเจอร์ยุคใหม่ถูกอัปเดตเข้าระบบครบ ทั้ง Multiplier ที่สะสมตัวคูณทวีคูณ สัญลักษณ์ Expanding Wild ที่ยืดเต็มรีล คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy ที่พุ่งตรงเข้าลุ้นรอบแจ็คพอตทันที ส่วนโปรก็อัปเดตต่อเนื่องให้กดรับเองผ่านหน้าเว็บ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน",
   },
   {
     q: "ฝากถอนนานไหม ต้องส่งสลิปให้แอดมินหรือเปล่า",
-    a: "ระบบการเงินเป็นออโต้ไฮสปีดผ่าน Gateway ตรง ทำรายการเสร็จสิ้นใน 3 วินาที รองรับทั้งสถาบันการเงินชั้นนำและ TrueMoney Wallet ตัดช่วงเวลารออนุมัติจากแอดมินออกทั้งหมด ไม่ต้องส่งสลิปยืนยัน ฝากปุ๊บเครดิตเข้าเกมปั๊บ ถอนปุ๊บเงินเด้งเข้าบัญชีทันที พร้อมระบบตรวจสอบประวัติการทำรายการแบบเรียลไทม์",
+    a: "ระบบการเงินเป็นออโต้ไฮสปีดที่ตัดขั้นตอนรออนุมัติและการส่งสลิปออกทั้งหมด ทำรายการผ่าน Gateway ตรงเสร็จสรรพภายใน 3 วินาที เครดิตอัปเดตเข้าเกมไวและถอนกำไรเด้งเข้าบัญชีทันใจ หากติดขัดตรงไหนก็มีทีมงานแอดมินมืออาชีพสแตนด์บายให้บริการตลอด 24 ชั่วโมง",
   },
 ];
 
@@ -133,141 +129,150 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxPremium as="h1" title="SETH88 สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่น ออโต้ทันใจ ปลอดภัยชัวร์">
+  <ContentBoxCyberCut as="h1" title="VIPSAND356 สล็อตของพรีเมียม คัดเกมเด็ดมาเต็ม บริการระดับ VIP">
     <p class="text-left text-base leading-relaxed">
-      SETH88 สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ชูจุดเด่นเรื่องความโปร่งใสด้วยค่า RTP มาตรฐานสากลจากค่ายแม่ ไม่มีปรับลดอัตราแตก ไม่ล็อกยูส รวบรวมเกมคัดเกรดคุณภาพระดับ A-List
-      มาไว้ในกระเป๋าเดียว ทำรายการการเงินด้วยระบบออโต้ไฮสปีดประมวลผลไวใน 3 วินาที ถอนกำไรได้ครบเต็มจำนวนทุกบาท ปลอดภัยชัวร์ 100%
+      VIPSAND356 เว็บตรงสล็อตพรีเมียม API แท้ ยิงตรงจากคลังเกมหลักสากล ไม่ผ่านเอเย่นต์ ชูจุดเด่นเรื่องความโปร่งใสด้วยค่า RTP ตรงตามสเปกโรงงานผู้พัฒนา ไร้การดัดแปลงระบบ ไม่ล็อกยูส
+      มาพร้อมระบบฝากถอนออโต้ประมวลผลไวใน 3 วินาที รองรับทุกช่องทางการเงิน การันตีถอนได้เต็มทุกยอดด้วยมาตรฐานการบริการระดับ VIP
     </p>
-  </ContentBoxPremium>
+  </ContentBoxCyberCut>
 
-  <ContentBoxTwoCyberCut
+  <ContentBoxTwoPremium
     as="h2"
-    title="SETH88 สล็อตเว็บตรงเกมคัด เลือกของดีให้ตรงฟีลโดยไม่ต้องเสียเวลาวนหา"
-    titleleft="คัดเกมโบนัสแตกง่าย ตัดเกมล้าหลังออก"
-    titleright="ล็อบบี้จัดระเบียบ เลือกสปินได้แม่นยำ">
+    title="VIPSAND356 สล็อตของพรีเมียม ยกระดับล็อบบี้ให้ทุกเกมมีฟีลน่าค้นกว่าเดิม"
+    titleleft="แดชบอร์ดหรูหรา จัดหมวดหมู่เป็นระเบียบ"
+    titleright="พุ่งตรงเข้าสปินได้ตั้งแต่เปิดหน้าแรก">
     <p slot="left" class="text-left text-base leading-relaxed">
-      คัดสรรเฉพาะตัวเกมโบนัสแตกง่ายเข้าสู่ระบบ SETH88 สล็อตเว็บตรงเกมคัด ตัดเกมคุณภาพต่ำและเกมล้าหลังออกทั้งหมด เพื่อให้ผู้เล่นพุ่งตรงเข้าสู่เกมทำเงินได้ทันทีโดยไม่ต้องเสียเวลาวนหา
+      ยกระดับหน้าแดชบอร์ดให้มีความหรูหราและใช้งานง่าย VIPSAND356 สล็อตของพรีเมียม จัดหมวดหมู่เกมอย่างเป็นระเบียบ คัดเฉพาะเกมเกรด A-List
+      ที่มีอัตราการจ่ายเงินรางวัลโปร่งใสและโบนัสแจ็คพอตแตกง่ายมาไว้ในที่เดียว
     </p>
-    <p slot="right" class="text-left text-base leading-relaxed">
-      จัดระเบียบหน้าล็อบบี้ให้เข้าถึงง่าย เลือกสปินเกมที่ชอบตามไลฟ์สไตล์การเดิมพันได้อย่างแม่นยำ เพิ่มโอกาสคว้าแจ็คพอตใหญ่ได้ตั้งแต่วินาทีแรกที่กดเข้าเล่น
-    </p>
-  </ContentBoxTwoCyberCut>
+    <p slot="right" class="text-left text-base leading-relaxed">ไม่ต้องเสียเวลานั่งสุ่มเล่นเกมคุณภาพต่ำ พุ่งตรงเข้าสู่การสปินทำกำไรได้ทันทีตั้งแต่เปิดหน้าแรก</p>
+  </ContentBoxTwoPremium>
 
-  <ContentBox3ThreePremium
+  <ContentBox3ThreeCyberCut
     as="h2"
-    title="เกมลิขสิทธิ์แน่นแค่ไหน SETH88 คัดตัวน่าเล่นมาให้เลือกแบบเน้นคุณภาพ"
-    titleleft="คลังลิขสิทธิ์แท้จากค่ายระดับโลก"
-    titlecenter="ทดสอบอัลกอริทึมการจ่ายรางวัล"
-    titleright="ปั่นเบทไหนก็ลุ้นแตกเท่ากัน">
-    <p slot="left" class="text-left text-base leading-relaxed">การันตีความโปร่งใสด้วยคลังเกมลิขสิทธิ์แท้ส่งตรงจากค่ายยักษ์ใหญ่ระดับโลก ทั้ง PG Soft, Pragmatic Play และ Joker Gaming</p>
-    <p slot="center" class="text-left text-base leading-relaxed">SETH88 เน้นย้ำเรื่องคุณภาพของตัวเกมเป็นหลัก ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลว่ามีความยุติธรรมตามมาตรฐานโรงงานผู้พัฒนา</p>
-    <p slot="right" class="text-left text-base leading-relaxed">ปั่นเบทไหนก็มีสิทธิ์ลุ้นแตกหนักเท่ากันทุกรอบ</p>
-  </ContentBox3ThreePremium>
+    title="คัดเกมเด็ดมาเต็มหลายสไตล์ VIPSAND356 เปลี่ยนแนวเมื่อไหร่ก็มีตัวเลือกให้ไปต่อ"
+    titleleft="ค่ายชั้นนำระดับโลก"
+    titlecenter="ครบทุกแนวการปั่น"
+    titleright="กระเป๋าเดียวสลับได้ตลอด">
+    <p slot="left" class="text-left text-base leading-relaxed">ขนทัพค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายมารวมไว้ในคลัง</p>
+    <p slot="center" class="text-left text-base leading-relaxed">VIPSAND356 มีเกมเด็ดให้เลือกเล่นครบทุกแนว ทั้งสล็อตวิดีโอ 3D ภาพสวยสมจริง สล็อตคลาสสิกตัวคูณหนัก และสล็อตสายซื้อฟรีสปิน</p>
+    <p slot="right" class="text-left text-base leading-relaxed">สลับเปลี่ยนแนวการปั่นได้ตลอดเวลาผ่านระบบกระเป๋าเดียวที่ไม่ต้องเสียเวลาโยกเงิน</p>
+  </ContentBox3ThreeCyberCut>
 
-  <ProviderGrid />
+  <ProviderGridPremium />
 
-  <ContentBoxSpecial as="h2" title="หลายค่ายลูกเล่นเยอะ เปลี่ยนเกมเมื่อไหร่ก็เจอฟีเจอร์และสไตล์ที่ต่างกัน">
-    <p slot="left" class="text-left text-base leading-relaxed">ฉีกความซ้ำซากด้วยตัวเลือกเกมจากหลากหลายค่ายที่มีเอกลักษณ์เฉพาะตัว สลับเปลี่ยนเกมเมื่อไหร่ก็เจอลูกเล่นและฟีเจอร์ใหม่ๆ ให้ลุ้นตลอดเวลา</p>
+  <ContentBoxSevenThree as="h2" title="เกมดังไม่ได้มาเล่น ๆ รวมตัวเด่นพร้อมฟีเจอร์ใหม่ให้แต่ละรอบมีลูกเล่นต่างกัน" titleleft="ชนะ 11 ไม้ รับ iPhone 17 Pro Max">
+    <Picture
+      slot="left"
+      src={imgIphonePrize}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[300, 450, 700]}
+      sizes="(max-width: 767px) calc(100vw - 96px), 338px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชันรูปโทรศัพท์ iPhone 17 Pro Max สีส้มสองเครื่องวางคู่กันบนแท่นวางสีฟ้ากลางหมู่เมฆ ข้อความไทยบรรทัดบนเขียนว่า ชนะ 11 ไม้ บรรทัดถัดมาเขียนว่า รับ iPhone 17 Pro Max มูลค่า 48,900.- และบรรทัดล่างเขียนว่า เดิมพันขั้นต่ำ 3,000 ขึ้นไป มุมซ้ายบนเป็นโลโก้ VIPSANDS356"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#eba554]/45 shadow-[0_10px_30px_rgba(235,165,84,0.28)]"
+    />
     <p slot="right" class="text-left text-base leading-relaxed">
-      ไม่ว่าจะเป็นระบบ Multiplier ตัวคูณสะสมโหดๆ สัญลักษณ์ Expanding Wild ขยายเต็มรีล หรือโหมดซื้อฟรีสปินพุ่งตรงเข้าลุ้นโบนัส SETH88 พร้อมเปลี่ยนฟีลการปั่นสล็อตของคุณให้ตื่นเต้นไม่มีเบื่อ
+      ฉีกกฎการกดหมุนธรรมดาด้วยฟีเจอร์ยุคใหม่ที่อัปเดตเข้าสู่ระบบบน VIPSAND356 ทั้งระบบ Multiplier สะสมตัวคูณทวีคูณ, สัญลักษณ์ Expanding Wild ยืดเต็มรีล, คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy
+      พุ่งตรงเข้าลุ้นรอบแจ็คพอตทันที ช่วยเปลี่ยนให้การปั่นสล็อตทุกรอบมีกิมมิกน่าติดตามและลุ้นทำเงินได้ตลอดเวลา
     </p>
-  </ContentBoxSpecial>
+  </ContentBoxSevenThree>
 
   <FeatureHighlights
     items={[
       {
         icon: "✖️",
-        title: "Multiplier ตัวคูณสะสม",
-        description: "ตัวคูณถูกแจกระหว่างรอบแล้วสะสมทบขึ้นไปเรื่อยๆ แทนที่จะรีเซ็ตทุกตา ยิ่งอยู่ในจังหวะยาวเท่าไหร่ ยอดที่ได้ตอนสัญลักษณ์เข้าคู่ก็ยิ่งถูกคูณหนักขึ้นเท่านั้น",
+        title: "Multiplier สะสมตัวคูณทวีคูณ",
+        description: "ตัวคูณถูกแจกระหว่างรอบแล้วทบขึ้นไปเรื่อยๆ แทนที่จะรีเซ็ตทุกตา ยิ่งอยู่ในจังหวะยาวเท่าไหร่ ยอดที่ได้ตอนสัญลักษณ์เข้าคู่ก็ยิ่งถูกคูณหนักขึ้นเท่านั้น",
         accent: "gold",
       },
       {
         icon: "🃏",
-        title: "Expanding Wild ขยายเต็มรีล",
+        title: "Expanding Wild ยืดเต็มรีล",
         description: "ไวลด์ที่ลงมาแล้วไม่ได้อยู่แค่ช่องเดียว แต่ยืดคลุมทั้งรีลจนเต็มแนว เปิดโอกาสให้เส้นที่กำลังจะพลาดกลับมาต่อติดพร้อมกันหลายเส้นในตาเดียว",
-        accent: "bronze",
+        accent: "azure",
+      },
+      {
+        icon: "🔁",
+        title: "คอมโบแตกต่อเนื่อง Cascading",
+        description: "สัญลักษณ์ที่ชนะแล้วจะหายไปให้ตัวใหม่ร่วงลงมาแทนในตาเดิม ทำให้หนึ่งรอบหมุนลากต่อได้หลายชั้นโดยไม่ต้องเสียเครดิตเพิ่ม",
+        accent: "azure",
       },
       {
         icon: "🛒",
-        title: "โหมดซื้อฟรีสปิน",
-        description: "กดซื้อเพื่อพุ่งตรงเข้าโหมดฟรีสปินได้ทันทีโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อ่านจังหวะโบนัสออกแล้วอยากลัดเข้าไปเก็บรอบแจกด้วยตัวเอง",
+        title: "โหมด Bonus Buy",
+        description: "กดซื้อเพื่อพุ่งตรงเข้ารอบแจ็คพอตได้ทันทีโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อ่านจังหวะโบนัสออกแล้วอยากลัดเข้าไปเก็บรอบแจกด้วยตัวเอง",
         accent: "gold",
       },
     ]}
   />
 
-  <ContentBoxSevenThreePremium as="h2" title="โปรน่าสนใจเติมต่อเนื่อง SETH88 มีสิทธิ์ใหม่ให้ตามแบบไม่ปล่อยล็อบบี้เงียบ" titleleft="ยอดเสีย คืนสูงสุด 10%">
+  <ContentBoxSevenThreeCyberCut as="h2" title="โปรน่าตามของ VIPSAND356 เติมสิทธิ์พิเศษให้สมาชิกมีดีลใหม่รอเช็กอยู่เรื่อย ๆ" titleleft="ชนะ 15 ไม้ รับ TOYOTA ALPHARD">
     <Picture
       slot="left"
-      src={imgCashback}
+      src={imgAlphardPrize}
       loading="lazy"
       fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) calc(100vw - 96px), 386px"
+      widths={[300, 450, 700]}
+      sizes="(max-width: 767px) calc(100vw - 96px), 346px"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชันพื้นทองในห้องเก็บสมบัติอียิปต์ ข้อความไทยตัวใหญ่บรรทัดบนเขียนว่า ยอดเสีย บรรทัดถัดมาเขียนว่า คืนสูงสุด คู่กับตัวเลข 10% ขนาดใหญ่สีขาว ใต้ลงมาเขียนว่า เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น ฝั่งขวาเป็นหญิงสาวชุดอียิปต์สวมเครื่องประดับทองยืนคู่กับเทพหัวหมาจิ้งจอกอนูบิส มีธนบัตรดอลลาร์ปลิวและกองเหรียญทองอยู่ด้านล่าง แถบล่างเป็นโลโก้ SETH88 พร้อมข้อความ มั่นคงปลอดภัย 100% บริการตลอด 24 ชม. แถวโลโก้ธนาคาร และป้ายดาวน์โหลดแอปจาก App Store กับ Google Play"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e0a92b]/45 shadow-[0_10px_30px_rgba(224,169,43,0.28)]"
+      alt="แบนเนอร์โปรโมชันรูปรถตู้ TOYOTA ALPHARD สีขาวจอดอยู่บนแท่นวางสีฟ้ากลางหมู่เมฆ มีเหรียญทองและผีเสื้อสีฟ้าลอยอยู่รอบตัวรถ ข้อความไทยบรรทัดบนเขียนว่า ชนะ 15 ไม้ บรรทัดถัดมาเขียนว่า รับ TOYOTA ALPHARD มูลค่า 4,091,000.- และบรรทัดล่างเขียนว่า เดิมพันขั้นต่ำ 200,000 ขึ้นไป มุมซ้ายบนเป็นโลโก้ VIPSANDS356"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#5dbcfe]/45 shadow-[0_10px_30px_rgba(93,188,254,0.28)]"
     />
     <p slot="right" class="text-left text-base leading-relaxed">
-      อัปเดตสิทธิประโยชน์ใหม่ๆ เข้าสู่ระบบอย่างต่อเนื่อง SETH88 จัดเต็มโปรโมชันสุดคุ้มให้สมาชิกเลือกกดรับเองผ่านหน้าแดชบอร์ด ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash
-      Back ทุกวัน เงื่อนไขชัดเจน โปร่งใส ไม่ติดเทิร์นโอเวอร์มหาโหด ช่วยเพิ่มทุนสปินและต่อยอดกำไรได้ยาวนานขึ้น
+      จัดเต็มความคุ้มค่าระดับพรีเมียม VIPSAND356 อัปเดตสิทธิประโยชน์และโปรเด็ดเข้าสู่ระบบให้สมาชิกกดรับเองผ่านหน้าเว็บได้เรื่อยๆ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back
+      ทุกวัน เงื่อนไขชัดเจน โปร่งใส ไม่ติดเทิร์นโอเวอร์ซับซ้อน ช่วยขยายทุนและเพิ่มจำนวนรอบสปินได้จริง
     </p>
-  </ContentBoxSevenThreePremium>
+  </ContentBoxSevenThreeCyberCut>
 
-  <ContentBoxSevenThreeNeumorphism as="h2" title="ออโต้ทันใจ ตัดช่วงรอให้ฝากถอนและทำรายการเดินต่อได้คล่องทุกจังหวะ" titleleft="ฝาก-ถอน ระบบอัตโนมัติ รวดเร็ว">
-    <Picture
-      slot="left"
-      src={imgAutoBanking}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 600]}
-      sizes="(max-width: 767px) calc(100vw - 96px), 386px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชันในวิหารอียิปต์เสาหินสีทอง ข้อความไทยตัวใหญ่เขียนว่า ฝาก-ถอน บรรทัดถัดมาเขียนว่า ระบบอัตโนมัติ ตามด้วยคำว่า รวดเร็ว ตัวใหญ่สีทอง และบรรทัดล่างเขียนว่า ปลอดภัย มั่นใจ 100% ฝั่งซ้ายเป็นเทพหัวหมาจิ้งจอกอนูบิสในชุดเกราะทองถือเหรียญทองสัญลักษณ์ดอลลาร์ ฝั่งขวาเป็นฟาโรห์ทองคำยืนกอดอก มีธนบัตรดอลลาร์ปลิวอยู่รอบภาพ แถบล่างเป็นโลโก้ SETH88 พร้อมข้อความ มั่นคงปลอดภัย 100% บริการตลอด 24 ชม. ทำรายการไม่เกิน 3 นาที แถวโลโก้ธนาคาร และป้ายดาวน์โหลดแอปจาก App Store กับ Google Play"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#e0a92b]/45 shadow-[0_10px_30px_rgba(224,169,43,0.28)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ยกระดับความคล่องตัวด้วยระบบฝากถอนออโต้ไฮสปีด ทำรายการเสร็จสิ้นใน 3 วินาทีผ่าน Gateway ตรง รองรับทั้งสถาบันการเงินชั้นนำและ TrueMoney Wallet SETH88 ตัดช่วงเวลารอคอยอนุมัติจากแอดมินออกทั้งหมด
-      ไม่ต้องส่งสลิปยืนยัน ฝากปุ๊บเครดิตเข้าเกมปั๊บ ถอนปุ๊บเงินเด้งเข้าบัญชีทันที ให้ทุกจังหวะการทำเงินเดินหน้าได้อย่างสมูธ
-    </p>
-  </ContentBoxSevenThreeNeumorphism>
-
-  <ContentBoxFloatingBadge as="h2" title="ระบบปลอดภัยชัวร์ของ SETH88 วางความพร้อมให้ใช้งานได้มั่นใจตั้งแต่ต้นจนจบ">
+  <ContentBoxNeumorphism as="h2" title="ระบบออโต้ช่วยให้ทำรายการคล่อง ลดช่วงรอให้ใช้งานต่อได้แบบไม่ขาดจังหวะ">
     <p class="text-left text-base leading-relaxed">
-      สร้างความมั่นใจในทุกการเดิมพันด้วยโครงสร้างความปลอดภัยระดับสากล SETH88 เข้ารหัสปกป้องข้อมูลสมาชิกแน่นหนาด้วยระบบ SSL ไร้ปัญหาข้อมูลรั่วไหลหรือการแทรกแซงจากภายนอก
-      พร้อมระบบตรวจสอบประวัติการทำรายการแบบเรียลไทม์ วางความพร้อมทางการเงินให้สมาชิกเข้าใช้งานและกดถอนกำไรได้แบบสบายใจตั้งแต่วันแรกจนถึงทุกการใช้งาน
+      ขับเคลื่อนธุรกรรมด้วยระบบออโต้ไฮสปีด VIPSAND356 ตัดขั้นตอนการรออนุมัติและการส่งสลิปออกทั้งหมด ทำรายการฝากถอนผ่าน Gateway ตรงเสร็จสรรพใน 3 วินาที เครดิตอัปเดตเข้าเกมไว
+      ถอนเงินกำไรเด้งเข้าบัญชีทันใจ ให้คุณบริหารการเงินและเดิมพันได้สมูธต่อเนื่องไม่มีขาดจังหวะ
     </p>
-  </ContentBoxFloatingBadge>
+  </ContentBoxNeumorphism>
+
+  <ContentBoxTwoNeumorphism
+    as="h2"
+    title="บริการระดับ VIP ของ VIPSAND356 ดูแลครบตั้งแต่เริ่มใช้งานจนถึงทุกเรื่องที่ต้องการความช่วยเหลือ"
+    titleleft="แอดมินสแตนด์บายตลอด 24 ชั่วโมง"
+    titleright="ดูแลครบทุกเรื่องที่ต้องการ">
+    <p slot="left" class="text-left text-base leading-relaxed">
+      สัมผัสประสบการณ์การดูแลระดับเอ็กซ์คลูซีฟ VIPSAND356 จัดเตรียมทีมงานแอดมินมืออาชีพสแตนด์บายให้บริการตลอด 24 ชั่วโมง พร้อมซัพพอร์ตและแก้ไขทุกข้อสงสัยอย่างรวดเร็ว
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed">ไม่ว่าจะเรื่องขั้นตอนสมัคร การรับโปรโมชัน หรือแนะนำระบบการใช้งาน ให้สมาชิกใช้งานได้อย่างสบายใจบนมาตรฐานการบริการระดับ VIP</p>
+  </ContentBoxTwoNeumorphism>
 
   <GameRankingBoard />
 
-  <LatestWinners3 />
+  <LatestWinnersCyber />
 
   <LoginRtpSection />
 
-  <ReviewCardSumo />
+  <ReviewCardSumo2 />
 
   <div class="mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fdf3d4] via-[#e0a92b] to-[#a9711a] px-4 py-3 text-sm font-black whitespace-nowrap text-[#0c0703] shadow-[0_10px_30px_rgba(224,169,43,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(224,169,43,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fcde61] via-[#eba554] to-[#c07c20] px-4 py-3 text-sm font-black whitespace-nowrap text-[#061c33] shadow-[0_10px_30px_rgba(235,165,84,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(235,165,84,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#a9711a]/60 bg-[#1b1109]/85 px-4 py-3 text-sm font-black whitespace-nowrap text-[#f0e3cd] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#f7d774] hover:bg-[#6b4210] hover:text-[#fdf3d4] hover:shadow-[0_15px_40px_rgba(169,113,26,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#2a93e0]/60 bg-[#0a2b4a]/90 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e6f2ff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#5dbcfe] hover:bg-[#103a5f] hover:text-[#fcde61] hover:shadow-[0_15px_40px_rgba(42,147,224,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq4 title="คำถามที่พบบ่อยเกี่ยวกับ SETH88" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ VIPSAND356" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

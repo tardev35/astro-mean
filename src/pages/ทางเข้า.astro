@@ -2,35 +2,35 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/Announcement5.astro";
+import Announcement from "../components/AnnouncementCyber.astro";
 import { pageGraph } from "../lib/schema";
 
 // This page is a BUTTON page, not an article: the ContentBox title (the single
-// <h1>) and the two-column login/register grid, nothing else. The docx never
+// <h1>) and the two-column login/register grid, nothing else. The brief never
 // gave it a body — any heading or paragraph here was invented by an old rebrand.
 // h2 and h3 counts on this page must both stay 0.
 //
-// The <h1> names what the page IS ("ทางเข้า SETH88 เว็บหลัก"). Do not give it
+// The <h1> names what the page IS ("ทางเข้า VIPSAND356 เว็บหลัก"). Do not give it
 // a title that previews an article; there is no article and there never was.
 //
-// SETH88: ticker หมุนมาเป็น Announcement5 และกล่องหน้าย่อยใช้ ContentBox
+// VIPSAND356: ticker หมุนมาเป็น AnnouncementCyber และกล่องหน้าย่อยใช้ ContentBox
 // (เรียก <Announcement /> เปล่าๆ เพื่อใช้ default message ของ variant ซึ่งเป็น
 // ข้อความของแบรนด์นี้แล้ว และตรงกับหน้าแรก)
 //
-// พาเลตต์รอบนี้เป็น "ทองคำอียิปต์บนดำอมน้ำตาลของหินวิหาร" ไม่มีแกนสีน้ำเงินเหลือ
-// อยู่เลย ปุ่มสมัครสมาชิกซึ่งเป็นปุ่มหลักไล่สีทองสว่าง #f7d774 / #e0a92b / #a9711a
-// ขอบ #f7d774 เนื้อความ #0c0703 ส่วนปุ่มเข้าสู่ระบบเป็นปุ่มรองจึงไล่สีบรอนซ์เข้ม
-// #6b4210 / #2a1a0d ขอบ #f7d774 เนื้อความ #fdf3d4 — คู่สีนี้ให้คอนทราสต์พอสำหรับ
-// ตัวอักษรครีมบนพื้นเข้ม ขณะที่การไล่สีทองล้วนทั้งสองปุ่มจะทำให้แยกปุ่มหลักไม่ออก
+// พาเลตต์รอบนี้เป็น "ฟ้าอะซูร์คู่ทองส้มบนกรมท่าเข้ม" บนวอลเปเปอร์ท้องฟ้าสว่าง
+// ปุ่มสมัครสมาชิกซึ่งเป็นปุ่มหลักไล่สีทอง #fcde61 / #eba554 / #c07c20 ขอบ #fcde61
+// เนื้อความ #061c33 ส่วนปุ่มเข้าสู่ระบบเป็นปุ่มรองจึงไล่สีฟ้าเข้ม #1465a8 / #0b3f70
+// ขอบ #5dbcfe เนื้อความ #eaf6ff — คู่สีนี้ให้คอนทราสต์พอสำหรับตัวอักษรฟ้าซีดบนพื้น
+// กรมท่า ขณะที่การไล่สีทองล้วนทั้งสองปุ่มจะทำให้แยกปุ่มหลักไม่ออก
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character, so a byte
-// count reads about three times too long. This one measures 156.
-const pageDescription = "ทางเข้า SETH88 เว็บหลัก ลิงก์ตรงล่าสุด ไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันที สล็อตเว็บตรงเกมคัด API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก ปลอดภัยชัวร์";
+// count reads about three times too long. This one measures 158.
+const pageDescription = "ทางเข้า VIPSAND356 เว็บหลัก ลิงก์ตรงล่าสุดไม่ผ่านเอเย่นต์ กดเข้าสู่ระบบหรือสมัครสมาชิกได้ทันทีจากหน้านี้ เว็บตรงสล็อตพรีเมียม API แท้ ยิงตรงจากคลังเกมหลักสากล";
 
 const graph = pageGraph(Astro, {
-  name: "ทางเข้า SETH88 เว็บหลัก",
+  name: "ทางเข้า VIPSAND356 เว็บหลัก",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -39,40 +39,40 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ทางเข้า SETH88 | เว็บหลักลิงก์ตรง สล็อตเว็บตรงเกมคัด API แท้ ไม่ผ่านเอเย่นต์" description={pageDescription}>
+<MainLayout title="ทางเข้า VIPSAND356 | เว็บหลักลิงก์ตรง สล็อตพรีเมียม API แท้ ไม่ผ่านเอเย่นต์" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ทางเข้า SETH88 เว็บหลัก" as="h1">
+  <ContentBox title="ทางเข้า VIPSAND356 เว็บหลัก" as="h1">
     <div class="mb-5 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ SETH88"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#f7d774]/60 bg-gradient-to-r from-[#6b4210] to-[#2a1a0d] px-6 py-4 shadow-[0_10px_30px_rgba(107,66,16,0.45)] transition-all duration-300 hover:scale-105 hover:border-[#fdf3d4] hover:shadow-[0_15px_40px_rgba(247,215,116,0.5)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#e0a92b]/30 to-transparent"></div>
+          aria-label="เข้าสู่ระบบ VIPSAND356"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#5dbcfe]/60 bg-gradient-to-r from-[#1465a8] to-[#0b3f70] px-6 py-4 shadow-[0_10px_30px_rgba(11,63,112,0.45)] transition-all duration-300 hover:scale-105 hover:border-[#eaf6ff] hover:shadow-[0_15px_40px_rgba(93,188,254,0.5)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#5dbcfe]/30 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#fdf3d4]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#eaf6ff]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#fdf3d4]">เข้าสู่ระบบ</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#eaf6ff]">เข้าสู่ระบบ</span>
         </a>
       </div>
 
       <div class="flex flex-col items-center justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก SETH88"
-          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#f7d774]/70 bg-gradient-to-r from-[#f7d774] via-[#e0a92b] to-[#a9711a] px-6 py-4 shadow-[0_10px_30px_rgba(224,169,43,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(247,215,116,0.5)]">
-          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#fdf3d4]/40 to-transparent"></div>
+          aria-label="สมัครสมาชิก VIPSAND356"
+          class="group relative mx-auto flex w-full max-w-[320px] items-center justify-center gap-3 overflow-hidden rounded-xl border border-[#fcde61]/70 bg-gradient-to-r from-[#fcde61] via-[#eba554] to-[#c07c20] px-6 py-4 shadow-[0_10px_30px_rgba(235,165,84,0.4)] transition-all duration-300 hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,222,97,0.5)]">
+          <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-[#fcde61]/40 to-transparent"></div>
 
-          <svg class="relative z-10 h-9 w-9 text-[#0c0703]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg class="relative z-10 h-9 w-9 text-[#061c33]" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path>
           </svg>
 
-          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#0c0703]">สมัครสมาชิก</span>
+          <span class="relative z-10 text-3xl font-bold tracking-wide text-[#061c33]">สมัครสมาชิก</span>
         </a>
       </div>
     </div>

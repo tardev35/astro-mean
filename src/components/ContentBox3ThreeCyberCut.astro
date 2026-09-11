@@ -14,64 +14,65 @@ const { title, as: HeadingTag = "h2", titleleft, titlecenter, titleright, label 
 // เป็น <p> (คงคลาสเดิมไว้) แล้วเพิ่ม prop `title` ตัวเดียวเป็นหัวข้อที่ component
 // นี้ปล่อยออกมาได้ — วิธีเดียวกับที่ ContentBox3Three/ContentBoxTwo ทำไว้แล้ว
 //
-// BLACKJACK789: variant นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind
+// VIPSAND356: variant นี้ผ่านมาหลายแบรนด์ (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind
 // สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้
-// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้ย้ายมาที่ทองแอนทีค/แชมเปญคู่
-// กราไฟต์ที่วัดจากอาร์ตของแบรนด์นี้ — ทอง #fdf1ce / #f2cf70 / #d3aa4b / #b8862c /
-// #5c4113 คู่กราไฟต์ #cfd6e0 / #8e97a6 ที่ถือเส้นมุมฝั่งล่างขวา บนผิว #100b05
-// เนื้อความ #ede0c4
+// ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history) รอบนี้ย้ายมาที่ฟ้าอะซูร์คู่ทองส้ม
+// ที่วัดจากอาร์ตของแบรนด์นี้ — ฟ้า #eaf6ff / #a2d2ef / #5dbcfe / #2a93e0 / #1465a8 /
+// #0b3f70 คู่ทอง #fcde61 / #eba554 / #c07c20 / #8d520c บนผิว #0a2b4a เนื้อความ
+// #e6f2ff เส้นมุมฝั่งบนซ้ายรับฟ้าซึ่งเป็นสีนำ ฝั่งล่างขวารับทองซึ่งเป็นสีที่สอง
 //
-// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 3 เรื่องคัดค่ายดังเกมแท้ระดับ A-List แล้วส่งต่อให้
-// ProviderGrid กางโลโก้ค่ายที่ย่อหน้าเดียวกันเอ่ยชื่อไว้
+// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 3 เรื่องคัดเกมเด็ดมาเต็มหลายสไตล์ แล้วส่งต่อให้
+// ProviderGridPremium กางโลโก้ค่ายที่ย่อหน้าเดียวกันเอ่ยชื่อไว้ (PG Soft /
+// Pragmatic Play / Joker Gaming)
 const sectionLabel = title ? undefined : (label ?? titleleft ?? titlecenter ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="mx-auto mb-6 w-full max-w-7xl px-4 font-sans">
   <div
-    class="relative isolate w-full border border-[#5c4113]/45 bg-[#100b05]/92 p-8 text-[#ede0c4] shadow-[0_0_25px_rgba(211,170,75,0.25)] backdrop-blur-md transition-all duration-300 hover:border-[#f2cf70] hover:shadow-[0_0_40px_rgba(211,170,75,0.35)]"
+    class="relative isolate w-full border border-[#1465a8]/55 bg-[#0a2b4a]/92 p-8 text-[#e6f2ff] shadow-[0_0_25px_rgba(42,147,224,0.28)] backdrop-blur-md transition-all duration-300 hover:border-[#5dbcfe] hover:shadow-[0_0_40px_rgba(93,188,254,0.35)]"
     style="clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);">
-    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#d3aa4b] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#cfd6e0] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#d3aa4b] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#cfd6e0] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#5dbcfe] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#eba554] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#5dbcfe] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#eba554] to-transparent"></div>
 
     {
       title && (
-        <header class="mb-8 flex items-center gap-4 border-b border-[#5c4113]/35 pb-4">
-          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#fdf1ce] via-[#d3aa4b] to-[#5c4113] shadow-[0_0_10px_rgba(211,170,75,0.5)]" />
-          <HeadingTag class="bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#b8862c] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
+        <header class="mb-8 flex items-center gap-4 border-b border-[#1465a8]/45 pb-4">
+          <span aria-hidden="true" class="h-8 w-1.5 shrink-0 rounded-full bg-gradient-to-b from-[#eaf6ff] via-[#2a93e0] to-[#0b3f70] shadow-[0_0_10px_rgba(42,147,224,0.55)]" />
+          <HeadingTag class="bg-gradient-to-r from-[#eaf6ff] via-[#a2d2ef] to-[#5dbcfe] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>
         </header>
       )
     }
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      <article class="flex flex-col gap-4 border-b border-[#5c4113]/35 pb-6 text-left text-base leading-relaxed text-[#ede0c4] md:border-r md:border-b-0 md:pr-6 md:pb-0">
+      <article class="flex flex-col gap-4 border-b border-[#1465a8]/45 pb-6 text-left text-base leading-relaxed text-[#e6f2ff] md:border-r md:border-b-0 md:pr-6 md:pb-0">
         {
           titleleft && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f2cf70] uppercase">
-              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#cfd6e0] shadow-[0_0_5px_rgba(207,214,224,0.8)]" /> {titleleft}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#5dbcfe] uppercase">
+              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#fcde61] shadow-[0_0_5px_rgba(252,222,97,0.85)]" /> {titleleft}
             </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-4 border-b border-[#5c4113]/35 pb-6 text-left text-base leading-relaxed text-[#ede0c4] md:border-r md:border-b-0 md:px-4 md:pb-0">
+      <article class="flex flex-col gap-4 border-b border-[#1465a8]/45 pb-6 text-left text-base leading-relaxed text-[#e6f2ff] md:border-r md:border-b-0 md:px-4 md:pb-0">
         {
           titlecenter && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f2cf70] uppercase">
-              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#cfd6e0] shadow-[0_0_5px_rgba(207,214,224,0.8)]" /> {titlecenter}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#5dbcfe] uppercase">
+              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#fcde61] shadow-[0_0_5px_rgba(252,222,97,0.85)]" /> {titlecenter}
             </p>
           )
         }
         <slot name="center" />
       </article>
 
-      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#ede0c4] md:pl-6">
+      <article class="flex flex-col gap-4 text-left text-base leading-relaxed text-[#e6f2ff] md:pl-6">
         {
           titleright && (
-            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#f2cf70] uppercase">
-              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#cfd6e0] shadow-[0_0_5px_rgba(207,214,224,0.8)]" /> {titleright}
+            <p class="flex items-center gap-2 text-lg leading-normal font-black tracking-widest text-[#5dbcfe] uppercase">
+              <span aria-hidden="true" class="h-2 w-2 shrink-0 bg-[#fcde61] shadow-[0_0_5px_rgba(252,222,97,0.85)]" /> {titleright}
             </p>
           )
         }

@@ -18,10 +18,10 @@ const targetUrl = "https://yoalink.com/znmz";
 // preloads for a Google Sans brand for exactly this reason; emitting the
 // @font-face here anyway would put the shared paths back on two pages and
 // undo half of it. Nothing is lost when they drop — Google Sans covers Thai, so
-// it paints this page on its own on a google-sans brand. SETH88 runs
-// GOOGLE SANS, so this round the Kanit @font-face rules do NOT render and the
-// CDN query below takes the Google-Sans-plus-Oswald branch. The flag flips every
-// rebrand, so keep BOTH branches correct — the next Kanit brand needs the other.
+// it paints this page on its own on a google-sans brand. VIPSAND356 runs
+// KANIT, so this round the Kanit @font-face rules DO render and the CDN query
+// below takes the Oswald-only branch. The flag flips every rebrand, so keep
+// BOTH branches correct — the next Google Sans brand needs the other.
 //
 // Oswald is the face the two display headings use and it is not self-hosted, so
 // it stays in the CDN query on both branches.
@@ -34,19 +34,24 @@ const fontHref = usesGoogleFonts
   ? "https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Oswald:wght@700&display=swap"
   : "https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap";
 
-// Palette note for the second <style> block: SETH88 is an EGYPTIAN-GOLD brand
-// with a REAL SECOND COLOUR — the mark is three-dimensional gold lettering with
-// an Anubis jackal headdress above it and a winged ankh below, and the word SETH
-// is polished gold while the numerals 88 are white silver rimmed in gold. So
-// silver is a colour OF the mark, not a highlight on the gold, and this page has
-// to show both or it reads as a flat gold page.
-// The gold ramp is #fdf3d4 → #f7d774 → #e0a92b → #a9711a → #6b4210 and the
-// silver pair is #f2f3f5 → #d8dade, over the surface stack (#0c0703 page /
-// rgba(27,17,9) tomb-stone panel / #2a1a0d raised, rgba(107,66,16) borders) with
-// #f0e3cd body text and #d6c2a0 captions. #f7d774 is THE brand colour — the one
-// that carries the borders and the loader's outer ring; #d8dade is the second,
-// and it is what the inner ring is drawn in: that ring is the one place on this
-// page where the two-colour mark is legible at a glance.
+// Palette note for the second <style> block: VIPSAND356 is an AZURE brand with
+// a REAL SECOND COLOUR — the 3D mark splits its own letters between the two,
+// with VIP in glossy azure blue and SANDS in amber gold inside a thick gold
+// frame. So gold is a colour OF the mark, not a highlight on the blue, and this
+// page has to show both or it reads as a flat blue page.
+// The azure ramp is #eaf6ff → #a2d2ef → #5dbcfe → #2a93e0 → #1465a8 → #0b3f70
+// and the gold trio is #fcde61 → #eba554 → #c07c20, over the deep-navy surface
+// stack (#061c33 page / rgba(10,43,74) ocean-glass panel / #103a5f raised,
+// rgba(20,101,168) borders) with #e6f2ff body text and #b6d3ee captions.
+// #2a93e0 is THE brand colour — the one that carries the borders and the
+// loader's outer ring; #eba554 is the second, and it is what the inner ring is
+// drawn in: that ring is the one place on this page where the two-colour mark
+// is legible at a glance.
+//
+// Note this page keeps a DARK surface even though the site's wallpaper this
+// round is bright sky blue. It is a standalone forwarder with its own <head>,
+// no wallpaper and no chrome — a single glass panel floating on nothing — so it
+// takes the same deep-navy surface the cards take, not the page background.
 //
 // Every custom property below is NAMED FOR THE COLOUR IT HOLDS, which previous
 // brands stopped doing: this block once declared a `--brand-gold` on brands with
@@ -54,11 +59,11 @@ const fontHref = usesGoogleFonts
 // `--gold-light` that held the brand's SECOND accent, not its primary — so the
 // next editor reused it by name and got the wrong role. Rename with the value,
 // and re-check the role when the palette changes shape. (This round the primary
-// stayed gold but shifted warmer, and the second colour moved from royal blue to
-// white silver — so the previous `--blue-*` trio became `--silver-*` and the
-// `--navy-deep` became `--bronze-deep` rather than keeping names that no longer
-// describe what they hold. There is NO blue anywhere in this brand; a
-// `--blue-royal` holding a silver is exactly the trap this rule exists to stop.)
+// moved from gold to azure and gold dropped to the second colour, so the
+// previous `--gold-*` ramp became `--azure-*`/`--sky-*` and the silver pair is
+// gone entirely rather than keeping names that no longer describe what they
+// hold. There is NO silver anywhere in this brand; a `--silver` holding an ice
+// blue is exactly the trap this rule exists to stop.)
 //
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 ---
@@ -66,10 +71,10 @@ const fontHref = usesGoogleFonts
 <html lang="th" style={`--font-sans: ${fontStack};`}>
   <head>
     <meta charset="utf-8" />
-    <title>สมัครสมาชิก SETH88 | เปิดยูสเดียวเล่นเกมลิขสิทธิ์ได้ครบทุกค่าย</title>
+    <title>สมัครสมาชิก VIPSAND356 | เปิดยูสเดียวเล่นเกมเด็ดได้ครบทุกค่าย</title>
     <meta
       name="description"
-      content="สมัครสมาชิก SETH88 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นเกมลิขสิทธิ์ได้ครบทุกค่าย ค่า RTP มาตรฐาน ฝากถอนออโต้ 3 วินาที"
+      content="สมัครสมาชิก VIPSAND356 ฟรีไม่มีค่าธรรมเนียม ระบบจะพาไปหน้าสมัครของเว็บหลักอัตโนมัติ เปิดยูสเดียวเล่นเกมเด็ดครบทุกค่าย ค่า RTP ตรงสเปก ฝากถอนออโต้ 3 วินาที"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -111,19 +116,21 @@ const fontHref = usesGoogleFonts
 
     <style>
       :root {
-        --page-bg: #0c0703;
-        --panel-bg: rgba(27, 17, 9, 0.92);
-        --gold-pale: #fdf3d4;
-        --gold-light: #f7d774;
-        --gold-primary: #e0a92b;
-        --gold-deep: #a9711a;
-        --bronze-deep: #6b4210;
-        --silver-bright: #f2f3f5;
-        --silver: #d8dade;
-        --surface-raised: #2a1a0d;
-        --border-gold: #a9711a;
-        --text-body: #f0e3cd;
-        --text-muted: #d6c2a0;
+        --page-bg: #061c33;
+        --panel-bg: rgba(10, 43, 74, 0.92);
+        --ice: #eaf6ff;
+        --sky-pale: #a2d2ef;
+        --sky-bright: #5dbcfe;
+        --azure-primary: #2a93e0;
+        --azure-deep: #1465a8;
+        --azure-deepest: #0b3f70;
+        --gold-light: #fcde61;
+        --gold: #eba554;
+        --gold-deep: #c07c20;
+        --surface-raised: #103a5f;
+        --border-azure: #1465a8;
+        --text-body: #e6f2ff;
+        --text-muted: #b6d3ee;
       }
 
       body {
@@ -131,7 +138,7 @@ const fontHref = usesGoogleFonts
         font-family: var(--font-sans);
         color: var(--text-body);
 
-        background: radial-gradient(circle at 50% 10%, rgba(224, 169, 43, 0.18) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(107, 66, 16, 0.22) 0%, transparent 55%), var(--page-bg);
+        background: radial-gradient(circle at 50% 10%, rgba(42, 147, 224, 0.22) 0%, transparent 55%), radial-gradient(circle at 50% 92%, rgba(235, 165, 84, 0.18) 0%, transparent 55%), var(--page-bg);
         display: flex;
         min-height: 100vh;
         flex-direction: column;
@@ -145,11 +152,11 @@ const fontHref = usesGoogleFonts
         max-width: 450px;
         padding: 3.5rem;
         background: var(--panel-bg);
-        border: 1px solid rgba(107, 66, 16, 0.75);
+        border: 1px solid rgba(20, 101, 168, 0.75);
         border-radius: 2rem;
         box-shadow:
-          0 1rem 3rem rgba(4, 2, 1, 0.7),
-          0 0 2rem rgba(224, 169, 43, 0.18);
+          0 1rem 3rem rgba(6, 28, 51, 0.7),
+          0 0 2rem rgba(42, 147, 224, 0.22);
         text-align: center;
         backdrop-filter: blur(10px);
       }
@@ -158,13 +165,13 @@ const fontHref = usesGoogleFonts
         font-family: "Oswald", sans-serif;
         font-size: 1.5rem;
         font-weight: 700;
-        background: linear-gradient(180deg, var(--gold-pale) 0%, var(--gold-light) 35%, var(--gold-primary) 70%, var(--gold-deep) 100%);
+        background: linear-gradient(180deg, var(--ice) 0%, var(--sky-pale) 35%, var(--sky-bright) 70%, var(--azure-primary) 100%);
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
         letter-spacing: 0.3em;
         margin-bottom: 2rem;
-        filter: drop-shadow(0 1px 2px rgba(107, 66, 16, 0.6));
+        filter: drop-shadow(0 1px 2px rgba(11, 63, 112, 0.6));
       }
 
       .sophisticated-loader {
@@ -180,30 +187,30 @@ const fontHref = usesGoogleFonts
       .orb {
         width: 40px;
         height: 40px;
-        background: radial-gradient(circle, var(--gold-pale) 0%, var(--gold-light) 45%, var(--bronze-deep) 100%);
+        background: radial-gradient(circle, var(--ice) 0%, var(--sky-bright) 45%, var(--azure-deepest) 100%);
         border-radius: 50%;
-        box-shadow: 0 0 2rem rgba(224, 169, 43, 0.4);
+        box-shadow: 0 0 2rem rgba(42, 147, 224, 0.4);
         animation: pulse 2s ease-in-out infinite;
       }
 
       .ring {
         position: absolute;
         border-radius: 50%;
-        border: 3px solid rgba(107, 66, 16, 0.55);
+        border: 3px solid rgba(20, 101, 168, 0.55);
         animation: spin linear infinite;
       }
 
       .ring-1 {
         width: 100%;
         height: 100%;
-        border-top-color: var(--gold-light);
+        border-top-color: var(--sky-bright);
         animation-duration: 4s;
       }
 
       .ring-2 {
         width: 80%;
         height: 80%;
-        border-bottom-color: var(--silver);
+        border-bottom-color: var(--gold);
         animation-duration: 6s;
         animation-direction: reverse;
       }
@@ -220,11 +227,11 @@ const fontHref = usesGoogleFonts
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 2rem rgba(224, 169, 43, 0.4);
+          box-shadow: 0 0 2rem rgba(42, 147, 224, 0.4);
         }
         50% {
           transform: scale(1.15);
-          box-shadow: 0 0 3rem rgba(253, 243, 212, 0.42);
+          box-shadow: 0 0 3rem rgba(93, 188, 254, 0.42);
         }
       }
 
@@ -234,7 +241,7 @@ const fontHref = usesGoogleFonts
         font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: var(--silver-bright);
+        color: var(--ice);
         text-shadow: 0 1px 1px var(--surface-raised);
         margin: 0;
       }
@@ -248,7 +255,7 @@ const fontHref = usesGoogleFonts
   </head>
   <body>
     <div class="premium-loading-container">
-      <div class="brand-identity">SETH88</div>
+      <div class="brand-identity">VIPSAND356</div>
 
       <div class="sophisticated-loader">
         <div class="orb"></div>
@@ -258,7 +265,7 @@ const fontHref = usesGoogleFonts
 
       <div class="status-text">
         <h1 class="h1">CREATING SECURE ACCOUNT SESSION...</h1>
-        <p class="p">กำลังพาไปหน้าสมัครสมาชิก SETH88 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
+        <p class="p">กำลังพาไปหน้าสมัครสมาชิก VIPSAND356 ด้วยเบอร์โทรศัพท์ <span aria-hidden="true">🔒</span></p>
       </div>
     </div>
 

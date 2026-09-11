@@ -27,10 +27,11 @@ import { BRAND_NAME } from "../lib/brandProfile";
 // crawled so the crawler finds its way back to the real pages.
 //
 // 150–160 CHARACTERS, not bytes — Thai is 3 bytes per character. This one
-// measures 155 once BRAND_NAME (6 characters this round) is substituted. The
-// length moves with the brand name, so re-count every launch rather than
-// assuming the previous brand's wording is still inside the window: the same
-// sentence with a 12-character name lands over the ceiling.
+// measures 159 once BRAND_NAME (VIPSAND356, 10 characters) is substituted, i.e.
+// one character under the ceiling. The length moves with the brand name, so
+// re-count every launch rather than assuming the previous brand's wording is
+// still inside the window — a name two characters longer than this one puts the
+// same sentence over, and verify-build fails the build for it.
 //
 // This brand is a SLOT site, not a lottery one, and the two ค่ายเกม named below
 // are two of the three the brief actually lists — so the sentence still holds

@@ -6,17 +6,20 @@ import ktbLogo from "../assets/banks/ktb.png";
 import ttbLogo from "../assets/banks/ttb.png";
 import { brandFlag, brandPick } from "../lib/brandProfile";
 
-// PAY69: ย้ายชุดสีของแบรนด์ก่อนออกทั้งหมด (ทั้งชื่อแบรนด์และค่า hex เดิมไม่พิมพ์
-// ไว้ตรงนี้ — คอมเมนต์ที่ยังเอ่ยชื่อแบรนด์ก่อนคือเอกสารที่ผิด และ Tailwind สแกน
-// ไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมา
-// เป็น CSS ตาย ดูของเดิมได้จาก git history) มาที่ทองแชมเปญเดี่ยวบนดำสนิทของแบรนด์
-// นี้ ไม่มีสีคู่ — ทอง #e8c37a / #f7dfa5 / #fdf4e0 / #a87c2e / #6b4d15 บนผิว
-// #08070a / #12100c / #1c1811 เนื้อความ #e6dac2 ข้อความรอง #a99a7d ไม่มีสีของ
-// แบรนด์เก่าเหลืออยู่ในไฟล์ เหลือแต่เขียวสถานะ "เงินเข้าแล้ว" ซึ่งเป็นสีเชิงความหมาย
+// VIPSAND356: แถบนี้เป็น inventory ที่ถูกธีมไว้ให้แบรนด์เก่าคนละเจ้า และชื่อแบรนด์นั้น
+// ฝังอยู่ใน JSX ตรงๆ สองจุด (aria-label ของ section กับบรรทัดหัวแถบ) รอบนี้ย้ายชุดสี
+// ของแบรนด์ก่อนออกทั้งหมด (ทั้งชื่อแบรนด์และค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ —
+// คอมเมนต์ที่ยังเอ่ยชื่อแบรนด์ก่อนคือเอกสารที่ผิด และ Tailwind สแกนไฟล์เป็นข้อความดิบ
+// ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิม
+// ได้จาก git history) มาที่ฟ้าอะซูร์คู่ทองส้มของแบรนด์นี้ — ฟ้า #eaf6ff / #a2d2ef /
+// #5dbcfe / #2a93e0 / #1465a8 / #0b3f70 คู่ทอง #fcde61 / #eba554 / #c07c20 / #8d520c
+// บนผิว #061c33 / #0a2b4a / #103a5f เนื้อความ #e6f2ff ข้อความรอง #b6d3ee
+// ไม่มีสีของแบรนด์เก่าเหลืออยู่ในไฟล์ เหลือแต่เขียวสถานะ "จ่ายเข้าบัญชีแล้ว" ซึ่งเป็น
+// สีเชิงความหมาย
 //
-// แถบนี้เป็นภาพประกอบของหัวข้อ docx ข้อ 5 เรื่องเว็บใหญ่ทุนหนาพร้อมเพย์ — รายการ
-// ถอนที่วิ่งอยู่คือหลักฐานว่าฐานการเงินแข็งแรงพอจ่ายทุกยอดชนะทันที ไม่ว่าจะบวก
-// หลักหมื่นหรือหลักล้าน และระบบออโต้จบงานได้เองโดยไม่ต้องส่งสลิปให้แอดมิน
+// แถบนี้เป็น widget ปลายหน้า ไม่ใช่ section ของ docx — รายการถอนที่วิ่งอยู่คือหลักฐาน
+// ของข้อเท็จจริงที่ brief ให้ไว้: ระบบออโต้ไฮสปีดที่ตัดขั้นตอนรออนุมัติและการส่งสลิป
+// ออกทั้งหมด ทำรายการผ่าน Gateway ตรงเสร็จใน 3 วินาที และการันตีถอนได้เต็มทุกยอด
 //
 // สีในลิสต์นี้เป็นสีโลโก้ธนาคารจริง ไม่ใช่สีแบรนด์ — ห้ามรีธีมตาม palette
 const bankPool = [
@@ -38,7 +41,7 @@ const bankPool = [
 const LETTERS = "abcdefghijklmnopqrstuvwxyz";
 const pickFrom = (chars: string, salt: string) => chars.charAt(brandPick(Astro.site, salt, chars.length));
 
-// เกินยอดนี้แถวจะเปลี่ยนเป็นโทนทองครีมสว่าง "ยอดใหญ่" — ค่าเดียวกันนี้ส่งให้โมดูล
+// เกินยอดนี้แถวจะเปลี่ยนเป็นโทนทองสว่าง "ยอดใหญ่" — ค่าเดียวกันนี้ส่งให้โมดูล
 // ผ่าน data-big-win-above เพื่อให้แถวที่ JS สร้างใหม่ตัดสินเหมือนกับแถวที่เซิร์ฟเวอร์
 // render มา ตัวคลาสทั้งสองสถานะอยู่บน data-normal-class / data-big-class ของแถว
 // โมดูลจึงไม่ต้องรู้จัก palette ของแบรนด์นี้เลย
@@ -46,8 +49,8 @@ const BIG_WIN_ABOVE = 70000;
 const AMOUNT_MIN = 15000;
 const AMOUNT_MAX = 95000;
 
-const AMOUNT_NORMAL_CLASS = "text-[#e8c37a] drop-shadow-[0_0_8px_rgba(232,195,122,0.5)]";
-const AMOUNT_BIG_CLASS = "text-[#fdf4e0] drop-shadow-[0_0_10px_rgba(253,244,224,0.7)]";
+const AMOUNT_NORMAL_CLASS = "text-[#5dbcfe] drop-shadow-[0_0_8px_rgba(93,188,254,0.5)]";
+const AMOUNT_BIG_CLASS = "text-[#fcde61] drop-shadow-[0_0_10px_rgba(252,222,97,0.7)]";
 
 const initialRows = Array.from({ length: 5 }, (_, i) => {
   const amount = AMOUNT_MIN + brandPick(Astro.site, `winner-amount-${i}`, AMOUNT_MAX - AMOUNT_MIN + 1);
@@ -63,15 +66,15 @@ const initialRows = Array.from({ length: 5 }, (_, i) => {
 
 <div class="mx-auto w-full max-w-[1300px] p-4">
   <section
-    aria-label="รายการถอนล่าสุดที่ผ่านระบบออโต้ของ PAY69 ซึ่งจ่ายทุกยอดชนะทันทีโดยไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ"
-    class="relative border-r-4 border-l-4 border-[#e8c37a] bg-[#08070a]/90 px-4 py-8 shadow-[0_0_30px_rgba(232,195,122,0.22)] md:p-10"
+    aria-label="รายการถอนล่าสุดที่ผ่านระบบออโต้ของ VIPSAND356 ซึ่งทำรายการผ่าน Gateway ตรงเสร็จใน 3 วินาที โดยไม่ต้องส่งสลิปยืนยันและไม่ต้องรอแอดมินอนุมัติ"
+    class="relative border-r-4 border-l-4 border-[#2a93e0] bg-[#061c33]/92 px-4 py-8 shadow-[0_0_30px_rgba(42,147,224,0.28)] md:p-10"
     style="clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);">
-    <div class="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#f7dfa5] to-transparent"></div>
-    <div class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#a87c2e] to-transparent"></div>
+    <div class="absolute top-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#5dbcfe] to-transparent"></div>
+    <div class="absolute bottom-0 left-0 h-[1px] w-full bg-gradient-to-r from-transparent via-[#eba554] to-transparent"></div>
 
-    <div class="relative z-10 mb-8 flex items-center justify-between border-b border-[#a87c2e]/35 pb-4">
-      <p class="text-xl font-black tracking-[0.2em] text-[#e8c37a] drop-shadow-[0_0_8px_rgba(232,195,122,0.7)]">/// PAY69_AUTO_PAYOUT</p>
-      <span class="animate-pulse border border-[#a87c2e]/60 px-2 py-1 text-xs font-bold tracking-widest text-[#a99a7d]">ONLINE</span>
+    <div class="relative z-10 mb-8 flex items-center justify-between border-b border-[#1465a8]/45 pb-4">
+      <p class="text-xl font-black tracking-[0.2em] text-[#5dbcfe] drop-shadow-[0_0_8px_rgba(93,188,254,0.7)]">/// VIPSAND356_AUTO_PAYOUT</p>
+      <span class="animate-pulse border border-[#eba554]/60 px-2 py-1 text-xs font-bold tracking-widest text-[#fcde61]">ONLINE</span>
     </div>
 
     <div
@@ -89,14 +92,14 @@ const initialRows = Array.from({ length: 5 }, (_, i) => {
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-row origin-left transform transition-all duration-500 ease-out">
-            <div class="flex items-center justify-between border-l-2 border-[#e8c37a] bg-gradient-to-r from-[#1c1811]/70 to-transparent p-3 backdrop-blur-sm transition-colors hover:bg-[#1c1811]/90">
+            <div class="flex items-center justify-between border-l-2 border-[#2a93e0] bg-gradient-to-r from-[#103a5f]/70 to-transparent p-3 backdrop-blur-sm transition-colors hover:bg-[#103a5f]/90">
               <div class="flex items-center gap-4">
                 <div data-winner-bank class={`flex h-8 w-8 items-center justify-center border border-white/10 bg-black/50 mix-blend-screen ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="20" height="20" loading="lazy" decoding="async" class="h-5 w-5 object-contain grayscale" />
                 </div>
-                <div class="font-mono text-sm text-[#e6dac2]">
+                <div class="font-mono text-sm text-[#e6f2ff]">
                   USR_ID:{" "}
-                  <span data-winner-user class="font-bold text-[#f7dfa5]">
+                  <span data-winner-user class="font-bold text-[#a2d2ef]">
                     {row.user}
                   </span>
                 </div>
@@ -116,7 +119,7 @@ const initialRows = Array.from({ length: 5 }, (_, i) => {
                   data-normal-class={AMOUNT_NORMAL_CLASS}
                   data-big-class={AMOUNT_BIG_CLASS}
                   class={`font-mono text-xl font-black ${row.big ? AMOUNT_BIG_CLASS : AMOUNT_NORMAL_CLASS}`}>
-                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#a99a7d]">THB</span>
+                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#b6d3ee]">THB</span>
                 </div>
               </div>
             </div>
@@ -147,8 +150,8 @@ const initialRows = Array.from({ length: 5 }, (_, i) => {
      แบรนด์นี้เลย สถานะ "จ่ายเข้าบัญชีแล้ว" ยังเป็นเขียว success ซึ่งเป็นสีเชิงความหมาย
      ไม่ใช่สีแบรนด์ จึงไม่ถูกรีธีมตาม palette */
   .winner-status.is-pending {
-    color: #a99a7d;
-    border-color: #6b4d15;
+    color: #b6d3ee;
+    border-color: #1465a8;
   }
   .winner-status.is-verified {
     color: oklch(79.2% 0.209 151.711);
