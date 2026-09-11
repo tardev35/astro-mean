@@ -6,12 +6,12 @@ import ktbLogo from "../assets/banks/ktb.png";
 import ttbLogo from "../assets/banks/ttb.png";
 import { brandFlag, brandPick } from "../lib/brandProfile";
 
-// BLACKJACK789: ฟีดตัวนี้ค้างชุดสีของแบรนด์ก่อนหน้า และยังมีชื่อแบรนด์เก่าอยู่ใน
+// 9KPLUS: ฟีดตัวนี้ค้างชุดสีของแบรนด์ก่อนหน้า และยังมีชื่อแบรนด์เก่าอยู่ใน
 // บรรทัดหัวกับชื่อ section (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็น
 // ข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS
-// ตาย ดูของเดิมได้จาก git history) แมปมาที่ทองแอนทีค/แชมเปญคู่กราไฟต์ของแบรนด์นี้
-// — ทอง #fdf1ce / #f2cf70 / #d3aa4b / #b8862c / #5c4113 คู่กราไฟต์ #cfd6e0 / #8e97a6
-// บนผิว #050403 / #100b05 / #1e150a เนื้อความ #ede0c4 ข้อความรอง #c0ab84
+// ตาย ดูของเดิมได้จาก git history) แมปมาที่แดงนีออนคู่ชมพูบานเย็นของแบรนด์นี้
+// — ชมพูขาว #ffd8e7 / ชมพู #ff4fa3 / แดง #f5003e / แดงเข้ม #b3022c / ชมพูเข้ม
+// #7c1040 บนผิว #120309 / #1f0611 / #4d012c เนื้อความ #ffe3ee ข้อความรอง #f0b9cd
 //
 // สีโลโก้ธนาคารเป็นสีของธนาคารเอง ไม่ใช่พาเลตต์ของเว็บ — คงไว้ทุกรอบรีแบรนด์
 const bankPool = [
@@ -37,22 +37,22 @@ const initialRows = Array.from({ length: 4 }, (_, i) => ({
 }));
 
 // สถานะสองแบบถูกส่งให้โมดูลฟีดเป็นสตริงใน data-* โมดูลจึงไม่ต้องรู้จักพาเลตต์ของ
-// แบรนด์นี้เลย ป้าย "ถอนสำเร็จ" ใช้หมึกดำ #050403 บนไล่สีทองแชมเปญ ได้คอนทราสต์สูง
-// มาก (ถ้าปล่อยให้หมึกเป็นทองเข้ม ตัวหนังสือจะจมลงไปกับพื้นทอง) ป้าย "กำลังดำเนินการ"
-// ใช้ #fdf1ce บนทองเข้ม #5c4113 ซึ่งยังผ่านเกณฑ์สบายๆ
-const PENDING_CLASS = "text-[#fdf1ce] bg-[#5c4113] animate-pulse";
-const DONE_CLASS = "text-[#050403] bg-gradient-to-r from-[#d3aa4b] via-[#fdf1ce] to-[#d3aa4b] font-black shadow-md";
+// แบรนด์นี้เลย ป้าย "ถอนสำเร็จ" ใช้หมึกเกือบดำ #120309 บนไล่สีชมพูสว่าง ได้คอนทราสต์
+// สูงมาก (ถ้าปล่อยให้หมึกเป็นแดงเข้ม ตัวหนังสือจะจมลงไปกับพื้น) ป้าย "กำลังดำเนินการ"
+// ใช้ #ffd8e7 บนชมพูเข้ม #7c1040 ซึ่งยังผ่านเกณฑ์สบายๆ
+const PENDING_CLASS = "text-[#ffd8e7] bg-[#7c1040] animate-pulse";
+const DONE_CLASS = "text-[#120309] bg-gradient-to-r from-[#ff4fa3] via-[#ffd8e7] to-[#ff4fa3] font-black shadow-md";
 ---
 
 <div class="mx-auto w-full max-w-[1300px] p-4 font-sans">
   <section
-    aria-label="รายการถอนเงินล่าสุดของสมาชิก BLACKJACK789"
-    class="relative overflow-hidden rounded-[30px] border-2 border-[#d3aa4b]/30 bg-[#050403]/92 px-4 py-8 shadow-[0_10px_30px_rgba(211,170,75,0.22)] backdrop-blur-md md:p-10">
-    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#d3aa4b]/35 blur-[50px]"></div>
+    aria-label="รายการถอนเงินล่าสุดของสมาชิก 9KPLUS"
+    class="relative overflow-hidden rounded-[30px] border-2 border-[#f5003e]/30 bg-[#120309]/92 px-4 py-8 shadow-[0_10px_30px_rgba(245,0,62,0.22)] backdrop-blur-md md:p-10">
+    <div class="pointer-events-none absolute -top-10 left-1/2 h-32 w-64 -translate-x-1/2 rounded-full bg-[#f5003e]/35 blur-[50px]"></div>
 
     <div class="relative z-10 mb-8 flex items-center justify-center gap-3">
       <span aria-hidden="true" class="text-2xl">🏆</span>
-      <p class="bg-gradient-to-r from-[#fdf1ce] via-[#f2cf70] to-[#cfd6e0] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">รายการถอนเงินล่าสุดของสมาชิก BLACKJACK789</p>
+      <p class="bg-gradient-to-r from-[#ffd8e7] via-[#ff4fa3] to-[#f5003e] bg-clip-text text-xl font-black tracking-wide text-transparent md:text-3xl">รายการถอนเงินล่าสุดของสมาชิก 9KPLUS</p>
       <span aria-hidden="true" class="text-2xl">🏆</span>
     </div>
 
@@ -69,7 +69,7 @@ const DONE_CLASS = "text-[#050403] bg-gradient-to-r from-[#d3aa4b] via-[#fdf1ce]
       {
         initialRows.map((row) => (
           <div data-winner-row class="winner-card transition-all duration-500 ease-out">
-            <div class="flex flex-col rounded-[20px] border border-[#d3aa4b]/30 bg-[#100b05]/95 p-5 shadow-sm transition-all hover:border-[#f2cf70]/55 hover:bg-[#1e150a]/90">
+            <div class="flex flex-col rounded-[20px] border border-[#f5003e]/30 bg-[#1f0611]/95 p-5 shadow-sm transition-all hover:border-[#ff4fa3]/55 hover:bg-[#4d012c]/90">
               <div class="mb-4 flex items-start justify-between">
                 <div data-winner-bank class={`flex h-10 w-10 items-center justify-center rounded-full border border-white/10 shadow-inner ${row.bank.color}`}>
                   <img data-winner-icon src={row.bank.icon} alt="" width="24" height="24" loading="lazy" decoding="async" class="h-6 w-6 object-contain" />
@@ -85,14 +85,14 @@ const DONE_CLASS = "text-[#050403] bg-gradient-to-r from-[#d3aa4b] via-[#fdf1ce]
                 </div>
               </div>
               <div>
-                <div class="text-sm text-[#c0ab84]">
+                <div class="text-sm text-[#f0b9cd]">
                   ยูสเซอร์:{" "}
-                  <span data-winner-user class="font-bold text-[#ede0c4]">
+                  <span data-winner-user class="font-bold text-[#ffe3ee]">
                     {row.user}
                   </span>
                 </div>
-                <div class="mt-1 text-2xl font-black text-[#f2cf70]">
-                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#c0ab84]">THB</span>
+                <div class="mt-1 text-2xl font-black text-[#ff4fa3]">
+                  <span data-winner-amount>{row.amount}</span> <span class="text-xs text-[#f0b9cd]">THB</span>
                 </div>
               </div>
             </div>
@@ -101,8 +101,8 @@ const DONE_CLASS = "text-[#050403] bg-gradient-to-r from-[#d3aa4b] via-[#fdf1ce]
       }
     </div>
 
-    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#c0ab84]">
-      ระบบฝากถอนออโต้ประมวลผลผ่าน Gateway ตรง ทำรายการเสร็จใน 3 วินาที ไม่ต้องส่งสลิปและไม่ต้องรอแอดมินอนุมัติ ก่อนทำรายการควรตรวจยอดและชื่อบัญชีรับเงินให้ตรงกับข้อมูลสมาชิก
+    <p class="relative z-10 mt-6 text-center text-[11px] tracking-wide text-[#f0b9cd]">
+      ระบบฝากถอนออโต้ไฮสปีดประมวลผลผ่าน Gateway ตรง ทำรายการเสร็จใน 3 วินาที ไม่ต้องแนบสลิปและไม่ต้องคอยแอดมินอนุมัติ ก่อนทำรายการควรตรวจยอดและชื่อบัญชีรับเงินให้ตรงกับข้อมูลสมาชิก
       หากรายการยังประมวลผลอยู่ไม่ควรกดซ้ำทันที
     </p>
 

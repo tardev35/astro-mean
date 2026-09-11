@@ -2,17 +2,17 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/Announcement3.astro";
 
 import { Picture } from "astro:assets";
 
-// VIPSAND356: ticker หมุนมาเป็น AnnouncementCyber ส่วนกล่องหน้าย่อยยังเป็น ContentBox
+// 9KPLUS: ticker หมุนมาเป็น Announcement3 ส่วนกล่องหน้าย่อยยังเป็น ContentBox
 // (การ์ดถาวรของหน้าย่อย) เรียก <Announcement /> เปล่า ๆ เพราะ default message ของ
 // variant นี้ถูกตั้งให้ตรงกับข้อความที่หน้าแรกส่งเข้าไป ticker จึงเหมือนกันทั้งเว็บ
-// สีย้ายจากทองคำอียิปต์บนดำอมน้ำตาลของแบรนด์ก่อน มาเป็นฟ้าอะซูร์คู่ทองส้มบนกรมท่าเข้ม
-// — ฟ้า #eaf6ff / #a2d2ef / #5dbcfe / #2a93e0 / #1465a8 / #0b3f70 คู่ทอง #fcde61 /
-// #eba554 / #c07c20 บนผิว #061c33 / #0a2b4a / #103a5f เนื้อความ #e6f2ff
-// วอลเปเปอร์รอบนี้เป็นฟ้าสว่าง การ์ดจึงเป็นกรมท่าเข้มลอยอยู่ข้างบน
+// สีย้ายจากฟ้าอะซูร์คู่ทองส้มบนกรมท่าเข้มของแบรนด์ก่อน มาเป็นนีออนคริมสัน-ชมพูจัด
+// บนผิวเกือบดำ — คริมสัน #f5003e / #ff4a74 / #b3022c คู่ชมพู #ff4fa3 / #7c1040
+// บนผิว #120309 / #1f0611 เนื้อความ #ffe3ee
+// วอลเปเปอร์รอบนี้เกือบดำ การ์ดจึงเป็นแผ่นเข้มลอยอยู่บนลายวงจรสีเลือดหมู
 // ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
 // This page is an IMAGE page, not an article: the ContentBox title (the page's
@@ -22,36 +22,36 @@ import { Picture } from "astro:assets";
 // visitor can already read, in smaller letters. The brief gives this page no
 // body at all. Final inventory for this page is h1 ×1, and no headings below it.
 //
-// ดรอปรอบนี้มีสไลด์สามใบที่ยังใช้ได้ กริดลงได้ครบทั้งสาม ตั้งชื่อตัวแปรตามของรางวัล
-// ที่พิมพ์อยู่บนอาร์ตจริง:
-//   slide1 = ชนะ 15 ไม้ รับ TOYOTA ALPHARD มูลค่า 4,091,000.-
-//   slide2 = ชนะ 11 ไม้ รับ iPhone 17 Pro Max มูลค่า 48,900.-
-//   slide3 = ชนะ 11 ไม้ รับ KAWASAKI NINJA H2 มูลค่า 1,299,000.-
-// slide4 เป็นอาร์ตของดรอปเก่า (ลงวันที่ก่อนชุดของแบรนด์นี้) จึงไม่มีทั้งบรรทัด import
-// และช่องในกริด — import คือการ emit ปล่อยบรรทัด import ค้างไว้ก็เท่ากับอัปโหลด
-// ไฟล์ของแบรนด์อื่นขึ้นเว็บนี้อยู่ดี ต่อให้ไม่มีกริดใบไหนเรียกใช้
+// ดรอปรอบนี้มีสไลด์ครบสี่ใบ (ลงวันที่เดียวกับ logo/banner1 ของแบรนด์นี้) กริดจึงลง
+// ได้ครบทั้งสี่ ตั้งชื่อตัวแปรตามสิทธิ์ที่พิมพ์อยู่บนอาร์ตจริง:
+//   slide1 = ขาใหญ่ ใจถึง! ฝากต่อเนื่องประจำเดือน ฝาก 20,000 ขึ้นไป รับโบนัสสูงสุด 30,000
+//   slide2 = คืนยอดเสีย 5% ทุกวัน สูงสุด 50,000 บาท
+//   slide3 = Happy Birthday เดือนเกิดรับของขวัญวันเกิด สูงสุด 20,000 บาท
+//   slide4 = เซียนชนเซียน 1 แต้ม รับโบนัส 30% สูงสุด 5,000 บาท
+// slide1 กับ slide2 ถูกใช้บนหน้าแรกด้วย (SevenThree สองบล็อก) การนำมาวางซ้ำในกริด
+// ของหน้านี้ไม่ทำให้ไฟล์ถูก emit เพิ่ม เพราะเป็น asset เดียวกัน
 //
 // ไฟล์ banner ของแบรนด์ก่อนที่ยังค้างอยู่ใน src/assets ห้าม import ที่นี่เด็ดขาด
 // ส่วนไฟล์ hero ของรอบนี้เป็นของ MainLayout จัดการเองเท่านั้น
 //
-// alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความที่พิมพ์บนอาร์ตและฉาก — อาร์ตรอบนี้
-// เป็นชุดของรางวัลวางบนแท่นวงกลมสีฟ้ากลางท้องฟ้าเมฆขาว ทั้งสามใบเป็นภาพจัตุรัส
-// 600×600 ไม่ใช่แบนเนอร์แนวนอนเหมือนดรอปก่อน
-import promoAlphard from "../assets/slide1.png";
-import promoIphone from "../assets/slide2.png";
-import promoNinja from "../assets/slide3.png";
+// alt เขียนจากสิ่งที่วาดอยู่บนภาพจริง ทั้งข้อความไทยที่พิมพ์บนอาร์ตและฉาก — อาร์ต
+// รอบนี้เป็นแบนเนอร์แนวนอน 600×250 ทั้งสี่ใบ ไม่ใช่ภาพจัตุรัสเหมือนดรอปก่อน
+import promoMonthlyDeposit from "../assets/slide1.png";
+import promoCashback from "../assets/slide2.png";
+import promoBirthday from "../assets/slide3.png";
+import promoDuel from "../assets/slide4.png";
 import { pageGraph } from "../lib/schema";
 
 // One string, used twice: MainLayout's <meta name="description"> and the
 // WebPage node's description. 150–160 CHARACTERS (Thai is 3 bytes/char, so a
-// byte count reads ~3x too long). This one measures 156. It says what the page
+// byte count reads ~3x too long). This one measures 158. It says what the page
 // is for in one sentence and stops — it is not a table of contents.
-const pageDescription = "รวมโปรโมชั่นแจกรางวัลใหญ่ของ VIPSAND356 สล็อตเว็บตรง ทั้ง TOYOTA ALPHARD, KAWASAKI NINJA H2 และ iPhone 17 Pro Max พร้อมเงื่อนไขยอดเดิมพันของแต่ละรายการบนภาพ";
+const pageDescription = "รวมโปรโมชั่น 9KPLUS สล็อตเว็บตรง ทั้งโบนัสฝากต่อเนื่องประจำเดือน คืนยอดเสีย 5% ทุกวัน ของขวัญเดือนเกิด และโบนัสเซียนชนเซียน พร้อมเงื่อนไขรับสิทธิ์บนภาพแต่ละใบ";
 
-const pageTitle = "โปรโมชั่น VIPSAND356 | แจก TOYOTA ALPHARD, KAWASAKI NINJA H2 และ iPhone 17 Pro Max";
+const pageTitle = "โปรโมชั่น 9KPLUS | คืนยอดเสีย 5% ทุกวัน ฝากต่อเนื่องประจำเดือน และของขวัญเดือนเกิด";
 
 // หัวข้อระดับ h1 ของหน้า แยกจากค่า title เพราะ title มีขีดคั่นแบรนด์อยู่
-const pageHeading = "โปรโมชั่น VIPSAND356 รวมกิจกรรมแจกรางวัลใหญ่ที่เปิดให้สมาชิกร่วมในรอบนี้";
+const pageHeading = "โปรโมชั่น 9KPLUS รวมสิทธิ์และโบนัสไฟแรงที่เปิดให้สมาชิกกดรับในรอบนี้";
 
 const graph = pageGraph(Astro, {
   name: pageHeading,
@@ -60,7 +60,7 @@ const graph = pageGraph(Astro, {
     { name: "หน้าแรก", path: "/" },
     { name: "โปรโมชั่น", path: "/promotion" },
   ],
-  primaryImagePath: promoAlphard.src,
+  primaryImagePath: promoMonthlyDeposit.src,
 });
 
 // One column on phones, two from sm: up, gap-6 (1.5rem) between the cells.
@@ -74,12 +74,12 @@ const graph = pageGraph(Astro, {
 //   ≥ 1432px : การ์ดชนเพดาน 1400px                   → (1400 - 5rem - 1.5rem) / 2 = 648px
 const imageSizes = "(max-width: 639px) calc(100vw - 6rem), (max-width: 767px) calc((100vw - 7.5rem) / 2), (max-width: 1431px) calc((100vw - 8.5rem) / 2), 648px";
 
-// ขอบฟ้าอะซูร์ล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นทองอ่อนตอน hover
+// ขอบคริมสันล้อกับกรอบของการ์ด แล้วสว่างขึ้นเป็นชมพูจัดตอน hover
 const imageClass =
-  "mx-auto h-auto w-full rounded-xl border border-[#2a93e0]/80 object-contain shadow-[0_10px_30px_rgba(11,63,112,0.45)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#fcde61]/70 hover:shadow-[0_15px_40px_rgba(42,147,224,0.45)]";
+  "mx-auto h-auto w-full rounded-xl border border-[#f5003e]/80 object-contain shadow-[0_10px_30px_rgba(245,0,62,0.35)] transition-transform duration-300 hover:-translate-y-1 hover:border-[#ff4fa3]/70 hover:shadow-[0_15px_40px_rgba(255,79,163,0.3)]";
 
 // A cell is drawn up to 648px, but the ladder is clamped to each file's own
-// intrinsic width (600px for all three promo images here) so a sharp upscale never
+// intrinsic width (600px for all four promo images here) so a sharp upscale never
 // becomes a source and never ships more bytes than the file held.
 const widthLadder = (img: { width: number }) => {
   const steps = [384, 576, 648].filter((w) => w < img.width);
@@ -88,16 +88,20 @@ const widthLadder = (img: { width: number }) => {
 
 const promos = [
   {
-    src: promoAlphard,
-    alt: "ภาพโปรโมชั่นทรงจัตุรัสพื้นท้องฟ้าสีฟ้าสดใสกับเมฆขาว รถตู้ TOYOTA ALPHARD สีขาวจอดอยู่บนแท่นวงกลมสีฟ้า ล้อมด้วยกองเหรียญทองและผีเสื้อสีฟ้าที่บินอยู่รอบตัวรถ ตัวอักษรบนภาพเขียนว่า ชนะ 15 ไม้ ถัดลงมาเป็นบรรทัด รับ TOYOTA ALPHARD มูลค่า 4,091,000.- และบรรทัดล่างสุดว่า เดิมพันขั้นต่ำ 200,000 ขึ้นไป มุมซ้ายบนเป็นป้ายโลโก้ VIPSANDS356",
+    src: promoMonthlyDeposit,
+    alt: "ภาพโปรโมชั่นแนวนอนพื้นสีแดงเลือดหมู ชายสูงวัยเคราขาวสวมหมวกปานามาสีขาว สูทหนังสีน้ำตาลและแว่นกันแดดดำ ยืนยิ้มท่ามกลางธนบัตรที่ปลิวอยู่รอบตัว ตัวอักษรบนภาพเขียนว่า ขาใหญ่ ใจถึง! ฝากต่อเนื่องประจำเดือน ฝาก 20,000 ขึ้นไป รับโบนัสสูงสุด 30,000 และมีป้ายเงื่อนไขเรียงทางขวาว่า ฝาก 3 วัน รับ 1,200 ฝาก 7 วัน รับ 5,600 ฝาก 15 วัน รับ 12,000 และ ฝาก 30 วัน รับ 30,000",
   },
   {
-    src: promoIphone,
-    alt: "ภาพโปรโมชั่นทรงจัตุรัสพื้นท้องฟ้าสีฟ้าสดใสกับเมฆขาว โทรศัพท์ iPhone 17 Pro Max สีส้มสองเครื่องตั้งคู่กันอยู่บนแท่นวงกลมสีฟ้า ตัวอักษรบนภาพเขียนว่า ชนะ 11 ไม้ ถัดลงมาเป็นบรรทัด รับ iPhone 17 Pro Max มูลค่า 48,900.- และบรรทัดล่างสุดว่า เดิมพันขั้นต่ำ 3,000 ขึ้นไป มุมซ้ายบนเป็นป้ายโลโก้ VIPSANDS356",
+    src: promoCashback,
+    alt: "ภาพโปรโมชั่นแนวนอนพื้นสีแดงสด เสือการ์ตูนสวมแว่นกันแดดดำกอดเสาแดงทองและถือซองอั่งเปาสีแดง มีสัญลักษณ์ดอลลาร์สีทองลอยอยู่ทางขวา ตัวอักษรบนภาพเขียนว่า คืนยอดเสีย 5% ทุกวัน สูงสุด 50,000 บาท",
   },
   {
-    src: promoNinja,
-    alt: "ภาพโปรโมชั่นทรงจัตุรัสพื้นท้องฟ้าสีฟ้าสดใสกับเมฆขาว มอเตอร์ไซค์ KAWASAKI NINJA H2 สีเทาอมเขียวจอดอยู่บนแท่นวงกลมสีฟ้า ตัวอักษรบนภาพเขียนว่า ชนะ 11 ไม้ ถัดลงมาเป็นบรรทัด รับ KAWASAKI NINJA H2 มูลค่า 1,299,000.- และบรรทัดล่างสุดว่า เดิมพันขั้นต่ำ 65,000 ขึ้นไป มุมซ้ายบนเป็นป้ายโลโก้ VIPSANDS356",
+    src: promoBirthday,
+    alt: "ภาพโปรโมชั่นแนวนอนพื้นสีม่วงแดง เค้กวันเกิดแต่งครีมชมพูปักเทียนสามเล่มอยู่ทางซ้าย หญิงสาวเสื้อไหมพรมสีชมพูยิ้มพร้อมชี้มือและถือลูกโป่งฟอยล์รูปหัวใจสีชมพูอยู่ทางขวา มีริบบิ้นทองปลิวเป็นฉากหลัง ตัวอักษรบนภาพเขียนว่า Happy Birthday เดือนเกิดรับของขวัญวันเกิด สูงสุด 20,000 บาท",
+  },
+  {
+    src: promoDuel,
+    alt: "ภาพโปรโมชั่นแนวนอนพื้นสีแดงเข้ม ชายหนุ่มสวมสูทเบอร์กันดีกับหูกระต่ายยืนอยู่หลังโต๊ะเดิมพัน มีกองชิปคาสิโนสีแดงดำขาวและไพ่เอซโพดำกับเอซโพแดงวางอยู่ด้านหน้า ตัวอักษรบนภาพเขียนว่า เซียนชนเซียน 1 แต้ม รับโบนัส 30% สูงสุด 5,000 บาท",
   },
 ];
 ---
@@ -110,9 +114,9 @@ const promos = [
   <ContentBox title={pageHeading} as="h1">
     <div>
       <p class="mb-8 text-left text-base leading-relaxed">
-        ภาพด้านล่างคือกิจกรรมแจกรางวัลใหญ่ที่ VIPSAND356 เปิดให้สมาชิกร่วมอยู่ในรอบนี้ ทั้งรถตู้ TOYOTA ALPHARD มอเตอร์ไซค์ KAWASAKI NINJA H2 และ iPhone 17 Pro Max รายละเอียดพิมพ์อยู่บนภาพครบแล้ว
-        ทั้งจำนวนไม้ที่ต้องชนะ มูลค่าของรางวัล และยอดเดิมพันขั้นต่ำ จึงควรอ่านใบที่จะร่วมอีกครั้งก่อนเริ่ม เพราะแต่ละใบคิดคนละเงื่อนไขกัน นอกจากนี้ยังมีโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน
-        และคืนยอดเสีย Cash Back ทุกวัน ให้กดรับเองผ่านหน้าเว็บได้เรื่อย ๆ เงื่อนไขชัดเจน ไม่ติดเทิร์นโอเวอร์ซับซ้อน
+        ภาพด้านล่างคือโปรโมชั่นที่ 9KPLUS เปิดให้สมาชิกกดรับอยู่ในรอบนี้ ทั้งโบนัสฝากต่อเนื่องประจำเดือน คืนยอดเสียรายวัน ของขวัญเดือนเกิด และโบนัสเซียนชนเซียน
+        รายละเอียดพิมพ์อยู่บนภาพครบแล้ว ทั้งยอดฝากขั้นต่ำ เปอร์เซ็นต์ที่ได้รับ และเพดานโบนัสสูงสุด จึงควรอ่านใบที่จะร่วมอีกครั้งก่อนกดรับ เพราะแต่ละใบคิดคนละเงื่อนไขกัน
+        ทุกรายการกดรับเองได้ผ่านหน้าเว็บ เงื่อนไขชัดเจน ถอนกำไรได้จริง ไม่ติดเทิร์นโอเวอร์มหาโหด
       </p>
 
       <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -138,8 +142,8 @@ const promos = [
       <div class="mt-12 flex justify-center pb-4">
         <a
           href="/register"
-          class="flex items-center justify-center rounded-lg border border-[#fcde61]/60 bg-gradient-to-r from-[#fcde61] via-[#eba554] to-[#c07c20] px-10 py-3.5 text-xl font-black text-[#061c33] shadow-[0_10px_30px_rgba(235,165,84,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,222,97,0.5)]">
-          สมัครสมาชิก VIPSAND356
+          class="flex items-center justify-center rounded-lg border border-[#ff4a74]/70 bg-gradient-to-r from-[#f5003e] via-[#ff4fa3] to-[#b3022c] px-10 py-3.5 text-xl font-black text-[#ffe3ee] shadow-[0_10px_30px_rgba(245,0,62,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,79,163,0.3)]">
+          สมัครสมาชิก 9KPLUS
         </a>
       </div>
     </div>

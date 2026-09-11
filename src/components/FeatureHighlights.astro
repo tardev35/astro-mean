@@ -3,7 +3,7 @@ export interface FeatureItem {
   icon: string;
   title: string;
   description: string;
-  accent?: "azure" | "gold";
+  accent?: "crimson" | "pink";
 }
 
 export interface Props {
@@ -13,25 +13,24 @@ export interface Props {
 const { items } = Astro.props;
 
 // นี่คือที่เดียวบนหน้าแรกที่ได้รับอนุญาตให้มี <h3> — หัวข้อย่อยแบบ bullet ใต้
-// section ของ docx หนึ่งข้อ (ข้อ 4 ของ VIPSAND356: Multiplier สะสมตัวคูณทวีคูณ /
+// section ของ docx หนึ่งข้อ (ข้อ 5 ของ 9KPLUS: ตัวคูณทวีคูณ Multipliers /
 // Expanding Wild ยืดเต็มรีล / คอมโบแตกต่อเนื่อง Cascading / โหมด Bonus Buy)
-// ส่วน h2 ของ section ยังอยู่ที่ ContentBoxSevenThree ที่อยู่เหนือมัน
+// ส่วน h2 ของ section ยังอยู่ที่ ContentBox ที่อยู่เหนือมัน
 //
 // item.icon เป็นอิโมจิ/สัญลักษณ์ตกแต่งล้วน กล่องที่ครอบมันจึงต้องมี
 // aria-hidden="true" เสมอ ไม่งั้น screen reader จะอ่านชื่อ CLDR ของอิโมจินำหน้า
 // หัวข้อจริง และ verify-build จะฟ้องเป็น error ว่ามีอิโมจิอยู่นอก aria-hidden
 //
-// VIPSAND356: ย้ายจากชุดสีของแบรนด์ก่อน มาเป็นฟ้าอะซูร์คู่ทองส้มบนกรมท่าเข้ม —
-// ฟ้า #eaf6ff / #a2d2ef / #5dbcfe / #2a93e0 / #1465a8 / #0b3f70 คู่ทอง #fcde61 /
-// #eba554 / #c07c20 / #8d520c บนผิว #061c33 / #0a2b4a / #103a5f ขอบ #2a93e0
-// เนื้อความ #e6f2ff ข้อความรอง #b6d3ee
+// 9KPLUS: ย้ายจากชุดสีฟ้าคู่ทองของแบรนด์ก่อน มาเป็นแดงนีออนคู่ชมพูบานเย็นบนพื้น
+// เกือบดำ — แดง #ffe3ee / #f0b9cd / #ff4a74 / #f5003e / #b3022c / #7c1040 คู่ชมพู
+// #ffd8e7 / #ff4fa3 บนผิว #120309 / #1f0611 / #4d012c ขอบ #f5003e เนื้อความ #ffe3ee
+// ข้อความรอง #f0b9cd
 //
-// คีย์ accent สองตัวคือคู่สีจริงของโลโก้ที่แยกคำว่า VIP กับ SANDS ออกจากกัน:
-// "azure" คือฟ้าใสเงาวาวของคำว่า VIP กับท้องฟ้าในฉากริมทะเล ส่วน "gold" คือทองส้ม
-// ของคำว่า SANDS กรอบทองรอบป้าย และกองเหรียญทองเต็มพื้นล่าง — คีย์เดิมที่เป็นชื่อ
-// โลหะสองน้ำหนักของแบรนด์ก่อนจึงถูกเปลี่ยนชื่อไปพร้อมกับสี (ไฟล์นี้ถูกเรียกจาก
-// index.astro หน้าเดียว การเปลี่ยนชื่อคีย์จึงกระทบแค่ที่นั่น) ค่าปริยายคือ "azure"
-// ซึ่งเป็นสีนำของแบรนด์
+// คีย์ accent สองตัวคือคู่สีจริงของโลโก้: "crimson" คือแดงนีออนของวงแหวนรอบตรากลม
+// และตัวอักษร 9K ซึ่งเป็นสีนำ ส่วน "pink" คือชมพูบานเย็นของตู้สล็อตกับป้ายนีออนใน
+// แบนเนอร์ซึ่งเป็นแกนสีที่สอง — คีย์เดิมที่เป็นชื่อคู่สีของแบรนด์ก่อนจึงถูกเปลี่ยน
+// ชื่อไปพร้อมกับสี (ไฟล์นี้ถูกเรียกจาก index.astro หน้าเดียว การเปลี่ยนชื่อคีย์จึง
+// กระทบแค่ที่นั่น) ค่าปริยายคือ "crimson" ซึ่งเป็นสีนำของแบรนด์
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 // ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history)
 ---
@@ -39,31 +38,31 @@ const { items } = Astro.props;
 <div class="mt-4 flex flex-col gap-5">
   {
     items.map((item) => {
-      const isAzure = item.accent !== "gold";
+      const isCrimson = item.accent !== "pink";
       return (
         <div
-          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#2a93e0]/55 bg-[#0a2b4a]/85 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
-            isAzure
-              ? "hover:border-[#5dbcfe]/70 hover:bg-[#103a5f] hover:shadow-[0_10px_20px_rgba(93,188,254,0.25)]"
-              : "hover:border-[#eba554]/70 hover:bg-[#103a5f] hover:shadow-[0_10px_20px_rgba(235,165,84,0.28)]"
+          class={`group flex flex-col items-start gap-4 rounded-2xl border border-[#f5003e]/55 bg-[#1f0611]/85 p-6 transition-all duration-300 hover:-translate-y-1 sm:flex-row ${
+            isCrimson
+              ? "hover:border-[#ff4a74]/70 hover:bg-[#4d012c] hover:shadow-[0_10px_20px_rgba(255,74,116,0.25)]"
+              : "hover:border-[#ff4fa3]/70 hover:bg-[#4d012c] hover:shadow-[0_10px_20px_rgba(255,79,163,0.28)]"
           }`}>
           <div
             aria-hidden="true"
             class={`flex h-14 w-14 shrink-0 items-center justify-center rounded-xl text-3xl transition-transform duration-300 group-hover:scale-110 ${
-              isAzure
-                ? "border border-[#5dbcfe]/55 bg-gradient-to-br from-[#5dbcfe] to-[#0b3f70] shadow-[0_0_15px_rgba(42,147,224,0.5)] group-hover:rotate-3"
-                : "border border-[#eba554]/60 bg-gradient-to-br from-[#fcde61] to-[#8d520c] shadow-[0_0_15px_rgba(235,165,84,0.5)]"
+              isCrimson
+                ? "border border-[#ff4a74]/55 bg-gradient-to-br from-[#ff4a74] to-[#7c1040] shadow-[0_0_15px_rgba(245,0,62,0.5)] group-hover:rotate-3"
+                : "border border-[#ff4fa3]/60 bg-gradient-to-br from-[#ffd8e7] to-[#b3022c] shadow-[0_0_15px_rgba(255,79,163,0.5)]"
             }`}>
             {item.icon}
           </div>
           <div class="flex flex-col gap-2 text-left">
             <h3
               class={`text-xl font-black tracking-wide drop-shadow-sm ${
-                isAzure ? "bg-gradient-to-r from-[#eaf6ff] to-[#5dbcfe] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#fcde61] to-[#eba554] bg-clip-text text-transparent"
+                isCrimson ? "bg-gradient-to-r from-[#ffe3ee] to-[#ff4a74] bg-clip-text text-transparent" : "bg-gradient-to-r from-[#ffd8e7] to-[#ff4fa3] bg-clip-text text-transparent"
               }`}>
               {item.title}
             </h3>
-            <p class="text-left text-base leading-relaxed text-[#b6d3ee] transition-colors group-hover:text-[#e6f2ff]">{item.description}</p>
+            <p class="text-left text-base leading-relaxed text-[#f0b9cd] transition-colors group-hover:text-[#ffe3ee]">{item.description}</p>
           </div>
         </div>
       );

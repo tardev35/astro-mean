@@ -7,12 +7,15 @@ const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 const currentPath = Astro.url.pathname;
 const isActive = (path: string) => isActivePath(currentPath, path);
 
-// GGPLUS88: ย้ายจากม่วงนีออนของ PABO88 (#bf3cfa / #e3b8ff / #8b1fd6 / #4a0b8f
-// บนผิว #0a0118 / #160333 / #20064a คู่ทอง #f5c518 / #ffe9a3 / #8f6205 และเงิน
-// #d9d9e3) มาเป็นม่วงลึกคู่มาเจนต้าของแบรนด์นี้ — ม่วง #9b2fe0 / #d9a5ff /
-// #5a1290 คู่มาเจนต้า #d81b7e / #ff6fb5 บนผิว #0b0212 / #1b0630 / #2d0a50
-// คู่ทอง #f0c14b / #ffe9a8 / #a97d12 เนื้อความ #ece0f7 รองด้วย #a98cc4
-// (โลโก้เป็นตรา GG หกเหลี่ยมมาเจนต้า-เงินขอบทอง เหนือคำว่า PLUS88 บนแผ่นม่วงเข้ม)
+// 9KPLUS: ย้ายจากม่วงลึกคู่มาเจนต้าของแบรนด์ก่อน มาเป็นแดงนีออนคู่ชมพูบานเย็นบน
+// พื้นเกือบดำตามโลโก้และแบนเนอร์รอบนี้ — แดง #f5003e / #ff4a74 / #b3022c คู่ชมพู
+// #ff4fa3 / #7c1040 ไล่ไปหาชมพูขาว #ffd8e7 บนผิว #120309 / #1f0611 / #4d012c
+// เนื้อความ #ffe3ee รองด้วย #f0b9cd
+// (palette.json: vivid ของ logo.webp คือ #f5003e / #ffd8e7 / #b3022c ตรงชุด
+// ส่วน dominant #141414 คือแผ่นดำของตรา ไม่ใช่สีแบรนด์)
+//
+// ห้ามพิมพ์ค่า hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความ
+// ดิบ ไม่รู้ว่าเป็นคอมเมนต์ ดูของเดิมได้จาก git history แทน
 //
 // เมนูชุดเดียว ไม่แยก desktop/mobile — ของเดิมประกาศอาร์เรย์เดียวกันสองรอบ
 // ซึ่งแปลว่าคนถัดไปที่เพิ่มเมนูจะแก้แค่ที่เดียวแล้วหลุดอีกที่
@@ -20,12 +23,13 @@ const isActive = (path: string) => isActivePath(currentPath, path);
 // ทุกรายการมีไอคอนเป็น <span aria-hidden> ที่เป็น "พี่น้อง" ของ label ไม่ใช่
 // อยู่ในข้อความ — ฝังในข้อความแล้ว screen reader จะอ่านชื่อ emoji ปนชื่อเมนู
 //
-// GGPLUS88 เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
+// 9KPLUS เป็นเว็บสล็อต หน้า /ตรวจหวย กับ /แนวทาง ปิดอยู่ (อยู่ใน
 // src/pages-disabled/) ห้ามมีลิงก์ถึงทั้งสองหน้าในไฟล์นี้
 //
 // /login กับ /register ยังเป็นหน้า interstitial (noindex) ไม่ใช่หน้าปุ่ม จึง
 // ไม่มีรายการเมนูของสองหน้านั้น และ /ทางเข้า ยังอยู่ในเมนูตามปกติ — ปุ่ม CTA
-// มุมขวาเป็นคนละเรื่อง อยู่ต่อได้
+// มุมขวาเป็นคนละเรื่อง อยู่ต่อได้ (กฎลำดับเมนูที่ให้ สมัครสมาชิก/เข้าสู่ระบบ
+// ตามหลัง โปรโมชั่น จึงไม่มีผลกับรอบนี้ เพราะทั้งคู่ไม่ได้เป็นรายการเมนู)
 const links = [
   { name: "หน้าแรก", path: "/", icon: "🏠" },
   { name: "โปรโมชั่น", path: "/promotion", icon: "🎁" },
@@ -36,40 +40,39 @@ const links = [
 ];
 ---
 
-<div class="hidden w-full border-b border-[#9b2fe0]/30 bg-gradient-to-r from-[#0b0212] via-[#2d0a50] to-[#0b0212] px-4 py-1.5 font-sans text-xs font-bold text-[#d9a5ff]/85 lg:block">
+<div class="hidden w-full border-b border-[#f5003e]/30 bg-gradient-to-r from-[#120309] via-[#4d012c] to-[#120309] px-4 py-1.5 font-sans text-xs font-bold text-[#ffd8e7]/85 lg:block">
   <div class="mx-auto flex max-w-7xl justify-between">
     <div class="flex gap-4">
-      <span class="flex items-center gap-1"><span aria-hidden="true" class="text-[#f0c14b]">👑</span> GGPLUS88 สล็อตเว็บตรงมาใหม่ รวมเกมแตกจริง</span>
+      <span class="flex items-center gap-1"><span aria-hidden="true" class="text-[#ff4fa3]">👑</span> 9KPLUS สล็อตพลัสความมันส์ ตัวเด็ดหลายฟีล โปรใหม่ไฟแรง</span>
       <span class="flex items-center gap-1 text-[#4ade80]"><span aria-hidden="true" class="text-[#22c55e]">✔</span> ฝาก-ถอน ออโต้ ไวใน 3 วินาที</span>
     </div>
     <div class="flex gap-4">
-      <a href="/line" class="flex items-center gap-1 transition-colors hover:text-white">ติดต่อแอดมิน LINE: @GGPLUS88</a>
+      <a href="/line" class="flex items-center gap-1 transition-colors hover:text-white">ติดต่อแอดมิน LINE: @9KPLUS</a>
     </div>
   </div>
 </div>
 
 <header class="sticky top-2 z-50 mt-2 w-full px-2 font-sans md:px-4">
   <nav
-    class="relative mx-auto flex h-[75px] w-full max-w-7xl items-center justify-between rounded-[20px] border border-[#9b2fe0]/40 bg-[#0b0212]/90 px-4 shadow-[0_10px_30px_rgba(155,47,224,0.2)] backdrop-blur-lg xl:px-8">
+    class="relative mx-auto flex h-[75px] w-full max-w-7xl items-center justify-between rounded-[20px] border border-[#f5003e]/40 bg-[#120309]/90 px-4 shadow-[0_10px_30px_rgba(245,0,62,0.2)] backdrop-blur-lg xl:px-8">
     <a href="/" class="z-50 flex-shrink-0 transition-transform hover:scale-105">
       {
         mainLogo ? (
           <Picture
             src={mainLogo}
-            alt="โลโก้ GGPLUS88 ตรารูปหกเหลี่ยมอักษร GG สีมาเจนต้าตัดเงินขอบทอง วางเหนือคำว่า PLUS88 อักษรเงินและเลข 88 สีทองบนแผ่นม่วงเข้ม"
+            alt="โลโก้ 9KPLUS ตรากลมพื้นดำล้อมด้วยวงแหวนสีแดงชมพู ด้านบนเป็นดาวห้าแฉกสีชมพูสามดวง กลางตราเป็นตัวอักษร 9K สามมิติสีชมพูอ่อนขอบขาว และด้านล่างเป็นคำว่า PLUS ตัวอักษรขาวขอบแดง"
             loading="eager"
             fetchpriority="high"
             widths={[130, 260, 390]}
             sizes="(max-width: 1279px) 130px, 150px"
-            class="h-[40px] w-auto drop-shadow-[0_0_10px_rgba(155,47,224,0.6)] xl:h-[45px]"
+            class="h-[40px] w-auto drop-shadow-[0_0_10px_rgba(245,0,62,0.6)] xl:h-[45px]"
             formats={["avif", "webp"]}
             fallbackFormat="webp"
           />
         ) : (
-          <span class="text-3xl font-black drop-shadow-[0_0_8px_rgba(216,27,126,0.5)]">
-            <span class="bg-gradient-to-b from-[#ff6fb5] to-[#d81b7e] bg-clip-text text-transparent">GG</span>
-            <span class="bg-gradient-to-b from-[#f5f0fa] to-[#a98cc4] bg-clip-text text-transparent">PLUS</span>
-            <span class="bg-gradient-to-b from-[#ffe9a8] to-[#a97d12] bg-clip-text text-transparent">88</span>
+          <span class="text-3xl font-black drop-shadow-[0_0_8px_rgba(255,79,163,0.5)]">
+            <span class="bg-gradient-to-b from-[#ffd8e7] to-[#f5003e] bg-clip-text text-transparent">9K</span>
+            <span class="bg-gradient-to-b from-[#ffffff] to-[#f0b9cd] bg-clip-text text-transparent">PLUS</span>
           </span>
         )
       }
@@ -80,13 +83,13 @@ const links = [
         links.map((item) => (
           <a
             href={item.path}
-            class={`group relative flex h-full items-center gap-1.5 text-sm font-bold tracking-wide transition-colors xl:text-base ${isActive(item.path) ? "text-[#d9a5ff] drop-shadow-[0_0_8px_rgba(155,47,224,0.55)]" : "text-[#ece0f7]/80 hover:text-[#d9a5ff]"}`}>
+            class={`group relative flex h-full items-center gap-1.5 text-sm font-bold tracking-wide transition-colors xl:text-base ${isActive(item.path) ? "text-[#ffd8e7] drop-shadow-[0_0_8px_rgba(245,0,62,0.55)]" : "text-[#ffe3ee]/80 hover:text-[#ffd8e7]"}`}>
             <span aria-hidden="true" class="text-base leading-none">
               {item.icon}
             </span>
             <span>{item.name}</span>
             <div
-              class={`absolute bottom-[18px] left-0 h-[2px] w-full origin-center bg-gradient-to-r from-[#9b2fe0] to-[#d81b7e] shadow-[0_0_8px_rgba(216,27,126,0.8)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
+              class={`absolute bottom-[18px] left-0 h-[2px] w-full origin-center bg-gradient-to-r from-[#f5003e] to-[#ff4fa3] shadow-[0_0_8px_rgba(255,79,163,0.8)] transition-transform duration-300 ${isActive(item.path) ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`}
             />
           </a>
         ))
@@ -96,33 +99,33 @@ const links = [
     <div class="z-50 flex items-center gap-3">
       <a
         href="/login"
-        class="hidden items-center justify-center rounded-full border border-[#9b2fe0]/50 bg-[#2d0a50] px-6 py-2 text-sm font-bold text-[#d9a5ff] shadow-sm transition-all hover:bg-[#9b2fe0]/30 lg:flex">
+        class="hidden items-center justify-center rounded-full border border-[#f5003e]/50 bg-[#4d012c] px-6 py-2 text-sm font-bold text-[#ffd8e7] shadow-sm transition-all hover:bg-[#f5003e]/30 lg:flex">
         เข้าสู่ระบบ
       </a>
       <a
         href="/register"
-        class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a8] via-[#f0c14b] to-[#a97d12] px-6 py-2 text-sm font-black text-[#1a0430] shadow-[0_0_15px_rgba(240,193,75,0.45)] transition-all hover:scale-105 lg:flex">
+        class="hidden items-center justify-center rounded-full bg-gradient-to-r from-[#ff4a74] via-[#f5003e] to-[#b3022c] px-6 py-2 text-sm font-black text-white shadow-[0_0_15px_rgba(245,0,62,0.45)] transition-all hover:scale-105 lg:flex">
         สมัครสมาชิก
       </a>
 
       <button
         id="hamburger-btn"
-        class="relative flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-full border border-[#9b2fe0]/35 bg-gradient-to-b from-[#2d0a50] to-[#0b0212] shadow-sm lg:hidden"
+        class="relative flex h-[42px] w-[42px] flex-col items-center justify-center gap-[5px] rounded-full border border-[#f5003e]/35 bg-gradient-to-b from-[#4d012c] to-[#120309] shadow-sm lg:hidden"
         aria-label="เปิดเมนู">
-        <span class="line-1 h-[2px] w-5 origin-center rounded-full bg-[#d81b7e] transition-all duration-300"></span>
-        <span class="line-2 h-[2px] w-5 origin-center rounded-full bg-[#9b2fe0] transition-all duration-300"></span>
-        <span class="line-3 h-[2px] w-5 origin-center rounded-full bg-[#d81b7e] transition-all duration-300"></span>
+        <span class="line-1 h-[2px] w-5 origin-center rounded-full bg-[#ff4fa3] transition-all duration-300"></span>
+        <span class="line-2 h-[2px] w-5 origin-center rounded-full bg-[#f5003e] transition-all duration-300"></span>
+        <span class="line-3 h-[2px] w-5 origin-center rounded-full bg-[#ff4fa3] transition-all duration-300"></span>
       </button>
     </div>
   </nav>
 
-  <div id="fullscreen-menu" class="pointer-events-none fixed inset-0 z-[40] flex flex-col items-center justify-center bg-[#0b0212]/98 opacity-0 backdrop-blur-xl transition-opacity duration-500">
+  <div id="fullscreen-menu" class="pointer-events-none fixed inset-0 z-[40] flex flex-col items-center justify-center bg-[#120309]/98 opacity-0 backdrop-blur-xl transition-opacity duration-500">
     <div class="flex w-full flex-col items-center space-y-5 px-6">
       {
         links.map((item) => (
           <a
             href={item.path}
-            class={`fs-item flex items-center gap-3 text-2xl font-black tracking-widest transition-all duration-300 ${isActive(item.path) ? "text-[#d9a5ff] drop-shadow-[0_0_10px_rgba(155,47,224,0.65)]" : "text-white/80 hover:text-white"}`}>
+            class={`fs-item flex items-center gap-3 text-2xl font-black tracking-widest transition-all duration-300 ${isActive(item.path) ? "text-[#ffd8e7] drop-shadow-[0_0_10px_rgba(245,0,62,0.65)]" : "text-white/80 hover:text-white"}`}>
             <span aria-hidden="true" class="text-xl leading-none">
               {item.icon}
             </span>
@@ -133,12 +136,12 @@ const links = [
       <div class="fs-item mt-4 flex w-full max-w-[280px] flex-col gap-4 pt-6">
         <a
           href="/register"
-          class="flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#ffe9a8] to-[#a97d12] py-3.5 text-lg font-black text-[#1a0430] shadow-[0_0_20px_rgba(240,193,75,0.5)]">
+          class="flex w-full items-center justify-center rounded-full bg-gradient-to-r from-[#ff4a74] to-[#b3022c] py-3.5 text-lg font-black text-white shadow-[0_0_20px_rgba(245,0,62,0.5)]">
           สมัครสมาชิกใหม่
         </a>
         <a
           href="/login"
-          class="flex w-full items-center justify-center rounded-full border-2 border-[#9b2fe0]/50 bg-[#2d0a50] py-3.5 text-lg font-bold text-[#d9a5ff] transition-colors hover:bg-[#9b2fe0]/30">
+          class="flex w-full items-center justify-center rounded-full border-2 border-[#f5003e]/50 bg-[#4d012c] py-3.5 text-lg font-bold text-[#ffd8e7] transition-colors hover:bg-[#f5003e]/30">
           เข้าสู่ระบบ
         </a>
       </div>

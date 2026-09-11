@@ -8,7 +8,7 @@ const imagePaths = Object.keys(images);
 const mainLogo = imagePaths.length > 0 ? images[imagePaths[0]].default : null;
 
 const logoAlt =
-  "โลโก้ SETH88 เป็นตัวอักษร SETH สีทองขัดเงาขอบดำ ต่อท้ายด้วยเลข 88 สีเงินขาวขอบทอง ด้านบนเป็นหัวเทพอนูบิสหมาจิ้งจอกสีดำสวมเครื่องประดับทอง และด้านล่างเป็นสัญลักษณ์อังค์ทองมีปีก";
+  "โลโก้ 9KPLUS ตรากลมพื้นดำล้อมด้วยวงแหวนสีแดงชมพู ด้านบนเป็นดาวห้าแฉกสีชมพูสามดวง กลางตราเป็นตัวอักษร 9K สามมิติสีชมพูอ่อนขอบขาว และด้านล่างเป็นคำว่า PLUS ตัวอักษรขาวขอบแดง";
 
 const quickLinks = [
   { name: "หน้าแรก", path: "/" },
@@ -19,11 +19,11 @@ const quickLinks = [
   { name: "ติดต่อเรา", path: "/contact-us" },
 ];
 
-// แบรนด์ก่อนที่ถือ footer ใบนี้เป็นเว็บคาสิโนสด หมวดหมู่กับแถบค่ายจึงเป็นโต๊ะสด
-// ทั้งชุด — SETH88 เป็นเว็บสล็อตล้วน ลิสต์ด้านล่างจึงเขียนใหม่จากบรีฟรอบนี้
-// (เกมคัดเกรด A-List, Multiplier ตัวคูณสะสม, Expanding Wild, ซื้อฟรีสปิน)
-// ห้ามเติมหมวดที่บรีฟไม่ได้พูดถึง เช่น คาสิโนสด กีฬา หรือหวย
-const gameCategories = ["สล็อตเกมคัดเกรด A-List", "สล็อตวิดีโอ 3D หลายค่าย", "สล็อตตัวคูณสะสม (Multiplier)", "สล็อต Expanding Wild ขยายเต็มรีล", "สล็อตซื้อฟรีสปิน (Bonus Buy)"];
+// 9KPLUS เป็นเว็บสล็อตล้วน หมวดหมู่ด้านล่างเขียนจากบรีฟรอบนี้ตรงๆ (ฟีเจอร์ตัวคูณ
+// ทวีคูณ, Expanding Wild ยืดเต็มรีล, คอมโบ Cascading, โหมด Bonus Buy และคลังเกม
+// ที่อัปเดตของใหม่ต่อเนื่อง) ห้ามเติมหมวดที่บรีฟไม่ได้พูดถึง เช่น คาสิโนสด กีฬา
+// หรือหวย — และห้ามมีลิงก์ /ตรวจหวย หรือ /แนวทาง เพราะสองหน้านั้นปิดอยู่
+const gameCategories = ["สล็อตตัวคูณทวีคูณ (Multipliers)", "สล็อต Expanding Wild ยืดเต็มรีล", "สล็อตคอมโบแตกต่อเนื่อง (Cascading)", "สล็อตซื้อฟรีสปิน (Bonus Buy)", "เกมใหม่อัปเดตเข้าคลังต่อเนื่อง"];
 
 // ค่ายเกมตามที่บรีฟระบุไว้ตรงตัวสามค่าย ไม่มีมากกว่านี้ — ห้ามเติมชื่อค่ายเอง
 const providers = [
@@ -32,11 +32,12 @@ const providers = [
   { lead: "JOKER", tail: "GAMING" },
 ];
 
-// SETH88: ย้ายจากทองแชมเปญเดี่ยวบนดำสนิทของแบรนด์ก่อน มาเป็นทองคำอียิปต์คู่เงินขาว
-// บนดำอมน้ำตาลของหินวิหาร — ทอง #e0a92b / #f7d774 / #fdf3d4 / #a9711a / #6b4210
-// คู่เงิน #d8dade บนผิว #0c0703 / #1b1109 / #2a1a0d เนื้อความ #f0e3cd รอง #d6c2a0
-// (palette.json: vivid ของโลโก้เป็นบรอนซ์เงาทอง #643b0c / #532c0b / #63340b
-// ส่วน dominant ของแบนเนอร์เป็นดำอมน้ำตาล #1b0c03 ซึ่งคือพื้นหลัง)
+// 9KPLUS: ย้ายจากทองคำอียิปต์คู่เงินขาวบนดำอมน้ำตาลของแบรนด์ก่อนที่ถือ footer ใบนี้
+// มาเป็นแดงนีออนคู่ชมพูบานเย็นบนพื้นเกือบดำ — แดง #f5003e / #ff4a74 / #b3022c
+// คู่ชมพู #ff4fa3 / #7c1040 และชมพูขาว #ffd8e7 บนผิว #120309 / #1f0611 / #4d012c
+// เนื้อความ #ffe3ee รอง #f0b9cd
+// (palette.json: vivid ของ logo.webp คือ #f5003e / #ffd8e7 / #b3022c ส่วน
+// dominant ของ banner1 ที่เป็นดำอมแดง #0c0202 คือพื้นหลังของฉาก)
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
 //
@@ -44,9 +45,9 @@ const providers = [
 // + opacity) เพราะ footer ทุก variant ในคลังเป็นพื้นเข้มหมด ห้าม retheme
 ---
 
-<footer class="relative w-full overflow-hidden border-t-[3px] border-[#a9711a] bg-[#0c0703] pt-16 pb-8 font-sans text-[#f0e3cd] shadow-[0_-10px_30px_rgba(224,169,43,0.28)]">
-  <div class="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-[#e0a92b]/15 blur-[100px]"></div>
-  <div class="pointer-events-none absolute bottom-0 left-0 h-96 w-96 rounded-full bg-[#6b4210]/45 blur-[100px]"></div>
+<footer class="relative w-full overflow-hidden border-t-[3px] border-[#b3022c] bg-[#120309] pt-16 pb-8 font-sans text-[#ffe3ee] shadow-[0_-10px_30px_rgba(245,0,62,0.28)]">
+  <div class="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-[#f5003e]/15 blur-[100px]"></div>
+  <div class="pointer-events-none absolute bottom-0 left-0 h-96 w-96 rounded-full bg-[#7c1040]/45 blur-[100px]"></div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1200px] px-6">
     <div class="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
@@ -57,7 +58,7 @@ const providers = [
               <Picture
                 src={mainLogo}
                 alt={logoAlt}
-                class="h-[50px] w-auto drop-shadow-[0_0_15px_rgba(224,169,43,0.5)]"
+                class="h-[50px] w-auto drop-shadow-[0_0_15px_rgba(245,0,62,0.5)]"
                 widths={[120, 150]}
                 sizes="150px"
                 loading="lazy"
@@ -66,34 +67,34 @@ const providers = [
                 fallbackFormat="webp"
               />
             ) : (
-              <span class="bg-gradient-to-b from-[#f7d774] to-[#6b4210] bg-clip-text text-4xl font-black text-transparent drop-shadow-[0_0_10px_rgba(224,169,43,0.45)]">{BRAND_NAME}</span>
+              <span class="bg-gradient-to-b from-[#ffd8e7] to-[#b3022c] bg-clip-text text-4xl font-black text-transparent drop-shadow-[0_0_10px_rgba(245,0,62,0.45)]">{BRAND_NAME}</span>
             )
           }
         </a>
-        <p class="text-base leading-relaxed text-[#f0e3cd]/70">
-          {BRAND_NAME} สล็อตเว็บตรงเกมคัด API แท้ ยิงตรงจากเซิร์ฟเวอร์หลัก ไม่ผ่านเอเย่นต์ ค่า RTP มาตรฐานสากลจากค่ายแม่ ไม่มีปรับลดอัตราแตก ไม่ล็อกยูส รวมเกมลิขสิทธิ์แท้เกรด A-List
-          จาก PG Soft, Pragmatic Play และ Joker Gaming ไว้ในกระเป๋าเดียว พร้อมระบบฝากถอนออโต้ไฮสปีดที่ทำรายการเสร็จใน 3 วินาที
+        <p class="text-base leading-relaxed text-[#ffe3ee]/70">
+          {BRAND_NAME} สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ลื่นไหลทุกการสปิน ค่า RTP ยุติธรรม ไม่ล็อกยูส ไม่ปรับเปอร์เซ็นต์ชนะ รวมค่ายใหญ่ระดับโลกทั้ง PG Soft, Pragmatic Play
+          และ Joker Gaming ไว้ในกระเป๋าเดียว พร้อมระบบฝากถอนออโต้ไฮสปีดที่ทำรายการเสร็จใน 3 วินาที บวกเท่าไหร่ถอนได้เต็มทุกบาท
         </p>
         <div class="mt-2 flex items-center gap-3">
-          <div class="flex items-center gap-1.5 rounded border border-[#a9711a]/50 bg-[#e0a92b]/12 px-3 py-1.5 text-xs font-bold text-[#f7d774] shadow-[0_0_10px_rgba(224,169,43,0.25)]">
+          <div class="flex items-center gap-1.5 rounded border border-[#b3022c]/50 bg-[#f5003e]/12 px-3 py-1.5 text-xs font-bold text-[#ffd8e7] shadow-[0_0_10px_rgba(245,0,62,0.25)]">
             <span aria-hidden="true" class="text-base">🛡️</span> SSL/TLS 256-BIT
           </div>
-          <div class="flex items-center gap-1.5 rounded border border-[#2a1a0d] bg-[#1b1109] px-3 py-1.5 text-xs font-bold text-[#e0a92b]">
+          <div class="flex items-center gap-1.5 rounded border border-[#4d012c] bg-[#1f0611] px-3 py-1.5 text-xs font-bold text-[#ff4fa3]">
             <span aria-hidden="true" class="text-base">⚡</span> AUTO 24H
           </div>
         </div>
       </div>
 
       <nav aria-label="เมนูหลัก" class="flex flex-col gap-4 lg:pl-8">
-        <p class="flex items-center gap-2 text-lg font-extrabold text-[#f7d774]">
-          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#f7d774] to-[#6b4210]"></span> เมนูหลัก
+        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffd8e7]">
+          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ff4a74] to-[#7c1040]"></span> เมนูหลัก
         </p>
         <ul class="flex flex-col gap-3 text-sm">
           {
             quickLinks.map((link) => (
               <li>
-                <a href={link.path} class="group flex items-center text-[#f0e3cd]/70 transition-all hover:text-[#f7d774]">
-                  <span aria-hidden="true" class="mr-2 -ml-4 text-[#a9711a] opacity-0 transition-all group-hover:ml-0 group-hover:opacity-100">
+                <a href={link.path} class="group flex items-center text-[#ffe3ee]/70 transition-all hover:text-[#ffd8e7]">
+                  <span aria-hidden="true" class="mr-2 -ml-4 text-[#f5003e] opacity-0 transition-all group-hover:ml-0 group-hover:opacity-100">
                     ➤
                   </span>
                   {link.name}
@@ -105,15 +106,15 @@ const providers = [
       </nav>
 
       <nav aria-label="หมวดหมู่เกม" class="flex flex-col gap-4">
-        <p class="flex items-center gap-2 text-lg font-extrabold text-[#f7d774]">
-          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#f7d774] to-[#6b4210]"></span> หมวดหมู่เกม
+        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffd8e7]">
+          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ff4a74] to-[#7c1040]"></span> หมวดหมู่เกม
         </p>
         <ul class="flex flex-col gap-3 text-sm">
           {
             gameCategories.map((game) => (
               <li>
-                <a href="/register" class="group flex items-center text-[#f0e3cd]/70 transition-all hover:text-[#f7d774]">
-                  <span class="mr-3 h-1.5 w-1.5 rounded-full bg-[#6b4210] transition-colors group-hover:bg-[#e0a92b] group-hover:shadow-[0_0_8px_rgba(224,169,43,0.85)]" />
+                <a href="/register" class="group flex items-center text-[#ffe3ee]/70 transition-all hover:text-[#ffd8e7]">
+                  <span class="mr-3 h-1.5 w-1.5 rounded-full bg-[#7c1040] transition-colors group-hover:bg-[#f5003e] group-hover:shadow-[0_0_8px_rgba(245,0,62,0.85)]" />
                   {game}
                 </a>
               </li>
@@ -123,8 +124,8 @@ const providers = [
       </nav>
 
       <div class="flex flex-col gap-5">
-        <p class="flex items-center gap-2 text-lg font-extrabold text-[#f7d774]">
-          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#f7d774] to-[#6b4210]"></span> บริการลูกค้า
+        <p class="flex items-center gap-2 text-lg font-extrabold text-[#ffd8e7]">
+          <span class="h-6 w-1.5 rounded-full bg-gradient-to-b from-[#ff4a74] to-[#7c1040]"></span> บริการลูกค้า
         </p>
 
         <a
@@ -158,28 +159,28 @@ const providers = [
         }
 
         <div class="mt-2">
-          <p class="mb-3 text-xs font-bold tracking-wider text-[#e0a92b] uppercase">รองรับทุกธนาคาร & True Wallet</p>
+          <p class="mb-3 text-xs font-bold tracking-wider text-[#ff4fa3] uppercase">รองรับทุกธนาคาร & True Wallet</p>
           <BankStrip size={26} />
         </div>
       </div>
     </div>
 
-    <div class="mb-6 flex flex-wrap justify-center gap-4 border-y border-[#a9711a]/25 py-6 opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:gap-8">
+    <div class="mb-6 flex flex-wrap justify-center gap-4 border-y border-[#b3022c]/25 py-6 opacity-60 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 md:gap-8">
       {
         providers.map((provider) => (
-          <span class="text-lg font-black text-[#f0e3cd]/70 italic md:text-2xl">
+          <span class="text-lg font-black text-[#ffe3ee]/70 italic md:text-2xl">
             {provider.lead}
-            <span class="text-[#e0a92b]">{provider.tail}</span>
+            <span class="text-[#ff4fa3]">{provider.tail}</span>
           </span>
         ))
       }
     </div>
 
-    <div class="flex flex-col items-center justify-between gap-4 text-xs text-[#f0e3cd]/70 md:flex-row">
-      <p>&copy; {new Date().getFullYear()} <span class="font-bold text-[#f7d774]">{BRAND_NAME}</span>. All rights reserved. สล็อตเว็บตรงเกมคัด เกมลิขสิทธิ์แน่น ออโต้ทันใจ ปลอดภัยชัวร์</p>
+    <div class="flex flex-col items-center justify-between gap-4 text-xs text-[#ffe3ee]/70 md:flex-row">
+      <p>&copy; {new Date().getFullYear()} <span class="font-bold text-[#ffd8e7]">{BRAND_NAME}</span>. All rights reserved. สล็อตพลัสความมันส์ ระบบลั่น ตัวเด็ดหลายฟีล โปรใหม่ไฟแรง</p>
       <div class="flex gap-4">
-        <a href="/terms/" class="transition-colors hover:text-[#f7d774]">เงื่อนไขการให้บริการ</a>
-        <a href="/privacy/" class="transition-colors hover:text-[#f7d774]">นโยบายความเป็นส่วนตัว</a>
+        <a href="/terms/" class="transition-colors hover:text-[#ffd8e7]">เงื่อนไขการให้บริการ</a>
+        <a href="/privacy/" class="transition-colors hover:text-[#ffd8e7]">นโยบายความเป็นส่วนตัว</a>
       </div>
     </div>
   </div>

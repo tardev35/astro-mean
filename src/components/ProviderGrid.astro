@@ -1,11 +1,8 @@
 ---
 import { Picture } from "astro:assets";
-import img1 from "../assets/providers/game1.avif";
-import img2 from "../assets/providers/game2.avif";
-import img3 from "../assets/providers/game3.avif";
-import img4 from "../assets/providers/game4.avif";
-import img5 from "../assets/providers/game5.avif";
-import img6 from "../assets/providers/game6.avif";
+import imgPg from "../assets/providers/game1.avif";
+import imgJoker from "../assets/providers/game4.avif";
+import imgPragmatic from "../assets/providers/game6.avif";
 
 // Widget ไม่ใช่ article: หัวข้อ render เป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ห้ามเลื่อน <p> ขึ้นเป็น <h2> เพราะจำนวน h2 บนหน้าแรกถูก diff กับ
@@ -13,74 +10,61 @@ import img6 from "../assets/providers/game6.avif";
 //
 // ชื่อค่ายในลิสต์นี้ต้องตรงกับ "โลโก้ที่พิมพ์อยู่บนรูปจริง" เพราะ alt ถูกประกอบจาก
 // ชื่อนั้น — ไฟล์ในโฟลเดอร์ providers/ อ่านออกมาได้ตามนี้ game1 = PG (Pocket Games
-// Soft) ซึ่งก็คือ PG Soft ในบรีฟ, game2 = SexySlot, game3 = SlotXO, game4 = Joker
-// ซึ่งก็คือ Joker Gaming ในบรีฟ, game5 = JILI, game6 = PP SLOT ซึ่งก็คือ Pragmatic
-// Play ในบรีฟ ถ้าจะเปลี่ยนชื่อค่ายของช่องไหน ต้องเปลี่ยนไฟล์รูปตามด้วย ห้ามตั้งชื่อ
-// ค่ายที่โฟลเดอร์นี้ไม่มีโลโก้อยู่จริง
+// Soft) ซึ่งก็คือ PG Soft ในบรีฟ, game4 = Joker ซึ่งก็คือ Joker Gaming ในบรีฟ,
+// game6 = PP SLOT ซึ่งก็คือ Pragmatic Play ในบรีฟ ถ้าจะเปลี่ยนชื่อค่ายของช่องไหน
+// ต้องเปลี่ยนไฟล์รูปตามด้วย ห้ามตั้งชื่อค่ายที่โฟลเดอร์นี้ไม่มีโลโก้อยู่จริง
 //
-// เนื้อหาตาม brief ของ SETH88: คลังเกมลิขสิทธิ์แท้ส่งตรงจากค่ายยักษ์ใหญ่ระดับโลก ทั้ง
-// PG Soft, Pragmatic Play และ Joker Gaming ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงิน
-// รางวัลว่ายุติธรรมตามมาตรฐานโรงงานผู้พัฒนา ปั่นเบทไหนก็มีสิทธิ์ลุ้นแตกหนักเท่ากัน
-// ทุกรอบ กริดนี้จึงเป็นภาพประกอบของหัวข้อ docx ข้อ 3 โดยตรงและวางต่อท้ายบล็อกนั้นทันที
-// สามช่องแรกเรียงตามลำดับชื่อค่ายที่ย่อหน้านั้นเอ่ยถึง ห้ามเติมข้อเท็จจริงที่ brief
-// ไม่ได้ให้ (เช่น ตัวเลขเบทขั้นต่ำ จำนวนเกม หรือใบอนุญาต)
+// บรีฟของ 9KPLUS ระบุค่ายไว้ตรงตัวสามค่าย "ทั้ง PG Soft, Pragmatic Play และ
+// Joker Gaming" เท่านั้น กริดรอบนี้จึงเหลือสามช่องพอดีตามนั้น และ import เฉพาะ
+// สามโลโก้ที่ถูก render จริง — รูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit ลง dist/
+// ฟรีๆ และ verify-build จะทำให้ build แดง ส่วนโลโก้ค่ายอื่นในโฟลเดอร์ providers/
+// เป็น inventory ของรอบถัดไป ห้ามลบไฟล์ และห้ามเติมชื่อค่ายที่บรีฟไม่ได้เอ่ยถึง
 //
-// SETH88: ชุดสีเป็นทองคำอียิปต์คู่บรอนซ์บนดำอมน้ำตาลของหินวิหาร — ทอง #fdf3d4 /
-// #f7d774 / #e0a92b / #a9711a คู่บรอนซ์ #6b4210 บนผิว #0c0703 / #1b1109 / #2a1a0d
-// ขอบ #6b4210 เนื้อความ #f0e3cd ข้อความรอง #d6c2a0 ป้ายมุมบนขวารับทองสว่างเพื่อให้
-// ตัวหนังสือสีเข้มอ่านออกบนพื้นสว่าง (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind
-// สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมา
-// เป็น CSS ตาย ดูของเดิมได้จาก git history)
+// เนื้อหาตาม brief ของ 9KPLUS: รวมค่ายใหญ่ระดับโลกไว้ครบ จัดเต็มเกมตัวเด็ดกระแสแรง
+// มาให้เลือกเล่นแบบไม่ขาดสาย สลับอารมณ์จากสล็อตแนวเทพเจ้าไปสายกินหรือสายแอ็กชันได้
+// ทันทีผ่านกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงินข้ามค่าย กริดนี้จึงเป็นภาพประกอบของ
+// หัวข้อ docx ข้อ 3 โดยตรงและวางต่อท้ายบล็อกนั้นทันที เรียงตามลำดับชื่อค่ายที่
+// ย่อหน้านั้นเอ่ยถึง ห้ามเติมข้อเท็จจริงที่ brief ไม่ได้ให้ (เช่น ตัวเลขเบทขั้นต่ำ
+// จำนวนเกม หรือใบอนุญาต)
+//
+// 9KPLUS: ชุดสีเป็นแดงนีออนคู่ชมพูบานเย็นบนพื้นเกือบดำ — ชมพูขาว #ffd8e7 / ชมพู
+// #ff4fa3 / แดง #f5003e / แดงเข้ม #b3022c คู่ชมพูเข้ม #7c1040 บนผิว #120309 /
+// #1f0611 / #4d012c ขอบ #7c1040 เนื้อความ #ffe3ee ข้อความรอง #f0b9cd ป้ายมุมบนขวา
+// รับชมพูขาวเพื่อให้ตัวหนังสือสีเข้มอ่านออกบนพื้นสว่าง (ห้ามพิมพ์ hex ของแบรนด์ก่อน
+// ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็นคอมเมนต์ จึง gen คลาสจาก
+// ค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก git history)
 const providers = [
   {
     name: "PG Soft (Pocket Games Soft)",
-    desc: "ค่ายยักษ์ใหญ่ระดับโลกที่ส่งเกมลิขสิทธิ์แท้เข้าคลังโดยตรง คัดเกรดคุณภาพระดับ A-List ตัดเกมล้าหลังออก เหลือไว้เฉพาะตัวที่โบนัสแตกง่าย",
-    tag: "ลิขสิทธิ์แท้ส่งตรง",
-    img: img1,
+    desc: "ค่ายใหญ่ระดับโลกที่ส่งเกมตัวเด็ดกระแสแรงเข้าคลังแบบไม่ขาดสาย ปรับระบบมาตรงสเปกโรงงาน ค่า RTP ยุติธรรม ไม่ล็อกยูส ไม่ปรับเปอร์เซ็นต์ชนะ",
+    tag: "ตัวเด็ดกระแสแรง",
+    img: imgPg,
   },
   {
     name: "Pragmatic Play",
-    desc: "สายลูกเล่นเยอะมาครบในค่ายเดียว ทั้งระบบ Multiplier ตัวคูณสะสมโหดๆ และสัญลักษณ์ Expanding Wild ที่ขยายเต็มรีลในรอบเดียว",
-    tag: "ลูกเล่นเยอะ",
-    img: img6,
+    desc: "สายลูกเล่นมาครบในค่ายเดียว ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers และสัญลักษณ์ Expanding Wild ที่ยืดเต็มรีลในรอบเดียว",
+    tag: "ฟีเจอร์มีลูกเล่น",
+    img: imgPragmatic,
   },
   {
-    name: "Joker",
-    desc: "ทุกเกมผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลว่ายุติธรรมตามมาตรฐานโรงงานผู้พัฒนา ค่า RTP มาตรฐานสากลจากค่ายแม่ ไม่มีปรับลดอัตราแตก",
-    tag: "จ่ายตามมาตรฐานค่ายแม่",
-    img: img4,
-  },
-  {
-    name: "SlotXO",
-    desc: "หมวดสล็อตแนวคลาสสิกตัวคูณหนัก กดเข้าเล่นจากล็อบบี้ที่จัดระเบียบไว้แล้วผ่านกระเป๋าเดียว ไม่ต้องเสียเวลาวนหาและไม่ต้องโยกเงินข้ามค่าย",
-    tag: "กระเป๋าเดียวจบ",
-    img: img3,
-  },
-  {
-    name: "JILI",
-    desc: "โหมดซื้อฟรีสปินพุ่งตรงเข้าลุ้นโบนัสได้ทันที ปั่นเบทไหนก็มีสิทธิ์ลุ้นแตกหนักเท่ากันทุกรอบ เหมาะกับการอ่านจังหวะโบนัสแล้วลัดเข้าไปเก็บ",
-    tag: "ซื้อฟรีสปินได้",
-    img: img5,
-  },
-  {
-    name: "SexySlot",
-    desc: "เติมความหลากหลายให้สายเบื่อง่าย สลับเปลี่ยนเกมเมื่อไหร่ก็เจอฟีเจอร์และสไตล์ที่ต่างกัน เลือกสปินตามไลฟ์สไตล์การเดิมพันได้อย่างแม่นยำ",
-    tag: "สลับฟีลได้ทันที",
-    img: img2,
+    name: "Joker Gaming",
+    desc: "อยากเปลี่ยนอารมณ์จากสล็อตแนวเทพเจ้าไปลองแนวสายกินหรือแนวแอ็กชัน ก็สลับเล่นได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงินข้ามค่ายให้สะดุด",
+    tag: "กระเป๋าเดียวสลับได้",
+    img: imgJoker,
   },
 ];
 ---
 
-<section aria-label="ค่ายเกมลิขสิทธิ์แท้ระดับโลกที่ SETH88 คัดมาไว้ในคลังเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
+<section aria-label="ค่ายใหญ่ระดับโลกที่ 9KPLUS รวมไว้ครบในกระเป๋าเดียว" class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div class="mb-8 flex w-full flex-col items-center justify-center gap-2 text-center">
-    <p class="bg-gradient-to-r from-[#fdf3d4] via-[#f7d774] to-[#a9711a] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
-      ค่ายเกมลิขสิทธิ์แท้ระดับโลกที่ <span class="text-[#f7d774]">SETH88</span> คัดมาไว้ในคลังเดียว
+    <p class="bg-gradient-to-r from-[#ffd8e7] via-[#ff4fa3] to-[#b3022c] bg-clip-text text-3xl font-black tracking-widest text-transparent uppercase">
+      ค่ายใหญ่ระดับโลกที่ <span class="text-[#ff4fa3]">9KPLUS</span> รวมไว้ครบในกระเป๋าเดียว
     </p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#d6c2a0]">
-      ไม่ได้วัดกันที่จำนวนเกม แต่วัดกันที่คุณภาพของตัวเกม ทุกค่ายในกริดนี้เป็นลิขสิทธิ์แท้ที่ส่งตรงจากค่ายยักษ์ใหญ่ระดับโลก ผ่านการทดสอบอัลกอริทึมการจ่ายเงินรางวัลตามมาตรฐานโรงงานผู้พัฒนา
-      และเปิดให้สลับเล่นข้ามค่ายได้จากกระเป๋าเดียว
+    <p class="max-w-3xl text-base leading-relaxed text-[#f0b9cd]">
+      รวมค่ายใหญ่ระดับโลกไว้ครบหมดทั้ง PG Soft, Pragmatic Play และ Joker Gaming จัดเต็มเกมตัวเด็ดกระแสแรงมาให้เลือกเล่นแบบไม่ขาดสาย สลับแนวเมื่อไหร่ก็เจอฟีลที่ใช่ได้ทันทีผ่านกระเป๋าเดียว
+      ไม่ต้องเสียเวลาโยกเงินข้ามค่ายให้สะดุด
     </p>
-    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#e0a92b] to-transparent"></div>
+    <div class="mt-2 h-[4px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#f5003e] to-transparent"></div>
   </div>
 
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
@@ -88,16 +72,16 @@ const providers = [
       providers.map((provider) => (
         <a
           href="/register"
-          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#6b4210]/60 bg-[#0c0703]/92 p-5 pt-9 shadow-[0_10px_30px_rgba(107,66,16,0.35)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#f7d774]/60 hover:bg-[#1b1109]/95 hover:shadow-[0_15px_40px_rgba(224,169,43,0.32)]">
-          <div class="pointer-events-none absolute inset-0 bg-[#0c0703]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          class="group relative flex flex-col items-center justify-center overflow-hidden rounded-2xl border border-[#7c1040]/60 bg-[#120309]/92 p-5 pt-9 shadow-[0_10px_30px_rgba(124,16,64,0.35)] backdrop-blur-md transition-all duration-300 hover:-translate-y-2 hover:border-[#ff4fa3]/60 hover:bg-[#1f0611]/95 hover:shadow-[0_15px_40px_rgba(245,0,62,0.32)]">
+          <div class="pointer-events-none absolute inset-0 bg-[#120309]/55 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
-          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#fdf3d4] to-[#e0a92b] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#0c0703] shadow-sm transition-transform duration-300 group-hover:scale-110">
+          <div class="absolute top-2 right-2 z-10 rounded-full bg-gradient-to-r from-[#ffd8e7] to-[#ff4fa3] px-2 py-0.5 text-[9px] font-black tracking-wide whitespace-nowrap text-[#120309] shadow-sm transition-transform duration-300 group-hover:scale-110">
             {provider.tag}
           </div>
 
           <Picture
             src={provider.img}
-            alt={`โลโก้ค่ายเกม ${provider.name} บนการ์ดค่ายเกมลิขสิทธิ์แท้ในล็อบบี้ของ SETH88`}
+            alt={`โลโก้ค่ายเกม ${provider.name} บนการ์ดค่ายเกมในล็อบบี้ของ 9KPLUS`}
             formats={["avif", "webp"]}
             fallbackFormat="webp"
             loading="lazy"
@@ -106,13 +90,13 @@ const providers = [
             sizes="112px"
             decoding="async"
             quality={70}
-            class="relative z-10 mb-3 block h-28 w-28 rounded-xl border border-[#6b4210]/70 object-cover transition-transform duration-500 group-hover:scale-110"
+            class="relative z-10 mb-3 block h-28 w-28 rounded-xl border border-[#7c1040]/70 object-cover transition-transform duration-500 group-hover:scale-110"
           />
 
-          <p class="relative z-10 text-center text-sm font-black text-[#f0e3cd] transition-colors group-hover:text-[#fdf3d4]">{provider.name}</p>
-          <p class="relative z-10 mt-1 text-center text-[11px] leading-relaxed text-[#d6c2a0]">{provider.desc}</p>
+          <p class="relative z-10 text-center text-sm font-black text-[#ffe3ee] transition-colors group-hover:text-[#ffd8e7]">{provider.name}</p>
+          <p class="relative z-10 mt-1 text-center text-[11px] leading-relaxed text-[#f0b9cd]">{provider.desc}</p>
 
-          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#6b4210]/70 bg-[#0c0703] py-1.5 text-center text-[11px] font-bold text-[#f7d774] shadow-inner transition-colors duration-300 group-hover:border-[#e0a92b]/60 group-hover:bg-gradient-to-r group-hover:from-[#2a1a0d] group-hover:to-[#6b4210] group-hover:text-[#fdf3d4]">
+          <span class="relative z-10 mt-4 block w-full rounded-full border border-[#7c1040]/70 bg-[#120309] py-1.5 text-center text-[11px] font-bold text-[#ff4fa3] shadow-inner transition-colors duration-300 group-hover:border-[#f5003e]/60 group-hover:bg-gradient-to-r group-hover:from-[#4d012c] group-hover:to-[#7c1040] group-hover:text-[#ffd8e7]">
             เข้าดูเกมทั้งหมดในค่ายนี้
           </span>
         </a>

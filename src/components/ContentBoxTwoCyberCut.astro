@@ -20,50 +20,52 @@ const intro = Astro.slots.has("default") ? (await Astro.slots.render("default"))
 // <div> ครอบ intro ข้างล่างเป็นหนึ่งในสามตัวของทั้งตระกูล ContentBox* ที่ต้องอยู่
 // ต่อไป: มันถือ mb-8 จริงและวางอยู่ข้างกริด จึง hoist ขึ้นการ์ดไม่ได้ ห้ามแบนทิ้ง
 //
-// SETH88: ย้ายชุดสีของไฟล์นี้มาที่ทองคำอียิปต์คู่บรอนซ์ของแบรนด์นี้ — ทอง #fdf3d4 /
-// #f7d774 / #e0a92b / #a9711a / #6b4210 บนผิว #1b1109 / #0c0703 / #2a1a0d เนื้อความ
-// #f0e3cd ข้อความรอง #d6c2a0 แบรนด์นี้ไม่มีโลหะสีที่สอง (ไม่มีเงิน ไม่มีน้ำเงิน)
-// เส้นมุมฝั่งล่างขวากับป้ายคอลัมน์ขวาจึงรับบรอนซ์เข้มแทน เพื่อให้ยังต่างจากมุมบนซ้าย
+// 9KPLUS: ย้ายชุดสีของไฟล์นี้มาที่แดงนีออนคู่ชมพูบานเย็นของแบรนด์นี้ — ชมพูขาว
+// #ffd8e7 / ชมพู #ff4fa3 / แดง #f5003e / แดงเข้ม #b3022c / ชมพูเข้ม #7c1040 บนผิว
+// #1f0611 / #120309 / #4d012c เนื้อความ #ffe3ee ข้อความรอง #f0b9cd — เส้นมุมฝั่ง
+// ล่างขวากับป้ายคอลัมน์ขวารับแดงเข้มแทน เพื่อให้ยังต่างจากมุมบนซ้ายที่รับชมพูสว่าง
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
 // git history)
 //
-// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 2 เรื่องเกมคัด — ย่อหน้าเดียวถูกแบ่งสองครึ่งตาม
-// ลำดับประโยคเดิม (คัดเกมโบนัสแตกง่าย ตัดเกมล้าหลังออก → จัดระเบียบล็อบบี้ เลือกสปิน
-// ได้แม่นยำ) ไม่มีการย่อหรือรวบประโยค
+// รอบนี้ไฟล์นี้แบกหัวข้อ docx ข้อ 3 เรื่องตัวเด็ดพร้อมชนที่สลับแนวได้เต็มที่ —
+// ย่อหน้าเดียวถูกแบ่งสองครึ่งตามลำดับประโยคเดิม (รวมค่ายใหญ่ระดับโลกทั้ง PG Soft,
+// Pragmatic Play และ Joker Gaming → สลับอารมณ์ข้ามแนวได้ทันทีผ่านกระเป๋าเดียว)
+// ไม่มีการย่อหรือรวบประโยค แล้วต่อด้วย ProviderGrid ซึ่งกางโลโก้ค่ายทั้งสามที่
+// ย่อหน้าเดียวกันเอ่ยชื่อไว้ตรงๆ
 const sectionLabel = title ? undefined : (label ?? titleleft ?? titleright ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="mx-auto mb-6 w-full max-w-7xl px-4 font-sans">
   <div
-    class="relative isolate w-full border border-[#e0a92b]/35 bg-[#1b1109]/92 p-8 text-[#f0e3cd] shadow-[0_10px_30px_rgba(224,169,43,0.22)] backdrop-blur-md transition-all duration-300 hover:border-[#f7d774]/60 hover:shadow-[0_15px_40px_rgba(247,215,116,0.3)]"
+    class="relative isolate w-full border border-[#f5003e]/35 bg-[#1f0611]/92 p-8 text-[#ffe3ee] shadow-[0_10px_30px_rgba(245,0,62,0.22)] backdrop-blur-md transition-all duration-300 hover:border-[#ff4fa3]/60 hover:shadow-[0_15px_40px_rgba(255,79,163,0.3)]"
     style="clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);">
-    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#f7d774] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#a9711a] to-transparent"></div>
-    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#f7d774] to-transparent"></div>
-    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#a9711a] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-[2px] w-24 bg-gradient-to-r from-[#ff4fa3] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-[2px] w-24 bg-gradient-to-l from-[#b3022c] to-transparent"></div>
+    <div class="absolute top-0 left-0 -z-10 h-16 w-[2px] bg-gradient-to-b from-[#ff4fa3] to-transparent"></div>
+    <div class="absolute right-0 bottom-0 -z-10 h-16 w-[2px] bg-gradient-to-t from-[#b3022c] to-transparent"></div>
 
-    {title && <HeadingTag class="mb-4 bg-gradient-to-r from-[#fdf3d4] via-[#f7d774] to-[#e0a92b] bg-clip-text text-center text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
+    {title && <HeadingTag class="mb-4 bg-gradient-to-r from-[#ffd8e7] via-[#ff4fa3] to-[#f5003e] bg-clip-text text-center text-2xl leading-normal font-black text-transparent">{title}</HeadingTag>}
 
-    {intro && <div class="mb-8 text-left text-base leading-relaxed text-[#f0e3cd]" set:html={intro} />}
+    {intro && <div class="mb-8 text-left text-base leading-relaxed text-[#ffe3ee]" set:html={intro} />}
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
-      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#f0e3cd]">
+      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#ffe3ee]">
         {
           titleleft && (
-            <p class="flex items-center gap-2 border-b border-[#e0a92b]/35 pb-2 text-xl leading-normal font-black text-[#f7d774]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#e0a92b] shadow-[0_0_5px_rgba(224,169,43,0.8)]" /> {titleleft}
+            <p class="flex items-center gap-2 border-b border-[#f5003e]/35 pb-2 text-xl leading-normal font-black text-[#ff4fa3]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#f5003e] shadow-[0_0_5px_rgba(245,0,62,0.8)]" /> {titleleft}
             </p>
           )
         }
         <slot name="left" />
       </article>
 
-      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#f0e3cd] md:border-l md:border-[#e0a92b]/35 md:pl-8">
+      <article class="relative flex flex-col gap-4 text-left text-base leading-relaxed text-[#ffe3ee] md:border-l md:border-[#f5003e]/35 md:pl-8">
         {
           titleright && (
-            <p class="flex items-center gap-2 border-b border-[#a9711a]/45 pb-2 text-xl leading-normal font-black text-[#fdf3d4]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#a9711a] shadow-[0_0_5px_rgba(169,113,26,0.9)]" /> {titleright}
+            <p class="flex items-center gap-2 border-b border-[#b3022c]/45 pb-2 text-xl leading-normal font-black text-[#ffd8e7]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 bg-[#b3022c] shadow-[0_0_5px_rgba(179,2,44,0.9)]" /> {titleright}
             </p>
           )
         }

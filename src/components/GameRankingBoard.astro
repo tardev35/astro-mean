@@ -1,28 +1,27 @@
 ---
-// VIPSAND356: ชุดสีย้ายจากชุดของแบรนด์ก่อน มาเป็นฟ้าอะซูร์คู่ทองส้มบนกรมท่าเข้ม
-// ตามอาร์ตจริง (ป้ายโลโก้ที่คำว่า VIP เป็นฟ้าใสและ SANDS เป็นส้มทองในกรอบทอง กับ
-// ฉากคาสิโนริมทะเลกลางวันที่มีท้องฟ้าฟ้าสดและกองเหรียญทองเต็มพื้นล่าง) — ฟ้า
-// #eaf6ff / #a2d2ef / #5dbcfe / #2a93e0 / #1465a8 / #0b3f70 คู่ทอง #fcde61 /
-// #eba554 / #c07c20 / #8d520c บนผิว #061c33 / #0a2b4a / #103a5f ขอบ #2a93e0
-// เนื้อความ #e6f2ff ข้อความรอง #b6d3ee
-// แถวอันดับหนึ่งรับผิวยกระดับขึ้นหนึ่งขั้นและขอบทองสว่างเพื่อให้ตัดกับแถวที่เหลือ
+// 9KPLUS: ชุดสีย้ายจากฟ้าอะซูร์คู่ทองส้มของแบรนด์ก่อน มาเป็นแดงนีออนคู่ชมพูบานเย็น
+// บนพื้นเกือบดำตามอาร์ตจริง (ตรากลม 9K PLUS สีชมพูบนแผ่นดำล้อมวงแหวนแดง กับฉาก
+// คาสิโนนีออนกลางคืนที่มีตู้สล็อตและชิปสีชมพู) — แดง #ffe3ee / #f0b9cd / #ff4a74 /
+// #f5003e / #b3022c / #7c1040 คู่ชมพู #ffd8e7 / #ff4fa3 บนผิว #120309 / #1f0611 /
+// #4d012c ขอบ #f5003e เนื้อความ #ffe3ee ข้อความรอง #f0b9cd
+// แถวอันดับหนึ่งรับผิวยกระดับขึ้นหนึ่งขั้นและขอบชมพูขาวเพื่อให้ตัดกับแถวที่เหลือ
 // จุด live สีเขียว Tailwind เป็นสีเชิงความหมาย ไม่ถูกแตะ
 // (ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่า
 // เป็นคอมเมนต์ จึง gen คลาสจากค่าที่ไม่มีใครใช้ออกมาเป็น CSS ตาย ดูของเดิมได้จาก
 // git history)
 //
 // ไม่มีรูปโลโก้ในแถวไหนเลย และไม่ import src/assets/providers/game* — กระดานนี้กาง
-// แนวเกมกับระบบที่เปิดใช้ ไม่ใช่รายชื่อค่าย (รายชื่อค่ายอยู่ที่ ProviderGridPremium
-// ซึ่งมีโลโก้จริงประกบอยู่แล้ว) การเอารูปมาแปะข้างชื่อแถวแล้วเขียน alt ให้เป็น
-// อย่างอื่นคือ alt ที่ไม่ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit ลง
-// dist/ ฟรีๆ ช่องรูปจึงเป็นไอคอนกรอบฟ้าที่เป็น aria-hidden
+// แนวเกมกับระบบที่เปิดใช้ ไม่ใช่รายชื่อค่าย (รายชื่อค่ายอยู่ที่ ProviderGrid ซึ่งมี
+// โลโก้จริงประกบอยู่แล้ว) การเอารูปมาแปะข้างชื่อแถวแล้วเขียน alt ให้เป็นอย่างอื่นคือ
+// alt ที่ไม่ตรงกับรูป และรูปที่ import แต่ไม่ได้ใช้คือรูปที่ถูก emit ลง dist/ ฟรีๆ
+// ช่องรูปจึงเป็นไอคอนกรอบแดงที่เป็น aria-hidden
 //
-// เนื้อของทุกแถวมาจากข้อเท็จจริงที่ docx รอบนี้ให้ไว้ตรงๆ (เกมเกรด A-List ที่จ่าย
-// รางวัลโปร่งใส, ค่าย PG Soft / Pragmatic Play / Joker Gaming, Multiplier สะสม
-// ตัวคูณทวีคูณ, Expanding Wild ยืดเต็มรีล, คอมโบแตกต่อเนื่อง Cascading, โหมด
-// Bonus Buy, คืนยอดเสีย Cash Back ทุกวัน, ออโต้ผ่าน Gateway ตรงเสร็จใน 3 วินาที)
-// ไม่ผูกตัวเลข RTP รายแถว เพราะ brief พูดถึง RTP ที่ตรงตามสเปกโรงงานผู้พัฒนาโดยรวม
-// ไม่ได้ให้ตัวเลขรายเกม
+// เนื้อของทุกแถวมาจากข้อเท็จจริงที่ docx รอบนี้ให้ไว้ตรงๆ (คลังเกมหลากหลายรูปแบบที่
+// รองรับทั้งสายงบน้อย สายเบทใหญ่ และสายตามล่าแจ็คพอต, ค่าย PG Soft / Pragmatic Play /
+// Joker Gaming, ตัวคูณทวีคูณ Multipliers, Expanding Wild ยืดเต็มรีล, คอมโบแตกต่อเนื่อง
+// Cascading, โหมด Bonus Buy, เกมใหม่อัปเดตเข้าคลังต่อเนื่อง, คืนยอดเสีย Cash Back
+// ทุกวัน และออโต้ผ่าน Gateway ตรงเสร็จใน 3 วินาที) ไม่ผูกตัวเลข RTP รายแถว เพราะ
+// brief พูดถึง RTP ที่ยุติธรรมโดยรวม ไม่ได้ให้ตัวเลขรายเกม
 //
 // Widget ไม่ใช่ article: หัวข้อกระดานเป็น <p> และ <section> เป็นตัวถือชื่อสำหรับ
 // assistive tech ชื่อแถวก็เป็น <p> เช่นกัน — ไม่มีตัวไหนเป็นหัวข้อจาก docx
@@ -33,35 +32,35 @@
 const games = [
   {
     rank: 1,
-    name: "เกมเกรด A-List คัดมาไว้ในที่เดียว",
-    type: "หมวดที่สมาชิกเปิดเล่นมากที่สุดในคลัง คัดเฉพาะเกมที่จ่ายรางวัลโปร่งใสและโบนัสแจ็คพอตแตกง่าย ไม่ต้องเสียเวลานั่งสุ่มเล่นเกมคุณภาพต่ำ พุ่งตรงเข้าสปินทำกำไรได้ตั้งแต่เปิดหน้าแรก",
-    focus: "จัดหมวดหมู่เป็นระเบียบ",
-    menus: ["เกมเกรด A-List", "โบนัสแจ็คพอตแตกง่าย"],
+    name: "สล็อตหลายฟีลจัดวางให้ครบในล็อบบี้เดียว",
+    type: "หมวดที่สมาชิกเปิดเล่นมากที่สุดในคลัง ขนเกมสล็อตหลากหลายรูปแบบมาจัดวางให้อย่างลงตัว สายปั่นงบน้อยเน้นปั้นทุน สายลุยเบทใหญ่ หรือสายตามล่าแจ็คพอต ระบบก็พร้อมรองรับทุกสไตล์การเล่น",
+    focus: "สายไหนก็เจอจังหวะที่ใช่",
+    menus: ["ดีไซน์เข้าถึงง่าย", "จ่ายแฟร์ตั้งแต่สปินแรก"],
     players: 5124,
     icon: "🎰",
   },
   {
     rank: 2,
-    name: "Multiplier สะสมตัวคูณทวีคูณ",
-    type: "ระบบตัวคูณที่ทบขึ้นไประหว่างรอบแทนที่จะรีเซ็ตทุกตา เหมาะกับสายที่ยอมปั่นยาวเพื่อรอจังหวะตัวคูณดันยอดขึ้นไปทะลุเพดาน เจอได้ทั้งในสล็อตคลาสสิกตัวคูณหนักและสล็อตวิดีโอ 3D",
+    name: "ตัวคูณทวีคูณ (Multipliers)",
+    type: "ระบบสุ่มแจกตัวคูณที่ทบขึ้นไประหว่างรอบแทนที่จะรีเซ็ตทุกตา เหมาะกับสายที่ยอมปั่นยาวเพื่อรอจังหวะตัวคูณดันยอดขึ้นไปทะลุเพดาน เปลี่ยนสปินธรรมดาให้เป็นจังหวะแตกหนัก",
     focus: "ยิ่งสะสมยิ่งคูณหนัก",
-    menus: ["Multiplier", "สล็อตคลาสสิกตัวคูณหนัก"],
+    menus: ["Multipliers", "ตัวเด็ดค่าย Pragmatic Play"],
     players: 3842,
     icon: "✖️",
   },
   {
     rank: 3,
-    name: "โหมด Bonus Buy พุ่งเข้ารอบแจ็คพอต",
-    type: "กดซื้อเพื่อพุ่งตรงเข้าลุ้นรอบแจ็คพอตได้ทันทีโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับสายซื้อฟรีสปินที่อ่านจังหวะโบนัสออกแล้วอยากลัดเข้าไปเก็บรอบแจกด้วยตัวเอง",
-    focus: "เข้าลุ้นแจ็คพอตทันที",
-    menus: ["Bonus Buy", "สล็อตสายซื้อฟรีสปิน"],
+    name: "โหมด Bonus Buy กดซื้อฟรีสปิน",
+    type: "กดซื้อฟรีสปินเข้าไปลุ้นรอบแจ็คพอตใหญ่ได้ทันทีโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อ่านจังหวะโบนัสออกแล้วอยากลัดเข้าไปเก็บรอบแจกด้วยตัวเอง",
+    focus: "ลุ้นแจ็คพอตใหญ่ทันที",
+    menus: ["Bonus Buy", "ซื้อฟรีสปิน"],
     players: 3517,
     icon: "🛒",
   },
   {
     rank: 4,
     name: "Expanding Wild ยืดเต็มรีล",
-    type: "สัญลักษณ์ไวลด์ที่ลงมาแล้วยืดคลุมทั้งรีล เปลี่ยนตาที่กำลังจะพลาดให้กลับมาต่อติดได้หลายเส้นพร้อมกัน มักมาคู่กับคอมโบแตกต่อเนื่อง Cascading ที่ลากยาวได้หลายชั้นในรอบเดียว",
+    type: "สัญลักษณ์ไวลด์ที่ลงมาแล้วยืดคลุมทั้งรีล เปลี่ยนตาที่กำลังจะพลาดให้กลับมาต่อติดได้หลายเส้นพร้อมกัน มักมาคู่กับคอมโบแตกต่อเนื่องแบบ Cascading ที่ลากยาวได้หลายชั้นในรอบเดียว",
     focus: "ต่อเส้นได้หลายเส้น",
     menus: ["Expanding Wild", "Cascading"],
     players: 2905,
@@ -69,19 +68,19 @@ const games = [
   },
   {
     rank: 5,
-    name: "คืนยอดเสีย Cash Back ทุกวัน",
-    type: "โปรน่าตามที่อัปเดตเข้าระบบต่อเนื่อง กดรับเองผ่านหน้าเว็บได้เรื่อยๆ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และคืนยอดเสียทุกวัน เงื่อนไขชัดเจน ไม่ติดเทิร์นโอเวอร์ซับซ้อน",
-    focus: "เงื่อนไขชัดเจนโปร่งใส",
-    menus: ["Cash Back ทุกวัน", "โปรฝากแรกของวัน"],
+    name: "ของใหม่พร้อมแจม อัปเดตเข้าคลังต่อเนื่อง",
+    type: "คลังเกมใหม่ถูกเติมเข้าระบบทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมสดใหม่ออกมา สมาชิกได้ลองเล่นฟีเจอร์ใหม่ก่อนใคร ได้เช็กจังหวะแจกโบนัสก่อนใคร ปั่นได้ยาวๆ ไม่มีคำว่าตกเทรนด์",
+    focus: "ไม่ปล่อยล็อบบี้วนลูป",
+    menus: ["เกมใหม่ก่อนใคร", "เช็กจังหวะโบนัส"],
     players: 2431,
-    icon: "🎁",
+    icon: "🆕",
   },
   {
     rank: 6,
     name: "ระบบฝากถอนออโต้ไฮสปีด",
-    type: "ทำรายการผ่าน Gateway ตรงเสร็จสรรพใน 3 วินาที ตัดขั้นตอนรออนุมัติและการส่งสลิปออกทั้งหมด เครดิตอัปเดตเข้าเกมไว ถอนกำไรเด้งเข้าบัญชีทันใจ",
+    type: "ทำรายการผ่าน Gateway ตรงเสร็จใน 3 วินาที ไม่ต้องแนบสลิป ไม่ต้องคอยแอดมินอนุมัติ ยอดเงินอัปเดตเข้าคลังเกมและบัญชีธนาคารฉับไว บวกเท่าไหร่ก็ถอนได้เต็มทุกบาท",
     focus: "เสร็จใน 3 วินาที",
-    menus: ["Gateway ตรง", "ไม่ต้องส่งสลิป"],
+    menus: ["Gateway ตรง", "ไม่ต้องแนบสลิป"],
     players: 2108,
     icon: "⚡",
   },
@@ -90,18 +89,18 @@ const games = [
 const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : rank === 3 ? "🥉" : null);
 ---
 
-<section aria-label="แนวเกมและระบบในคลังที่ VIPSAND356 แยกไว้ให้ดูครบจากที่เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
+<section aria-label="แนวเกมและระบบในคลังที่ 9KPLUS แยกไว้ให้ดูครบจากที่เดียว" class="mx-auto w-full max-w-[1300px] px-4 py-8 font-sans">
   <div
-    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#2a93e0]/60 bg-[#0a2b4a]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(11,63,112,0.45)] backdrop-blur-md">
+    class="mb-8 flex w-full flex-col items-center justify-center gap-2 rounded-3xl border border-[#f5003e]/60 bg-[#1f0611]/90 px-6 py-6 text-center shadow-[0_10px_30px_rgba(124,16,64,0.45)] backdrop-blur-md">
     <span aria-hidden="true" class="text-2xl">🎮</span>
-    <p class="bg-gradient-to-r from-[#eaf6ff] via-[#a2d2ef] to-[#5dbcfe] bg-clip-text text-2xl font-black tracking-wide text-transparent">
-      แนวเกมและระบบในคลังที่ VIPSAND356 แยกไว้ให้ดูครบจากที่เดียว
+    <p class="bg-gradient-to-r from-[#ffe3ee] via-[#f0b9cd] to-[#ff4a74] bg-clip-text text-2xl font-black tracking-wide text-transparent">
+      แนวเกมและระบบในคลังที่ 9KPLUS แยกไว้ให้ดูครบจากที่เดียว
     </p>
-    <p class="max-w-3xl text-base leading-relaxed text-[#b6d3ee]">
-      กางให้เห็นครบในหน้าเดียว ทั้งเกมเกรด A-List ที่จ่ายรางวัลโปร่งใส ระบบ Multiplier สะสมตัวคูณทวีคูณ โหมด Bonus Buy สัญลักษณ์ Expanding Wild คอมโบแตกต่อเนื่อง Cascading สิทธิ์คืนยอดเสีย Cash Back
-      และระบบฝากถอนออโต้ไฮสปีด ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราจ่าย เงื่อนไขฟีเจอร์ และรายละเอียดโบนัสของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
+    <p class="max-w-3xl text-base leading-relaxed text-[#f0b9cd]">
+      กางให้เห็นครบในหน้าเดียว ทั้งคลังสล็อตหลายฟีลที่รองรับทุกสไตล์การเล่น ระบบสุ่มแจกตัวคูณทวีคูณ Multipliers โหมด Bonus Buy สัญลักษณ์ Expanding Wild คอมโบแตกต่อเนื่องแบบ Cascading เกมใหม่ที่อัปเดต
+      เข้าคลังต่อเนื่อง และระบบฝากถอนออโต้ไฮสปีด ลำดับความนิยมเปลี่ยนได้ตามช่วงเวลา ควรเปิดดูอัตราจ่าย เงื่อนไขฟีเจอร์ และรายละเอียดโบนัสของแต่ละเกมจากหน้าเกมจริงอีกครั้งก่อนลงเดิมพัน
     </p>
-    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#eba554] to-transparent"></div>
+    <div class="mt-2 h-[3px] w-24 rounded-full bg-gradient-to-r from-transparent via-[#ff4fa3] to-transparent"></div>
   </div>
 
   <div class="flex flex-col gap-3">
@@ -112,10 +111,10 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
           <article
             class={`group relative flex items-center gap-3 overflow-hidden rounded-2xl border p-3 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 sm:gap-5 sm:p-4 ${
               top
-                ? "border-[#fcde61]/60 bg-gradient-to-r from-[#103a5f]/92 via-[#0a2b4a]/92 to-[#061c33]/90 shadow-[0_15px_40px_rgba(235,165,84,0.22)]"
-                : "border-[#2a93e0]/55 bg-[#0a2b4a]/90 shadow-[0_10px_30px_rgba(11,63,112,0.38)] hover:border-[#5dbcfe]/60 hover:shadow-[0_15px_40px_rgba(42,147,224,0.3)]"
+                ? "border-[#ffd8e7]/60 bg-gradient-to-r from-[#4d012c]/92 via-[#1f0611]/92 to-[#120309]/90 shadow-[0_15px_40px_rgba(255,79,163,0.22)]"
+                : "border-[#f5003e]/55 bg-[#1f0611]/90 shadow-[0_10px_30px_rgba(124,16,64,0.38)] hover:border-[#ff4a74]/60 hover:shadow-[0_15px_40px_rgba(245,0,62,0.3)]"
             }`}>
-            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#103a5f]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#2a93e0]/45" />
+            <div class="pointer-events-none absolute top-1/2 -left-10 h-24 w-24 -translate-y-1/2 rounded-full bg-[#4d012c]/80 blur-[40px] transition-all duration-500 group-hover:bg-[#f5003e]/45" />
 
             <div class="relative z-10 flex w-8 shrink-0 flex-col items-center justify-center sm:w-12">
               {medal(g.rank) ? (
@@ -124,39 +123,39 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                   <span class="sr-only">อันดับ {g.rank}</span>
                 </span>
               ) : (
-                <span class="text-xl font-black text-[#5dbcfe] sm:text-2xl">#{g.rank}</span>
+                <span class="text-xl font-black text-[#ff4a74] sm:text-2xl">#{g.rank}</span>
               )}
             </div>
 
             <div
               aria-hidden="true"
-              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#061c33] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
-                top ? "border-[#fcde61]/65" : "border-[#2a93e0]/60"
+              class={`relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border bg-[#120309] text-2xl transition-transform duration-500 group-hover:scale-110 sm:h-16 sm:w-16 sm:text-3xl ${
+                top ? "border-[#ffd8e7]/65" : "border-[#f5003e]/60"
               }`}>
               {g.icon}
             </div>
 
             <div class="relative z-10 min-w-0 flex-1">
               <div class="flex items-center gap-2">
-                <p class="truncate text-base font-black text-[#e6f2ff] sm:text-lg">{g.name}</p>
+                <p class="truncate text-base font-black text-[#ffe3ee] sm:text-lg">{g.name}</p>
                 {top && (
-                  <span class="hidden shrink-0 rounded-full border border-[#eba554]/70 bg-gradient-to-r from-[#fcde61] to-[#eba554] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#061c33] sm:inline">
+                  <span class="hidden shrink-0 rounded-full border border-[#ff4fa3]/70 bg-gradient-to-r from-[#ffd8e7] to-[#ff4fa3] px-2 py-0.5 text-[9px] font-black tracking-wider text-[#120309] sm:inline">
                     หมวดที่คนเข้าเล่นมากที่สุด
                   </span>
                 )}
               </div>
-              <p class="truncate text-[11px] text-[#b6d3ee] sm:text-xs">{g.type}</p>
+              <p class="truncate text-[11px] text-[#f0b9cd] sm:text-xs">{g.type}</p>
 
               <div class="mt-2 flex flex-wrap items-center gap-1.5">
-                <span class="rounded-full border border-[#eba554]/50 bg-[#8d520c]/30 px-2.5 py-0.5 text-[10px] font-bold text-[#fcde61]">{g.focus}</span>
+                <span class="rounded-full border border-[#ff4fa3]/50 bg-[#7c1040]/45 px-2.5 py-0.5 text-[10px] font-bold text-[#ffd8e7]">{g.focus}</span>
                 {g.menus.map((m) => (
-                  <span class="rounded-full border border-[#2a93e0]/60 bg-[#103a5f] px-2.5 py-0.5 text-[10px] font-bold text-[#a2d2ef]">{m}</span>
+                  <span class="rounded-full border border-[#f5003e]/60 bg-[#4d012c] px-2.5 py-0.5 text-[10px] font-bold text-[#f0b9cd]">{m}</span>
                 ))}
               </div>
             </div>
 
             <div class="relative z-10 hidden shrink-0 flex-col items-end gap-1 sm:flex">
-              <span class="flex items-center gap-1.5 text-[11px] text-[#b6d3ee]">
+              <span class="flex items-center gap-1.5 text-[11px] text-[#f0b9cd]">
                 <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.7)]" />
                 <span class="tabular-nums" data-players data-base={g.players}>
                   {g.players.toLocaleString("en-US")}
@@ -167,8 +166,8 @@ const medal = (rank: number) => (rank === 1 ? "🥇" : rank === 2 ? "🥈" : ran
                 href="/register"
                 class={`rounded-full px-4 py-1.5 text-xs font-black transition-transform hover:scale-105 ${
                   top
-                    ? "bg-gradient-to-r from-[#fcde61] to-[#eba554] text-[#061c33] shadow-[0_10px_30px_rgba(235,165,84,0.38)]"
-                    : "border border-[#2a93e0]/60 bg-[#103a5f] text-[#a2d2ef] hover:border-[#5dbcfe] hover:bg-[#1465a8]/45 hover:text-[#eaf6ff]"
+                    ? "bg-gradient-to-r from-[#ffd8e7] to-[#ff4fa3] text-[#120309] shadow-[0_10px_30px_rgba(255,79,163,0.38)]"
+                    : "border border-[#f5003e]/60 bg-[#4d012c] text-[#f0b9cd] hover:border-[#ff4a74] hover:bg-[#b3022c]/45 hover:text-[#ffe3ee]"
                 }`}>
                 เข้าเล่นเกม
               </a>

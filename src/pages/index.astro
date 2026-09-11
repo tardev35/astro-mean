@@ -1,53 +1,58 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
-import ContentBoxCyberCut from "../components/ContentBoxCyberCut.astro";
-import ContentBoxTwoPremium from "../components/ContentBoxTwoPremium.astro";
-import ContentBox3ThreeCyberCut from "../components/ContentBox3ThreeCyberCut.astro";
-import ContentBoxSevenThree from "../components/ContentBoxSevenThree.astro";
-import ContentBoxSevenThreeCyberCut from "../components/ContentBoxSevenThreeCyberCut.astro";
-import ContentBoxNeumorphism from "../components/ContentBoxNeumorphism.astro";
-import ContentBoxTwoNeumorphism from "../components/ContentBoxTwoNeumorphism.astro";
+import Announcement from "../components/Announcement3.astro";
+import ContentBoxPremium from "../components/ContentBoxPremium.astro";
+import ContentBox3ThreePremium from "../components/ContentBox3ThreePremium.astro";
+import ContentBoxTwoCyberCut from "../components/ContentBoxTwoCyberCut.astro";
+import ContentBoxSpecial from "../components/ContentBoxSpecial.astro";
+import ContentBox from "../components/ContentBox.astro";
+import ContentBoxSevenThreePremium from "../components/ContentBoxSevenThreePremium.astro";
+import ContentBoxSevenThreeNeumorphism from "../components/ContentBoxSevenThreeNeumorphism.astro";
 import FeatureHighlights from "../components/FeatureHighlights.astro";
-import ProviderGridPremium from "../components/ProviderGridPremium.astro";
+import ProviderGrid from "../components/ProviderGrid.astro";
 import GameRankingBoard from "../components/GameRankingBoard.astro";
-import LatestWinnersCyber from "../components/LatestWinnersCyber.astro";
+import LatestWinners from "../components/LatestWinners2.astro";
 import LoginRtpSection from "../components/LoginRtpSection.astro";
 import ReviewCardSumo2 from "../components/ReviewCardSumo2.astro";
-import Faq from "../components/Faq.astro";
+import Faq from "../components/Faq3.astro";
 import Navfoot from "../components/Navfoot.astro";
 
 import { Picture } from "astro:assets";
 import { pageGraph } from "../lib/schema";
-import imgIphonePrize from "../assets/slide2.png";
-import imgAlphardPrize from "../assets/slide1.png";
+import imgCashback from "../assets/slide2.png";
+import imgDepositBonus from "../assets/slide1.png";
 
 // โครงหน้า: หัวข้อ docx 7 ข้อ (H1 ×1 + H2 ×6) เรียงตาม document order เป๊ะ
-//   1 → ContentBoxCyberCut as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   2 → ContentBoxTwoPremium as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
-//       ยกระดับแดชบอร์ดและคัดเกมเกรด A-List → ไม่ต้องสุ่มเกมคุณภาพต่ำ พุ่งตรงเข้าสปิน)
-//   3 → ContentBox3ThreeCyberCut as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับประโยค
-//       เดิม: ขนทัพค่ายชั้นนำระดับโลก → ครบทุกแนวทั้ง 3D คลาสสิก และสายซื้อฟรีสปิน →
-//       สลับแนวได้ตลอดผ่านกระเป๋าเดียว) แล้วต่อด้วย ProviderGridPremium ซึ่งกางรายชื่อ
-//       ค่ายที่ย่อหน้าเดียวกันระบุไว้ตรงๆ (PG Soft / Pragmatic Play / Joker Gaming)
-//   4 → ContentBoxSevenThree as="h2" + slide2 แล้วต่อด้วย FeatureHighlights ซึ่งกาง
-//       สี่ฟีเจอร์ที่ย่อหน้าเดียวกันเอ่ยชื่อไว้ตรงๆ (Multiplier / Expanding Wild /
-//       Cascading / Bonus Buy) → h3 สี่ตัว ซึ่งเป็น h3 ชุดเดียวที่ได้รับอนุญาตบน
-//       หน้านี้ คำอธิบายเขียนขยายความใหม่ ไม่ได้ก๊อบประโยคด้านบนซ้ำ
-//   5 → ContentBoxSevenThreeCyberCut as="h2" + slide1 (อาร์ตสไลด์เป็นรถ TOYOTA
-//       ALPHARD รางวัลใหญ่สุดของชุดโปร ซึ่งเป็นรูปธรรมของหัวข้อเรื่องโปรน่าตามที่
-//       เติมสิทธิ์พิเศษให้สมาชิก)
-//   6 → ContentBoxNeumorphism as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
-//   7 → ContentBoxTwoNeumorphism as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม)
+//   1 → ContentBoxPremium as="h1" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว)
+//   2 → ContentBox3ThreePremium as="h2" (ย่อหน้าเดียวแบ่งลงสามคอลัมน์ตามลำดับประโยค
+//       เดิม: ดีไซน์เว็บและคลังเกมเข้าถึงง่าย → รองรับทั้งสายงบน้อย สายเบทใหญ่ และ
+//       สายตามล่าแจ็คพอต → จ่ายแฟร์ลุ้นแตกตั้งแต่สปินแรก)
+//   3 → ContentBoxTwoCyberCut as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม:
+//       รวมค่ายใหญ่ระดับโลกครบหมด → สลับแนวได้ทันทีผ่านกระเป๋าเดียว) แล้วต่อด้วย
+//       ProviderGrid ซึ่งกางโลโก้ค่ายที่ย่อหน้าเดียวกันระบุไว้ตรงๆ สามค่ายพอดี
+//       (PG Soft / Pragmatic Play / Joker Gaming)
+//   4 → ContentBoxSpecial as="h2" (ย่อหน้าเดียวแบ่งสองครึ่งตามลำดับประโยคเดิม)
+//   5 → ContentBox as="h2" (ย่อหน้าเดียวเต็มๆ ใน slot เดียว) แล้วต่อด้วย
+//       FeatureHighlights ซึ่งกางสี่ฟีเจอร์ที่ย่อหน้าเดียวกันเอ่ยชื่อไว้ตรงๆ
+//       (Multipliers / Expanding Wild / Cascading / Bonus Buy) → h3 สี่ตัว ซึ่งเป็น
+//       h3 ชุดเดียวที่ได้รับอนุญาตบนหน้านี้ คำอธิบายเขียนขยายความใหม่ ไม่ได้ก๊อบ
+//       ประโยคด้านบนซ้ำ
+//   6 → ContentBoxSevenThreePremium as="h2" + slide2 (อาร์ต "คืนยอดเสีย 5% ทุกวัน
+//       สูงสุด 50,000 บาท" ตรงกับสิทธิ์คืนยอดเสีย Cash Back ทุกวันในย่อหน้าเดียวกัน)
+//   7 → ContentBoxSevenThreeNeumorphism as="h2" + slide1 (อาร์ตโบนัสฝากต่อเนื่อง
+//       ประจำเดือน คู่กับหัวข้อระบบฝากถอนออโต้ที่จบใน 3 วินาที)
 //
 // variant รอบนี้หมุนออกจากชุดของแบรนด์ก่อนทั้งตระกูล: ทรง ContentBox เปลี่ยนจาก
-// Premium + TwoCyberCut + 3ThreePremium + Special + SevenThreePremium +
-// SevenThreeNeumorphism + FloatingBadge มาเป็น CyberCut + TwoPremium +
-// 3ThreeCyberCut + SevenThree + SevenThreeCyberCut + Neumorphism + TwoNeumorphism
-// ส่วน Announcement เป็น AnnouncementCyber, LatestWinners เป็น LatestWinnersCyber,
-// กริดค่ายเกมเป็น ProviderGridPremium, การ์ดรีวิวเป็น ReviewCardSumo2 และ Faq เป็น
-// ตัวฐาน — Navbar/Footer/ฟอนต์ ถูกสลับไว้แล้วใน MainLayout กับ brandProfile
-// GameRankingBoard เป็นสมาชิกตัวเดียวของตระกูลตัวเอง จึงถูกใช้ซ้ำโดยไม่มีตัวหมุน
+// CyberCut + TwoPremium + 3ThreeCyberCut + SevenThree + SevenThreeCyberCut +
+// Neumorphism + TwoNeumorphism มาเป็น Premium + 3ThreePremium + TwoCyberCut +
+// Special + ContentBox ตัวฐาน + SevenThreePremium + SevenThreeNeumorphism
+// ส่วน Announcement เป็น Announcement3, LatestWinners เป็น LatestWinners2,
+// กริดค่ายเกมเป็น ProviderGrid ตัวฐาน และ Faq เป็น Faq3 — Navbar/Footer/ฟอนต์ ถูก
+// สลับไว้แล้วใน MainLayout กับ brandProfile
+// การ์ดรีวิวคง ReviewCardSumo2 ไว้ เพราะ ReviewCardSumo ตัวพี่เป็นไฟล์ที่ยังไม่ผ่าน
+// การกวาดเรื่องระดับหัวข้อ/aria ที่ repo แก้ไปแล้ว การหมุนไปใช้จะเป็นการรื้องานเดิม
+// กลับมา GameRankingBoard เป็นสมาชิกตัวเดียวของตระกูลตัวเอง จึงถูกใช้ซ้ำโดยไม่มี
+// ตัวหมุน
 //
 // ContentBoxSevenThree* ปล่อยหัวข้อผ่าน `title` ตัวเดียว ส่วน titleleft เป็นป้าย
 // คอลัมน์รูปที่เป็น <p> — ห้ามส่ง titleright เพิ่ม เพราะจะได้ป้ายเกินมาโดยไม่มี
@@ -55,37 +60,37 @@ import imgAlphardPrize from "../assets/slide1.png";
 //
 // Announcement ส่ง message ตรงๆ เสมอ เพราะ default ของทุก variant ในตระกูลนี้เป็น
 // สโลแกนของแบรนด์เก่าคนละเจ้ากัน ข้อความชุดนี้ตรงตัวต่อตัวกับ default ของ
-// AnnouncementCyber.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ
+// Announcement3.astro เพื่อให้ ticker ของหน้าย่อยที่เรียก <Announcement /> เปล่าๆ
 // วิ่งข้อความเดียวกับหน้าแรก และห้ามขึ้นต้นด้วย emoji เพราะ marquee render ข้อความ
 // ซ้ำและ emoji ที่ฝังในสตริงถูก mark aria-hidden ไม่ได้
 //
 // SevenThree ใช้สองบล็อกพอดีเพดานของ playbook คู่กับ slide2/slide1 ซึ่งเป็นสไลด์ที่
-// อาร์ตตรงกับหัวข้อ docx ข้อ 4 กับข้อ 5 — slide3 (KAWASAKI NINJA H2) ถูกปล่อยไม่ใช้
-// ที่นี่โดยตั้งใจ เพราะเพดาน SevenThree เต็มแล้ว และมันไปโผล่ในกริดของหน้า
-// /promotion แทน ส่วน slide4 เป็นของแบรนด์เก่าที่ค้างบนดิสก์ ห้าม import ที่ไหน
-// ทั้งสิ้น และไฟล์ banner ทุกตัว (ทั้งตัวที่มีเลขต่อท้ายและตัวมือถือ) ห้าม import
-// ที่นี่ เพราะรูปที่ import คือรูปที่ถูก emit ลง dist/ ถึงจะไม่มีใคร render ก็ตาม —
-// banner1 เป็นของ MainLayout จัดการเอง และรูปในหน้านี้ไม่มีตัวไหนใส่
-// loading="eager"/fetchpriority="high" เพราะ LCP เป็นของ hero ใน MainLayout
+// อาร์ตตรงกับหัวข้อ docx ข้อ 6 กับข้อ 7 — slide3 (โปรวันเกิด) กับ slide4 (เซียนกัน
+// เซียน) ถูกปล่อยไม่ใช้ที่นี่โดยตั้งใจ เพราะเพดาน SevenThree เต็มแล้ว และทั้งคู่ไป
+// โผล่ในกริดของหน้า /promotion แทน ส่วนไฟล์ banner ทุกตัว (ทั้งตัวที่มีเลขต่อท้าย
+// และตัวมือถือ) ห้าม import ที่นี่ เพราะรูปที่ import คือรูปที่ถูก emit ลง dist/
+// ถึงจะไม่มีใคร render ก็ตาม — banner1 เป็นของ MainLayout จัดการเอง และรูปในหน้านี้
+// ไม่มีตัวไหนใส่ loading="eager"/fetchpriority="high" เพราะ LCP เป็นของ hero ใน
+// MainLayout
 //
-// widget ที่ไม่ได้มาจาก docx (GameRankingBoard, LatestWinnersCyber, LoginRtpSection,
+// widget ที่ไม่ได้มาจาก docx (GameRankingBoard, LatestWinners, LoginRtpSection,
 // ReviewCardSumo2, แถวปุ่ม login/register, Faq, Navfoot) ใช้ป้ายเป็น <p>/<span> +
 // aria-label บน <section> และถูกวางต่อท้ายหัวข้อ docx ข้อสุดท้ายทั้งชุด ยกเว้นสองตัว
-// ที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGridPremium → ข้อ 3,
-// FeatureHighlights → ข้อ 4) ซึ่งวางต่อท้ายบล็อกนั้นๆ
+// ที่เป็นภาพประกอบของหัวข้อ docx หนึ่งข้อโดยตรง (ProviderGrid → ข้อ 3,
+// FeatureHighlights → ข้อ 5) ซึ่งวางต่อท้ายบล็อกนั้นๆ
 //
 // h1 ×1 + h2 ×6 = หัวข้อ docx พอดี บวก h3 ×4 จาก FeatureHighlights ซึ่งเป็นรายการ
-// ย่อยของหัวข้อข้อ 4 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
-// Faq.astro คำถามเป็น <span> ใน <summary> ชื่อกริดค่ายใน ProviderGridPremium.astro
-// เป็น <p> และป้ายคอลัมน์ของทุก ContentBox variant เป็น <p>
+// ย่อยของหัวข้อข้อ 5 ตามข้อยกเว้นเดียวที่ playbook อนุญาต — หัว FAQ เป็น <p> ใน
+// Faq3.astro คำถามเป็น <span> ใน <summary> ชื่อกริดค่ายใน ProviderGrid.astro เป็น
+// <p> และป้ายคอลัมน์ของทุก ContentBox variant เป็น <p>
 //
 // title กับ description ใช้บรรทัดที่ brief ให้มาตรงๆ ทั้งคู่ ห้ามเติมหรือตัด และเป็น
 // สตริงเดียวกับที่ส่งเข้า pageGraph และ MainLayout
-const pageTitle = "VIPSAND356 | สล็อตของพรีเมียม คัดเกมเด็ดมาเต็ม บริการระดับ VIP";
-const pageDescription = "VIPSAND356 สล็อตของพรีเมียม คัดเกมเด็ดมาเต็มหลายสไตล์ ครบทั้งเกมดัง ฟีเจอร์ใหม่ และโปรน่าตาม ระบบออโต้ช่วยให้ทำรายการคล่อง พร้อมบริการระดับ VIP";
+const pageTitle = "9KPLUS | สล็อตพลัสความมันส์ ระบบลั่น ตัวเด็ดหลายฟีล โปรใหม่ไฟแรง";
+const pageDescription = "9KPLUS สล็อตพลัสความมันส์ เกมไหนมีฟีลจัดมาให้ครบ ตัวเด็ดพร้อมชน ของใหม่พร้อมแจม ฟีเจอร์มีลูกเล่น โปรใหม่ไฟแรง ระบบลั่นพร้อมออโต้ไปต่อได้คล่อง";
 
 const announcementMessage =
-  "VIPSAND356 สล็อตของพรีเมียม คัดเกมเด็ดมาเต็ม บริการระดับ VIP • เว็บตรงสล็อตพรีเมียม API แท้ ยิงตรงจากคลังเกมหลักสากล ไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงานผู้พัฒนา ไร้การดัดแปลงระบบ ไม่ล็อกยูส ฝากถอนออโต้ประมวลผลไวใน 3 วินาที การันตีถอนได้เต็มทุกยอด • ยกระดับหน้าแดชบอร์ดให้หรูหราและใช้งานง่าย จัดหมวดหมู่เกมอย่างเป็นระเบียบ คัดเฉพาะเกมเกรด A-List ที่จ่ายรางวัลโปร่งใสและโบนัสแจ็คพอตแตกง่ายมาไว้ในที่เดียว พุ่งตรงเข้าสปินทำกำไรได้ตั้งแต่เปิดหน้าแรก • ขนทัพค่ายเกมชั้นนำระดับโลก PG Soft, Pragmatic Play, Joker Gaming และอีกมากมาย ครบทุกแนว ทั้งสล็อตวิดีโอ 3D ภาพสวยสมจริง สล็อตคลาสสิกตัวคูณหนัก และสล็อตสายซื้อฟรีสปิน สลับเปลี่ยนแนวได้ตลอดผ่านระบบกระเป๋าเดียว • ฟีเจอร์ยุคใหม่อัปเดตเข้าระบบครบ ทั้ง Multiplier สะสมตัวคูณทวีคูณ Expanding Wild ยืดเต็มรีล คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy พุ่งตรงเข้าลุ้นรอบแจ็คพอตทันที • โปรน่าตามอัปเดตต่อเนื่อง กดรับเองผ่านหน้าเว็บได้เรื่อยๆ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน ไม่ติดเทิร์นโอเวอร์ซับซ้อน • ระบบออโต้ไฮสปีดตัดขั้นตอนรออนุมัติและการส่งสลิปออกทั้งหมด ทำรายการผ่าน Gateway ตรงเสร็จใน 3 วินาที เครดิตเข้าเกมไว ถอนกำไรเด้งเข้าบัญชีทันใจ • บริการระดับ VIP ทีมงานแอดมินมืออาชีพสแตนด์บายตลอด 24 ชั่วโมง ซัพพอร์ตทุกข้อสงสัยรวดเร็ว ทั้งขั้นตอนสมัคร การรับโปรโมชัน และแนะนำระบบการใช้งาน";
+  "9KPLUS สล็อตพลัสความมันส์ ระบบลั่น ตัวเด็ดหลายฟีล โปรใหม่ไฟแรง • สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ลื่นไหลทุกการสปิน ปรับระบบมาแบบตรงสเปกโรงงาน ค่า RTP ยุติธรรม ไม่ล็อกยูส ไม่ปรับเปอร์เซ็นต์ชนะ ฝากถอนออโต้ไฮสปีดทำรายการไวใน 3 วินาที บวกเท่าไหร่ก็ถอนได้เต็มทุกบาท • ดีไซน์หน้าเว็บและคลังเกมให้เข้าถึงง่าย ขนเกมสล็อตหลากหลายรูปแบบมาจัดวางให้อย่างลงตัว สายปั่นงบน้อยเน้นปั้นทุน สายลุยเบทใหญ่ หรือสายตามล่าแจ็คพอต ระบบพร้อมรองรับทุกสไตล์การเล่น จัดจังหวะการจ่ายเงินที่แฟร์ๆ ให้ลุ้นโบนัสแตกได้ตั้งแต่วินาทีแรกที่เริ่มสปิน • รวมค่ายใหญ่ระดับโลกไว้ครบหมดทั้ง PG Soft, Pragmatic Play และ Joker Gaming จัดเต็มเกมตัวเด็ดกระแสแรงมาให้เลือกเล่นแบบไม่ขาดสาย สลับจากสล็อตแนวเทพเจ้าไปสายกินหรือสายแอ็กชันได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงินข้ามค่ายให้สะดุด • อัปเดตคลังเกมใหม่เข้ามาเติมระบบอย่างต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมสดใหม่ออกมา สมาชิกได้ลองเล่นฟีเจอร์ใหม่ก่อนใคร ได้เช็กจังหวะแจกโบนัสก่อนใคร ปั่นได้ยาวๆ ไม่มีคำว่าตกเทรนด์ • ฟีเจอร์ยุคใหม่มาครบ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Expanding Wild ยืดเต็มรีล คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Bonus Buy ให้กดซื้อฟรีสปินเข้าไปลุ้นรอบแจ็คพอตใหญ่ได้ทันที • โปรใหม่ไฟแรงปล่อยออกมาต่อเนื่อง ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน กดรับเองได้เลยผ่านหน้าเว็บ เงื่อนไขชัดเจน ถอนกำไรได้จริง ไม่ติดเทิร์นโอเวอร์มหาโหด • รันทุกธุรกรรมด้วยระบบออโต้ไฮสปีด ไม่ต้องแนบสลิป ไม่ต้องคอยแอดมินอนุมัติ ทำรายการฝากถอนเงินเสร็จใน 3 วินาทีผ่าน Gateway ตรง ยอดเงินอัปเดตเข้าคลังเกมและบัญชีธนาคารฉับไว";
 
 // FAQ ห้าข้อเขียนขึ้นใหม่จากข้อเท็จจริงในเนื้อ docx ทั้งเจ็ดย่อหน้า ไม่ได้ก๊อบย่อหน้า
 // ไหนมาทั้งดุ้น เพราะเนื้อ docx ถูกใช้เต็มๆ ไปแล้วในบล็อกด้านบน — ตรงนี้เป็นการตอบ
@@ -94,24 +99,24 @@ const announcementMessage =
 // Faq ใช้ค่า default ของตัวเอง เพราะ default เป็นลิสต์ว่างโดยตั้งใจ
 const faqs = [
   {
-    q: "VIPSAND356 เป็นเว็บตรงจริงไหม แล้วค่า RTP ถูกดัดแปลงหรือเปล่า",
-    a: "เป็นเว็บตรงสล็อตพรีเมียมที่เชื่อมต่อ API แท้ ยิงตรงจากคลังเกมหลักสากลโดยไม่ผ่านเอเย่นต์ ค่า RTP จึงตรงตามสเปกที่โรงงานผู้พัฒนากำหนดไว้จริง ไร้การดัดแปลงระบบระหว่างทางและไม่ล็อกยูส เมื่อทำเงื่อนไขครบก็การันตีถอนได้เต็มทุกยอดตามมาตรฐานการบริการระดับ VIP",
+    q: "9KPLUS เป็นเว็บตรงจริงไหม แล้วค่า RTP ถูกปรับหรือเปล่า",
+    a: "เป็นสล็อตเว็บตรงที่เชื่อมต่อ API แท้ ยิงตรงจากเซิร์ฟนอก ปรับระบบมาแบบตรงสเปกโรงงานผู้พัฒนา ค่า RTP จึงยุติธรรมตามที่ค่ายตั้งไว้จริง ไม่ล็อกยูสและไม่ปรับเปอร์เซ็นต์ชนะระหว่างทาง บวกเท่าไหร่ก็ถอนได้เต็มทุกบาท ทุกการสปินลื่นไหลตั้งแต่กดหมุนรอบแรก",
   },
   {
-    q: "เกมเยอะขนาดนี้ หาเกมที่อยากเล่นยากไหม",
-    a: "หน้าแดชบอร์ดถูกยกระดับให้หรูหราและใช้งานง่าย จัดหมวดหมู่เกมไว้อย่างเป็นระเบียบ และคัดเฉพาะเกมเกรด A-List ที่จ่ายรางวัลโปร่งใสและโบนัสแจ็คพอตแตกง่ายมารวมไว้ในที่เดียว ผู้เล่นจึงไม่ต้องเสียเวลานั่งสุ่มเล่นเกมคุณภาพต่ำ และพุ่งตรงเข้าสปินทำกำไรได้ตั้งแต่เปิดหน้าแรก",
+    q: "เล่นงบน้อยกับเล่นเบทใหญ่ ใช้ล็อบบี้เดียวกันได้ไหม",
+    a: "ได้ทั้งหมด เพราะดีไซน์หน้าเว็บและคลังเกมถูกจัดวางให้เข้าถึงง่าย ขนเกมสล็อตหลากหลายรูปแบบมาเรียงไว้อย่างลงตัว ไม่ว่าจะเป็นสายปั่นงบน้อยเน้นปั้นทุน สายลุยเบทใหญ่ หรือสายตามล่าแจ็คพอต ระบบก็รองรับทุกสไตล์การเล่น และจัดจังหวะการจ่ายเงินแบบแฟร์ๆ ให้ลุ้นโบนัสแตกได้ตั้งแต่วินาทีแรก",
   },
   {
-    q: "มีค่ายเกมอะไรบ้าง แล้วสลับเล่นข้ามค่ายต้องโยกเงินไหม",
-    a: "ขนทัพค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายมารวมไว้ในคลังเดียว มีเกมเด็ดครบทุกแนว ทั้งสล็อตวิดีโอ 3D ภาพสวยสมจริง สล็อตคลาสสิกตัวคูณหนัก และสล็อตสายซื้อฟรีสปิน สลับเปลี่ยนแนวการปั่นได้ตลอดเวลาผ่านระบบกระเป๋าเดียวที่ไม่ต้องเสียเวลาโยกเงิน",
+    q: "มีค่ายเกมอะไรบ้าง แล้วสลับข้ามค่ายต้องโยกเงินไหม",
+    a: "รวมค่ายใหญ่ระดับโลกไว้ครบหมดทั้ง PG Soft, Pragmatic Play และ Joker Gaming พร้อมเกมตัวเด็ดกระแสแรงให้เลือกเล่นแบบไม่ขาดสาย อยากเปลี่ยนอารมณ์จากสล็อตแนวเทพเจ้าไปลองแนวสายกินหรือแนวแอ็กชัน ก็สลับเล่นได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงินข้ามค่ายให้สะดุด",
   },
   {
-    q: "ฟีเจอร์ในเกมมีอะไรให้ลุ้นบ้าง แล้วโปรของสมาชิกมีอะไรต่อเนื่องไหม",
-    a: "ฟีเจอร์ยุคใหม่ถูกอัปเดตเข้าระบบครบ ทั้ง Multiplier ที่สะสมตัวคูณทวีคูณ สัญลักษณ์ Expanding Wild ที่ยืดเต็มรีล คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy ที่พุ่งตรงเข้าลุ้นรอบแจ็คพอตทันที ส่วนโปรก็อัปเดตต่อเนื่องให้กดรับเองผ่านหน้าเว็บ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน",
+    q: "ฟีเจอร์ในเกมมีอะไรให้ลุ้น แล้วมีเกมใหม่เข้ามาบ่อยแค่ไหน",
+    a: "ฟีเจอร์ยุคใหม่มาครบ ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Expanding Wild ที่ยืดเต็มรีล คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Bonus Buy ที่กดซื้อฟรีสปินเข้าไปลุ้นรอบแจ็คพอตใหญ่ได้ทันที ส่วนคลังเกมก็อัปเดตของใหม่เข้ามาเติมต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมออกมา",
   },
   {
-    q: "ฝากถอนนานไหม ต้องส่งสลิปให้แอดมินหรือเปล่า",
-    a: "ระบบการเงินเป็นออโต้ไฮสปีดที่ตัดขั้นตอนรออนุมัติและการส่งสลิปออกทั้งหมด ทำรายการผ่าน Gateway ตรงเสร็จสรรพภายใน 3 วินาที เครดิตอัปเดตเข้าเกมไวและถอนกำไรเด้งเข้าบัญชีทันใจ หากติดขัดตรงไหนก็มีทีมงานแอดมินมืออาชีพสแตนด์บายให้บริการตลอด 24 ชั่วโมง",
+    q: "ฝากถอนนานไหม ต้องแนบสลิปให้แอดมินหรือเปล่า",
+    a: "ไม่ต้องแนบสลิปและไม่ต้องคอยแอดมินอนุมัติ ทุกธุรกรรมรันด้วยระบบออโต้ไฮสปีดผ่าน Gateway ตรง ทำรายการฝากถอนเสร็จภายใน 3 วินาที ยอดเงินอัปเดตเข้าคลังเกมและบัญชีธนาคารฉับไว ส่วนโปรใหม่ไฟแรงทั้งโบนัสต้อนรับ ฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน ก็กดรับเองได้เลยผ่านหน้าเว็บ",
   },
 ];
 
@@ -129,130 +134,133 @@ const graph = pageGraph(Astro, {
 
   <Announcement message={announcementMessage} />
 
-  <ContentBoxCyberCut as="h1" title="VIPSAND356 สล็อตของพรีเมียม คัดเกมเด็ดมาเต็ม บริการระดับ VIP">
-    <p class="text-left text-base leading-relaxed">
-      VIPSAND356 เว็บตรงสล็อตพรีเมียม API แท้ ยิงตรงจากคลังเกมหลักสากล ไม่ผ่านเอเย่นต์ ชูจุดเด่นเรื่องความโปร่งใสด้วยค่า RTP ตรงตามสเปกโรงงานผู้พัฒนา ไร้การดัดแปลงระบบ ไม่ล็อกยูส
-      มาพร้อมระบบฝากถอนออโต้ประมวลผลไวใน 3 วินาที รองรับทุกช่องทางการเงิน การันตีถอนได้เต็มทุกยอดด้วยมาตรฐานการบริการระดับ VIP
+  <ContentBoxPremium as="h1" title="9KPLUS สล็อตพลัสความมันส์ ระบบลั่น ตัวเด็ดหลายฟีล โปรใหม่ไฟแรง">
+    <p class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      9KPLUS สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ลื่นไหลทุกการสปิน ปรับระบบมาแบบตรงสเปกโรงงาน ค่า RTP ยุติธรรม ไม่ล็อกยูส ไม่ปรับเปอร์เซ็นต์ชนะ มาพร้อมระบบฝากถอนออโต้ระดับไฮสปีด ทำรายการไวใน 3
+      วินาที บวกเท่าไหร่ก็ถอนได้เต็มทุกบาท สายปั่นยุคใหม่ที่ชอบความลื่นและความชัวร์บอกเลยว่าต้องลอง
     </p>
-  </ContentBoxCyberCut>
+  </ContentBoxPremium>
 
-  <ContentBoxTwoPremium
+  <ContentBox3ThreePremium
     as="h2"
-    title="VIPSAND356 สล็อตของพรีเมียม ยกระดับล็อบบี้ให้ทุกเกมมีฟีลน่าค้นกว่าเดิม"
-    titleleft="แดชบอร์ดหรูหรา จัดหมวดหมู่เป็นระเบียบ"
-    titleright="พุ่งตรงเข้าสปินได้ตั้งแต่เปิดหน้าแรก">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      ยกระดับหน้าแดชบอร์ดให้มีความหรูหราและใช้งานง่าย VIPSAND356 สล็อตของพรีเมียม จัดหมวดหมู่เกมอย่างเป็นระเบียบ คัดเฉพาะเกมเกรด A-List
-      ที่มีอัตราการจ่ายเงินรางวัลโปร่งใสและโบนัสแจ็คพอตแตกง่ายมาไว้ในที่เดียว
+    title="9KPLUS สล็อตพลัสความมันส์ เปิดเกมหลายฟีลให้สายไหนก็เจอจังหวะที่ใช่"
+    titleleft="ดีไซน์เว็บเข้าถึงง่าย"
+    titlecenter="รองรับทุกสไตล์การเล่น"
+    titleright="จ่ายแฟร์ตั้งแต่สปินแรก">
+    <p slot="left" class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      ดีไซน์หน้าเว็บและคลังเกมให้เข้าถึงง่าย 9KPLUS สล็อตพลัสความมันส์ ขนเกมสล็อตหลากหลายรูปแบบมาจัดวางให้อย่างลงตัว
     </p>
-    <p slot="right" class="text-left text-base leading-relaxed">ไม่ต้องเสียเวลานั่งสุ่มเล่นเกมคุณภาพต่ำ พุ่งตรงเข้าสู่การสปินทำกำไรได้ทันทีตั้งแต่เปิดหน้าแรก</p>
-  </ContentBoxTwoPremium>
+    <p slot="center" class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      ไม่ว่าคุณจะเป็นสายปั่นงบน้อยเน้นปั้นทุน สายลุยเบทใหญ่ หรือสายตามล่าแจ็คพอต ระบบก็พร้อมรองรับทุกสไตล์การเล่น
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed text-[#ffe3ee]">จัดจังหวะการจ่ายเงินที่แฟร์ๆ ให้ลุ้นโบนัสแตกได้ตั้งแต่วินาทีแรกที่เริ่มสปิน</p>
+  </ContentBox3ThreePremium>
 
-  <ContentBox3ThreeCyberCut
+  <ContentBoxTwoCyberCut
     as="h2"
-    title="คัดเกมเด็ดมาเต็มหลายสไตล์ VIPSAND356 เปลี่ยนแนวเมื่อไหร่ก็มีตัวเลือกให้ไปต่อ"
-    titleleft="ค่ายชั้นนำระดับโลก"
-    titlecenter="ครบทุกแนวการปั่น"
-    titleright="กระเป๋าเดียวสลับได้ตลอด">
-    <p slot="left" class="text-left text-base leading-relaxed">ขนทัพค่ายเกมชั้นนำระดับโลกอย่าง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมายมารวมไว้ในคลัง</p>
-    <p slot="center" class="text-left text-base leading-relaxed">VIPSAND356 มีเกมเด็ดให้เลือกเล่นครบทุกแนว ทั้งสล็อตวิดีโอ 3D ภาพสวยสมจริง สล็อตคลาสสิกตัวคูณหนัก และสล็อตสายซื้อฟรีสปิน</p>
-    <p slot="right" class="text-left text-base leading-relaxed">สลับเปลี่ยนแนวการปั่นได้ตลอดเวลาผ่านระบบกระเป๋าเดียวที่ไม่ต้องเสียเวลาโยกเงิน</p>
-  </ContentBox3ThreeCyberCut>
-
-  <ProviderGridPremium />
-
-  <ContentBoxSevenThree as="h2" title="เกมดังไม่ได้มาเล่น ๆ รวมตัวเด่นพร้อมฟีเจอร์ใหม่ให้แต่ละรอบมีลูกเล่นต่างกัน" titleleft="ชนะ 11 ไม้ รับ iPhone 17 Pro Max">
-    <Picture
-      slot="left"
-      src={imgIphonePrize}
-      loading="lazy"
-      fetchpriority="low"
-      widths={[300, 450, 700]}
-      sizes="(max-width: 767px) calc(100vw - 96px), 338px"
-      decoding="async"
-      formats={["avif", "webp"]}
-      fallbackFormat="webp"
-      quality={80}
-      alt="แบนเนอร์โปรโมชันรูปโทรศัพท์ iPhone 17 Pro Max สีส้มสองเครื่องวางคู่กันบนแท่นวางสีฟ้ากลางหมู่เมฆ ข้อความไทยบรรทัดบนเขียนว่า ชนะ 11 ไม้ บรรทัดถัดมาเขียนว่า รับ iPhone 17 Pro Max มูลค่า 48,900.- และบรรทัดล่างเขียนว่า เดิมพันขั้นต่ำ 3,000 ขึ้นไป มุมซ้ายบนเป็นโลโก้ VIPSANDS356"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#eba554]/45 shadow-[0_10px_30px_rgba(235,165,84,0.28)]"
-    />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      ฉีกกฎการกดหมุนธรรมดาด้วยฟีเจอร์ยุคใหม่ที่อัปเดตเข้าสู่ระบบบน VIPSAND356 ทั้งระบบ Multiplier สะสมตัวคูณทวีคูณ, สัญลักษณ์ Expanding Wild ยืดเต็มรีล, คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy
-      พุ่งตรงเข้าลุ้นรอบแจ็คพอตทันที ช่วยเปลี่ยนให้การปั่นสล็อตทุกรอบมีกิมมิกน่าติดตามและลุ้นทำเงินได้ตลอดเวลา
+    title="ตัวเด็ดพร้อมชนที่ 9KPLUS สลับแนวได้เต็มที่ เกมไหนมีฟีลจัดมาให้ครบ"
+    titleleft="ค่ายใหญ่ระดับโลกครบหมด"
+    titleright="สลับแนวได้ในกระเป๋าเดียว">
+    <p slot="left" class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      รวมค่ายใหญ่ระดับโลกไว้ครบหมดทั้ง PG Soft, Pragmatic Play และ Joker Gaming 9KPLUS จัดเต็มเกมตัวเด็ดกระแสแรงมาให้เลือกเล่นแบบไม่ขาดสาย
     </p>
-  </ContentBoxSevenThree>
+    <p slot="right" class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      อยากเปลี่ยนอารมณ์จากสล็อตแนวเทพเจ้า ไปลองสล็อตแนวสายกิน หรือสล็อตแนวแอ็กชัน ก็สลับเล่นได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงินข้ามค่ายให้สะดุด
+    </p>
+  </ContentBoxTwoCyberCut>
+
+  <ProviderGrid />
+
+  <ContentBoxSpecial as="h2" title="ของใหม่พร้อมแจม ไม่ปล่อยล็อบบี้วนลูป เติมความสดให้มีเกมน่าลองอยู่เรื่อย ๆ">
+    <p slot="left" class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      หมดปัญหาเบื่อล็อบบี้เดิมๆ เพราะ 9KPLUS อัปเดตคลังเกมใหม่เข้ามาเติมระบบอย่างต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมสดใหม่ออกมา
+    </p>
+    <p slot="right" class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      สมาชิกได้ลองเล่นฟีเจอร์ใหม่ก่อนใคร ได้เช็กจังหวะแจกโบนัสก่อนใคร เติมความสดใหม่ให้อยู่ตลอดเวลา ปั่นได้ยาวๆ ไม่มีคำว่าตกเทรนด์
+    </p>
+  </ContentBoxSpecial>
+
+  <ContentBox as="h2" title="ฟีเจอร์มีลูกเล่น 9KPLUS เปลี่ยนแต่ละเกมให้มีจังหวะเซอร์ไพรส์รออยู่ข้างใน">
+    <p class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      สร้างมิติการทำเงินให้ตื่นเต้นยิ่งขึ้นด้วยฟีเจอร์ยุคใหม่บน 9KPLUS ทั้งระบบสุ่มแจกตัวคูณทวีคูณ (Multipliers), สัญลักษณ์ Expanding Wild ยืดเต็มรีล, คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Bonus Buy
+      ให้กดซื้อฟรีสปินเข้าไปลุ้นรอบแจ็คพอตใหญ่ได้ทันที เปลี่ยนสปินธรรมดาให้เป็นจังหวะแตกหนักได้ทุกหมุน
+    </p>
+  </ContentBox>
 
   <FeatureHighlights
     items={[
       {
         icon: "✖️",
-        title: "Multiplier สะสมตัวคูณทวีคูณ",
-        description: "ตัวคูณถูกแจกระหว่างรอบแล้วทบขึ้นไปเรื่อยๆ แทนที่จะรีเซ็ตทุกตา ยิ่งอยู่ในจังหวะยาวเท่าไหร่ ยอดที่ได้ตอนสัญลักษณ์เข้าคู่ก็ยิ่งถูกคูณหนักขึ้นเท่านั้น",
-        accent: "gold",
+        title: "ตัวคูณทวีคูณ (Multipliers)",
+        description: "ตัวคูณถูกสุ่มแจกระหว่างรอบแล้วทบขึ้นไปเรื่อยๆ แทนที่จะรีเซ็ตทุกตา ยิ่งอยู่ในจังหวะยาวเท่าไหร่ ยอดที่ได้ตอนสัญลักษณ์เข้าคู่ก็ยิ่งถูกคูณหนักขึ้นเท่านั้น",
+        accent: "crimson",
       },
       {
         icon: "🃏",
         title: "Expanding Wild ยืดเต็มรีล",
         description: "ไวลด์ที่ลงมาแล้วไม่ได้อยู่แค่ช่องเดียว แต่ยืดคลุมทั้งรีลจนเต็มแนว เปิดโอกาสให้เส้นที่กำลังจะพลาดกลับมาต่อติดพร้อมกันหลายเส้นในตาเดียว",
-        accent: "azure",
+        accent: "pink",
       },
       {
         icon: "🔁",
-        title: "คอมโบแตกต่อเนื่อง Cascading",
+        title: "คอมโบแตกต่อเนื่องแบบ Cascading",
         description: "สัญลักษณ์ที่ชนะแล้วจะหายไปให้ตัวใหม่ร่วงลงมาแทนในตาเดิม ทำให้หนึ่งรอบหมุนลากต่อได้หลายชั้นโดยไม่ต้องเสียเครดิตเพิ่ม",
-        accent: "azure",
+        accent: "pink",
       },
       {
         icon: "🛒",
         title: "โหมด Bonus Buy",
-        description: "กดซื้อเพื่อพุ่งตรงเข้ารอบแจ็คพอตได้ทันทีโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อ่านจังหวะโบนัสออกแล้วอยากลัดเข้าไปเก็บรอบแจกด้วยตัวเอง",
-        accent: "gold",
+        description: "กดซื้อฟรีสปินเพื่อพุ่งตรงเข้ารอบแจ็คพอตใหญ่ได้ทันทีโดยไม่ต้องรอสัญลักษณ์ครบเอง เหมาะกับคนที่อ่านจังหวะโบนัสออกแล้วอยากลัดเข้าไปเก็บรอบแจกด้วยตัวเอง",
+        accent: "crimson",
       },
     ]}
   />
 
-  <ContentBoxSevenThreeCyberCut as="h2" title="โปรน่าตามของ VIPSAND356 เติมสิทธิ์พิเศษให้สมาชิกมีดีลใหม่รอเช็กอยู่เรื่อย ๆ" titleleft="ชนะ 15 ไม้ รับ TOYOTA ALPHARD">
+  <ContentBoxSevenThreePremium as="h2" title="โปรใหม่ไฟแรง มาแต่ละครั้งต้องมีอะไรให้ตาม เติมสีสันให้การเล่นไม่จืด" titleleft="คืนยอดเสีย 5% ทุกวัน สูงสุด 50,000 บาท">
     <Picture
       slot="left"
-      src={imgAlphardPrize}
+      src={imgCashback}
       loading="lazy"
       fetchpriority="low"
-      widths={[300, 450, 700]}
-      sizes="(max-width: 767px) calc(100vw - 96px), 346px"
+      widths={[320, 390, 780]}
+      sizes="(max-width: 767px) calc(100vw - 96px), 390px"
       decoding="async"
       formats={["avif", "webp"]}
       fallbackFormat="webp"
       quality={80}
-      alt="แบนเนอร์โปรโมชันรูปรถตู้ TOYOTA ALPHARD สีขาวจอดอยู่บนแท่นวางสีฟ้ากลางหมู่เมฆ มีเหรียญทองและผีเสื้อสีฟ้าลอยอยู่รอบตัวรถ ข้อความไทยบรรทัดบนเขียนว่า ชนะ 15 ไม้ บรรทัดถัดมาเขียนว่า รับ TOYOTA ALPHARD มูลค่า 4,091,000.- และบรรทัดล่างเขียนว่า เดิมพันขั้นต่ำ 200,000 ขึ้นไป มุมซ้ายบนเป็นโลโก้ VIPSANDS356"
-      class="mx-auto h-auto w-full rounded-2xl border border-[#5dbcfe]/45 shadow-[0_10px_30px_rgba(93,188,254,0.28)]"
+      alt="แบนเนอร์โปรโมชันรูปเสือการ์ตูนสวมแว่นกันแดดสีดำถือซองอั่งเปาสีแดง มีสัญลักษณ์ดอลลาร์สีทองลอยอยู่รอบตัวบนพื้นสีแดง ข้อความไทยบนภาพเขียนว่า คืนยอดเสีย 5% ทุกวัน สูงสุด 50,000 บาท"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#f5003e]/45 shadow-[0_10px_30px_rgba(245,0,62,0.28)]"
     />
-    <p slot="right" class="text-left text-base leading-relaxed">
-      จัดเต็มความคุ้มค่าระดับพรีเมียม VIPSAND356 อัปเดตสิทธิประโยชน์และโปรเด็ดเข้าสู่ระบบให้สมาชิกกดรับเองผ่านหน้าเว็บได้เรื่อยๆ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และระบบคืนยอดเสีย Cash Back
-      ทุกวัน เงื่อนไขชัดเจน โปร่งใส ไม่ติดเทิร์นโอเวอร์ซับซ้อน ช่วยขยายทุนและเพิ่มจำนวนรอบสปินได้จริง
+    <p slot="right" class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      จัดเต็มความคุ้มค่าให้สมาชิกได้ตามเก็บกันต่อเนื่อง 9KPLUS ปล่อยโปรโมชันโปรใหม่ไฟแรง ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน
+      กดรับเองได้เลยผ่านหน้าเว็บ เงื่อนไขชัดเจน ถอนกำไรได้จริง ไม่ติดเทิร์นโอเวอร์มหาโหด ช่วยเพิ่มทุนสปินทำเงินได้เพลินขึ้น
     </p>
-  </ContentBoxSevenThreeCyberCut>
+  </ContentBoxSevenThreePremium>
 
-  <ContentBoxNeumorphism as="h2" title="ระบบออโต้ช่วยให้ทำรายการคล่อง ลดช่วงรอให้ใช้งานต่อได้แบบไม่ขาดจังหวะ">
-    <p class="text-left text-base leading-relaxed">
-      ขับเคลื่อนธุรกรรมด้วยระบบออโต้ไฮสปีด VIPSAND356 ตัดขั้นตอนการรออนุมัติและการส่งสลิปออกทั้งหมด ทำรายการฝากถอนผ่าน Gateway ตรงเสร็จสรรพใน 3 วินาที เครดิตอัปเดตเข้าเกมไว
-      ถอนเงินกำไรเด้งเข้าบัญชีทันใจ ให้คุณบริหารการเงินและเดิมพันได้สมูธต่อเนื่องไม่มีขาดจังหวะ
+  <ContentBoxSevenThreeNeumorphism as="h2" title="ระบบลั่นพร้อมออโต้ 9KPLUS พาทุกขั้นตอนไปต่อได้คล่องแบบไม่เสียฟีล" titleleft="ขาใหญ่ ใจถึง! ฝากต่อเนื่องประจำเดือน รับโบนัสสูงสุด 30,000">
+    <Picture
+      slot="left"
+      src={imgDepositBonus}
+      loading="lazy"
+      fetchpriority="low"
+      widths={[320, 390, 780]}
+      sizes="(max-width: 767px) calc(100vw - 96px), 390px"
+      decoding="async"
+      formats={["avif", "webp"]}
+      fallbackFormat="webp"
+      quality={80}
+      alt="แบนเนอร์โปรโมชันรูปชายสูงวัยสวมหมวกปานามาและสูทสีน้ำตาล ใส่แว่นกันแดดสีดำ ยืนท่ามกลางธนบัตรที่ปลิวอยู่บนพื้นสีแดงเลือดหมู ข้อความไทยบนภาพเขียนว่า ขาใหญ่ ใจถึง! ฝากต่อเนื่องประจำเดือน ฝาก 20,000 ขึ้นไป รับโบนัสสูงสุด 30,000 พร้อมตารางฝากต่อเนื่อง 3 วัน 7 วัน 15 วัน และ 30 วัน รับ 1,200 5,600 12,000 และ 30,000"
+      class="mx-auto h-auto w-full rounded-2xl border border-[#ff4fa3]/45 shadow-[0_10px_30px_rgba(255,79,163,0.28)]"
+    />
+    <p slot="right" class="text-left text-base leading-relaxed text-[#ffe3ee]">
+      รันทุกธุรกรรมด้วยระบบออโต้ไฮสปีด 9KPLUS ลดขั้นตอนยุ่งยากออกทั้งหมด ไม่ต้องแนบสลิป ไม่ต้องคอยแอดมินอนุมัติ ทำรายการฝากถอนเงินเสร็จใน 3 วินาทีผ่าน Gateway ตรง
+      ยอดเงินอัปเดตเข้าคลังเกมและบัญชีธนาคารฉับไว ให้คุณปั่นสล็อตและถอนเงินกำไรได้อย่างลื่นไหลแบบไม่เสียฟีล
     </p>
-  </ContentBoxNeumorphism>
-
-  <ContentBoxTwoNeumorphism
-    as="h2"
-    title="บริการระดับ VIP ของ VIPSAND356 ดูแลครบตั้งแต่เริ่มใช้งานจนถึงทุกเรื่องที่ต้องการความช่วยเหลือ"
-    titleleft="แอดมินสแตนด์บายตลอด 24 ชั่วโมง"
-    titleright="ดูแลครบทุกเรื่องที่ต้องการ">
-    <p slot="left" class="text-left text-base leading-relaxed">
-      สัมผัสประสบการณ์การดูแลระดับเอ็กซ์คลูซีฟ VIPSAND356 จัดเตรียมทีมงานแอดมินมืออาชีพสแตนด์บายให้บริการตลอด 24 ชั่วโมง พร้อมซัพพอร์ตและแก้ไขทุกข้อสงสัยอย่างรวดเร็ว
-    </p>
-    <p slot="right" class="text-left text-base leading-relaxed">ไม่ว่าจะเรื่องขั้นตอนสมัคร การรับโปรโมชัน หรือแนะนำระบบการใช้งาน ให้สมาชิกใช้งานได้อย่างสบายใจบนมาตรฐานการบริการระดับ VIP</p>
-  </ContentBoxTwoNeumorphism>
+  </ContentBoxSevenThreeNeumorphism>
 
   <GameRankingBoard />
 
-  <LatestWinnersCyber />
+  <LatestWinners />
 
   <LoginRtpSection />
 
@@ -261,18 +269,18 @@ const graph = pageGraph(Astro, {
   <div class="mx-auto mb-10 flex flex-nowrap justify-center gap-3 px-4 sm:gap-6">
     <a
       href="/register"
-      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#fcde61] via-[#eba554] to-[#c07c20] px-4 py-3 text-sm font-black whitespace-nowrap text-[#061c33] shadow-[0_10px_30px_rgba(235,165,84,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(235,165,84,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full bg-gradient-to-r from-[#ffd8e7] via-[#ff4fa3] to-[#b3022c] px-4 py-3 text-sm font-black whitespace-nowrap text-[#120309] shadow-[0_10px_30px_rgba(255,79,163,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,79,163,0.55)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       สมัครสมาชิก
     </a>
 
     <a
       href="/login"
-      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#2a93e0]/60 bg-[#0a2b4a]/90 px-4 py-3 text-sm font-black whitespace-nowrap text-[#e6f2ff] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#5dbcfe] hover:bg-[#103a5f] hover:text-[#fcde61] hover:shadow-[0_15px_40px_rgba(42,147,224,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
+      class="group relative flex flex-1 items-center justify-center rounded-full border border-[#f5003e]/60 bg-[#1f0611]/90 px-4 py-3 text-sm font-black whitespace-nowrap text-[#ffe3ee] backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-[#ff4a74] hover:bg-[#4d012c] hover:text-[#ffd8e7] hover:shadow-[0_15px_40px_rgba(245,0,62,0.45)] sm:flex-none sm:px-10 sm:py-3.5 sm:text-base">
       เข้าสู่ระบบ
     </a>
   </div>
 
-  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ VIPSAND356" faqs={faqs} />
+  <Faq title="คำถามที่พบบ่อยเกี่ยวกับ 9KPLUS" faqs={faqs} />
 
   <Navfoot />
 </MainLayout>

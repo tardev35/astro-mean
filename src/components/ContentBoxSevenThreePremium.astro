@@ -16,36 +16,37 @@ const { title, as: HeadingTag = "h2", titleleft, titleright, label } = Astro.pro
 // `title` + `as` ตัวเดียว หัวข้อจะไปอยู่เหนือคอลัมน์เนื้อความ (ฝั่ง 7 ส่วน) ซึ่ง
 // กว้างพอรับหัวข้อยาวของ docx ได้โดยไม่ล้นออกนอกการ์ด
 //
-// SETH88: ย้ายจากชุดสีของแบรนด์ก่อนมาที่ทองคำอียิปต์คู่บรอนซ์ — ทอง #fdf3d4 /
-// #f7d774 / #e0a92b / #a9711a คู่บรอนซ์ #6b4210 บนผิว #0c0703 / #1b1109 / #2a1a0d
-// ขอบ #6b4210 เนื้อความ #f0e3cd ข้อความรอง #d6c2a0 — ป้ายคอลัมน์รูปรับไล่เฉดทองไปหา
-// บรอนซ์ เพื่อให้เฉดลึกของโลหะมีที่ยืนจริง แบรนด์นี้ไม่มีสีคู่ตรงข้าม
+// 9KPLUS: ย้ายจากชุดสีทองของแบรนด์ก่อนมาที่แดงนีออนคู่ชมพูบานเย็น — ชมพูขาว #ffd8e7 /
+// ชมพู #ff4fa3 / แดง #f5003e / แดงเข้ม #b3022c คู่ชมพูเข้ม #7c1040 บนผิว #120309 /
+// #1f0611 / #4d012c ขอบ #7c1040 เนื้อความ #ffe3ee ข้อความรอง #f0b9cd — ป้ายคอลัมน์รูป
+// รับไล่เฉดชมพูขาวไปหาแดงเข้ม เพื่อให้เฉดลึกของแกนสีนำมีที่ยืนจริง
 // (ค่า hex เดิมไม่พิมพ์ไว้ตรงนี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ ไม่รู้ว่าเป็น
 // คอมเมนต์ ดูของเดิมได้จาก git history)
 //
-// รอบนี้บล็อกนี้เป็น SevenThree ใบแรกในสองใบของเพดาน playbook คู่กับ slide3
-// (อาร์ต "ยอดเสีย คืนสูงสุด 10% / เล่นเสีย รับคืนทุกวัน ไม่ต้องลุ้น") กับหัวข้อ docx
-// ข้อ 5 เรื่องโปรน่าสนใจเติมต่อเนื่องที่มีสิทธิ์คืนยอดเสีย Cash Back ทุกวัน
+// รอบนี้บล็อกนี้เป็น SevenThree ใบแรกในสองใบของเพดาน playbook คู่กับ slide2
+// (อาร์ต "คืนยอดเสีย 5% ทุกวัน สูงสุด 50,000 บาท") กับหัวข้อ docx ข้อ 6 เรื่องโปรใหม่
+// ไฟแรงที่มีสิทธิ์คืนยอดเสีย Cash Back ทุกวันอยู่ในย่อหน้าเดียวกัน — อาร์ตกับเนื้อหา
+// ตรงกันตัวต่อตัว
 const sectionLabel = title ? undefined : (label ?? titleright ?? titleleft ?? "ข้อมูลประกอบ");
 ---
 
 <section aria-label={sectionLabel} class="relative z-10 mx-auto mb-10 w-full max-w-[1400px] px-4 font-sans">
   <div
-    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#6b4210]/65 bg-[#1b1109]/90 p-8 text-[#f0e3cd] shadow-[0_10px_30px_rgba(107,66,16,0.45)] backdrop-blur-xl transition-all duration-500 hover:border-[#e0a92b]/55 md:p-10">
-    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#2a1a0d]/85 blur-[60px]"></div>
+    class="group relative isolate w-full overflow-hidden rounded-3xl border border-[#7c1040]/65 bg-[#1f0611]/90 p-8 text-[#ffe3ee] shadow-[0_10px_30px_rgba(124,16,64,0.45)] backdrop-blur-xl transition-all duration-500 hover:border-[#f5003e]/55 md:p-10">
+    <div class="pointer-events-none absolute -top-24 -right-24 -z-10 h-48 w-48 rounded-full bg-[#4d012c]/85 blur-[60px]"></div>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-[3fr_7fr] md:items-center">
-      <article class="flex flex-col gap-4 border-b border-[#6b4210]/55 pb-6 text-left text-base leading-relaxed text-[#d6c2a0] md:border-r md:border-b-0 md:pr-6 md:pb-0">
-        {titleleft && <p class="bg-gradient-to-r from-[#fdf3d4] via-[#f7d774] to-[#a9711a] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{titleleft}</p>}
+      <article class="flex flex-col gap-4 border-b border-[#7c1040]/55 pb-6 text-left text-base leading-relaxed text-[#f0b9cd] md:border-r md:border-b-0 md:pr-6 md:pb-0">
+        {titleleft && <p class="bg-gradient-to-r from-[#ffd8e7] via-[#ff4fa3] to-[#b3022c] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{titleleft}</p>}
         <slot name="left" />
       </article>
 
-      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#f0e3cd] md:pl-6">
-        {title && <HeadingTag class="bg-gradient-to-r from-[#fdf3d4] via-[#f7d774] to-[#e0a92b] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>}
+      <article class="flex flex-col gap-3 text-left text-base leading-relaxed text-[#ffe3ee] md:pl-6">
+        {title && <HeadingTag class="bg-gradient-to-r from-[#ffd8e7] via-[#ff4fa3] to-[#f5003e] bg-clip-text text-2xl leading-normal font-black tracking-wide text-transparent">{title}</HeadingTag>}
         {
           titleright && (
-            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#f7d774]">
-              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#a9711a] shadow-[0_0_5px_rgba(169,113,26,0.9)]" /> {titleright}
+            <p class="flex items-center gap-2 text-xl leading-normal font-black text-[#ff4fa3]">
+              <span aria-hidden="true" class="inline-block h-2 w-2 shrink-0 rounded-full bg-[#b3022c] shadow-[0_0_5px_rgba(179,2,44,0.9)]" /> {titleright}
             </p>
           )
         }

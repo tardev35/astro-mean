@@ -2,7 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import ContentBox from "../components/ContentBox.astro";
 import Navfoot from "../components/Navfoot.astro";
-import Announcement from "../components/AnnouncementCyber.astro";
+import Announcement from "../components/Announcement3.astro";
 
 import { Picture } from "astro:assets";
 import imgLine from "../assets/contact-line.webp";
@@ -15,7 +15,7 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // has ever appeared here was invented by a rebrand and pushed the buttons
 // further down. h2 and h3 here must both stay 0.
 //
-// The <h1> names what the page IS ("ติดต่อทีมงาน VIPSAND356"), not what an
+// The <h1> names what the page IS ("ติดต่อทีมงาน 9KPLUS"), not what an
 // article on it would argue. A title that previews a body reads as a broken
 // promise once the body is (correctly) absent.
 //
@@ -25,14 +25,15 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // the inherited text colour): that is what stops the previous brand's colour
 // being left behind here on the next launch.
 //
-// VIPSAND356: ticker หมุนมาเป็น AnnouncementCyber และกล่องหน้าย่อยใช้ ContentBox
+// 9KPLUS: ticker หมุนมาเป็น Announcement3 และกล่องหน้าย่อยใช้ ContentBox
 // ตามสเปกรอบนี้ (เรียก <Announcement /> เปล่าๆ เพราะ default message ของ variant
 // นี้เป็นข้อความของแบรนด์นี้แล้ว และตรงกับหน้าแรก)
 //
-// พาเลตต์รอบนี้เป็น "อะซูร์คู่ทองส้มบนกรมท่าเข้ม" วอลเปเปอร์ของเว็บเป็นฟ้าสว่าง
-// การ์ดจึงเป็นกระจกกรมท่าลอยอยู่บนพื้นฟ้า ปุ่มสมัครสมาชิกซึ่งเป็นปุ่มหลักไล่สีทอง
-// สว่าง #fcde61 / #eba554 / #c07c20 ขอบ #fcde61 เนื้อความ #061c33 · ปุ่มเข้าสู่ระบบ
-// เป็นปุ่มรองจึงไล่สีฟ้าเข้ม #1465a8 / #0b3f70 ขอบ #5dbcfe เนื้อความ #eaf6ff
+// พาเลตต์รอบนี้เป็น "นีออนคริมสันคู่ชมพูจัดบนผิวเกือบดำ" วอลเปเปอร์ของเว็บเป็น
+// ลายวงจรสีเลือดหมูบนพื้นเกือบดำ การ์ดจึงเป็นกระจกเข้มลอยอยู่บนพื้นนั้น ปุ่ม
+// สมัครสมาชิกซึ่งเป็นปุ่มหลักไล่สีคริมสันสด #f5003e / #ff4fa3 / #b3022c ขอบ
+// #ff4a74 · ปุ่มเข้าสู่ระบบเป็นปุ่มรองจึงไล่สีชมพูเข้ม #7c1040 / #4d012c ขอบ
+// #ff4fa3 เนื้อความทั้งคู่เป็น #ffe3ee
 // เขียว LINE คงเดิมเพราะเป็นสีแบรนด์ของ LINE ไม่ใช่สีของเว็บนี้
 //
 // ห้ามพิมพ์ hex ของแบรนด์ก่อนไว้ในคอมเมนต์นี้ — Tailwind สแกนไฟล์เป็นข้อความดิบ
@@ -43,12 +44,12 @@ import { BRAND_ADDRESS } from "../lib/brandProfile";
 // variants of the same sentence, and the JSON-LD copy was the one nobody
 // reread. 150–160 CHARACTERS (Thai is 3 bytes/char, so a byte count reads ~3x
 // too long and will send you rewriting a description that was fine). This one
-// measures 156.
-const pageDescription = "ช่องทางติดต่อทีมงาน VIPSAND356 สล็อตของพรีเมียม ทักแอดมินผ่าน LINE Official ตลอด 24 ชั่วโมง สอบถามวิธีเข้าเกม แจ้งปัญหาฝากถอนออโต้ หรือขอรับสิทธิ์โปรที่เปิด";
+// measures 158.
+const pageDescription = "ช่องทางติดต่อทีมงาน 9KPLUS สล็อตพลัสความมันส์ ทักแอดมินผ่าน LINE Official ตลอด 24 ชั่วโมง สอบถามวิธีเข้าเกม แจ้งปัญหาฝากถอนออโต้ หรือขอรับสิทธิ์โปรที่เปิดอยู่";
 
 const graph = pageGraph(Astro, {
   type: "ContactPage",
-  name: "ติดต่อทีมงาน VIPSAND356",
+  name: "ติดต่อทีมงาน 9KPLUS",
   description: pageDescription,
   breadcrumb: [
     { name: "หน้าแรก", path: "/" },
@@ -56,7 +57,7 @@ const graph = pageGraph(Astro, {
   ],
   org: {
     alternateName:
-      "VIPSAND356 สล็อตของพรีเมียม คัดเกมเด็ดมาเต็ม บริการระดับ VIP เว็บตรงสล็อตพรีเมียม API แท้ ยิงตรงจากคลังเกมหลักสากล ไม่ผ่านเอเย่นต์ ค่า RTP ตรงตามสเปกโรงงานผู้พัฒนา ไร้การดัดแปลงระบบ ไม่ล็อกยูส คัดเฉพาะเกมเกรด A-List ที่จ่ายรางวัลโปร่งใสและโบนัสแจ็คพอตแตกง่ายมาจัดหมวดหมู่ไว้ในล็อบบี้เดียว ขนทัพค่ายเกมชั้นนำระดับโลกทั้ง PG Soft, Pragmatic Play, Joker Gaming และอีกมากมาย ครบทุกแนวทั้งสล็อตวิดีโอ 3D สล็อตคลาสสิกตัวคูณหนัก และสล็อตสายซื้อฟรีสปิน อัดแน่นฟีเจอร์ยุคใหม่ทั้ง Multiplier สะสมตัวคูณทวีคูณ Expanding Wild ยืดเต็มรีล คอมโบแตกต่อเนื่อง Cascading และโหมด Bonus Buy พร้อมโปรน่าตามที่กดรับเองผ่านหน้าเว็บได้เรื่อยๆ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรฝากแรกของวัน และคืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน ไม่ติดเทิร์นโอเวอร์ซับซ้อน ฝากถอนด้วยระบบออโต้ไฮสปีดผ่าน Gateway ตรงเสร็จใน 3 วินาที รองรับทุกช่องทางการเงิน ไม่ต้องส่งสลิป การันตีถอนได้เต็มทุกยอด ดูแลโดยทีมงานแอดมินมืออาชีพสแตนด์บายตลอด 24 ชั่วโมง",
+      "9KPLUS สล็อตพลัสความมันส์ ระบบลั่น ตัวเด็ดหลายฟีล โปรใหม่ไฟแรง สล็อตเว็บตรง API แท้ ยิงตรงจากเซิร์ฟนอก ลื่นไหลทุกการสปิน ปรับระบบมาแบบตรงสเปกโรงงาน ค่า RTP ยุติธรรม ไม่ล็อกยูส ไม่ปรับเปอร์เซ็นต์ชนะ ดีไซน์หน้าเว็บและคลังเกมให้เข้าถึงง่าย ขนเกมสล็อตหลากหลายรูปแบบมาจัดวางให้อย่างลงตัว รองรับทั้งสายปั่นงบน้อยเน้นปั้นทุน สายลุยเบทใหญ่ และสายตามล่าแจ็คพอต รวมค่ายใหญ่ระดับโลกไว้ครบทั้ง PG Soft, Pragmatic Play และ Joker Gaming สลับจากสล็อตแนวเทพเจ้าไปสายกินหรือสายแอ็กชันได้ทันทีผ่านกระเป๋าเดียว ไม่ต้องเสียเวลาโยกเงินข้ามค่ายให้สะดุด อัปเดตคลังเกมใหม่เข้ามาเติมระบบอย่างต่อเนื่องทันทีที่ค่ายผู้พัฒนาปล่อยตัวเกมสดใหม่ออกมา อัดแน่นฟีเจอร์ยุคใหม่ทั้งระบบสุ่มแจกตัวคูณทวีคูณ Multipliers สัญลักษณ์ Expanding Wild ยืดเต็มรีล คอมโบแตกต่อเนื่องแบบ Cascading และโหมด Bonus Buy ให้กดซื้อฟรีสปินลุ้นรอบแจ็คพอตใหญ่ได้ทันที พร้อมโปรใหม่ไฟแรงที่กดรับเองได้ผ่านหน้าเว็บ ทั้งโบนัสต้อนรับสมาชิกใหม่ โปรเติมเงินฝากแรกของวัน และสิทธิ์คืนยอดเสีย Cash Back ทุกวัน เงื่อนไขชัดเจน ถอนกำไรได้จริง ไม่ติดเทิร์นโอเวอร์มหาโหด รันทุกธุรกรรมด้วยระบบออโต้ไฮสปีด ไม่ต้องแนบสลิป ไม่ต้องคอยแอดมินอนุมัติ ทำรายการฝากถอนเสร็จใน 3 วินาทีผ่าน Gateway ตรง ดูแลโดยทีมงานแอดมินมืออาชีพสแตนด์บายตลอด 24 ชั่วโมง",
     contactPoints: [
       {
         contactType: "customer service",
@@ -78,21 +79,21 @@ const graph = pageGraph(Astro, {
 });
 ---
 
-<MainLayout title="ติดต่อ VIPSAND356 | ศูนย์บริการสมาชิกสล็อตของพรีเมียม ทักแอดมินผ่าน LINE" description={pageDescription}>
+<MainLayout title="ติดต่อ 9KPLUS | ศูนย์บริการสมาชิกสล็อตพลัสความมันส์ ทักแอดมินผ่าน LINE" description={pageDescription}>
   <script type="application/ld+json" set:html={graph} />
 
   <Announcement />
 
-  <ContentBox title="ติดต่อทีมงาน VIPSAND356" as="h1">
+  <ContentBox title="ติดต่อทีมงาน 9KPLUS" as="h1">
     <div>
       <Picture
         src={imgLine}
-        alt="หญิงสาวผมยาวสีน้ำตาลยิ้ม สวมชุดเลื่อมสีชมพูคอวีและต่างหูระย้า ยืนกอดอกอยู่หลังแถบสีขาวที่มีไอคอน LINE สีเขียวและคำว่า Support ช่องทางแชตกับทีมงาน VIPSAND356"
+        alt="หญิงสาวผมยาวสีน้ำตาลยิ้ม สวมชุดเลื่อมสีชมพูคอวีและต่างหูระย้า ยืนกอดอกอยู่หลังแถบสีขาวที่มีไอคอน LINE สีเขียวและคำว่า Support ช่องทางแชตกับทีมงาน 9KPLUS"
         loading="lazy"
         fetchpriority="low"
         widths={[200, 400, 600]}
         sizes="(max-width: 495px) calc(100vw - 6rem), 400px"
-        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(235,165,84,0.35)]"
+        class="mx-auto h-auto w-full max-w-[400px] object-contain drop-shadow-[0_10px_30px_rgba(245,0,62,0.35)]"
         decoding="async"
         formats={["avif", "webp"]}
         fallbackFormat="webp"
@@ -127,15 +128,15 @@ const graph = pageGraph(Astro, {
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href="/register"
-          aria-label="สมัครสมาชิก VIPSAND356"
-          class="flex items-center justify-center rounded-lg border border-[#fcde61]/70 bg-gradient-to-r from-[#fcde61] via-[#eba554] to-[#c07c20] px-8 py-3 font-extrabold text-[#061c33] shadow-[0_10px_30px_rgba(235,165,84,0.4)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(252,222,97,0.5)]">
+          aria-label="สมัครสมาชิก 9KPLUS"
+          class="flex items-center justify-center rounded-lg border border-[#ff4a74]/70 bg-gradient-to-r from-[#f5003e] via-[#ff4fa3] to-[#b3022c] px-8 py-3 font-extrabold text-[#ffe3ee] shadow-[0_10px_30px_rgba(245,0,62,0.35)] transition-transform hover:scale-105 hover:shadow-[0_15px_40px_rgba(255,79,163,0.3)]">
           สมัครสมาชิก
         </a>
 
         <a
           href="/login"
-          aria-label="เข้าสู่ระบบ VIPSAND356"
-          class="flex items-center justify-center rounded-lg border border-[#5dbcfe]/60 bg-gradient-to-r from-[#1465a8] to-[#0b3f70] px-8 py-3 font-bold text-[#eaf6ff] shadow-[0_4px_14px_rgba(11,63,112,0.45)] transition-transform hover:scale-105 hover:border-[#eaf6ff] hover:shadow-[0_10px_30px_rgba(93,188,254,0.5)]">
+          aria-label="เข้าสู่ระบบ 9KPLUS"
+          class="flex items-center justify-center rounded-lg border border-[#ff4fa3]/60 bg-gradient-to-r from-[#7c1040] to-[#4d012c] px-8 py-3 font-bold text-[#ffe3ee] shadow-[0_4px_14px_rgba(245,0,62,0.35)] transition-transform hover:scale-105 hover:border-[#ffd8e7] hover:shadow-[0_10px_30px_rgba(255,79,163,0.3)]">
           เข้าสู่ระบบ
         </a>
 
